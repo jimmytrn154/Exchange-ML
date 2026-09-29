@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "status": "implementation_complete_full_execution_pending",
+  "stage2_config": "configs/stage2_backend.json",
+  "study_protocol": "configs/study_protocol.json",
+  "workspace_root": "outputs/stage3_h1",
+  "analysis_role": "validation",
+  "trajectory_seed": 20260920,
+  "ensemble": {
+    "size": 3,
+    "members": [
+      {
+        "id": "member_01",
+        "model_seed": 31001
+      },
+      {
+        "id": "member_02",
+        "model_seed": 31002
+      },
+      {
+        "id": "member_03",
+        "model_seed": 31003
+      }
+    ],
+    "reuse_stage2_checkpoint": false,
+    "reason": "Stage 2 checkpoints did not record an explicit model seed; all H1 members are retrained with frozen, distinct seeds."
+  },
+  "reproducibility": {
+    "python_hash_seed": "model_seed",
+    "python_random_seed": "model_seed + local DDP rank",
+    "numpy_seed": "model_seed + local DDP rank",
+    "torch_seed": "model_seed + local DDP rank",
+    "cuda_seed": "model_seed + local DDP rank",
+    "cudnn_deterministic": true,
+    "cudnn_benchmark": false
+  },
+  "execution": {
+    "training_num_gpus": 2,
+    "training_cuda_visible_devices": "5,6",
+    "inference_cuda_visible_device": "5"
+  },
+  "probability_contract": {
+    "classes": [
+      "background",
+      "target_foreground"
+    ],
+    "foreground_probability": "per-anatomy Stage-B ABBC probability 1-p(background), linearly resampled to the input grid and combined by voxelwise maximum",
+    "dtype_on_disk": "float32",
+    "range": [
+      0.0,
+      1.0
+    ]
+  },
+  "score_contract": {
+    "roi": "union of the three cleaned member foreground predictions; fixed once per case and shared by every score",
+    "prediction_connectivity": 26,
+    "prediction_component_prune_min_volume_mm3": 1000.0,
+    "morphology": "none",
+    "nvi_normalization": "VI/log(number of active voxels)",
+    "entropy_log_base": "natural",
+    "fragment_count_variance": "population variance across members",
+    "hungarian_disagreement": "mean pairwise one-minus anatomy-restricted Hungarian IoU, unmatched instances contribute zero similarity",
+    "scores": [
+      "mean_entropy",
+      "p95_entropy",
+      "pairwise_semantic_dice_disagreement",
+      "foreground_jaccard_disagreement",
+      "union_foreground_nvi",
+      "fragment_count_variance",
+      "hungarian_structural_disagreement",
+      "fa_ipd"
+    ]
+  },
+  "risk_contract": {
+    "source": "frozen Stage 2 single-model validation metrics",
+    "metrics_csv": "outputs/stage2_backend/validation_metrics.csv",
+    "primary_connectivity": 26,
+    "risks": [
+      "one_minus_instance_f1",
+      "normalized_merge_split_error",
+      "one_minus_binary_dice"
+    ],
+    "failure_event": "at least one Stage 2 merge or split error"
+  },
+  "confounders": {
+    "stage0_gt_audit": "splits/pengwin_stage0_gt_audit.json",
+    "stage1_connectivity_audit": "splits/pengwin_stage1_connectivity_audit.json",
+    "fields": [
+      "retained_gt_fragment_count",
+      "gt_foreground_volume_mm3",
+      "minimum_retained_gt_fragment_volume_mm3"
+    ],
+    "controlled_association": "Spearman correlation after linear residualization on z-scored fragment count, log1p foreground volume, and log1p minimum fragment volume",
+    "stratification": "q25/q50/q75 using NumPy linear quantiles; equal values stay together via right-inclusive assignment; empty strata omitted"
+  },
+  "evaluation": {
+    "top_k_fractions": [
+      0.1,
+      0.2
+    ],
+    "case_tie_break": "ascending case_id",
+    "aurc": "ascending uncertainty; arithmetic mean of prefix mean risk at empirical coverages 1/N through N/N",
+    "gateway": "manual scientific assessment: FA-IPD must show meaningful advantage in at least two of AURC, top-k enrichment, and controlled association",
+    "illustrative_example": "must have a Stage 2 merge/split failure, mean entropy <= cohort median, and FA-IPD >= cohort median; ascending case_id resolves equal rank contrasts; null if no case qualifies"
+  }
+}

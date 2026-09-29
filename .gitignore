@@ -1,0 +1,56 @@
+# ============================================
+# Datasets and generated experiment artifacts
+# ============================================
+dataset/
+outputs/
+
+# Model checkpoints / large ML artifacts
+*.pt
+*.pth
+*.ckpt
+*.onnx
+
+# ============================================
+# Python
+# ============================================
+__pycache__/
+*.py[cod]
+
+.venv/
+venv/
+env/
+
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# ============================================
+# Training logs and experiment tracking
+# ============================================
+*.log
+wandb/
+lightning_logs/
+.tensorboard/
+
+# ============================================
+# Environment variables / secrets
+# ============================================
+.env
+.env.*
+!.env.example
+
+# ============================================
+# Jupyter
+# ============================================
+.ipynb_checkpoints/
+
+# ============================================
+# OS / Editor
+# ============================================
+.DS_Store
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.temp

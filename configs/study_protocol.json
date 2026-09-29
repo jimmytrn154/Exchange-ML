@@ -1,0 +1,145 @@
+{
+  "protocol_version": "stage1-fa-ipd-v2",
+  "frozen_on": "2026-09-21",
+  "scope_decision": {
+    "engineering_stage0": "complete",
+    "original_publication_gateway": "deferred_by_user",
+    "stage1_code_work_authorized": true,
+    "stage2_backend_work_authorized": true,
+    "publication_authorized": false,
+    "note": "Stage 2 backend implementation and execution are authorized. Publication clearance and RibFrac validation-image acquisition remain external dependencies; Stage 0 PASS does not assert publication clearance."
+  },
+  "pengwin": {
+    "role": "primary",
+    "public_labeled_cases": 340,
+    "hidden_test_cases_allowed": false,
+    "label_semantics": {
+      "background": [0, 0],
+      "sacrum": [1, 50],
+      "left_hip": [51, 100],
+      "right_hip": [101, 150],
+      "femur": [151, 200],
+      "ids_are_subject_local_instances": true
+    },
+    "split_manifest": "splits/pengwin_stage0_split.json",
+    "gt_audit": "splits/pengwin_stage0_gt_audit.json",
+    "split_manifest_embedded_sha256": "0ef703ed51a3d64c992cf3e5e40d22f39d4f4d83166b0df69ef9aa09cd2ccf4a",
+    "split_sizes": {
+      "test": 50,
+      "validation": 40,
+      "pool": 250
+    },
+    "anatomy_quota_per_split": {
+      "test": {"pelvic": 25, "femur": 25},
+      "validation": {"pelvic": 20, "femur": 20},
+      "pool": {"pelvic": 125, "femur": 125}
+    },
+    "trajectory_seeds": [20260920, 20260921, 20260922],
+    "initial_labeled_cases_per_trajectory": 40,
+    "query_rounds": 5,
+    "query_batch_size": 20,
+    "budget_sequence": [40, 60, 80, 100, 120, 140]
+  },
+  "ribfrac": {
+    "role": "secondary_cross_anatomy_h3",
+    "training_pairs_present": 420,
+    "official_validation_labels_present": 80,
+    "official_validation_images_present": false,
+    "validation_image_ids": "RibFrac421-RibFrac500",
+    "status": "deferred_external_dependency"
+  },
+  "common_model_protocol": {
+    "main_ensemble_size": 3,
+    "round0_ensemble_ablation": [2, 3, 4],
+    "same_backend_preprocessing_training_reconstruction_for_all_acquisition_methods": true
+  },
+  "metric_contract": {
+    "status": "internal_research_contract_not_official_challenge_evaluator",
+    "stage1_implementation_required": true,
+    "instance_partition_disagreement": {
+      "name": "foreground-aware instance-partition disagreement",
+      "abbreviation": "FA-IPD",
+      "pairwise_domain": "for each prediction pair, U is the foreground union and C is the foreground intersection, both restricted to the fixed target ROI",
+      "pairwise_score": "|U minus C| / |U| + |C| / |U| * NVI(P restricted to C, Q restricted to C)",
+      "nvi_normalization": "VI divided by log(number of voxels in C); NVI is zero when C contains at most one voxel",
+      "ensemble_aggregation": "unweighted mean over all unordered prediction pairs, with a separately constructed U and C for each pair",
+      "empty_empty_score": 0.0,
+      "empty_nonempty_score": 1.0,
+      "range": [0.0, 1.0],
+      "symmetric": true,
+      "instance_id_permutation_invariant": true,
+      "triangle_inequality_guaranteed": false,
+      "terminology": "disagreement score or dissimilarity; do not call FA-IPD a mathematical metric or pure NVI",
+      "required_component_reporting": [
+        "foreground Jaccard presence disagreement",
+        "intersection NVI",
+        "intersection-weighted NVI contribution",
+        "combined FA-IPD"
+      ],
+      "primary_ablations": [
+        "foreground Jaccard disagreement only",
+        "union-foreground NVI only"
+      ]
+    },
+    "instance_matching": {
+      "anatomy_ranges": {
+        "sacrum": [1, 50],
+        "left_hip": [51, 100],
+        "right_hip": [101, 150],
+        "femur": [151, 200]
+      },
+      "preserve_all_gt_instance_ids": true,
+      "gt_fragment_filtering": "none",
+      "prediction_connectivity": 26,
+      "prediction_component_prune_min_volume_mm3": 1000.0,
+      "prediction_morphology": "none beyond per-ID connected-component pruning",
+      "iou_match_threshold": 0.1,
+      "matching": "each GT instance independently selects the highest-IoU prediction in the same anatomy; predictions may be selected by multiple GT instances",
+      "instance_precision": "unique matched predictions / max(number of predictions, 1)",
+      "instance_recall": "matched GT instances / max(number of GT instances, 1)",
+      "instance_f1": "harmonic mean of instance precision and recall",
+      "case_aggregation": "unweighted mean across GT-present anatomical groups",
+      "merge_error": "for each prediction selected by c GT instances, add max(c-1, 0)",
+      "split_error": "for each GT instance overlapping k>1 retained predictions, add k-1",
+      "cleanup_ablation": "prediction cleanup disabled versus fixed 26-connectivity pruning below 1000 mm3"
+    },
+    "h1": {
+      "primary_risks": {
+        "instance_f1_risk": "1 - case Instance F1",
+        "normalized_merge_split_risk": "(merge errors + split errors) / max(number of GT instances in the case, 1)"
+      },
+      "semantic_control": "1 - binary whole-target foreground Dice",
+      "aurc": "sort cases by uncertainty ascending; at each empirical coverage k/N use the mean risk of the retained prefix; AURC is the arithmetic mean over k=1..N; lower is better",
+      "top_k": [0.1, 0.2],
+      "top_k_definition": "highest-uncertainty ceil(k*N) cases, with deterministic case-ID tie breaking",
+      "failure_event": "at least one merge or split error",
+      "enrichment": "selected-set failure prevalence divided by full-set failure prevalence",
+      "confounders": [
+        "retained_gt_fragment_count",
+        "gt_foreground_volume_mm3",
+        "minimum_retained_gt_fragment_volume_mm3"
+      ],
+      "secondary": ["Spearman correlation"]
+    },
+    "h2": {
+      "primary": "normalized trapezoidal AULC of case-macro Instance F1 over budgets [40,60,80,100,120,140]; higher is better",
+      "co_primary": "normalized trapezoidal AULC of case-macro normalized merge-plus-split risk over the same budgets; lower is better",
+      "semantic_control": "case-macro binary whole-target foreground Dice",
+      "semantic_noninferiority_margin_absolute_dice": 0.01,
+      "guardrail": "at matched budget, Hybrid Dice must be no more than 0.01 below the best non-structural uncertainty baseline"
+    }
+  },
+  "data_leakage_guards": {
+    "gt_allowed_for_static_split": true,
+    "gt_allowed_for_acquisition": false,
+    "test_allowed_for_tuning": false,
+    "acquisition_code_must_not_load": [
+      "splits/pengwin_stage0_gt_audit.json"
+    ]
+  },
+  "external_dependencies": [
+    "written PENGWIN publication/data-use clearance",
+    "official PENGWIN metric clarification or evaluator",
+    "RibFrac421-RibFrac500 validation images"
+  ]
+}
