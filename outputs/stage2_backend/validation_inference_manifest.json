@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "rows": [
+    {
+      "case_id": "004",
+      "prediction": "outputs/stage2_backend/validation_predictions/004.mha",
+      "status": "VALID_RESUME"
+    },
+    {
+      "case_id": "008",
+      "prediction": "outputs/stage2_backend/validation_predictions/008.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "030",
+      "prediction": "outputs/stage2_backend/validation_predictions/030.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "031",
+      "prediction": "outputs/stage2_backend/validation_predictions/031.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "036",
+      "prediction": "outputs/stage2_backend/validation_predictions/036.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "046",
+      "prediction": "outputs/stage2_backend/validation_predictions/046.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "047",
+      "prediction": "outputs/stage2_backend/validation_predictions/047.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "053",
+      "prediction": "outputs/stage2_backend/validation_predictions/053.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "056",
+      "prediction": "outputs/stage2_backend/validation_predictions/056.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "060",
+      "prediction": "outputs/stage2_backend/validation_predictions/060.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "074",
+      "prediction": "outputs/stage2_backend/validation_predictions/074.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "076",
+      "prediction": "outputs/stage2_backend/validation_predictions/076.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "104",
+      "prediction": "outputs/stage2_backend/validation_predictions/104.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "112",
+      "prediction": "outputs/stage2_backend/validation_predictions/112.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "151",
+      "prediction": "outputs/stage2_backend/validation_predictions/151.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "154",
+      "prediction": "outputs/stage2_backend/validation_predictions/154.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "167",
+      "prediction": "outputs/stage2_backend/validation_predictions/167.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "172",
+      "prediction": "outputs/stage2_backend/validation_predictions/172.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "177",
+      "prediction": "outputs/stage2_backend/validation_predictions/177.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "193",
+      "prediction": "outputs/stage2_backend/validation_predictions/193.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "254",
+      "prediction": "outputs/stage2_backend/validation_predictions/254.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "255",
+      "prediction": "outputs/stage2_backend/validation_predictions/255.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "259",
+      "prediction": "outputs/stage2_backend/validation_predictions/259.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "262",
+      "prediction": "outputs/stage2_backend/validation_predictions/262.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "268",
+      "prediction": "outputs/stage2_backend/validation_predictions/268.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "292",
+      "prediction": "outputs/stage2_backend/validation_predictions/292.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "293",
+      "prediction": "outputs/stage2_backend/validation_predictions/293.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "305",
+      "prediction": "outputs/stage2_backend/validation_predictions/305.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "317",
+      "prediction": "outputs/stage2_backend/validation_predictions/317.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "327",
+      "prediction": "outputs/stage2_backend/validation_predictions/327.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "336",
+      "prediction": "outputs/stage2_backend/validation_predictions/336.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "339",
+      "prediction": "outputs/stage2_backend/validation_predictions/339.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "340",
+      "prediction": "outputs/stage2_backend/validation_predictions/340.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "342",
+      "prediction": "outputs/stage2_backend/validation_predictions/342.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "355",
+      "prediction": "outputs/stage2_backend/validation_predictions/355.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "357",
+      "prediction": "outputs/stage2_backend/validation_predictions/357.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "365",
+      "prediction": "outputs/stage2_backend/validation_predictions/365.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "380",
+      "prediction": "outputs/stage2_backend/validation_predictions/380.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "415",
+      "prediction": "outputs/stage2_backend/validation_predictions/415.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "417",
+      "prediction": "outputs/stage2_backend/validation_predictions/417.mha",
+      "status": "COMPLETE"
+    }
+  ]
+}

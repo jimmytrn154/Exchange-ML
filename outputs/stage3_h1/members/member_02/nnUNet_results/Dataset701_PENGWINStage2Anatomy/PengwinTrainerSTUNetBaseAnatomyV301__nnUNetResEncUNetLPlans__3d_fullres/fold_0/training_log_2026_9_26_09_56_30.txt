@@ -1,0 +1,13 @@
+
+#######################################################################
+Please cite the following paper when using nnU-Net:
+Isensee, F., Jaeger, P. F., Kohl, S. A., Petersen, J., & Maier-Hein, K. H. (2021). nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation. Nature methods, 18(2), 203-211.
+#######################################################################
+ 
+2026-09-26 09:56:30.273209: [PengwinTrainer] loss_profile=dc_ce boundary=0.0 tversky=0.0@(0.3,0.7) ce_weights=off oversample_profile=default oversample_fg=0.33 
+2026-09-26 09:56:30.275164: [marginal] 맵 로드 실패([Errno 2] No such file or directory: '/mnt/sdb/shared/dang.cpm/Exchange-ML/baselines/pengwin2026-task1-abbc/code_task1/result/reports/ds539_case_labeled_classes.json') → 전부 labeled 폴백(표준 동작) 
+2026-09-26 09:56:30.276528: do_dummy_2d_data_aug: False 
+2026-09-26 09:56:30.366184: Using splits from existing split file: /mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/splits_final.json 
+2026-09-26 09:56:30.366472: The split file contains 1 splits. 
+2026-09-26 09:56:30.366575: Desired fold for training: 0 
+2026-09-26 09:56:30.366668: This split has 40 training and 40 validation cases. 

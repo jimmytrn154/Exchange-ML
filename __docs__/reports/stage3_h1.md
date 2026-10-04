@@ -1,8 +1,10 @@
 # Stage 3 — FA-IPD + H1 Round-0 benchmark
 
-Status: **BLOCKED (implementation complete; full user-run experiment pending)**
+Status: **BLOCKED (partial user-run training complete; DDP validation/early-stop defect must be fixed before H1 execution continues)**
 
-Date: 2026-09-26 (Asia/Ho_Chi_Minh)
+Opened: 2026-09-26
+
+Last updated: 2026-10-04
 
 Stage 2 prerequisite: **PASS — internal research backend complete.** A fresh
 read-only `python3 scripts/validate_stage2_artifacts.py` run on 2026-09-26
@@ -43,13 +45,74 @@ or expert anatomical validity.
 
 These checks establish implementation behavior, not H1 results.
 
-## Runtime handoff observation
+## Observed user-run progress
+
+Read-only artifact inspection on 2026-10-04 found:
+
+| Member | Anatomy | Fragment | Interpretation |
+|---|---|---|---|
+| `member_01` | Missing | Missing | Training has not produced a checkpoint in the current workspace. |
+| `member_02` | `checkpoint_best.pth` and `checkpoint_final.pth` present | `checkpoint_best.pth` and `checkpoint_latest.pth` present; no final checkpoint | Fragment training failed after one DDP rank early-stopped and the other rank entered the next epoch. The best checkpoint archive is structurally readable, but its scientific acceptance is unresolved because checkpoint selection used rank-local validation metrics. |
+| `member_03` | `checkpoint_best.pth` and `checkpoint_final.pth` present | `checkpoint_best.pth` and `checkpoint_final.pth` present | The fragment command reached early stopping at epoch 85 and logged `Training done`. Code inspection shows that the same rank-local validation path was used, so checkpoint-selection validity must be resolved together with member 02. |
+
+All eight present Stage 3 checkpoint archives for members 02 and 03 passed
+read-only ZIP integrity checks. `scripts/stage3_h1.py check` reports Anatomy and
+Fragment checkpoints for both members and no checkpoints for member 01. This
+presence check does not establish correct DDP validation aggregation or H1
+scientific validity.
+
+The first Fragment warm-start attempt for member 03 was rejected by PyTorch's
+restricted checkpoint loader because the locally generated Anatomy checkpoint
+contains a NumPy scalar. The repository's explicit trusted-source opt-in,
+`PENGWIN_ALLOW_UNSAFE_TORCH_LOAD=1`, was then scoped to the user-run Fragment
+commands. This opt-in is appropriate only for the locally generated, trusted
+checkpoints and is not a general setting.
+
+No Stage 3 member-level `validation_predictions` or
+`validation_probabilities` directories, complete member inference manifests,
+uncertainty table, H1 comparison table, risk-coverage outputs, or H1 summary
+were observed. The `.mha` files under the Anatomy trainer's internal
+`fold_0/validation` directories are training validation artifacts; they are
+not the required Stage 3 two-stage member inference products.
+
+## Blocking issue
+
+Member 02 Fragment training exposed a defect in the custom DDP validation and
+early-stopping path. Rank 1 reported no F1 improvement for 25 epochs and exited
+at epoch 70 while rank 0 entered epoch 70. Rank 0 then timed out after 1,800
+seconds in NCCL `ALLREDUCE`, and the user-run command ended with
+`ProcessExitedException`/`SIGABRT`.
+
+The standard nnU-Net `on_validation_epoch_end` gathers validation statistics
+across all ranks. The custom Fragment override in
+`baselines/pengwin2026-task1-abbc/code_task1/core.py` instead computes F1, EMA,
+best-checkpoint selection, and early stopping independently on each rank. This
+explains the divergent stop decisions. Re-running the unchanged command is not
+a fix: the wrapper starts fresh and can reproduce the same failure. Silently
+switching to one GPU would change the frozen two-GPU training protocol and is
+not allowed.
+
+Member 02's `checkpoint_best.pth` was written at epoch 61, before the timeout,
+and its archive integrity check passed. The downstream Stage 3 code references
+`checkpoint_best.pth`, not `checkpoint_final.pth`. It is therefore a readable
+recovery artifact, but it is not accepted as a final scientific artifact while
+the rank-local checkpoint-selection defect remains unresolved.
+
+## Historical runtime handoff observation
 
 At the 2026-09-26 read-only check, GPUs 0, 1, 3, 4, 5, and 6 were idle (2 MiB each); GPUs 2 and 7 were busy. This is a snapshot, so recheck before reserving GPUs. The same 18 orphaned `multiprocessing.spawn` workers plus one resource tracker from the old `exchange-stage2` environment still had `PPID=1` and retained about 20 GiB RSS. They had no reported GPU allocation and were not terminated by the agent. Have their owner verify and clear these exact stale processes before launching the concurrent jobs.
 
 ## Gateway
 
-**BLOCKED.** No Stage 3 member checkpoint, real probability map, uncertainty table, or H1 result exists yet. The manual scientific gateway cannot be evaluated from unit or synthetic tests. Proceed to H2 only if real FA-IPD results show meaningful advantage in at least two of AURC, top-k enrichment, and controlled association, and the effect does not collapse to the Jaccard-only term or fragment-size/count confounding.
+**BLOCKED.** Partial real training artifacts now exist, but the M=3 ensemble is
+incomplete, the Fragment DDP validation/early-stop path is defective, and no
+required two-stage inference or H1 result exists. Fix and validate the main
+method; do not substitute a single-GPU run, reduce the ensemble, or promote the
+readable member 02 checkpoint without resolving the defect. The manual gateway
+cannot be evaluated until all three corrected members complete inference and
+the frozen H1 analyses exist. Proceed to H2 only if FA-IPD then shows meaningful
+advantage in at least two of AURC, top-k enrichment, and controlled association,
+without collapsing to the Jaccard-only term or fragment-size/count confounding.
 
 ## Agent-typed commands
 
@@ -71,7 +134,45 @@ conda run -n exchange-stage2 ruff check scripts/validate_stage2_artifacts.py scr
 
 The `/tmp` commands used generated arrays only. They did not train a model or read validation images/labels during acquisition scoring.
 
+Additional lightweight, read-only update checks performed on 2026-10-04:
+
+```bash
+cat __docs__/plan.md
+cat __docs__/rule.md
+cat __docs__/reports/stage3_h1.md
+git status --short
+find outputs/stage3_h1 -type f \( -name 'checkpoint_*.pth' -o -name '*.mha' -o -name '*.csv' -o -name '*manifest*.json' -o -name 'h1_summary.json' -o -name 'risk_coverage.png' \) -printf '%TY-%Tm-%Td %TH:%TM:%TS\t%s\t%p\n' | sort
+for f in $(find outputs/stage3_h1/members/member_02 outputs/stage3_h1/members/member_03 -type f -name 'checkpoint_*.pth' | sort); do unzip -t "$f"; done
+for f in $(find outputs/stage3_h1/members/member_02 outputs/stage3_h1/members/member_03 -type f -name 'training_log_*.txt' | sort); do rg -n 'Early stopping|Training done|perform_actual_validation SKIPPED|Yayy! New best' "$f"; done
+rg -n 'def on_validation_epoch_end|all_gather_object|checkpoint_best|checkpoint_final' baselines/PENGWIN_Challenge/nnUNet/nnunetv2/training/nnUNetTrainer/nnUNetTrainer.py baselines/pengwin2026-task1-abbc/code_task1/core.py scripts/predict_stage3_member.py scripts/stage2_backend.py
+PYTHONDONTWRITEBYTECODE=1 conda run -n exchange-stage2 python scripts/stage3_h1.py check
+git diff --check -- __docs__/reports/stage3_h1.md
+for member in member_01 member_02 member_03; do for name in validation_predictions validation_probabilities; do artifact_dir="outputs/stage3_h1/members/$member/$name"; if [ -d "$artifact_dir" ]; then find "$artifact_dir" -type f | wc -l; else echo "MISSING $artifact_dir"; fi; done; done
+```
+
+The first form of the final directory loop used `path` as a zsh variable,
+which temporarily replaced `PATH` and caused only the trailing `rg` command to
+fail with `command not found`. The corrected `artifact_dir` form above passed;
+the failed diagnostic made no file changes.
+
 ## User-typed commands
+
+The following trusted-checkpoint Fragment commands were prepared for and run
+by the user. They are recorded as execution history, not as commands for the
+agent to run:
+
+```bash
+conda run --no-capture-output -n exchange-stage2 env CUDA_VISIBLE_DEVICES=5,6 MASTER_PORT=29603 PENGWIN_ALLOW_UNSAFE_TORCH_LOAD=1 python scripts/stage3_h1.py train --stage fragment --member member_03 --device cuda --num-gpus 2
+conda run --no-capture-output -n exchange-stage2 env CUDA_VISIBLE_DEVICES=2,4 MASTER_PORT=29602 PENGWIN_ALLOW_UNSAFE_TORCH_LOAD=1 python scripts/stage3_h1.py train --stage fragment --member member_02 --device cuda --num-gpus 2
+```
+
+The member 03 command completed. The member 02 command failed with the DDP
+divergent-early-stop/NCCL timeout described above. Do not rerun either command
+unchanged as a scientific remedy. No new full-run command is prepared until
+the DDP aggregation defect is fixed and its lightweight validation passes.
+
+The original frozen execution handoff follows for provenance; it is currently
+superseded by the blocker above.
 
 Run from the repository root. This schedule keeps the frozen two-GPU DDP
 training and member seeds. The `CUDA_VISIBLE_DEVICES` and `MASTER_PORT`
@@ -156,7 +257,9 @@ the completed score file and manifest.
 
 ## Next step
 
-The user should run the preflight, then the three independent member chains
-above on separate free GPU pairs. After all real artifacts exist, review the H1
-table and figure manually and record PASS or FAIL without automatic promotion
-to Stage 4.
+Fix the custom Fragment validation path so all DDP ranks use the same globally
+aggregated metrics and stop decision, then validate that fix with lightweight
+tests before preparing any further user-run training command. After corrected
+M=3 training and real inference complete, run the frozen scoring/evaluation,
+review the H1 table and figure manually, and record PASS or FAIL without
+automatic promotion to Stage 4.

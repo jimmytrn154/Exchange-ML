@@ -1,0 +1,13 @@
+
+#######################################################################
+Please cite the following paper when using nnU-Net:
+Isensee, F., Jaeger, P. F., Kohl, S. A., Petersen, J., & Maier-Hein, K. H. (2021). nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation. Nature methods, 18(2), 203-211.
+#######################################################################
+ 
+2026-10-02 13:17:06.296458: [PengwinTrainer] loss_profile=dc_ce boundary=0.0 tversky=0.0@(0.3,0.7) ce_weights=off oversample_profile=default oversample_fg=0.33 
+2026-10-02 13:17:06.296601: [ABBCPhase1V302] backbone=STUNetB out=4 loss=LeakFreeInstanceABBCLoss(boundary-weighted) decode=real-watershed-regrow ds=off num_epochs=1000 initial_lr=0.001 ES(min=30,pat=25,delta=0.005) warmstart_env=PENGWIN_STUNET_PRETRAINED 
+2026-10-02 13:17:06.297240: do_dummy_2d_data_aug: False 
+2026-10-02 13:17:06.299438: Using splits from existing split file: /home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset702_PENGWINStage2Fragment/splits_final.json 
+2026-10-02 13:17:06.299648: The split file contains 1 splits. 
+2026-10-02 13:17:06.299741: Desired fold for training: 0 
+2026-10-02 13:17:06.299832: This split has 80 training and 80 validation cases. 
