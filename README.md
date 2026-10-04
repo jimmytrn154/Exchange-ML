@@ -141,8 +141,8 @@ Exchange-ML/
 ├── splits/                # Frozen split and audit manifests
 ├── baselines/             # External reference implementation checkouts
 ├── __docs__/              # Research blueprint, roadmap, rules, and stage reports
-├── dataset/               # Local data; ignored by Git
-└── outputs/               # Generated artifacts; ignored by Git
+├── dataset/               # Local source data; ignored by Git
+└── outputs/               # Tracked metadata; bulk images/arrays/checkpoints ignored
 ```
 
 The external repositories under `baselines/` are local reference checkouts. Their upstream URLs and intended roles are listed in [`__docs__/plan.md`](__docs__/plan.md); they are not currently configured through a root `.gitmodules` file.
@@ -225,7 +225,7 @@ The effect must also remain meaningful relative to the Jaccard-only ablation and
 
 ## Data, licensing, and claims
 
-The datasets are not distributed by this repository. Obtain PENGWIN and RibFrac from their official sources and comply with their licenses, challenge rules, citation requirements, and publication restrictions. PENGWIN publication/embargo clarification remains an external issue documented in the Stage 0 report.
+The datasets are not distributed by this repository. Obtain PENGWIN and RibFrac from their official sources and comply with their licenses, challenge rules, citation requirements, and publication restrictions. PENGWIN publication/embargo clarification remains an external issue documented in the Stage 0 report. Small output metadata such as manifests, metrics, logs, and figures may be versioned; generated medical images, prediction volumes, preprocessed arrays, and model checkpoints are excluded by `.gitignore`.
 
 External implementations under `baselines/` retain their own licenses and attribution requirements. This repository does not currently declare a root software license.
 

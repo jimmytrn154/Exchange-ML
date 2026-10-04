@@ -1,8 +1,32 @@
 # ============================================
-# Datasets and generated experiment artifacts
+# Source datasets
 # ============================================
 dataset/
-outputs/
+
+# ============================================
+# Generated output payloads
+# ============================================
+# Keep small, auditable output metadata in Git (JSON manifests/configuration,
+# CSV tables, text logs, and figures), but exclude medical images, predictions,
+# preprocessed arrays, per-case properties, and other bulk binary payloads.
+/outputs/**/imagesTr/
+/outputs/**/labelsTr/
+/outputs/**/gt_segmentations/
+/outputs/**/validation_predictions/
+/outputs/**/validation_probabilities/
+/outputs/**/nnUNetPlans_*/
+
+/outputs/**/*.mha
+/outputs/**/*.mhd
+/outputs/**/*.raw
+/outputs/**/*.nii
+/outputs/**/*.nii.gz
+/outputs/**/*.nrrd
+/outputs/**/*.npy
+/outputs/**/*.npz
+/outputs/**/*.pkl
+/outputs/**/*.tif
+/outputs/**/*.tiff
 
 # Model checkpoints / large ML artifacts
 *.pt

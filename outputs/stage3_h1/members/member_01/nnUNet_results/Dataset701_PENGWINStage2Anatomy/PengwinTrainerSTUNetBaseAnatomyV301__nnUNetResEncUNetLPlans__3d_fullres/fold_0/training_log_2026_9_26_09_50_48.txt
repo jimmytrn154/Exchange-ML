@@ -1,0 +1,28 @@
+
+#######################################################################
+Please cite the following paper when using nnU-Net:
+Isensee, F., Jaeger, P. F., Kohl, S. A., Petersen, J., & Maier-Hein, K. H. (2021). nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation. Nature methods, 18(2), 203-211.
+#######################################################################
+ 
+2026-09-26 09:50:48.852688: [PengwinTrainer] loss_profile=dc_ce boundary=0.0 tversky=0.0@(0.3,0.7) ce_weights=off oversample_profile=default oversample_fg=0.33 
+2026-09-26 09:50:48.852883: [marginal] 맵 로드 실패([Errno 2] No such file or directory: '/mnt/sdb/shared/dang.cpm/Exchange-ML/baselines/pengwin2026-task1-abbc/code_task1/result/reports/ds539_case_labeled_classes.json') → 전부 labeled 폴백(표준 동작) 
+2026-09-26 09:50:48.853519: do_dummy_2d_data_aug: False 
+2026-09-26 09:50:48.855164: Using splits from existing split file: /mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/splits_final.json 
+2026-09-26 09:50:48.855359: The split file contains 1 splits. 
+2026-09-26 09:50:48.855448: Desired fold for training: 0 
+2026-09-26 09:50:48.855530: This split has 40 training and 40 validation cases. 
+
+This is the configuration used by this training:
+Configuration name: 3d_fullres
+ {'data_identifier': 'nnUNetPlans_3d_fullres', 'preprocessor_name': 'DefaultPreprocessor', 'batch_size': 2, 'patch_size': [128, 288, 192], 'median_image_size_in_voxels': [265.5, 512.0, 320.0], 'spacing': [1.0, 0.78125, 0.78125], 'normalization_schemes': ['CTNormalization'], 'use_mask_for_norm': [False], 'resampling_fn_data': 'resample_data_or_seg_to_shape', 'resampling_fn_seg': 'resample_data_or_seg_to_shape', 'resampling_fn_data_kwargs': {'is_seg': False, 'order': 3, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_seg_kwargs': {'is_seg': True, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_probabilities': 'resample_data_or_seg_to_shape', 'resampling_fn_probabilities_kwargs': {'is_seg': False, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'architecture': {'network_class_name': 'dynamic_network_architectures.architectures.unet.ResidualEncoderUNet', 'arch_kwargs': {'n_stages': 6, 'features_per_stage': [32, 64, 128, 256, 320, 320], 'conv_op': 'torch.nn.modules.conv.Conv3d', 'kernel_sizes': [[3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3]], 'strides': [[1, 1, 1], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]], 'n_blocks_per_stage': [1, 3, 4, 6, 6, 6], 'n_conv_per_stage_decoder': [1, 1, 1, 1, 1], 'conv_bias': True, 'norm_op': 'torch.nn.modules.instancenorm.InstanceNorm3d', 'norm_op_kwargs': {'eps': 1e-05, 'affine': True}, 'dropout_op': None, 'dropout_op_kwargs': None, 'nonlin': 'torch.nn.LeakyReLU', 'nonlin_kwargs': {'inplace': True}}, '_kw_requires_import': ['conv_op', 'norm_op', 'dropout_op', 'nonlin']}, 'batch_dice': False} 
+ 
+These are the global plan.json settings:
+ {'dataset_name': 'Dataset701_PENGWINStage2Anatomy', 'plans_name': 'nnUNetResEncUNetLPlans', 'original_median_spacing_after_transp': [1.0, 0.78125, 0.78125], 'original_median_shape_after_transp': [294, 512, 308], 'image_reader_writer': 'SimpleITKIO', 'transpose_forward': [0, 1, 2], 'transpose_backward': [0, 1, 2], 'experiment_planner_used': 'nnUNetPlannerResEncL', 'label_manager': 'LabelManager', 'foreground_intensity_properties_per_channel': {'0': {'max': 2000.0, 'mean': 377.4230651855469, 'median': 256.0, 'min': -668.0, 'percentile_00_5': -71.0, 'percentile_99_5': 1498.0, 'std': 368.31622314453125}}} 
+ 
+2026-09-26 09:51:33.519530: unpacking dataset... 
+2026-09-26 09:51:34.693027: unpacking done... 
+2026-09-26 09:51:34.696590: Unable to plot network architecture: 
+2026-09-26 09:51:34.696828: No module named 'hiddenlayer' 
+2026-09-26 09:51:34.766349:  
+2026-09-26 09:51:34.766497: Epoch 0 
+2026-09-26 09:51:34.766778: Current learning rate: 0.001 

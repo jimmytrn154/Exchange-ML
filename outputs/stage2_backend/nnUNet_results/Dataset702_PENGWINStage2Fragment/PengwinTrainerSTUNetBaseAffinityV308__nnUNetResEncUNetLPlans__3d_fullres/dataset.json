@@ -1,0 +1,34 @@
+{
+    "channel_names": {
+        "0": "nonorm"
+    },
+    "labels": {
+        "background": 0,
+        "fragment_01": 1,
+        "fragment_02": 2,
+        "fragment_03": 3,
+        "fragment_04": 4,
+        "fragment_05": 5,
+        "fragment_06": 6,
+        "fragment_07": 7,
+        "fragment_08": 8,
+        "fragment_09": 9,
+        "fragment_10": 10,
+        "fragment_11": 11,
+        "fragment_12": 12,
+        "fragment_13": 13,
+        "fragment_14": 14,
+        "fragment_15": 15,
+        "fragment_16": 16,
+        "fragment_17": 17,
+        "fragment_18": 18,
+        "fragment_19": 19,
+        "fragment_20": 20,
+        "fragment_21": 21,
+        "fragment_22": 22,
+        "fragment_23": 23
+    },
+    "numTraining": 160,
+    "file_ending": ".mha",
+    "description": "PENGWIN Stage 2 per-anatomy CT-LUT crops with contiguous instance labels; ABBC and affinity targets are generated inside the pinned V308 trainer."
+}

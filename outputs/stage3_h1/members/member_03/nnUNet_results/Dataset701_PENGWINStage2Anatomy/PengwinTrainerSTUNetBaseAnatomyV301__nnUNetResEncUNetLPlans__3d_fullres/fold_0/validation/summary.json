@@ -1,0 +1,1896 @@
+{
+    "foreground_mean": {
+        "Dice": 0.3998671148501701,
+        "FN": 67025.2875,
+        "FP": 95190.54375000001,
+        "IoU": 0.35001719837866896,
+        "TN": 47439407.49375,
+        "TP": 158192.775,
+        "n_pred": 253383.31874999998,
+        "n_ref": 225218.0625
+    },
+    "mean": {
+        "1": {
+            "Dice": 0.493259650475697,
+            "FN": 7981.75,
+            "FP": 36991.15,
+            "IoU": 0.47601718505765717,
+            "TN": 47565579.35,
+            "TP": 149263.85,
+            "n_pred": 186255.0,
+            "n_ref": 157245.6
+        },
+        "2": {
+            "Dice": 0.3316617741651483,
+            "FN": 87931.025,
+            "FP": 190749.225,
+            "IoU": 0.2423643467389375,
+            "TN": 47329639.475,
+            "TP": 151496.375,
+            "n_pred": 342245.6,
+            "n_ref": 239427.4
+        },
+        "3": {
+            "Dice": 0.26381325555151236,
+            "FN": 143906.725,
+            "FP": 84528.275,
+            "IoU": 0.19389905682438027,
+            "TN": 47436179.65,
+            "TP": 95201.45,
+            "n_pred": 179729.725,
+            "n_ref": 239108.175
+        },
+        "4": {
+            "Dice": 0.5107337792083227,
+            "FN": 28281.65,
+            "FP": 68493.525,
+            "IoU": 0.487788204893701,
+            "TN": 47426231.5,
+            "TP": 236809.425,
+            "n_pred": 305302.95,
+            "n_ref": 265091.075
+        }
+    },
+    "metric_per_case": [
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9729010110711458,
+                    "FN": 5540,
+                    "FP": 5859,
+                    "IoU": 0.9472319820758167,
+                    "TN": 21745835,
+                    "TP": 204622,
+                    "n_pred": 210481,
+                    "n_ref": 210162
+                },
+                "2": {
+                    "Dice": 0.29996886525513344,
+                    "FN": 206845,
+                    "FP": 303540,
+                    "IoU": 0.1764490420936623,
+                    "TN": 21342119,
+                    "TP": 109352,
+                    "n_pred": 412892,
+                    "n_ref": 316197
+                },
+                "3": {
+                    "Dice": 0.007824510725744695,
+                    "FN": 312899,
+                    "FP": 198880,
+                    "IoU": 0.003927621220053835,
+                    "TN": 21448059,
+                    "TP": 2018,
+                    "n_pred": 200898,
+                    "n_ref": 314917
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 223,
+                    "IoU": 0.0,
+                    "TN": 21961633,
+                    "TP": 0,
+                    "n_pred": 223,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_004.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_004.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9774629193922314,
+                    "FN": 6446,
+                    "FP": 9244,
+                    "IoU": 0.9559192893144312,
+                    "TN": 87462302,
+                    "TP": 340248,
+                    "n_pred": 349492,
+                    "n_ref": 346694
+                },
+                "2": {
+                    "Dice": 0.43744084826341506,
+                    "FN": 275615,
+                    "FP": 542283,
+                    "IoU": 0.2799515447317661,
+                    "TN": 86682347,
+                    "TP": 317995,
+                    "n_pred": 860278,
+                    "n_ref": 593610
+                },
+                "3": {
+                    "Dice": 0.02649155515904859,
+                    "FN": 574676,
+                    "FP": 239363,
+                    "IoU": 0.013423583379286523,
+                    "TN": 86993125,
+                    "TP": 11076,
+                    "n_pred": 250439,
+                    "n_ref": 585752
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 387925,
+                    "IoU": 0.0,
+                    "TN": 87430315,
+                    "TP": 0,
+                    "n_pred": 387925,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_008.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_008.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9246350644430652,
+                    "FN": 8119,
+                    "FP": 47981,
+                    "IoU": 0.8598337493347725,
+                    "TN": 74310801,
+                    "TP": 344139,
+                    "n_pred": 392120,
+                    "n_ref": 352258
+                },
+                "2": {
+                    "Dice": 0.6704275541830335,
+                    "FN": 63587,
+                    "FP": 466175,
+                    "IoU": 0.5042429664455658,
+                    "TN": 73642448,
+                    "TP": 538830,
+                    "n_pred": 1005005,
+                    "n_ref": 602417
+                },
+                "3": {
+                    "Dice": 0.30657155865837,
+                    "FN": 508177,
+                    "FP": 35534,
+                    "IoU": 0.18103602796200036,
+                    "TN": 74047139,
+                    "TP": 120190,
+                    "n_pred": 155724,
+                    "n_ref": 628367
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 127245,
+                    "IoU": 0.0,
+                    "TN": 74583795,
+                    "TP": 0,
+                    "n_pred": 127245,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_030.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_030.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9829236342611414,
+                    "FN": 4687,
+                    "FP": 4764,
+                    "IoU": 0.9664206812505107,
+                    "TN": 81507475,
+                    "TP": 272002,
+                    "n_pred": 276766,
+                    "n_ref": 276689
+                },
+                "2": {
+                    "Dice": 0.38525990024964785,
+                    "FN": 323431,
+                    "FP": 128671,
+                    "IoU": 0.2385894177702103,
+                    "TN": 81195159,
+                    "TP": 141667,
+                    "n_pred": 270338,
+                    "n_ref": 465098
+                },
+                "3": {
+                    "Dice": 0.5900719210284598,
+                    "FN": 145365,
+                    "FP": 306279,
+                    "IoU": 0.4185120715227423,
+                    "TN": 81012224,
+                    "TP": 325060,
+                    "n_pred": 631339,
+                    "n_ref": 470425
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 175659,
+                    "IoU": 0.0,
+                    "TN": 81613269,
+                    "TP": 0,
+                    "n_pred": 175659,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_031.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_031.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9794889587915317,
+                    "FN": 8303,
+                    "FP": 6003,
+                    "IoU": 0.9598024119676756,
+                    "TN": 50886092,
+                    "TP": 341586,
+                    "n_pred": 347589,
+                    "n_ref": 349889
+                },
+                "2": {
+                    "Dice": 0.49996997824688877,
+                    "FN": 191468,
+                    "FP": 499739,
+                    "IoU": 0.3333066478646642,
+                    "TN": 50205215,
+                    "TP": 345562,
+                    "n_pred": 845301,
+                    "n_ref": 537030
+                },
+                "3": {
+                    "Dice": 0.0009898235595578006,
+                    "FN": 512950,
+                    "FP": 169324,
+                    "IoU": 0.0004951568387312266,
+                    "TN": 50559372,
+                    "TP": 338,
+                    "n_pred": 169662,
+                    "n_ref": 513288
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 347439,
+                    "IoU": 0.0,
+                    "TN": 50894545,
+                    "TP": 0,
+                    "n_pred": 347439,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_036.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_036.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9774623358673117,
+                    "FN": 7136,
+                    "FP": 9170,
+                    "IoU": 0.9559181731426888,
+                    "TN": 71719697,
+                    "TP": 353597,
+                    "n_pred": 362767,
+                    "n_ref": 360733
+                },
+                "2": {
+                    "Dice": 0.5093511463564585,
+                    "FN": 277983,
+                    "FP": 77156,
+                    "IoU": 0.34169760712690256,
+                    "TN": 71550123,
+                    "TP": 184338,
+                    "n_pred": 261494,
+                    "n_ref": 462321
+                },
+                "3": {
+                    "Dice": 0.6759285001284159,
+                    "FN": 97002,
+                    "FP": 270183,
+                    "IoU": 0.5104924471178266,
+                    "TN": 71339489,
+                    "TP": 382926,
+                    "n_pred": 653109,
+                    "n_ref": 479928
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 13420,
+                    "IoU": 0.0,
+                    "TN": 72076180,
+                    "TP": 0,
+                    "n_pred": 13420,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_046.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_046.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9477021929987094,
+                    "FN": 29634,
+                    "FP": 2825,
+                    "IoU": 0.9006026494527771,
+                    "TN": 50267234,
+                    "TP": 294099,
+                    "n_pred": 296924,
+                    "n_ref": 323733
+                },
+                "2": {
+                    "Dice": 0.39520019746733187,
+                    "FN": 286417,
+                    "FP": 37013,
+                    "IoU": 0.24626136970083967,
+                    "TN": 50164691,
+                    "TP": 105671,
+                    "n_pred": 142684,
+                    "n_ref": 392088
+                },
+                "3": {
+                    "Dice": 0.6751934102751282,
+                    "FN": 47139,
+                    "FP": 275887,
+                    "IoU": 0.5096543265348255,
+                    "TN": 49935020,
+                    "TP": 335746,
+                    "n_pred": 611633,
+                    "n_ref": 382885
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 1385,
+                    "IoU": 0.0,
+                    "TN": 50592407,
+                    "TP": 0,
+                    "n_pred": 1385,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_047.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_047.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9862017258160483,
+                    "FN": 4401,
+                    "FP": 3623,
+                    "IoU": 0.9727790537125177,
+                    "TN": 66551947,
+                    "TP": 286749,
+                    "n_pred": 290372,
+                    "n_ref": 291150
+                },
+                "2": {
+                    "Dice": 0.2690192998204668,
+                    "FN": 389317,
+                    "FP": 53669,
+                    "IoU": 0.15541438433863805,
+                    "TN": 66322219,
+                    "TP": 81515,
+                    "n_pred": 135184,
+                    "n_ref": 470832
+                },
+                "3": {
+                    "Dice": 0.6489992448890173,
+                    "FN": 68277,
+                    "FP": 383541,
+                    "IoU": 0.480384072646727,
+                    "TN": 65977197,
+                    "TP": 417705,
+                    "n_pred": 801246,
+                    "n_ref": 485982
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 796,
+                    "IoU": 0.0,
+                    "TN": 66845924,
+                    "TP": 0,
+                    "n_pred": 796,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_053.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_053.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9709652721125827,
+                    "FN": 8218,
+                    "FP": 6837,
+                    "IoU": 0.9435690028712151,
+                    "TN": 44092894,
+                    "TP": 251731,
+                    "n_pred": 258568,
+                    "n_ref": 259949
+                },
+                "2": {
+                    "Dice": 0.753391460867124,
+                    "FN": 36362,
+                    "FP": 202578,
+                    "IoU": 0.6043528800076831,
+                    "TN": 43755758,
+                    "TP": 364982,
+                    "n_pred": 567560,
+                    "n_ref": 401344
+                },
+                "3": {
+                    "Dice": 0.5994047966388516,
+                    "FN": 228489,
+                    "FP": 25516,
+                    "IoU": 0.4279643363053079,
+                    "TN": 43915643,
+                    "TP": 190032,
+                    "n_pred": 215548,
+                    "n_ref": 418521
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 228611,
+                    "IoU": 0.0,
+                    "TN": 44131069,
+                    "TP": 0,
+                    "n_pred": 228611,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_056.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_056.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9693328676213762,
+                    "FN": 13715,
+                    "FP": 10430,
+                    "IoU": 0.9404907143825403,
+                    "TN": 36619869,
+                    "TP": 381590,
+                    "n_pred": 392020,
+                    "n_ref": 395305
+                },
+                "2": {
+                    "Dice": 0.8541134791797047,
+                    "FN": 69268,
+                    "FP": 103933,
+                    "IoU": 0.7453735284086231,
+                    "TN": 36345388,
+                    "TP": 507015,
+                    "n_pred": 610948,
+                    "n_ref": 576283
+                },
+                "3": {
+                    "Dice": 0.8344246323303588,
+                    "FN": 123885,
+                    "FP": 51330,
+                    "IoU": 0.715890757024697,
+                    "TN": 36408887,
+                    "TP": 441502,
+                    "n_pred": 492832,
+                    "n_ref": 565387
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 153371,
+                    "IoU": 0.0,
+                    "TN": 36872233,
+                    "TP": 0,
+                    "n_pred": 153371,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_060.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_060.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9186151557468537,
+                    "FN": 46445,
+                    "FP": 1752,
+                    "IoU": 0.8494803312888034,
+                    "TN": 85138740,
+                    "TP": 272007,
+                    "n_pred": 273759,
+                    "n_ref": 318452
+                },
+                "2": {
+                    "Dice": 0.5836639260584638,
+                    "FN": 171137,
+                    "FP": 208141,
+                    "IoU": 0.41209423158599606,
+                    "TN": 84813810,
+                    "TP": 265856,
+                    "n_pred": 473997,
+                    "n_ref": 436993
+                },
+                "3": {
+                    "Dice": 0.6322178390622293,
+                    "FN": 230817,
+                    "FP": 4778,
+                    "IoU": 0.4622211468445909,
+                    "TN": 85020855,
+                    "TP": 202494,
+                    "n_pred": 207272,
+                    "n_ref": 433311
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 251877,
+                    "IoU": 0.0,
+                    "TN": 85207067,
+                    "TP": 0,
+                    "n_pred": 251877,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_074.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_074.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9854600057555924,
+                    "FN": 3327,
+                    "FP": 6879,
+                    "IoU": 0.9713367746429032,
+                    "TN": 91394334,
+                    "TP": 345860,
+                    "n_pred": 352739,
+                    "n_ref": 349187
+                },
+                "2": {
+                    "Dice": 0.40835147720845183,
+                    "FN": 352775,
+                    "FP": 258095,
+                    "IoU": 0.25655882650037304,
+                    "TN": 90928721,
+                    "TP": 210809,
+                    "n_pred": 468904,
+                    "n_ref": 563584
+                },
+                "3": {
+                    "Dice": 0.4735167063990177,
+                    "FN": 276540,
+                    "FP": 339178,
+                    "IoU": 0.3102010407739145,
+                    "TN": 90857795,
+                    "TP": 276887,
+                    "n_pred": 616065,
+                    "n_ref": 553427
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 5668,
+                    "IoU": 0.0,
+                    "TN": 91744732,
+                    "TP": 0,
+                    "n_pred": 5668,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_076.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_076.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9851648386828272,
+                    "FN": 6426,
+                    "FP": 2842,
+                    "IoU": 0.9707634069400631,
+                    "TN": 69161400,
+                    "TP": 307732,
+                    "n_pred": 310574,
+                    "n_ref": 314158
+                },
+                "2": {
+                    "Dice": 0.5029900701770701,
+                    "FN": 210939,
+                    "FP": 334180,
+                    "IoU": 0.3359964821586488,
+                    "TN": 68657442,
+                    "TP": 275839,
+                    "n_pred": 610019,
+                    "n_ref": 486778
+                },
+                "3": {
+                    "Dice": 0.3049443352979699,
+                    "FN": 358274,
+                    "FP": 193628,
+                    "IoU": 0.1799022543319103,
+                    "TN": 68805429,
+                    "TP": 121069,
+                    "n_pred": 314697,
+                    "n_ref": 479343
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 250,
+                    "IoU": 0.0,
+                    "TN": 69478150,
+                    "TP": 0,
+                    "n_pred": 250,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_104.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_104.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.983276342744482,
+                    "FN": 2509,
+                    "FP": 6177,
+                    "IoU": 0.9671028462135701,
+                    "TN": 91486365,
+                    "TP": 255349,
+                    "n_pred": 261526,
+                    "n_ref": 257858
+                },
+                "2": {
+                    "Dice": 0.198828780814924,
+                    "FN": 375199,
+                    "FP": 125388,
+                    "IoU": 0.11038860642292649,
+                    "TN": 91187697,
+                    "TP": 62116,
+                    "n_pred": 187504,
+                    "n_ref": 437315
+                },
+                "3": {
+                    "Dice": 0.5381367832316731,
+                    "FN": 139394,
+                    "FP": 363842,
+                    "IoU": 0.3681170557265318,
+                    "TN": 90953993,
+                    "TP": 293171,
+                    "n_pred": 657013,
+                    "n_ref": 432565
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 3947,
+                    "IoU": 0.0,
+                    "TN": 91746453,
+                    "TP": 0,
+                    "n_pred": 3947,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_112.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_112.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9664358391344805,
+                    "FN": 12018,
+                    "FP": 10021,
+                    "IoU": 0.9350516162684812,
+                    "TN": 20421437,
+                    "TP": 317292,
+                    "n_pred": 327313,
+                    "n_ref": 329310
+                },
+                "2": {
+                    "Dice": 0.6425424289664631,
+                    "FN": 41792,
+                    "FP": 451883,
+                    "IoU": 0.4733425505721302,
+                    "TN": 19823394,
+                    "TP": 443699,
+                    "n_pred": 895582,
+                    "n_ref": 485491
+                },
+                "3": {
+                    "Dice": 0.06828139615024861,
+                    "FN": 468628,
+                    "FP": 23448,
+                    "IoU": 0.03534748591962079,
+                    "TN": 20250661,
+                    "TP": 18031,
+                    "n_pred": 41479,
+                    "n_ref": 486659
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 20760768,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_151.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_151.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.8539304955806597,
+                    "FN": 122007,
+                    "FP": 11574,
+                    "IoU": 0.7450948588090267,
+                    "TN": 22766500,
+                    "TP": 390461,
+                    "n_pred": 402035,
+                    "n_ref": 512468
+                },
+                "2": {
+                    "Dice": 0.7057565714771828,
+                    "FN": 144771,
+                    "FP": 263372,
+                    "IoU": 0.5453043499573316,
+                    "TN": 22392924,
+                    "TP": 489475,
+                    "n_pred": 752847,
+                    "n_ref": 634246
+                },
+                "3": {
+                    "Dice": 0.5580664283533026,
+                    "FN": 343826,
+                    "FP": 99010,
+                    "IoU": 0.3870264479077126,
+                    "TN": 22568103,
+                    "TP": 279603,
+                    "n_pred": 378613,
+                    "n_ref": 623429
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 40014,
+                    "IoU": 0.0,
+                    "TN": 23250528,
+                    "TP": 0,
+                    "n_pred": 40014,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_154.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_154.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9296539124541423,
+                    "FN": 11732,
+                    "FP": 36014,
+                    "IoU": 0.8685545014563454,
+                    "TN": 24268122,
+                    "TP": 315492,
+                    "n_pred": 351506,
+                    "n_ref": 327224
+                },
+                "2": {
+                    "Dice": 0.6597581655158655,
+                    "FN": 25549,
+                    "FP": 557732,
+                    "IoU": 0.4922679986107206,
+                    "TN": 23482563,
+                    "TP": 565516,
+                    "n_pred": 1123248,
+                    "n_ref": 591065
+                },
+                "3": {
+                    "Dice": 0.0004571528453562851,
+                    "FN": 593763,
+                    "FP": 952,
+                    "IoU": 0.000228628681804351,
+                    "TN": 24036509,
+                    "TP": 136,
+                    "n_pred": 1088,
+                    "n_ref": 593899
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 320,
+                    "IoU": 0.0,
+                    "TN": 24631040,
+                    "TP": 0,
+                    "n_pred": 320,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_167.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_167.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9736137164620282,
+                    "FN": 7277,
+                    "FP": 7577,
+                    "IoU": 0.948584107248554,
+                    "TN": 17670601,
+                    "TP": 274045,
+                    "n_pred": 281622,
+                    "n_ref": 281322
+                },
+                "2": {
+                    "Dice": 0.8961409153488655,
+                    "FN": 17556,
+                    "FP": 91678,
+                    "IoU": 0.8118254655956231,
+                    "TN": 17379007,
+                    "TP": 471259,
+                    "n_pred": 562937,
+                    "n_ref": 488815
+                },
+                "3": {
+                    "Dice": 0.8593784526210264,
+                    "FN": 115671,
+                    "FP": 5243,
+                    "IoU": 0.7534299650885836,
+                    "TN": 17469116,
+                    "TP": 369470,
+                    "n_pred": 374713,
+                    "n_ref": 485141
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 1609,
+                    "IoU": 0.0,
+                    "TN": 17957891,
+                    "TP": 0,
+                    "n_pred": 1609,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_172.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_172.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9804265037666924,
+                    "FN": 6402,
+                    "FP": 4191,
+                    "IoU": 0.9616045409073115,
+                    "TN": 14148336,
+                    "TP": 265299,
+                    "n_pred": 269490,
+                    "n_ref": 271701
+                },
+                "2": {
+                    "Dice": 0.6654804138676779,
+                    "FN": 17223,
+                    "FP": 344109,
+                    "IoU": 0.4986666518671036,
+                    "TN": 13703486,
+                    "TP": 359410,
+                    "n_pred": 703519,
+                    "n_ref": 376633
+                },
+                "3": {
+                    "Dice": 0.08062209601164394,
+                    "FN": 359561,
+                    "FP": 1749,
+                    "IoU": 0.04200428474461225,
+                    "TN": 14047076,
+                    "TP": 15842,
+                    "n_pred": 17591,
+                    "n_ref": 375403
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 14424228,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_177.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_177.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.9714735758492813,
+                    "FN": 4928,
+                    "FP": 4272,
+                    "IoU": 0.944529525968623,
+                    "TN": 11725756,
+                    "TP": 156654,
+                    "n_pred": 160926,
+                    "n_ref": 161582
+                },
+                "2": {
+                    "Dice": 0.6071830681257245,
+                    "FN": 40007,
+                    "FP": 243291,
+                    "IoU": 0.4359388906255289,
+                    "TN": 11389363,
+                    "TP": 218949,
+                    "n_pred": 462240,
+                    "n_ref": 258956
+                },
+                "3": {
+                    "Dice": 0.03287652317995098,
+                    "FN": 250936,
+                    "FP": 29230,
+                    "IoU": 0.01671299415992812,
+                    "TN": 11606682,
+                    "TP": 4762,
+                    "n_pred": 33992,
+                    "n_ref": 255698
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 11891610,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_193.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_193.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 95240,
+                    "IoU": 0.0,
+                    "TN": 60722168,
+                    "TP": 0,
+                    "n_pred": 95240,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 1028,
+                    "IoU": 0.0,
+                    "TN": 60816380,
+                    "TP": 0,
+                    "n_pred": 1028,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 60817408,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": 0.9868649393663194,
+                    "FN": 3342,
+                    "FP": 7913,
+                    "IoU": 0.9740704647503462,
+                    "TN": 60383347,
+                    "TP": 422806,
+                    "n_pred": 430719,
+                    "n_ref": 426148
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_254.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_254.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 28442624,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 28442624,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 28442624,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": 0.9548328710173858,
+                    "FN": 16188,
+                    "FP": 2977,
+                    "IoU": 0.9135695570017002,
+                    "TN": 28220885,
+                    "TP": 202574,
+                    "n_pred": 205551,
+                    "n_ref": 218762
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_255.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_255.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 164156,
+                    "IoU": 0.0,
+                    "TN": 40337092,
+                    "TP": 0,
+                    "n_pred": 164156,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 141284,
+                    "IoU": 0.0,
+                    "TN": 40359964,
+                    "TP": 0,
+                    "n_pred": 141284,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 446,
+                    "IoU": 0.0,
+                    "TN": 40500802,
+                    "TP": 0,
+                    "n_pred": 446,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": 0.9923178014607802,
+                    "FN": 2221,
+                    "FP": 1678,
+                    "IoU": 0.9847527354351278,
+                    "TN": 40245530,
+                    "TP": 251819,
+                    "n_pred": 253497,
+                    "n_ref": 254040
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_259.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_259.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 622,
+                    "IoU": 0.0,
+                    "TN": 32243090,
+                    "TP": 0,
+                    "n_pred": 622,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 32243712,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 32243712,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": 0.9733418001556803,
+                    "FN": 6829,
+                    "FP": 6185,
+                    "IoU": 0.9480680135835624,
+                    "TN": 31993115,
+                    "TP": 237583,
+                    "n_pred": 243768,
+                    "n_ref": 244412
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_262.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_262.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 2045,
+                    "IoU": 0.0,
+                    "TN": 39188483,
+                    "TP": 0,
+                    "n_pred": 2045,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 467,
+                    "IoU": 0.0,
+                    "TN": 39190061,
+                    "TP": 0,
+                    "n_pred": 467,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 39190528,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": 0.9662123690108426,
+                    "FN": 10068,
+                    "FP": 9455,
+                    "IoU": 0.9346333231771626,
+                    "TN": 38891859,
+                    "TP": 279146,
+                    "n_pred": 288601,
+                    "n_ref": 289214
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_268.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_268.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 51633,
+                    "IoU": 0.0,
+                    "TN": 56444427,
+                    "TP": 0,
+                    "n_pred": 51633,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 139849,
+                    "IoU": 0.0,
+                    "TN": 56356211,
+                    "TP": 0,
+                    "n_pred": 139849,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 330630,
+                    "IoU": 0.0,
+                    "TN": 56165430,
+                    "TP": 0,
+                    "n_pred": 330630,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": 0.7681987649167255,
+                    "FN": 353634,
+                    "FP": 209971,
+                    "IoU": 0.6236385733651194,
+                    "TN": 54998550,
+                    "TP": 933905,
+                    "n_pred": 1143876,
+                    "n_ref": 1287539
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_292.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_292.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 1352,
+                    "IoU": 0.0,
+                    "TN": 109717060,
+                    "TP": 0,
+                    "n_pred": 1352,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 477492,
+                    "IoU": 0.0,
+                    "TN": 109240920,
+                    "TP": 0,
+                    "n_pred": 477492,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 208,
+                    "IoU": 0.0,
+                    "TN": 109718204,
+                    "TP": 0,
+                    "n_pred": 208,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": 0.8085897152742051,
+                    "FN": 432463,
+                    "FP": 725387,
+                    "IoU": 0.6786828396905298,
+                    "TN": 106114963,
+                    "TP": 2445599,
+                    "n_pred": 3170986,
+                    "n_ref": 2878062
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_293.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_293.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 2,
+                    "IoU": 0.0,
+                    "TN": 26214398,
+                    "TP": 0,
+                    "n_pred": 2,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 26214400,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 26214400,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": 0.9836864683445371,
+                    "FN": 16034,
+                    "FP": 706,
+                    "IoU": 0.9678966556139621,
+                    "TN": 25692959,
+                    "TP": 504701,
+                    "n_pred": 505407,
+                    "n_ref": 520735
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_305.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_305.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 18,
+                    "IoU": 0.0,
+                    "TN": 29360110,
+                    "TP": 0,
+                    "n_pred": 18,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 29360128,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 29360128,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": 0.985234571601933,
+                    "FN": 10818,
+                    "FP": 1398,
+                    "IoU": 0.9708988343811119,
+                    "TN": 28940351,
+                    "TP": 407561,
+                    "n_pred": 408959,
+                    "n_ref": 418379
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_317.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_317.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 141486,
+                    "IoU": 0.0,
+                    "TN": 30922578,
+                    "TP": 0,
+                    "n_pred": 141486,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 108637,
+                    "IoU": 0.0,
+                    "TN": 30955427,
+                    "TP": 0,
+                    "n_pred": 108637,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 16965,
+                    "IoU": 0.0,
+                    "TN": 31047099,
+                    "TP": 0,
+                    "n_pred": 16965,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": 0.9801599395115402,
+                    "FN": 10235,
+                    "FP": 51,
+                    "IoU": 0.9610918196742395,
+                    "TN": 30799698,
+                    "TP": 254080,
+                    "n_pred": 254131,
+                    "n_ref": 264315
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_327.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_327.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 125205,
+                    "IoU": 0.0,
+                    "TN": 81663723,
+                    "TP": 0,
+                    "n_pred": 125205,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 436201,
+                    "IoU": 0.0,
+                    "TN": 81352727,
+                    "TP": 0,
+                    "n_pred": 436201,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 8176,
+                    "IoU": 0.0,
+                    "TN": 81780752,
+                    "TP": 0,
+                    "n_pred": 8176,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": 0.8036477570249398,
+                    "FN": 95202,
+                    "FP": 117,
+                    "IoU": 0.67174844344041,
+                    "TN": 81498544,
+                    "TP": 195065,
+                    "n_pred": 195182,
+                    "n_ref": 290267
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_336.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_336.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 213352,
+                    "IoU": 0.0,
+                    "TN": 41860760,
+                    "TP": 0,
+                    "n_pred": 213352,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 200033,
+                    "IoU": 0.0,
+                    "TN": 41874079,
+                    "TP": 0,
+                    "n_pred": 200033,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 1965,
+                    "IoU": 0.0,
+                    "TN": 42072147,
+                    "TP": 0,
+                    "n_pred": 1965,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": 0.9879540327552409,
+                    "FN": 10374,
+                    "FP": 60,
+                    "IoU": 0.9761948219060569,
+                    "TN": 41635804,
+                    "TP": 427874,
+                    "n_pred": 427934,
+                    "n_ref": 438248
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_339.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_339.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 49022,
+                    "IoU": 0.0,
+                    "TN": 29835394,
+                    "TP": 0,
+                    "n_pred": 49022,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 13370,
+                    "IoU": 0.0,
+                    "TN": 29871046,
+                    "TP": 0,
+                    "n_pred": 13370,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 29884416,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": 0.9797763159282608,
+                    "FN": 11170,
+                    "FP": 334,
+                    "IoU": 0.9603544117089579,
+                    "TN": 29594245,
+                    "TP": 278667,
+                    "n_pred": 279001,
+                    "n_ref": 289837
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_340.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_340.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 79323,
+                    "IoU": 0.0,
+                    "TN": 38193701,
+                    "TP": 0,
+                    "n_pred": 79323,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 189093,
+                    "IoU": 0.0,
+                    "TN": 38083931,
+                    "TP": 0,
+                    "n_pred": 189093,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 22,
+                    "IoU": 0.0,
+                    "TN": 38273002,
+                    "TP": 0,
+                    "n_pred": 22,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": 0.8970435267498097,
+                    "FN": 38404,
+                    "FP": 0,
+                    "IoU": 0.813308184416746,
+                    "TN": 38067316,
+                    "TP": 167304,
+                    "n_pred": 167304,
+                    "n_ref": 205708
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_342.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_342.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 14633,
+                    "IoU": 0.0,
+                    "TN": 34719447,
+                    "TP": 0,
+                    "n_pred": 14633,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 34734080,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 10,
+                    "IoU": 0.0,
+                    "TN": 34734070,
+                    "TP": 0,
+                    "n_pred": 10,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": 0.976213458467419,
+                    "FN": 14453,
+                    "FP": 308,
+                    "IoU": 0.9535322246042165,
+                    "TN": 34416419,
+                    "TP": 302900,
+                    "n_pred": 303208,
+                    "n_ref": 317353
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_355.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_355.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 2229,
+                    "IoU": 0.0,
+                    "TN": 26343243,
+                    "TP": 0,
+                    "n_pred": 2229,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 26345472,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 26345472,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": 0.9748349843338917,
+                    "FN": 11952,
+                    "FP": 473,
+                    "IoU": 0.9509054341856229,
+                    "TN": 26092389,
+                    "TP": 240658,
+                    "n_pred": 241131,
+                    "n_ref": 252610
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_357.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_357.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 107055,
+                    "IoU": 0.0,
+                    "TN": 38821329,
+                    "TP": 0,
+                    "n_pred": 107055,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 227793,
+                    "IoU": 0.0,
+                    "TN": 38700591,
+                    "TP": 0,
+                    "n_pred": 227793,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 3300,
+                    "IoU": 0.0,
+                    "TN": 38925084,
+                    "TP": 0,
+                    "n_pred": 3300,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": 0.9817081335097492,
+                    "FN": 12455,
+                    "FP": 250,
+                    "IoU": 0.9640734310226842,
+                    "TN": 38574746,
+                    "TP": 340933,
+                    "n_pred": 341183,
+                    "n_ref": 353388
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_365.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_365.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 6589,
+                    "IoU": 0.0,
+                    "TN": 40594499,
+                    "TP": 0,
+                    "n_pred": 6589,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 40601088,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 40601088,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": 0.9492471942977662,
+                    "FN": 32442,
+                    "FP": 20306,
+                    "IoU": 0.90339724923539,
+                    "TN": 40055058,
+                    "TP": 493282,
+                    "n_pred": 513588,
+                    "n_ref": 525724
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_380.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_380.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 80836,
+                    "IoU": 0.0,
+                    "TN": 39363644,
+                    "TP": 0,
+                    "n_pred": 80836,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 197760,
+                    "IoU": 0.0,
+                    "TN": 39246720,
+                    "TP": 0,
+                    "n_pred": 197760,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 2514,
+                    "IoU": 0.0,
+                    "TN": 39441966,
+                    "TP": 0,
+                    "n_pred": 2514,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": 0.9693334100820389,
+                    "FN": 14716,
+                    "FP": 7660,
+                    "IoU": 0.9404917357020331,
+                    "TN": 39068465,
+                    "TP": 353639,
+                    "n_pred": 361299,
+                    "n_ref": 368355
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_415.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_415.mha"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 146813,
+                    "IoU": 0.0,
+                    "TN": 44289667,
+                    "TP": 0,
+                    "n_pred": 146813,
+                    "n_ref": 0
+                },
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 204336,
+                    "IoU": 0.0,
+                    "TN": 44232144,
+                    "TP": 0,
+                    "n_pred": 204336,
+                    "n_ref": 0
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 44436480,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": 0.9779517768988789,
+                    "FN": 28266,
+                    "FP": 4753,
+                    "IoU": 0.9568548281719587,
+                    "TN": 43671180,
+                    "TP": 732281,
+                    "n_pred": 737034,
+                    "n_ref": 760547
+                }
+            },
+            "prediction_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/PENGWIN_417.mha",
+            "reference_file": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/gt_segmentations/PENGWIN_417.mha"
+        }
+    ]
+}

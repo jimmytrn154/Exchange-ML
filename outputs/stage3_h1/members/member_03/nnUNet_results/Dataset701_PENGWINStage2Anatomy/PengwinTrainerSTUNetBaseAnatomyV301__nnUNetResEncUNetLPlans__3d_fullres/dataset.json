@@ -1,0 +1,15 @@
+{
+    "channel_names": {
+        "0": "CT"
+    },
+    "labels": {
+        "background": 0,
+        "Sacrum": 1,
+        "LeftHip": 2,
+        "RightHip": 3,
+        "Femur": 4
+    },
+    "numTraining": 80,
+    "file_ending": ".mha",
+    "description": "PENGWIN Stage 2 five-class anatomy localization; frozen split only."
+}

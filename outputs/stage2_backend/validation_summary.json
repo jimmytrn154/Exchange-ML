@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "primary_connectivity": 26,
+  "preserve_all_gt_instance_ids": true,
+  "prediction_component_prune_min_volume_mm3": 1000.0,
+  "summary_by_connectivity": {
+    "6": {
+      "n_cases": 40,
+      "mean_binary_dice": 0.7635715492035761,
+      "mean_instance_f1": 0.7367580056395846,
+      "total_merge_errors": 8,
+      "total_split_errors": 115,
+      "cases_with_incomplete_instance_recall": 29
+    },
+    "18": {
+      "n_cases": 40,
+      "mean_binary_dice": 0.7638371643052677,
+      "mean_instance_f1": 0.7367580056395846,
+      "total_merge_errors": 8,
+      "total_split_errors": 115,
+      "cases_with_incomplete_instance_recall": 29
+    },
+    "26": {
+      "n_cases": 40,
+      "mean_binary_dice": 0.7639089542079369,
+      "mean_instance_f1": 0.7367580056395846,
+      "total_merge_errors": 8,
+      "total_split_errors": 115,
+      "cases_with_incomplete_instance_recall": 29
+    }
+  }
+}
