@@ -1,0 +1,261 @@
+{
+  "schema_version": 1,
+  "member_id": "member_01",
+  "model_seed": 31001,
+  "anatomy_checkpoint_sha256": "13cb0a2f64dd415f8bf626598004d2970077ac2a03e342e8cec871e896a41e23",
+  "fragment_checkpoint_sha256": "ea0d077326d446c1fc96ba1da425fae3bec4e9a442aecb3dd367ec842941c322",
+  "probability_semantics": {
+    "classes": [
+      "background",
+      "target_foreground"
+    ],
+    "foreground_probability": "per-anatomy Stage-B ABBC probability 1-p(background), linearly resampled to the input grid and combined by voxelwise maximum",
+    "dtype_on_disk": "float32",
+    "range": [
+      0.0,
+      1.0
+    ]
+  },
+  "rows": [
+    {
+      "case_id": "004",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/004.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/004.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "008",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/008.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/008.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "030",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/030.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/030.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "031",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/031.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/031.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "036",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/036.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/036.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "046",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/046.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/046.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "047",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/047.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/047.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "053",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/053.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/053.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "056",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/056.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/056.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "060",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/060.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/060.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "074",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/074.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/074.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "076",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/076.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/076.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "104",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/104.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/104.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "112",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/112.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/112.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "151",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/151.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/151.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "154",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/154.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/154.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "167",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/167.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/167.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "172",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/172.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/172.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "177",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/177.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/177.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "193",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/193.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/193.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "254",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/254.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/254.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "255",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/255.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/255.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "259",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/259.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/259.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "262",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/262.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/262.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "268",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/268.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/268.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "292",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/292.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/292.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "293",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/293.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/293.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "305",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/305.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/305.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "317",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/317.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/317.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "327",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/327.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/327.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "336",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/336.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/336.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "339",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/339.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/339.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "340",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/340.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/340.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "342",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/342.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/342.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "355",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/355.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/355.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "357",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/357.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/357.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "365",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/365.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/365.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "380",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/380.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/380.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "415",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/415.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/415.mha",
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "417",
+      "prediction": "outputs/stage3_h1/members/member_01/validation_predictions/417.mha",
+      "foreground_probability": "outputs/stage3_h1/members/member_01/validation_probabilities/417.mha",
+      "status": "COMPLETE"
+    }
+  ]
+}

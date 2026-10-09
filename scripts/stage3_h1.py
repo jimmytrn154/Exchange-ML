@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import copy
 import json
+import os
 import sys
 from pathlib import Path
 from typing import Any
@@ -138,16 +139,41 @@ def train_member(
     stage: str,
     device: str,
     num_gpus: int,
+    resume: bool = False,
 ) -> None:
     validate_config(config)
     member = member_record(config, member_id)
     derived = member_stage2_config(config, member_id)
+    if stage == "fragment":
+        anatomy_best = checkpoint_path(derived, "anatomy").resolve()
+        if not anatomy_best.is_file():
+            raise FileNotFoundError(f"Fragment warm-start checkpoint missing: {anatomy_best}")
+        # PyTorch 2.1 cannot safely unpickle nnU-Net's NumPy metadata. Trust
+        # only this member's locally produced Anatomy checkpoint.
+        os.environ["PENGWIN_TRUSTED_WARMSTART_CHECKPOINT"] = str(anatomy_best)
+    else:
+        os.environ.pop("PENGWIN_TRUSTED_WARMSTART_CHECKPOINT", None)
+    if resume:
+        latest = checkpoint_path(derived, stage, "checkpoint_latest.pth").resolve()
+        if not latest.is_file():
+            raise FileNotFoundError(
+                f"Resume requires checkpoint_latest.pth; refusing a fresh run: {latest}"
+            )
+        if member_id == "member_01" and stage == "anatomy":
+            # Explicit approval covers only this locally produced checkpoint.
+            os.environ["PENGWIN_TRUSTED_RESUME_CHECKPOINT"] = str(latest)
+        else:
+            os.environ.pop("PENGWIN_TRUSTED_RESUME_CHECKPOINT", None)
+        print(f"Resuming {member_id} {stage} from {latest}", flush=True)
+    else:
+        os.environ.pop("PENGWIN_TRUSTED_RESUME_CHECKPOINT", None)
     patch_and_train(
         derived,
         stage,
         device,
         num_gpus,
         model_seed=int(member["model_seed"]),
+        resume=resume,
     )
 
 
@@ -196,6 +222,7 @@ def parse_args() -> argparse.Namespace:
     train.add_argument("--stage", choices=("anatomy", "fragment"), required=True)
     train.add_argument("--device", default="cuda")
     train.add_argument("--num-gpus", type=int, default=1)
+    train.add_argument("--resume", action="store_true")
     return parser.parse_args()
 
 
@@ -208,7 +235,7 @@ def main() -> int:
         print_runbook(config)
     elif args.command == "train":
         train_member(
-            config, args.member, args.stage, args.device, args.num_gpus
+            config, args.member, args.stage, args.device, args.num_gpus, args.resume
         )
     return 0
 

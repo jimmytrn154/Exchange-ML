@@ -207,7 +207,7 @@ PENGWIN evaluator.
 ## Stage 3 — FA-IPD + H1 Round-0 benchmark
 **Target: 29 Sep–4 Oct**
 
-**Status: BLOCKED — implementation complete; user-run M=3 training, inference, and H1 evaluation pending.**
+**Status: FAIL (2026-10-05) — M=3 execution complete; the H1 scientific gateway was not met. See `__docs__/reports/stage3_h1.md`.**
 
 **This is the main scientific go/no-go gate.**
 
@@ -266,6 +266,8 @@ more/larger fragments receive higher FA-IPD.”
 
 ## Stage 4 — AL engine + two-round pilot
 **Target: 4–8 Oct**
+
+**Status: BLOCKED — Stage 3 H1 gateway failed; the pilot has not been implemented or run.**
 
 ### Work
 Implement a whole-volume AL loop with identical training/evaluation for all methods.

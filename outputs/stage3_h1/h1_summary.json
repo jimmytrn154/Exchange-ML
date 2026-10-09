@@ -1,0 +1,930 @@
+{
+  "schema_version": 1,
+  "case_count": 40,
+  "base_failure_prevalence": 0.775,
+  "risk_source": "frozen Stage 2 single-model validation metrics",
+  "provenance": {
+    "stage3_config": "configs/stage3_h1.json",
+    "stage3_config_sha256": "64501bae8a620fd0b9a0eeb3f3d0f8951cf766bac965135f0ff5d6fd09098106",
+    "uncertainty_scoring_manifest": "outputs/stage3_h1/uncertainty_scoring_manifest.json",
+    "uncertainty_scoring_manifest_sha256": "10c0d42f64d8cf36e4c99d3e35d0be75fcdb3bf4579aad199fa068a9a4304507",
+    "stage2_metrics": "outputs/stage2_backend/validation_metrics.csv",
+    "stage2_metrics_sha256": "a325174fb6ff5b9da0ca2256e1199835fa54d8cde839dc67edf749fe521a9bf0"
+  },
+  "results": {
+    "mean_entropy": {
+      "one_minus_instance_f1": {
+        "aurc": 0.19105296696006674,
+        "spearman_rho": 0.2573659596251749,
+        "controlled_spearman_rho": 0.1812382739212008,
+        "top_k": {
+          "0.1": {
+            "selected_count": 4,
+            "selected_case_ids": [
+              "036",
+              "177",
+              "030",
+              "336"
+            ],
+            "failure_prevalence": 0.75,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.9677419354838709,
+            "mean_selected_risk": 0.44098124098124103
+          },
+          "0.2": {
+            "selected_count": 8,
+            "selected_case_ids": [
+              "036",
+              "177",
+              "030",
+              "336",
+              "254",
+              "327",
+              "357",
+              "355"
+            ],
+            "failure_prevalence": 0.875,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 1.129032258064516,
+            "mean_selected_risk": 0.28715728715728717
+          }
+        }
+      },
+      "normalized_merge_split_error": {
+        "aurc": 0.8078483407400974,
+        "spearman_rho": -0.17120855645078714,
+        "controlled_spearman_rho": -0.3052532833020638,
+        "top_k": {
+          "0.1": {
+            "selected_count": 4,
+            "selected_case_ids": [
+              "036",
+              "177",
+              "030",
+              "336"
+            ],
+            "failure_prevalence": 0.75,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.9677419354838709,
+            "mean_selected_risk": 0.38907563025210085
+          },
+          "0.2": {
+            "selected_count": 8,
+            "selected_case_ids": [
+              "036",
+              "177",
+              "030",
+              "336",
+              "254",
+              "327",
+              "357",
+              "355"
+            ],
+            "failure_prevalence": 0.875,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 1.129032258064516,
+            "mean_selected_risk": 0.6320378151260504
+          }
+        }
+      },
+      "one_minus_binary_dice": {
+        "aurc": 0.1917210907648624,
+        "spearman_rho": 0.17542213883677302,
+        "controlled_spearman_rho": 0.17242026266416513,
+        "top_k": {
+          "0.1": {
+            "selected_count": 4,
+            "selected_case_ids": [
+              "036",
+              "177",
+              "030",
+              "336"
+            ],
+            "failure_prevalence": 0.75,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.9677419354838709,
+            "mean_selected_risk": 0.2984597619011802
+          },
+          "0.2": {
+            "selected_count": 8,
+            "selected_case_ids": [
+              "036",
+              "177",
+              "030",
+              "336",
+              "254",
+              "327",
+              "357",
+              "355"
+            ],
+            "failure_prevalence": 0.875,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 1.129032258064516,
+            "mean_selected_risk": 0.26725382341864184
+          }
+        }
+      }
+    },
+    "p95_entropy": {
+      "one_minus_instance_f1": {
+        "aurc": 0.17424491524922672,
+        "spearman_rho": 0.4320341807531428,
+        "controlled_spearman_rho": 0.14146341463414636,
+        "top_k": {
+          "0.1": {
+            "selected_count": 4,
+            "selected_case_ids": [
+              "417",
+              "030",
+              "047",
+              "056"
+            ],
+            "failure_prevalence": 0.75,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.9677419354838709,
+            "mean_selected_risk": 0.35782828282828283
+          },
+          "0.2": {
+            "selected_count": 8,
+            "selected_case_ids": [
+              "417",
+              "030",
+              "047",
+              "056",
+              "177",
+              "004",
+              "327",
+              "104"
+            ],
+            "failure_prevalence": 0.75,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.9677419354838709,
+            "mean_selected_risk": 0.34002525252525256
+          }
+        }
+      },
+      "normalized_merge_split_error": {
+        "aurc": 0.8453439318134361,
+        "spearman_rho": -0.32814973319734203,
+        "controlled_spearman_rho": -0.11500938086303941,
+        "top_k": {
+          "0.1": {
+            "selected_count": 4,
+            "selected_case_ids": [
+              "417",
+              "030",
+              "047",
+              "056"
+            ],
+            "failure_prevalence": 0.75,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.9677419354838709,
+            "mean_selected_risk": 0.4319327731092437
+          },
+          "0.2": {
+            "selected_count": 8,
+            "selected_case_ids": [
+              "417",
+              "030",
+              "047",
+              "056",
+              "177",
+              "004",
+              "327",
+              "104"
+            ],
+            "failure_prevalence": 0.75,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.9677419354838709,
+            "mean_selected_risk": 0.45480567226890756
+          }
+        }
+      },
+      "one_minus_binary_dice": {
+        "aurc": 0.16590658379546883,
+        "spearman_rho": 0.401500938086304,
+        "controlled_spearman_rho": 0.40393996247654795,
+        "top_k": {
+          "0.1": {
+            "selected_count": 4,
+            "selected_case_ids": [
+              "417",
+              "030",
+              "047",
+              "056"
+            ],
+            "failure_prevalence": 0.75,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.9677419354838709,
+            "mean_selected_risk": 0.17444628947338217
+          },
+          "0.2": {
+            "selected_count": 8,
+            "selected_case_ids": [
+              "417",
+              "030",
+              "047",
+              "056",
+              "177",
+              "004",
+              "327",
+              "104"
+            ],
+            "failure_prevalence": 0.75,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.9677419354838709,
+            "mean_selected_risk": 0.23685553143110943
+          }
+        }
+      }
+    },
+    "pairwise_semantic_dice_disagreement": {
+      "one_minus_instance_f1": {
+        "aurc": 0.19045304472407168,
+        "spearman_rho": 0.2812101588257426,
+        "controlled_spearman_rho": 0.1384615384615385,
+        "top_k": {
+          "0.1": {
+            "selected_count": 4,
+            "selected_case_ids": [
+              "036",
+              "030",
+              "336",
+              "177"
+            ],
+            "failure_prevalence": 0.75,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.9677419354838709,
+            "mean_selected_risk": 0.44098124098124103
+          },
+          "0.2": {
+            "selected_count": 8,
+            "selected_case_ids": [
+              "036",
+              "030",
+              "336",
+              "177",
+              "254",
+              "193",
+              "076",
+              "357"
+            ],
+            "failure_prevalence": 0.875,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 1.129032258064516,
+            "mean_selected_risk": 0.3091480278980279
+          }
+        }
+      },
+      "normalized_merge_split_error": {
+        "aurc": 0.8302955113059092,
+        "spearman_rho": -0.28582317340811964,
+        "controlled_spearman_rho": -0.3187617260787993,
+        "top_k": {
+          "0.1": {
+            "selected_count": 4,
+            "selected_case_ids": [
+              "036",
+              "030",
+              "336",
+              "177"
+            ],
+            "failure_prevalence": 0.75,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.9677419354838709,
+            "mean_selected_risk": 0.3890756302521008
+          },
+          "0.2": {
+            "selected_count": 8,
+            "selected_case_ids": [
+              "036",
+              "030",
+              "336",
+              "177",
+              "254",
+              "193",
+              "076",
+              "357"
+            ],
+            "failure_prevalence": 0.875,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 1.129032258064516,
+            "mean_selected_risk": 0.5297650878533231
+          }
+        }
+      },
+      "one_minus_binary_dice": {
+        "aurc": 0.20043225553574723,
+        "spearman_rho": 0.12495309568480302,
+        "controlled_spearman_rho": 0.18836772983114447,
+        "top_k": {
+          "0.1": {
+            "selected_count": 4,
+            "selected_case_ids": [
+              "036",
+              "030",
+              "336",
+              "177"
+            ],
+            "failure_prevalence": 0.75,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.9677419354838709,
+            "mean_selected_risk": 0.2984597619011802
+          },
+          "0.2": {
+            "selected_count": 8,
+            "selected_case_ids": [
+              "036",
+              "030",
+              "336",
+              "177",
+              "254",
+              "193",
+              "076",
+              "357"
+            ],
+            "failure_prevalence": 0.875,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 1.129032258064516,
+            "mean_selected_risk": 0.2625713137545436
+          }
+        }
+      }
+    },
+    "foreground_jaccard_disagreement": {
+      "one_minus_instance_f1": {
+        "aurc": 0.18649942967742295,
+        "spearman_rho": 0.327763119169708,
+        "controlled_spearman_rho": 0.14727954971857413,
+        "top_k": {
+          "0.1": {
+            "selected_count": 4,
+            "selected_case_ids": [
+              "036",
+              "336",
+              "030",
+              "177"
+            ],
+            "failure_prevalence": 0.75,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.9677419354838709,
+            "mean_selected_risk": 0.44098124098124103
+          },
+          "0.2": {
+            "selected_count": 8,
+            "selected_case_ids": [
+              "036",
+              "336",
+              "030",
+              "177",
+              "254",
+              "076",
+              "327",
+              "151"
+            ],
+            "failure_prevalence": 0.875,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 1.129032258064516,
+            "mean_selected_risk": 0.28385040885040885
+          }
+        }
+      },
+      "normalized_merge_split_error": {
+        "aurc": 0.8447315221785008,
+        "spearman_rho": -0.361915865164025,
+        "controlled_spearman_rho": -0.33939962476547847,
+        "top_k": {
+          "0.1": {
+            "selected_count": 4,
+            "selected_case_ids": [
+              "036",
+              "336",
+              "030",
+              "177"
+            ],
+            "failure_prevalence": 0.75,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.9677419354838709,
+            "mean_selected_risk": 0.3890756302521008
+          },
+          "0.2": {
+            "selected_count": 8,
+            "selected_case_ids": [
+              "036",
+              "336",
+              "030",
+              "177",
+              "254",
+              "076",
+              "327",
+              "151"
+            ],
+            "failure_prevalence": 0.875,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 1.129032258064516,
+            "mean_selected_risk": 0.5089317545199898
+          }
+        }
+      },
+      "one_minus_binary_dice": {
+        "aurc": 0.1967095451871522,
+        "spearman_rho": 0.1977485928705441,
+        "controlled_spearman_rho": 0.2210131332082552,
+        "top_k": {
+          "0.1": {
+            "selected_count": 4,
+            "selected_case_ids": [
+              "036",
+              "336",
+              "030",
+              "177"
+            ],
+            "failure_prevalence": 0.75,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.9677419354838709,
+            "mean_selected_risk": 0.2984597619011802
+          },
+          "0.2": {
+            "selected_count": 8,
+            "selected_case_ids": [
+              "036",
+              "336",
+              "030",
+              "177",
+              "254",
+              "076",
+              "327",
+              "151"
+            ],
+            "failure_prevalence": 0.875,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 1.129032258064516,
+            "mean_selected_risk": 0.3132556309551625
+          }
+        }
+      }
+    },
+    "union_foreground_nvi": {
+      "one_minus_instance_f1": {
+        "aurc": 0.19837425267984074,
+        "spearman_rho": 0.24118596731050396,
+        "controlled_spearman_rho": 0.006566604127579738,
+        "top_k": {
+          "0.1": {
+            "selected_count": 4,
+            "selected_case_ids": [
+              "336",
+              "415",
+              "255",
+              "074"
+            ],
+            "failure_prevalence": 1.0,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 1.2903225806451613,
+            "mean_selected_risk": 0.21428571428571427
+          },
+          "0.2": {
+            "selected_count": 8,
+            "selected_case_ids": [
+              "336",
+              "415",
+              "255",
+              "074",
+              "056",
+              "031",
+              "262",
+              "342"
+            ],
+            "failure_prevalence": 0.75,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.9677419354838709,
+            "mean_selected_risk": 0.2483044733044733
+          }
+        }
+      },
+      "normalized_merge_split_error": {
+        "aurc": 0.6902315331113149,
+        "spearman_rho": -0.11708762943939943,
+        "controlled_spearman_rho": 0.05459662288930583,
+        "top_k": {
+          "0.1": {
+            "selected_count": 4,
+            "selected_case_ids": [
+              "336",
+              "415",
+              "255",
+              "074"
+            ],
+            "failure_prevalence": 1.0,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 1.2903225806451613,
+            "mean_selected_risk": 1.0229166666666667
+          },
+          "0.2": {
+            "selected_count": 8,
+            "selected_case_ids": [
+              "336",
+              "415",
+              "255",
+              "074",
+              "056",
+              "031",
+              "262",
+              "342"
+            ],
+            "failure_prevalence": 0.75,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.9677419354838709,
+            "mean_selected_risk": 0.7697916666666667
+          }
+        }
+      },
+      "one_minus_binary_dice": {
+        "aurc": 0.18614287757241435,
+        "spearman_rho": 0.3772983114446529,
+        "controlled_spearman_rho": 0.38217636022514073,
+        "top_k": {
+          "0.1": {
+            "selected_count": 4,
+            "selected_case_ids": [
+              "336",
+              "415",
+              "255",
+              "074"
+            ],
+            "failure_prevalence": 1.0,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 1.2903225806451613,
+            "mean_selected_risk": 0.27832283055811535
+          },
+          "0.2": {
+            "selected_count": 8,
+            "selected_case_ids": [
+              "336",
+              "415",
+              "255",
+              "074",
+              "056",
+              "031",
+              "262",
+              "342"
+            ],
+            "failure_prevalence": 0.75,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.9677419354838709,
+            "mean_selected_risk": 0.27156415099201753
+          }
+        }
+      }
+    },
+    "fragment_count_variance": {
+      "one_minus_instance_f1": {
+        "aurc": 0.2700370935709315,
+        "spearman_rho": 0.20554816208083157,
+        "controlled_spearman_rho": 0.0551594746716698,
+        "top_k": {
+          "0.1": {
+            "selected_count": 4,
+            "selected_case_ids": [
+              "031",
+              "074",
+              "030",
+              "193"
+            ],
+            "failure_prevalence": 0.75,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.9677419354838709,
+            "mean_selected_risk": 0.3987193362193362
+          },
+          "0.2": {
+            "selected_count": 8,
+            "selected_case_ids": [
+              "031",
+              "074",
+              "030",
+              "193",
+              "336",
+              "151",
+              "154",
+              "355"
+            ],
+            "failure_prevalence": 0.75,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.9677419354838709,
+            "mean_selected_risk": 0.35610569985569984
+          }
+        }
+      },
+      "normalized_merge_split_error": {
+        "aurc": 0.6695648024519061,
+        "spearman_rho": -0.21430517830233659,
+        "controlled_spearman_rho": -0.2110694183864916,
+        "top_k": {
+          "0.1": {
+            "selected_count": 4,
+            "selected_case_ids": [
+              "031",
+              "074",
+              "030",
+              "193"
+            ],
+            "failure_prevalence": 0.75,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.9677419354838709,
+            "mean_selected_risk": 0.40931372549019607
+          },
+          "0.2": {
+            "selected_count": 8,
+            "selected_case_ids": [
+              "031",
+              "074",
+              "030",
+              "193",
+              "336",
+              "151",
+              "154",
+              "355"
+            ],
+            "failure_prevalence": 0.75,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.9677419354838709,
+            "mean_selected_risk": 0.4088235294117647
+          }
+        }
+      },
+      "one_minus_binary_dice": {
+        "aurc": 0.20113691396338024,
+        "spearman_rho": 0.20676816163848727,
+        "controlled_spearman_rho": 0.15628517823639776,
+        "top_k": {
+          "0.1": {
+            "selected_count": 4,
+            "selected_case_ids": [
+              "031",
+              "074",
+              "030",
+              "193"
+            ],
+            "failure_prevalence": 0.75,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.9677419354838709,
+            "mean_selected_risk": 0.2369119638007865
+          },
+          "0.2": {
+            "selected_count": 8,
+            "selected_case_ids": [
+              "031",
+              "074",
+              "030",
+              "193",
+              "336",
+              "151",
+              "154",
+              "355"
+            ],
+            "failure_prevalence": 0.75,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.9677419354838709,
+            "mean_selected_risk": 0.2448105542149427
+          }
+        }
+      }
+    },
+    "hungarian_structural_disagreement": {
+      "one_minus_instance_f1": {
+        "aurc": 0.16715553887894058,
+        "spearman_rho": 0.5394276969937949,
+        "controlled_spearman_rho": 0.29174484052532834,
+        "top_k": {
+          "0.1": {
+            "selected_count": 4,
+            "selected_case_ids": [
+              "030",
+              "336",
+              "193",
+              "036"
+            ],
+            "failure_prevalence": 0.75,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.9677419354838709,
+            "mean_selected_risk": 0.4757034632034632
+          },
+          "0.2": {
+            "selected_count": 8,
+            "selected_case_ids": [
+              "030",
+              "336",
+              "193",
+              "036",
+              "293",
+              "177",
+              "047",
+              "008"
+            ],
+            "failure_prevalence": 0.625,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.8064516129032258,
+            "mean_selected_risk": 0.4309072871572872
+          }
+        }
+      },
+      "normalized_merge_split_error": {
+        "aurc": 0.8041439816777747,
+        "spearman_rho": -0.4313504463912888,
+        "controlled_spearman_rho": -0.15722326454033772,
+        "top_k": {
+          "0.1": {
+            "selected_count": 4,
+            "selected_case_ids": [
+              "030",
+              "336",
+              "193",
+              "036"
+            ],
+            "failure_prevalence": 0.75,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.9677419354838709,
+            "mean_selected_risk": 0.4426470588235294
+          },
+          "0.2": {
+            "selected_count": 8,
+            "selected_case_ids": [
+              "030",
+              "336",
+              "193",
+              "036",
+              "293",
+              "177",
+              "047",
+              "008"
+            ],
+            "failure_prevalence": 0.625,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.8064516129032258,
+            "mean_selected_risk": 0.3820378151260504
+          }
+        }
+      },
+      "one_minus_binary_dice": {
+        "aurc": 0.1936314315112281,
+        "spearman_rho": 0.2656660412757974,
+        "controlled_spearman_rho": 0.29061913696060043,
+        "top_k": {
+          "0.1": {
+            "selected_count": 4,
+            "selected_case_ids": [
+              "030",
+              "336",
+              "193",
+              "036"
+            ],
+            "failure_prevalence": 0.75,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.9677419354838709,
+            "mean_selected_risk": 0.3008791058683047
+          },
+          "0.2": {
+            "selected_count": 8,
+            "selected_case_ids": [
+              "030",
+              "336",
+              "193",
+              "036",
+              "293",
+              "177",
+              "047",
+              "008"
+            ],
+            "failure_prevalence": 0.625,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.8064516129032258,
+            "mean_selected_risk": 0.2446700106538126
+          }
+        }
+      }
+    },
+    "fa_ipd": {
+      "one_minus_instance_f1": {
+        "aurc": 0.18660316512288194,
+        "spearman_rho": 0.33079095398882774,
+        "controlled_spearman_rho": 0.14671669793621014,
+        "top_k": {
+          "0.1": {
+            "selected_count": 4,
+            "selected_case_ids": [
+              "036",
+              "336",
+              "030",
+              "177"
+            ],
+            "failure_prevalence": 0.75,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.9677419354838709,
+            "mean_selected_risk": 0.44098124098124103
+          },
+          "0.2": {
+            "selected_count": 8,
+            "selected_case_ids": [
+              "036",
+              "336",
+              "030",
+              "177",
+              "254",
+              "076",
+              "327",
+              "193"
+            ],
+            "failure_prevalence": 0.875,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 1.129032258064516,
+            "mean_selected_risk": 0.3341480278980279
+          }
+        }
+      },
+      "normalized_merge_split_error": {
+        "aurc": 0.8218702260858539,
+        "spearman_rho": -0.34974103448308025,
+        "controlled_spearman_rho": -0.33489681050656667,
+        "top_k": {
+          "0.1": {
+            "selected_count": 4,
+            "selected_case_ids": [
+              "036",
+              "336",
+              "030",
+              "177"
+            ],
+            "failure_prevalence": 0.75,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.9677419354838709,
+            "mean_selected_risk": 0.3890756302521008
+          },
+          "0.2": {
+            "selected_count": 8,
+            "selected_case_ids": [
+              "036",
+              "336",
+              "030",
+              "177",
+              "254",
+              "076",
+              "327",
+              "193"
+            ],
+            "failure_prevalence": 0.875,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 1.129032258064516,
+            "mean_selected_risk": 0.5297650878533231
+          }
+        }
+      },
+      "one_minus_binary_dice": {
+        "aurc": 0.20052517426329666,
+        "spearman_rho": 0.20281425891181992,
+        "controlled_spearman_rho": 0.22589118198874303,
+        "top_k": {
+          "0.1": {
+            "selected_count": 4,
+            "selected_case_ids": [
+              "036",
+              "336",
+              "030",
+              "177"
+            ],
+            "failure_prevalence": 0.75,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 0.9677419354838709,
+            "mean_selected_risk": 0.2984597619011802
+          },
+          "0.2": {
+            "selected_count": 8,
+            "selected_case_ids": [
+              "036",
+              "336",
+              "030",
+              "177",
+              "254",
+              "076",
+              "327",
+              "193"
+            ],
+            "failure_prevalence": 0.875,
+            "base_failure_prevalence": 0.775,
+            "failure_enrichment": 1.129032258064516,
+            "mean_selected_risk": 0.3200106236088047
+          }
+        }
+      }
+    }
+  },
+  "low_entropy_high_fa_ipd_failure_example": "076",
+  "illustrative_example_rule": "must have a Stage 2 merge/split failure, mean entropy <= cohort median, and FA-IPD >= cohort median; ascending case_id resolves equal rank contrasts; null if no case qualifies",
+  "gateway_status": "PENDING_SCIENTIFIC_ASSESSMENT",
+  "gateway_rule": "manual scientific assessment: FA-IPD must show meaningful advantage in at least two of AURC, top-k enrichment, and controlled association",
+  "artifacts": {
+    "comparison": "outputs/stage3_h1/h1_comparison.csv",
+    "risk_coverage": "outputs/stage3_h1/risk_coverage.csv",
+    "stratified_analysis": "outputs/stage3_h1/stratified_analysis.csv",
+    "figure": "outputs/stage3_h1/risk_coverage.png"
+  }
+}
