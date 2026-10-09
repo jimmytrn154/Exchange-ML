@@ -1,8 +1,10 @@
 # Stage 3 — FA-IPD + H1 Round-0 benchmark
 
-Status: **FAILED (H1 scientific gateway; full experiment completed)**
+Status: **BLOCKED — the 2026-10-05 H1 FAIL is confounded by backend defects
+found on 2026-10-09; gateway decision suspended pending user-approved fixes.**
 
-Opened: 2026-09-26. Last assessed: 2026-10-05 (Asia/Ho_Chi_Minh).
+Opened: 2026-09-26. H1 assessed: 2026-10-05 (Asia/Ho_Chi_Minh). Diagnosis
+added: 2026-10-09.
 
 Stage 2 prerequisite: **PASS — internal research backend complete.** A fresh
 read-only `python3 scripts/validate_stage2_artifacts.py` run on 2026-09-26
@@ -74,9 +76,84 @@ failure prevalence is 31/40, so the top-10% enrichment of 0.968 is below the
 cohort prevalence. Case `076` meets the predeclared illustrative-example rule,
 but one example does not reverse the aggregate gateway result.
 
-**Manual gateway decision: FAIL.** This is a completed negative H1 result, not
-a missing-artifact or runtime failure. The approved Stage 4 prerequisite is
-not met. No Stage 4 AL pilot was implemented or run.
+**Manual gateway decision (2026-10-05): FAIL.** This was recorded as a
+completed negative H1 result. The approved Stage 4 prerequisite is not met. No
+Stage 4 AL pilot was implemented or run. The 2026-10-09 diagnosis below shows
+that this result does not isolate FA-IPD, so it is not treated as a valid
+negative test of the method.
+
+## Post-hoc diagnosis (2026-10-09)
+
+All checks below are read-only. Ground truth was read only retrospectively for
+debugging; no score or acquisition rule was changed. Evidence and scripts are in
+`outputs/stage3_h1/diagnostics/`. The member prediction volumes were read from
+the copy at `/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/`,
+which produced the H1 artifacts in this workspace.
+
+### Observed facts
+
+1. **FA-IPD reduces to foreground Jaccard.** In `uncertainty_scores.csv`,
+   member foreground Jaccard disagreement has median 0.365 (range 0.021–0.619).
+   The coverage-weighted NVI term (`fa_weighted_partition_contribution`) has
+   median 0.0034 and is a median 1.1% of FA-IPD (max 62.5%). The FA-IPD/Jaccard
+   Spearman correlation is 1.00 to two decimals (0.998 above).
+2. **The foreground disagreement is whole-bone presence, not fragment
+   partition.** The 40-case validation set has 20 pelvic and 20 femur-only
+   cases. For the 20 pelvic cases, the median fraction of each GT bone covered
+   by predicted foreground is:
+
+   | Model | Sacrum | Left hip | Right hip |
+   |---|---:|---:|---:|
+   | Stage 2 single model | 0.98 | 0.51 (10/20 cases < 0.5) | 0.74 (4/20) |
+   | `member_01` | 0.97 | 0.24 (13/20) | 0.86 (2/20) |
+   | `member_02` | 0.98 | 0.87 (4/20) | 0.73 (8/20) |
+   | `member_03` | 0.97 | 0.73 (7/20) | 0.66 (7/20) |
+
+   Coverage by the correctly labelled anatomy block is lower still (Stage 2
+   left hip median 0.25; `member_02` right hip 0.46). Member coverage of one
+   bone spans at least 0.5 in 16/20 cases for the left hip and 9/20 for the
+   right hip. Example case `004`: GT has both hips (~315k voxels each); Stage 2
+   and `member_02` have no left-hip foreground, and `member_02` labels the
+   right hip with the left-hip block (51–100). Case `177`: `member_02` covers
+   only the right hip and `member_03` only the left.
+3. **Likely root cause: L/R mirror augmentation in Stage A.**
+   `PengwinTrainerSTUNetBaseAnatomyV301` was written for `Dataset539`. The
+   upstream trainer disables axis-2 (L/R) mirroring only for datasets in
+   `DISABLE_X_MIRROR_DATASETS` (`code_task1/core.py`), which contains only
+   `Dataset539_PelvicFemurAnatomyV3`. The upstream comment attributes 87.6% of
+   its hip errors to L/R swaps caused by this augmentation. Our Anatomy dataset
+   is `Dataset701_PENGWINStage2Anatomy`, so it is not covered: the Stage 3
+   Anatomy `debug.json` records `inference_allowed_mirroring_axes (0, 1, 2)`
+   and `transpose_forward [0, 1, 2]`, so axis 2 is L/R and training applied
+   L/R flips without swapping LeftHip/RightHip labels. No project doc or config
+   mentions this. Because Stage 2 uses the same dataset and trainer, the defect
+   also applies to the Stage 2 backend and therefore to the H1 risk labels.
+4. **`member_02` used the crashed-run checkpoint.** Its inference manifest
+   records Fragment SHA-256 `f5b99a60…`, identical to the epoch-61
+   `checkpoint_best.pth` from the run that ended in the DDP divergent
+   early-stop/NCCL timeout. The rank-local Fragment validation/early-stop
+   defect in `code_task1/core.py` was not fixed before inference. `member_01`
+   (stopped at epoch 78) and `member_03` (epoch 85) used the same rank-local
+   path.
+
+### Interpretation
+
+The ensemble mostly disagrees about whether a whole hip exists, which the
+presence (Jaccard) term captures and the partition (NVI) term cannot. The H1
+comparison therefore measures a Stage A laterality defect, with risk labels
+from a model that has the same defect. It does not test FA-IPD on a backend
+that segments every bone.
+
+### Unresolved
+
+- The causal link between the mirror setting and the hip losses is inferred
+  from code, logs, and outputs; it is not yet confirmed by a retrained model.
+- The 20 femur-only cases were not diagnosed.
+- NVI is normalized by `log(number of active voxels)` (≈14 at 10^6 voxels),
+  which keeps the partition term small. This is part of the frozen contract;
+  changing it after seeing validation results would be tuning on the analysis
+  set, so it is recorded only as an observation.
+- Whether Stage 2's PASS must be reopened is a user decision.
 
 ## Runtime handoff observation
 
@@ -84,9 +161,13 @@ At the 2026-09-26 read-only check, GPUs 0, 1, 3, 4, 5, and 6 were idle (2 MiB ea
 
 ## Gateway
 
-**FAIL.** The real H1 outputs are complete, but FA-IPD does not meet the
-predeclared two-of-three advantage requirement and remains nearly identical to
-foreground Jaccard in case ranking. Stage 4 and H2 are stopped at this gateway.
+**BLOCKED.** The 2026-10-05 outputs did not meet the two-of-three advantage
+requirement, and FA-IPD ranked cases almost identically to foreground Jaccard.
+The 2026-10-09 diagnosis shows that the result is confounded by a Stage A L/R
+mirror defect, shared by the backend that supplies the H1 risks, and by the
+unfixed DDP early-stop defect (`member_02` used the crashed-run checkpoint).
+The gateway cannot be validly assessed until these are fixed and the ensemble
+is retrained. Stage 4 and H2 remain stopped.
 
 ## Agent-typed commands
 
@@ -107,6 +188,26 @@ conda run -n exchange-stage2 ruff check scripts/validate_stage2_artifacts.py scr
 ```
 
 The `/tmp` commands used generated arrays only. They did not train a model or read validation images/labels during acquisition scoring.
+
+Read-only diagnosis checks run on 2026-10-09 (inline scratch scripts; the two
+reusable ones are saved in `outputs/stage3_h1/diagnostics/`):
+
+```bash
+diff -rq --exclude=.git --exclude=baselines --exclude=outputs --exclude=data --exclude=__pycache__ /home/24chuong.ta/chun/Exchange-ML /mnt/sdb/shared/dang.cpm/Exchange-ML
+cp -p /mnt/sdb/shared/dang.cpm/Exchange-ML/<6 differing code/doc files> <same paths here>
+cp -p /mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/{h1_summary.json,h1_comparison.csv,risk_coverage.csv,risk_coverage.png,stratified_analysis.csv,uncertainty_scores.csv,uncertainty_scoring_manifest.json} outputs/stage3_h1/
+cp -p /mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_0{1,2,3}/validation_inference_manifest.json <same paths here>
+conda run --no-capture-output -n exchange-stage2 python outputs/stage3_h1/diagnostics/fa_ipd_decomposition.py
+conda run --no-capture-output -n exchange-stage2 python outputs/stage3_h1/diagnostics/bone_recall_by_model.py
+sha256sum outputs/stage3_h1/members/member_02/nnUNet_results/Dataset702_PENGWINStage2Fragment/*/fold_0/checkpoint_best.pth
+grep -nE "Early stopping|Training done|Yayy" /mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_0*/nnUNet_results/Dataset702_*/*/fold_0/training_log_*.txt
+grep -n "mirror" baselines/pengwin2026-task1-abbc/code_task1/core.py outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_*/*/fold_0/debug.json
+```
+
+Inline scripts also read case `004` geometry, labels, per-anatomy overlaps,
+and GT for cases `004`, `254`, `336`, and `417`. A first run of the bone
+recall script failed because a scratch file named `grp.py` shadowed the Python
+standard-library `grp` module; it was renamed and the rerun succeeded.
 
 ## User-typed commands
 
@@ -196,7 +297,14 @@ the completed score file and manifest.
 
 ## Next step
 
-Review the negative H1 result and decide how to investigate the main FA-IPD
-method under the approved research direction. The current plan does not
-authorize Stage 4 after an H1 gateway failure. No new full-run command is
-prepared.
+Awaiting user approval to fix the backend, not the FA-IPD method:
+
+1. disable axis-2 (L/R) mirroring for `Dataset701_PENGWINStage2Anatomy`,
+   matching the upstream intent for its anatomy dataset;
+2. aggregate Fragment validation F1, best-checkpoint selection, and early
+   stopping across DDP ranks;
+3. validate both with lightweight tests, then prepare user-typed retraining of
+   the Stage 2 backend and all three Stage 3 members, followed by inference,
+   scoring, and evaluation.
+
+No new full-run command is prepared until the fixes are approved and tested.
