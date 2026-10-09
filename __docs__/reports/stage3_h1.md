@@ -1,10 +1,10 @@
 # Stage 3 — FA-IPD + H1 Round-0 benchmark
 
-Status: **BLOCKED (partial user-run training complete; DDP validation/early-stop defect must be fixed before H1 execution continues)**
+Status: **BLOCKED — the 2026-10-05 H1 FAIL is confounded by backend defects
+found on 2026-10-09; gateway decision suspended pending user-approved fixes.**
 
-Opened: 2026-09-26
-
-Last updated: 2026-10-04
+Opened: 2026-09-26. H1 assessed: 2026-10-05 (Asia/Ho_Chi_Minh). Diagnosis
+added: 2026-10-09.
 
 Stage 2 prerequisite: **PASS — internal research backend complete.** A fresh
 read-only `python3 scripts/validate_stage2_artifacts.py` run on 2026-09-26
@@ -43,76 +43,131 @@ or expert anatomical validity.
 - The first tiny synthetic fixture failed exactly because every component was below the frozen `1000 mm3` cleanup threshold; only the synthetic voxel spacing was corrected. The scientific method was not relaxed.
 - A second attempted smoke invocation used unsupported direct path flags and was rejected by the config-only CLI; the corrected run used a temporary config.
 
-These checks establish implementation behavior, not H1 results.
+The checks above established implementation behavior before the real H1 run.
 
-## Observed user-run progress
+## Real H1 result and manual gateway assessment
 
-Read-only artifact inspection on 2026-10-04 found:
+The three seeded members each produced 40 validation instance maps, 40
+foreground-probability maps, and a complete inference manifest. The full
+GT-free score file has 40 rows. Retrospective evaluation produced 24
+score/risk comparisons, 960 risk-coverage rows, 288 stratified-analysis rows,
+the risk-coverage figure, and `h1_summary.json`. The scoring CSV, scoring
+manifest, frozen Stage 3 config, and frozen Stage 2 risk CSV match the SHA-256
+values recorded in the manifests and summary. The generated summary retains
+`PENDING_SCIENTIFIC_ASSESSMENT`; the decision here is the manual assessment.
 
-| Member | Anatomy | Fragment | Interpretation |
-|---|---|---|---|
-| `member_01` | Missing | Missing | Training has not produced a checkpoint in the current workspace. |
-| `member_02` | `checkpoint_best.pth` and `checkpoint_final.pth` present | `checkpoint_best.pth` and `checkpoint_latest.pth` present; no final checkpoint | Fragment training failed after one DDP rank early-stopped and the other rank entered the next epoch. The best checkpoint archive is structurally readable, but its scientific acceptance is unresolved because checkpoint selection used rank-local validation metrics. |
-| `member_03` | `checkpoint_best.pth` and `checkpoint_final.pth` present | `checkpoint_best.pth` and `checkpoint_final.pth` present | The fragment command reached early stopping at epoch 85 and logged `Training done`. Code inspection shows that the same rank-local validation path was used, so checkpoint-selection validity must be resolved together with member 02. |
+| Structural risk | Score | AURC (lower is better) | Controlled Spearman | Top-10% / top-20% failure enrichment |
+|---|---|---:|---:|---:|
+| `1 - Instance F1` | FA-IPD | 0.1866 | 0.1467 | 0.968 / 1.129 |
+| `1 - Instance F1` | Foreground Jaccard | 0.1865 | 0.1473 | 0.968 / 1.129 |
+| `1 - Instance F1` | Mean entropy | 0.1911 | 0.1812 | 0.968 / 1.129 |
+| `1 - Instance F1` | P95 entropy | 0.1742 | 0.1415 | 0.968 / 0.968 |
+| Normalized merge + split | FA-IPD | 0.8219 | -0.3349 | 0.968 / 1.129 |
+| Normalized merge + split | Foreground Jaccard | 0.8447 | -0.3394 | 0.968 / 1.129 |
+| Normalized merge + split | Mean entropy | 0.8078 | -0.3053 | 0.968 / 1.129 |
 
-All eight present Stage 3 checkpoint archives for members 02 and 03 passed
-read-only ZIP integrity checks. `scripts/stage3_h1.py check` reports Anatomy and
-Fragment checkpoints for both members and no checkpoints for member 01. This
-presence check does not establish correct DDP validation aggregation or H1
-scientific validity.
+FA-IPD gives no meaningful advantage in at least two required dimensions:
+top-k enrichment is tied with Jaccard and mean entropy, controlled association
+does not improve on the relevant baselines, and AURC is mixed. The FA-IPD and
+Jaccard scores have Spearman rank correlation 0.998 across the 40 cases; their
+top-4 sets are identical and their top-8 sets overlap in seven cases. This
+does not establish a structural benefit beyond foreground disagreement. The
+failure prevalence is 31/40, so the top-10% enrichment of 0.968 is below the
+cohort prevalence. Case `076` meets the predeclared illustrative-example rule,
+but one example does not reverse the aggregate gateway result.
 
-The first Fragment warm-start attempt for member 03 was rejected by PyTorch's
-restricted checkpoint loader because the locally generated Anatomy checkpoint
-contains a NumPy scalar. The repository's explicit trusted-source opt-in,
-`PENGWIN_ALLOW_UNSAFE_TORCH_LOAD=1`, was then scoped to the user-run Fragment
-commands. This opt-in is appropriate only for the locally generated, trusted
-checkpoints and is not a general setting.
+**Manual gateway decision (2026-10-05): FAIL.** This was recorded as a
+completed negative H1 result. The approved Stage 4 prerequisite is not met. No
+Stage 4 AL pilot was implemented or run. The 2026-10-09 diagnosis below shows
+that this result does not isolate FA-IPD, so it is not treated as a valid
+negative test of the method.
 
-No Stage 3 member-level `validation_predictions` or
-`validation_probabilities` directories, complete member inference manifests,
-uncertainty table, H1 comparison table, risk-coverage outputs, or H1 summary
-were observed. The `.mha` files under the Anatomy trainer's internal
-`fold_0/validation` directories are training validation artifacts; they are
-not the required Stage 3 two-stage member inference products.
+## Post-hoc diagnosis (2026-10-09)
 
-## Blocking issue
+All checks below are read-only. Ground truth was read only retrospectively for
+debugging; no score or acquisition rule was changed. Evidence and scripts are in
+`outputs/stage3_h1/diagnostics/`. The member prediction volumes were read from
+the copy at `/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/`,
+which produced the H1 artifacts in this workspace.
 
-Member 02 Fragment training exposed a defect in the custom DDP validation and
-early-stopping path. Rank 1 reported no F1 improvement for 25 epochs and exited
-at epoch 70 while rank 0 entered epoch 70. Rank 0 then timed out after 1,800
-seconds in NCCL `ALLREDUCE`, and the user-run command ended with
-`ProcessExitedException`/`SIGABRT`.
+### Observed facts
 
-The standard nnU-Net `on_validation_epoch_end` gathers validation statistics
-across all ranks. The custom Fragment override in
-`baselines/pengwin2026-task1-abbc/code_task1/core.py` instead computes F1, EMA,
-best-checkpoint selection, and early stopping independently on each rank. This
-explains the divergent stop decisions. Re-running the unchanged command is not
-a fix: the wrapper starts fresh and can reproduce the same failure. Silently
-switching to one GPU would change the frozen two-GPU training protocol and is
-not allowed.
+1. **FA-IPD reduces to foreground Jaccard.** In `uncertainty_scores.csv`,
+   member foreground Jaccard disagreement has median 0.365 (range 0.021–0.619).
+   The coverage-weighted NVI term (`fa_weighted_partition_contribution`) has
+   median 0.0034 and is a median 1.1% of FA-IPD (max 62.5%). The FA-IPD/Jaccard
+   Spearman correlation is 1.00 to two decimals (0.998 above).
+2. **The foreground disagreement is whole-bone presence, not fragment
+   partition.** The 40-case validation set has 20 pelvic and 20 femur-only
+   cases. For the 20 pelvic cases, the median fraction of each GT bone covered
+   by predicted foreground is:
 
-Member 02's `checkpoint_best.pth` was written at epoch 61, before the timeout,
-and its archive integrity check passed. The downstream Stage 3 code references
-`checkpoint_best.pth`, not `checkpoint_final.pth`. It is therefore a readable
-recovery artifact, but it is not accepted as a final scientific artifact while
-the rank-local checkpoint-selection defect remains unresolved.
+   | Model | Sacrum | Left hip | Right hip |
+   |---|---:|---:|---:|
+   | Stage 2 single model | 0.98 | 0.51 (10/20 cases < 0.5) | 0.74 (4/20) |
+   | `member_01` | 0.97 | 0.24 (13/20) | 0.86 (2/20) |
+   | `member_02` | 0.98 | 0.87 (4/20) | 0.73 (8/20) |
+   | `member_03` | 0.97 | 0.73 (7/20) | 0.66 (7/20) |
 
-## Historical runtime handoff observation
+   Coverage by the correctly labelled anatomy block is lower still (Stage 2
+   left hip median 0.25; `member_02` right hip 0.46). Member coverage of one
+   bone spans at least 0.5 in 16/20 cases for the left hip and 9/20 for the
+   right hip. Example case `004`: GT has both hips (~315k voxels each); Stage 2
+   and `member_02` have no left-hip foreground, and `member_02` labels the
+   right hip with the left-hip block (51–100). Case `177`: `member_02` covers
+   only the right hip and `member_03` only the left.
+3. **Likely root cause: L/R mirror augmentation in Stage A.**
+   `PengwinTrainerSTUNetBaseAnatomyV301` was written for `Dataset539`. The
+   upstream trainer disables axis-2 (L/R) mirroring only for datasets in
+   `DISABLE_X_MIRROR_DATASETS` (`code_task1/core.py`), which contains only
+   `Dataset539_PelvicFemurAnatomyV3`. The upstream comment attributes 87.6% of
+   its hip errors to L/R swaps caused by this augmentation. Our Anatomy dataset
+   is `Dataset701_PENGWINStage2Anatomy`, so it is not covered: the Stage 3
+   Anatomy `debug.json` records `inference_allowed_mirroring_axes (0, 1, 2)`
+   and `transpose_forward [0, 1, 2]`, so axis 2 is L/R and training applied
+   L/R flips without swapping LeftHip/RightHip labels. No project doc or config
+   mentions this. Because Stage 2 uses the same dataset and trainer, the defect
+   also applies to the Stage 2 backend and therefore to the H1 risk labels.
+4. **`member_02` used the crashed-run checkpoint.** Its inference manifest
+   records Fragment SHA-256 `f5b99a60…`, identical to the epoch-61
+   `checkpoint_best.pth` from the run that ended in the DDP divergent
+   early-stop/NCCL timeout. The rank-local Fragment validation/early-stop
+   defect in `code_task1/core.py` was not fixed before inference. `member_01`
+   (stopped at epoch 78) and `member_03` (epoch 85) used the same rank-local
+   path.
+
+### Interpretation
+
+The ensemble mostly disagrees about whether a whole hip exists, which the
+presence (Jaccard) term captures and the partition (NVI) term cannot. The H1
+comparison therefore measures a Stage A laterality defect, with risk labels
+from a model that has the same defect. It does not test FA-IPD on a backend
+that segments every bone.
+
+### Unresolved
+
+- The causal link between the mirror setting and the hip losses is inferred
+  from code, logs, and outputs; it is not yet confirmed by a retrained model.
+- The 20 femur-only cases were not diagnosed.
+- NVI is normalized by `log(number of active voxels)` (≈14 at 10^6 voxels),
+  which keeps the partition term small. This is part of the frozen contract;
+  changing it after seeing validation results would be tuning on the analysis
+  set, so it is recorded only as an observation.
+- Whether Stage 2's PASS must be reopened is a user decision.
+
+## Runtime handoff observation
 
 At the 2026-09-26 read-only check, GPUs 0, 1, 3, 4, 5, and 6 were idle (2 MiB each); GPUs 2 and 7 were busy. This is a snapshot, so recheck before reserving GPUs. The same 18 orphaned `multiprocessing.spawn` workers plus one resource tracker from the old `exchange-stage2` environment still had `PPID=1` and retained about 20 GiB RSS. They had no reported GPU allocation and were not terminated by the agent. Have their owner verify and clear these exact stale processes before launching the concurrent jobs.
 
 ## Gateway
 
-**BLOCKED.** Partial real training artifacts now exist, but the M=3 ensemble is
-incomplete, the Fragment DDP validation/early-stop path is defective, and no
-required two-stage inference or H1 result exists. Fix and validate the main
-method; do not substitute a single-GPU run, reduce the ensemble, or promote the
-readable member 02 checkpoint without resolving the defect. The manual gateway
-cannot be evaluated until all three corrected members complete inference and
-the frozen H1 analyses exist. Proceed to H2 only if FA-IPD then shows meaningful
-advantage in at least two of AURC, top-k enrichment, and controlled association,
-without collapsing to the Jaccard-only term or fragment-size/count confounding.
+**BLOCKED.** The 2026-10-05 outputs did not meet the two-of-three advantage
+requirement, and FA-IPD ranked cases almost identically to foreground Jaccard.
+The 2026-10-09 diagnosis shows that the result is confounded by a Stage A L/R
+mirror defect, shared by the backend that supplies the H1 risks, and by the
+unfixed DDP early-stop defect (`member_02` used the crashed-run checkpoint).
+The gateway cannot be validly assessed until these are fixed and the ensemble
+is retrained. Stage 4 and H2 remain stopped.
 
 ## Agent-typed commands
 
@@ -134,45 +189,30 @@ conda run -n exchange-stage2 ruff check scripts/validate_stage2_artifacts.py scr
 
 The `/tmp` commands used generated arrays only. They did not train a model or read validation images/labels during acquisition scoring.
 
-Additional lightweight, read-only update checks performed on 2026-10-04:
+Read-only diagnosis checks run on 2026-10-09 (inline scratch scripts; the two
+reusable ones are saved in `outputs/stage3_h1/diagnostics/`):
 
 ```bash
-cat __docs__/plan.md
-cat __docs__/rule.md
-cat __docs__/reports/stage3_h1.md
-git status --short
-find outputs/stage3_h1 -type f \( -name 'checkpoint_*.pth' -o -name '*.mha' -o -name '*.csv' -o -name '*manifest*.json' -o -name 'h1_summary.json' -o -name 'risk_coverage.png' \) -printf '%TY-%Tm-%Td %TH:%TM:%TS\t%s\t%p\n' | sort
-for f in $(find outputs/stage3_h1/members/member_02 outputs/stage3_h1/members/member_03 -type f -name 'checkpoint_*.pth' | sort); do unzip -t "$f"; done
-for f in $(find outputs/stage3_h1/members/member_02 outputs/stage3_h1/members/member_03 -type f -name 'training_log_*.txt' | sort); do rg -n 'Early stopping|Training done|perform_actual_validation SKIPPED|Yayy! New best' "$f"; done
-rg -n 'def on_validation_epoch_end|all_gather_object|checkpoint_best|checkpoint_final' baselines/PENGWIN_Challenge/nnUNet/nnunetv2/training/nnUNetTrainer/nnUNetTrainer.py baselines/pengwin2026-task1-abbc/code_task1/core.py scripts/predict_stage3_member.py scripts/stage2_backend.py
-PYTHONDONTWRITEBYTECODE=1 conda run -n exchange-stage2 python scripts/stage3_h1.py check
-git diff --check -- __docs__/reports/stage3_h1.md
-for member in member_01 member_02 member_03; do for name in validation_predictions validation_probabilities; do artifact_dir="outputs/stage3_h1/members/$member/$name"; if [ -d "$artifact_dir" ]; then find "$artifact_dir" -type f | wc -l; else echo "MISSING $artifact_dir"; fi; done; done
+diff -rq --exclude=.git --exclude=baselines --exclude=outputs --exclude=data --exclude=__pycache__ /home/24chuong.ta/chun/Exchange-ML /mnt/sdb/shared/dang.cpm/Exchange-ML
+cp -p /mnt/sdb/shared/dang.cpm/Exchange-ML/<6 differing code/doc files> <same paths here>
+cp -p /mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/{h1_summary.json,h1_comparison.csv,risk_coverage.csv,risk_coverage.png,stratified_analysis.csv,uncertainty_scores.csv,uncertainty_scoring_manifest.json} outputs/stage3_h1/
+cp -p /mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_0{1,2,3}/validation_inference_manifest.json <same paths here>
+conda run --no-capture-output -n exchange-stage2 python outputs/stage3_h1/diagnostics/fa_ipd_decomposition.py
+conda run --no-capture-output -n exchange-stage2 python outputs/stage3_h1/diagnostics/bone_recall_by_model.py
+sha256sum outputs/stage3_h1/members/member_02/nnUNet_results/Dataset702_PENGWINStage2Fragment/*/fold_0/checkpoint_best.pth
+grep -nE "Early stopping|Training done|Yayy" /mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_0*/nnUNet_results/Dataset702_*/*/fold_0/training_log_*.txt
+grep -n "mirror" baselines/pengwin2026-task1-abbc/code_task1/core.py outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_*/*/fold_0/debug.json
 ```
 
-The first form of the final directory loop used `path` as a zsh variable,
-which temporarily replaced `PATH` and caused only the trailing `rg` command to
-fail with `command not found`. The corrected `artifact_dir` form above passed;
-the failed diagnostic made no file changes.
+Inline scripts also read case `004` geometry, labels, per-anatomy overlaps,
+and GT for cases `004`, `254`, `336`, and `417`. A first run of the bone
+recall script failed because a scratch file named `grp.py` shadowed the Python
+standard-library `grp` module; it was renamed and the rerun succeeded.
 
 ## User-typed commands
 
-The following trusted-checkpoint Fragment commands were prepared for and run
-by the user. They are recorded as execution history, not as commands for the
-agent to run:
-
-```bash
-conda run --no-capture-output -n exchange-stage2 env CUDA_VISIBLE_DEVICES=5,6 MASTER_PORT=29603 PENGWIN_ALLOW_UNSAFE_TORCH_LOAD=1 python scripts/stage3_h1.py train --stage fragment --member member_03 --device cuda --num-gpus 2
-conda run --no-capture-output -n exchange-stage2 env CUDA_VISIBLE_DEVICES=2,4 MASTER_PORT=29602 PENGWIN_ALLOW_UNSAFE_TORCH_LOAD=1 python scripts/stage3_h1.py train --stage fragment --member member_02 --device cuda --num-gpus 2
-```
-
-The member 03 command completed. The member 02 command failed with the DDP
-divergent-early-stop/NCCL timeout described above. Do not rerun either command
-unchanged as a scientific remedy. No new full-run command is prepared until
-the DDP aggregation defect is fixed and its lightweight validation passes.
-
-The original frozen execution handoff follows for provenance; it is currently
-superseded by the blocker above.
+The commands below are the original execution handoff, retained for provenance.
+They are superseded by the completed H1 evaluation and are not a new run plan.
 
 Run from the repository root. This schedule keeps the frozen two-GPU DDP
 training and member seeds. The `CUDA_VISIBLE_DEVICES` and `MASTER_PORT`
@@ -257,9 +297,14 @@ the completed score file and manifest.
 
 ## Next step
 
-Fix the custom Fragment validation path so all DDP ranks use the same globally
-aggregated metrics and stop decision, then validate that fix with lightweight
-tests before preparing any further user-run training command. After corrected
-M=3 training and real inference complete, run the frozen scoring/evaluation,
-review the H1 table and figure manually, and record PASS or FAIL without
-automatic promotion to Stage 4.
+Awaiting user approval to fix the backend, not the FA-IPD method:
+
+1. disable axis-2 (L/R) mirroring for `Dataset701_PENGWINStage2Anatomy`,
+   matching the upstream intent for its anatomy dataset;
+2. aggregate Fragment validation F1, best-checkpoint selection, and early
+   stopping across DDP ranks;
+3. validate both with lightweight tests, then prepare user-typed retraining of
+   the Stage 2 backend and all three Stage 3 members, followed by inference,
+   scoring, and evaluation.
+
+No new full-run command is prepared until the fixes are approved and tested.

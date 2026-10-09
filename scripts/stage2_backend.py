@@ -163,6 +163,7 @@ def _run_ddp_rank(
     stage_config: dict[str, Any],
     software_config: dict[str, Any],
     model_seed: int | None,
+    resume: bool = False,
 ) -> None:
     """Run one DDP rank while preserving custom trainer discovery in spawn children."""
     import nnunetv2.run.run_training as run_training
@@ -178,7 +179,7 @@ def _run_ddp_rank(
         software_config["plans"],
         False,  # use_compressed_data
         False,  # disable_checkpointing
-        False,  # continue_training
+        resume,  # continue_training
         False,  # only_run_validation
         None,  # pretrained_weights; Stage B uses PENGWIN_STUNET_PRETRAINED
         False,  # export_validation_probabilities
@@ -212,6 +213,7 @@ def patch_and_train(
     device: str,
     num_gpus: int,
     model_seed: int | None = None,
+    resume: bool = False,
 ) -> None:
     check(config)
     env = environment(config)
@@ -255,7 +257,7 @@ def patch_and_train(
             os.environ["MASTER_PORT"] = str(run_training.find_free_network_port())
         torch.multiprocessing.spawn(
             _run_ddp_rank,
-            args=(num_gpus, stage_config, config["software"], model_seed),
+            args=(num_gpus, stage_config, config["software"], model_seed, resume),
             nprocs=num_gpus,
             join=True,
         )
@@ -268,6 +270,7 @@ def patch_and_train(
         trainer_class_name=stage_config["trainer"],
         plans_identifier=config["software"]["plans"],
         device=torch_device,
+        continue_training=resume,
     )
 
 

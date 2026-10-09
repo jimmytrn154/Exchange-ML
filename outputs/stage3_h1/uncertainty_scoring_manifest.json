@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "case_count": 40,
+  "member_ids": [
+    "member_01",
+    "member_02",
+    "member_03"
+  ],
+  "member_provenance": {
+    "member_01": {
+      "model_seed": 31001,
+      "manifest": "outputs/stage3_h1/members/member_01/validation_inference_manifest.json",
+      "manifest_sha256": "f389de4842d63a9a3fbdcfefbdacab9012a7e0a03d1e913627ea311eba229505",
+      "checkpoint_sha256": {
+        "anatomy": "13cb0a2f64dd415f8bf626598004d2970077ac2a03e342e8cec871e896a41e23",
+        "fragment": "ea0d077326d446c1fc96ba1da425fae3bec4e9a442aecb3dd367ec842941c322"
+      }
+    },
+    "member_02": {
+      "model_seed": 31002,
+      "manifest": "outputs/stage3_h1/members/member_02/validation_inference_manifest.json",
+      "manifest_sha256": "41dfeb2273390301c777bafbf6e715f182a86aa434992d7cd859a8aa0febf223",
+      "checkpoint_sha256": {
+        "anatomy": "0308e967ef85c01aefd396d31e9402c97fa23fdd644245c49a647d066dfbbd06",
+        "fragment": "f5b99a609daa9cfa858c007b6897bf446fc28101faefa8c0e3eaa7f93a86e8a1"
+      }
+    },
+    "member_03": {
+      "model_seed": 31003,
+      "manifest": "outputs/stage3_h1/members/member_03/validation_inference_manifest.json",
+      "manifest_sha256": "be34e38c7ec618b7e3827409806ec2b95a84f914e4a0e76042ea46aa10e665ba",
+      "checkpoint_sha256": {
+        "anatomy": "6d28b0c697db89c69b9624ab98870d5ddcacf448079c898ac7ae65d7c57e8de1",
+        "fragment": "39b1dd32818edbf7276260a81a0f21f147297124e814ad14eec73ce48e91db48"
+      }
+    }
+  },
+  "config": "configs/stage3_h1.json",
+  "config_sha256": "64501bae8a620fd0b9a0eeb3f3d0f8951cf766bac965135f0ff5d6fd09098106",
+  "ground_truth_loaded": false,
+  "probability_contract": {
+    "classes": [
+      "background",
+      "target_foreground"
+    ],
+    "foreground_probability": "per-anatomy Stage-B ABBC probability 1-p(background), linearly resampled to the input grid and combined by voxelwise maximum",
+    "dtype_on_disk": "float32",
+    "range": [
+      0.0,
+      1.0
+    ]
+  },
+  "score_contract": {
+    "roi": "union of the three cleaned member foreground predictions; fixed once per case and shared by every score",
+    "prediction_connectivity": 26,
+    "prediction_component_prune_min_volume_mm3": 1000.0,
+    "morphology": "none",
+    "nvi_normalization": "VI/log(number of active voxels)",
+    "entropy_log_base": "natural",
+    "fragment_count_variance": "population variance across members",
+    "hungarian_disagreement": "mean pairwise one-minus anatomy-restricted Hungarian IoU, unmatched instances contribute zero similarity",
+    "scores": [
+      "mean_entropy",
+      "p95_entropy",
+      "pairwise_semantic_dice_disagreement",
+      "foreground_jaccard_disagreement",
+      "union_foreground_nvi",
+      "fragment_count_variance",
+      "hungarian_structural_disagreement",
+      "fa_ipd"
+    ]
+  },
+  "output": "outputs/stage3_h1/uncertainty_scores.csv",
+  "output_sha256": "4fe72b56b1d00d1121468047f2904a08e64201b81ef81ad665af64d32390434a"
+}
