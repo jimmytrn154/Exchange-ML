@@ -34,7 +34,9 @@ def stage2_paths(config: dict[str, Any]) -> dict[str, Path]:
         "results": Path(
             config["paths"].get("results_root", root / "nnUNet_results")
         ),
-        "manifest": root / "stage2_preparation_manifest.json",
+        "manifest": Path(
+            config["paths"].get("manifest_path", root / "stage2_preparation_manifest.json")
+        ),
     }
 
 
@@ -115,6 +117,45 @@ def install_splits(config: dict[str, Any]) -> None:
         ]
         target.write_text(json.dumps(payload, indent=2), encoding="utf-8")
         print(f"installed frozen split: {target}")
+
+
+def write_case_labeled_map(config: dict[str, Any]) -> Path:
+    """Write the Anatomy marginal-loss case map for this run and return its path.
+
+    The reference trainer otherwise looks for an upstream-only file and silently
+    falls back to treating every class as labelled in every case.
+    """
+    import SimpleITK as sitk
+
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+    from exchange_ml.stage2_backend import case_labeled_class_map, marginal_case_key
+
+    paths = stage2_paths(config)
+    dataset = config["anatomy_stage"]["dataset_name"]
+    label_dir = paths["raw"] / dataset / "labelsTr"
+    files = sorted(label_dir.glob("*.mha"))
+    if not files:
+        raise FileNotFoundError(f"no Anatomy labels found: {label_dir}")
+    targets = {
+        path.name[: -len(".mha")]: sitk.GetArrayFromImage(sitk.ReadImage(str(path)))
+        for path in files
+    }
+    mapping = case_labeled_class_map(targets)
+    manifest = json.loads(paths["manifest"].read_text(encoding="utf-8"))
+    samples = manifest["split_samples"]["anatomy"]
+    missing = sorted(
+        identifier
+        for role in ("train", "validation")
+        for identifier in samples[role]
+        if marginal_case_key(identifier) not in mapping
+    )
+    if missing:
+        raise RuntimeError(f"marginal case map misses split samples: {missing}")
+    target = paths["results"] / dataset / "case_labeled_classes.json"
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(json.dumps(mapping, indent=2, sort_keys=True), encoding="utf-8")
+    print(f"Anatomy marginal case map: {len(mapping)} cases -> {target}", flush=True)
+    return target
 
 
 def _patch_trainer_discovery(stage_config: dict[str, Any]) -> None:
@@ -239,6 +280,12 @@ def patch_and_train(
                 f"{anatomy_checkpoint}"
             )
         os.environ["PENGWIN_STUNET_PRETRAINED"] = str(anatomy_checkpoint.resolve())
+        # PyTorch 2.1 cannot safely unpickle nnU-Net's NumPy metadata. Trust only
+        # this run's locally produced Anatomy checkpoint (same rule as stage3_h1.py).
+        os.environ["PENGWIN_TRUSTED_WARMSTART_CHECKPOINT"] = str(anatomy_checkpoint.resolve())
+    else:
+        # Set before spawning so every DDP rank loads the same map.
+        os.environ["PENGWIN_CASE_LABELED_MAP"] = str(write_case_labeled_map(config).resolve())
     sys.path.insert(0, env["PENGWIN_CODE_DIR"])
     import nnunetv2.run.run_training as run_training
     import torch

@@ -59,6 +59,7 @@ def member_stage2_config(
     stage2["paths"]["raw_root"] = str(shared["raw"])
     stage2["paths"]["preprocessed_root"] = str(shared["preprocessed"])
     stage2["paths"]["results_root"] = str(root / "nnUNet_results")
+    stage2["paths"]["manifest_path"] = str(shared["manifest"])
     return stage2
 
 

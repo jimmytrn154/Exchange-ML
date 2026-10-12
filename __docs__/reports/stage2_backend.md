@@ -1,8 +1,26 @@
 # Stage 2 — Stable fixed PENGWIN backend
 
-Status: **PASS — internal research backend complete**
+Status: **REOPENED (2026-10-12) — BLOCKED pending retraining with the Stage A
+L/R mirror fix.** The 2026-09-26 PASS below is retained as history.
 
-Date: 2026-09-26 (Asia/Ho_Chi_Minh)
+Date: 2026-09-26 (Asia/Ho_Chi_Minh). Reopened: 2026-10-12 by user decision.
+
+## Reopening note (2026-10-12)
+
+The Stage 3 diagnosis (`__docs__/reports/stage3/stage3_h1.md`, Post-hoc
+diagnosis) found that Stage A was trained with axis-2 (L/R) mirror
+augmentation on `Dataset701_PENGWINStage2Anatomy`, because the reference
+trainer disables it only for `Dataset539`. LeftHip/RightHip labels were not
+swapped with the image. On the 20 pelvic validation cases this backend covers
+a median 0.51 of the GT left hip with any foreground (0.25 with the correct
+anatomy label; 10/20 cases below 0.5). That does not meet this stage's gateway
+("stable, meaningful instance predictions suitable for structural uncertainty
+analysis"), and this model's metrics are the frozen H1 risk labels.
+
+The backend fix and its tests are tracked in
+`__docs__/reports/stage3/stage3_fix_progress.md` (F1). The Stage A + Stage B
+backend must be retrained with the fix, re-evaluated, and re-closed before its
+metrics are used as H1 risks.
 
 ## Configuration
 
@@ -95,7 +113,9 @@ python3 scripts/validate_stage2_artifacts.py
 
 ## Gateway
 
-**PASS — internal research backend.** The model completed all 40 frozen validation cases with nonzero instance outputs and useful variation in structural error, so it is operationally suitable for Stage 3 uncertainty analysis. This is not evidence of multi-seed training stability, expert anatomical validity, hidden-test performance, or equivalence to the official PENGWIN evaluator.
+**REOPENED (2026-10-12): BLOCKED** — see the reopening note above.
+
+Original 2026-09-26 decision: **PASS — internal research backend.** The model completed all 40 frozen validation cases with nonzero instance outputs and useful variation in structural error, so it is operationally suitable for Stage 3 uncertainty analysis. This is not evidence of multi-seed training stability, expert anatomical validity, hidden-test performance, or equivalence to the official PENGWIN evaluator.
 
 ## Agent-typed commands
 
@@ -183,5 +203,8 @@ conda run -n exchange-stage2 python scripts/prepare_stage2_backend.py
 ```
 
 ## Next step
+
+Superseded on 2026-10-12: retrain and re-evaluate this backend with fix F1,
+following `__docs__/reports/stage3/stage3_fix_progress.md`. Original text:
 
 Execute Stage 3 exactly as printed by `python scripts/stage3_h1.py print-runbook`. Stage 3 remains scientifically blocked until all three independently seeded members are trained, all 40 validation cases have predictions and genuine Stage-B probabilities, and the retrospective H1 artifacts are reviewed against the manual two-of-three gateway.
