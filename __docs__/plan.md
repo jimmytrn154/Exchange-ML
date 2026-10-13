@@ -188,7 +188,7 @@ PENGWIN evaluator.
 ## Stage 2 — Stable fixed PENGWIN backend
 **Target: 23–30 Sep**
 
-**Status: PASS (2026-09-26) — internal research backend.**
+**Status: REOPENED (2026-10-12) — retraining in progress; Stage A passed gate G1 on 2026-10-13; Stage B, inference, and metrics pending. The 2026-09-26 PASS is superseded. See `__docs__/reports/stage2_backend.md`.**
 
 ### Work
 1. Inspect/adapt the **PENGWIN 2026 ABBC boundary/core** implementation.
@@ -207,7 +207,7 @@ PENGWIN evaluator.
 ## Stage 3 — FA-IPD + H1 Round-0 benchmark
 **Target: 29 Sep–4 Oct**
 
-**Status: FAIL (2026-10-05) — M=3 execution complete; the H1 scientific gateway was not met. See `__docs__/reports/stage3_h1.md`.**
+**Status: BLOCKED (2026-10-09) — the 2026-10-05 H1 FAIL is confounded by backend defects (Stage A L/R mirror, rank-local Fragment DDP validation); fixes and retraining tracked in `__docs__/reports/stage3/stage3_fix_progress.md`. See `__docs__/reports/stage3/stage3_h1.md`.**
 
 **This is the main scientific go/no-go gate.**
 
@@ -251,7 +251,7 @@ Acquisition scoring is GT-free. Retrospective H1 evaluation joins the frozen
 Stage 2 single-model validation risks only after all ensemble scores are written.
 
 ### Report
-`__docs__/reports/stage3_h1.md`: one comparison table, risk–coverage figure, one low-entropy/high-FA-IPD failure example.
+`__docs__/reports/stage3/stage3_h1.md`: one comparison table, risk–coverage figure, one low-entropy/high-FA-IPD failure example.
 
 ### Gateway
 Proceed to H2 only if FA-IPD shows a meaningful advantage in at least **2 of 3**:

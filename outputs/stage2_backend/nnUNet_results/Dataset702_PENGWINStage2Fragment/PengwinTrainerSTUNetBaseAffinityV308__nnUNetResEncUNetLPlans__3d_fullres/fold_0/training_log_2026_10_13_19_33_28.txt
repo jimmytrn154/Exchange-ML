@@ -1,0 +1,56 @@
+
+#######################################################################
+Please cite the following paper when using nnU-Net:
+Isensee, F., Jaeger, P. F., Kohl, S. A., Petersen, J., & Maier-Hein, K. H. (2021). nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation. Nature methods, 18(2), 203-211.
+#######################################################################
+ 
+2026-10-13 19:33:28.257290: [PengwinTrainer] loss_profile=dc_ce boundary=0.0 tversky=0.0@(0.3,0.7) ce_weights=off oversample_profile=default oversample_fg=0.33 
+2026-10-13 19:33:28.257373: [ABBCPhase1V302] backbone=STUNetB out=4 loss=LeakFreeInstanceABBCLoss(boundary-weighted) decode=real-watershed-regrow ds=off num_epochs=1000 initial_lr=0.001 ES(min=30,pat=25,delta=0.005) warmstart_env=PENGWIN_STUNET_PRETRAINED 
+2026-10-13 19:33:28.257797: do_dummy_2d_data_aug: False 
+2026-10-13 19:33:28.259549: Using splits from existing split file: /home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset702_PENGWINStage2Fragment/splits_final.json 
+2026-10-13 19:33:28.259710: The split file contains 1 splits. 
+2026-10-13 19:33:28.259770: Desired fold for training: 0 
+2026-10-13 19:33:28.259820: This split has 80 training and 80 validation cases. 
+2026-10-13 19:34:14.726420: [STU-Net warm-start] /home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_best.pth: {'loaded': 120, 'skipped_seg': 10, 'kept_init': 0, 'total_model_keys': 130, 'prefix': '(none)', 'inflate': 'n/a(1ch)', 'num_inputs': 1} 
+
+This is the configuration used by this training:
+Configuration name: 3d_fullres
+ {'data_identifier': 'nnUNetPlans_3d_fullres', 'preprocessor_name': 'DefaultPreprocessor', 'batch_size': 2, 'patch_size': [256, 160, 160], 'median_image_size_in_voxels': [280.5, 203.0, 207.5], 'spacing': [0.801025390625, 0.78125, 0.78125], 'normalization_schemes': ['NoNormalization'], 'use_mask_for_norm': [False], 'resampling_fn_data': 'resample_data_or_seg_to_shape', 'resampling_fn_seg': 'resample_data_or_seg_to_shape', 'resampling_fn_data_kwargs': {'is_seg': False, 'order': 3, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_seg_kwargs': {'is_seg': True, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_probabilities': 'resample_data_or_seg_to_shape', 'resampling_fn_probabilities_kwargs': {'is_seg': False, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'architecture': {'network_class_name': 'dynamic_network_architectures.architectures.unet.ResidualEncoderUNet', 'arch_kwargs': {'n_stages': 6, 'features_per_stage': [32, 64, 128, 256, 320, 320], 'conv_op': 'torch.nn.modules.conv.Conv3d', 'kernel_sizes': [[3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3]], 'strides': [[1, 1, 1], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]], 'n_blocks_per_stage': [1, 3, 4, 6, 6, 6], 'n_conv_per_stage_decoder': [1, 1, 1, 1, 1], 'conv_bias': True, 'norm_op': 'torch.nn.modules.instancenorm.InstanceNorm3d', 'norm_op_kwargs': {'eps': 1e-05, 'affine': True}, 'dropout_op': None, 'dropout_op_kwargs': None, 'nonlin': 'torch.nn.LeakyReLU', 'nonlin_kwargs': {'inplace': True}}, '_kw_requires_import': ['conv_op', 'norm_op', 'dropout_op', 'nonlin']}, 'batch_dice': False} 
+ 
+These are the global plan.json settings:
+ {'dataset_name': 'Dataset702_PENGWINStage2Fragment', 'plans_name': 'nnUNetResEncUNetLPlans', 'original_median_spacing_after_transp': [0.801025390625, 0.78125, 0.78125], 'original_median_shape_after_transp': [248, 187, 198], 'image_reader_writer': 'SimpleITKIO', 'transpose_forward': [0, 1, 2], 'transpose_backward': [0, 1, 2], 'experiment_planner_used': 'nnUNetPlannerResEncL', 'label_manager': 'LabelManager', 'foreground_intensity_properties_per_channel': {'0': {'max': 1.0, 'mean': 0.46431419253349304, 'median': 0.4257272779941559, 'min': 0.01875000074505806, 'percentile_00_5': 0.1614285707473755, 'percentile_99_5': 0.9079000353813171, 'std': 0.176322340965271}}} 
+ 
+2026-10-13 19:34:14.801649: unpacking dataset... 
+2026-10-13 19:34:16.617351: unpacking done... 
+2026-10-13 19:34:16.625099: Unable to plot network architecture: 
+2026-10-13 19:34:16.626180: No module named 'hiddenlayer' 
+2026-10-13 19:34:16.723860:  
+2026-10-13 19:34:16.724506: Epoch 0 
+2026-10-13 19:34:16.725147: Current learning rate: 0.001 
+2026-10-13 19:43:57.140517: [instance] IoU-F=0.5485 recall=0.5841 precision=0.1686 F1=0.2617 | n_pred/n_gt=9.7/2.8 
+2026-10-13 19:43:57.140920: train_loss 1.3818 
+2026-10-13 19:43:57.141048: val_loss 0.9871 
+2026-10-13 19:43:57.141152: Pseudo dice [0.5485, 0.5841, 0.1686, 0.2617] 
+2026-10-13 19:43:57.141254: Epoch time: 580.42 s 
+2026-10-13 19:43:57.141395: Yayy! New best EMA pseudo Dice: 0.2617 
+2026-10-13 19:43:59.110976:  
+2026-10-13 19:43:59.111191: Epoch 1 
+2026-10-13 19:43:59.111327: Current learning rate: 0.001 
+2026-10-13 19:52:08.258540: [instance] IoU-F=0.5744 recall=0.6482 precision=0.3159 F1=0.4247 | n_pred/n_gt=7.1/3.3 
+2026-10-13 19:52:08.258861: train_loss 0.9523 
+2026-10-13 19:52:08.258974: val_loss 0.7869 
+2026-10-13 19:52:08.259076: Pseudo dice [0.5744, 0.6482, 0.3159, 0.4247] 
+2026-10-13 19:52:08.259170: Epoch time: 489.15 s 
+2026-10-13 19:52:08.259248: Yayy! New best EMA pseudo Dice: 0.278 
+2026-10-13 19:52:11.884191:  
+2026-10-13 19:52:11.884449: Epoch 2 
+2026-10-13 19:52:11.884568: Current learning rate: 0.001 
+2026-10-13 20:00:03.214896: [instance] IoU-F=0.5765 recall=0.6472 precision=0.4294 F1=0.5163 | n_pred/n_gt=6.0/3.5 
+2026-10-13 20:00:03.215268: train_loss 0.7571 
+2026-10-13 20:00:03.215401: val_loss 0.7858 
+2026-10-13 20:00:03.215514: Pseudo dice [0.5765, 0.6472, 0.4294, 0.5163] 
+2026-10-13 20:00:03.215619: Epoch time: 471.33 s 
+2026-10-13 20:00:03.215710: Yayy! New best EMA pseudo Dice: 0.3019 
+2026-10-13 20:00:06.830962:  
+2026-10-13 20:00:06.831280: Epoch 3 
+2026-10-13 20:00:06.831452: Current learning rate: 0.001 

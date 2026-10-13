@@ -32,6 +32,34 @@ def semantic_anatomy_target(instance_map: np.ndarray) -> np.ndarray:
     return target
 
 
+def marginal_case_key(identifier: str) -> str:
+    """Case key exactly as the ABBC Anatomy trainer derives it from ``batch['keys']``."""
+    return str(identifier).replace("PENGWIN_", "").split("_")[0].zfill(3)
+
+
+def case_labeled_class_map(targets: dict[str, np.ndarray]) -> dict[str, list[int]]:
+    """Per-case labelled anatomy classes for the Anatomy partial-label (marginal) loss.
+
+    ``targets`` maps nnU-Net identifiers to five-class anatomy targets. A class is
+    labelled in a case when it occurs in that case's ground truth; visible but
+    unlabelled bones are then not trained as background.
+    """
+    valid = set(ANATOMY_LABELS.values())
+    mapping: dict[str, list[int]] = {}
+    for identifier, target in targets.items():
+        key = marginal_case_key(identifier)
+        if key in mapping:
+            raise ValueError(f"duplicate marginal case key {key!r} from {identifier!r}")
+        classes = sorted(int(value) for value in np.unique(target) if int(value) != 0)
+        if not classes:
+            raise ValueError(f"{identifier}: anatomy target has no labelled class")
+        unknown = set(classes) - valid
+        if unknown:
+            raise ValueError(f"{identifier}: unknown anatomy classes {sorted(unknown)}")
+        mapping[key] = classes
+    return mapping
+
+
 def bone_lut_normalize(image: np.ndarray) -> np.ndarray:
     """Apply the frozen ABBC piecewise-linear CT mapping to ``[0, 1]``."""
     values = np.asarray(image, dtype=np.float32)

@@ -1,0 +1,97 @@
+
+#######################################################################
+Please cite the following paper when using nnU-Net:
+Isensee, F., Jaeger, P. F., Kohl, S. A., Petersen, J., & Maier-Hein, K. H. (2021). nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation. Nature methods, 18(2), 203-211.
+#######################################################################
+ 
+2026-10-13 06:36:00.158963: [PengwinTrainer] loss_profile=dc_ce boundary=0.0 tversky=0.0@(0.3,0.7) ce_weights=off oversample_profile=default oversample_fg=0.33 
+2026-10-13 06:36:00.159257: [marginal] case→labeled 맵 로드: 80 cases (/home/24chuong.ta/chun/Exchange-ML/outputs/smoke_f4/nnUNet_results/Dataset701_PENGWINStage2Anatomy/case_labeled_classes.json) 
+2026-10-13 06:36:00.159758: do_dummy_2d_data_aug: False 
+2026-10-13 06:36:00.159861: [PengwinTrainer] Dataset701_PENGWINStage2Anatomy → disable axis-2 mirror (L/R asymmetry). mirror_axes: (0, 1, 2) → (0, 1) 
+2026-10-13 06:36:00.161433: Using splits from existing split file: /home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/splits_final.json 
+2026-10-13 06:36:00.161573: The split file contains 1 splits. 
+2026-10-13 06:36:00.161630: Desired fold for training: 0 
+2026-10-13 06:36:00.161682: This split has 40 training and 40 validation cases. 
+
+This is the configuration used by this training:
+Configuration name: 3d_fullres
+ {'data_identifier': 'nnUNetPlans_3d_fullres', 'preprocessor_name': 'DefaultPreprocessor', 'batch_size': 2, 'patch_size': [128, 288, 192], 'median_image_size_in_voxels': [265.5, 512.0, 320.0], 'spacing': [1.0, 0.78125, 0.78125], 'normalization_schemes': ['CTNormalization'], 'use_mask_for_norm': [False], 'resampling_fn_data': 'resample_data_or_seg_to_shape', 'resampling_fn_seg': 'resample_data_or_seg_to_shape', 'resampling_fn_data_kwargs': {'is_seg': False, 'order': 3, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_seg_kwargs': {'is_seg': True, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_probabilities': 'resample_data_or_seg_to_shape', 'resampling_fn_probabilities_kwargs': {'is_seg': False, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'architecture': {'network_class_name': 'dynamic_network_architectures.architectures.unet.ResidualEncoderUNet', 'arch_kwargs': {'n_stages': 6, 'features_per_stage': [32, 64, 128, 256, 320, 320], 'conv_op': 'torch.nn.modules.conv.Conv3d', 'kernel_sizes': [[3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3]], 'strides': [[1, 1, 1], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]], 'n_blocks_per_stage': [1, 3, 4, 6, 6, 6], 'n_conv_per_stage_decoder': [1, 1, 1, 1, 1], 'conv_bias': True, 'norm_op': 'torch.nn.modules.instancenorm.InstanceNorm3d', 'norm_op_kwargs': {'eps': 1e-05, 'affine': True}, 'dropout_op': None, 'dropout_op_kwargs': None, 'nonlin': 'torch.nn.LeakyReLU', 'nonlin_kwargs': {'inplace': True}}, '_kw_requires_import': ['conv_op', 'norm_op', 'dropout_op', 'nonlin']}, 'batch_dice': False} 
+ 
+These are the global plan.json settings:
+ {'dataset_name': 'Dataset701_PENGWINStage2Anatomy', 'plans_name': 'nnUNetResEncUNetLPlans', 'original_median_spacing_after_transp': [1.0, 0.78125, 0.78125], 'original_median_shape_after_transp': [294, 512, 308], 'image_reader_writer': 'SimpleITKIO', 'transpose_forward': [0, 1, 2], 'transpose_backward': [0, 1, 2], 'experiment_planner_used': 'nnUNetPlannerResEncL', 'label_manager': 'LabelManager', 'foreground_intensity_properties_per_channel': {'0': {'max': 2000.0, 'mean': 377.4230651855469, 'median': 256.0, 'min': -668.0, 'percentile_00_5': -71.0, 'percentile_99_5': 1498.0, 'std': 368.31622314453125}}} 
+ 
+2026-10-13 06:36:50.714339: unpacking dataset... 
+2026-10-13 06:36:52.433785: unpacking done... 
+2026-10-13 06:36:52.463403: Unable to plot network architecture: 
+2026-10-13 06:36:52.494663: No module named 'hiddenlayer' 
+2026-10-13 06:36:53.508961:  
+2026-10-13 06:36:53.518593: Epoch 0 
+2026-10-13 06:36:53.519159: Current learning rate: 0.001 
+2026-10-13 06:37:20.318922: train_loss 0.5773 
+2026-10-13 06:37:20.319912: val_loss 0.4265 
+2026-10-13 06:37:20.320580: Pseudo dice [0.0661, 0.036, 0.1555, 0.0151] 
+2026-10-13 06:37:20.320878: Epoch time: 26.81 s 
+2026-10-13 06:37:20.321139: Yayy! New best EMA pseudo Dice: 0.0682 
+2026-10-13 06:37:22.790783:  
+2026-10-13 06:37:22.791182: Epoch 1 
+2026-10-13 06:37:22.791322: Current learning rate: 0.001 
+2026-10-13 06:37:26.519968: train_loss 0.5649 
+2026-10-13 06:37:26.521948: val_loss 0.396 
+2026-10-13 06:37:26.525683: Pseudo dice [0.0576, 0.1453, 0.1065, 0.0363] 
+2026-10-13 06:37:26.526207: Epoch time: 3.73 s 
+2026-10-13 06:37:26.532988: Yayy! New best EMA pseudo Dice: 0.07 
+2026-10-13 06:37:31.488440:  
+2026-10-13 06:37:31.488828: Epoch 2 
+2026-10-13 06:37:31.489098: Current learning rate: 0.001 
+2026-10-13 06:37:35.319823: Early stopping: no EMA-Dice improvement for 1 epochs. Best EMA Dice = 0.0700 at epoch 2. Stopping at epoch 3. 
+2026-10-13 06:37:35.320285: train_loss 0.4767 
+2026-10-13 06:37:35.321045: val_loss 0.8405 
+2026-10-13 06:37:35.329251: Pseudo dice [0.0204, 0.0421, 0.0508, nan] 
+2026-10-13 06:37:35.330014: Epoch time: 3.83 s 
+2026-10-13 06:37:41.621450: Training done. 
+2026-10-13 06:37:41.646678: Using splits from existing split file: /home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/splits_final.json 
+2026-10-13 06:37:41.646875: The split file contains 1 splits. 
+2026-10-13 06:37:41.646948: Desired fold for training: 0 
+2026-10-13 06:37:41.647012: This split has 40 training and 40 validation cases. 
+2026-10-13 06:37:41.647350: predicting PENGWIN_004 
+2026-10-13 06:37:41.648942: PENGWIN_004, shape torch.Size([1, 224, 274, 417]), rank 0 
+2026-10-13 06:37:52.050375: predicting PENGWIN_030 
+2026-10-13 06:37:52.059278: PENGWIN_030, shape torch.Size([1, 285, 506, 506]), rank 0 
+2026-10-13 06:38:30.087082: predicting PENGWIN_036 
+2026-10-13 06:38:30.322807: PENGWIN_036, shape torch.Size([1, 307, 326, 512]), rank 0 
+2026-10-13 06:38:59.923843: predicting PENGWIN_047 
+2026-10-13 06:38:59.997975: PENGWIN_047, shape torch.Size([1, 241, 490, 490]), rank 0 
+2026-10-13 06:39:35.963120: predicting PENGWIN_056 
+2026-10-13 06:39:36.146614: PENGWIN_056, shape torch.Size([1, 285, 302, 509]), rank 0 
+2026-10-13 06:40:08.400831: predicting PENGWIN_074 
+2026-10-13 06:40:08.496606: PENGWIN_074, shape torch.Size([1, 261, 640, 640]), rank 0 
+2026-10-13 06:41:28.774899: predicting PENGWIN_104 
+2026-10-13 06:41:28.809152: PENGWIN_104, shape torch.Size([1, 295, 498, 447]), rank 0 
+2026-10-13 06:42:09.374545: predicting PENGWIN_151 
+2026-10-13 06:42:09.408938: PENGWIN_151, shape torch.Size([1, 217, 224, 342]), rank 0 
+2026-10-13 06:42:17.430344: predicting PENGWIN_167 
+2026-10-13 06:42:17.445109: PENGWIN_167, shape torch.Size([1, 248, 232, 427]), rank 0 
+2026-10-13 06:42:28.197973: predicting PENGWIN_177 
+2026-10-13 06:42:28.334535: PENGWIN_177, shape torch.Size([1, 207, 227, 382]), rank 0 
+2026-10-13 06:42:36.510494: predicting PENGWIN_254 
+2026-10-13 06:42:36.618485: PENGWIN_254, shape torch.Size([1, 278, 512, 256]), rank 0 
+2026-10-13 06:42:56.961387: predicting PENGWIN_259 
+2026-10-13 06:42:57.314609: PENGWIN_259, shape torch.Size([1, 309, 512, 256]), rank 0 
+2026-10-13 06:43:17.802425: predicting PENGWIN_268 
+2026-10-13 06:43:18.031869: PENGWIN_268, shape torch.Size([1, 299, 563, 282]), rank 0 
+2026-10-13 06:43:39.240083: predicting PENGWIN_293 
+2026-10-13 06:43:39.646104: PENGWIN_293, shape torch.Size([1, 483, 208, 234]), rank 0 
+2026-10-13 06:43:51.965581: predicting PENGWIN_317 
+2026-10-13 06:43:51.972968: PENGWIN_317, shape torch.Size([1, 224, 512, 256]), rank 0 
+2026-10-13 06:44:07.189528: predicting PENGWIN_336 
+2026-10-13 06:44:07.200426: PENGWIN_336, shape torch.Size([1, 499, 512, 256]), rank 0 
+2026-10-13 06:44:43.505078: predicting PENGWIN_340 
+2026-10-13 06:44:43.606646: PENGWIN_340, shape torch.Size([1, 228, 575, 287]), rank 0 
+2026-10-13 06:44:59.653168: predicting PENGWIN_355 
+2026-10-13 06:44:59.714647: PENGWIN_355, shape torch.Size([1, 265, 512, 256]), rank 0 
+2026-10-13 06:45:20.258503: predicting PENGWIN_365 
+2026-10-13 06:45:20.442526: PENGWIN_365, shape torch.Size([1, 297, 512, 256]), rank 0 
+2026-10-13 06:45:42.312778: predicting PENGWIN_415 
+2026-10-13 06:45:42.531378: PENGWIN_415, shape torch.Size([1, 321, 512, 240]), rank 0 
+2026-10-13 06:51:11.854567: Validation complete 
+2026-10-13 06:51:11.854727: Mean Validation Dice:  0.010832858354492797 
