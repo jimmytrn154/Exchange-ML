@@ -7,9 +7,9 @@ seeds, and evaluation protocol are unchanged.
 
 Opened: 2026-10-12. Last updated: 2026-10-12.
 
-Overall status: **IN PROGRESS — F1–F3 and F6 (D3) done and unit-tested; F4
-smoke and all re-runs wait for free GPUs; D4 (evaluation scope) to be decided
-before gate G2.**
+Overall status: **IN PROGRESS — F1–F3 and F6 done and unit-tested; F4 smoke
+passed on 2 GPUs (2026-10-13); D4 decided. Next: commit, archive (A), and
+prepare the full retraining commands.**
 
 Status values: `NOT STARTED` · `IN PROGRESS` · `DONE` · `BLOCKED` · `FAILED`.
 A fix is `DONE` only when its lightweight test passes; a re-run is `DONE` only
@@ -32,7 +32,7 @@ when its outputs exist and pass the listed check.
 | F2 | Global DDP validation for Fragment | DONE (2026-10-12) | Gather validation statistics across ranks before computing F1/EMA; make the best-checkpoint and early-stop decisions once and share them with all ranks. | Unit test with simulated rank statistics: all ranks get identical F1, best flag, and stop flag. |
 | F3 | Check Anatomy early-stop path | DONE (2026-10-12): no change needed | `PengwinTrainer.on_validation_epoch_end` calls the stock nnU-Net method first, which all-gathers `tp/fp/fn` and validation losses across ranks before logging `mean_fg_dice`; the early stop then reads the shared `ema_fg_dice`. Anatomy decisions are already global. | Inspected installed `nnunetv2` source (`nnUNetTrainer.on_validation_epoch_end`) and `core.py` `PengwinTrainer.on_validation_epoch_end`. |
 | F6 | Anatomy partial-label case map (D3) | DONE (2026-10-12) | `exchange_ml.stage2_backend.case_labeled_class_map` records the anatomy classes present in each case's GT target (key parsed exactly as the trainer parses `batch['keys']`). `scripts/stage2_backend.py` `write_case_labeled_map` builds it from the run's `Dataset701` `labelsTr`, checks it covers every train/validation sample of the frozen split, writes `<results_root>/Dataset701_PENGWINStage2Anatomy/case_labeled_classes.json`, and sets `PENGWIN_CASE_LABELED_MAP` before DDP spawn (Anatomy stage only). `core.py` `_load_case_labeled_map`: an explicitly set map must load and be non-empty; the silent fallback remains only when the variable is unset. | 5 unit tests: per-case classes; invalid targets rejected; trainer mask for pelvic `[T,T,T,T,F]` and femur `[T,F,F,F,T]`; missing/empty explicit map raises; wrapper writes the map and rejects a split sample it does not cover. Without a map the femur mask is all `True` (old behaviour). Dry run on the real labels (output to scratch): 80 cases, 40 → `[1,2,3]`, 40 → `[4]`. Batches carry `keys` (`nnUNetDataLoader3D.generate_train_batch` returns them; `PengwinTrainer.get_dataloaders` defers to it). |
-| F4 | Short end-to-end training smoke | READY TO RUN (commands B1/B2 prepared; waiting for 2 free GPUs) | Few-iteration 2-GPU run (e.g. `PENGWIN_TRAIN_ITERS`/`PENGWIN_VAL_ITERS`) to confirm the mirror log line and that both ranks finish together. | **User-typed** (uses GPUs); command to be prepared after F1–F3. |
+| F4 | Short end-to-end training smoke | DONE (B1 and B2 PASS, 2026-10-13) | Few-iteration 2-GPU run (e.g. `PENGWIN_TRAIN_ITERS`/`PENGWIN_VAL_ITERS`) to confirm the mirror log line and that both ranks finish together. | **User-typed** (uses GPUs); command to be prepared after F1–F3. |
 | F5 | Docs and protocol record | IN PROGRESS (Stage 2 reopened in its report and `plan.md`; retraining results pending) | Record the mirror change as a backend correction in the Stage 2 and Stage 3 reports; reopen the Stage 2 status (user decision). | Report diff review. |
 
 ## Prepared user-typed commands
@@ -129,12 +129,10 @@ Then, in order: Stage 2 re-evaluation → new frozen Stage 2 risk CSV →
 | 2026-10-12 | F1–F3 approved; Stage 2 reopened. | User |
 | 2026-10-12 | D3 fix (F6) approved before F4. | User |
 | 2026-10-12 | Proposed: decide D4 before Stage 2 re-evaluation (G2); not yet confirmed. | Agent |
+| 2026-10-12 | D4: keep the frozen whole-volume evaluation; record femur-scan false positives as a limitation; report a labelled-anatomy-only view as a secondary analysis only. | User (accepted agent recommendation) |
 
 ## Open questions for the user
 
-- **D4 (before G2):** keep the frozen whole-volume evaluation and record the
-  femur-scan false positives as a limitation, or evaluate each case only on its
-  labelled anatomy (changes the frozen Stage 1/2 evaluation contract)?
 - **Before launch:** archive the old, defective checkpoints so no run can pick
   them up. `stage3_h1.py check` still reports Anatomy + Fragment checkpoints
   for `member_02` and `member_03`, and the Stage 2 results tree is also old.
@@ -246,3 +244,56 @@ conda run -n exchange-stage2 python scripts/stage2_backend.py --config outputs/s
 ```
 
 - User-typed commands prepared: A (archive) and B1/B2 (F4 smoke).
+
+### 2026-10-12 (D4 decision, GPU check for B1)
+
+- D4 decided by the user (see decision log).
+- User proposed GPUs 0 and 2 for B1. Read-only check: GPU 0 has 1.4 GB used
+  (two small jobs) and is usable; GPU 2 has 18.5 GB used at 96% by another
+  user's job (~6 GB free), so B1 was not started on it. GPUs 1–7 were all at
+  16–18.7 GB. Port 29611 free.
+- Agent-typed: `nvidia-smi --query-gpu=index,memory.used,memory.total,utilization.gpu --format=csv,noheader`; `nvidia-smi --query-compute-apps=gpu_uuid,pid,used_memory --format=csv,noheader`; `nvidia-smi --query-gpu=index,uuid --format=csv,noheader`; `ss -ltn '( sport = :29611 )'`.
+
+### 2026-10-13 (F4 B1 result)
+
+- User ran B1 on GPUs 0,1 (both idle at 2 MiB before launch). Log:
+  `outputs/smoke_f4/b1_anatomy.log`.
+- **B1: PASS.**
+  - F6: wrapper wrote the map (80 cases); trainer logged
+    `[marginal] case→labeled 맵 로드: 80 cases` (no fallback).
+  - F1: `Dataset701_PENGWINStage2Anatomy → disable axis-2 mirror ...
+    mirror_axes: (0, 1, 2) → (0, 1)`; `debug.json`
+    `inference_allowed_mirroring_axes (0, 1)`.
+  - DDP early stop: `Early stopping ... Stopping at epoch 3`, `Training done`;
+    both ranks then ran the end-of-training validation (20 cases each,
+    40 files + summary), `Validation complete`. No traceback, NCCL error, or
+    timeout. `checkpoint_best.pth` and `checkpoint_final.pth` pass `unzip -t`.
+    GPUs 0,1 released (2 MiB) afterwards.
+  - Expected warnings only: cuDNN nvrtc workaround; DDP
+    `find_unused_parameters` notice; nnU-Net `invalid value in scalar divide`
+    when a class is absent from a validation batch (Femur pseudo-Dice `nan`
+    at epoch 2), which `nanmean` ignores.
+  - Smoke metrics (validation Dice 0.011 after 3 × 5 iterations) are not
+    meaningful and are not results.
+- User then ran B2 on GPUs 0,1. Log: `outputs/smoke_f4/b2_fragment.log`.
+- **B2: PASS.**
+  - Trusted warm-start: both ranks logged `[STU-Net warm-start] <smoke Anatomy
+    checkpoint_best.pth>: loaded=120 skipped_seg=10` (no unsafe-load refusal;
+    the 10 skipped keys are the reinitialized segmentation head, as specified).
+  - F2: `[instance]` line each epoch; `Early stopping ... Stopping at epoch 2`;
+    `Training done`; `perform_actual_validation SKIPPED` as designed. The run
+    ended about 5 s after the stop with no NCCL `ALLREDUCE` timeout (the D2
+    symptom was a 1,800 s hang on rank 0 followed by `SIGABRT`). GPUs 0,1
+    released (2 MiB); no leftover `stage2_backend.py` or spawn processes.
+  - Fragment mirroring unchanged: `debug.json`
+    `inference_allowed_mirroring_axes (0, 1, 2)`.
+  - Both checkpoints pass `unzip -t`. Warnings: cuDNN nvrtc workaround and
+    DDP `find_unused_parameters` notice only.
+  - Smoke artefact, not a defect: `Best EMA F1=-1.0000` is the trainer's
+    initial sentinel, never replaced because the smoke `min_delta=1.0` makes
+    improvement impossible; the frozen run uses `0.005`. Instance metrics
+    (F1 0.0) after 2 × 5 iterations are not results.
+  - Rank 1 writes no log lines, so its stop is evidenced by the clean exit and
+    by the F2 unit test, not by a rank-1 log entry.
+- Agent-typed (B2): `grep -nE "<criteria>" outputs/smoke_f4/b2_fragment.log`; `tail -8 outputs/smoke_f4/b2_fragment.log`; `ls -la <smoke Dataset702 fold_0>`; `unzip -tq` on both checkpoints; `grep -o inference_allowed_mirroring_axes <fold_0>/debug.json`; `grep -niE "traceback|error|nccl|timeout|warn"`; `nvidia-smi --query-gpu=index,memory.used --format=csv,noheader`; `ps -eo pid,etime,args | grep -E "stage2_backend.py|multiprocessing.spawn"`.
+- Agent-typed (B1): `grep -nE "<criteria>" outputs/smoke_f4/b1_anatomy.log`; `tail -15 outputs/smoke_f4/b1_anatomy.log`; `ls -la <smoke fold_0>`; `grep -o inference_allowed_mirroring_axes <smoke fold_0>/debug.json`; `ls <smoke fold_0>/validation | wc -l`; `grep -c "rank 0|rank 1"`; `grep -niE "traceback|error|nccl|timeout|warn"`; `unzip -tq` on both checkpoints; `nvidia-smi --query-gpu=index,memory.used --format=csv,noheader`.
