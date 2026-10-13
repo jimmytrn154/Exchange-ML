@@ -188,7 +188,7 @@ PENGWIN evaluator.
 ## Stage 2 — Stable fixed PENGWIN backend
 **Target: 23–30 Sep**
 
-**Status: REOPENED (2026-10-12) — BLOCKED pending retraining with the Stage A L/R mirror fix; the 2026-09-26 PASS is superseded. See `__docs__/reports/stage2_backend.md`.**
+**Status: REOPENED (2026-10-12) — retraining in progress; Stage A passed gate G1 on 2026-10-13; Stage B, inference, and metrics pending. The 2026-09-26 PASS is superseded. See `__docs__/reports/stage2_backend.md`.**
 
 ### Work
 1. Inspect/adapt the **PENGWIN 2026 ABBC boundary/core** implementation.

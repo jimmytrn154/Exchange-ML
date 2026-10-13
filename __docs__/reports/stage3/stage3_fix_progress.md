@@ -150,7 +150,7 @@ Anatomy checkpoint, so it must be retrained after Anatomy.
 
 | Run | Anatomy | Gate G1 | Fragment | Inference | Status |
 |---|---|---|---|---|---|
-| Stage 2 single model (seed 31000) | — | — | — | — | NOT STARTED |
+| Stage 2 single model (seed 31000) | DONE (2026-10-13 07:36–15:25; early stop epoch 109, best 84) | **PASS** (hips 0.988 / 0.986, 0 cases < 0.5) | READY (C-0.2) | — | IN PROGRESS |
 | `member_01` (seed 31001) | — | — | — | — | NOT STARTED |
 | `member_02` (seed 31002) | — | — | — | — | NOT STARTED |
 | `member_03` (seed 31003) | — | — | — | — | NOT STARTED |
@@ -404,4 +404,63 @@ conda run -n exchange-stage2 python scripts/stage2_backend.py --config outputs/s
   runs will use: `core.py` `b7fe9b5d…48a3`, `model.py` `ed79fce2…569d`,
   `inference.py` `7483138c…be615`, patch `66d61649…bb43`.
 - Agent-typed: `git log --oneline -3`; `git status --short`; `git show --stat dcc8832 94f9029`; `git ls-files -s baselines/pengwin2026-task1-abbc`; `git -C baselines/pengwin2026-task1-abbc -c core.fileMode=false diff --stat`; `git -C baselines/pengwin2026-task1-abbc -c core.fileMode=false diff > patches/pengwin2026-task1-abbc_on_ccc625f.patch`; `git -C baselines/pengwin2026-task1-abbc apply --check -R ../../patches/pengwin2026-task1-abbc_on_ccc625f.patch`; `sha256sum <3 files + patch>`; `nvidia-smi --query-gpu=index,memory.used,utilization.gpu --format=csv,noheader`; `ss -ltn '( sport = :29600 )'`.
+- User committed the patch, gate script and tracker (`e0eb76f`), ran archive A
+  (verified: `outputs/archive/2026-10-12_pre_backend_fix/{stage2_backend,stage3_h1}`),
+  and launched C-0.1 on GPUs 0,1 at 07:36 into an empty Stage 2 results tree
+  (log `outputs/logs/c0_stage2_anatomy.log`).
+- GPU check after launch: GPUs 3–6 each have ~22 GB free (another user's
+  small jobs, ~45–53% util), so members can start in parallel (C-1 on 3,4;
+  C-2 on 5,6) at the cost of shared compute; CPU load ~50 on 64 cores is the
+  main contention risk. GPU 2 ~19 GB free (no free partner); GPU 7 busy.
+- Agent-typed: `nvidia-smi --query-gpu=index,memory.used,utilization.gpu --format=csv,noheader`; `nvidia-smi --query-compute-apps=gpu_uuid,pid,used_memory --format=csv,noheader` mapped to `ps -o user=,etime=,args=`; `nproc`; `uptime`; `free -g`; `tail -3 outputs/logs/c0_stage2_anatomy.log`; `ss -ltn '( sport = :29601 or sport = :29602 )'`; `ls outputs/archive/...`; `ls -la <new Stage 2 Anatomy fold_0>`; `git log --oneline -1`.
+### 2026-10-13 (C-0.1 result and G1)
+
+- C-0.1 (Stage 2 Anatomy, seed 31000, GPUs 0,1) finished: map loaded (80
+  cases), axis-2 mirror disabled, `debug.json` axes `(0, 1)`; early stop at
+  epoch 109 (best EMA pseudo-Dice 0.9721 at epoch 84); `Training done`; 40-case
+  validation complete. No traceback, NCCL error, or timeout. Both checkpoints
+  pass `unzip -t`. nnU-Net's `Mean Validation Dice 0.498` is the
+  partial-label-confounded class mean and is not the gate.
+- **G1: PASS.** Labelled-case median Dice (cases < 0.5): Sacrum 0.975 (0),
+  LeftHip **0.988** (0), RightHip **0.986** (0), Femur 0.984 (0). Pre-fix
+  Stage 2 with the same script: LeftHip 0.613 (1), RightHip 0.371 (15).
+- Interpretation: the Stage A hip failure is resolved by the combined F1 + F6
+  fixes. This run cannot separate the contribution of the mirror fix (D1) from
+  the case-map fix (D3). Fragment, inference, and instance-level metrics are
+  still pending.
+- After the run, GPUs 0,1 carry another user's job (4.6 GB each); GPUs 2, 5, 6
+  are idle; no member run has been launched yet.
+- Agent-typed: `grep -nE "<criteria>" outputs/logs/c0_stage2_anatomy.log`; `ls -la <fold_0>`; `grep -c "Epoch time"`; `grep Yayy`; `grep -o inference_allowed_mirroring_axes <fold_0>/debug.json`; `ls <fold_0>/validation | wc -l`; `python3 scripts/check_anatomy_gate.py <fold_0>/validation/summary.json`; `unzip -tq` on both checkpoints; `nvidia-smi --query-compute-apps=...` + `ps -o user=,etime=,args=`; `nvidia-smi --query-gpu=index,memory.used,utilization.gpu --format=csv,noheader`; `ss -ltn '( sport = :29600 )'`.
+- F5 docs: `__docs__/reports/stage2_backend.md` updated with the retraining
+  section (fix table, C-0.1 result, G1 before/after, pending items, archive
+  location, run and prepared commands); Stage 2 status line in `plan.md`
+  updated to "retraining in progress; Stage A passed G1".
+### 2026-10-13 (handover of member_01 to a second user)
+
+- User plans to have a friend run C-1 (member_01) under the friend's account.
+  Checked whether a fresh clone can do this without conflicts:
+  - Branch `fix` is not on `origin` yet (local only).
+  - A clone lacks: the ABBC code (`baselines/` are gitlinks with no
+    `.gitmodules`), the dataset (gitignored, 134 GB), and the Stage 2 raw
+    images/labels and preprocessed arrays (gitignored; 7.1 GB + 35 GB).
+  - `/home/24chuong.ta` is mode 750, so another user cannot use this checkout,
+    its data, or its conda env.
+  - The shared copy `/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend`
+    is world-readable and matches this workspace: identical `labelsTr`
+    hashes (80 and 160 files), identical preprocessed file names and sizes
+    (already unpacked: 160 and 320 `.npy`), identical `splits_final.json`,
+    plans, raw `dataset.json`, and split manifest.
+  - `scripts/stage3_h1.py check` now fails here with `frozen Stage 2
+    validation artifacts are missing`, as expected after archive A; it checks
+    scoring inputs, not training readiness. `scripts/stage2_backend.py check`
+    passes.
+- Added `environment/exchange-stage2.freeze.txt` (110 exact package versions
+  from this env; torch 2.1.2+cu118, nnunetv2 2.5.1, SimpleITK 2.3.1, numpy
+  1.26.4; no local paths).
+- Added `__docs__/reports/stage3/member_01_handover.md`: friend's own clone
+  under `/mnt/sdb/shared/<user>`, ABBC upstream `ccc625f` + project patch with
+  hash checks, env from the freeze file with a `pip freeze` diff, read-only
+  symlinks to the shared data, preflight, C-1.1, G1, C-1.2, handover, rules.
+  Port 29601 stays reserved for member_01.
+- Agent-typed: `git remote -v`; `git status -sb`; `git fetch -q origin`; `git ls-files outputs/stage2_backend splits configs`; `git ls-files -s baselines`; `du -sh <raw, preprocessed, dataset>`; `stat -c '%A %U:%G %n' <home, repo, outputs, /mnt shared paths>`; `id -Gn`; `sha256sum` comparisons of splits, plans, manifest, raw `dataset.json`, and all `labelsTr` (here vs `/mnt`); `stat -c '%n %s'` inventory comparison of preprocessed `*.npz *.pkl`; `.npy` counts; `conda run -n exchange-stage2 pip freeze > environment/exchange-stage2.freeze.txt`; `grep` of the freeze file for local entries; `scripts/stage2_backend.py check`; `scripts/stage3_h1.py check` (failed as recorded); `grep` of tests for file dependencies.
 - Agent-typed (B1): `grep -nE "<criteria>" outputs/smoke_f4/b1_anatomy.log`; `tail -15 outputs/smoke_f4/b1_anatomy.log`; `ls -la <smoke fold_0>`; `grep -o inference_allowed_mirroring_axes <smoke fold_0>/debug.json`; `ls <smoke fold_0>/validation | wc -l`; `grep -c "rank 0|rank 1"`; `grep -niE "traceback|error|nccl|timeout|warn"`; `unzip -tq` on both checkpoints; `nvidia-smi --query-gpu=index,memory.used --format=csv,noheader`.

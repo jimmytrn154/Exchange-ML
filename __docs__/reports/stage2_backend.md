@@ -1,9 +1,12 @@
 # Stage 2 — Stable fixed PENGWIN backend
 
-Status: **REOPENED (2026-10-12) — BLOCKED pending retraining with the Stage A
-L/R mirror fix.** The 2026-09-26 PASS below is retained as history.
+Status: **REOPENED (2026-10-12) — RETRAINING IN PROGRESS.** Stage A
+retrained with the backend fixes and passed gate G1 (2026-10-13); Stage B,
+validation inference, and metrics are pending, so the stage is not closed.
+The 2026-09-26 PASS below is retained as history.
 
 Date: 2026-09-26 (Asia/Ho_Chi_Minh). Reopened: 2026-10-12 by user decision.
+Last updated: 2026-10-13.
 
 ## Reopening note (2026-10-12)
 
@@ -21,6 +24,66 @@ The backend fix and its tests are tracked in
 `__docs__/reports/stage3/stage3_fix_progress.md` (F1). The Stage A + Stage B
 backend must be retrained with the fix, re-evaluated, and re-closed before its
 metrics are used as H1 risks.
+
+Two further backend defects were found after reopening (details and evidence
+in the tracker): the Anatomy partial-label case map was missing in every run,
+so visible-but-unlabelled bones were trained as background (D3); and Fragment
+validation/early stopping was computed per DDP rank (D2). Pre-fix Stage A
+per-bone Dice on labelled validation cases (`scripts/check_anatomy_gate.py`):
+Sacrum 0.973, LeftHip 0.613 (1/20 cases < 0.5), RightHip 0.371 (15/20),
+Femur 0.978.
+
+## Retraining with backend fixes (2026-10-12 to 2026-10-13)
+
+### Changes to the frozen backend
+
+All changes are corrections to the reference backend; architecture, loss
+formulas, optimizer, schedule, split, preprocessing, and reconstruction are
+unchanged. Changes to the ABBC code are recorded in
+`patches/pengwin2026-task1-abbc_on_ccc625f.patch` (base commit `ccc625f`).
+
+| ID | Change | Where |
+|---|---|---|
+| F1 | Axis-2 (L/R) mirroring disabled for `Dataset701_PENGWINStage2Anatomy` in training and inference; Fragment keeps all axes. | `code_task1/core.py` `DISABLE_X_MIRROR_DATASETS` |
+| F2 | Fragment validation outputs are all-gathered across DDP ranks before F1, EMA, best-checkpoint, and early-stop decisions. | `code_task1/core.py` |
+| F6 | Anatomy partial-label case map built per run from the `Dataset701` training labels (40 pelvic → `{1,2,3}`, 40 femur → `{4}`), checked against the frozen split, passed via `PENGWIN_CASE_LABELED_MAP`; an explicitly supplied map must load. | `scripts/stage2_backend.py`, `src/exchange_ml/stage2_backend.py`, `code_task1/core.py` |
+| — | Fragment warm-start trusts only this run's own Anatomy `checkpoint_best.pth` (PyTorch 2.1.2 NumPy-pickle restriction). | `scripts/stage2_backend.py` |
+| — | Explicit model seed `31000` (the 2026-09-26 run's seed was not recorded). | user-typed command |
+
+Verification: 37/37 unit tests (including `tests/test_stage3_backend_fixes.py`);
+a 2-GPU smoke run of both stages passed (tracker, F4).
+
+Pre-fix artifacts were moved, not deleted, to
+`outputs/archive/2026-10-12_pre_backend_fix/stage2_backend/`.
+
+### Stage A result (C-0.1)
+
+- Run: seed `31000`, GPUs `0,1`, 2026-10-13 07:36–15:25; log
+  `outputs/logs/c0_stage2_anatomy.log`.
+- Fixes active: case map loaded (80 cases); axis-2 mirror disabled
+  (`inference_allowed_mirroring_axes (0, 1)`).
+- Early stop at epoch 109 (best EMA pseudo-Dice 0.9721 at epoch 84); 40-case
+  end-of-training validation completed; no DDP errors.
+- **Gate G1: PASS.** Per-bone Dice on labelled validation cases (cases < 0.5):
+
+| Bone | Pre-fix | Retrained |
+|---|---:|---:|
+| Sacrum | 0.973 (0) | 0.975 (0) |
+| LeftHip | 0.613 (1) | **0.988 (0)** |
+| RightHip | 0.371 (15) | **0.986 (0)** |
+| Femur | 0.978 (0) | 0.984 (0) |
+
+nnU-Net's own `Mean Validation Dice 0.498` is a class mean that counts
+visible-but-unlabelled bones in the other scan type as Dice 0, so it is not
+used. The hip improvement reflects F1 and F6 together; this run cannot
+separate them. It is a Stage A result only, not an instance-level result.
+
+### Pending
+
+Stage B training (C-0.2), validation inference, metrics, and gate G2. The
+evaluation stays the frozen whole-volume contract (decision D4); femur-scan
+false positives from visible pelvic bone are recorded as a limitation, with a
+labelled-anatomy-only view as a secondary analysis only.
 
 ## Configuration
 
@@ -85,6 +148,9 @@ ModuleNotFoundError: No module named 'nnunetv2.training.dataloading.data_loader_
 
 ## Stage closure evidence (2026-09-26)
 
+Superseded by the reopening. These artifacts now live under
+`outputs/archive/2026-10-12_pre_backend_fix/stage2_backend/`.
+
 The user completed preprocessing, both training stages, and validation inference.
 A fresh read-only artifact validation passed the frozen internal contract:
 
@@ -113,7 +179,9 @@ python3 scripts/validate_stage2_artifacts.py
 
 ## Gateway
 
-**REOPENED (2026-10-12): BLOCKED** — see the reopening note above.
+**REOPENED (2026-10-12): not closed.** Stage A retrained and passed G1
+(2026-10-13); the gateway is re-assessed at G2 after Stage B, inference, and
+metrics.
 
 Original 2026-09-26 decision: **PASS — internal research backend.** The model completed all 40 frozen validation cases with nonzero instance outputs and useful variation in structural error, so it is operationally suitable for Stage 3 uncertainty analysis. This is not evidence of multi-seed training stability, expert anatomical validity, hidden-test performance, or equivalence to the official PENGWIN evaluator.
 
@@ -161,6 +229,22 @@ The representative smoke also ran read-only assertions over its temporary image/
 
 ## User-typed commands
 
+**Retraining (2026-10-13).** Run by the user:
+
+```bash
+conda run --no-capture-output -n exchange-stage2 env CUDA_VISIBLE_DEVICES=0,1 MASTER_PORT=29600 python scripts/stage2_backend.py train --stage anatomy --device cuda --num-gpus 2 --model-seed 31000 2>&1 | tee outputs/logs/c0_stage2_anatomy.log
+```
+
+Prepared, not yet run (GPU pair chosen at launch):
+
+```bash
+conda run --no-capture-output -n exchange-stage2 env CUDA_VISIBLE_DEVICES=5,6 MASTER_PORT=29600 python scripts/stage2_backend.py train --stage fragment --device cuda --num-gpus 2 --model-seed 31000 2>&1 | tee outputs/logs/c0_stage2_fragment.log
+conda run --no-capture-output -n exchange-stage2 env CUDA_VISIBLE_DEVICES=<one GPU> python scripts/predict_stage2_backend.py --resume
+conda run -n exchange-stage2 python scripts/evaluate_stage2_backend.py
+```
+
+The original 2026-09-26 sequence follows for provenance.
+
 Run the following canonical sequence from the repository root. These commands are prepared for the user and have not been executed by the agent:
 
 ```bash
@@ -204,7 +288,11 @@ conda run -n exchange-stage2 python scripts/prepare_stage2_backend.py
 
 ## Next step
 
-Superseded on 2026-10-12: retrain and re-evaluate this backend with fix F1,
-following `__docs__/reports/stage3/stage3_fix_progress.md`. Original text:
+Run Stage B (C-0.2), then validation inference and metrics, and assess gate G2
+(stable, meaningful instance predictions; new frozen validation metrics CSV for
+the H1 risks). Progress is tracked in
+`__docs__/reports/stage3/stage3_fix_progress.md`.
+
+Superseded 2026-10-12 text:
 
 Execute Stage 3 exactly as printed by `python scripts/stage3_h1.py print-runbook`. Stage 3 remains scientifically blocked until all three independently seeded members are trained, all 40 validation cases have predictions and genuine Stage-B probabilities, and the retrospective H1 artifacts are reviewed against the manual two-of-three gateway.
