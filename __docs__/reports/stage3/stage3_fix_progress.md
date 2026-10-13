@@ -85,6 +85,63 @@ Pass criteria, checked by the agent from the logs afterwards:
   epoch; early stop or the 4-epoch cap, then `Training done` and exit 0 with
   no NCCL `ALLREDUCE` timeout (the original D2 symptom).
 
+### C. Full retraining (after commit and archive A)
+
+Four independent runs, one GPU pair each. Replace `<GPU pair>` with two free
+GPUs (e.g. `0,1`); keep one port per run. With fewer than four pairs, start as
+many runs as there are pairs and start the rest as pairs free up. Never put two
+runs on the same GPU. Each Anatomy run ends with nnU-Net's 40-case validation;
+**stop after C-x.1 and wait for the agent's G1 result before C-x.2.**
+
+| Run | Seed | Port | Anatomy (C-x.1) | Fragment (C-x.2) |
+|---|---:|---:|---|---|
+| C-0 Stage 2 | 31000 | 29600 | `python scripts/stage2_backend.py train --stage anatomy --device cuda --num-gpus 2 --model-seed 31000` | same with `--stage fragment` |
+| C-1 `member_01` | 31001 (config) | 29601 | `python scripts/stage3_h1.py train --stage anatomy --member member_01 --device cuda --num-gpus 2` | same with `--stage fragment` |
+| C-2 `member_02` | 31002 (config) | 29602 | `... --member member_02 ...` | same with `--stage fragment` |
+| C-3 `member_03` | 31003 (config) | 29603 | `... --member member_03 ...` | same with `--stage fragment` |
+
+Full form of each command (example C-0.1; the others differ only in the
+script arguments, port, and log name in the table):
+
+```bash
+conda run --no-capture-output -n exchange-stage2 env CUDA_VISIBLE_DEVICES=<GPU pair> MASTER_PORT=29600 python scripts/stage2_backend.py train --stage anatomy --device cuda --num-gpus 2 --model-seed 31000 2>&1 | tee outputs/logs/c0_stage2_anatomy.log
+```
+
+Create the log folder once: `mkdir -p outputs/logs`. Log names:
+`c0_stage2_{anatomy,fragment}.log`, `c1_member_01_{anatomy,fragment}.log`,
+`c2_member_02_...`, `c3_member_03_...`. `PENGWIN_ALLOW_UNSAFE_TORCH_LOAD` is
+no longer needed: both wrappers trust only the run's own Anatomy checkpoint.
+
+**Gate G1 (agent-typed, after each C-x.1):**
+
+```bash
+python3 scripts/check_anatomy_gate.py <run results>/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/validation/summary.json
+```
+
+Scores each class only on cases whose GT labels it. Pass rule (**approved
+2026-10-13**): LeftHip and RightHip median Dice ≥ 0.90 and at
+most 2/20 labelled cases below 0.5. Pre-fix reference with this script: Stage 2
+LeftHip 0.613 (1 below 0.5), RightHip 0.371 (15); `member_03` 0.547 (8) and
+0.506 (10); all pre-fix runs have Sacrum ≈ 0.973 and Femur ≈ 0.98 → **FAIL**.
+On G1 FAIL: do not start that Fragment run; stop and re-diagnose.
+
+**After both stages of a run (single GPU from its pair):**
+
+```bash
+# Stage 2 (C-0): inference, then metrics → new frozen H1 risk CSV (gate G2)
+conda run --no-capture-output -n exchange-stage2 env CUDA_VISIBLE_DEVICES=<one GPU> python scripts/predict_stage2_backend.py --resume
+conda run -n exchange-stage2 python scripts/evaluate_stage2_backend.py
+# Members (C-1..C-3)
+conda run --no-capture-output -n exchange-stage2 env CUDA_VISIBLE_DEVICES=<one GPU> python scripts/predict_stage3_member.py --member member_0X --resume
+```
+
+**After Stage 2 metrics and all three member inferences (sequential):**
+
+```bash
+conda run -n exchange-stage2 python scripts/score_stage3_h1.py
+conda run -n exchange-stage2 python scripts/evaluate_stage3_h1.py
+```
+
 ## Re-run plan (all user-typed)
 
 Stage 2 and the three Stage 3 members are independent and can run in parallel
@@ -93,7 +150,7 @@ Anatomy checkpoint, so it must be retrained after Anatomy.
 
 | Run | Anatomy | Gate G1 | Fragment | Inference | Status |
 |---|---|---|---|---|---|
-| Stage 2 single model | — | — | — | — | NOT STARTED |
+| Stage 2 single model (seed 31000) | — | — | — | — | NOT STARTED |
 | `member_01` (seed 31001) | — | — | — | — | NOT STARTED |
 | `member_02` (seed 31002) | — | — | — | — | NOT STARTED |
 | `member_03` (seed 31003) | — | — | — | — | NOT STARTED |
@@ -103,11 +160,34 @@ Then, in order: Stage 2 re-evaluation → new frozen Stage 2 risk CSV →
 
 ### Gates
 
-- **G1 — Anatomy laterality check (after each Anatomy run, before its
-  Fragment run).** Re-run `outputs/stage3_h1/diagnostics/bone_recall_by_model.py`
-  on that run's validation output. Pass if both hips are found and correctly
-  labelled at levels comparable to the sacrum. If it fails, stop and
-  re-diagnose; do not start that Fragment run.
+- **G1 — Anatomy hip check (after each Anatomy run, before its Fragment
+  run).** Rule status: **approved by the user on 2026-10-13** (proposed by the
+  agent).
+  - *Purpose:* confirm that the fixed Stage A model finds and correctly labels
+    both hips before spending 9–21 h on its Fragment run. The D1/D3 defects
+    showed up as lost or swapped hips while Sacrum and Femur stayed good.
+  - *Input:* the run's own end-of-training validation,
+    `fold_0/validation/summary.json` (nnU-Net predicts all 40 validation
+    cases after every Anatomy run, so no extra inference is needed).
+  - *Measure:* per-bone Dice, counted only on cases whose GT labels that bone
+    (`n_ref > 0`): Sacrum and both hips on the 20 pelvic scans, Femur on the 20
+    femur scans. nnU-Net's own class means also count visible-but-unlabelled
+    bones in the other scan type as Dice 0, which roughly halves them (old
+    Sacrum mean 0.49 vs 0.973 on labelled cases), so they are not used.
+  - *Rule:* PASS if **LeftHip and RightHip** each have **median Dice ≥ 0.90**
+    and **at most 2 of 20 labelled cases with Dice < 0.5**. Sacrum and Femur
+    are reported but not gated.
+  - *Why these numbers:* unaffected bones already reach 0.97–0.98, so a fixed
+    model should bring the hips close to that; 0.90 leaves room for fractured
+    hips being harder. The case count catches a whole hip being dropped or
+    swapped in a few cases even when the median looks fine.
+  - *Pre-fix reference (same script):* Stage 2 LeftHip 0.613 (1 case < 0.5),
+    RightHip 0.371 (15); `member_03` 0.547 (8), 0.506 (10) → FAIL.
+  - *On FAIL:* do not start that Fragment run; stop and re-diagnose. The
+    thresholds are fixed before any new result is seen and are not adjusted
+    afterwards to make a run pass.
+  - *Tool:* `python3 scripts/check_anatomy_gate.py <summary.json>` (read-only,
+    agent-typed; exit code 0 = PASS, 1 = FAIL).
 - **G2 — Stage 2 re-evaluation.** The backend produces stable instance
   predictions (plan Stage 2 gateway) and a new frozen validation metrics CSV.
 - **G3 — H1 gateway.** Unchanged from `__docs__/plan.md` Stage 3.
@@ -129,10 +209,17 @@ Then, in order: Stage 2 re-evaluation → new frozen Stage 2 risk CSV →
 | 2026-10-12 | F1–F3 approved; Stage 2 reopened. | User |
 | 2026-10-12 | D3 fix (F6) approved before F4. | User |
 | 2026-10-12 | Proposed: decide D4 before Stage 2 re-evaluation (G2); not yet confirmed. | Agent |
+| 2026-10-13 | G1 pass rule approved: LeftHip and RightHip median Dice ≥ 0.90 and ≤ 2/20 labelled cases < 0.5. | User |
+| 2026-10-13 | One GPU pair (`0,1`) available: launch C-0 (Stage 2) first, because its metrics are the H1 risk labels. | User GPUs; order proposed by agent |
+| 2026-10-13 | Stage 2 retrain uses explicit model seed `31000` (distinct from members 31001–31003; old Stage 2 seed was unrecorded). | User (accepted agent proposal) |
 | 2026-10-12 | D4: keep the frozen whole-volume evaluation; record femur-scan false positives as a limitation; report a labelled-anatomy-only view as a secondary analysis only. | User (accepted agent recommendation) |
 
 ## Open questions for the user
 
+- **Commit the remaining files:** `patches/pengwin2026-task1-abbc_on_ccc625f.patch`,
+  `scripts/check_anatomy_gate.py`, and this tracker.
+- **GPU pairs:** only `0,1` is free (2026-10-13). Runs therefore go one at a
+  time; more pairs would shorten the schedule by days.
 - **Before launch:** archive the old, defective checkpoints so no run can pick
   them up. `stage3_h1.py check` still reports Anatomy + Fragment checkpoints
   for `member_02` and `member_03`, and the Stage 2 results tree is also old.
@@ -296,4 +383,25 @@ conda run -n exchange-stage2 python scripts/stage2_backend.py --config outputs/s
   - Rank 1 writes no log lines, so its stop is evidenced by the clean exit and
     by the F2 unit test, not by a rank-1 log entry.
 - Agent-typed (B2): `grep -nE "<criteria>" outputs/smoke_f4/b2_fragment.log`; `tail -8 outputs/smoke_f4/b2_fragment.log`; `ls -la <smoke Dataset702 fold_0>`; `unzip -tq` on both checkpoints; `grep -o inference_allowed_mirroring_axes <fold_0>/debug.json`; `grep -niE "traceback|error|nccl|timeout|warn"`; `nvidia-smi --query-gpu=index,memory.used --format=csv,noheader`; `ps -eo pid,etime,args | grep -E "stage2_backend.py|multiprocessing.spawn"`.
+- Stage 2 seed `31000` agreed. Added `scripts/check_anatomy_gate.py` (G1,
+  read-only) and prepared the full retraining commands (section C). Applying
+  G1 to pre-fix runs: Stage 2 and `member_03` both FAIL (values in section C).
+  nnU-Net's own `summary.json` class means (Sacrum 0.49–0.57) are halved by
+  partial labels, so G1 scores only labelled cases.
+- Agent-typed (planning): `python3 - <per-class labelled-case Dice from old Anatomy summary.json files>`; `python3 scripts/check_anatomy_gate.py <Stage 2 and member_03 pre-fix summary.json>`; `grep -n "add_argument" scripts/predict_stage2_backend.py scripts/predict_stage3_member.py scripts/evaluate_stage2_backend.py scripts/stage3_h1.py`.
+- User approved G1 and reported committing the fixes (`dcc8832`, `94f9029`).
+  Check found that those commits contain the wrapper, `src/`, tests, docs and
+  smoke files, but **not** the ABBC trainer changes:
+  `baselines/pengwin2026-task1-abbc` is a nested upstream repository (gitlink
+  `ccc625f`, no `.gitmodules`), and its content changes remain uncommitted in
+  its working tree. Content changes are limited to `code_task1/core.py`,
+  `code_task1/model.py`, and `inference/inference.py`; the other files listed
+  as modified there differ only in file mode (0644 → 0755).
+- Saved those content changes as
+  `patches/pengwin2026-task1-abbc_on_ccc625f.patch` (3 files; `git apply
+  --check -R` confirms it matches the working tree). To reproduce: check out
+  upstream `ccc625f`, then `git apply` the patch. SHA-256 of the code the full
+  runs will use: `core.py` `b7fe9b5d…48a3`, `model.py` `ed79fce2…569d`,
+  `inference.py` `7483138c…be615`, patch `66d61649…bb43`.
+- Agent-typed: `git log --oneline -3`; `git status --short`; `git show --stat dcc8832 94f9029`; `git ls-files -s baselines/pengwin2026-task1-abbc`; `git -C baselines/pengwin2026-task1-abbc -c core.fileMode=false diff --stat`; `git -C baselines/pengwin2026-task1-abbc -c core.fileMode=false diff > patches/pengwin2026-task1-abbc_on_ccc625f.patch`; `git -C baselines/pengwin2026-task1-abbc apply --check -R ../../patches/pengwin2026-task1-abbc_on_ccc625f.patch`; `sha256sum <3 files + patch>`; `nvidia-smi --query-gpu=index,memory.used,utilization.gpu --format=csv,noheader`; `ss -ltn '( sport = :29600 )'`.
 - Agent-typed (B1): `grep -nE "<criteria>" outputs/smoke_f4/b1_anatomy.log`; `tail -15 outputs/smoke_f4/b1_anatomy.log`; `ls -la <smoke fold_0>`; `grep -o inference_allowed_mirroring_axes <smoke fold_0>/debug.json`; `ls <smoke fold_0>/validation | wc -l`; `grep -c "rank 0|rank 1"`; `grep -niE "traceback|error|nccl|timeout|warn"`; `unzip -tq` on both checkpoints; `nvidia-smi --query-gpu=index,memory.used --format=csv,noheader`.

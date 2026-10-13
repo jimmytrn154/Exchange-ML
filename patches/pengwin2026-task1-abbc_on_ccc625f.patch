@@ -1,0 +1,265 @@
+diff --git a/code_task1/core.py b/code_task1/core.py
+index 79e72dd..087df00 100644
+--- a/code_task1/core.py
++++ b/code_task1/core.py
+@@ -499,19 +499,19 @@ from nnunetv2.utilities.helpers import dummy_context
+ from batchgenerators.dataloading.nondet_multi_threaded_augmenter import NonDetMultiThreadedAugmenter
+ from batchgenerators.dataloading.single_threaded_augmenter import SingleThreadedAugmenter
+ 
+-# [V0.x][WARN-FIX:#3][2026-06-02] nnUNet 2.5.2 가 deprecated `torch.cuda.amp.GradScaler()`
+-# 를 nnUNetTrainer.initialize() 의 GradScaler() 호출(line 164)에서 생성하며 FutureWarning
+-# 을 띄운다. 경고는 *생성 시점*에 발생하므로 사후 교체로는 못 막는다. nnUNet 트레이너 모듈
+-# 네임스페이스의 GradScaler 심볼을 신 API(torch.amp.GradScaler('cuda')) 팩토리로 교체해
+-# 생성 자체를 modern API 로 바꾼다(억제 아님, 근본 수정). 모든 trainer 에 적용.
++# [V0.x][WARN-FIX:#3][2026-06-02] Newer PyTorch versions deprecate
++# `torch.cuda.amp.GradScaler()`. Use the modern API only when it actually exists;
++# the container-pinned torch 2.1.2 exposes `torch.amp` but not
++# `torch.amp.GradScaler`, so it must retain nnU-Net's compatible CUDA scaler.
+ try:
+     import torch.amp as _torch_amp
+     import nnunetv2.training.nnUNetTrainer.nnUNetTrainer as _nnunet_trainer_mod
+ 
+-    def _modern_grad_scaler(*_a, **_k):
+-        return _torch_amp.GradScaler("cuda", *_a, **_k)
++    if hasattr(_torch_amp, "GradScaler"):
++        def _modern_grad_scaler(*_a, **_k):
++            return _torch_amp.GradScaler("cuda", *_a, **_k)
+ 
+-    _nnunet_trainer_mod.GradScaler = _modern_grad_scaler
++        _nnunet_trainer_mod.GradScaler = _modern_grad_scaler
+ except Exception:  # pragma: no cover
+     pass
+ 
+@@ -894,6 +894,9 @@ class PengwinTrainer(_GroupedSplitMixin, nnUNetTrainer):
+         # 87.6%가 좌우 hip 스왑(laterality 혼동)이고, axis-2(L/R) mirror augmentation 이
+         # L↔R 교환을 학습시키는 직접 원인. axis-2 mirror 비활성화.
+         "Dataset539_PelvicFemurAnatomyV3",
++        # [Exchange-ML][FIX:LR][2026-10-12] Stage 2/3 anatomy dataset carries the same
++        # LeftHip/RightHip classes as Ds539; without this entry axis-2 mirroring was active.
++        "Dataset701_PENGWINStage2Anatomy",
+     }
+ 
+     def __init__(self, plans: dict, configuration: str, fold: int,
+@@ -1795,7 +1798,15 @@ class _StunetCleanTrainerMixin:
+             _orig_load = torch.load
+ 
+             def _safe_load(f, *a, **k):
+-                k.setdefault("weights_only", True)
++                trusted = os.environ.get("PENGWIN_TRUSTED_RESUME_CHECKPOINT")
++                is_trusted_resume = (
++                    trusted is not None
++                    and isinstance(f, (str, os.PathLike))
++                    and Path(f).resolve() == Path(trusted).resolve()
++                )
++                # PyTorch 2.1 cannot allowlist NumPy checkpoint metadata.
++                # Full pickle loading is restricted to the approved local file.
++                k.setdefault("weights_only", not is_trusted_resume)
+                 return _orig_load(f, *a, **k)
+ 
+             torch.load = _safe_load
+@@ -1841,8 +1852,18 @@ class PengwinTrainerSTUNetBaseAnatomyV301(_StunetCleanTrainerMixin, PengwinTrain
+         """case_id → 라벨된 fg 클래스 리스트. pelvic 케이스={1,2,3}, femur 케이스={4} (disjoint).
+         GT 존재 클래스로 사전 산출된 json(result/reports/ds539_case_labeled_classes.json) 로드."""
+         import json as _json
+-        path = os.environ.get("PENGWIN_CASE_LABELED_MAP",
+-                              str(RESULT_REPORT / "ds539_case_labeled_classes.json"))
++        explicit = os.environ.get("PENGWIN_CASE_LABELED_MAP")
++        path = explicit or str(RESULT_REPORT / "ds539_case_labeled_classes.json")
++        if explicit:
++            # [Exchange-ML][FIX:MARGINAL][2026-10-12] An explicitly supplied map must load;
++            # the silent all-labelled fallback trained visible-but-unlabelled bones as background.
++            raw = _json.loads(Path(path).read_text(encoding="utf-8"))
++            self._case_labeled_map = {str(k): [int(x) for x in v] for k, v in raw.items()}
++            if not self._case_labeled_map:
++                raise RuntimeError(f"[marginal] empty case→labeled map: {path}")
++            self.print_to_log_file(
++                f"[marginal] case→labeled 맵 로드: {len(self._case_labeled_map)} cases ({path})")
++            return
+         try:
+             raw = _json.load(open(path))
+             self._case_labeled_map = {str(k): [int(x) for x in v] for k, v in raw.items()}
+@@ -1950,6 +1971,14 @@ class PengwinTrainerSTUNetBaseAnatomyV301(_StunetCleanTrainerMixin, PengwinTrain
+                                        enable_deep_supervision=enable_deep_supervision)
+ 
+ 
++def _merge_rank_val_outputs(per_rank: list) -> dict:
++    """[Exchange-ML][FIX:DDP_VAL][2026-10-12] Concatenate collated per-step validation arrays
++    from every DDP rank in rank order, so each rank derives the same F1, EMA, best-checkpoint
++    and early-stop decision (the stock nnU-Net trainer all-gathers tp/fp/fn the same way)."""
++    keys = per_rank[0].keys()
++    return {k: np.concatenate([np.asarray(r[k]).reshape(-1) for r in per_rank]) for k in keys}
++
++
+ class PengwinTrainerSTUNetBaseABBCPhase1V302(_StunetCleanTrainerMixin, PengwinTrainer):
+     """[PHASE-1 CLEAN] Ds538 leak-free instance-label ABBC 4-class STU-Net-B trainer.
+ 
+@@ -2080,6 +2109,11 @@ class PengwinTrainerSTUNetBaseABBCPhase1V302(_StunetCleanTrainerMixin, PengwinTr
+ 
+     def on_validation_epoch_end(self, val_outputs):
+         outputs = collate_outputs(val_outputs)
++        if self.is_ddp:
++            # Rank-local metrics let ranks stop at different epochs (NCCL ALLREDUCE timeout).
++            per_rank = [None] * dist.get_world_size()
++            dist.all_gather_object(per_rank, outputs)
++            outputs = _merge_rank_val_outputs(per_rank)
+         loss_here = float(np.mean(outputs["loss"]))
+         score = float(np.mean(outputs["iouf"]))      # ES driver = instance IoU-F
+         recall = float(np.mean(outputs["recall"])) if "recall" in outputs else 0.0
+diff --git a/code_task1/model.py b/code_task1/model.py
+index 85a5bcf..37df560 100644
+--- a/code_task1/model.py
++++ b/code_task1/model.py
+@@ -255,7 +255,11 @@ def load_stunet_pretrained_weights(network, fname, verbose=False, inflate="ct0")
+     # 한다(여전히 weights_only=True 안전 경로 유지). 부득이 unsafe 가 필요하면 출처를 검증한
+     # 뒤 PENGWIN_ALLOW_UNSAFE_TORCH_LOAD=1 을 명시.
+     import os as _os
+-    _unsafe = _os.environ.get("PENGWIN_ALLOW_UNSAFE_TORCH_LOAD", "") == "1"
++    from pathlib import Path as _Path
++    _trusted = _os.environ.get("PENGWIN_TRUSTED_WARMSTART_CHECKPOINT")
++    _unsafe = _os.environ.get("PENGWIN_ALLOW_UNSAFE_TORCH_LOAD", "") == "1" or (
++        _trusted is not None and _Path(fname).resolve() == _Path(_trusted).resolve()
++    )
+     if not _unsafe:
+         try:
+             import numpy as _np
+@@ -350,4 +354,3 @@ def load_stunet_pretrained_weights(network, fname, verbose=False, inflate="ct0")
+             print("  kept-init(new module):", k)
+     return stats
+ 
+-
+diff --git a/inference/inference.py b/inference/inference.py
+index 8f90369..196db52 100644
+--- a/inference/inference.py
++++ b/inference/inference.py
+@@ -657,6 +657,47 @@ def _merge_by_size_ratio(labels: np.ndarray, *, size_ratio_keep: float) -> np.nd
+ # ---------------------------------------------------------------------------
+ # fragment 단위 라벨 맵을 preprocessed grid 에서 원본 CT 격자로 resampling.
+ # ---------------------------------------------------------------------------
++def resample_probability_to_original(
++    probability_pp: np.ndarray, data_properties: dict, predictor,
++) -> np.ndarray:
++    """Resample one continuous probability channel back to the input crop grid."""
++    from nnunetv2.preprocessing.resampling.default_resampling import (
++        resample_data_or_seg_to_shape,
++    )
++
++    probability_in = np.asarray(probability_pp, dtype=np.float32)[None]
++    shape_after_cropping = tuple(
++        int(s) for s in data_properties["shape_after_cropping_and_before_resampling"]
++    )
++    current_spacing = predictor.configuration_manager.spacing
++    transpose_forward = predictor.plans_manager.transpose_forward
++    original_spacing = [data_properties["spacing"][i] for i in transpose_forward]
++    resampled = resample_data_or_seg_to_shape(
++        probability_in,
++        shape_after_cropping,
++        current_spacing,
++        original_spacing,
++        is_seg=False,
++        order=1,
++        order_z=0,
++    )
++    resampled_np = np.asarray(resampled, dtype=np.float32)[0]
++
++    from acvl_utils.cropping_and_padding.bounding_boxes import bounding_box_to_slice
++
++    shape_before_cropping = tuple(
++        int(s) for s in data_properties["shape_before_cropping"]
++    )
++    bbox = data_properties.get("bbox_used_for_cropping", None)
++    if bbox is None:
++        full = resampled_np
++    else:
++        full = np.zeros(shape_before_cropping, dtype=np.float32)
++        full[bounding_box_to_slice(bbox)] = resampled_np
++    full = np.transpose(full, tuple(predictor.plans_manager.transpose_backward))
++    return np.clip(full, 0.0, 1.0)
++
++
+ def resample_label_map_to_original(
+     label_pp: np.ndarray, data_properties: dict, predictor,
+ ) -> np.ndarray:
+@@ -1297,9 +1338,14 @@ def _install_lowmem_resample() -> None:
+         log(f"lowmem-resample: install failed ({exc}); continuing on the stock float64 path")
+ 
+ 
+-def run_per_anatomy(image_path: Path, ref_img: sitk.Image,
+-                    prerouted_bone_masks: dict | None = None,
+-                    anatomies: tuple[str, ...] | None = None) -> np.ndarray:
++def run_per_anatomy(
++    image_path: Path,
++    ref_img: sitk.Image,
++    prerouted_bone_masks: dict | None = None,
++    anatomies: tuple[str, ...] | None = None,
++    *,
++    return_foreground_probability: bool = False,
++) -> np.ndarray | tuple[np.ndarray, np.ndarray]:
+     """V0.4 STU-Net 2-stage 견고화 파이프라인 (4-layer 구조):
+        Layer 1: bone-skeleton anatomy 분해 (HU>200, pelvic 전용) — fallback 확보
+        Layer 2: Ds539 5-class argmax refinement       — Ds539 가 합리적이면 우선 사용
+@@ -1611,6 +1657,11 @@ def run_per_anatomy(image_path: Path, ref_img: sitk.Image,
+     active_ds538_trainer = None
+ 
+     full_label = np.zeros(img_shape, dtype=np.uint16)
++    full_foreground_probability = (
++        np.zeros(img_shape, dtype=np.float32)
++        if return_foreground_probability
++        else None
++    )
+     for anatomy in anatomies:
+         elapsed = time.time() - t_start
+         if V03_USE_TIME_BUDGET and elapsed >= TIME_BUDGET_HARD_LIMIT:
+@@ -1734,6 +1785,7 @@ def run_per_anatomy(image_path: Path, ref_img: sitk.Image,
+                     _sys.path.insert(0, _p)
+             from agglo_decode import decode_affinity_agglo, decode_fusion
+             _abbc = softmax_axis0(ds538_logits_pp[:4])
++            foreground_probability_pp = 1.0 - np.asarray(_abbc[0], dtype=np.float32)
+             _aff = 1.0 / (1.0 + np.exp(-np.asarray(ds538_logits_pp[4:], dtype=np.float32)))
+             # [13ch raw dump] 4 ABBC softmax + 9 affinity sigmoid -> enables OFFLINE decode/fusion
+             # T-sweeps on CPU (no GPU re-run). Split offline as probs13[:4]/probs13[4:].
+@@ -1824,6 +1876,9 @@ def run_per_anatomy(image_path: Path, ref_img: sitk.Image,
+                         log(f"[femur-adaptive:{anatomy}] 실패 ({_e}) -> 원본 유지")
+         else:
+             ds538_probs = softmax_axis0(ds538_logits_pp)
++            foreground_probability_pp = 1.0 - np.asarray(
++                ds538_probs[0], dtype=np.float32
++            )
+             _dump_dir = os.environ.get("PENGWIN_DUMP_PROBS", "")
+             if _dump_dir:
+                 os.makedirs(_dump_dir, exist_ok=True)
+@@ -1841,6 +1896,13 @@ def run_per_anatomy(image_path: Path, ref_img: sitk.Image,
+                 )
+             else:
+                 decoded_pp = decode_abbc_core_seed_watershed(ds538_probs)
++        if return_foreground_probability:
++            foreground_crop = resample_probability_to_original(
++                foreground_probability_pp, ds538_data_props, ds538_predictor
++            )
++            probability_slot = full_foreground_probability[bbox]
++            np.maximum(probability_slot, foreground_crop, out=probability_slot)
++            full_foreground_probability[bbox] = probability_slot
+         decoded_crop = resample_label_map_to_original(decoded_pp, ds538_data_props, ds538_predictor)
+ 
+         # 라벨 재매핑 후 전체 볼륨에 paste
+@@ -1898,9 +1960,21 @@ def run_per_anatomy(image_path: Path, ref_img: sitk.Image,
+         target_code = orientation_code(ref_img)
+         oriented = sitk.DICOMOrient(lps_label_img, target_code)
+         full_label = sitk.GetArrayFromImage(oriented).astype(np.uint16, copy=False)
++        if return_foreground_probability:
++            probability_image = sitk.GetImageFromArray(
++                full_foreground_probability.astype(np.float32, copy=False)
++            )
++            probability_image.SetSpacing(img_lps.GetSpacing())
++            probability_image.SetOrigin(img_lps.GetOrigin())
++            probability_image.SetDirection(img_lps.GetDirection())
++            full_foreground_probability = sitk.GetArrayFromImage(
++                sitk.DICOMOrient(probability_image, target_code)
++            ).astype(np.float32, copy=False)
+         log(f"reoriented label map: LPS -> {target_code} (shape={full_label.shape})")
+ 
+     log(f"V0.4 pipeline complete in {time.time() - t_start:.1f}s, unique={sorted(int(v) for v in np.unique(full_label)[:20])}")
++    if return_foreground_probability:
++        return full_label, np.clip(full_foreground_probability, 0.0, 1.0)
+     return full_label
+ 
+ 
