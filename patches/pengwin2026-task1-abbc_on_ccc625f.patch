@@ -128,10 +128,35 @@ index 85a5bcf..37df560 100644
  
 -
 diff --git a/inference/inference.py b/inference/inference.py
-index 8f90369..196db52 100644
+index 8f90369..19949ca 100644
 --- a/inference/inference.py
 +++ b/inference/inference.py
-@@ -657,6 +657,47 @@ def _merge_by_size_ratio(labels: np.ndarray, *, size_ratio_keep: float) -> np.nd
+@@ -157,6 +157,9 @@ DS538_EXPERT_TRAINERS = {
+     if trainer.strip()
+ }
+ CHECKPOINT_NAME = "checkpoint_best.pth"
++# [Exchange-ML][FIX:F8][2026-10-16] Stage B (Fragment) checkpoint is selectable. The pooled-F1
++# checkpoint_best can capture an under-trained single bone (D6: sacrum); default stays upstream.
++DS538_CHECKPOINT_NAME = os.environ.get("PENGWIN_DS538_CHECKPOINT", CHECKPOINT_NAME)
+ 
+ # --- anatomy contract (anatomy_registry 와 일치).
+ #     Ds539 5-class softmax 의 fg 채널 index = anatomy semantic class index.
+@@ -213,6 +216,14 @@ MIN_COMPONENT_VOXELS = 1820  # V5 plan 해상도에서 약 1 cm^3 에 해당
+ # --- V0.3 견고화 관련 플래그 ---
+ V03_USE_BONE_SKELETON_FALLBACK = True  # Ds539 실패 시 bone HU mask fallback 사용
+ V03_USE_TIME_BUDGET = True             # 시간 예산 기반 안전망 활성화
++# [Exchange-ML][FIX:BUDGET][2026-10-15] Research validation inference has no per-case time
++# limit; on a loaded server the budget silently zeroed whole anatomies.
++if os.environ.get("PENGWIN_DISABLE_TIME_BUDGET", "0") == "1":
++    V03_USE_TIME_BUDGET = False
++# [Exchange-ML][FIX:F9][2026-10-20] Only Ds539 argmax masks block other anatomies at paint time.
++# A bone-skeleton fallback mask covers all bone in a wide box (femur included), so letting it block
++# deleted the femur in femur-only scans (D8). Default stays upstream (every mask blocks).
++V03_CONFINE_DS539_ONLY = os.environ.get("PENGWIN_CONFINE_DS539_ONLY", "0") == "1"
+ 
+ # --- V0.3 견고화 관련 상수 ---
+ # 시간 예산 설정 (Grand Challenge 의 10분 제한을 안전하게 지키기 위함)
+@@ -657,6 +668,47 @@ def _merge_by_size_ratio(labels: np.ndarray, *, size_ratio_keep: float) -> np.nd
  # ---------------------------------------------------------------------------
  # fragment 단위 라벨 맵을 preprocessed grid 에서 원본 CT 격자로 resampling.
  # ---------------------------------------------------------------------------
@@ -179,7 +204,26 @@ index 8f90369..196db52 100644
  def resample_label_map_to_original(
      label_pp: np.ndarray, data_properties: dict, predictor,
  ) -> np.ndarray:
-@@ -1297,9 +1338,14 @@ def _install_lowmem_resample() -> None:
+@@ -803,6 +855,18 @@ def _as_bool_array(mask) -> np.ndarray:
+     return np.asarray(mask, dtype=bool)
+ 
+ 
++def _paint_block_mask(merged: dict, anatomy: str, img_shape, ds539_only: bool) -> np.ndarray:
++    """Voxels `anatomy` may not paint into: the other anatomies' masks (F9: Ds539 masks only)."""
++    other = np.zeros(img_shape, dtype=bool)
++    for _a, _inf in merged.items():
++        if _a == anatomy or _inf.get('mask') is None:
++            continue
++        if ds539_only and _inf.get('source') != 'ds539':
++            continue
++        other |= _as_bool_array(_inf['mask'])
++    return other
++
++
+ # ---------------------------------------------------------------------------
+ # V0.3 견고화된 anatomy ROI 추출 헬퍼 (4-layer 파이프라인용).
+ # ---------------------------------------------------------------------------
+@@ -1297,9 +1361,14 @@ def _install_lowmem_resample() -> None:
          log(f"lowmem-resample: install failed ({exc}); continuing on the stock float64 path")
  
  
@@ -197,7 +241,7 @@ index 8f90369..196db52 100644
      """V0.4 STU-Net 2-stage 견고화 파이프라인 (4-layer 구조):
         Layer 1: bone-skeleton anatomy 분해 (HU>200, pelvic 전용) — fallback 확보
         Layer 2: Ds539 5-class argmax refinement       — Ds539 가 합리적이면 우선 사용
-@@ -1611,6 +1657,11 @@ def run_per_anatomy(image_path: Path, ref_img: sitk.Image,
+@@ -1611,6 +1680,11 @@ def run_per_anatomy(image_path: Path, ref_img: sitk.Image,
      active_ds538_trainer = None
  
      full_label = np.zeros(img_shape, dtype=np.uint16)
@@ -209,7 +253,15 @@ index 8f90369..196db52 100644
      for anatomy in anatomies:
          elapsed = time.time() - t_start
          if V03_USE_TIME_BUDGET and elapsed >= TIME_BUDGET_HARD_LIMIT:
-@@ -1734,6 +1785,7 @@ def run_per_anatomy(image_path: Path, ref_img: sitk.Image,
+@@ -1708,6 +1782,7 @@ def run_per_anatomy(image_path: Path, ref_img: sitk.Image,
+                     torch.cuda.empty_cache()
+             ds538_predictor = build_predictor(
+                 DS538_DATASET, desired_ds538_trainer, DS538_PLANS, DS538_CONFIG, DS538_FOLD,
++                checkpoint_name=DS538_CHECKPOINT_NAME,
+             )
+             active_ds538_trainer = desired_ds538_trainer
+             log(f"[{anatomy}] Stage-B trainer -> {desired_ds538_trainer}")
+@@ -1734,6 +1809,7 @@ def run_per_anatomy(image_path: Path, ref_img: sitk.Image,
                      _sys.path.insert(0, _p)
              from agglo_decode import decode_affinity_agglo, decode_fusion
              _abbc = softmax_axis0(ds538_logits_pp[:4])
@@ -217,7 +269,7 @@ index 8f90369..196db52 100644
              _aff = 1.0 / (1.0 + np.exp(-np.asarray(ds538_logits_pp[4:], dtype=np.float32)))
              # [13ch raw dump] 4 ABBC softmax + 9 affinity sigmoid -> enables OFFLINE decode/fusion
              # T-sweeps on CPU (no GPU re-run). Split offline as probs13[:4]/probs13[4:].
-@@ -1824,6 +1876,9 @@ def run_per_anatomy(image_path: Path, ref_img: sitk.Image,
+@@ -1824,6 +1900,9 @@ def run_per_anatomy(image_path: Path, ref_img: sitk.Image,
                          log(f"[femur-adaptive:{anatomy}] 실패 ({_e}) -> 원본 유지")
          else:
              ds538_probs = softmax_axis0(ds538_logits_pp)
@@ -227,7 +279,7 @@ index 8f90369..196db52 100644
              _dump_dir = os.environ.get("PENGWIN_DUMP_PROBS", "")
              if _dump_dir:
                  os.makedirs(_dump_dir, exist_ok=True)
-@@ -1841,6 +1896,13 @@ def run_per_anatomy(image_path: Path, ref_img: sitk.Image,
+@@ -1841,6 +1920,13 @@ def run_per_anatomy(image_path: Path, ref_img: sitk.Image,
                  )
              else:
                  decoded_pp = decode_abbc_core_seed_watershed(ds538_probs)
@@ -241,7 +293,19 @@ index 8f90369..196db52 100644
          decoded_crop = resample_label_map_to_original(decoded_pp, ds538_data_props, ds538_predictor)
  
          # 라벨 재매핑 후 전체 볼륨에 paste
-@@ -1898,9 +1960,21 @@ def run_per_anatomy(image_path: Path, ref_img: sitk.Image,
+@@ -1876,10 +1962,7 @@ def run_per_anatomy(image_path: Path, ref_img: sitk.Image,
+         # painting into OTHER bones' argmax masks. An anatomy may still regrow freely into background;
+         # it just cannot invade a neighbouring bone. Ds539 argmax is 1-anatomy-per-voxel (disjoint).
+         if os.environ.get("PENGWIN_CONFINE_TO_MASK", "1") == "1":
+-            other = np.zeros(img_shape, dtype=bool)
+-            for _a, _inf in merged.items():
+-                if _a != anatomy and _inf.get('mask') is not None:
+-                    other |= _as_bool_array(_inf['mask'])
++            other = _paint_block_mask(merged, anatomy, img_shape, V03_CONFINE_DS539_ONLY)
+             ob = other[bbox]
+             if ob.shape == write_mask.shape:
+                 write_mask = write_mask & ~ob
+@@ -1898,9 +1981,21 @@ def run_per_anatomy(image_path: Path, ref_img: sitk.Image,
          target_code = orientation_code(ref_img)
          oriented = sitk.DICOMOrient(lps_label_img, target_code)
          full_label = sitk.GetArrayFromImage(oriented).astype(np.uint16, copy=False)

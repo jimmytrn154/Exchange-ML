@@ -43,7 +43,7 @@ The three hashes must be exactly:
 ```text
 b7fe9b5d737856635e33d34c7164c8a210362fc23eba24d19c5967236c4e48a3  core.py
 ed79fce233aa6d8fe16696693c6a6ee9e720c947cb51da4fa5f8ce56a8ec569d  model.py
-7483138ca7953264f578e6bbf7e7f0b0f246ad22067688018b163a5266dbe615  inference.py
+7e64a66949eb306d373b6e3b62bd660d77b4998f28da8999dccd5f967d65705d  inference.py
 ```
 
 If the checkout, the patch, or a hash fails, stop and tell the repo owner.
@@ -143,7 +143,10 @@ chmod -R a+rX outputs/stage3_h1/members/member_01 outputs/logs
 
 Tell the repo owner the full path of your `Exchange-ML` folder. They copy
 `outputs/stage3_h1/members/member_01` and your two logs into their own
-repository and run inference themselves.
+repository and run inference themselves. Leave both `checkpoint_best.pth` and
+`checkpoint_final.pth` in each `fold_0`: inference uses the Fragment
+`checkpoint_final.pth`, which must pass the per-bone Fragment gate first (the
+owner runs that check).
 
 ## Rules
 

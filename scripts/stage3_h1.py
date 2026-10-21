@@ -21,6 +21,7 @@ sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 
 from stage2_backend import (  # noqa: E402
     check as check_stage2_environment,
+    fragment_inference_checkpoint,
     load_config as load_stage2_config,
     patch_and_train,
     stage2_paths,
@@ -79,6 +80,13 @@ def checkpoint_path(
         / "fold_0"
         / checkpoint_name
     )
+
+
+def inference_checkpoint_path(stage2: dict[str, Any], stage: str) -> Path:
+    """Checkpoint the inference backend loads: Anatomy best, Fragment per F8."""
+    if stage == "fragment":
+        return checkpoint_path(stage2, stage, fragment_inference_checkpoint(stage2))
+    return checkpoint_path(stage2, stage)
 
 
 def validate_config(config: dict[str, Any]) -> None:

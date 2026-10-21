@@ -8,7 +8,6 @@ entrypoint, this wrapper never writes an all-zero fallback after an exception.
 from __future__ import annotations
 
 import argparse
-import importlib
 import json
 import os
 import sys
@@ -25,8 +24,8 @@ from exchange_ml.stage2_backend import discover_case_directories, select_stage2_
 from stage2_backend import (  # noqa: E402
     check,
     environment,
+    import_inference_backend,
     load_config,
-    patch_inference_trainer_discovery,
     stage2_paths,
 )
 
@@ -57,10 +56,8 @@ def validate_prediction(path: Path, reference: sitk.Image) -> None:
         raise RuntimeError(f"prediction labels outside 0..200: {path}")
 
 
-def main() -> int:
-    args = parse_args()
-    config = load_config(args.config)
-    check(config)
+def load_configured_backend(config: dict):
+    """Import the ABBC inference backend configured exactly as for validation inference."""
     env = environment(config)
     paths = stage2_paths(config)
     env.update(
@@ -79,16 +76,22 @@ def main() -> int:
         }
     )
     os.environ.update(env)
-    patch_inference_trainer_discovery(config)
-    inference_dir = Path(config["paths"]["baseline_root"]) / "inference"
-    sys.path.insert(0, str(inference_dir.resolve()))
-    backend = importlib.import_module("inference")
+    backend = import_inference_backend(config)
     backend.DS539_DATASET = config["anatomy_stage"]["dataset_name"]
     backend.DS538_DATASET = config["fragment_stage"]["dataset_name"]
     backend.DS539_TRAINER = config["anatomy_stage"]["trainer"]
     backend.DS538_TRAINER = config["fragment_stage"]["trainer"]
     backend.DS538_EXPERT_TRAINERS = {}
     backend.NN_RES = paths["results"].resolve()
+    return backend
+
+
+def main() -> int:
+    args = parse_args()
+    config = load_config(args.config)
+    check(config)
+    paths = stage2_paths(config)
+    backend = load_configured_backend(config)
 
     split = json.loads(Path(config["split"]["manifest"]).read_text(encoding="utf-8"))
     selected = select_stage2_case_ids(split, int(config["split"]["trajectory_seed"]))

@@ -198,6 +198,52 @@ def patch_inference_trainer_discovery(config: dict[str, Any]) -> None:
     predict_from_raw_data.recursive_find_python_class = resolve
 
 
+def import_inference_backend(config: dict[str, Any]):
+    """Import the ABBC inference module for research validation inference.
+
+    Refuses to run without CUDA (nnU-Net would silently fall back to CPU) and
+    disables the challenge time budget, which otherwise zeroes the remaining
+    anatomies of a slow case and still returns a partial prediction. The
+    Fragment checkpoint comes from ``fragment_stage.inference_checkpoint`` (F8).
+    Only Ds539 masks block other anatomies at paint time (F9, D8).
+    """
+    import importlib
+
+    import torch
+
+    if not torch.cuda.is_available():
+        raise RuntimeError("CUDA is unavailable; refusing CPU validation inference")
+    fragment_checkpoint = fragment_inference_checkpoint(config)
+    os.environ["PENGWIN_DISABLE_TIME_BUDGET"] = "1"
+    os.environ["PENGWIN_DS538_CHECKPOINT"] = fragment_checkpoint
+    os.environ["PENGWIN_CONFINE_DS539_ONLY"] = "1"
+    patch_inference_trainer_discovery(config)
+    inference_dir = Path(config["paths"]["baseline_root"]) / "inference"
+    sys.path.insert(0, str(inference_dir.resolve()))
+    backend = importlib.import_module("inference")
+    if backend.V03_USE_TIME_BUDGET:
+        raise RuntimeError("challenge time budget is still active; refusing validation inference")
+    if backend.DS538_CHECKPOINT_NAME != fragment_checkpoint:
+        raise RuntimeError(
+            f"Fragment checkpoint is {backend.DS538_CHECKPOINT_NAME}, config requires "
+            f"{fragment_checkpoint}; refusing validation inference"
+        )
+    if not backend.V03_CONFINE_DS539_ONLY:
+        raise RuntimeError(
+            "bone-fallback masks still block other anatomies at paint time; "
+            "refusing validation inference"
+        )
+    return backend
+
+
+def fragment_inference_checkpoint(config: dict[str, Any]) -> str:
+    """Fragment checkpoint used for inference and the Fragment gate (F8, D6)."""
+    name = config["fragment_stage"]["inference_checkpoint"]
+    if name not in ("checkpoint_best.pth", "checkpoint_final.pth"):
+        raise ValueError(f"unsupported fragment inference checkpoint: {name}")
+    return name
+
+
 def _run_ddp_rank(
     rank: int,
     num_gpus: int,

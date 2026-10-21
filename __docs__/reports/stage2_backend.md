@@ -1,8 +1,8 @@
 # Stage 2 — Stable fixed PENGWIN backend
 
 Status: **REOPENED (2026-10-12) — RETRAINING IN PROGRESS.** Stage A
-retrained with the backend fixes and passed gate G1 (2026-10-13); Stage B,
-validation inference, and metrics are pending, so the stage is not closed.
+retrained and passed gate G1 (2026-10-13); Stage B retrained (2026-10-14);
+validation inference and metrics are pending, so the stage is not closed.
 The 2026-09-26 PASS below is retained as history.
 
 Date: 2026-09-26 (Asia/Ho_Chi_Minh). Reopened: 2026-10-12 by user decision.
@@ -49,6 +49,7 @@ unchanged. Changes to the ABBC code are recorded in
 | F6 | Anatomy partial-label case map built per run from the `Dataset701` training labels (40 pelvic → `{1,2,3}`, 40 femur → `{4}`), checked against the frozen split, passed via `PENGWIN_CASE_LABELED_MAP`; an explicitly supplied map must load. | `scripts/stage2_backend.py`, `src/exchange_ml/stage2_backend.py`, `code_task1/core.py` |
 | — | Fragment warm-start trusts only this run's own Anatomy `checkpoint_best.pth` (PyTorch 2.1.2 NumPy-pickle restriction). | `scripts/stage2_backend.py` |
 | — | Explicit model seed `31000` (the 2026-09-26 run's seed was not recorded). | user-typed command |
+| F7 | Validation inference disables the challenge time budget (which zeroed remaining anatomies of slow cases) and refuses to run without CUDA (2026-10-15). | `inference/inference.py`, `scripts/stage2_backend.py`, both predict wrappers |
 
 Verification: 37/37 unit tests (including `tests/test_stage3_backend_fixes.py`);
 a 2-GPU smoke run of both stages passed (tracker, F4).
@@ -78,9 +79,19 @@ visible-but-unlabelled bones in the other scan type as Dice 0, so it is not
 used. The hip improvement reflects F1 and F6 together; this run cannot
 separate them. It is a Stage A result only, not an instance-level result.
 
+### Stage B result (C-0.2)
+
+- Run: seed `31000`, GPUs `5,6`, 2026-10-13 19:33 – 2026-10-14 06:17; log
+  `outputs/logs/c0_stage2_fragment.log`.
+- Warm-start from the retrained C-0.1 `checkpoint_best.pth` on both ranks
+  (`loaded=120 skipped_seg=10`).
+- Early stop at epoch 83 (best EMA instance F1 0.6869); both DDP ranks stopped
+  together (fix F2); no errors. Per-epoch validation-patch F1 is a training
+  proxy, not the stage metric.
+
 ### Pending
 
-Stage B training (C-0.2), validation inference, metrics, and gate G2. The
+Validation inference, metrics, and gate G2. The
 evaluation stays the frozen whole-volume contract (decision D4); femur-scan
 false positives from visible pelvic bone are recorded as a limitation, with a
 labelled-anatomy-only view as a secondary analysis only.

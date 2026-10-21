@@ -9,7 +9,6 @@ from __future__ import annotations
 
 import argparse
 import hashlib
-import importlib
 import json
 import os
 import sys
@@ -29,11 +28,11 @@ from exchange_ml.stage2_backend import (  # noqa: E402
 from stage2_backend import (  # noqa: E402
     check,
     environment,
-    patch_inference_trainer_discovery,
+    import_inference_backend,
     stage2_paths,
 )
 from stage3_h1 import (  # noqa: E402
-    checkpoint_path,
+    inference_checkpoint_path,
     load_config,
     member_record,
     member_root,
@@ -101,7 +100,7 @@ def main() -> int:
     check(stage2)
 
     for stage in ("anatomy", "fragment"):
-        path = checkpoint_path(stage2, stage)
+        path = inference_checkpoint_path(stage2, stage)
         if not path.is_file():
             raise FileNotFoundError(f"{args.member} missing {stage} checkpoint: {path}")
 
@@ -128,11 +127,7 @@ def main() -> int:
         }
     )
     os.environ.update(env)
-    patch_inference_trainer_discovery(stage2)
-
-    inference_dir = Path(stage2["paths"]["baseline_root"]) / "inference"
-    sys.path.insert(0, str(inference_dir.resolve()))
-    backend = importlib.import_module("inference")
+    backend = import_inference_backend(stage2)
     backend.DS539_DATASET = stage2["anatomy_stage"]["dataset_name"]
     backend.DS538_DATASET = stage2["fragment_stage"]["dataset_name"]
     backend.DS539_TRAINER = stage2["anatomy_stage"]["trainer"]
@@ -155,8 +150,8 @@ def main() -> int:
     prediction_root.mkdir(parents=True, exist_ok=True)
     probability_root.mkdir(parents=True, exist_ok=True)
     manifest_path = root / "validation_inference_manifest.json"
-    anatomy_checkpoint_sha256 = sha256(checkpoint_path(stage2, "anatomy"))
-    fragment_checkpoint_sha256 = sha256(checkpoint_path(stage2, "fragment"))
+    anatomy_checkpoint_sha256 = sha256(inference_checkpoint_path(stage2, "anatomy"))
+    fragment_checkpoint_sha256 = sha256(inference_checkpoint_path(stage2, "fragment"))
     rows = []
     for case_id in case_ids:
         source = cases[case_id] / "image.mha"
