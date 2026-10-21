@@ -2,6 +2,8 @@
 # Source datasets
 # ============================================
 dataset/
+# dataset may be a symlink to /mnt/sdb (2026-10-16 quota move); `dataset/` alone matches only a directory
+/dataset
 
 # ============================================
 # Generated output payloads

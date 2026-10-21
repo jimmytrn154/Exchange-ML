@@ -52,6 +52,7 @@
     "maximum_local_instance_id": 23,
     "initialization": "required warm-start from the trained Stage 2 anatomy checkpoint; segmentation heads are reinitialized",
     "roi_pad_voxels": 24,
+    "inference_checkpoint": "checkpoint_final.pth",
     "initial_lr": 0.001,
     "max_epochs": 1000,
     "early_stop_min_epochs": 30,

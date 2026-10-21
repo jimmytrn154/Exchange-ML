@@ -1,16 +1,18 @@
 # Stage 3 — FA-IPD + H1 Round-0 benchmark
 
 Status: **BLOCKED — the 2026-10-05 H1 FAIL is confounded by backend defects
-found on 2026-10-09; gateway decision suspended pending user-approved fixes.**
+found on 2026-10-09. Backend fixes are done and the Stage 2 backend is
+retrained (G2 proposed PASS, awaiting user confirmation); the three ensemble
+members are being retrained. The H1 gateway will be reassessed after that.**
 
 Opened: 2026-09-26. H1 assessed: 2026-10-05 (Asia/Ho_Chi_Minh). Diagnosis
-added: 2026-10-09.
+added: 2026-10-09. Last updated: 2026-10-16.
 
-Stage 2 prerequisite: **PASS — internal research backend complete.** A fresh
-read-only `python3 scripts/validate_stage2_artifacts.py` run on 2026-09-26
-confirmed both non-empty checkpoints, 40/40 frozen validation predictions, and
-120 metric rows. This is the Stage 2 internal gate, not a claim of hidden-test
-or expert anatomical validity.
+Stage 2 prerequisite: **REOPENED (2026-10-12).** The 2026-09-26 PASS
+(`validate_stage2_artifacts.py`: both checkpoints, 40/40 predictions, 120
+metric rows) is superseded, because that backend has the defects below. The
+retrained backend was re-evaluated on 2026-10-16; gate G2 is proposed PASS and
+awaits user confirmation (see "Backend fix status").
 
 ## Configuration
 
@@ -144,16 +146,80 @@ comparison therefore measures a Stage A laterality defect, with risk labels
 from a model that has the same defect. It does not test FA-IPD on a backend
 that segments every bone.
 
-### Unresolved
+### Unresolved (as of 2026-10-09; see updates below)
 
-- The causal link between the mirror setting and the hip losses is inferred
-  from code, logs, and outputs; it is not yet confirmed by a retrained model.
-- The 20 femur-only cases were not diagnosed.
+- ~~The causal link between the mirror setting and the hip losses is inferred
+  from code, logs, and outputs; it is not yet confirmed by a retrained model.~~
+  **Confirmed 2026-10-13:** with the mirror fix (and F6), the retrained Stage 2
+  Anatomy model reaches LeftHip/RightHip median Dice 0.988/0.986 with 0
+  labelled cases < 0.5 (pre-fix 0.613/0.371, 1 and 15 cases < 0.5).
+- ~~The 20 femur-only cases were not diagnosed.~~ **Diagnosed 2026-10-12:**
+  defects D3 (missing partial-label case map) and D4 (evaluation scope) below.
 - NVI is normalized by `log(number of active voxels)` (≈14 at 10^6 voxels),
   which keeps the partition term small. This is part of the frozen contract;
   changing it after seeing validation results would be tuning on the analysis
-  set, so it is recorded only as an observation.
-- Whether Stage 2's PASS must be reopened is a user decision.
+  set, so it is recorded only as an observation. Still open.
+- ~~Whether Stage 2's PASS must be reopened is a user decision.~~ **Reopened
+  by the user on 2026-10-12.**
+
+## Backend fix status (2026-10-16)
+
+Only the backend is being fixed; the FA-IPD method, scores, split, seeds, and
+evaluation protocol are unchanged (`configs/stage3_h1.json` SHA-256 still
+`64501bae…6106`). Day-by-day detail, commands, and evidence are in
+`__docs__/reports/stage3/stage3_fix_progress.md`.
+
+### Defects
+
+| ID | Defect | Fix |
+|---|---|---|
+| D1 | Stage A trains with L/R (axis-2) mirroring on `Dataset701` without swapping hip labels → hips lost or swapped (observed fact 3). | F1: Dataset701 added to `DISABLE_X_MIRROR_DATASETS`. |
+| D2 | Fragment validation F1, best checkpoint, and early stop decided per DDP rank (observed fact 4). | F2: statistics gathered across ranks; one shared decision. |
+| D3 | Stage A partial-label loss could not load its case map and silently trained every class as labelled, so pelvic bone visible in femur scans was taught as background. | F6: case map built from `Dataset701` labels; an explicitly set map must load. |
+| D4 | Evaluation compares the whole prediction with the whole label, so visible but unlabelled pelvic bone in femur scans counts against binary Dice. | Not a defect to fix. User decision 2026-10-12: keep whole-volume evaluation, record as a limitation, report a labelled-anatomy-only view as secondary analysis. |
+| D5 | ABBC challenge time budget zeroes anatomies when inference is slow; partial cases were saved as complete. | F7: budget disabled for validation inference; CPU inference refused. |
+| D6 | Retrained Fragment `checkpoint_best` (selected on pooled patch F1) has an under-trained sacrum; some pelvic cases lose most of the sacrum. | F8: Fragment inference uses `checkpoint_final.pth`, which must pass the per-bone Fragment gate GF. |
+
+F3 (Anatomy early stop) needed no change: those decisions are already global.
+All fixes are unit-tested (52/52) and recorded in
+`patches/pengwin2026-task1-abbc_on_ccc625f.patch`.
+
+### Stage 2 backend (seed 31000)
+
+- Anatomy retrained 2026-10-13: G1 PASS (hips 0.988/0.986, 0 cases < 0.5).
+- Fragment retrained 2026-10-13/14: `checkpoint_best` fails GF (Sacrum 4/20
+  crops < 0.5); `checkpoint_final` passes (Sacrum median 0.971, 0 < 0.5).
+- Validation re-inference with `checkpoint_final` (F8) and re-evaluation done
+  2026-10-16. Connectivity 26, pre-fix → retrained:
+
+  | Group | Binary Dice | Instance F1 | Merges / splits |
+  |---|---:|---:|---:|
+  | All 40 | 0.764 → 0.729 | 0.737 → 0.850 | 8 / 115 → 14 / 214 |
+  | Pelvic 20 | 0.770 → 0.895 | 0.617 → 0.824 | 6 / 52 → 10 / 159 |
+  | Femur-only 20 | 0.757 → 0.563 | 0.857 → 0.876 | 2 / 63 → 4 / 55 |
+
+  Pelvic cases gain most (hips now found). The femur-only binary Dice drop is
+  D4: the fixed model now segments the visible pelvic bone, which is
+  unlabelled in those scans; Dice over the femur itself is unchanged.
+  Instance metrics score only GT-present anatomies and are not affected.
+- **G2: proposed PASS, awaiting user confirmation.** On confirmation this
+  `validation_metrics.csv` becomes the frozen H1 risk source. Recorded
+  caveats: high pelvic split count (159; the pre-fix 52 was partly hidden by
+  swapped hip IDs), femur-only binary Dice (D4), and per-case instance F1
+  moving by about ±0.1 between `checkpoint_best` and `checkpoint_final`.
+
+### Ensemble members
+
+| Member | Anatomy (G1) | Fragment | Inference |
+|---|---|---|---|
+| `member_01` (31001) | not started | — | — |
+| `member_02` (31002) | DONE 2026-10-15, G1 PASS (0.989/0.986) | restarting: the 2026-10-16 run was lost to a server reboot (11:14) and its restart to a disk-quota stop (~12:08) | — |
+| `member_03` (31003) | not started | — | — |
+
+On 2026-10-16 the bulk data (`dataset/`, nnU-Net preprocessed/raw data,
+predictions, large checkpoints) was moved to `/mnt/sdb/shared/chuong/` and
+symlinked back to stay under the user disk quota. Member inference outputs
+should also be linked to `/mnt/sdb` before they are written.
 
 ## Runtime handoff observation
 
@@ -168,6 +234,10 @@ mirror defect, shared by the backend that supplies the H1 risks, and by the
 unfixed DDP early-stop defect (`member_02` used the crashed-run checkpoint).
 The gateway cannot be validly assessed until these are fixed and the ensemble
 is retrained. Stage 4 and H2 remain stopped.
+
+2026-10-16: the fixes are done and the Stage 2 risk source is ready pending G2
+confirmation. Still needed: all three members retrained (G1, GF) and
+re-inferred, then a new scoring/evaluation run and a manual H1 assessment.
 
 ## Agent-typed commands
 
@@ -213,6 +283,8 @@ standard-library `grp` module; it was renamed and the rerun succeeded.
 
 The commands below are the original execution handoff, retained for provenance.
 They are superseded by the completed H1 evaluation and are not a new run plan.
+The current retraining commands are in `stage3_fix_progress.md`
+("Prepared user-typed commands").
 
 Run from the repository root. This schedule keeps the frozen two-GPU DDP
 training and member seeds. The `CUDA_VISIBLE_DEVICES` and `MASTER_PORT`
@@ -297,14 +369,14 @@ the completed score file and manifest.
 
 ## Next step
 
-Awaiting user approval to fix the backend, not the FA-IPD method:
+The 2026-10-09 plan (fix the backend, not FA-IPD; retrain Stage 2 and all
+three members) was approved on 2026-10-12 and extended with F6–F8 as D3, D5,
+and D6 were found. Remaining steps:
 
-1. disable axis-2 (L/R) mirroring for `Dataset701_PENGWINStage2Anatomy`,
-   matching the upstream intent for its anatomy dataset;
-2. aggregate Fragment validation F1, best-checkpoint selection, and early
-   stopping across DDP ranks;
-3. validate both with lightweight tests, then prepare user-typed retraining of
-   the Stage 2 backend and all three Stage 3 members, followed by inference,
-   scoring, and evaluation.
-
-No new full-run command is prepared until the fixes are approved and tested.
+1. User confirms G2; the Stage 2 `validation_metrics.csv` is frozen as the H1
+   risk source.
+2. Retrain `member_02` Fragment, then `member_01` and `member_03` (Anatomy →
+   G1 → Fragment → GF), each followed by validation inference with
+   `checkpoint_final`.
+3. Run `score_stage3_h1.py`, then `evaluate_stage3_h1.py`, then the manual
+   H1 gateway assessment with the unchanged frozen protocol.

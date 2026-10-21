@@ -1,0 +1,58 @@
+{
+  "retrained": {
+    "results_root": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_results",
+    "Sacrum": {
+      "n": 20,
+      "median_dice": 0.9644741879635002,
+      "crops_below_0.5": 4,
+      "pass": false
+    },
+    "LeftHip": {
+      "n": 20,
+      "median_dice": 0.9834711318151985,
+      "crops_below_0.5": 0,
+      "pass": true
+    },
+    "RightHip": {
+      "n": 20,
+      "median_dice": 0.9787849554049032,
+      "crops_below_0.5": 0,
+      "pass": true
+    },
+    "Femur": {
+      "n": 20,
+      "median_dice": 0.9838799742510191,
+      "crops_below_0.5": 0,
+      "pass": true
+    },
+    "PASS": false
+  },
+  "prefix": {
+    "results_root": "/home/24chuong.ta/chun/Exchange-ML/outputs/archive/2026-10-12_pre_backend_fix/stage2_backend/nnUNet_results",
+    "Sacrum": {
+      "n": 20,
+      "median_dice": 0.9763357351551321,
+      "crops_below_0.5": 0,
+      "pass": true
+    },
+    "LeftHip": {
+      "n": 20,
+      "median_dice": 0.9823652158003245,
+      "crops_below_0.5": 0,
+      "pass": true
+    },
+    "RightHip": {
+      "n": 20,
+      "median_dice": 0.9765960427300433,
+      "crops_below_0.5": 0,
+      "pass": true
+    },
+    "Femur": {
+      "n": 20,
+      "median_dice": 0.9837234631059582,
+      "crops_below_0.5": 0,
+      "pass": true
+    },
+    "PASS": true
+  }
+}

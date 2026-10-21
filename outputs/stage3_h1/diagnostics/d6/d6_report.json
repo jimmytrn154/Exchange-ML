@@ -1,0 +1,824 @@
+{
+  "030": {
+    "Sacrum": {
+      "bbox": [
+        [
+          48,
+          265
+        ],
+        [
+          221,
+          389
+        ],
+        [
+          108,
+          314
+        ]
+      ],
+      "after_decode_pp": {
+        "voxels": 813409,
+        "instances": 8,
+        "largest": [
+          340749,
+          269718,
+          116891,
+          44516,
+          29026,
+          7764,
+          4000,
+          745
+        ]
+      },
+      "after_resample_crop": {
+        "voxels": 669506,
+        "instances": 8,
+        "largest": [
+          278036,
+          223328,
+          96639,
+          36867,
+          24534,
+          6237,
+          3290,
+          575
+        ]
+      },
+      "pp_to_original_scale": 0.8223615929553563,
+      "painted_voxels": 74880,
+      "painted_fragments": 8,
+      "model_foreground": {
+        "fg_prob_gt_0.5_voxels_pp": 813366,
+        "argmax_class_voxels_pp": {
+          "bg": 8320420,
+          "border": 290426,
+          "boundary": 24885,
+          "core": 496427
+        },
+        "mean_short_affinity_in_fg": 0.9637163281440735,
+        "fg_prob_gt_0.5_voxels_original_est": 668880
+      },
+      "final_vs_gt": {
+        "gt_sacrum_voxels": 352258,
+        "final_sacrum_label_voxels": 74880,
+        "gt_sacrum_covered_by_any_label": 0.13281742359293472
+      }
+    },
+    "LeftHip": {
+      "bbox": [
+        [
+          2,
+          272
+        ],
+        [
+          158,
+          379
+        ],
+        [
+          215,
+          437
+        ]
+      ],
+      "after_decode_pp": {
+        "voxels": 729649,
+        "instances": 5,
+        "largest": [
+          695017,
+          22202,
+          8146,
+          3653,
+          631
+        ]
+      },
+      "after_resample_crop": {
+        "voxels": 597804,
+        "instances": 5,
+        "largest": [
+          568898,
+          18638,
+          6821,
+          2959,
+          488
+        ]
+      },
+      "pp_to_original_scale": 0.8233386499914787,
+      "painted_voxels": 595621,
+      "painted_fragments": 5,
+      "model_foreground": {
+        "fg_prob_gt_0.5_voxels_pp": 729596,
+        "argmax_class_voxels_pp": {
+          "bg": 15359575,
+          "border": 282166,
+          "boundary": 19225,
+          "core": 428088
+        },
+        "mean_short_affinity_in_fg": 0.977118968963623,
+        "fg_prob_gt_0.5_voxels_original_est": 600704
+      }
+    },
+    "RightHip": {
+      "bbox": [
+        [
+          17,
+          270
+        ],
+        [
+          130,
+          363
+        ],
+        [
+          0,
+          267
+        ]
+      ],
+      "after_decode_pp": {
+        "voxels": 794406,
+        "instances": 7,
+        "largest": [
+          579758,
+          165857,
+          21765,
+          14320,
+          9587,
+          2582,
+          537
+        ]
+      },
+      "after_resample_crop": {
+        "voxels": 652727,
+        "instances": 7,
+        "largest": [
+          475382,
+          137143,
+          17892,
+          11828,
+          8028,
+          2046,
+          408
+        ]
+      },
+      "pp_to_original_scale": 0.8202927215189874,
+      "painted_voxels": 627492,
+      "painted_fragments": 7,
+      "model_foreground": {
+        "fg_prob_gt_0.5_voxels_pp": 794358,
+        "argmax_class_voxels_pp": {
+          "bg": 18393741,
+          "border": 309077,
+          "boundary": 41757,
+          "core": 442945
+        },
+        "mean_short_affinity_in_fg": 0.95620197057724,
+        "fg_prob_gt_0.5_voxels_original_est": 651606
+      }
+    },
+    "Femur": {
+      "bbox": [
+        [
+          0,
+          146
+        ],
+        [
+          207,
+          348
+        ],
+        [
+          280,
+          475
+        ]
+      ],
+      "after_decode_pp": {
+        "voxels": 365864,
+        "instances": 1,
+        "largest": [
+          365864
+        ]
+      },
+      "after_resample_crop": {
+        "voxels": 300304,
+        "instances": 1,
+        "largest": [
+          300304
+        ]
+      },
+      "pp_to_original_scale": 0.8221727577227633,
+      "painted_voxels": 300184,
+      "painted_fragments": 1,
+      "model_foreground": {
+        "fg_prob_gt_0.5_voxels_pp": 365849,
+        "argmax_class_voxels_pp": {
+          "bg": 4516741,
+          "border": 105439,
+          "boundary": 8585,
+          "core": 251749
+        },
+        "mean_short_affinity_in_fg": 0.9715706706047058,
+        "fg_prob_gt_0.5_voxels_original_est": 300791
+      }
+    }
+  },
+  "047": {
+    "Sacrum": {
+      "bbox": [
+        [
+          18,
+          193
+        ],
+        [
+          242,
+          413
+        ],
+        [
+          147,
+          355
+        ]
+      ],
+      "after_decode_pp": {
+        "voxels": 672633,
+        "instances": 8,
+        "largest": [
+          315017,
+          256448,
+          58109,
+          14680,
+          12057,
+          10608,
+          4331,
+          1383
+        ]
+      },
+      "after_resample_crop": {
+        "voxels": 469252,
+        "instances": 8,
+        "largest": [
+          219829,
+          179222,
+          40119,
+          10320,
+          8465,
+          7362,
+          3001,
+          934
+        ]
+      },
+      "pp_to_original_scale": 0.6986150263512685,
+      "painted_voxels": 54913,
+      "painted_fragments": 8,
+      "model_foreground": {
+        "fg_prob_gt_0.5_voxels_pp": 672581,
+        "argmax_class_voxels_pp": {
+          "bg": 8238046,
+          "border": 281154,
+          "boundary": 19399,
+          "core": 371029
+        },
+        "mean_short_affinity_in_fg": 0.9731147289276123,
+        "fg_prob_gt_0.5_voxels_original_est": 469875
+      },
+      "final_vs_gt": {
+        "gt_sacrum_voxels": 323733,
+        "final_sacrum_label_voxels": 54913,
+        "gt_sacrum_covered_by_any_label": 0.14482613758869192
+      }
+    },
+    "LeftHip": {
+      "bbox": [
+        [
+          0,
+          193
+        ],
+        [
+          164,
+          403
+        ],
+        [
+          242,
+          468
+        ]
+      ],
+      "after_decode_pp": {
+        "voxels": 560635,
+        "instances": 5,
+        "largest": [
+          492858,
+          46175,
+          11813,
+          8049,
+          1740
+        ]
+      },
+      "after_resample_crop": {
+        "voxels": 392294,
+        "instances": 5,
+        "largest": [
+          344717,
+          32461,
+          8251,
+          5582,
+          1283
+        ]
+      },
+      "pp_to_original_scale": 0.700177128048561,
+      "painted_voxels": 390211,
+      "painted_fragments": 5,
+      "model_foreground": {
+        "fg_prob_gt_0.5_voxels_pp": 560601,
+        "argmax_class_voxels_pp": {
+          "bg": 14328128,
+          "border": 240786,
+          "boundary": 12115,
+          "core": 307635
+        },
+        "mean_short_affinity_in_fg": 0.9829015135765076,
+        "fg_prob_gt_0.5_voxels_original_est": 392519
+      }
+    },
+    "RightHip": {
+      "bbox": [
+        [
+          0,
+          193
+        ],
+        [
+          170,
+          405
+        ],
+        [
+          41,
+          264
+        ]
+      ],
+      "after_decode_pp": {
+        "voxels": 547226,
+        "instances": 1,
+        "largest": [
+          547226
+        ]
+      },
+      "after_resample_crop": {
+        "voxels": 381918,
+        "instances": 1,
+        "largest": [
+          381918
+        ]
+      },
+      "pp_to_original_scale": 0.6978582985755339,
+      "painted_voxels": 379311,
+      "painted_fragments": 1,
+      "model_foreground": {
+        "fg_prob_gt_0.5_voxels_pp": 547193,
+        "argmax_class_voxels_pp": {
+          "bg": 13945979,
+          "border": 234951,
+          "boundary": 10191,
+          "core": 302029
+        },
+        "mean_short_affinity_in_fg": 0.9832521677017212,
+        "fg_prob_gt_0.5_voxels_original_est": 381863
+      }
+    },
+    "Femur": {
+      "bbox": [
+        [
+          0,
+          116
+        ],
+        [
+          207,
+          362
+        ],
+        [
+          325,
+          486
+        ]
+      ],
+      "after_decode_pp": {
+        "voxels": 320837,
+        "instances": 2,
+        "largest": [
+          230816,
+          90021
+        ]
+      },
+      "after_resample_crop": {
+        "voxels": 225631,
+        "instances": 2,
+        "largest": [
+          162133,
+          63498
+        ]
+      },
+      "pp_to_original_scale": 0.7017049696607708,
+      "painted_voxels": 225603,
+      "painted_fragments": 2,
+      "model_foreground": {
+        "fg_prob_gt_0.5_voxels_pp": 320824,
+        "argmax_class_voxels_pp": {
+          "bg": 3804550,
+          "border": 91690,
+          "boundary": 13375,
+          "core": 215737
+        },
+        "mean_short_affinity_in_fg": 0.9625943899154663,
+        "fg_prob_gt_0.5_voxels_original_est": 225123
+      }
+    }
+  },
+  "060": {
+    "Sacrum": {
+      "bbox": [
+        [
+          54,
+          309
+        ],
+        [
+          94,
+          260
+        ],
+        [
+          112,
+          304
+        ]
+      ],
+      "after_decode_pp": {
+        "voxels": 974344,
+        "instances": 6,
+        "largest": [
+          432962,
+          395393,
+          114658,
+          18550,
+          12502,
+          279
+        ]
+      },
+      "after_resample_crop": {
+        "voxels": 807373,
+        "instances": 6,
+        "largest": [
+          358534,
+          327924,
+          94847,
+          15329,
+          10502,
+          237
+        ]
+      },
+      "pp_to_original_scale": 0.8299567730847351,
+      "painted_voxels": 119070,
+      "painted_fragments": 6,
+      "model_foreground": {
+        "fg_prob_gt_0.5_voxels_pp": 974280,
+        "argmax_class_voxels_pp": {
+          "bg": 8819738,
+          "border": 367231,
+          "boundary": 11534,
+          "core": 594007
+        },
+        "mean_short_affinity_in_fg": 0.9862438440322876,
+        "fg_prob_gt_0.5_voxels_original_est": 808610
+      },
+      "final_vs_gt": {
+        "gt_sacrum_voxels": 395305,
+        "final_sacrum_label_voxels": 119070,
+        "gt_sacrum_covered_by_any_label": 0.26095546476771103
+      }
+    },
+    "LeftHip": {
+      "bbox": [
+        [
+          10,
+          327
+        ],
+        [
+          29,
+          245
+        ],
+        [
+          179,
+          394
+        ]
+      ],
+      "after_decode_pp": {
+        "voxels": 709409,
+        "instances": 2,
+        "largest": [
+          709063,
+          346
+        ]
+      },
+      "after_resample_crop": {
+        "voxels": 588503,
+        "instances": 2,
+        "largest": [
+          588245,
+          258
+        ]
+      },
+      "pp_to_original_scale": 0.8302939283415576,
+      "painted_voxels": 584709,
+      "painted_fragments": 2,
+      "model_foreground": {
+        "fg_prob_gt_0.5_voxels_pp": 709360,
+        "argmax_class_voxels_pp": {
+          "bg": 17021094,
+          "border": 290941,
+          "boundary": 2,
+          "core": 418407
+        },
+        "mean_short_affinity_in_fg": 0.999107301235199,
+        "fg_prob_gt_0.5_voxels_original_est": 588977
+      }
+    },
+    "RightHip": {
+      "bbox": [
+        [
+          19,
+          333
+        ],
+        [
+          31,
+          245
+        ],
+        [
+          18,
+          222
+        ]
+      ],
+      "after_decode_pp": {
+        "voxels": 695435,
+        "instances": 4,
+        "largest": [
+          626435,
+          65241,
+          2554,
+          1205
+        ]
+      },
+      "after_resample_crop": {
+        "voxels": 577000,
+        "instances": 4,
+        "largest": [
+          519634,
+          54226,
+          2112,
+          1028
+        ]
+      },
+      "pp_to_original_scale": 0.8293313069908814,
+      "painted_voxels": 572405,
+      "painted_fragments": 4,
+      "model_foreground": {
+        "fg_prob_gt_0.5_voxels_pp": 695385,
+        "argmax_class_voxels_pp": {
+          "bg": 15833662,
+          "border": 278187,
+          "boundary": 13365,
+          "core": 403746
+        },
+        "mean_short_affinity_in_fg": 0.9847423434257507,
+        "fg_prob_gt_0.5_voxels_original_est": 576704
+      }
+    },
+    "Femur": {
+      "bbox": [
+        [
+          0,
+          190
+        ],
+        [
+          70,
+          205
+        ],
+        [
+          6,
+          159
+        ]
+      ],
+      "after_decode_pp": {
+        "voxels": 427898,
+        "instances": 2,
+        "largest": [
+          316330,
+          111568
+        ]
+      },
+      "after_resample_crop": {
+        "voxels": 355479,
+        "instances": 2,
+        "largest": [
+          262865,
+          92614
+        ]
+      },
+      "pp_to_original_scale": 0.830719111969112,
+      "painted_voxels": 355479,
+      "painted_fragments": 2,
+      "model_foreground": {
+        "fg_prob_gt_0.5_voxels_pp": 427884,
+        "argmax_class_voxels_pp": {
+          "bg": 4296283,
+          "border": 113272,
+          "boundary": 666,
+          "core": 313939
+        },
+        "mean_short_affinity_in_fg": 0.9923277497291565,
+        "fg_prob_gt_0.5_voxels_original_est": 355451
+      }
+    }
+  },
+  "004": {
+    "Sacrum": {
+      "bbox": [
+        [
+          18,
+          209
+        ],
+        [
+          96,
+          232
+        ],
+        [
+          108,
+          294
+        ]
+      ],
+      "after_decode_pp": {
+        "voxels": 314441,
+        "instances": 2,
+        "largest": [
+          254773,
+          59668
+        ]
+      },
+      "after_resample_crop": {
+        "voxels": 215467,
+        "instances": 2,
+        "largest": [
+          174731,
+          40736
+        ]
+      },
+      "pp_to_original_scale": 0.6870603251961765,
+      "painted_voxels": 215401,
+      "painted_fragments": 2,
+      "model_foreground": {
+        "fg_prob_gt_0.5_voxels_pp": 314422,
+        "argmax_class_voxels_pp": {
+          "bg": 6717862,
+          "border": 158878,
+          "boundary": 14697,
+          "core": 140749
+        },
+        "mean_short_affinity_in_fg": 0.970369279384613,
+        "fg_prob_gt_0.5_voxels_original_est": 216026
+      },
+      "final_vs_gt": {
+        "gt_sacrum_voxels": 210162,
+        "final_sacrum_label_voxels": 215401,
+        "gt_sacrum_covered_by_any_label": 0.9806292288805778
+      }
+    },
+    "LeftHip": {
+      "bbox": [
+        [
+          0,
+          219
+        ],
+        [
+          0,
+          226
+        ],
+        [
+          156,
+          382
+        ]
+      ],
+      "after_decode_pp": {
+        "voxels": 484581,
+        "instances": 4,
+        "largest": [
+          425200,
+          42717,
+          15019,
+          1645
+        ]
+      },
+      "after_resample_crop": {
+        "voxels": 332641,
+        "instances": 4,
+        "largest": [
+          291996,
+          29242,
+          10309,
+          1094
+        ]
+      },
+      "pp_to_original_scale": 0.6882063784106246,
+      "painted_voxels": 321285,
+      "painted_fragments": 4,
+      "model_foreground": {
+        "fg_prob_gt_0.5_voxels_pp": 484535,
+        "argmax_class_voxels_pp": {
+          "bg": 15769005,
+          "border": 231044,
+          "boundary": 8518,
+          "core": 244761
+        },
+        "mean_short_affinity_in_fg": 0.9879181981086731,
+        "fg_prob_gt_0.5_voxels_original_est": 333460
+      }
+    },
+    "RightHip": {
+      "bbox": [
+        [
+          0,
+          224
+        ],
+        [
+          0,
+          234
+        ],
+        [
+          15,
+          204
+        ]
+      ],
+      "after_decode_pp": {
+        "voxels": 464457,
+        "instances": 3,
+        "largest": [
+          442473,
+          16258,
+          5726
+        ]
+      },
+      "after_resample_crop": {
+        "voxels": 318108,
+        "instances": 3,
+        "largest": [
+          303175,
+          11060,
+          3873
+        ]
+      },
+      "pp_to_original_scale": 0.685514996512439,
+      "painted_voxels": 318108,
+      "painted_fragments": 3,
+      "model_foreground": {
+        "fg_prob_gt_0.5_voxels_pp": 464434,
+        "argmax_class_voxels_pp": {
+          "bg": 13986955,
+          "border": 210407,
+          "boundary": 17027,
+          "core": 236971
+        },
+        "mean_short_affinity_in_fg": 0.9708266854286194,
+        "fg_prob_gt_0.5_voxels_original_est": 318376
+      }
+    },
+    "Femur": {
+      "bbox": [
+        [
+          0,
+          132
+        ],
+        [
+          46,
+          179
+        ],
+        [
+          1,
+          135
+        ]
+      ],
+      "after_decode_pp": {
+        "voxels": 255273,
+        "instances": 1,
+        "largest": [
+          255273
+        ]
+      },
+      "after_resample_crop": {
+        "voxels": 174034,
+        "instances": 1,
+        "largest": [
+          174034
+        ]
+      },
+      "pp_to_original_scale": 0.6828352490421455,
+      "painted_voxels": 174034,
+      "painted_fragments": 1,
+      "model_foreground": {
+        "fg_prob_gt_0.5_voxels_pp": 255261,
+        "argmax_class_voxels_pp": {
+          "bg": 3189974,
+          "border": 78478,
+          "boundary": 1760,
+          "core": 174988
+        },
+        "mean_short_affinity_in_fg": 0.9895822405815125,
+        "fg_prob_gt_0.5_voxels_original_est": 174301
+      }
+    }
+  }
+}

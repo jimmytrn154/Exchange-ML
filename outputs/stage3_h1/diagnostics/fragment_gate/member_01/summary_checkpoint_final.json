@@ -1,0 +1,31 @@
+{
+  "member_01": {
+    "results_root": "/mnt/sdb/shared/chuong/m01_results",
+    "checkpoint": "checkpoint_final.pth",
+    "Sacrum": {
+      "n": 20,
+      "median_dice": 0.9746887621261839,
+      "crops_below_0.5": 0,
+      "pass": true
+    },
+    "LeftHip": {
+      "n": 20,
+      "median_dice": 0.9834422688523055,
+      "crops_below_0.5": 0,
+      "pass": true
+    },
+    "RightHip": {
+      "n": 20,
+      "median_dice": 0.9823900431224457,
+      "crops_below_0.5": 0,
+      "pass": true
+    },
+    "Femur": {
+      "n": 20,
+      "median_dice": 0.9835998373814383,
+      "crops_below_0.5": 0,
+      "pass": true
+    },
+    "PASS": true
+  }
+}

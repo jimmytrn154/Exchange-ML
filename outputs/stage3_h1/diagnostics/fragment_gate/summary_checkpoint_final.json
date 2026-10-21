@@ -1,0 +1,31 @@
+{
+  "retrained_final": {
+    "results_root": "/home/24chuong.ta/chun/Exchange-ML/outputs/stage2_backend/nnUNet_results",
+    "checkpoint": "checkpoint_final.pth",
+    "Sacrum": {
+      "n": 20,
+      "median_dice": 0.9709974478782399,
+      "crops_below_0.5": 0,
+      "pass": true
+    },
+    "LeftHip": {
+      "n": 20,
+      "median_dice": 0.9839757766536976,
+      "crops_below_0.5": 0,
+      "pass": true
+    },
+    "RightHip": {
+      "n": 20,
+      "median_dice": 0.9823046194241648,
+      "crops_below_0.5": 0,
+      "pass": true
+    },
+    "Femur": {
+      "n": 20,
+      "median_dice": 0.984293713361746,
+      "crops_below_0.5": 0,
+      "pass": true
+    },
+    "PASS": true
+  }
+}
