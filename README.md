@@ -107,7 +107,7 @@ Ground truth may define the static split and initial sets, but it must never inf
 
 RibFrac is reserved for H3 cross-anatomy validation. The same FA-IPD definition and evaluation protocol must be used without post-hoc score tuning.
 
-Datasets and generated outputs are excluded from Git. Expected local paths are:
+Datasets and generated outputs are excluded from Git. On the project server, `dataset/` and the bulk outputs are symlinks into `/mnt/sdb/shared/chuong/`; see [`__docs__/storage_layout.md`](__docs__/storage_layout.md). Expected local paths are:
 
 ```text
 dataset/
@@ -141,9 +141,11 @@ Exchange-ML/
 ├── splits/                # Frozen split and audit manifests
 ├── baselines/             # External reference implementation checkouts
 ├── __docs__/              # Research blueprint, roadmap, rules, and stage reports
-├── dataset/               # Local source data; ignored by Git
-└── outputs/               # Tracked metadata; bulk images/arrays/checkpoints ignored
+├── dataset/               # Source data; symlink to /mnt/sdb, ignored by Git
+└── outputs/               # Tracked metadata; bulk data on /mnt/sdb via symlinks
 ```
+
+Bulk data lives on `/mnt/sdb/shared/chuong/` because of the 100 GB home-disk quota. Before a run writes large new outputs, link the target folder to `/mnt/sdb` first. Layout, link list, and rules: [`__docs__/storage_layout.md`](__docs__/storage_layout.md); `b/NNN` mapping: [`__docs__/storage_map.tsv`](__docs__/storage_map.tsv).
 
 The external repositories under `baselines/` are local reference checkouts. Their upstream URLs and intended roles are listed in [`__docs__/plan.md`](__docs__/plan.md); they are not currently configured through a root `.gitmodules` file.
 

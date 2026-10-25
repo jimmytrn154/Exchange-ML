@@ -157,10 +157,10 @@ Anatomy checkpoint, so it must be retrained after Anatomy.
 
 | Run | Anatomy | Gate G1 | Fragment | Inference | Status |
 |---|---|---|---|---|---|
-| Stage 2 single model (seed 31000) | DONE (2026-10-13 07:36–15:25; early stop epoch 109, best 84) | **PASS** (hips 0.988 / 0.986, 0 cases < 0.5) | DONE (2026-10-13 19:33 – 10-14 06:17, GPUs 5,6; early stop epoch 83, best EMA F1 0.6869) | DONE 2026-10-15 (40/40, F7; sacrum regression D6) | Evaluation DONE 2026-10-15 17:07 with `checkpoint_best`; **G2 not passed** (D6). **C-0.3 re-inference with F8 DONE 2026-10-16** (40/40 COMPLETE, `checkpoint_final` verified); re-evaluation DONE 2026-10-16 15:53; **G2 proposed PASS, awaiting user confirmation** |
+| Stage 2 single model (seed 31000) | DONE (2026-10-13 07:36–15:25; early stop epoch 109, best 84) | **PASS** (hips 0.988 / 0.986, 0 cases < 0.5) | DONE (2026-10-13 19:33 – 10-14 06:17, GPUs 5,6; early stop epoch 83, best EMA F1 0.6869) | DONE 2026-10-15 (40/40, F7; sacrum regression D6) | Evaluation DONE 2026-10-15 17:07 with `checkpoint_best`; **G2 not passed** (D6). **C-0.3 re-inference with F8 DONE 2026-10-16** (40/40 COMPLETE, `checkpoint_final` verified); re-evaluation DONE 2026-10-16 15:53; D8 → F9 re-inference + re-evaluation DONE 2026-10-21; **G2 re-proposed PASS, awaiting user confirmation** |
 | `member_01` (seed 31001) | DONE (2026-10-17 10:15 → crash at epoch 74 → resumed from epoch 50, 21:28 – 10-18 00:34; early stop epoch 96) | **PASS** (hips 0.988 / 0.985) | DONE (2026-10-18 09:07 – 10-19 00:07; early stop epoch 123, best EMA F1 0.7123); **GF PASS** 2026-10-19 (`checkpoint_final`) | DONE 2026-10-19 (40/40 COMPLETE, `checkpoint_final` verified) | DONE |
 | `member_02` (seed 31002) | DONE (2026-10-15 07:17–14:15; early stop epoch 96) | **PASS** (hips 0.989 / 0.986) | DONE (fresh restart 2026-10-16 13:37 – 10-17 07:00; early stop epoch 138, best EMA F1 0.7068); **GF PASS** 2026-10-17 (`checkpoint_final`) | DONE 2026-10-17 (40/40 COMPLETE, `checkpoint_final` verified) | DONE |
-| `member_03` (seed 31003) | DONE (2026-10-19 07:22–14:54; early stop epoch 110, best 85) | **PASS** (hips 0.984 / 0.985) | DONE (crashed 2026-10-19 at epoch 27; fresh restart 2026-10-20 06:31–16:32; early stop epoch 77, best EMA F1 0.6893); **GF PASS** 2026-10-20 (`checkpoint_final`) | DONE 2026-10-20 (40/40 COMPLETE); **D8** femur loss on `417`/`357` → re-run after F9 | IN PROGRESS |
+| `member_03` (seed 31003) | DONE (2026-10-19 07:22–14:54; early stop epoch 110, best 85) | **PASS** (hips 0.984 / 0.985) | DONE (crashed 2026-10-19 at epoch 27; fresh restart 2026-10-20 06:31–16:32; early stop epoch 77, best EMA F1 0.6893); **GF PASS** 2026-10-20 (`checkpoint_final`) | DONE; re-run with F9 2026-10-21 (40/40, `417` femur 0.433 → 0.959) | DONE |
 
 Then, in order: Stage 2 re-evaluation → new frozen Stage 2 risk CSV →
 `score_stage3_h1.py` → `evaluate_stage3_h1.py` → manual H1 gateway.
@@ -452,6 +452,138 @@ conda run -n exchange-stage2 python scripts/stage2_backend.py --config outputs/s
   section (fix table, C-0.1 result, G1 before/after, pending items, archive
   location, run and prepared commands); Stage 2 status line in `plan.md`
   updated to "retraining in progress; Stage A passed G1".
+### 2026-10-21 (H1 re-run: scoring and evaluation)
+
+- User ran `score_stage3_h1.py` (finished 14:10; log
+  `outputs/logs/h1_score_f9.log`: 40 cases) and `evaluate_stage3_h1.py`
+  (18:52; `outputs/logs/h1_evaluate_f9.log`). No errors. Outputs in
+  `outputs/stage3_h1/`: `uncertainty_scores.csv` (40 rows), scoring manifest,
+  `h1_comparison.csv` (24 rows), `risk_coverage.csv` (960), 
+  `stratified_analysis.csv` (288), `risk_coverage.png`, `h1_summary.json`
+  (`gateway_status` `PENDING_SCIENTIFIC_ASSESSMENT`).
+- Provenance checked: `ground_truth_loaded=false`; config SHA-256
+  `64501bae…` (unchanged); member manifests and checkpoint hashes = the F9
+  runs (Anatomy `checkpoint_best`, Fragment `checkpoint_final`, seeds
+  31001–31003); scores `370605bb…` and scoring manifest `07937e87…` match the
+  recorded hashes; Stage 2 metrics `56aa9bd6…` (the CSV proposed for G2). G2
+  was not explicitly confirmed by the user before this run.
+- Results (FA-IPD vs baselines; AURC lower is better):
+
+  | Risk | FA-IPD | Mean entropy | P95 entropy | Fg Jaccard | Union NVI | Hungarian | Frag-count var |
+  |---|---|---|---|---|---|---|---|
+  | `1 − F1` AURC | 0.186 | 0.175 | 0.171 | 0.185 | 0.169 | 0.153 | 0.149 |
+  | norm. M+S AURC | 0.798 | 0.865 | 0.870 | 0.827 | **0.739** | 0.807 | 0.858 |
+  | `1 − F1` controlled ρ | −0.046 | −0.052 | −0.011 | −0.035 | −0.225 | +0.125 | +0.031 |
+  | norm. M+S controlled ρ | −0.127 | −0.146 | +0.022 | −0.145 | **+0.157** | −0.147 | −0.012 |
+  | top-10 % / 20 % enrichment | 1.081 / 1.081 | 1.081 / 1.081 | 1.081 / 1.081 | 1.081 / 1.081 | 1.081 / 1.081 | 1.081 / 1.081 | 0.811 / 0.946 |
+
+- Base failure prevalence 37/40 = 0.925, so the maximum enrichment is
+  1/0.925 = 1.081; six of seven scores sit at that ceiling and top-k
+  enrichment cannot separate them.
+- Against the frozen rule (meaningful FA-IPD advantage in ≥ 2 of AURC, top-k
+  enrichment, controlled association): AURC mixed (better than entropy and
+  Jaccard on M+S, worse on `1 − F1`; NVI best on M+S), enrichment tied at the
+  ceiling, controlled association ≤ 0 → **no advantage in any dimension.**
+- Post-hoc diagnostics (retrospective; no score or rule changed;
+  `outputs/stage3_h1/diagnostics/h1_scan_type_breakdown.py`):
+  - FA-IPD vs foreground Jaccard Spearman 0.997; the NVI term is a median
+    2.0 % of FA-IPD (max 30 %) — FA-IPD still reduces to foreground Jaccard.
+  - The scores mainly separate scan type: FA-IPD mean 0.075 pelvic vs 0.206
+    femur-only; top-8 FA-IPD cases are all femur-only, where structural risk
+    is lower (`1 − F1` 0.176 vs 0.124) but `1 − Dice` higher (0.105 vs 0.434,
+    D4). In femur-only scans, a median 98.5 % of member foreground
+    disagreement lies outside GT-labelled bone (pelvic scans 58 %), i.e. on
+    visible but unlabelled pelvic bone.
+  - Within scan type, all scores correlate weakly with the structural risks;
+    the strongest is union NVI with normalized M+S (pelvic ρ +0.37,
+    femur-only +0.29; FA-IPD +0.27 / +0.01).
+- Interpretation: the 2026-10-05 confound (hip laterality, D1) is gone, and
+  the backend defects D2–D8 are fixed. The ensemble disagreement is now
+  dominated by unlabelled bone in femur-only scans (the D4 evaluation-scope
+  issue), which FA-IPD's presence term measures as foreground disagreement.
+- **Manual H1 gateway decision: pending (user).** Agent recommendation: FAIL
+  under the frozen rule.
+- Agent-typed: `ls`/`tail`/`wc` of logs and outputs; reads of the scoring
+  manifest, `h1_summary.json`, `h1_comparison.csv`, `configs/stage3_h1.json`
+  and `evaluate_stage3_h1.py` (risk definitions); hash checks;
+  `h1_scan_type_breakdown.py` (reads GT retrospectively for the disagreement
+  location).
+
+### 2026-10-21 (Stage 2 re-evaluation with F9; G2 re-proposed)
+
+- `scripts/evaluate_stage2_backend.py` finished 10:04 (log
+  `outputs/logs/c0_stage2_evaluate_f9.log`, ends normally):
+  `validation_metrics.csv` 121 lines (40 × 3 connectivities),
+  `validation_summary.json`. Connectivities 6/18/26 agree to 1e-4.
+- Connectivity 26, pre-fix → F8 → **F9**:
+
+  | Group | Binary Dice | Inst. P | Inst. R | Inst. F1 | Merges | Splits | Failure cases |
+  |---|---|---|---|---|---|---|---|
+  | All 40 | 0.764 → 0.729 → **0.730** | 0.868 → 0.948 → 0.948 | 0.695 → 0.821 → 0.821 | 0.737 → 0.850 → **0.850** | 8 → 14 → 14 | 115 → 214 → 214 | 31 → 37 → 37 |
+  | Pelvic 20 | 0.770 → 0.895 → 0.895 | 0.754 → 0.908 → 0.908 | 0.589 → 0.816 → 0.816 | 0.617 → 0.824 → 0.824 | 6 → 10 → 10 | 52 → 159 → 159 | 13 → 18 → 18 |
+  | Femur-only 20 | 0.757 → 0.563 → **0.566** | 0.983 → 0.988 → 0.988 | 0.801 → 0.826 → 0.826 | 0.857 → 0.876 → 0.876 | 2 → 4 → 4 | 63 → 55 → 55 | 18 → 19 → 19 |
+
+- F8 → F9 per case: only `357` changed by more than 1e-4 in any metric
+  (binary Dice 0.487 → 0.549; instance P/R/F1 1.0, merges/splits 0/2
+  unchanged). The re-inference noise (17–909 voxels per case, fragment
+  renumbering) does not reach the metrics.
+- Observation: `357` scored instance F1 1.0 even with 43 % of its femur
+  missing; matching at IoU ≥ 0.1 (frozen contract) does not penalise partial
+  loss of a large instance. Binary Dice (`1 − Dice` risk) did register it.
+  Recorded only; the contract is frozen.
+- `357` binary Dice stays low (0.549) because of D4 (unlabelled pelvic bone
+  in a femur-only scan), not D8.
+- How H1 freezes the CSV: `configs/stage3_h1.json` `risk_contract.metrics_csv`
+  names this path; `evaluate_stage3_h1.py` records its SHA-256
+  (`stage2_metrics_sha256`) in `h1_summary.json`. SHA-256 now:
+  `validation_metrics.csv`
+  `56aa9bd6cbc5ab7aae1f0b60a4b2b7269f1e48dc8b2dceb69485a175d5a62cc1`,
+  `validation_summary.json` `25f6bd4c…08db5`.
+- **G2: re-proposed PASS, awaiting user confirmation.** All 2026-10-16
+  reasons hold (D6 resolved; pelvic Dice best of all runs; instance metrics
+  well above pre-fix), and D8 is fixed (F9). Caveats: high pelvic split count
+  (159), femur-only binary Dice (D4), ±0.1 per-case instance F1 sensitivity
+  to checkpoint choice, inference not bit-reproducible (outputs identified by
+  hash), IoU ≥ 0.1 matching insensitive to partial instance loss.
+- Agent-typed: `tail`/`wc` of the log and CSV; read of the summary;
+  scratch three-way comparison; `grep` of `stage3_h1.json` and the H1
+  scripts; `sha256sum`; `git log`/`check-ignore`.
+
+### 2026-10-21 (F9 re-inference of Stage 2 and all members validated)
+
+- User archived the pre-F9 inference outputs (local manifests/metrics →
+  `outputs/archive/2026-10-20_pre_F9_inference/`; predictions/probabilities
+  → `/mnt/sdb/shared/chuong/archive_2026-10-20_pre_F9/`) and re-ran all four
+  inferences (logs `outputs/logs/c{0..3}_*_predict_f9.log`; Stage 2 and
+  members 01/02 finished 2026-10-20 23:22–23:27, member_03 2026-10-21 08:24).
+  No reboot since 2026-10-19 21:50.
+- Each run: `complete: 40/40`, manifest 40 rows `COMPLETE`, no errors / `emit
+  zero` / empty-mask lines; fingerprints identical to the pre-F9 runs (Stage
+  2 A `9.7851e+01` B `1.1402e+02`; m01 `1.0227e+02`/`1.1432e+02`; m02
+  `1.0065e+02`/`1.1190e+02`; m03 `1.0194e+02`/`1.1607e+02`); member manifest
+  checkpoint hashes unchanged (Anatomy `checkpoint_best`, Fragment
+  `checkpoint_final`). Fallback counts unchanged (7 / 9 / 4 / 10).
+- **F9 effect** (`outputs/stage3_h1/diagnostics/f9_effect.py`, GT femur
+  coverage pre-F9 → F9): `357` Stage 2 0.566 → 0.966, m01 0.566 → 0.964, m02
+  0.568 → 0.966, m03 0.568 → 0.969; `417` m03 0.433 → 0.959. All other
+  fallback cases unchanged to 3 decimals. **D8 fixed.**
+- **Re-inference is not bit-reproducible.** Every case differs from its
+  pre-F9 run: foreground / anatomy-block differences of 17–909 voxels per case
+  (e.g. Stage 2 `004` 38, `151` 901), and member probability maps differ by
+  at most 0.0052 (mean ≤ 2.4e-6). In some cases the watershed numbers the same
+  fragments differently (e.g. Stage 2 `151` RightHip 104 → 101, 401k voxels;
+  m02 `154` 107 → 108; `fg-diff` ≤ 909). Instance metrics (overlap matching)
+  and the GT-free scores are invariant to fragment numbering. Cause: GPU
+  non-determinism in inference; the frozen H1 artifacts are identified by
+  their hashes, not by re-running.
+- Quota 92.4 GB (+0.7 GB): conda package cache from a 2026-10-21 07:32
+  install (`~/miniconda3/pkgs`, e.g. tesseract), not project files;
+  `conda clean -a` would free it.
+- Stage 2 re-evaluation not yet run (no `validation_metrics.csv`).
+- Agent-typed: `tail`/`grep` of the four logs; manifest reads; `ls`;
+  `f9_effect.py`; scratch relabel/probability comparison; `uptime -s`;
+  `quota -s`; `find` of large new files; `pgrep`.
+
 ### 2026-10-20 (F9 implemented)
 
 - User approved F9. Implemented as in Fix items (switch
@@ -845,7 +977,7 @@ conda run -n exchange-stage2 python scripts/stage2_backend.py --config outputs/s
   1049. Most likely enforced since the 11:14 reboot.
 - Usage: `Exchange-ML/dataset` 134 GB (PENGWIN 61, RibFrac 74),
   `Exchange-ML/outputs` 58 GB, `miniconda3` 50 GB, other projects ~27 GB.
-- User moved data to `/mnt/sdb/shared/chuong/` (chmod 700), each item copied →
+- User moved data to `/mnt/sdb/shared/chuong/` (`b/` and `dataset/` chmod 700; correction 2026-10-21: the top folder and later `m0X_*`/archive folders are 775, see `__docs__/storage_layout.md`), each item copied →
   `diff -rq` verified → original deleted → short symlink left in place:
   `dataset -> /mnt/sdb/shared/chuong/dataset`; 39 gitignored `outputs/`
   items (`nnUNetPlans_3d_fullres`, `imagesTr`/`labelsTr`,
