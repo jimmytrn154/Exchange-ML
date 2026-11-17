@@ -1,462 +1,165 @@
-# plan.md — ISBI 2027 Implementation Roadmap
+# plan.md — EMBC 2027 plan (replaces the ISBI roadmap for this submission)
 
-**Paper:** *Beyond Voxel Uncertainty: Instance-Partition Disagreement for Active Learning in 3D Fracture Segmentation*  
-**Target:** IEEE ISBI 2027 main conference, four-page paper  
-**Official submission:** **26 October 2026**  
-**Internal freeze:** **23 October 2026**
-
-## 1. Fixed study contract
-
-### PENGWIN
-- Primary dataset: 340 public labeled cases.
-- Static split: **50 test / 40 validation / 250 AL pool**.
-- Initial labeled set: 40 cases.
-- Five whole-volume query rounds, 20 cases/round.
-- Budget: **40 → 60 → 80 → 100 → 120 → 140**.
-- Minimum **3 independent AL trajectories**.
-- Ground truth may define the static split but may never influence acquisition.
-
-### RibFrac
-- Secondary cross-anatomy dataset.
-- Mandatory use: H3 failure-detection transfer with the exact PENGWIN FA-IPD definition.
-- Optional use: short 3–4-round AL study after PENGWIN is complete.
-
-### Common model protocol
-- Same segmentation backend, preprocessing, training policy and instance reconstruction for every acquisition strategy.
-- Main ensemble size: **M = 3**.
-- Test `M ∈ {2,3,4}` only in Round-0 ablation.
-- Contribution is the acquisition/uncertainty signal, not a new segmentation architecture.
-
-### Main method
-
-For each unordered ensemble pair, construct the foreground union `U_ij` and
-intersection `C_ij` inside the fixed target ROI, where
-`U_ij = F_i union F_j` and `C_ij = F_i intersection F_j`. Define
-
-\[
-d_{FA}(P^{(i)},P^{(j)})=
-\frac{|F_i\triangle F_j|}{|U_{ij}|}
-+\frac{|C_{ij}|}{|U_{ij}|}
-NVI(P^{(i)}|_{C_{ij}},P^{(j)}|_{C_{ij}}),
-\]
-
-\[
-FA\text{-}IPD(x)=\frac{2}{M(M-1)}\sum_{i<j}d_{FA}(P^{(i)},P^{(j)}).
-\]
-
-\[
-A(x)=\frac{1}{2}R_U(x)+\frac{1}{2}R_{FA\text{-}IPD}(x)
-\]
-
-The implementation defines both-empty as `0`, exactly-one-empty as `1`, and
-NVI as `0` for an intersection of at most one voxel. FA-IPD is a bounded,
-symmetric, permutation-invariant disagreement score; it is **not** called a
-mathematical metric because triangle inequality is not guaranteed.
-
-Before H1, freeze NVI normalization, pairwise ROI/domain and empty-mask rules,
-connectivity, component filtering, morphology, entropy aggregation and instance
-reconstruction.
+**Written:** 2026-11-17. **Status:** DRAFT until the §8 decisions are recorded.
+**Supersedes for this submission:** `__docs__/plan.md` (ISBI 2027 roadmap). That file stays as the record of the original study design; Stages 4–8 there are deferred, not cancelled.
+**Frozen artifacts not touched by this plan:** `configs/stage3_h1.json` (v1, SHA-256 `64501bae…6106`), the Stage 0 split, the three member checkpoints, every v1 output under `outputs/stage3_h1/`.
 
 ---
 
-## 2. Implementation structure
+## 1. Venue decision: EMBC 2027 full contributed paper (main track)
 
-```text
-data + static split
-      ↓
-fixed segmentation backend
-      ↓
-ensemble probability / prediction cache
-      ↓
-deterministic instance reconstruction
-      ↓
-uncertainty scores
-  entropy | pairwise Dice | count | Hungarian | FA-IPD
-      ↓
-whole-volume acquisition
-      ↓
-AL loop
-      ↓
-H1 failure detection + H2 learning curves + H3 transfer
-```
+### Options in the window (now → early Feb 2027)
 
-All acquisition methods must operate on the same predictions. Do not maintain separate end-to-end training pipelines for different baselines.
+| Option | Deadline | Indexed | Fit | Verdict |
+|---|---|---|---|---|
+| **EMBC 2027 full contributed paper** | **24 Jan 2027** | IEEE Xplore | 4 technical pages + 1 page refs (≤ 20). Broad biomedical-engineering audience. | **Chosen** |
+| EMBC 2027 "workshop" / mini-symposium | organiser proposals | — | Not a paper track. Content is invited by organisers; no individual peer-reviewed submission, no proceedings. | Not applicable |
+| EMBC 2027 1-page research poster | 23 Apr 2027 | **Not** in Xplore | Too thin for C1–C3. | No |
+| ISBI 2027 workshop paper | 26 Jan 2027 | varies | None of the eight listed workshops covers segmentation uncertainty, active learning, or musculoskeletal CT. | No fit |
+| ISBI 2027 1-page abstract | 1 Feb 2027 | — | Companion only; in-person Lausanne; dual-submission rule unverified. | Optional (§8 Q1) |
+| MIDL 2027 full paper | 4 Dec 2026 | proceedings | No time for held-out confirmation; would rest on 40 cases. | No |
+| MIDL short / MICCAI workshops (UNSURE) | Apr / Jun 2027 | — | Outside the requested window. | Extended version later |
 
----
+### Why main and not a workshop
 
-## 3. Baselines
+1. **At EMBC, "workshop" is not a paper venue.** The only peer-reviewed, indexed route with a January deadline is the full contributed paper.
+2. **Every workshop that would fit topically (UNSURE, MIDL short) is outside the window.** The only in-window workshop track (ISBI) has no topical match.
+3. **The content is main-track content.** Three of four contributions are already in hand with numbers (§3). A 4+1 IEEE paper is the right size: one method figure, one main table, one risk–coverage figure, one qualitative example.
+4. **The main-track risk is the audience, not the format.** EMBC reviewers are general biomedical engineers. The paper must motivate fracture fragments clinically in two sentences and avoid active-learning vocabulary entirely.
 
-| Priority | Method | H1 | H2 | Decision |
-|---|---|---:|---:|---|
-| Must | Uniform Random | — | ✓ | Required |
-| Must | Foreground-/prediction-aware Random | — | ✓ | Required strong random |
-| Must | Predictive Entropy | ✓ | ✓ | Required voxel uncertainty |
-| Must | Mean pairwise semantic Dice disagreement | ✓ | ✓ | Required ensemble baseline |
-| Must | Foreground Jaccard disagreement | ✓ | ablation | Isolates the FA-IPD presence term |
-| Must | Union-foreground NVI | ✓ | ablation | Isolates the original partition term and missing-fragment failure |
-| Must | Fragment-count variance | ✓ | ablation | Tests cardinality confounding |
-| Must | Hungarian fragment disagreement | ✓ | ablation | Original structural baseline |
-| Must | **FA-IPD** | ✓ | ✓ | Proposed structural signal |
-| Must | **Entropy + FA-IPD** | — | ✓ | Main acquisition method |
-| Strong | Stochastic Batch | — | ✓ | Preferred external AL comparator |
-| Optional | PAAL | — | ✓ | Add only if acquisition logic integrates cleanly |
-| Discuss | ClaSP PE / nnActive | — | — | Patch/partial-query protocol mismatch |
-| Discuss | CSAL-3D | — | — | SSL/cold-start protocol mismatch |
-| Discuss | SBC-AL | — | — | Changes training architecture |
-| Discuss | RegAL | — | — | Coupled AL + SSL/registration |
-| Discuss | USIM | — | — | Relevant, but no verified official public repo found in repository check |
-
-For ISBI, a fair six-method core comparison is more important than reproducing every related paper.
+**Decision: EMBC 2027 full contributed paper. Deadline 24 Jan 2027, 23:59 AoE. Onsite presentation in Singapore required.**
+Open check before WP0 closes: EMBC author guidelines for a dual-submission / arXiv rule (the FAQ does not state one).
 
 ---
 
-## 4. Repositories to reuse
+## 2. Where the project stands (facts, 2026-11-17)
 
-| Repository | URL | Use |
+| Area | Fact | Source |
 |---|---|---|
-| nnU-Net v2 | https://github.com/MIC-DKFZ/nnUNet | Common segmentation infrastructure |
-| nnActive | https://github.com/MIC-DKFZ/nnActive | AL framework ideas, entropy, foreground-aware random, ClaSP reference |
-| PENGWIN 2026 ABBC | https://github.com/RURUGURU/pengwin2026-task1-abbc | **Preferred PENGWIN backend reference**: boundary/core + instance reconstruction |
-| PENGWIN Challenge | https://github.com/yuepeiyan/PENGWIN_Challenge | Secondary PENGWIN nnU-Net/inference reference |
-| StochasticBatchAL | https://github.com/Minimel/StochasticBatchAL | Preferred external acquisition baseline |
-| PAAL-MedSeg | https://github.com/shijun18/PAAL-MedSeg | Optional predictive-accuracy acquisition baseline |
-| CSAL-3D | https://github.com/HiLab-git/CSAL-3D | Optional recent 3D AL reference |
-
-Do not compare repositories by running their original end-to-end models independently. Reuse/adapt their **acquisition logic** inside the common backend whenever a fair comparison is possible.
-
----
-
-# 5. Stage roadmap
-
-## Stage 0 — Readiness and frozen protocol
-**Target: 20–22 Sep**
-
-### Work
-- Resolve PENGWIN 2026 publication/embargo permission for an ISBI submission.
-- Confirm all PENGWIN data and label semantics.
-- Obtain RibFrac validation images if using the official validation split.
-- Generate the fixed PENGWIN split.
-- Freeze H1/H2 metrics and the semantic Dice non-inferiority margin.
-
-### Report
-`__docs__/reports/stage0_readiness.md`: data/permission status, split, frozen protocol, blockers.
-
-### Gateway
-**PASS** only when PENGWIN is publication-usable and the data/split/evaluation contract is fixed.
+| Backend | Six ABBC defects (D1–D8, D4 accepted as limitation, D7 merged into D4) fixed as F1–F9; patch on `ccc625f`; 58/58 tests. Stage 2 single model: instance F1 0.737 → 0.850; binary Dice 0.764 → 0.730 (femur-only Dice drops because unlabelled pelvic bone is now segmented — D4). | `__docs__/reports/stage3/stage3_fix_progress.md`, `patches/` |
+| Members | Three members (seeds 31001–31003) trained, gated (G1, GF), inferred on the 40 validation cases with F9. | `outputs/stage3_h1/members/*/validation_inference_manifest.json` |
+| H1 v1 | Re-run 2026-10-21 on the fixed backend: **no FA-IPD advantage in any of the three criteria.** Recommendation FAIL; not yet recorded by the user. | `outputs/stage3_h1/h1_comparison.csv`, fix-progress log 2026-10-21 |
+| Why v1 failed | FA-IPD ≈ foreground Jaccard (Spearman 0.997). Partition term: median 2 % share, max 0.0198 absolute. Cause: NVI normalised by `log N_voxels` ≈ 12–14 nats; a 7-fragment partition has VI of at most a few nats. | `uncertainty_scores.csv`; `src/exchange_ml/metrics.py:41-80` |
+| Hidden signal | Union-NVI alone is best on merge+split AURC (0.739 vs FA-IPD 0.798, entropy 0.865) and the only score with positive controlled association (+0.157). | `h1_comparison.csv` |
+| Evaluation flaws | E1 score/risk model mismatch; E2 92.5 % failure prevalence caps enrichment at 1.081; E3 n = 40 in two scan types; E4 98.5 % of femur-only disagreement on unlabelled bone; E5 IoU ≥ 0.1 matching gives F1 = 1.0 with 43 % of an instance missing (`357`). | 2026-10-21 diagnostics |
+| Open gates | G2 (Stage 2 risk CSV) proposed PASS, unconfirmed. H1 v1 gateway decision unrecorded. | fix-progress log |
+| Docs | `README.md` quotes pre-fix numbers; `stage3_h1.md` stops at 2026-10-16. | — |
+| Infrastructure | Three server reboots in October; GPU 1 faulted; home-disk quota forced bulk data to `/mnt/sdb/shared/chuong/`. | fix-progress log, `__docs__/storage_layout.md` |
+| Not started | AL engine (H2), RibFrac (H3). | — |
 
 ---
 
-## Stage 1 — Instance and metric audit
-**Target: 20–25 Sep**
+## 3. Refined direction and contributions
 
-**Status: PASS (2026-09-21) — internal research contract.**
+### 3.1 Thesis the evidence supports
 
-### Work
-- Load PENGWIN while preserving geometry and subject-local instance IDs.
-- Audit fragment count and instance size.
-- Compare 6/18/26 connectivity and freeze the cleanup rule.
-- Preserve every valid GT instance ID. Apply cleanup only to predictions using
-  26-connectivity and remove per-ID components below `1000 mm3`; apply no
-  additional morphology. Retain cleanup-disabled evaluation as an ablation.
-- Implement Dice, Instance F1, merge/split error, surface distances, and FA-IPD.
-- Build H4 controlled perturbations: merge, split, missing fragment, matched boundary perturbation.
-- Unit-test FA-IPD identity, symmetry, label-permutation invariance, ROI handling,
-  empty masks, pairwise ensemble aggregation, and missing/extra fragments.
-- Preserve a finite triangle-inequality counterexample so the paper cannot
-  silently relabel FA-IPD as a mathematical metric.
+The original thesis ("instance-partition disagreement is a better acquisition signal than entropy") is not supported. What two H1 runs do support:
 
-### Report
-`__docs__/reports/stage1_instance_audit.md`: chosen instance rules + metric/perturbation sanity table.
+> Ensemble disagreement over 3D instance maps is a **presence** component (is the bone/fragment there?) plus a **partition** component (how is shared bone divided?). Under the v1 normalisation the presence component is ~50× larger, so FA-IPD was a presence score. The partition component is the one that tracks merge/split error, and the v1 formulation hid it.
 
-### Gateway
-**PASS** if:
-- GT vs GT gives perfect instance matching and zero merge/split error;
-- instance-ID relabeling does not change FA-IPD;
-- missing/extra foreground gives a positive presence penalty while equal-support
-  merge/split cases reduce to NVI;
-- empty-mask and ROI behavior matches the frozen contract;
-- the 340-case connectivity/cleanup audit is complete and its rule is frozen.
+**Working title:** *Presence or partition? Decomposing ensemble disagreement for structural-failure detection in 3D pelvic fracture segmentation.*
 
-The synthetic metric sub-gate and the 340-case artifact validation pass. The
-frozen rule is recorded in `configs/study_protocol.json`; the full evidence and
-artifact checksum are recorded in the Stage 1 report. This is an internal
-evaluation contract, not a claim of equivalence to an unverified official
-PENGWIN evaluator.
+**Question:** When an ensemble of 3D fracture-instance segmenters disagrees, which component flags merge, split and missing-fragment failures, and under what evaluation conditions is the difference measurable at all?
 
----
+**Scope:** H1 (structural-failure detection) on PENGWIN pelvic/femur CT, with H4 (controlled perturbations) as the mechanism check. **Not in this paper:** active learning (H2), RibFrac (H3), the hidden PENGWIN test set, any "new metric" claim.
 
-## Stage 2 — Stable fixed PENGWIN backend
-**Target: 23–30 Sep**
+### 3.2 Contributions
 
-**Status: REOPENED (2026-10-12) — retraining in progress; Stage A passed gate G1 on 2026-10-13; Stage B, inference, and metrics pending. The 2026-09-26 PASS is superseded. See `__docs__/reports/stage2_backend.md`.**
+| # | Claim | Evidence | Status |
+|---|---|---|---|
+| **C1 Decomposition (we *show*, not *propose*)** | `d_FA = presence + weight·partition`. On 40 validation cases the partition term has median share 2 % and never exceeds 0.02 absolute; FA-IPD v1 is rank-identical to foreground Jaccard (ρ = 0.997). The cause is the `VI / log N` scale: Vinh, Epps & Bailey (2010, §3.3, fn 4) show `VI/log N` and `VI/2 log K` use looser bounds than `H(U,V) ≤ 2 log K`; applied here (N ≈ 10⁵–10⁶, K ≤ 12) the v1 term cannot exceed ≈ 0.36 and is observed ≤ 0.02. The decomposition itself has precedent (Arganda-Carreras et al. 2015 split/merge, foreground-restricted scoring); the new content is the voxel-scale regime and the empirical dominance. **Rival explanation to rule out in WP1:** members may simply agree on partitions (raw VI ≈ 0), in which case no re-normalisation helps. | `uncertainty_scores.csv`, `outputs/stage3_h1/diagnostics/fa_ipd_decomposition.py`; `__docs__/research/phase3_analysis/synthesis.md` Theme 1 | **In hand** (bound); WP1 check pending |
+| **C2 Scale-corrected partition disagreement** | FA-IPD v2: normalise by joint entropy, `VI / H(P,Q)` (bounded [0,1]; Vinh, Epps & Bailey 2010), scored per annotated bone. **Pre-registered claim:** on held-out cases, v2 has lower merge+split AURC than foreground Jaccard and than mean entropy, with 95 % case-cluster bootstrap CIs on both differences excluding 0. Presence term, partition term, union-NVI and v1 reported as separate rows. | WP1–WP3 | **Needs held-out run** |
+| **C3 Evaluation conditions** | Four conditions under which a structural-failure comparison is invalid or uninformative, each with our numbers: (a) scoring model A's disagreement against model B's errors; (b) a binary failure label at 92.5 % prevalence caps enrichment at 1.08; (c) partially annotated scans put 98.5 % of disagreement on unlabelled bone; (d) IoU ≥ 0.1 matching reports F1 = 1.0 with 43 % of an instance missing. | 2026-10-21 diagnostics | **In hand** |
+| **C4 Reproducible PENGWIN backend** | Six documented defects in the public ABBC pipeline, fixes as a patch with 58 tests, per-bone gates. One paragraph + repository link; supports C1–C3, not a headline. | `patches/`, fix-progress log | **In hand** |
 
-### Work
-1. Inspect/adapt the **PENGWIN 2026 ABBC boundary/core** implementation.
-2. Use nnU-Net v2 components where possible.
-3. Freeze architecture, target representation, preprocessing, loss, reconstruction, post-processing and training schedule.
-4. Evaluate one model on validation data.
+**Explicit non-claims:** not a mathematical metric (keep the triangle-inequality counterexample); no invention of VI or Jaccard disagreement; no AL benefit; no transfer; no equivalence to the official PENGWIN evaluator.
 
-### Report
-`__docs__/reports/stage2_backend.md`: Dice, Instance F1, merge/split error, final backend specification.
+**Relation to `__docs__/paper.md` §10:** Contribution 1 kept, re-centred on the decomposition; Contribution 2 becomes C2 + C3; Contributions 3 (AL) and 4 (transfer) dropped from this paper.
 
-### Gateway
-**PASS** only if the model produces stable, meaningful instance predictions suitable for structural uncertainty analysis.
+### 3.3 Framing fixed in advance by outcome
 
----
-
-## Stage 3 — FA-IPD + H1 Round-0 benchmark
-**Target: 29 Sep–4 Oct**
-
-**Status: BLOCKED (2026-10-09) — the 2026-10-05 H1 FAIL is confounded by backend defects (Stage A L/R mirror, rank-local Fragment DDP validation); fixes and retraining tracked in `__docs__/reports/stage3/stage3_fix_progress.md`. See `__docs__/reports/stage3/stage3_h1.md`.**
-
-**This is the main scientific go/no-go gate.**
-
-### Work
-Train one `M=3` ensemble from the initial labeled subset using frozen model
-seeds `31001`, `31002`, and `31003`. Apply each seed to Python, NumPy,
-PyTorch, and CUDA, with `seed + local DDP rank` for stochastic rank-local
-streams; request deterministic cuDNN kernels and disable cuDNN benchmarking. Do
-not reuse the Stage 2 checkpoints, because their model seed was not explicitly
-recorded.
-
-For each member, retain the deterministic ABBC instance map and the genuine
-Stage-B foreground probability `1-p(background)`. Use the union of the three
-cleaned member foreground predictions as one shared case ROI. Apply the Stage 1
-prediction-only cleanup rule before every structural score.
-
-Compute for every analysis case:
-- mean entropy;
-- 95th-percentile entropy;
-- pairwise semantic Dice disagreement;
-- foreground Jaccard disagreement;
-- union-foreground NVI;
-- fragment-count variance;
-- Hungarian structural disagreement;
-- FA-IPD.
-
-Evaluate against:
-- `1 - Instance F1`;
-- normalized merge + split error;
-- `1 - Dice` as semantic control.
-
-Required analyses:
-- risk–coverage / AURC;
-- top-10% and top-20% failure enrichment;
-- fragment-count, foreground-volume, and minimum-fragment-volume stratification;
-- count/volume/minimum-fragment-volume-controlled association;
-- empirical confounder quartiles without splitting ties; omit empty strata;
-- Spearman correlation as secondary.
-
-Acquisition scoring is GT-free. Retrospective H1 evaluation joins the frozen
-Stage 2 single-model validation risks only after all ensemble scores are written.
-
-### Report
-`__docs__/reports/stage3/stage3_h1.md`: one comparison table, risk–coverage figure, one low-entropy/high-FA-IPD failure example.
-
-### Gateway
-Proceed to H2 only if FA-IPD shows a meaningful advantage in at least **2 of 3**:
-1. AURC;
-2. top-k enrichment;
-3. count/volume/minimum-fragment-volume-controlled association.
-
-The effect must not reduce to foreground Jaccard disagreement or “cases with
-more/larger fragments receive higher FA-IPD.”
-
----
-
-## Stage 4 — AL engine + two-round pilot
-**Target: 4–8 Oct**
-
-**Status: BLOCKED — Stage 3 H1 gateway failed; the pilot has not been implemented or run.**
-
-### Work
-Implement a whole-volume AL loop with identical training/evaluation for all methods.
-
-Pilot:
-- Random;
-- Entropy;
-- FA-IPD;
-- Entropy + FA-IPD;
-- 3 seeds;
-- first 2 rounds.
-
-Track Instance F1, merge/split error, Dice and selected-case characteristics.
-
-### Report
-`__docs__/reports/stage4_al_pilot.md`: early learning curves + implementation stability.
-
-### Gateway
-**PASS** if Stage 3 passed, trajectories are stable, and Hybrid does not show obvious semantic degradation beyond the frozen Dice guardrail.
-
----
-
-## Stage 5 — Full PENGWIN H2 study
-**Target: 8–15 Oct**
-
-### Main comparison
-1. Uniform Random
-2. Foreground-aware Random
-3. Predictive Entropy
-4. Pairwise Dice disagreement
-5. FA-IPD
-6. Entropy + FA-IPD
-7. Stochastic Batch, if cleanly adapted
-
-Add PAAL only if integration is straightforward and does not change the common backend.
-
-### Protocol
-- ≥3 paired trajectory seeds.
-- Five rounds.
-- Identical initial set within each trajectory.
-- Same fixed test set and training policy.
-- Save selected case IDs and acquisition scores each round.
-
-### Primary endpoints
-- **AULC Instance F1**
-- **AULC merge + split error**
-
-### Statistics
-- trajectory-paired AULC comparison;
-- paired permutation test or Wilcoxon signed-rank;
-- bootstrap CIs over test cases;
-- effect sizes.
-
-### Report
-`__docs__/reports/stage5_h2_pengwin.md`: learning curves + compact AULC/final-budget table.
-
-### Gateway
-**PASS as an experiment** when every mandatory method completes the same budgets and seeds and H2 can be answered without cherry-picking. A negative H2 result is still a valid result.
-
----
-
-## Stage 6 — RibFrac H3 transfer
-**Target: 12–18 Oct**
-
-### Mandatory work
-Train a RibFrac ensemble and evaluate:
-- Entropy;
-- Pairwise Dice disagreement;
-- count/Hungarian where meaningful;
-- FA-IPD.
-
-Use the **same** FA-IPD definition, aggregation and H1 evaluation protocol as PENGWIN. No dataset-specific retuning after seeing RibFrac results.
-
-### Optional
-If time remains, run a short RibFrac AL study:
-- Random / Entropy / FA-IPD / Hybrid;
-- 3 seeds;
-- 3–4 rounds.
-
-### Report
-`__docs__/reports/stage6_h3_ribfrac.md`: PENGWIN vs RibFrac failure-detection table/figure.
-
-### Gateway
-**PASS** when H3 has been evaluated without score redesign. A negative result narrows the claim; it does not invalidate the stage.
-
----
-
-## Stage 7 — Focused ablations and mechanism analysis
-**Target: 16–20 Oct**
-
-### Required
-- count variance vs Hungarian vs union-NVI vs foreground Jaccard vs FA-IPD;
-- Entropy vs FA-IPD vs Hybrid;
-- `M = 2,3,4` on Round 0;
-- cleanup off vs fixed cleanup;
-- fusion sensitivity `γ ∈ {0,.25,.5,.75,1}` on non-test data;
-- selected-case distributions: fragment count, foreground volume, merge/split prevalence, baseline error.
-
-Only run diversity/query-budget sensitivity if time permits.
-
-### Report
-`__docs__/reports/stage7_ablation.md`: one compact ablation table and, if useful, one selection-behavior figure.
-
-### Gateway
-**PASS** when headline gains cannot reasonably be explained only by count, cleanup, ensemble size or unequal diversity handling.
-
----
-
-## Stage 8 — Paper freeze and ISBI submission
-**Target: 20–26 Oct**
-
-### Four-page structure
-- **Page 1:** problem, gap, closest work, contributions.
-- **Page 2:** fixed backend, FA-IPD, hybrid acquisition.
-- **Page 3:** protocol + main H1/H2 results.
-- **Page 4:** H3, focused ablation/qualitative example, limitations, conclusion.
-
-### Required paper assets
-- Method figure: `CT → ensemble → entropy + partitions → FA-IPD → query`.
-- Main Instance-F1 / merge-split learning curve.
-- Compact H1/H2/H3 result table.
-- Low-entropy/high-FA-IPD structural-failure example.
-- Reproducibility details and compliance/data-use statement.
-
-### Claim gate
-
-| Results | Manuscript framing |
+| Held-out result | Framing |
 |---|---|
-| H1 + H2 + H3 positive | Full FA-IPD active-learning + transfer paper |
-| H1 + H2 positive, H3 negative | PENGWIN-focused AL paper with explicit transfer boundary |
-| H1 + H3 positive, H2 negative | Structural failure-detection paper; AL is a negative downstream result |
-| H1 negative | Do not claim FA-IPD as a validated structural-uncertainty mechanism |
-
-### Final gateway
-Submit only if:
-- all reported numbers come from frozen outputs;
-- all H2 methods share the same backend and training policy;
-- no test-set tuning occurred;
-- novelty is framed as **instance-partition disagreement for structural uncertainty/acquisition**, not invention of VI or generic topology-aware AL;
-- all technical content fits the ISBI four-page limit.
-
-**Target upload: 25 October 2026.**
+| C2 primary passes | Partition disagreement detects structural failures that presence disagreement and entropy miss. v1 reported as the normalisation lesson. |
+| C2 primary fails | Analysis paper: C1 + C3 are the findings; v2 reported as a negative confirmation. No method change after seeing the held-out result. |
+| Held-out run does not finish by 10 Jan | **Reporting-scope decision, not a method change:** C1 + C3 + C4 on the 40 validation cases; v2 reported on the same 40 cases, labelled exploratory, with no confirmation claim. Recorded in the paper's limitations. |
+| WP1 shows the v2 partition term has no spread on validation (raw VI ≈ 0 across units) | The members agree on partitions; C2 is moot. Paper = C1 + C3 + C4 analysis; held-out inference may still run for C3(a)–(d) but is not needed for C2. Decided before any held-out inference is launched. |
 
 ---
 
-## 6. Critical path
+## 4. Protocol v2 (frozen before any held-out case is scored)
 
-```text
-Stage 0: permission + protocol
-            ↓
-Stage 1: instances + metrics
-            ↓
-Stage 2: stable backend
-            ↓
-Stage 3: H1 GO/NO-GO
-            ↓
-Stage 4: AL pilot
-            ↓
-Stage 5: full PENGWIN H2
-         ↙             ↘
-Stage 6: H3       Stage 7: ablations
-         ↘             ↙
-          Stage 8: paper
-```
+v1 stays frozen and is reported unchanged. v2 changes are motivated by the diagnosis on the 40 validation cases and are confirmed only on cases that played no part in that diagnosis. The v2 config is committed **before** held-out inference starts; its SHA-256 goes in the paper.
 
-**Critical path:** stable backend → convincing H1 → repeated PENGWIN AL → RibFrac transfer → paper.
-
-Do not spend deadline-critical time reproducing every related AL method.
+| # | Item | v2 rule | Fixes |
+|---|---|---|---|
+| V1 | Partition normalisation | `NVI_H = VI(P,Q) / H(P,Q)` on the shared foreground of each bone (Vinh et al. 2010 Theorem 3: a metric); both-empty = 0; one-empty = 1; single-voxel shared foreground = 0. **Stated reason for NVI over NID** (which Vinh et al. call "generally more preferable"): continuity with the VI-based v1 term, and VI = H(P\|Q) + H(Q\|P) separates into split and merge components. NID is listed as an untested alternative; it is **not** run on validation. Wording: "specified before held-out scoring", never "a priori". | S3 |
+| V2 | Unit of analysis | (case, bone) for the bones annotated in that scan type: pelvic → sacrum, left hip, right hip; femur-only → femur. Bone from frozen ID ranges (`instances.py` `ANATOMY_RANGES`); scan type from dataset metadata. No voxel GT enters a score. 40 validation cases → 80 units. | E3, E4 |
+| V3 | Risk source | Primary: mean over the three members of their own per-bone risks (`per_anatomy` output of `instance_metrics`). Secondary: Stage 2 single-model per-bone risk (v1 source). | E1 |
+| V4 | Failure definition | Continuous risks for AURC and Spearman. For enrichment, failure = top quartile of risk among units (prevalence fixed at 25 %, ceiling 4.0). Per-error-type breakdown: merge present, split present, missing fragment (recall < 1). | E2 |
+| V5 | Held-out set | Random 100 cases from the 210 pool cases outside trajectory-1's initial set, drawn with a recorded seed, stratified 50 pelvic / 50 femur-only, listed in the v2 config. Test set (50) stays sealed. Pool GT is read only retrospectively for risk; if H2 is ever run this is recorded. | E3 |
+| V6 | Gate | Primary: C2 claim above. Secondary: `1 − F1`, top-quartile enrichment, controlled Spearman (fragment count, bone volume, min-fragment volume), per-error-type AURC. All computed on validation (40) and held-out (100), reported side by side. | S1 |
+| — | Unchanged | 26-connectivity, < 1000 mm³ prune, no morphology, IoU ≥ 0.1 matching (E5 recorded as limitation), M = 3, seeds 31001–31003, Stage-B probabilities, shared ROI = union of cleaned member foregrounds. | — |
 
 ---
 
-## 7. Minimal stage report
+## 5. Work packages and schedule
 
-Every stage report needs only:
+Target: submit 24 Jan 2027. Internal freeze 21 Jan. About one week of slack total; the server rebooted three times in October, so WP2 starts as early as possible and the §3.3 scope fallback is pre-declared.
 
-```markdown
-# Stage X
+| WP | Dates | Work | Owner / command type |
+|---|---|---|---|
+| **WP0 Close the books** | 17–21 Nov | Record H1 v1 = FAIL in `stage3_h1.md`; confirm/decline G2; update `README.md` numbers and status; add this plan's decisions to the reports. Check EMBC dual-submission rule. | User decides; agent edits docs (agent-typed) |
+| **WP1 v2 implementation + freeze** | 21 Nov – 4 Dec | `metrics.py`: `NVI_H`; per-bone score units; member-risk evaluation; top-quartile enrichment; case-cluster bootstrap; per-error-type tables; GT-volume-fraction secondary risk. Unit tests (identity, symmetry, permutation, empty cases, bound). Run v2 scoring + evaluation on the existing 40-case member outputs. **Three pre-declared checks before freeze (DA-2 and DA-Ph3-1):** (a) distribution of the raw VI numerator and of the v2 term across the 80 validation units — no spread → §3.3 row 4; (b) union-NVI reported as the *mixed* variant (union foreground) vs the v2 term as the *pure* variant (shared foreground); (c) bootstrap precision projection to n = 100 and 210. Write `configs/stage3_h1_v2.json` with the held-out case list, seed, NVI-vs-NID rationale and the projection result; **commit; record SHA-256.** Member-level risk on validation needs member predictions vs GT: one user-typed evaluation run. | Agent: code, tests, smoke on synthetic data. User: 40-case member evaluation |
+| **WP2 Held-out inference** | 4 – 20 Dec | 3 members × 100 cases = 300 inferences. October logs: 100–670 s per case on GPU → ~8–56 GPU-hours total; run members in parallel on separate GPUs. Link `outputs/stage3_h1_v2/members/` to `/mnt/sdb` **before** writing. Resumable manifests already exist in `predict_stage3_member.py`. | **User-typed** |
+| **WP3 Score, evaluate, decide** | 20 Dec – 6 Jan | Score (GT-free) → evaluate (retrospective) on held-out; manual C2 gate assessment; H4 perturbation check of v1 vs v2 on CPU (existing `perturbations.py`); write `__docs__/reports/stage3/stage3_h1_v2.md`. | User runs score/evaluate; agent verifies hashes and writes the report |
+| **WP4 Paper** | 6 – 21 Jan | Draft per §6. Figures: method/decomposition, risk–coverage, one qualitative case. Main table. Internal review. Freeze 21 Jan. | Authors; agent drafts and formats |
+| **WP5 Submit** | 21 – 24 Jan | Final checks against the EMBC template; submit. | User |
+| (opt.) ISBI abstract | 24 Jan – 1 Feb | 1 page from the EMBC results, only if Q1 = yes and dual submission is allowed. | Authors |
 
-Status: PASS / FAIL / BLOCKED
+**Decision point 10 Jan:** if held-out inference is not complete, invoke the §3.3 scope fallback. No extension past this date.
 
-## Configuration
-Key data split and frozen settings.
+---
 
-## Result
-Main table/figure and short interpretation.
+## 6. Paper layout (EMBC 4+1)
 
-## Gateway
-Why the stage passed or failed.
+| Page | Content |
+|---|---|
+| 1 | Clinical hook: fragment count and configuration drive pelvic-fracture surgical planning (cite). Problem: voxel uncertainty misses merge/split. Gap: structural-uncertainty work does not separate presence from partition. Contributions C1–C3 in three bullets. |
+| 2 | Backend in one paragraph (cite ABBC; C4 as a sentence + link). Decomposition: `d_FA` equation, the `log N` argument, v2 definition. Figure 1: CT → ensemble → presence/partition → scores. |
+| 3 | Protocol: units, risks, held-out set, pre-registration hash. Table 1: scores × {merge+split, 1−F1} AURC and controlled ρ, validation vs held-out, with CIs for the C2 differences. Figure 2: risk–coverage on held-out. |
+| 4 | C3 conditions as a compact table with numbers. Figure 3: one low-entropy / high-partition failure. Limitations: single dataset, M = 3, IoU rule, D4. Conclusion. |
+| 5 | ≤ 20 references; acknowledgements; data/code statement. |
 
-## Blocking issue
-Only if it affects the next stage.
-```
+Vocabulary rule: no "active learning", "acquisition", or "query" anywhere in the paper.
+
+---
+
+## 7. Rules that still apply
+
+- `__docs__/rule.md` is unchanged. Agent runs only smoke checks; every training, inference, scoring and evaluation run is user-typed and listed as such in the reports.
+- No method change after seeing held-out results. The §3.3 fallback changes reporting scope only.
+- Every number in the paper traces to a hashed output file; the v2 config hash and the held-out case list are published.
+- Stage reports keep the `plan.md` §7 (ISBI) minimal format: Status / Configuration / Result / Gateway / Blocking issue, plus the two command lists.
+
+---
+
+## 8. Decisions needed from the user
+
+| # | Question | Recommendation |
+|---|---|---|
+| Q1 | Also submit the ISBI 1-page abstract (1 Feb)? | Only if EMBC guidelines permit; low priority. |
+| Q2 | Fix `VI / H(P,Q)` a priori as the v2 normalisation (V1)? | Yes. |
+| Q3 | Per-bone units chosen by scan-type metadata (V2)? | Yes. |
+| Q4 | Members' own per-bone risk as primary, Stage 2 as secondary (V3)? | Yes. |
+| Q5 | Held-out = 100 pool cases, seeded, stratified 50/50 (V5)? | Yes (all 210 does not fit the timeline). |
+| Q6 | Confirm G2 and record H1 v1 = FAIL? | Yes; required to close WP0. |
+| Q7 | Who runs WP2 inference and on which GPUs? | User to assign; see `__docs__/reports/stage3/member_01_handover.md` for the second-user route. |
+
+---
+
+## 9. Commands
+
+**Agent-typed (run while preparing this plan, 2026-11-17):** `git ls-files`; `git log`; `git show --stat`; reads of `README.md`, `__docs__/*.md`, Stage 3 reports, `configs/stage3_h1.json`, `configs/stage2_backend.json`, `outputs/stage3_h1/h1_comparison.csv`, `h1_summary.json`; `python -c` column summary of `uncertainty_scores.csv`; `python -c` read of `splits/pengwin_stage0_split.json`; `grep` of `src/exchange_ml/metrics.py`, `src/exchange_ml/instances.py`, `scripts/evaluate_stage2_backend.py`, `__docs__/data_description.md`. Web lookups of EMBC/ISBI/MIDL dates.
+
+**User-typed:** None prepared yet. WP1–WP3 commands are prepared after the §8 decisions.
