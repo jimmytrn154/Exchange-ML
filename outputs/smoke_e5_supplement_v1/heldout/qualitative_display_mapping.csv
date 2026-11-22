@@ -1,0 +1,7 @@
+case_id,bone,category,model_id,original_id,display_id
+176,right_hip,partition_detects_structure,GT,101,1
+176,right_hip,partition_detects_structure,GT,102,2
+176,right_hip,partition_detects_structure,member_01,101,1
+176,right_hip,partition_detects_structure,member_02,101,1
+176,right_hip,partition_detects_structure,member_03,102,2
+176,right_hip,partition_detects_structure,member_03,103,1

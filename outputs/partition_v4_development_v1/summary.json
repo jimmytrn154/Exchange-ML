@@ -1,0 +1,68 @@
+{
+  "role": "development_after_v3_not_confirmation",
+  "smoke_only": false,
+  "source_cases": 40,
+  "source_units": 80,
+  "cv": {
+    "n_cases": 40,
+    "n_units": 80,
+    "final_head": "pairwise_p1_g",
+    "features": [
+      "partition_v1",
+      "graph_degree"
+    ],
+    "outer_folds": 5,
+    "inner_folds_requested": 3,
+    "cv_seed": 20261122,
+    "alphas": [
+      0.001,
+      0.01,
+      0.1,
+      1.0
+    ],
+    "target": "member_mean_merge_split",
+    "objective": "mean_pairwise_logistic_plus_half_alpha_l2",
+    "selection": "mean_inner_fold_AURC_largest_alpha_exact_tie_single_family",
+    "primary_estimand": "mean_outer_fold_aurc",
+    "evaluation_role": "development_after_v3_inspection_not_fresh_confirmation"
+  },
+  "reporting": {
+    "n_cases": 40,
+    "n_units": 80,
+    "n_outer_folds": 5,
+    "candidate": "pairwise_p1_g",
+    "scores": [
+      "mean_entropy",
+      "p95_entropy",
+      "pairwise_dice",
+      "presence",
+      "union_nvi",
+      "count_variance",
+      "hungarian",
+      "fa_v1",
+      "partition_v1",
+      "partition_v2",
+      "fa_v2",
+      "q_joint_unweighted",
+      "graph_degree",
+      "pairwise_p1_g"
+    ],
+    "primary_estimand": "arithmetic_mean_outer_fold_bone_AURC",
+    "primary_contrast": "pairwise_p1_g-partition_v1/pooled/member_mean/merge_split",
+    "pooled_OOF_role": "secondary_score_scale_mixing_diagnostic_only",
+    "ci_role": "conditional_fixed_outer_folds_models_predictions_no_refit",
+    "bootstrap_resamples": 10000,
+    "bootstrap_seed": 20261122,
+    "fold_standard_errors_used": false,
+    "CT_review_utility_tested": false,
+    "confirmation_ready": false,
+    "analysis_role": "prospective_v4_development_after_v3_inspection_not_fresh_confirmation"
+  },
+  "candidate": "pairwise_p1_g",
+  "primary_control": "partition_v1",
+  "primary_estimand": "mean_outer_fold_aurc",
+  "confirmation_ready": false,
+  "volumes_or_checkpoints_read": false,
+  "CT_policy_tested": false,
+  "CI_scope": "conditional_fixed_outer_folds_and_OOF_scores_not_training_uncertainty"
+}

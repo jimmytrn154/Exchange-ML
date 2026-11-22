@@ -1,0 +1,3 @@
+case_id,bone,category,z_index,crop_z_start,crop_z_stop,crop_y_start,crop_y_stop,crop_x_start,crop_x_stop,center_x_mm,center_y_mm,center_z_mm,slice_rule,n_slices_available
+176,right_hip,partition_detects_structure,57,2,268,1,186,1,178,-92.12169378995895,-6.988792359828949,1479.1707763671875,max_aligned_ID_discrepancy_two_axial_slices,2
+176,right_hip,partition_detects_structure,188,2,268,1,186,1,178,-92.12169378995895,-6.988792359828949,1584.1051025390625,max_aligned_ID_discrepancy_two_axial_slices,2

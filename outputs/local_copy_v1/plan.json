@@ -1,0 +1,198 @@
+[
+  {
+    "source": "/mnt/sdb/shared/chuong/b/001",
+    "destination": "outputs/smoke_f4/nnUNet_results/Dataset702_PENGWINStage2Fragment/PengwinTrainerSTUNetBaseAffinityV308__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_best.pth"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/b/002",
+    "destination": "outputs/smoke_f4/nnUNet_results/Dataset702_PENGWINStage2Fragment/PengwinTrainerSTUNetBaseAffinityV308__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_final.pth"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/b/003",
+    "destination": "outputs/smoke_f4/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_best.pth"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/b/004",
+    "destination": "outputs/smoke_f4/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_final.pth"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/b/005",
+    "destination": "outputs/archive/2026-10-16_fragment_checkpoint_best/validation_predictions"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/b/006",
+    "destination": "outputs/archive/2026-10-14_invalid_cpu_inference/validation_predictions"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/b/007",
+    "destination": "outputs/archive/2026-10-12_pre_backend_fix/stage3_h1/members/member_02/nnUNet_results/Dataset702_PENGWINStage2Fragment/PengwinTrainerSTUNetBaseAffinityV308__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_best.pth"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/b/008",
+    "destination": "outputs/archive/2026-10-12_pre_backend_fix/stage3_h1/members/member_02/nnUNet_results/Dataset702_PENGWINStage2Fragment/PengwinTrainerSTUNetBaseAffinityV308__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_latest.pth"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/b/009",
+    "destination": "outputs/archive/2026-10-12_pre_backend_fix/stage3_h1/members/member_02/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_best.pth"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/b/010",
+    "destination": "outputs/archive/2026-10-12_pre_backend_fix/stage3_h1/members/member_02/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_final.pth"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/b/011",
+    "destination": "outputs/archive/2026-10-12_pre_backend_fix/stage3_h1/members/member_03/nnUNet_results/Dataset702_PENGWINStage2Fragment/PengwinTrainerSTUNetBaseAffinityV308__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_best.pth"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/b/012",
+    "destination": "outputs/archive/2026-10-12_pre_backend_fix/stage3_h1/members/member_03/nnUNet_results/Dataset702_PENGWINStage2Fragment/PengwinTrainerSTUNetBaseAffinityV308__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_final.pth"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/b/013",
+    "destination": "outputs/archive/2026-10-12_pre_backend_fix/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_best.pth"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/b/014",
+    "destination": "outputs/archive/2026-10-12_pre_backend_fix/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_final.pth"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/b/015",
+    "destination": "outputs/archive/2026-10-12_pre_backend_fix/stage2_backend/validation_predictions"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/b/016",
+    "destination": "outputs/archive/2026-10-12_pre_backend_fix/stage2_backend/nnUNet_results/Dataset702_PENGWINStage2Fragment/PengwinTrainerSTUNetBaseAffinityV308__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_best.pth"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/b/017",
+    "destination": "outputs/archive/2026-10-12_pre_backend_fix/stage2_backend/nnUNet_results/Dataset702_PENGWINStage2Fragment/PengwinTrainerSTUNetBaseAffinityV308__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_final.pth"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/b/018",
+    "destination": "outputs/archive/2026-10-12_pre_backend_fix/stage2_backend/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_best.pth"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/b/019",
+    "destination": "outputs/archive/2026-10-12_pre_backend_fix/stage2_backend/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_final.pth"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/b/020",
+    "destination": "outputs/archive/2026-10-16_member_02_fragment_interrupted/Dataset702_PENGWINStage2Fragment/PengwinTrainerSTUNetBaseAffinityV308__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_best.pth"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/b/021",
+    "destination": "outputs/stage3_h1/members/member_02/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_best.pth"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/b/022",
+    "destination": "outputs/stage3_h1/members/member_02/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_final.pth"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/b/023",
+    "destination": "outputs/stage3_h1/diagnostics/d6/030/probs13_Sacrum.npy"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/b/024",
+    "destination": "outputs/stage3_h1/diagnostics/d6/047/probs13_Sacrum.npy"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/b/025",
+    "destination": "outputs/stage3_h1/diagnostics/d6/004/probs13_Sacrum.npy"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/b/026",
+    "destination": "outputs/stage3_h1/diagnostics/d6/060/probs13_Sacrum.npy"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/b/027",
+    "destination": "outputs/stage2_backend/validation_predictions"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/b/032",
+    "destination": "outputs/stage2_backend/nnUNet_results/Dataset702_PENGWINStage2Fragment/PengwinTrainerSTUNetBaseAffinityV308__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_best.pth"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/b/033",
+    "destination": "outputs/stage2_backend/nnUNet_results/Dataset702_PENGWINStage2Fragment/PengwinTrainerSTUNetBaseAffinityV308__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_final.pth"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/b/034",
+    "destination": "outputs/stage2_backend/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_best.pth"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/b/035",
+    "destination": "outputs/stage2_backend/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_final.pth"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/m01_infer/validation_probabilities",
+    "destination": "outputs/stage3_h1/members/member_01/validation_probabilities"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/m01_results",
+    "destination": "outputs/stage3_h1/members/member_01/nnUNet_results"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/m01_infer/validation_predictions",
+    "destination": "outputs/stage3_h1/members/member_01/validation_predictions"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/m02_infer/validation_probabilities",
+    "destination": "outputs/stage3_h1/members/member_02/validation_probabilities"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/m02_infer/validation_predictions",
+    "destination": "outputs/stage3_h1/members/member_02/validation_predictions"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/b/m02_frag",
+    "destination": "outputs/stage3_h1/members/member_02/nnUNet_results/Dataset702_PENGWINStage2Fragment"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/m03_infer/validation_probabilities",
+    "destination": "outputs/stage3_h1/members/member_03/validation_probabilities"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/m03_results",
+    "destination": "outputs/stage3_h1/members/member_03/nnUNet_results"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/m03_infer/validation_predictions",
+    "destination": "outputs/stage3_h1/members/member_03/validation_predictions"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/archive_2026-10-20_pre_F9/m01_infer/validation_predictions",
+    "destination": "outputs/archive/2026-10-20_pre_F9_inference/member_01/validation_predictions"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/archive_2026-10-20_pre_F9/m01_infer/validation_probabilities",
+    "destination": "outputs/archive/2026-10-20_pre_F9_inference/member_01/validation_probabilities"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/archive_2026-10-20_pre_F9/m02_infer/validation_predictions",
+    "destination": "outputs/archive/2026-10-20_pre_F9_inference/member_02/validation_predictions"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/archive_2026-10-20_pre_F9/m02_infer/validation_probabilities",
+    "destination": "outputs/archive/2026-10-20_pre_F9_inference/member_02/validation_probabilities"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/archive_2026-10-20_pre_F9/m03_infer/validation_predictions",
+    "destination": "outputs/archive/2026-10-20_pre_F9_inference/member_03/validation_predictions"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/archive_2026-10-20_pre_F9/m03_infer/validation_probabilities",
+    "destination": "outputs/archive/2026-10-20_pre_F9_inference/member_03/validation_probabilities"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/archive_2026-10-20_pre_F9/stage2_validation_predictions",
+    "destination": "outputs/archive/2026-10-20_pre_F9_inference/stage2_backend/validation_predictions"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/m03_frag_crashed_2026-10-19",
+    "destination": "outputs/archive/2026-10-19_member_03_fragment_interrupted/Dataset702_PENGWINStage2Fragment"
+  },
+  {
+    "source": "/mnt/sdb/shared/chuong/b/m02_frag_crashed",
+    "destination": "outputs/archive/2026-10-16_member_02_fragment_quota_stop/Dataset702_PENGWINStage2Fragment"
+  }
+]

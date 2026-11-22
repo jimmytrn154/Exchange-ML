@@ -1,0 +1,3 @@
+case_id,scan_type,feature_extraction_seconds,scope
+004,pelvic,4.516030971892178,three_map_read_cleanup_graph_and_E1_component_checks_excludes_SHA256
+254,femur,4.927576337940991,three_map_read_cleanup_graph_and_E1_component_checks_excludes_SHA256

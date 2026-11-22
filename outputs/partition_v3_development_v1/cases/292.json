@@ -1,0 +1,110 @@
+{
+  "identity": "18385be5c4e282b558bde83dcc15b9484dda116655e8782f13be490a803e01ed",
+  "payload_sha256": "fcabf4b5c6b2af1acdaf9fbe6d196e21500bda121cfd6e85cd157d956f5c2cb4",
+  "payload": {
+    "features": [
+      {
+        "case_id": "292",
+        "scan_type": "femur",
+        "bone": "femur",
+        "graph_degree": 0.0,
+        "graph_no_shared_fraction": 0.0,
+        "all_members_empty": false,
+        "presence": 0.09986837860246227,
+        "partition_v1": 0.0,
+        "partition_v2": 0.0,
+        "component_vi": 0.0,
+        "predicted_count_mean": 3.0,
+        "predicted_volume_mm3": 347979.311174879
+      }
+    ],
+    "pairs": [
+      {
+        "case_id": "292",
+        "scan_type": "femur",
+        "bone": "femur",
+        "member_i": "member_01",
+        "member_j": "member_02",
+        "graph_degree": 0.0,
+        "graph_forward": 0.0,
+        "graph_reverse": 0.0,
+        "graph_shared_support": true,
+        "graph_shared_voxels": 702888,
+        "graph_union_voxels": 783897,
+        "graph_instances_first": 3,
+        "graph_instances_second": 3,
+        "graph_shared_instances_first": 3,
+        "graph_shared_instances_second": 3,
+        "graph_unmatched_instances_first": 0,
+        "graph_unmatched_instances_second": 0
+      },
+      {
+        "case_id": "292",
+        "scan_type": "femur",
+        "bone": "femur",
+        "member_i": "member_01",
+        "member_j": "member_03",
+        "graph_degree": 0.0,
+        "graph_forward": 0.0,
+        "graph_reverse": 0.0,
+        "graph_shared_support": true,
+        "graph_shared_voxels": 693808,
+        "graph_union_voxels": 792872,
+        "graph_instances_first": 3,
+        "graph_instances_second": 3,
+        "graph_shared_instances_first": 3,
+        "graph_shared_instances_second": 3,
+        "graph_unmatched_instances_first": 0,
+        "graph_unmatched_instances_second": 0
+      },
+      {
+        "case_id": "292",
+        "scan_type": "femur",
+        "bone": "femur",
+        "member_i": "member_02",
+        "member_j": "member_03",
+        "graph_degree": 0.0,
+        "graph_forward": 0.0,
+        "graph_reverse": 0.0,
+        "graph_shared_support": true,
+        "graph_shared_voxels": 712065,
+        "graph_union_voxels": 766750,
+        "graph_instances_first": 3,
+        "graph_instances_second": 3,
+        "graph_shared_instances_first": 3,
+        "graph_shared_instances_second": 3,
+        "graph_unmatched_instances_first": 0,
+        "graph_unmatched_instances_second": 0
+      }
+    ],
+    "geometry": {
+      "size": [
+        290,
+        274,
+        711
+      ],
+      "spacing": [
+        0.765625,
+        0.765625,
+        0.800000011920929
+      ],
+      "origin": [
+        44.79710006713867,
+        58.111698150634766,
+        -571.489013671875
+      ],
+      "direction": [
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    "feature_extraction_seconds": 3.7188856480643153
+  }
+}

@@ -1,0 +1,320 @@
+[
+  {
+    "outer_fold": 0,
+    "head": "ridge_p1",
+    "model": {
+      "schema_version": 1,
+      "head": "ridge_p1",
+      "features": [
+        "partition_v1"
+      ],
+      "target": "log1p_member_mean_merge_split",
+      "prediction_role": "ranking_not_probability",
+      "alpha": 100.0,
+      "mean": [
+        0.07040629007257523
+      ],
+      "scale": [
+        0.045094894634378144
+      ],
+      "coefficient": [
+        -0.010565839445234556
+      ],
+      "intercept": 0.6952097443138446,
+      "train_case_ids": [
+        "synthetic_001",
+        "synthetic_002",
+        "synthetic_005",
+        "synthetic_008",
+        "synthetic_009",
+        "synthetic_011",
+        "synthetic_013",
+        "synthetic_017",
+        "synthetic_018",
+        "synthetic_019"
+      ],
+      "n_train_units": 20
+    },
+    "test_case_ids": [
+      "synthetic_000",
+      "synthetic_003",
+      "synthetic_004",
+      "synthetic_006",
+      "synthetic_007",
+      "synthetic_010",
+      "synthetic_012",
+      "synthetic_014",
+      "synthetic_015",
+      "synthetic_016"
+    ]
+  },
+  {
+    "outer_fold": 0,
+    "head": "ridge_p1_a",
+    "model": {
+      "schema_version": 1,
+      "head": "ridge_p1_a",
+      "features": [
+        "partition_v1",
+        "presence"
+      ],
+      "target": "log1p_member_mean_merge_split",
+      "prediction_role": "ranking_not_probability",
+      "alpha": 100.0,
+      "mean": [
+        0.07040629007257523,
+        0.5755785198121619
+      ],
+      "scale": [
+        0.045094894634378144,
+        0.2610188159889134
+      ],
+      "coefficient": [
+        -0.010750957688588707,
+        0.015452872499053872
+      ],
+      "intercept": 0.6952097443138446,
+      "train_case_ids": [
+        "synthetic_001",
+        "synthetic_002",
+        "synthetic_005",
+        "synthetic_008",
+        "synthetic_009",
+        "synthetic_011",
+        "synthetic_013",
+        "synthetic_017",
+        "synthetic_018",
+        "synthetic_019"
+      ],
+      "n_train_units": 20
+    },
+    "test_case_ids": [
+      "synthetic_000",
+      "synthetic_003",
+      "synthetic_004",
+      "synthetic_006",
+      "synthetic_007",
+      "synthetic_010",
+      "synthetic_012",
+      "synthetic_014",
+      "synthetic_015",
+      "synthetic_016"
+    ]
+  },
+  {
+    "outer_fold": 0,
+    "head": "ridge_p1_g_a",
+    "model": {
+      "schema_version": 1,
+      "head": "ridge_p1_g_a",
+      "features": [
+        "partition_v1",
+        "graph_degree",
+        "presence"
+      ],
+      "target": "log1p_member_mean_merge_split",
+      "prediction_role": "ranking_not_probability",
+      "alpha": 0.1,
+      "mean": [
+        0.07040629007257523,
+        0.8058134599440014,
+        0.5755785198121619
+      ],
+      "scale": [
+        0.045094894634378144,
+        0.5325883968057835,
+        0.2610188159889134
+      ],
+      "coefficient": [
+        -0.001327313823598655,
+        0.24838899957720903,
+        0.02696879643954595
+      ],
+      "intercept": 0.6952097443138446,
+      "train_case_ids": [
+        "synthetic_001",
+        "synthetic_002",
+        "synthetic_005",
+        "synthetic_008",
+        "synthetic_009",
+        "synthetic_011",
+        "synthetic_013",
+        "synthetic_017",
+        "synthetic_018",
+        "synthetic_019"
+      ],
+      "n_train_units": 20
+    },
+    "test_case_ids": [
+      "synthetic_000",
+      "synthetic_003",
+      "synthetic_004",
+      "synthetic_006",
+      "synthetic_007",
+      "synthetic_010",
+      "synthetic_012",
+      "synthetic_014",
+      "synthetic_015",
+      "synthetic_016"
+    ]
+  },
+  {
+    "outer_fold": 1,
+    "head": "ridge_p1",
+    "model": {
+      "schema_version": 1,
+      "head": "ridge_p1",
+      "features": [
+        "partition_v1"
+      ],
+      "target": "log1p_member_mean_merge_split",
+      "prediction_role": "ranking_not_probability",
+      "alpha": 10.0,
+      "mean": [
+        0.08776451364424076
+      ],
+      "scale": [
+        0.04840484094567199
+      ],
+      "coefficient": [
+        0.03564421335260387
+      ],
+      "intercept": 0.8509965560418726,
+      "train_case_ids": [
+        "synthetic_000",
+        "synthetic_003",
+        "synthetic_004",
+        "synthetic_006",
+        "synthetic_007",
+        "synthetic_010",
+        "synthetic_012",
+        "synthetic_014",
+        "synthetic_015",
+        "synthetic_016"
+      ],
+      "n_train_units": 20
+    },
+    "test_case_ids": [
+      "synthetic_001",
+      "synthetic_002",
+      "synthetic_005",
+      "synthetic_008",
+      "synthetic_009",
+      "synthetic_011",
+      "synthetic_013",
+      "synthetic_017",
+      "synthetic_018",
+      "synthetic_019"
+    ]
+  },
+  {
+    "outer_fold": 1,
+    "head": "ridge_p1_a",
+    "model": {
+      "schema_version": 1,
+      "head": "ridge_p1_a",
+      "features": [
+        "partition_v1",
+        "presence"
+      ],
+      "target": "log1p_member_mean_merge_split",
+      "prediction_role": "ranking_not_probability",
+      "alpha": 10.0,
+      "mean": [
+        0.08776451364424075,
+        0.4936377593591138
+      ],
+      "scale": [
+        0.048404840945672,
+        0.28395971047394314
+      ],
+      "coefficient": [
+        0.03434236475925703,
+        -0.03249287416265203
+      ],
+      "intercept": 0.8509965560418726,
+      "train_case_ids": [
+        "synthetic_000",
+        "synthetic_003",
+        "synthetic_004",
+        "synthetic_006",
+        "synthetic_007",
+        "synthetic_010",
+        "synthetic_012",
+        "synthetic_014",
+        "synthetic_015",
+        "synthetic_016"
+      ],
+      "n_train_units": 20
+    },
+    "test_case_ids": [
+      "synthetic_001",
+      "synthetic_002",
+      "synthetic_005",
+      "synthetic_008",
+      "synthetic_009",
+      "synthetic_011",
+      "synthetic_013",
+      "synthetic_017",
+      "synthetic_018",
+      "synthetic_019"
+    ]
+  },
+  {
+    "outer_fold": 1,
+    "head": "ridge_p1_g_a",
+    "model": {
+      "schema_version": 1,
+      "head": "ridge_p1_g_a",
+      "features": [
+        "partition_v1",
+        "graph_degree",
+        "presence"
+      ],
+      "target": "log1p_member_mean_merge_split",
+      "prediction_role": "ranking_not_probability",
+      "alpha": 0.1,
+      "mean": [
+        0.08776451364424075,
+        1.1488950033113867,
+        0.4936377593591138
+      ],
+      "scale": [
+        0.048404840945672,
+        0.5498416768155406,
+        0.28395971047394314
+      ],
+      "coefficient": [
+        0.000978554522213264,
+        0.2266279000825578,
+        0.023358246626485033
+      ],
+      "intercept": 0.8509965560418726,
+      "train_case_ids": [
+        "synthetic_000",
+        "synthetic_003",
+        "synthetic_004",
+        "synthetic_006",
+        "synthetic_007",
+        "synthetic_010",
+        "synthetic_012",
+        "synthetic_014",
+        "synthetic_015",
+        "synthetic_016"
+      ],
+      "n_train_units": 20
+    },
+    "test_case_ids": [
+      "synthetic_001",
+      "synthetic_002",
+      "synthetic_005",
+      "synthetic_008",
+      "synthetic_009",
+      "synthetic_011",
+      "synthetic_013",
+      "synthetic_017",
+      "synthetic_018",
+      "synthetic_019"
+    ]
+  }
+]

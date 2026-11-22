@@ -1,0 +1,322 @@
+[
+  {
+    "outer_fold": 0,
+    "head": "pairwise_p1_g",
+    "model": {
+      "schema_version": 1,
+      "head": "pairwise_p1_g",
+      "features": [
+        "partition_v1",
+        "graph_degree"
+      ],
+      "target": "member_mean_merge_split",
+      "objective": "mean_pairwise_logistic_plus_half_alpha_l2",
+      "pair_weighting": "uniform_non_tied_unordered_bone_pairs",
+      "coefficient_constraints": "unconstrained",
+      "prediction_role": "ranking_not_probability",
+      "alpha": 0.001,
+      "mean": [
+        0.04246091970516291,
+        0.3753179616400668
+      ],
+      "scale": [
+        0.02280368097456186,
+        0.3459641379361461
+      ],
+      "coefficient": [
+        1.1266538476736896,
+        6.874197726100471
+      ],
+      "intercept": 0.0,
+      "train_case_ids": [
+        "synthetic_001",
+        "synthetic_003",
+        "synthetic_004",
+        "synthetic_005",
+        "synthetic_006",
+        "synthetic_007",
+        "synthetic_008",
+        "synthetic_009",
+        "synthetic_010",
+        "synthetic_011",
+        "synthetic_012",
+        "synthetic_013",
+        "synthetic_015",
+        "synthetic_016",
+        "synthetic_017",
+        "synthetic_019"
+      ],
+      "n_train_units": 32,
+      "n_training_pairs": 429,
+      "optimizer": {
+        "status": "converged",
+        "iterations": 14,
+        "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "loss": 0.05145817292228155,
+        "gradient_infinity_norm": 2.74528238683458e-10
+      }
+    },
+    "test_case_ids": [
+      "synthetic_000",
+      "synthetic_002",
+      "synthetic_014",
+      "synthetic_018"
+    ]
+  },
+  {
+    "outer_fold": 1,
+    "head": "pairwise_p1_g",
+    "model": {
+      "schema_version": 1,
+      "head": "pairwise_p1_g",
+      "features": [
+        "partition_v1",
+        "graph_degree"
+      ],
+      "target": "member_mean_merge_split",
+      "objective": "mean_pairwise_logistic_plus_half_alpha_l2",
+      "pair_weighting": "uniform_non_tied_unordered_bone_pairs",
+      "coefficient_constraints": "unconstrained",
+      "prediction_role": "ranking_not_probability",
+      "alpha": 1.0,
+      "mean": [
+        0.040397644007610485,
+        0.3724452882961524
+      ],
+      "scale": [
+        0.0236981685728622,
+        0.34529574399749596
+      ],
+      "coefficient": [
+        0.08545972215600547,
+        0.4121943537895953
+      ],
+      "intercept": 0.0,
+      "train_case_ids": [
+        "synthetic_000",
+        "synthetic_001",
+        "synthetic_002",
+        "synthetic_003",
+        "synthetic_005",
+        "synthetic_006",
+        "synthetic_007",
+        "synthetic_009",
+        "synthetic_010",
+        "synthetic_011",
+        "synthetic_014",
+        "synthetic_015",
+        "synthetic_016",
+        "synthetic_017",
+        "synthetic_018",
+        "synthetic_019"
+      ],
+      "n_train_units": 32,
+      "n_training_pairs": 434,
+      "optimizer": {
+        "status": "converged",
+        "iterations": 5,
+        "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "loss": 0.5578401501831471,
+        "gradient_infinity_norm": 6.438322097679361e-13
+      }
+    },
+    "test_case_ids": [
+      "synthetic_004",
+      "synthetic_008",
+      "synthetic_012",
+      "synthetic_013"
+    ]
+  },
+  {
+    "outer_fold": 2,
+    "head": "pairwise_p1_g",
+    "model": {
+      "schema_version": 1,
+      "head": "pairwise_p1_g",
+      "features": [
+        "partition_v1",
+        "graph_degree"
+      ],
+      "target": "member_mean_merge_split",
+      "objective": "mean_pairwise_logistic_plus_half_alpha_l2",
+      "pair_weighting": "uniform_non_tied_unordered_bone_pairs",
+      "coefficient_constraints": "unconstrained",
+      "prediction_role": "ranking_not_probability",
+      "alpha": 1.0,
+      "mean": [
+        0.03872042990432729,
+        0.36965793826181365
+      ],
+      "scale": [
+        0.024990118082427192,
+        0.33216685939031065
+      ],
+      "coefficient": [
+        0.070252292599309,
+        0.4106859095772242
+      ],
+      "intercept": 0.0,
+      "train_case_ids": [
+        "synthetic_000",
+        "synthetic_001",
+        "synthetic_002",
+        "synthetic_003",
+        "synthetic_004",
+        "synthetic_006",
+        "synthetic_008",
+        "synthetic_009",
+        "synthetic_010",
+        "synthetic_012",
+        "synthetic_013",
+        "synthetic_014",
+        "synthetic_015",
+        "synthetic_017",
+        "synthetic_018",
+        "synthetic_019"
+      ],
+      "n_train_units": 32,
+      "n_training_pairs": 438,
+      "optimizer": {
+        "status": "converged",
+        "iterations": 5,
+        "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "loss": 0.5619226989570407,
+        "gradient_infinity_norm": 3.161360062620133e-14
+      }
+    },
+    "test_case_ids": [
+      "synthetic_005",
+      "synthetic_007",
+      "synthetic_011",
+      "synthetic_016"
+    ]
+  },
+  {
+    "outer_fold": 3,
+    "head": "pairwise_p1_g",
+    "model": {
+      "schema_version": 1,
+      "head": "pairwise_p1_g",
+      "features": [
+        "partition_v1",
+        "graph_degree"
+      ],
+      "target": "member_mean_merge_split",
+      "objective": "mean_pairwise_logistic_plus_half_alpha_l2",
+      "pair_weighting": "uniform_non_tied_unordered_bone_pairs",
+      "coefficient_constraints": "unconstrained",
+      "prediction_role": "ranking_not_probability",
+      "alpha": 0.01,
+      "mean": [
+        0.04307692768660444,
+        0.42868105096956977
+      ],
+      "scale": [
+        0.025688084101842847,
+        0.3481884663842156
+      ],
+      "coefficient": [
+        0.7097531392157418,
+        3.224807079804838
+      ],
+      "intercept": 0.0,
+      "train_case_ids": [
+        "synthetic_000",
+        "synthetic_001",
+        "synthetic_002",
+        "synthetic_003",
+        "synthetic_004",
+        "synthetic_005",
+        "synthetic_007",
+        "synthetic_008",
+        "synthetic_010",
+        "synthetic_011",
+        "synthetic_012",
+        "synthetic_013",
+        "synthetic_014",
+        "synthetic_016",
+        "synthetic_017",
+        "synthetic_018"
+      ],
+      "n_train_units": 32,
+      "n_training_pairs": 442,
+      "optimizer": {
+        "status": "converged",
+        "iterations": 11,
+        "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "loss": 0.1539216498900613,
+        "gradient_infinity_norm": 3.571549306302657e-12
+      }
+    },
+    "test_case_ids": [
+      "synthetic_006",
+      "synthetic_009",
+      "synthetic_015",
+      "synthetic_019"
+    ]
+  },
+  {
+    "outer_fold": 4,
+    "head": "pairwise_p1_g",
+    "model": {
+      "schema_version": 1,
+      "head": "pairwise_p1_g",
+      "features": [
+        "partition_v1",
+        "graph_degree"
+      ],
+      "target": "member_mean_merge_split",
+      "objective": "mean_pairwise_logistic_plus_half_alpha_l2",
+      "pair_weighting": "uniform_non_tied_unordered_bone_pairs",
+      "coefficient_constraints": "unconstrained",
+      "prediction_role": "ranking_not_probability",
+      "alpha": 1.0,
+      "mean": [
+        0.04254247223796697,
+        0.46511019138090565
+      ],
+      "scale": [
+        0.025501528222489772,
+        0.3558193387297362
+      ],
+      "coefficient": [
+        0.07031337975790344,
+        0.41602297385845505
+      ],
+      "intercept": 0.0,
+      "train_case_ids": [
+        "synthetic_000",
+        "synthetic_002",
+        "synthetic_004",
+        "synthetic_005",
+        "synthetic_006",
+        "synthetic_007",
+        "synthetic_008",
+        "synthetic_009",
+        "synthetic_011",
+        "synthetic_012",
+        "synthetic_013",
+        "synthetic_014",
+        "synthetic_015",
+        "synthetic_016",
+        "synthetic_018",
+        "synthetic_019"
+      ],
+      "n_train_units": 32,
+      "n_training_pairs": 441,
+      "optimizer": {
+        "status": "converged",
+        "iterations": 5,
+        "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "loss": 0.5578010175910934,
+        "gradient_infinity_norm": 1.6717183193293295e-13
+      }
+    },
+    "test_case_ids": [
+      "synthetic_001",
+      "synthetic_003",
+      "synthetic_010",
+      "synthetic_017"
+    ]
+  }
+]

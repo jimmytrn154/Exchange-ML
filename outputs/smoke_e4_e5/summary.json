@@ -1,0 +1,56 @@
+{
+  "smoke_only": true,
+  "n_cases": {
+    "validation": 2,
+    "heldout": 2
+  },
+  "n_bone_units": 8,
+  "bootstrap_resamples": 32,
+  "qualitative_selections": [
+    {
+      "category": "partition_detects_structure",
+      "status": "no_eligible_case",
+      "n_eligible": 0,
+      "case_id": null,
+      "bone": null
+    },
+    {
+      "category": "presence_detects_missing",
+      "status": "no_eligible_case",
+      "n_eligible": 0,
+      "case_id": null,
+      "bone": null
+    },
+    {
+      "category": "shared_error_low_disagreement",
+      "status": "no_eligible_case",
+      "n_eligible": 0,
+      "case_id": null,
+      "bone": null
+    }
+  ],
+  "visual_sources": {},
+  "n_fragment_records": 84,
+  "n_blindspot_model_units": 0,
+  "runtime_limitations": [
+    "E3 model load is included in inference_seconds; separate load timing was not recorded.",
+    "E3 CPU scoring/evaluation is combined; historical read/cleanup/components/baselines timings were not recorded.",
+    "E3 process peak RSS is a cumulative process high-water mark, not per-case allocation.",
+    "E4 CPU timings are new analysis measurements, not a replay or estimate of E3 overhead."
+  ],
+  "analysis_role": "secondary_sensitivity_and_qualitative; E3 primary method and decision unchanged",
+  "table_rows": {
+    "normalization_scope": 48,
+    "normalization_scope_comparisons": 48,
+    "risk_source": 72,
+    "enrichment": 576,
+    "review_budget": 288,
+    "f1_volume_blindspots": 0,
+    "blindspot_summary": 30,
+    "scope_case_scores": 4,
+    "scope_pair_components": 36,
+    "outside_gt_disagreement": 12,
+    "fragment_coverage": 84,
+    "case_runtime": 4
+  }
+}

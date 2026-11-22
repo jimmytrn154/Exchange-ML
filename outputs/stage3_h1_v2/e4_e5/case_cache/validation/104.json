@@ -1,0 +1,412 @@
+{
+  "signature": "61bcbe50b7822b36d21c7e6f3b5d085c635e2686af3f0a841c3113e06d2e6a21",
+  "input_states": {
+    "gt": {
+      "bytes": 371449,
+      "mtime_ns": 1776874000000000000
+    },
+    "stage2": {
+      "bytes": 69478771,
+      "mtime_ns": 1792510786890293477
+    },
+    "member_01": {
+      "bytes": 69478771,
+      "mtime_ns": 1792510893878558202
+    },
+    "member_02": {
+      "bytes": 69478771,
+      "mtime_ns": 1792510934890659681
+    },
+    "member_03": {
+      "bytes": 69478771,
+      "mtime_ns": 1792543771240706424
+    }
+  },
+  "input_sha256": {
+    "gt": "1d37ee2eda48a1a3597603f7504c68718c13764337c1f969b4a264786963ee8a",
+    "stage2": "0315335738b318a384723a4fed7c8e9f69e47b9891a2afce12139bc55d7546bf",
+    "member_01": "b232b89b83e322312416ee14d03f5d2162749ca3d82547e1940de89423ecd020",
+    "member_02": "d7bfee19848ecf3d0e24fa6d6187ca7652d6fe0a24680fc0ab54e8bbd48e344b",
+    "member_03": "4950f3ba439f52d6718cc67017dbba4625ca31b1cab14724b6dc388fbec1db63"
+  },
+  "result": {
+    "scope_scores": [
+      {
+        "case_id": "104",
+        "scan_type": "pelvic",
+        "all_log_n": 0.18077718077307758,
+        "all_log_n_partition_share": 0.000815628353891195,
+        "all_joint": 0.18254130470787766,
+        "all_joint_partition_share": 0.010471991159667725,
+        "annotated_log_n": 0.013636068936823153,
+        "annotated_log_n_partition_share": 0.0,
+        "annotated_joint": 0.013636068936823153,
+        "annotated_joint_partition_share": 0.0,
+        "fraction_outside_scope": 0.6854727224590897,
+        "n_defined_outside_scope_pairs": 3
+      }
+    ],
+    "scope_pairs": [
+      {
+        "case_id": "104",
+        "scan_type": "pelvic",
+        "scope": "all",
+        "member_i": "member_01",
+        "member_j": "member_02",
+        "n_shared_voxels": 1549106,
+        "n_union_voxels": 1568729,
+        "k_i": 4,
+        "k_j": 4,
+        "vi": 0.0,
+        "joint_entropy": 1.35634898179666,
+        "q_log_n": 0.0,
+        "q_joint": 0.0,
+        "overlap_weight": 0.9874911472918522,
+        "presence": 0.012508852708147807,
+        "weighted_q_log_n": 0.0,
+        "weighted_q_joint": 0.0,
+        "fa_v1": 0.012508852708147807,
+        "fa_v2": 0.012508852708147807,
+        "pairwise_dice": 0.006293790402635113,
+        "union_nvi": 0.006052005160359935,
+        "hungarian": 0.013895974608631456
+      },
+      {
+        "case_id": "104",
+        "scan_type": "pelvic",
+        "scope": "all",
+        "member_i": "member_01",
+        "member_j": "member_03",
+        "n_shared_voxels": 1268163,
+        "n_union_voxels": 1722807,
+        "k_i": 4,
+        "k_j": 7,
+        "vi": 0.00425711586288835,
+        "joint_entropy": 1.0840027859011847,
+        "q_log_n": 0.0003029311636052263,
+        "q_joint": 0.003927218562772604,
+        "overlap_weight": 0.7361027671700893,
+        "presence": 0.26389723282991073,
+        "weighted_q_log_n": 0.00022298846779186213,
+        "weighted_q_joint": 0.0028908364513386547,
+        "fa_v1": 0.2641202212977026,
+        "fa_v2": 0.2667880692812494,
+        "pairwise_dice": 0.15200553666536276,
+        "union_nvi": 0.011677352474068562,
+        "hungarian": 0.5774405596978431
+      },
+      {
+        "case_id": "104",
+        "scan_type": "pelvic",
+        "scope": "all",
+        "member_i": "member_02",
+        "member_j": "member_03",
+        "n_shared_voxels": 1269467,
+        "n_union_voxels": 1728302,
+        "k_i": 4,
+        "k_j": 7,
+        "vi": 0.004197049704153466,
+        "joint_entropy": 1.0840147415373313,
+        "q_log_n": 0.0002986350893370846,
+        "q_joint": 0.0038717644173374257,
+        "overlap_weight": 0.7345168842019508,
+        "presence": 0.2654831157980492,
+        "weighted_q_log_n": 0.0002193525153332466,
+        "weighted_q_joint": 0.0028438763361866674,
+        "fa_v1": 0.2657024683133824,
+        "fa_v2": 0.26832699213423583,
+        "pairwise_dice": 0.15305882474600274,
+        "union_nvi": 0.01252141495546164,
+        "hungarian": 0.5785828244808937
+      },
+      {
+        "case_id": "104",
+        "scan_type": "pelvic",
+        "scope": "annotated",
+        "member_i": "member_01",
+        "member_j": "member_02",
+        "n_shared_voxels": 1270219,
+        "n_union_voxels": 1287273,
+        "k_i": 3,
+        "k_j": 3,
+        "vi": 0.0,
+        "joint_entropy": 1.0791975310291178,
+        "q_log_n": 0.0,
+        "q_joint": 0.0,
+        "overlap_weight": 0.9867518389650058,
+        "presence": 0.01324816103499413,
+        "weighted_q_log_n": 0.0,
+        "weighted_q_joint": 0.0,
+        "fa_v1": 0.01324816103499413,
+        "fa_v2": 0.01324816103499413,
+        "pairwise_dice": 0.006668251552693016,
+        "union_nvi": 0.006190677659490642,
+        "hungarian": 0.015485453875310196
+      },
+      {
+        "case_id": "104",
+        "scan_type": "pelvic",
+        "scope": "annotated",
+        "member_i": "member_01",
+        "member_j": "member_03",
+        "n_shared_voxels": 1267391,
+        "n_union_voxels": 1283897,
+        "k_i": 3,
+        "k_j": 3,
+        "vi": 0.0,
+        "joint_entropy": 1.079544117286153,
+        "q_log_n": 0.0,
+        "q_joint": 0.0,
+        "overlap_weight": 0.9871438285158389,
+        "presence": 0.012856171484161112,
+        "weighted_q_log_n": 0.0,
+        "weighted_q_joint": 0.0,
+        "fa_v1": 0.012856171484161112,
+        "fa_v2": 0.012856171484161112,
+        "pairwise_dice": 0.006469673357143546,
+        "union_nvi": 0.006364087150016188,
+        "hungarian": 0.014027972628300689
+      },
+      {
+        "case_id": "104",
+        "scan_type": "pelvic",
+        "scope": "annotated",
+        "member_i": "member_02",
+        "member_j": "member_03",
+        "n_shared_voxels": 1268707,
+        "n_union_voxels": 1287771,
+        "k_i": 3,
+        "k_j": 3,
+        "vi": 0.0,
+        "joint_entropy": 1.0796199355770077,
+        "q_log_n": 0.0,
+        "q_joint": 0.0,
+        "overlap_weight": 0.9851961257086858,
+        "presence": 0.014803874291314217,
+        "weighted_q_log_n": 0.0,
+        "weighted_q_joint": 0.0,
+        "fa_v1": 0.014803874291314217,
+        "fa_v2": 0.014803874291314217,
+        "pairwise_dice": 0.007457134385666531,
+        "union_nvi": 0.0070060077680297655,
+        "hungarian": 0.016693257122085137
+      },
+      {
+        "case_id": "104",
+        "scan_type": "pelvic",
+        "scope": "outside_annotation",
+        "member_i": "member_01",
+        "member_j": "member_02",
+        "n_disagreement_voxels": 19623,
+        "n_outside_scope_disagreement_voxels": 2569,
+        "fraction_outside_scope": 0.13091780054018243
+      },
+      {
+        "case_id": "104",
+        "scan_type": "pelvic",
+        "scope": "outside_annotation",
+        "member_i": "member_01",
+        "member_j": "member_03",
+        "n_disagreement_voxels": 454644,
+        "n_outside_scope_disagreement_voxels": 438910,
+        "fraction_outside_scope": 0.9653927028620195
+      },
+      {
+        "case_id": "104",
+        "scan_type": "pelvic",
+        "scope": "outside_annotation",
+        "member_i": "member_02",
+        "member_j": "member_03",
+        "n_disagreement_voxels": 458835,
+        "n_outside_scope_disagreement_voxels": 440531,
+        "fraction_outside_scope": 0.9601076639750673
+      }
+    ],
+    "outside_gt": [
+      {
+        "case_id": "104",
+        "scan_type": "pelvic",
+        "member_i": "member_01",
+        "member_j": "member_02",
+        "n_disagreement_voxels": 19623,
+        "n_disagreement_outside_gt_foreground": 11008,
+        "fraction_outside_gt_foreground": 0.5609743668144525
+      },
+      {
+        "case_id": "104",
+        "scan_type": "pelvic",
+        "member_i": "member_01",
+        "member_j": "member_03",
+        "n_disagreement_voxels": 454644,
+        "n_disagreement_outside_gt_foreground": 446107,
+        "fraction_outside_gt_foreground": 0.9812226709249434
+      },
+      {
+        "case_id": "104",
+        "scan_type": "pelvic",
+        "member_i": "member_02",
+        "member_j": "member_03",
+        "n_disagreement_voxels": 458835,
+        "n_disagreement_outside_gt_foreground": 449733,
+        "fraction_outside_gt_foreground": 0.9801628036222171
+      }
+    ],
+    "fragments": [
+      {
+        "case_id": "104",
+        "scan_type": "pelvic",
+        "bone": "sacrum",
+        "model_id": "member_01",
+        "gt_id": 1,
+        "matched_pred_id": 1,
+        "matched_iou": 0.9689209927168895,
+        "gt_volume_mm3": 181345.75926971436,
+        "gt_fraction_covered": 0.9807580898783415,
+        "n_overlapping_pred_instances": 1
+      },
+      {
+        "case_id": "104",
+        "scan_type": "pelvic",
+        "bone": "sacrum",
+        "model_id": "member_02",
+        "gt_id": 1,
+        "matched_pred_id": 1,
+        "matched_iou": 0.9681365887186216,
+        "gt_volume_mm3": 181345.75926971436,
+        "gt_fraction_covered": 0.9864017468916915,
+        "n_overlapping_pred_instances": 1
+      },
+      {
+        "case_id": "104",
+        "scan_type": "pelvic",
+        "bone": "sacrum",
+        "model_id": "member_03",
+        "gt_id": 1,
+        "matched_pred_id": 1,
+        "matched_iou": 0.966630512470063,
+        "gt_volume_mm3": 181345.75926971436,
+        "gt_fraction_covered": 0.9815411353522749,
+        "n_overlapping_pred_instances": 1
+      },
+      {
+        "case_id": "104",
+        "scan_type": "pelvic",
+        "bone": "sacrum",
+        "model_id": "stage2",
+        "gt_id": 1,
+        "matched_pred_id": 1,
+        "matched_iou": 0.9684729371392918,
+        "gt_volume_mm3": 181345.75926971436,
+        "gt_fraction_covered": 0.9881779232106138,
+        "n_overlapping_pred_instances": 1
+      },
+      {
+        "case_id": "104",
+        "scan_type": "pelvic",
+        "bone": "left_hip",
+        "model_id": "member_01",
+        "gt_id": 51,
+        "matched_pred_id": 51,
+        "matched_iou": 0.9752407739722269,
+        "gt_volume_mm3": 280989.58487701416,
+        "gt_fraction_covered": 0.985821051896347,
+        "n_overlapping_pred_instances": 1
+      },
+      {
+        "case_id": "104",
+        "scan_type": "pelvic",
+        "bone": "left_hip",
+        "model_id": "member_02",
+        "gt_id": 51,
+        "matched_pred_id": 51,
+        "matched_iou": 0.9755883518023829,
+        "gt_volume_mm3": 280989.58487701416,
+        "gt_fraction_covered": 0.9865852606321568,
+        "n_overlapping_pred_instances": 1
+      },
+      {
+        "case_id": "104",
+        "scan_type": "pelvic",
+        "bone": "left_hip",
+        "model_id": "member_03",
+        "gt_id": 51,
+        "matched_pred_id": 51,
+        "matched_iou": 0.974174166849598,
+        "gt_volume_mm3": 280989.58487701416,
+        "gt_fraction_covered": 0.9846007831085217,
+        "n_overlapping_pred_instances": 1
+      },
+      {
+        "case_id": "104",
+        "scan_type": "pelvic",
+        "bone": "left_hip",
+        "model_id": "stage2",
+        "gt_id": 51,
+        "matched_pred_id": 51,
+        "matched_iou": 0.9732339330787652,
+        "gt_volume_mm3": 280989.58487701416,
+        "gt_fraction_covered": 0.9885368689628538,
+        "n_overlapping_pred_instances": 1
+      },
+      {
+        "case_id": "104",
+        "scan_type": "pelvic",
+        "bone": "right_hip",
+        "model_id": "member_01",
+        "gt_id": 101,
+        "matched_pred_id": 101,
+        "matched_iou": 0.9758051049249475,
+        "gt_volume_mm3": 276697.7771873474,
+        "gt_fraction_covered": 0.9874453157759684,
+        "n_overlapping_pred_instances": 1
+      },
+      {
+        "case_id": "104",
+        "scan_type": "pelvic",
+        "bone": "right_hip",
+        "model_id": "member_02",
+        "gt_id": 101,
+        "matched_pred_id": 101,
+        "matched_iou": 0.9757627443346496,
+        "gt_volume_mm3": 276697.7771873474,
+        "gt_fraction_covered": 0.9881963437455017,
+        "n_overlapping_pred_instances": 1
+      },
+      {
+        "case_id": "104",
+        "scan_type": "pelvic",
+        "bone": "right_hip",
+        "model_id": "member_03",
+        "gt_id": 101,
+        "matched_pred_id": 101,
+        "matched_iou": 0.9746783454345072,
+        "gt_volume_mm3": 276697.7771873474,
+        "gt_fraction_covered": 0.9852172661330195,
+        "n_overlapping_pred_instances": 1
+      },
+      {
+        "case_id": "104",
+        "scan_type": "pelvic",
+        "bone": "right_hip",
+        "model_id": "stage2",
+        "gt_id": 101,
+        "matched_pred_id": 101,
+        "matched_iou": 0.9753445226047965,
+        "gt_volume_mm3": 276697.7771873474,
+        "gt_fraction_covered": 0.9892561276580654,
+        "n_overlapping_pred_instances": 1
+      }
+    ],
+    "runtime": [
+      {
+        "case_id": "104",
+        "scan_type": "pelvic",
+        "read_seconds": 0.567652806872502,
+        "cleanup_seconds": 6.503647288074717,
+        "components_seconds": 1.2381720829289407,
+        "fragment_seconds": 2.5977542269974947
+      }
+    ]
+  },
+  "result_sha256": "bf97149f6d49728611db6b3a2574b63bd5676e42fac8470b26a840317f0bfadd"
+}

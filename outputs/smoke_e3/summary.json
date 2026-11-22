@@ -1,0 +1,46 @@
+{
+  "n_cases": 2,
+  "n_units": 4,
+  "pair_rows": 12,
+  "model_risk_rows": 16,
+  "inference_records": 8,
+  "bootstrap_resamples": 32,
+  "smoke_only": true,
+  "primary_result": {
+    "member_mean": {
+      "meets_rule": null,
+      "baselines": {
+        "presence": {
+          "delta_aurc": -0.10416666666666674,
+          "ci_low": -0.10416666666666674,
+          "ci_high": -0.10416666666666674,
+          "meets_rule": null
+        },
+        "mean_entropy": {
+          "delta_aurc": -0.05208333333333326,
+          "ci_low": -0.05208333333333326,
+          "ci_high": -0.05208333333333326,
+          "meets_rule": null
+        }
+      }
+    },
+    "stage2": {
+      "meets_rule": null,
+      "baselines": {
+        "presence": {
+          "delta_aurc": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "meets_rule": null
+        },
+        "mean_entropy": {
+          "delta_aurc": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "meets_rule": null
+        }
+      }
+    },
+    "robust_across_risk_sources": null
+  }
+}

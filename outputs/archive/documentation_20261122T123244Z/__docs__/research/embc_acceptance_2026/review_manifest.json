@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "review_date": "2026-11-22",
+  "workflow": "academic-pipeline scoped literature review and scientific readiness assessment",
+  "scope": "targeted narrative review; not systematic or an acceptance probability estimate",
+  "core_methods_results_papers": 6,
+  "additional_abstract_only_papers": 1,
+  "additional_accepted_program_only_records": 1,
+  "adjacent_uncertainty_papers_in_ledger_not_core": 2,
+  "experiment_reruns": false,
+  "manuscript_integrity_clearance_claimed": false,
+  "artifact_sha256": {
+    "__docs__/research/embc_acceptance_2026/embc_2027_assessment.md": "74c3a017a5d659cc28869fd131882f2cd2ae5c69e441c667ccad4769f10fc39d",
+    "__docs__/research/embc_acceptance_2026/local_evidence_assessment.md": "49d557d183b00d1d5a67134e371de5dd66be5d1190c0228b57164e8d7e1b364a",
+    "__docs__/research/embc_acceptance_2026/phase2_earlier.md": "d760bda0add3b2b77ebc8eb74bcc2baab03bfb1867e882a8cbaec42a7ea0ac51",
+    "__docs__/research/embc_acceptance_2026/phase2_recent.md": "37518d260c7a03624a223e7974d4a09afb20d58d05112d230b85920fec219750",
+    "__docs__/research/embc_acceptance_2026/phase2_venue.md": "69a3ae603372d121cbee50bf099540c13b8881eced54010f47182645afc97f50"
+  },
+  "local_input_sha256": {
+    "paper/guidelines.md": "ccbbfccfdf9f266f82709ed39c3d59e9a2d4af2a1e7908a60440796eb05e6ed4",
+    "paper/conference-latex-template.zip": "516252d9ac6e974af3a1d9aa72f97ecc462b9a47556225019fb0adef69bba78a",
+    "__docs__/reports/e1_e5_synthesis.md": "23b02265e4189ff83eb212d5c71a5a342ce32732535be7a2a100999f8a3abec1",
+    "__docs__/reports/results_discussion_draft.md": "ed6c08edbd1fff6a7e3b3742e849c08cf0c787e269cba929788416be6a29e599",
+    "__docs__/reports/e1_e5_evidence.json": "269dc0f1d4e433c2fe02c8c43db490ac2255a034b2ed25442dcb0e084a1fe5e8",
+    "outputs/stage3_h1_v2/heldout/summary.json": "46bedb7b22a92f0a759c36b1b324475db7cffadce8d50f7ac5355b64cdfc231e",
+    "outputs/stage3_h1_v2/e5_supplement_v1/summary.json": "1e09785615acc1206b651c5ecc1900d1a786f6ac8914543d3a6a9185fb92cfe2"
+  },
+  "e1_e5_readonly_audit": {
+    "status": "PASS",
+    "recorded_output_hashes": 111,
+    "recorded_cache_hashes": 142
+  },
+  "e6_observed_snapshot": {
+    "preparation": "complete",
+    "preprocessing": "complete",
+    "training_manifests_marked_running": [
+      "member_01",
+      "member_02"
+    ],
+    "completed_external_evaluation_found": false,
+    "note": "Manifest state observation, not a scheduler/process health check."
+  }
+}

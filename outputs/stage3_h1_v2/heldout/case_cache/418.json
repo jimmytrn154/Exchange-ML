@@ -1,0 +1,309 @@
+{
+  "signature": "aab527e3efa6dfc75b6dca7e2039f1cf1e63eda34d39e29e8141f38549b944b9",
+  "gt": {
+    "bytes": 161440,
+    "mtime_ns": 1776873860000000000,
+    "sha256": "8eb7b4e6030bd97c76c5d035fe056d847862d76e0d9ed74253fd771c01166f22"
+  },
+  "tables": {
+    "scores": [
+      {
+        "case_id": "418",
+        "scan_type": "femur",
+        "bone": "femur",
+        "mean_entropy": 0.12198669668397338,
+        "p95_entropy": 0.6471976052231755,
+        "pairwise_dice": 0.048611771370989744,
+        "presence": 0.09240964671748048,
+        "union_nvi": 0.052984616079347284,
+        "hungarian": 0.48239399850074793,
+        "fa_v1": 0.11222731068428249,
+        "fa_v2": 0.27268243198105696,
+        "count_variance": 1.5555555555555554,
+        "partition_v1": 0.01981766396680203,
+        "partition_v2": 0.1802727852635765,
+        "q_joint_unweighted": 0.20000153194849188,
+        "component_vi": 0.2777526442060014,
+        "component_joint_entropy": 1.3898897191835224,
+        "component_q_log_n": 0.021983933708638524,
+        "component_q_joint": 0.20000153194849188,
+        "component_overlap_weight": 0.9075903532825196,
+        "component_presence": 0.09240964671748048,
+        "component_weighted_q_log_n": 0.01981766396680203,
+        "component_weighted_q_joint": 0.1802727852635765,
+        "component_fa_v1": 0.11222731068428249,
+        "component_fa_v2": 0.27268243198105696,
+        "partition_share_v1": 0.1765850384007955,
+        "partition_share_v2": 0.6611089095615075
+      }
+    ],
+    "pair_components": [
+      {
+        "case_id": "418",
+        "scan_type": "femur",
+        "bone": "femur",
+        "member_i": "member_01",
+        "member_j": "member_02",
+        "n_shared_voxels": 304838,
+        "n_union_voxels": 339115,
+        "k_i": 3,
+        "k_j": 5,
+        "vi": 0.2604907077068206,
+        "joint_entropy": 1.3093910785000709,
+        "q_log_n": 0.020628783993533684,
+        "q_joint": 0.19894034103639763,
+        "overlap_weight": 0.8989221945357769,
+        "presence": 0.10107780546422306,
+        "weighted_q_log_n": 0.018543671778071806,
+        "weighted_q_joint": 0.17883188794613444,
+        "fa_v1": 0.11962147724229485,
+        "fa_v2": 0.2799096934103575,
+        "pairwise_dice": 0.05322904000757822,
+        "union_nvi": 0.05439206952472574,
+        "hungarian": 0.506517429092653
+      },
+      {
+        "case_id": "418",
+        "scan_type": "femur",
+        "bone": "femur",
+        "member_i": "member_01",
+        "member_j": "member_03",
+        "n_shared_voxels": 301836,
+        "n_union_voxels": 341765,
+        "k_i": 3,
+        "k_j": 6,
+        "vi": 0.37848369190455733,
+        "joint_entropy": 1.423930793093941,
+        "q_log_n": 0.029996395429448992,
+        "q_joint": 0.265802027556537,
+        "overlap_weight": 0.8831682588913434,
+        "presence": 0.11683174110865653,
+        "weighted_q_log_n": 0.02649186432444272,
+        "weighted_q_joint": 0.23474791388689564,
+        "fa_v1": 0.14332360543309924,
+        "fa_v2": 0.35157965499555216,
+        "pairwise_dice": 0.06203999061530363,
+        "union_nvi": 0.06567526864649408,
+        "hungarian": 0.6377167981004013
+      },
+      {
+        "case_id": "418",
+        "scan_type": "femur",
+        "bone": "femur",
+        "member_i": "member_02",
+        "member_j": "member_03",
+        "n_shared_voxels": 320044,
+        "n_union_voxels": 340226,
+        "k_i": 5,
+        "k_j": 6,
+        "vi": 0.19428353300662615,
+        "joint_entropy": 1.4363472859565551,
+        "q_log_n": 0.015326621702932893,
+        "q_joint": 0.13526222725254106,
+        "overlap_weight": 0.9406806064204382,
+        "presence": 0.05931939357956182,
+        "weighted_q_log_n": 0.014417455797891563,
+        "weighted_q_joint": 0.12723855395769942,
+        "fa_v1": 0.07373684937745338,
+        "fa_v2": 0.18655794753726124,
+        "pairwise_dice": 0.030566283490087387,
+        "union_nvi": 0.03888651006682203,
+        "hungarian": 0.3029477683091898
+      }
+    ],
+    "model_risks": [
+      {
+        "case_id": "418",
+        "scan_type": "femur",
+        "bone": "femur",
+        "model_id": "member_01",
+        "n_GT": 8,
+        "n_pred": 3,
+        "gt_volume_mm3": 293917.9027862549,
+        "min_gt_fragment_volume_mm3": 84.85002136230469,
+        "merge_errors": 1,
+        "split_errors": 9,
+        "merge_split": 1.25,
+        "one_minus_f1": 0.33333333333333337,
+        "missing": 0.5,
+        "merge": 0.125,
+        "split": 1.125,
+        "one_minus_dice": 0.05863610402467345,
+        "missing_volume": 0.09883854863778052
+      },
+      {
+        "case_id": "418",
+        "scan_type": "femur",
+        "bone": "femur",
+        "model_id": "member_02",
+        "n_GT": 8,
+        "n_pred": 5,
+        "gt_volume_mm3": 293917.9027862549,
+        "min_gt_fragment_volume_mm3": 84.85002136230469,
+        "merge_errors": 0,
+        "split_errors": 15,
+        "merge_split": 1.875,
+        "one_minus_f1": 0.23076923076923073,
+        "missing": 0.375,
+        "merge": 0.0,
+        "split": 1.875,
+        "one_minus_dice": 0.03157844704148871,
+        "missing_volume": 0.049400320179160406
+      },
+      {
+        "case_id": "418",
+        "scan_type": "femur",
+        "bone": "femur",
+        "model_id": "member_03",
+        "n_GT": 8,
+        "n_pred": 6,
+        "gt_volume_mm3": 293917.9027862549,
+        "min_gt_fragment_volume_mm3": 84.85002136230469,
+        "merge_errors": 0,
+        "split_errors": 17,
+        "merge_split": 2.125,
+        "one_minus_f1": 0.2857142857142857,
+        "missing": 0.375,
+        "merge": 0.0,
+        "split": 2.125,
+        "one_minus_dice": 0.035797720882400186,
+        "missing_volume": 0.05403679435924802
+      },
+      {
+        "case_id": "418",
+        "scan_type": "femur",
+        "bone": "femur",
+        "model_id": "stage2",
+        "n_GT": 8,
+        "n_pred": 5,
+        "gt_volume_mm3": 293917.9027862549,
+        "min_gt_fragment_volume_mm3": 84.85002136230469,
+        "merge_errors": 0,
+        "split_errors": 12,
+        "merge_split": 1.5,
+        "one_minus_f1": 0.23076923076923073,
+        "missing": 0.375,
+        "merge": 0.0,
+        "split": 1.5,
+        "one_minus_dice": 0.07497759015890049,
+        "missing_volume": 0.13035490897638902
+      }
+    ],
+    "risks": [
+      {
+        "case_id": "418",
+        "scan_type": "femur",
+        "bone": "femur",
+        "n_GT": 8,
+        "gt_volume_mm3": 293917.9027862549,
+        "min_gt_fragment_volume_mm3": 84.85002136230469,
+        "member_mean_merge_split": 1.75,
+        "stage2_merge_split": 1.5,
+        "member_mean_one_minus_f1": 0.28327228327228327,
+        "stage2_one_minus_f1": 0.23076923076923073,
+        "member_mean_missing": 0.4166666666666667,
+        "stage2_missing": 0.375,
+        "member_mean_merge": 0.041666666666666664,
+        "stage2_merge": 0.0,
+        "member_mean_split": 1.7083333333333333,
+        "stage2_split": 1.5,
+        "member_mean_one_minus_dice": 0.042004090649520785,
+        "stage2_one_minus_dice": 0.07497759015890049,
+        "member_mean_missing_volume": 0.06742522105872965,
+        "stage2_missing_volume": 0.13035490897638902
+      }
+    ],
+    "case_scores": [
+      {
+        "case_id": "418",
+        "scan_type": "femur",
+        "mean_entropy": 0.13628233633122894,
+        "p95_entropy": 0.6550336844629722,
+        "pairwise_dice": 0.06488124741330152,
+        "presence": 0.12162966731694987,
+        "union_nvi": 0.039041835624235306,
+        "hungarian": 0.6072587400913254,
+        "fa_v1": 0.12801451176711479,
+        "fa_v2": 0.1782485081499752,
+        "count_variance": 0.888888888888889,
+        "partition_v1": 0.006384844450164937,
+        "partition_v2": 0.056618840833025354,
+        "q_joint_unweighted": 0.06421575626861623
+      }
+    ],
+    "case_risks": [
+      {
+        "case_id": "418",
+        "scan_type": "femur",
+        "member_mean_merge_split": 1.75,
+        "stage2_merge_split": 1.5,
+        "member_mean_one_minus_f1": 0.28327228327228327,
+        "stage2_one_minus_f1": 0.23076923076923073
+      }
+    ],
+    "case_model_risks": [
+      {
+        "case_id": "418",
+        "scan_type": "femur",
+        "model_id": "member_01",
+        "n_GT": 8,
+        "merge_split": 1.25,
+        "one_minus_f1": 0.33333333333333337
+      },
+      {
+        "case_id": "418",
+        "scan_type": "femur",
+        "model_id": "member_02",
+        "n_GT": 8,
+        "merge_split": 1.875,
+        "one_minus_f1": 0.23076923076923073
+      },
+      {
+        "case_id": "418",
+        "scan_type": "femur",
+        "model_id": "member_03",
+        "n_GT": 8,
+        "merge_split": 2.125,
+        "one_minus_f1": 0.2857142857142857
+      },
+      {
+        "case_id": "418",
+        "scan_type": "femur",
+        "model_id": "stage2",
+        "n_GT": 8,
+        "merge_split": 1.5,
+        "one_minus_f1": 0.23076923076923073
+      }
+    ],
+    "geometry": {
+      "size": [
+        275,
+        512,
+        342
+      ],
+      "spacing": [
+        0.92578125,
+        0.92578125,
+        1.0
+      ],
+      "origin": [
+        -14.967529296875,
+        -236.537109375,
+        -886.081298828125
+      ],
+      "direction": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    }
+  },
+  "seconds": 13.880019714822993,
+  "peak_rss_kib": 2686100
+}

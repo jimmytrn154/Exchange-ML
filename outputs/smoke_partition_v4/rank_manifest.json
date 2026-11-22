@@ -1,0 +1,151 @@
+{
+  "status": "complete",
+  "signature": "f1c51649d896de3983acc2ecd70290565be5c33aca2ecf1dc38ffdf41b0b3705",
+  "provenance": {
+    "config": {
+      "version": 1,
+      "role": "development_after_v3_inspection_not_confirmation",
+      "parent_root": "outputs/partition_v3_development_v1",
+      "output_root": "outputs/partition_v4_development_v1",
+      "smoke_output_root": "outputs/smoke_partition_v4",
+      "candidate": "pairwise_p1_g",
+      "features": [
+        "partition_v1",
+        "graph_degree"
+      ],
+      "target": "member_mean_merge_split",
+      "cv": {
+        "seed": 20261122,
+        "outer_folds": 5,
+        "inner_folds": 3,
+        "alphas": [
+          0.001,
+          0.01,
+          0.1,
+          1.0
+        ],
+        "max_iter": 1000,
+        "tolerance": 1e-09
+      },
+      "reporting": {
+        "bootstrap_resamples": 10000,
+        "bootstrap_seed": 20261122,
+        "primary_estimand": "mean_outer_fold_aurc"
+      },
+      "confirmation_ready": false
+    },
+    "config_sha256": "e6104b029398d6c78b800768dc20706671f8711b660914efebc5227e225a38c2",
+    "parent_manifest_sha256": "a5b9c7b6ac208d43fc3964f8739bd52f055ba08e85b033a9d12e4f8aa6414dd6",
+    "source_table_sha256": {
+      "outputs/stage3_h1_v2/validation/scores.csv": "8e5717fca87842a067dff9d590ee74d9250d5ba04d3ce408266e53aaead25c01",
+      "outputs/stage3_h1_v2/validation/risks.csv": "ccbe15e8de196edb32f1e34755f9db81c79e485818363b7f7e1eb5f746176df5"
+    },
+    "smoke_only": true,
+    "output_root": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/smoke_partition_v4",
+    "code_sha256": {
+      "scripts/run_partition_v4.py": "a13db9c17bbc94077e13b03f5c9fc800c50e6d0c2f949736a9af6dabf5e2e8d5",
+      "scripts/partition_v4.sbatch": "80b82064224b58244acfdeee0666c498b25a3958a9508f6fabbbd2b04513546f",
+      "scripts/submit_partition_v4.sh": "cf36d69224a7e7ce291fd169d342c0f079ecf3588086297405523797d12b3627",
+      "src/exchange_ml/structural_rank.py": "ad68451780b017f287b0669699a2f5f3de2f9836c2eef64547ed9fd4cdd58a76",
+      "src/exchange_ml/structural_rank_reporting.py": "ef577b4b0def20744dfada780f62a4372b2ed9e035c03dc539f96c742938da34",
+      "src/exchange_ml/partition_cv.py": "1a5cc5d4a9f25ebd1c5e2b6a928a8c3cc74cfd1f2685973a1a0498659e772b05",
+      "src/exchange_ml/e1_statistics.py": "f9dcd986114251636fb116c3a23b2586846edc6439d4a54598ba50a657d11af1",
+      "src/exchange_ml/e1_scoring.py": "9077e0402171e88dc1a48ef6d0626d58248448043912a5aa61adda06b91fb36d",
+      "src/exchange_ml/metrics.py": "903a12216e4405f3a66666cd79323d803c9b79c1cb017c604716b32ef7fca455",
+      "src/exchange_ml/__init__.py": "97309b300260e6f19e68b6df11658b177e0e664cfd04711c3280b3c29ad0f630"
+    },
+    "software": {
+      "numpy": "1.26.4",
+      "scipy": "1.15.3"
+    },
+    "python": "3.10.21 (main, Aug 27 2026, 14:42:07) [GCC 14.3.0]"
+  },
+  "started_at_unix": 1795325040.418979,
+  "cv_checkpoint_sha256": "c2a2114a855d2eba5d3ce872d7cb208865d2ad388e9536fc46ddf4d212fe7e30",
+  "stage": "reporting_complete",
+  "summary": {
+    "role": "synthetic_CV_reporting_smoke_only",
+    "smoke_only": true,
+    "source_cases": 40,
+    "source_units": 80,
+    "cv": {
+      "n_cases": 20,
+      "n_units": 40,
+      "final_head": "pairwise_p1_g",
+      "features": [
+        "partition_v1",
+        "graph_degree"
+      ],
+      "outer_folds": 5,
+      "inner_folds_requested": 3,
+      "cv_seed": 20261122,
+      "alphas": [
+        0.001,
+        0.01,
+        0.1,
+        1.0
+      ],
+      "target": "member_mean_merge_split",
+      "objective": "mean_pairwise_logistic_plus_half_alpha_l2",
+      "selection": "mean_inner_fold_AURC_largest_alpha_exact_tie_single_family",
+      "primary_estimand": "mean_outer_fold_aurc",
+      "evaluation_role": "development_after_v3_inspection_not_fresh_confirmation"
+    },
+    "reporting": {
+      "n_cases": 20,
+      "n_units": 40,
+      "n_outer_folds": 5,
+      "candidate": "pairwise_p1_g",
+      "scores": [
+        "mean_entropy",
+        "p95_entropy",
+        "pairwise_dice",
+        "presence",
+        "union_nvi",
+        "count_variance",
+        "hungarian",
+        "fa_v1",
+        "partition_v1",
+        "partition_v2",
+        "fa_v2",
+        "q_joint_unweighted",
+        "graph_degree",
+        "pairwise_p1_g"
+      ],
+      "primary_estimand": "arithmetic_mean_outer_fold_bone_AURC",
+      "primary_contrast": "pairwise_p1_g-partition_v1/pooled/member_mean/merge_split",
+      "pooled_OOF_role": "secondary_score_scale_mixing_diagnostic_only",
+      "ci_role": "conditional_fixed_outer_folds_models_predictions_no_refit",
+      "bootstrap_resamples": 32,
+      "bootstrap_seed": 20261122,
+      "fold_standard_errors_used": false,
+      "CT_review_utility_tested": false,
+      "confirmation_ready": false,
+      "analysis_role": "prospective_v4_development_after_v3_inspection_not_fresh_confirmation"
+    },
+    "candidate": "pairwise_p1_g",
+    "primary_control": "partition_v1",
+    "primary_estimand": "mean_outer_fold_aurc",
+    "confirmation_ready": false,
+    "volumes_or_checkpoints_read": false,
+    "CT_policy_tested": false,
+    "CI_scope": "conditional_fixed_outer_folds_and_OOF_scores_not_training_uncertainty"
+  },
+  "completed_at_unix": 1795325040.9995544,
+  "output_sha256": {
+    "comparison.csv": "c019c005cdc4248e150a159a44346f49829605f0d54daff4a61589f5b98fe89d",
+    "cv_checkpoint.json": "c2a2114a855d2eba5d3ce872d7cb208865d2ad388e9536fc46ddf4d212fe7e30",
+    "final_model.json": "f3798990b5339098686ca007b16474b90ab026c286208f811d30db9682e06627",
+    "fold_comparison.csv": "f76deb6d04fdfcdfec628ed4102f49b582d23698555ce6507499ca96c850ebb5",
+    "fold_models.json": "957ec09ba1e9f90ee84bc80a018de2f83628b6642cd14f69ef92035c1c04702d",
+    "fold_risk_coverage.csv": "d07da08356412e64ed9ac9c863930ee02e6499b0ab0a603478bb5887a893dea5",
+    "folds.csv": "016ab5f06f1a79f66920dd84c1ce9ddbfeb7ee06139c69504601e9b423f1cf09",
+    "oof_scores.csv": "9d949a59b09f7a5d512528fc3ceaa9bf18eca1515a1b2bf03d37e831f813e14d",
+    "paired_differences.csv": "aacc7ce9c131d912f9e8385660a3219e8ee94bfc42dc041971fdaefb58741d9f",
+    "pooled_comparison.csv": "4f1f8637ac13e6185fa2616152134e139c2cd94b0649dc9d16c40e381010cfb9",
+    "pooled_paired_differences.csv": "c46cc42e5bdae1fd8fe4afb7e3b9351f34526e8dbae26b8dc5e677c4488130a1",
+    "score_diagnostics.csv": "8d0961c7663542747d5e038671908b11876c071bf3e5df87f52d3d8db74f8c8d",
+    "summary.json": "d1b8c7e7ca2cabfbe3f0faa5ad3ad890df3bff996fa24aae5809ade856c49f88",
+    "tuning.json": "6296120fdf7ef77ff589641aca13bb5e132be48374ac4011c06213818569077d"
+  }
+}

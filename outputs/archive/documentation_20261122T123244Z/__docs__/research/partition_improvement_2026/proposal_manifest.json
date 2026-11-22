@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-22",
+  "version": 1,
+  "role": "research_proposal_not_adopted_method",
+  "workflow": "academic-pipeline scoped diagnosis, literature and design",
+  "source_experiments_modified": false,
+  "candidate_fitting_or_heldout_evaluation_run": false,
+  "checks": [
+    "4 validation CSV hashes matched E1",
+    "validation descriptive statistics reproduced",
+    "existing VI tiny examples passed",
+    "proposed graph formula toy properties passed",
+    "local Markdown links and whitespace passed"
+  ],
+  "sha256": {
+    "__docs__/research/partition_improvement_2026/design.md": "173133ee0d9d7734163e421c6e6662c29ebc7e1ecd5741b65f0ca898502c962f",
+    "__docs__/research/partition_improvement_2026/diagnosis.md": "b58b9f971275cad83d896cb78343012036c0edbc2e7fb679989b07ecc1bbc38c",
+    "__docs__/research/partition_improvement_2026/literature.md": "9dcf5e1962a3783e3622e88f029d9091e9fdf0122c1aec1a6bccc2200d896bf6",
+    "__docs__/research/partition_improvement_2026/proposal.md": "6ec7c71a8ccca1b2de716e26bbc78dfcc25763e37448ffc41baeee3311308707",
+    "__docs__/research/partition_improvement_2026/reproduce_diagnosis.py": "2ee6e07e9f3d07c88da44a47eae0c844262579c72c13b5069d4c50b8440e7601"
+  }
+}

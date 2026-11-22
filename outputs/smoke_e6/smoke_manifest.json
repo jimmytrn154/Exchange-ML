@@ -1,0 +1,202 @@
+{
+  "status": "complete",
+  "signature": "6a9c2644727dd1d2fa17882e3e2ebfb3039d50f7e6ece09c6b7946e1efa9ed74",
+  "provenance": {
+    "config": {
+      "schema_version": 1,
+      "experiment": "E6_external_ribfrac",
+      "dataset_root": "/mnt/sdb/shared/dang.cpm/dataset/RibFrac",
+      "output_root": "outputs/external_ribfrac",
+      "dataset_id": 706,
+      "dataset_name": "Dataset706_RibFracE6",
+      "train_ids": [
+        1,
+        420
+      ],
+      "external_ids": [
+        421,
+        500
+      ],
+      "internal_split_seed": 20261121,
+      "internal_validation_fraction": 0.2,
+      "members": {
+        "member_01": 32001,
+        "member_02": 32002,
+        "member_03": 32003
+      },
+      "backend": {
+        "name": "binary_nnunet_3d_fullres_connected_components",
+        "nnunet_version": "2.5.1",
+        "configuration": "3d_fullres",
+        "plans_name": "nnUNetPlans",
+        "gpu_memory_target_gb": 2,
+        "epochs": 1,
+        "iterations_per_epoch": 2,
+        "validation_iterations_per_epoch": 1,
+        "checkpoint": "checkpoint_final.pth",
+        "threshold": 0.5,
+        "connectivity": 26,
+        "minimum_component_mm3": 0,
+        "mirroring": false,
+        "augmentation_workers": 0,
+        "unpack_dataset": false
+      },
+      "evaluation": {
+        "iou_threshold": 0.1,
+        "bootstrap_resamples": 10000,
+        "bootstrap_seed": 20261121
+      },
+      "storage": {
+        "estimated_bytes_per_training_voxel": 8,
+        "estimated_bytes_per_external_voxel": 15,
+        "reserve_gib": 30
+      },
+      "scope": "Transfer of fixed disagreement scores to rib-fracture lesion instances, not PENGWIN checkpoint transfer or whole-rib fragmentation.",
+      "target": "All nonzero instance IDs, including label_code=-1, are positive for segmentation/detection. No voxel ignore mask.",
+      "selection": "All 80 official validation cases excluded from planning/training/model selection; fixed final epoch, no tuning on external data."
+    },
+    "output_root": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/smoke_e6",
+    "software": {
+      "python": "3.10.21",
+      "nnunetv2": "2.5.1",
+      "torch": "2.1.2+cu118",
+      "numpy": "1.26.4",
+      "scipy": "1.15.3",
+      "SimpleITK": "2.3.1",
+      "dynamic_network_architectures": "0.3.1",
+      "batchgenerators": "0.25.3",
+      "batchgeneratorsv2": "0.3.5",
+      "acvl_utils": "0.2.6"
+    },
+    "code_sha256": {
+      "scripts/run_e6.py": "8304daf5025706d05af87e675a10aec228336f24c8965852720ba4f94b92e365",
+      "src/exchange_ml/e6_backend.py": "07d34f0415fdfb030af395bdefc806a3e96518dd951d1cfd9376cd923118afea",
+      "src/exchange_ml/e6_data.py": "4e06f548878bf0f1a24e2b195fe930f6cf1b883406b69dac48d4f7ba9d29aa2f",
+      "src/exchange_ml/e6_evaluation.py": "064477cefd575a40a4aee177579d9f68ca174ffd51e1d8eff9e7c96e4df39c67",
+      "src/exchange_ml/e1_statistics.py": "f9dcd986114251636fb116c3a23b2586846edc6439d4a54598ba50a657d11af1",
+      "src/exchange_ml/e1_scoring.py": "9077e0402171e88dc1a48ef6d0626d58248448043912a5aa61adda06b91fb36d"
+    },
+    "smoke_only": true,
+    "role": "synthetic_smoke_only",
+    "smoke_device": "cuda"
+  },
+  "started_at_unix": 1795280757.1134872,
+  "records": {},
+  "completed_at_unix": 1795280779.1926684,
+  "summary": {
+    "role": "synthetic_pipeline_smoke_only_not_external_evidence",
+    "seconds": 22.09318929212168,
+    "scores": {
+      "mean_entropy": 0.663160352902895,
+      "p95_entropy": 0.6931417490768564,
+      "pairwise_dice": 0.0,
+      "presence": 0.0,
+      "union_nvi": 0.0,
+      "hungarian": 0.0,
+      "fa_v1": 0.0,
+      "fa_v2": 0.0,
+      "count_variance": 0.0,
+      "partition_v1": 0.0,
+      "partition_v2": 0.0,
+      "q_joint_unweighted": 0.0
+    },
+    "model_risks": [
+      {
+        "case_id": "synthetic_smoke",
+        "model_id": "member_01",
+        "n_GT": 1,
+        "n_pred": 511,
+        "n_ignored_voxels": 0,
+        "gt_volume_mm3": 251.0,
+        "min_gt_fragment_volume_mm3": 251.0,
+        "structural_eligible": true,
+        "instance_precision": 0.0,
+        "instance_recall": 0.0,
+        "instance_f1": 0.0,
+        "merge_errors": 0,
+        "split_errors": 2,
+        "missed_gt_instances": 1,
+        "gt_instance_count": 1,
+        "pred_instance_count": 511,
+        "binary_dice": 0.030716723549488054,
+        "merge_split": 2.0,
+        "merge": 0.0,
+        "split": 2.0,
+        "missing": 1.0,
+        "missing_volume": 0.8565737051792829,
+        "one_minus_f1": 1.0,
+        "one_minus_dice": 0.9692832764505119,
+        "false_positive_instances": 511
+      },
+      {
+        "case_id": "synthetic_smoke",
+        "model_id": "member_02",
+        "n_GT": 1,
+        "n_pred": 511,
+        "n_ignored_voxels": 0,
+        "gt_volume_mm3": 251.0,
+        "min_gt_fragment_volume_mm3": 251.0,
+        "structural_eligible": true,
+        "instance_precision": 0.0,
+        "instance_recall": 0.0,
+        "instance_f1": 0.0,
+        "merge_errors": 0,
+        "split_errors": 2,
+        "missed_gt_instances": 1,
+        "gt_instance_count": 1,
+        "pred_instance_count": 511,
+        "binary_dice": 0.030716723549488054,
+        "merge_split": 2.0,
+        "merge": 0.0,
+        "split": 2.0,
+        "missing": 1.0,
+        "missing_volume": 0.8565737051792829,
+        "one_minus_f1": 1.0,
+        "one_minus_dice": 0.9692832764505119,
+        "false_positive_instances": 511
+      },
+      {
+        "case_id": "synthetic_smoke",
+        "model_id": "member_03",
+        "n_GT": 1,
+        "n_pred": 511,
+        "n_ignored_voxels": 0,
+        "gt_volume_mm3": 251.0,
+        "min_gt_fragment_volume_mm3": 251.0,
+        "structural_eligible": true,
+        "instance_precision": 0.0,
+        "instance_recall": 0.0,
+        "instance_f1": 0.0,
+        "merge_errors": 0,
+        "split_errors": 2,
+        "missed_gt_instances": 1,
+        "gt_instance_count": 1,
+        "pred_instance_count": 511,
+        "binary_dice": 0.030716723549488054,
+        "merge_split": 2.0,
+        "merge": 0.0,
+        "split": 2.0,
+        "missing": 1.0,
+        "missing_volume": 0.8565737051792829,
+        "one_minus_f1": 1.0,
+        "one_minus_dice": 0.9692832764505119,
+        "false_positive_instances": 511
+      }
+    ],
+    "probability_shape": [
+      32,
+      32,
+      32
+    ],
+    "min_probability": 3.156969614792615e-05,
+    "max_probability": 0.9941232800483704,
+    "smoke_device": "cuda",
+    "cuda_peak_bytes": 253103616,
+    "one_network_repeated_for_evaluation_api_test": true
+  },
+  "output_sha256": {
+    "smoke_probability.mha": "3489b4c036ee84047d632901624dd2b45a6396ea731abe66aad9f567885eef4f",
+    "smoke_prediction.mha": "01d9e87813754e1e7e114d3fdd33676cf83afa254452ce9d15d8e08a598b5e12",
+    "backend/results/smoke/Dataset706_RibFracE6/E6Trainer__nnUNetPlans__3d_fullres/fold_0/checkpoint_final.pth": "52ddf779d3e1db8c36d3ad13465e6bfffc70bfdbc35880e3935744dfdf312a42"
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "analysis_role": "exploratory_post_heldout",
+  "smoke_only": false,
+  "bootstrap_resamples": 10000,
+  "n_cases": {
+    "validation": 40,
+    "heldout": 100
+  },
+  "n_bone_units": 280,
+  "table_rows": {
+    "fixed_budget": 936,
+    "paired_differences": 1728,
+    "risk_coverage": 43680
+  },
+  "risks": [
+    "merge_split",
+    "one_minus_f1",
+    "missing_volume"
+  ],
+  "risk_sources": [
+    "member_mean",
+    "stage2"
+  ],
+  "original_qualitative_selections": [
+    {
+      "category": "partition_detects_structure",
+      "status": "selected",
+      "n_eligible": 10.0,
+      "case_id": "176",
+      "bone": "right_hip"
+    },
+    {
+      "category": "presence_detects_missing",
+      "status": "selected",
+      "n_eligible": 6.0,
+      "case_id": "160",
+      "bone": "sacrum"
+    },
+    {
+      "category": "shared_error_low_disagreement",
+      "status": "selected",
+      "n_eligible": 8.0,
+      "case_id": "187",
+      "bone": "left_hip"
+    }
+  ],
+  "rendered_examples": [
+    {
+      "category": "partition_detects_structure",
+      "status": "selected",
+      "n_eligible": 10.0,
+      "case_id": "176",
+      "bone": "right_hip"
+    },
+    {
+      "category": "presence_detects_missing",
+      "status": "selected",
+      "n_eligible": 6.0,
+      "case_id": "160",
+      "bone": "sacrum"
+    },
+    {
+      "category": "shared_error_low_disagreement",
+      "status": "selected",
+      "n_eligible": 8.0,
+      "case_id": "187",
+      "bone": "left_hip"
+    }
+  ],
+  "visual_sources": {
+    "176": {
+      "image_sha256": "501054cd9962aada42e131c542cb99504ec0bbde137fe0bbd29310f73a63d909",
+      "volume_sha256": {
+        "gt": "945fd9c2c21a8032d272f471725a36f1091a7c3cd08b025c31ae1a3583477b74",
+        "member_01": "a56ab70f79ac3023c71d1a1da62e1bcac0fa09fdc664197896affb9ef768203c",
+        "member_02": "c6a2332a57f177817f31d51ee395617fc694bd6090eb391573bf631a29a80d0d",
+        "member_03": "b737f906b0d82f1bddd04c5a9f77d68059e34f4a7297ce6246713d056fa0136a",
+        "stage2": "c8c5248db33656a1c2a4c7b74b554e3fd71e3cf51a5e3566e750a6e254bbff34"
+      }
+    },
+    "160": {
+      "image_sha256": "900034c0b160e4dc90c1f1b5473100086cb755beb97b5fdd09324117e3415255",
+      "volume_sha256": {
+        "gt": "14b6be9d777314be7b0c8aa8217e67c79f787b630b5adaac34361e5b43d414f7",
+        "member_01": "39ea6e4f9966b07a0efff4d9fc42b8e438ad82f4b53c249e0b3bbb73ba663c14",
+        "member_02": "5f39d197aa76f59b63c414a8fd3f3f5a3aba7c330859d760b38793f467a40975",
+        "member_03": "d456f2ba18d1c59943c798f2a876a78cba0661966b9ea2df51cc67a6a5c13de8",
+        "stage2": "40868c4a2a585fd2688dc7a09525a2122142c233330a63fbeda46d92d79159ba"
+      }
+    },
+    "187": {
+      "image_sha256": "802a061a7d862aaba43e81677c9a6f25ede27096a169fead157cc0ff21f0c883",
+      "volume_sha256": {
+        "gt": "952523afb48534f0332a903b2b63efdefd50b456288d2a00930f1262c0eb31c9",
+        "member_01": "3181d7fae7c31eca4c284df2d5410f155fb5e94385241ffd31c5b53575eb0545",
+        "member_02": "693b73145efc97214a4e843451055d3306bbafb4875237442bb4c066b6f26e93",
+        "member_03": "e1dfce36ada471bfac50d212321fc66c39e712cf31f507de4430ce85449d48a8",
+        "stage2": "32a01a6376f895a8df5bbc98c0fe7491f8c59691cde0b2648ad22c9a59d23f08"
+      }
+    }
+  },
+  "limits": [
+    "Added after inspection of held-out results; exploratory, no E3 primary change.",
+    "Fixed budgets remain bone-based; expected reviewed CT costs are descriptive point estimates.",
+    "Random is the expected random-ranking risk, not a sampled random-order simulation.",
+    "CIs are marginal percentile intervals; no familywise confirmatory claims.",
+    "No new policy/QC gate or inference; no change to historical timing measurements."
+  ]
+}

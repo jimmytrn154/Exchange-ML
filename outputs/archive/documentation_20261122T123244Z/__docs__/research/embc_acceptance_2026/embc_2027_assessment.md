@@ -1,0 +1,66 @@
+# Exchange-ML có phù hợp để nộp EMBC 2027?
+
+**Literature review có mục tiêu và đối chiếu bằng chứng — 22/11/2026.**
+
+**Đánh giá:** EMBC 2027 là mục tiêu có cơ sở cho một bài phân tích về structural-failure detection. Kết quả hiện tại đáng viết thành bài, nhưng chưa đủ để gọi là một detector mới vượt trội hoặc một giải pháp giảm công review đã được xác nhận. Điểm yếu lớn nhất là cách xác định đóng góp trước prior work và các component baselines mạnh hơn FA-v2. Cần chỉnh framing đáng kể và hoàn thiện manuscript trước khi coi đây là một bản nộp mạnh. E6 có thể củng cố bằng chứng chuyển giao; nó không tự giải quyết hai vấn đề đó.
+
+Đây là nhận định khoa học từ các nguồn được chọn theo mức liên quan, không phải dự đoán quyết định reviewer. Các bài đã được nhận không cho biết phân bố bài bị loại, reviewer scores hay ngưỡng accept năm 2027. Vì vậy không đưa phần trăm acceptance hoặc suy ra quy tắc “đủ N bệnh nhân là được nhận”.
+
+## 1. Đã đọc gì và bằng chứng nào được tính?
+
+Đã kiểm tra `paper/`: có guidelines, ZIP template IEEE và thư mục `source/` trống; chưa có manuscript hoàn chỉnh. Nội dung nghiên cứu được đánh giá từ [Results/Discussion draft](../../reports/results_discussion_draft.md), [tổng hợp E1–E5](../../reports/e1_e5_synthesis.md) và artifacts. Audit hiện tại PASS 111 output hashes và 142 cache hashes; đây là kiểm tra chuỗi bằng chứng đã ghi nhận, không phải chạy lại inference hay xác nhận độc lập mọi volume.
+
+Literature sample gồm sáu bài EMBC đã xuất bản có methods/results đọc được, một bài EMBC 2024 chỉ đủ abstract và một record chương trình accepted 2026. Hai mức cuối được ghi riêng, không dùng để khẳng định số ca hoặc độ mạnh thực nghiệm chưa đọc được. [Ledger 2019–2022](phase2_earlier.md), [ledger gần đây](phase2_recent.md) và [nguồn venue](phase2_venue.md) giữ DOI, access limits, truy vấn và exclusions. Đây là narrative review có mục tiêu, không phải systematic review hay toàn bộ proceedings.
+
+## 2. Những bài EMBC gần chủ đề cho thấy điều gì?
+
+| Bài đã xuất bản | Bằng chứng đọc được | Điều cần học cho Exchange-ML |
+|---|---|---|
+| Martin et al., **EMBC 2019**, *Epistemic uncertainty modeling for vessel segmentation* ([DOI](https://doi.org/10.1109/EMBC.2019.8857785)) | 368 ảnh angiography; 88 ảnh test từ 10 bệnh nhân, chỉ năm bệnh nhân mới so với training. MC dropout và loss có trọng số uncertainty; accuracy 94,9% so với 94,7%. | Đóng góp ứng dụng có thể hẹp, nhưng điểm số segmentation và uncertainty maps chưa tương đương failure-ranking utility. Không lấy hạn chế patient overlap của bài này làm chuẩn thiết kế nên theo. |
+| Yalcinkaya et al., **EMBC 2021**, myocardial perfusion MRI ([DOI](https://doi.org/10.1109/EMBC46164.2021.9629581)) | 96 studies phát triển; test ngoài trung tâm gồm 40 bệnh nhân/120 myocardial slices. So sánh patch/augmentation có kiểm soát, Dice trung bình 0,86, đánh giá downstream myocardial blood flow; uncertainty classifier AUC 0,936. | Một câu hỏi biomedical cụ thể và một outcome downstream tạo sức thuyết phục tốt hơn chỉ vẽ uncertainty. 120 slices không phải 120 bệnh nhân; AUC này không thể so trực tiếp với M+S AURC của ta. |
+| Hasan & Linte, **EMBC 2022**, Bayesian CondenseUNet ([DOI](https://doi.org/10.1109/EMBC48229.2022.9871780)) | ACDC 150 bệnh nhân; MC dropout/Brier training, kết quả Dice/HD và tương quan uncertainty–pixel error r=0,94. Đánh giá patient-level review budget hoặc external validation chưa được xác minh trong phần đọc được. | Kiến trúc/uncertainty estimation là một loại đóng góp đã có. Không suy từ tương quan pixel sang khả năng ưu tiên ca hoặc tiết kiệm công review. |
+| McBee et al., **EMBC 2022**, *Image-level uncertainty in pseudo-label selection…* ([DOI](https://doi.org/10.1109/EMBC48229.2022.9871359)) | Ba histopathology datasets, tám khởi tạo, nhiều selection controls. Có kết quả bất lợi cho uncertainty filtering: MoNuSeg Dice 0,72±0,04 khi không pseudo-label, so với 0,66±0,07 khi chọn quartile entropy thấp. | Có tiền lệ xuất bản phân tích kết quả mixed/negative, khi câu hỏi, controls và bài học rõ. Điều này không chứng minh mọi negative result đều đủ novelty. |
+| Schilling et al., **EMBC 2023**, *AI²Seg* ([DOI](https://doi.org/10.1109/EMBC40787.2023.10341074)) | Annotation-QC trên 592 MoNuSeg crops và 2.640 LIVECell crops, năm seeds, 54 noise conditions; 48 conditions đạt AUC>0,55. Kết hợp annotation–prediction mismatch với TTA confidence, có plugin KaIDA. | Đây là crops, không phải bệnh nhân. AUC* tối ưu weights bằng grid search trên conditions, không phải frozen unknown-noise evaluation. “Instance uncertainty giúp review” đã có prior art; clinician-time chưa được báo cáo trong phần đã đọc. |
+| Damiano et al., **EMBC 2025**, segmentation variability và lung CT radiomics ([DOI](https://doi.org/10.1109/EMBC58623.2025.11253060)) | Split 252/64/79 subjects; external 20 subjects, nhưng cùng center/protocol. Bayesian U-Net, hai losses và 50 MC passes; dưới một nửa 105 radiomic features đạt ICC≥0,8 ở điều kiện tốt nhất. | Giá trị nằm ở phân tích downstream và sự tương ứng chỉ một phần với expert variability. “External” không đồng nghĩa multicenter; dataset total 422 không phải số ca test. |
+
+**Hai record không được nâng lên thành full-text evidence:** Hou et al., [EMBC 2024](https://doi.org/10.1109/EMBC53108.2024.10782670), là publication/acceptance đã xác minh nhưng ở đây chỉ đọc được abstract về adaptive uncertainty cho retinal vessels; không suy ra split hoặc statistical rigor. [*Leveraging AI Uncertainty for Targeted 3D Medical Image Segmentation Review*, chương trình EMBC 2026](https://cmsworkshops.com/EMBC2026/view_paper.php?PaperNum=3146&SessionID=1043&bare=1) cho thấy chủ đề review 3D phù hợp venue, nhưng record chương trình không cung cấp DOI hay kết quả đầy đủ.
+
+Các ví dụ trên cho thấy nhiều kiểu đóng góp: phương pháp, công cụ annotation, ứng dụng có downstream outcome và phân tích giới hạn. Mẫu này không gợi ra yêu cầu chung phải có architecture mới, hàng nghìn bệnh nhân hoặc human trial cho mọi bài. Tuy nhiên, bài có external-site/downstream evaluation là đối chiếu mạnh hơn về mức bằng chứng. Không nên chọn riêng ví dụ yếu để kết luận “EMBC dễ”.
+
+## 3. Exchange-ML đang mạnh ở đâu, yếu ở đâu?
+
+Hiện có 40 CT diagnostic/validation và 100 CT held-out: tổng 140 CT trong cùng dataset PENGWIN, không phải 140 CT của nhiều cohort độc lập. Trên held-out có 200 bone units; pelvic đóng góp 150, femur 50. Case-cluster bootstrap mang theo các xương thuộc cùng ca là điểm tốt; pooled estimand vẫn nghiêng theo số bone units. Stage 2 sensitivity dùng cùng backend family, chưa phải xác nhận cross-architecture.
+
+Kết quả chính có hiệu ứng rõ so với hai designated baselines: FA-v2 M+S AURC 0,3311, presence 0,4942 và mean entropy 0,6358; thấp hơn tốt hơn. Chênh FA-v2−presence là −0,16313, CI95% [−0,21184;−0,11682]. Kiểm tra cơ chế và nhiều controls giúp câu chuyện mạnh hơn một so sánh Dice đơn lẻ. Nhưng femur-only CIs cắt 0, nên không trình bày pooled result như xác nhận riêng cả hai scan types. [Nguồn và đủ bảng](../../reports/e1_e5_synthesis.md).
+
+Trở ngại lớn cho “new best detector” là **partition-only đã tốt hơn**: AURC partition-v1 0,2720, partition-v2 0,2978. Chênh FA-v2 so với cả hai có CI dương. Kết quả này không nên bị giấu hoặc đổi thành primary mới sau khi nhìn held-out; nó chính là bằng chứng rằng thêm presence có thể làm giảm chất lượng ranking theo endpoint cấu trúc.
+
+Utility cũng chưa được xác nhận. Ở review 10%/20%, CI của M+S difference so với presence đều cắt 0; omission-sensitive missing-volume nghiêng về presence. Top-severity enrichment của FA-v2 còn dưới random reference ở pooled member-mean. Ca cả ba member cùng bỏ sót anatomy có disagreement=0 và M+S risk=0 phơi bày giới hạn của signal và endpoint. Vì vậy chưa claim giảm thời gian đọc, giảm annotation cost hay tăng clinical safety. Các E5 bổ sung vẫn là post-held-out exploratory analyses.
+
+## 4. Novelty phải hẹp và rõ hơn
+
+Ba nguồn ngoài EMBC cần được dùng để kiểm tra novelty, không được đếm vào acceptance sample. [Vinh et al., JMLR 2010](https://www.jmlr.org/papers/volume11/vinh10a/vinh10a.pdf) đã có VI/H và lý do bound `log N` làm hạn chế useful range; đổi denominator tự nó không phải metric mới. [Zenk et al., Medical Image Analysis 2025](https://inrepo02.dkfz.de/record/294922/files/1-s2.0-S1361841524003177-main.pdf?version=1) đã benchmark failure detection/aggregation, risk–coverage, pairwise Dice và silent ensemble errors. [Guarino et al., CVPR 2026](https://openaccess.thecvf.com/content/CVPR2026/papers/Guarino_Better_than_Average_Spatially-Aware_Aggregation_of_Segmentation_Uncertainty_Improves_Downstream_CVPR_2026_paper.pdf) phân tích spatial aggregation và các pitfalls; technical details ở [author full text](https://arxiv.org/html/2603.29941v1). Không nên claim phát hiện đầu tiên rằng structural/spatial information quan trọng.
+
+Khoảng đóng góp có thể bảo vệ là: **tách presence khỏi partition trong ensemble instance maps của CT fracture, kiểm tra cơ chế normalization bằng can thiệp có kiểm soát, rồi chỉ ra kết luận thay đổi theo structural risk, severity, omission và review budget**. Đây là mức cụ thể hơn “uncertainty hữu ích” và vẫn có giá trị khi combined score không đứng đầu. Nó cần được giải thích trực tiếp đối với AI²Seg: ta nghiên cứu failure ranking của prediction bằng score không dùng GT voxels; GT chỉ đi vào retrospective risk evaluation. Không đồng nhất việc này với mọi bước annotation-QC của AI²Seg.
+
+## 5. E6 có đáng ưu tiên không?
+
+Có, vì giới hạn còn lại rõ nhất về phạm vi là một dataset/backend family. **Trạng thái 22/11:** preparation 420 records và preprocessing hoàn tất; manifest training member01/member02 đang chạy; chưa có external-evaluation result hoàn chỉnh. Báo cáo triển khai ngày 21/11 ghi Slurm bị chặn là snapshot cũ, không dùng làm current status.
+
+E6 có thể kiểm tra fixed-score comparison trên 80 ca RibFrac và xem effect/CI có giữ được hay không. Cần báo số ca structural-positive, độ biến thiên risk, partition-only controls và negatives riêng. Nếu M+S gần như hằng, endpoint đó không đủ thông tin; không biến việc thiếu errors thành thành công. Nếu FA-v2 thắng presence nhưng thua component control, kết luận vẫn phải giữ khác biệt ấy.
+
+E6 là chuyển giao **score** sang fracture-lesion instances của backend được train mới; không phải chuyển giao checkpoint PENGWIN hoặc xác nhận cùng anatomy semantics. Kết quả thuận lợi tăng sức thuyết phục về phạm vi, nhưng không tự chứng minh novelty hay human utility. Nguồn chính thức không đặt E6/external validation thành điều kiện bắt buộc chung cho mọi paper EMBC.
+
+## 6. Ba việc ưu tiên trước khi nộp
+
+1. **Chốt claim và đối chiếu prior art.** Giữ nguyên primary PENGWIN, đưa partition-only vào main comparison, và trình bày decomposition/endpoint dependence là đóng góp. Không chuyển primary sang hàng thắng hoặc tune lại normalization trên held-out. Bảng related-work ngắn nên phân biệt target, score input, failure endpoint và điều kiện cần GT.
+2. **Hoàn tất E6 đúng protocol.** Dùng toàn bộ cohort đã định, cùng 12 scores, report paired CI và eligibility counts. Hiệu ứng thuận lợi hỗ trợ transfer trong setup này; CI chưa rõ hoặc đảo chiều thu hẹp claim, không bị bỏ khỏi báo cáo. Không gộp raw AURC hai datasets thành một trung bình.
+3. **Viết manuscript với kết luận vận hành trung thực.** Đặt whole curve cạnh hai budget points đã có; báo CT cost cạnh bone budget và complete-miss example. Đây là hoàn thiện trình bày bằng chứng, không phát sinh claim về thời gian người đọc. Dùng wording “criterion encoded in configuration” nếu chưa xác minh được chronology độc lập; hash không thay formal preregistration.
+
+## 7. Phạm vi bài và yêu cầu nộp
+
+Một framing phù hợp là *Presence or partition? Decomposing ensemble disagreement for structural-failure detection in 3D fracture segmentation*. Trong bốn technical pages, ưu tiên một method/decomposition figure, một bảng main controls, một risk–coverage/budget figure và một limitation example. Không cần đưa toàn bộ diagnostics vào main text; giữ evidence trail để tra cứu.
+
+[Author guidelines 2027](https://embc.embs.org/2027/author-guidelines/) quy định bốn technical pages cộng trang thứ năm dành cho acknowledgments/references, tối đa 20 references. Cần khai báo AI assistance đúng phạm vi và reciprocal reviewer hoặc exemption hợp lệ. [CFP chính thức](https://embc.embs.org/2027/papers/) xác nhận deadline full paper **24/01/2027, 23:59 AoE**. Các bài năm trước dài hơn không làm thay đổi giới hạn mới. Hiện template có sẵn nhưng manuscript vẫn phải được viết, kiểm tra claims/citations và rà format.
+
+**Status:** literature review và local readiness synthesis hoàn tất trong phạm vi nguồn đã truy cập; chưa phải manuscript integrity PASS hay bảo đảm accept. **Đã kiểm tra:** publication/venue records, methods/results với access labels, `paper/`, E1–E5 evidence audit và trạng thái E6 do root kiểm tra trực tiếp. **Giới hạn:** mẫu accepted được chọn theo liên quan, một số nguồn chỉ indexed text/abstract/program, không có rejected papers hoặc reviewer scores. **Commands:** chỉ đọc nguồn/audit nhẹ; không chuẩn bị hoặc chạy thêm full experiments trong review này. **Next step:** đối chiếu tác giả với ba ưu tiên trên, hoàn tất E6, rồi xây bản thảo đầy đủ và thực hiện integrity/review trước nộp.

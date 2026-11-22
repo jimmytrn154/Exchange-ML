@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "head": "pairwise_p1_g",
+  "features": [
+    "partition_v1",
+    "graph_degree"
+  ],
+  "target": "member_mean_merge_split",
+  "objective": "mean_pairwise_logistic_plus_half_alpha_l2",
+  "pair_weighting": "uniform_non_tied_unordered_bone_pairs",
+  "coefficient_constraints": "unconstrained",
+  "prediction_role": "ranking_not_probability",
+  "alpha": 1.0,
+  "mean": [
+    0.0044265691497435726,
+    0.026933900928901282
+  ],
+  "scale": [
+    0.008346071103334395,
+    0.047709151764012
+  ],
+  "coefficient": [
+    0.11538595263065071,
+    0.13398028811401202
+  ],
+  "intercept": 0.0,
+  "train_case_ids": [
+    "004",
+    "008",
+    "030",
+    "031",
+    "036",
+    "046",
+    "047",
+    "053",
+    "056",
+    "060",
+    "074",
+    "076",
+    "104",
+    "112",
+    "151",
+    "154",
+    "167",
+    "172",
+    "177",
+    "193",
+    "254",
+    "255",
+    "259",
+    "262",
+    "268",
+    "292",
+    "293",
+    "305",
+    "317",
+    "327",
+    "336",
+    "339",
+    "340",
+    "342",
+    "355",
+    "357",
+    "365",
+    "380",
+    "415",
+    "417"
+  ],
+  "n_train_units": 80,
+  "n_training_pairs": 2714,
+  "optimizer": {
+    "status": "converged",
+    "iterations": 7,
+    "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+    "loss": 0.6618866463353515,
+    "gradient_infinity_norm": 1.6952031445249816e-10
+  },
+  "smoke_only": false,
+  "analysis_role": "development_not_confirmed",
+  "execution_signature": "41f7764bfad6c6563f04b96f86844f4260e211a68cc9bd1716237bb765551ab3"
+}

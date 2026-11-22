@@ -1,0 +1,12 @@
+[
+  {
+    "train": [
+      "E6Smoke000",
+      "E6Smoke001",
+      "E6Smoke003"
+    ],
+    "val": [
+      "E6Smoke002"
+    ]
+  }
+]

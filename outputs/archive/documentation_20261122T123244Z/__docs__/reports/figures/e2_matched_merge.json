@@ -1,0 +1,117 @@
+{
+  "role": "reporting_only_controlled_GT_perturbations_not_heldout_or_clinical_severity",
+  "source_path": "outputs/stage3_h1_v2/perturbations/responses.csv",
+  "source_sha256": "d786270afae172e23a03fabde7b1181ed5e0e769f27e5a9665bad3928e224a41",
+  "source_manifest_path": "outputs/stage3_h1_v2/perturbations/e2_manifest.json",
+  "source_manifest_sha256": "21b80e14035acc37fb6d93137261f178293b39b30d08000df748050ab737b86d",
+  "plot_script_path": "scripts/plot_e2_matched_merge_report.py",
+  "plot_script_sha256": "07eff1cc3e1ae7e34840f5ac1d949cd0be94382ca8881fc73d2259bd9100342c",
+  "cohorts": [
+    {
+      "panel": "A",
+      "levels": [
+        1,
+        2
+      ],
+      "n_bones": 12,
+      "n_cases": 12,
+      "units": [
+        {
+          "case_id": "004",
+          "bone": "right_hip"
+        },
+        {
+          "case_id": "036",
+          "bone": "left_hip"
+        },
+        {
+          "case_id": "046",
+          "bone": "right_hip"
+        },
+        {
+          "case_id": "047",
+          "bone": "left_hip"
+        },
+        {
+          "case_id": "053",
+          "bone": "right_hip"
+        },
+        {
+          "case_id": "056",
+          "bone": "right_hip"
+        },
+        {
+          "case_id": "112",
+          "bone": "left_hip"
+        },
+        {
+          "case_id": "151",
+          "bone": "right_hip"
+        },
+        {
+          "case_id": "172",
+          "bone": "right_hip"
+        },
+        {
+          "case_id": "255",
+          "bone": "femur"
+        },
+        {
+          "case_id": "336",
+          "bone": "femur"
+        },
+        {
+          "case_id": "355",
+          "bone": "femur"
+        }
+      ],
+      "median_q_joint": [
+        0.015031639265329497,
+        0.03302135528652465
+      ]
+    },
+    {
+      "panel": "B",
+      "levels": [
+        1,
+        2,
+        3
+      ],
+      "n_bones": 4,
+      "n_cases": 4,
+      "units": [
+        {
+          "case_id": "036",
+          "bone": "left_hip"
+        },
+        {
+          "case_id": "046",
+          "bone": "right_hip"
+        },
+        {
+          "case_id": "056",
+          "bone": "right_hip"
+        },
+        {
+          "case_id": "112",
+          "bone": "left_hip"
+        }
+      ],
+      "median_q_joint": [
+        0.005721878822517186,
+        0.017857652045870913,
+        0.032354537727672696
+      ]
+    }
+  ],
+  "y_axis": {
+    "quantity": "q_joint",
+    "minimum": 0,
+    "maximum": 1
+  },
+  "uncertainty": "individual trajectories and median only; no CI",
+  "outputs": {
+    "__docs__/reports/figures/e2_matched_merge.pdf": "05e0bff909bd6361b99e624806a1fb0abad83a88a299fa166e38aeec6fc6bee4",
+    "__docs__/reports/figures/e2_matched_merge.png": "e448b8b19bbb13f17c7f5beb90f9d6719443b491c53479155e540e446471cf59"
+  }
+}

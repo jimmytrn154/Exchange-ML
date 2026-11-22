@@ -1,0 +1,70 @@
+{
+  "copy_summary": {
+    "verified_jobs": 49,
+    "pending_jobs": 0,
+    "verified_files": 807,
+    "verified_bytes": 44697656493
+  },
+  "copied_files_local_with_expected_sizes": true,
+  "checkpoint_fingerprints_checked": [
+    {
+      "member": "member_01",
+      "stage": "anatomy",
+      "path": "outputs/stage3_h1/members/member_01/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_best.pth",
+      "matches_inference_manifest": true
+    },
+    {
+      "member": "member_01",
+      "stage": "fragment",
+      "path": "outputs/stage3_h1/members/member_01/nnUNet_results/Dataset702_PENGWINStage2Fragment/PengwinTrainerSTUNetBaseAffinityV308__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_final.pth",
+      "matches_inference_manifest": true
+    },
+    {
+      "member": "member_02",
+      "stage": "anatomy",
+      "path": "outputs/stage3_h1/members/member_02/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_best.pth",
+      "matches_inference_manifest": true
+    },
+    {
+      "member": "member_02",
+      "stage": "fragment",
+      "path": "outputs/stage3_h1/members/member_02/nnUNet_results/Dataset702_PENGWINStage2Fragment/PengwinTrainerSTUNetBaseAffinityV308__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_final.pth",
+      "matches_inference_manifest": true
+    },
+    {
+      "member": "member_03",
+      "stage": "anatomy",
+      "path": "outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_best.pth",
+      "matches_inference_manifest": true
+    },
+    {
+      "member": "member_03",
+      "stage": "fragment",
+      "path": "outputs/stage3_h1/members/member_03/nnUNet_results/Dataset702_PENGWINStage2Fragment/PengwinTrainerSTUNetBaseAffinityV308__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_final.pth",
+      "matches_inference_manifest": true
+    }
+  ],
+  "validation_cases": 40,
+  "scan_type_counts": {
+    "pelvic": 20,
+    "femur": 20
+  },
+  "annotated_bone_units": 80,
+  "member_prediction_volumes": 120,
+  "member_probability_volumes": 120,
+  "gt_labels_readable": 40,
+  "dataset_config_path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/dataset/PENGWIN26_task1_2",
+  "dataset_real_path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2",
+  "e1": {
+    "decomposition_inputs": "available",
+    "member_risk_inputs": "available",
+    "stage2_prediction_inputs": "available",
+    "v2_scoring_and_per_bone_evaluation": "implementation still needed",
+    "experiment_executed": false
+  },
+  "pending_import_locations": 0,
+  "source_files_modified": false,
+  "no_training_or_inference_executed": true,
+  "local_checkpoint_files": 35,
+  "stage2_prediction_volumes": 40
+}

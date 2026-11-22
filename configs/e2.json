@@ -1,0 +1,14 @@
+{
+  "scope": "E2 controlled mechanism checks, not held-out validation",
+  "e1_root": "outputs/stage3_h1_v2",
+  "split": "splits/pengwin_stage0_split.json",
+  "scan_metadata": "configs/e1_validation_cases.csv",
+  "output_root": "outputs/stage3_h1_v2/perturbations",
+  "selection_seed": 20261118,
+  "cases_per_scan_type": 10,
+  "boundary_targets": [0.99, 0.95, 0.90],
+  "boundary_dice_tolerance": 0.005,
+  "boundary_max_iterations": 8,
+  "replication_factors": [1, 2, 4, 8, 16],
+  "numeric_tolerance": 1e-10
+}

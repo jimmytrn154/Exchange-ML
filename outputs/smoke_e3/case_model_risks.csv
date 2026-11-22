@@ -1,0 +1,9 @@
+case_id,scan_type,model_id,n_GT,merge_split,one_minus_f1
+004,pelvic,member_01,8,1.125,0.04761904761904764
+004,pelvic,member_02,8,1.25,0.04761904761904764
+004,pelvic,member_03,8,1.25,0.04761904761904764
+004,pelvic,stage2,8,1.0,0.04761904761904764
+254,femur,member_01,2,1.0,0.0
+254,femur,member_02,2,1.0,0.0
+254,femur,member_03,2,1.0,0.0
+254,femur,stage2,2,1.0,0.0

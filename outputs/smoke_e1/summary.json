@@ -1,0 +1,10 @@
+{
+  "n_cases": 2,
+  "n_units": 4,
+  "pair_rows": 12,
+  "model_risk_rows": 16,
+  "raw_vi_zero_fraction_units": 0.0,
+  "v2_partition_min": 0.028655835618387308,
+  "v2_partition_max": 0.1810286728501415,
+  "results_role": "validation_diagnosis_exploratory_not_heldout_confirmation"
+}

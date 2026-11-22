@@ -1,0 +1,13 @@
+{
+  "case_count": 2,
+  "bone_units": 4,
+  "response_rows": 54,
+  "eligible_response_rows": 48,
+  "target_not_reached_rows": 0,
+  "replication_rows_positive_vi": 65,
+  "replication_rows_zero_vi": 0,
+  "e1_pairs_reconstructed": 12,
+  "phantom_checks": 32,
+  "phantom_checks_passed": true,
+  "interpretation": "controlled_mechanism_check_not_clinical_or_heldout_validation"
+}

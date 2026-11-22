@@ -1,0 +1,23 @@
+{
+  "experiment": "E4 evaluation sensitivity and E5 qualitative/review/runtime analysis",
+  "protocol_reference": "__docs__/exps.md E4 and E5",
+  "e1_config": "configs/e1.json",
+  "e3_config": "configs/stage3_h1_v2.json",
+  "output_root": "outputs/stage3_h1_v2/e4_e5",
+  "smoke_output_root": "outputs/smoke_e4_e5",
+  "bootstrap_seed": 20261119,
+  "bootstrap_resamples": 10000,
+  "review_fractions": [0.1, 0.2],
+  "retained_fractions": [0.8, 0.9],
+  "severity_fraction": 0.25,
+  "blindspot_f1_tolerance": 1e-12,
+  "blindspot_missing_volume": 0.1,
+  "qualitative": {
+    "high_percentile": 0.75,
+    "low_percentile": 0.5,
+    "shared_error_min_mean_one_minus_f1": 0.2,
+    "shared_error_max_fa_percentile": 0.25,
+    "crop_margin_voxels": 8,
+    "slices_per_example": 2
+  }
+}

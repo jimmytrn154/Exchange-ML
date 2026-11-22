@@ -1,0 +1,218 @@
+{
+  "status": "complete",
+  "signature": "748c59be056cf1bf55e3ec7b66ef4899d957b250cebbc73bea3685402b28235a",
+  "smoke_only": true,
+  "provenance": {
+    "config_sha256": "b2f0adeb6f718d7a60dc4ec67db1bd65ed6ed55304412f1186aa3065c6a97469",
+    "e1_manifest_sha256": "e67323ae87ea257e2c494415e22ce460bd6b153ed95aca61cff30ac292d40fd1",
+    "metadata_sha256": "e9f0a95c7a961b994bd2f23c0989ecbe9954bdc614c94998af12b0955cedaa7b",
+    "split_sha256": "3c2ef7e40a170dd10d3f50a683775a1346652f919d7ba0e6a635765d828648cd",
+    "code_sha256": {
+      "scripts/run_e2.py": "0d340f20a18a9fdcd39a2a54dfb76b1cf40342ae82622ca920ce6f5198f46afe",
+      "src/exchange_ml/e2_perturbations.py": "4f040de30d9db6abb5d31df322954cda88e2012e9cbbf85a1445e0fbbf3cec5e",
+      "src/exchange_ml/e2_reporting.py": "8bb8049372852033175de6161394778ed23757e80a56b00c27f7a740eccd23e5",
+      "src/exchange_ml/e1_data.py": "7f563a14fc097b01409525d0ebceb0134e95243783dec464801d11ff51b90a86",
+      "src/exchange_ml/e1_scoring.py": "9077e0402171e88dc1a48ef6d0626d58248448043912a5aa61adda06b91fb36d",
+      "src/exchange_ml/instances.py": "339018f8ae511a99e6342e403c6c854b2dc5f2523c54d452d3c275b30cadec85",
+      "src/exchange_ml/metrics.py": "903a12216e4405f3a66666cd79323d803c9b79c1cb017c604716b32ef7fca455",
+      "src/exchange_ml/perturbations.py": "e486508b6bba36f7fee1499cd187861099f7add8541e7a07440aa11973388870",
+      "src/exchange_ml/__init__.py": "97309b300260e6f19e68b6df11658b177e0e664cfd04711c3280b3c29ad0f630"
+    },
+    "software": {
+      "numpy": "1.26.4",
+      "scipy": "1.17.1",
+      "SimpleITK": "2.5.2",
+      "matplotlib": "3.10.1"
+    },
+    "python": "3.12.9 | packaged by Anaconda, Inc. | (main, Feb  6 2025, 18:56:27) [GCC 11.2.0]",
+    "full_20_case_selection": [
+      {
+        "case_id": "004",
+        "scan_type": "pelvic"
+      },
+      {
+        "case_id": "036",
+        "scan_type": "pelvic"
+      },
+      {
+        "case_id": "046",
+        "scan_type": "pelvic"
+      },
+      {
+        "case_id": "047",
+        "scan_type": "pelvic"
+      },
+      {
+        "case_id": "053",
+        "scan_type": "pelvic"
+      },
+      {
+        "case_id": "056",
+        "scan_type": "pelvic"
+      },
+      {
+        "case_id": "060",
+        "scan_type": "pelvic"
+      },
+      {
+        "case_id": "112",
+        "scan_type": "pelvic"
+      },
+      {
+        "case_id": "151",
+        "scan_type": "pelvic"
+      },
+      {
+        "case_id": "172",
+        "scan_type": "pelvic"
+      },
+      {
+        "case_id": "255",
+        "scan_type": "femur"
+      },
+      {
+        "case_id": "259",
+        "scan_type": "femur"
+      },
+      {
+        "case_id": "292",
+        "scan_type": "femur"
+      },
+      {
+        "case_id": "293",
+        "scan_type": "femur"
+      },
+      {
+        "case_id": "305",
+        "scan_type": "femur"
+      },
+      {
+        "case_id": "317",
+        "scan_type": "femur"
+      },
+      {
+        "case_id": "336",
+        "scan_type": "femur"
+      },
+      {
+        "case_id": "339",
+        "scan_type": "femur"
+      },
+      {
+        "case_id": "355",
+        "scan_type": "femur"
+      },
+      {
+        "case_id": "380",
+        "scan_type": "femur"
+      }
+    ]
+  },
+  "response_case_ids": [
+    "004",
+    "255"
+  ],
+  "replication_case_ids": [
+    "004",
+    "255"
+  ],
+  "sources": {
+    "004": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part1/004/label.mha",
+          "bytes": 227986,
+          "mtime_ns": 1776873906000000000
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/004.mha",
+          "bytes": 21962220,
+          "mtime_ns": 1792508770505304262
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/004.mha",
+          "bytes": 21962220,
+          "mtime_ns": 1792508794937364715
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/004.mha",
+          "bytes": 21962220,
+          "mtime_ns": 1792541754274738136
+        }
+      },
+      "sha256": {
+        "gt": "c45e0acb432d40edc323416631dc303a392d38f48a413b88b7181955719e19a5",
+        "member_01_prediction": "d7cba5d2da4d61ed651f18bdfaedba72f4a43df65f98b17317d36ab8b959e21e",
+        "member_02_prediction": "b7400bbcd07e1071269460af08b1692376065915907a3abd92ce50b29c518425",
+        "member_03_prediction": "44ce71c61c3a47247e7171ebcebc5125e94201dbb3c3d5ebae2141f4f3fc71cb"
+      }
+    },
+    "255": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part3/255/label.mha",
+          "bytes": 95137,
+          "mtime_ns": 1776875948000000000
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/255.mha",
+          "bytes": 28442982,
+          "mtime_ns": 1792511887817017547
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/255.mha",
+          "bytes": 28442982,
+          "mtime_ns": 1792511942553152982
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/255.mha",
+          "bytes": 28442982,
+          "mtime_ns": 1792544530240457576
+        }
+      },
+      "sha256": {
+        "gt": "83028bec8d29569d7210f2d95d4eedd2ef811988fae2a48516bbab42267602a6",
+        "member_01_prediction": "ae408cf34d2046180ffe81b5669d6dfd0a756e2d80be26ea7f8ebda6efef1b21",
+        "member_02_prediction": "f66914fddd3e64644a26b8c7c05f3447f4f08a7058d1d1669b0263a08eb30d43",
+        "member_03_prediction": "9c8b359c69f58f9493967527fc0c531abb2cd986f74442707f5e87a979f483a1"
+      }
+    }
+  },
+  "case_seconds": {
+    "004": 27.617497402010486,
+    "255": 4.266408195020631
+  },
+  "started_at_unix": 1795021128.65581,
+  "gt_pruned": false,
+  "entropy_from_hard_labels": false,
+  "e1_outputs_modified": false,
+  "source_datasets_modified": false,
+  "summary": {
+    "case_count": 2,
+    "bone_units": 4,
+    "response_rows": 54,
+    "eligible_response_rows": 48,
+    "target_not_reached_rows": 0,
+    "replication_rows_positive_vi": 65,
+    "replication_rows_zero_vi": 0,
+    "e1_pairs_reconstructed": 12,
+    "phantom_checks": 32,
+    "phantom_checks_passed": true,
+    "interpretation": "controlled_mechanism_check_not_clinical_or_heldout_validation"
+  },
+  "completed_at_unix": 1795021162.9674258,
+  "output_sha256": {
+    "replication.csv": "fed10348001c9fe5a1b158358f1086b21b018bb6fba9d1ae05f12c34c66a27b1",
+    "replication_summary.csv": "cf00a99c83cc6600e23babe5bebbb81b3b66ac9e68b7e21e0cac0000b92a583f",
+    "replication_zero_vi.csv": "646a5b594cb4cac28e4ae34e46bea751acecb67e4fe1c5caf1582a655dca0c1b",
+    "replication_curves.png": "eff7ceaa8a97c98cf43c0b4122cd266b047a2ba65324b99fc2aaa9febeeefce6",
+    "responses.csv": "dd1bf977a12fb860094fd6a7671f967db0bc44283ac8791bd0b76c989979de5c",
+    "phantoms.csv": "c960f867a2428a9f7af080be5fa066990aa46f5106afcb8bae34bf24493693f9",
+    "contingencies.jsonl": "0158915a67e8555ea20b82062b223f00aceab8db007e3d4a15ee71ab8aa33d7e",
+    "replication_curves.pdf": "efa9849a28bb9226edf2a7c4fa7e63f7d3c1f93b2a39c48abfac64004c878e71",
+    "response_summary.csv": "ad86d6cbe7c0b0594e94577a4149964ec33e280b090041a627db9b27dccc44ce",
+    "response_curves.pdf": "f2f938efb6bc1d31d07bacc9d5e91a68584047ce7f31eee397ec499a0ac89dd5",
+    "response_curves.png": "0fe50e4386126e248a01e7658b44e6e2e0adb2c2840e049c37eb0917bbbb84c4",
+    "selected_cases.csv": "a1f41dca162aba913e3d849ded8bac53c924276bc5b69029ecf5e9c526daebe1"
+  }
+}

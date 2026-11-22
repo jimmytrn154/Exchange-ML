@@ -1,0 +1,14 @@
+{
+  "parent_root": "/mnt/disk1/backup_user/dang.cpm/Exchange-ML-E6",
+  "output_root": "/mnt/disk1/backup_user/dang.cpm/Exchange-ML-E6-fast-v1",
+  "batch_candidates": [2, 5, 6],
+  "target_train_patches_per_epoch": 500,
+  "target_validation_patches_per_epoch": 100,
+  "cache_workers": 4,
+  "benchmark_warmup_steps": 2,
+  "benchmark_steps": 3,
+  "memory_headroom_gib": 2,
+  "old_jobs": [2880, 2881, 2882],
+  "cudnn_benchmark": true,
+  "note": "Explicit batch/performance revision. Preserve parent checkpoints; resume their verified states into a separate campaign. Approximately preserve patch exposure, not optimizer-update count."
+}

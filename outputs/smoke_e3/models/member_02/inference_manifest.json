@@ -1,0 +1,75 @@
+{
+  "identity": {
+    "protocol_sha256": "6b5aa210c2e9fb4d0efe9cd94ec80ffd0a8b5971b035312bcfc5eb35aab6fc3a",
+    "runner_sha256": "9062a860ea17cbc52cb32f73d3146f6773136e3851be82add9b1481ebef1fe4e",
+    "stage2_loader_sha256": "bbe0aa93e44de6691ba5137bfab81913bdf5435aca6f14712f3d183ef1cc7e1e",
+    "inference_wrapper_sha256": "1519bb5894ebac049d446e22d579f3402db9e9a78ddc9167f6792984322f379e",
+    "model": "member_02",
+    "smoke": true,
+    "case_ids": [
+      "004",
+      "254"
+    ],
+    "software": {
+      "torch": "2.1.2+cu118",
+      "nnunetv2": "2.5.1",
+      "numpy": "1.26.4",
+      "SimpleITK": "2.3.1",
+      "scipy": "1.15.3"
+    }
+  },
+  "records": {
+    "004": {
+      "image_state": {
+        "bytes": 87848666,
+        "mtime_ns": 1777028896000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 233684,
+          "mtime_ns": 1795096882450888772,
+          "sha256": "b44c46a43bce146c2cfd6387193e1249766f7a751e45d5e496201d76f77f3c23"
+        },
+        "probability": {
+          "bytes": 47929304,
+          "mtime_ns": 1795096883550895235,
+          "sha256": "fb66b0c9e24cc848aff1047fa6b6373e89d2ac0f8418fd573a12a99127efffad"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 21961856,
+      "read_seconds": 0.09677258715964854,
+      "inference_seconds": 97.41131095285527,
+      "write_seconds": 1.626419321168214,
+      "peak_vram_bytes": 4244608512,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "254": {
+      "image_state": {
+        "bytes": 243270880,
+        "mtime_ns": 1777028392000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 272665,
+          "mtime_ns": 1795096968959397026,
+          "sha256": "349fd049c7e4c802a4f3913ea1a60948f308f5ded4ef06b73774cd901c63f72d"
+        },
+        "probability": {
+          "bytes": 26127549,
+          "mtime_ns": 1795096969891402502,
+          "sha256": "b17a95ec93e7478f3e4cbb69f2980adda277f7cefe5f09751be83291ecacceb6"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 60817408,
+      "read_seconds": 0.06930438196286559,
+      "inference_seconds": 84.75873543298803,
+      "write_seconds": 1.692214572103694,
+      "peak_vram_bytes": 4371587072,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    }
+  },
+  "status": "complete",
+  "error": null
+}

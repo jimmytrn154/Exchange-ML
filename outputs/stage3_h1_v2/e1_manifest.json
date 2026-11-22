@@ -1,0 +1,2367 @@
+{
+  "status": "complete",
+  "signature": "f55f719d349b0b338f72bcf9bb2955a60966cfb60aaff199a3e83f014095ea60",
+  "smoke_only": false,
+  "case_ids": [
+    "004",
+    "008",
+    "030",
+    "031",
+    "036",
+    "046",
+    "047",
+    "053",
+    "056",
+    "060",
+    "074",
+    "076",
+    "104",
+    "112",
+    "151",
+    "154",
+    "167",
+    "172",
+    "177",
+    "193",
+    "254",
+    "255",
+    "259",
+    "262",
+    "268",
+    "292",
+    "293",
+    "305",
+    "317",
+    "327",
+    "336",
+    "339",
+    "340",
+    "342",
+    "355",
+    "357",
+    "365",
+    "380",
+    "415",
+    "417"
+  ],
+  "provenance": {
+    "config_sha256": "e691f1b8333f5db7f27d823ae055d6a62df723031b95b5a10b919295e5d730ba",
+    "split_sha256": "3c2ef7e40a170dd10d3f50a683775a1346652f919d7ba0e6a635765d828648cd",
+    "scan_metadata_sha256": "e9f0a95c7a961b994bd2f23c0989ecbe9954bdc614c94998af12b0955cedaa7b",
+    "members": {
+      "member_01": {
+        "manifest_sha256": "8b2c249e5ec180430e5a2aacfe09b8f75ed91ec1adc6b767051660206521261f",
+        "anatomy_checkpoint_sha256": "97ae624dca171dda314dc7b86c05a5bfe405fddab3878344912ac1845d8cc12d",
+        "fragment_checkpoint_sha256": "bdb5251c3400a58f135433480ef5f7c83d9021cac4e7ed8ecc7c4e4b78993877",
+        "probability_semantics": {
+          "classes": [
+            "background",
+            "target_foreground"
+          ],
+          "foreground_probability": "per-anatomy Stage-B ABBC probability 1-p(background), linearly resampled to the input grid and combined by voxelwise maximum",
+          "dtype_on_disk": "float32",
+          "range": [
+            0.0,
+            1.0
+          ]
+        }
+      },
+      "member_02": {
+        "manifest_sha256": "0272712816b90ab1c0058ce3c403af6fc38da4e3171c92292b6dd62eb6b20f25",
+        "anatomy_checkpoint_sha256": "cd0f1376a7a4758bbae54b8ee2084146ecf18ce9dbd8694ae8050bb0954a3fd4",
+        "fragment_checkpoint_sha256": "c72dba94b35ecbb36e708a87b78502bf9a1377f0bc6bed77ddccaa5cd541dd53",
+        "probability_semantics": {
+          "classes": [
+            "background",
+            "target_foreground"
+          ],
+          "foreground_probability": "per-anatomy Stage-B ABBC probability 1-p(background), linearly resampled to the input grid and combined by voxelwise maximum",
+          "dtype_on_disk": "float32",
+          "range": [
+            0.0,
+            1.0
+          ]
+        }
+      },
+      "member_03": {
+        "manifest_sha256": "14418ffae04bf3c67dd458fba894c9c6159d77470332fccc5c035f3bb71af193",
+        "anatomy_checkpoint_sha256": "becbca3b5f09b3d027732fbc6313b03c0f85449f6579460bbaba5cc6368a3675",
+        "fragment_checkpoint_sha256": "ecb63a1e92118a19c0613678f4dfea7eb26f922d0cdb56bcd9bca45703bc9232",
+        "probability_semantics": {
+          "classes": [
+            "background",
+            "target_foreground"
+          ],
+          "foreground_probability": "per-anatomy Stage-B ABBC probability 1-p(background), linearly resampled to the input grid and combined by voxelwise maximum",
+          "dtype_on_disk": "float32",
+          "range": [
+            0.0,
+            1.0
+          ]
+        }
+      }
+    },
+    "stage2_manifest_sha256": "7d1613b4672516b8d5a5f0215a0163a73d84e1f999d9d3b9e0b4bcdc5136dc5b",
+    "code_sha256": {
+      "scripts/run_e1.py": "5d565a1385d6e791046ae4550a598d60d2b92b3fb393e5ad41f1b9b3c5f181a1",
+      "src/exchange_ml/__init__.py": "97309b300260e6f19e68b6df11658b177e0e664cfd04711c3280b3c29ad0f630",
+      "src/exchange_ml/e1_data.py": "7f563a14fc097b01409525d0ebceb0134e95243783dec464801d11ff51b90a86",
+      "src/exchange_ml/e1_reporting.py": "15fa913dfb5e013097c6233e1f7c070885cb5f5c03d02ddce51656b2208c0419",
+      "src/exchange_ml/e1_scoring.py": "9077e0402171e88dc1a48ef6d0626d58248448043912a5aa61adda06b91fb36d",
+      "src/exchange_ml/e1_statistics.py": "f9dcd986114251636fb116c3a23b2586846edc6439d4a54598ba50a657d11af1",
+      "src/exchange_ml/instances.py": "339018f8ae511a99e6342e403c6c854b2dc5f2523c54d452d3c275b30cadec85",
+      "src/exchange_ml/metrics.py": "903a12216e4405f3a66666cd79323d803c9b79c1cb017c604716b32ef7fca455",
+      "src/exchange_ml/perturbations.py": "e486508b6bba36f7fee1499cd187861099f7add8541e7a07440aa11973388870",
+      "src/exchange_ml/stage2_backend.py": "5e3cf3ae87ee56f6e5b3a047bf4ddf3f697ed4ffb2358d4bdef24a2096f5f842",
+      "src/exchange_ml/stage3_h1.py": "f6507b74f583be283c479128f9c465650dc78064440cc7f78c8ea352ada5c1bb"
+    },
+    "software": {
+      "numpy": "1.26.4",
+      "scipy": "1.17.1",
+      "SimpleITK": "2.5.2",
+      "matplotlib": "3.10.1"
+    },
+    "python": "3.12.9 | packaged by Anaconda, Inc. | (main, Feb  6 2025, 18:56:27) [GCC 11.2.0]"
+  },
+  "scoring_gt_voxels_loaded": false,
+  "evaluation_gt_loaded": true,
+  "v1_outputs_modified": false,
+  "bootstrap_resamples": 10000,
+  "bootstrap_seed": 20261119,
+  "started_at_unix": 1794980177.1379688,
+  "sources": {
+    "004": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part1/004/label.mha",
+          "bytes": 227986,
+          "mtime_ns": 1776873906000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/004.mha",
+          "bytes": 21962220,
+          "mtime_ns": 1792508747593247570
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/004.mha",
+          "bytes": 21962220,
+          "mtime_ns": 1792508770505304262
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/004.mha",
+          "bytes": 49777186,
+          "mtime_ns": 1792508771993307943
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/004.mha",
+          "bytes": 21962220,
+          "mtime_ns": 1792508794937364715
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/004.mha",
+          "bytes": 47929337,
+          "mtime_ns": 1792508796329368159
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/004.mha",
+          "bytes": 21962220,
+          "mtime_ns": 1792541754274738136
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/004.mha",
+          "bytes": 52354141,
+          "mtime_ns": 1792541755450743947
+        }
+      },
+      "sha256": {
+        "gt": "c45e0acb432d40edc323416631dc303a392d38f48a413b88b7181955719e19a5",
+        "stage2": "ce8cc4502c8f74ba2ccf706da2d13a8e4739de232df99a057503df0a2bb64103",
+        "member_01_prediction": "d7cba5d2da4d61ed651f18bdfaedba72f4a43df65f98b17317d36ab8b959e21e",
+        "member_01_probability": "a050f8d32a585ada164cf10de2d020a894636b9f86148352c5c3cf73f2162ac8",
+        "member_02_prediction": "b7400bbcd07e1071269460af08b1692376065915907a3abd92ce50b29c518425",
+        "member_02_probability": "4e734f33b0a20ccbdd379fff1daa5447770a203f6ee7b20dc63b237baac656e6",
+        "member_03_prediction": "44ce71c61c3a47247e7171ebcebc5125e94201dbb3c3d5ebae2141f4f3fc71cb",
+        "member_03_probability": "62ce884b46ecfa82180938c363dc2a91c55f122a82b8477103b527f3aef1f515"
+      }
+    },
+    "008": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part1/008/label.mha",
+          "bytes": 490141,
+          "mtime_ns": 1776873910000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/008.mha",
+          "bytes": 87818620,
+          "mtime_ns": 1792508966693789699
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/008.mha",
+          "bytes": 87818620,
+          "mtime_ns": 1792509011269899996
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/008.mha",
+          "bytes": 74043984,
+          "mtime_ns": 1792509013885906468
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/008.mha",
+          "bytes": 87818620,
+          "mtime_ns": 1792509025593935438
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/008.mha",
+          "bytes": 73403703,
+          "mtime_ns": 1792509028033941475
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/008.mha",
+          "bytes": 87818620,
+          "mtime_ns": 1792542046064180227
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/008.mha",
+          "bytes": 81117537,
+          "mtime_ns": 1792542050776203515
+        }
+      },
+      "sha256": {
+        "gt": "feffa99e71f9d8f21d790ef02ee64e2cbc742d1718cbf29ee73d7d27ff55b872",
+        "stage2": "b700c05b0705794bbff245370099a8d9407d03d715a067c890bb6f469e57ccff",
+        "member_01_prediction": "c0cc1a2d6408614a61f510f11a963750d9dd6ec0fadceae6f41edc6742ca61ee",
+        "member_01_probability": "dc7324a7c9f229478b46166ee591dd41801b2bf2a293dead3f5451faa7409d8e",
+        "member_02_prediction": "edfe7cddc28e5ee9b92e4881bd927babf02851a6e438e69bd2fa229f07eb3c98",
+        "member_02_probability": "553b54203c0681aa406c9204c273bdcb52ae35697e1dd536f4ce7d72bc887b78",
+        "member_03_prediction": "062e8c6d8c66716d8b16679ee9883ecf1c5aa2538b96ee0c795deae43416df90",
+        "member_03_probability": "d36e9efde9b5c74ae5a2721c716c41d32c5ab0e36bba0ab65d147d763d458577"
+      }
+    },
+    "030": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part1/030/label.mha",
+          "bytes": 433474,
+          "mtime_ns": 1776873930000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/030.mha",
+          "bytes": 74711403,
+          "mtime_ns": 1792509204882379059
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/030.mha",
+          "bytes": 74711403,
+          "mtime_ns": 1792509261694519632
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/030.mha",
+          "bytes": 59851494,
+          "mtime_ns": 1792509263774524779
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/030.mha",
+          "bytes": 74711403,
+          "mtime_ns": 1792509273658549234
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/030.mha",
+          "bytes": 57521866,
+          "mtime_ns": 1792509275570553966
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/030.mha",
+          "bytes": 74711403,
+          "mtime_ns": 1792542439494124638
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/030.mha",
+          "bytes": 64073193,
+          "mtime_ns": 1792542443206142983
+        }
+      },
+      "sha256": {
+        "gt": "b4ef2d066b3a84bac1f012bb03adef8a0e8a4953a7953723e6196c86813cf411",
+        "stage2": "12f3039b7e61ebdcc926d7ccc20bb0878114287b072fe676be08a3815b5d0f4a",
+        "member_01_prediction": "c688f95ae6a5c46cdbb95a47b2f4b9937bac93cb46163c130d07a6f938837831",
+        "member_01_probability": "ed8b9818bdaf4a5335ef8b08e7d3b0a909afed06dac3e7497e144c4a06ff5714",
+        "member_02_prediction": "8e03f94258604352747e1cb2c7d31910a2bd5922f371167e1f7174635841ae26",
+        "member_02_probability": "41d4bdfeb80cda993bd47b36fbb582b7eb1997bbc12b63604c48b7cf4a624f68",
+        "member_03_prediction": "f64e379024da9301f3b3c8efc4170cab41c9d998a366f2d842ae936838fb312b",
+        "member_03_probability": "a1b28b7afb16660275865450fa24c3c96181f2f748a6e63db413e2eee8125a51"
+      }
+    },
+    "031": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part1/031/label.mha",
+          "bytes": 426593,
+          "mtime_ns": 1776873932000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/031.mha",
+          "bytes": 81789283,
+          "mtime_ns": 1792509342890720539
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/031.mha",
+          "bytes": 81789283,
+          "mtime_ns": 1792509412514892813
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/031.mha",
+          "bytes": 34332787,
+          "mtime_ns": 1792509414214897019
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/031.mha",
+          "bytes": 81789283,
+          "mtime_ns": 1792509424298921970
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/031.mha",
+          "bytes": 34109479,
+          "mtime_ns": 1792509425814925721
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/031.mha",
+          "bytes": 81789283,
+          "mtime_ns": 1792542550350672516
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/031.mha",
+          "bytes": 37821239,
+          "mtime_ns": 1792542551670679041
+        }
+      },
+      "sha256": {
+        "gt": "269ac50e0cb97b127ec304605a94ff5307e65209b661618aa7c702573477f8da",
+        "stage2": "9dfe7142e251fb30ecfbf5ec862e597e55a47e977b48e8dfc0e46c633a6da31d",
+        "member_01_prediction": "dad29d2a142652c3897ed3edfdd81c7b1f820dffa6f6512472506548c452d879",
+        "member_01_probability": "d66ed943fc53e9b88920d9e648ac643f2fc6f35c99be524a21d880a15fa90c8e",
+        "member_02_prediction": "2e3ca38489066ae8cd73865fcc378d5f9f12c8d1815fe47670f4943934035513",
+        "member_02_probability": "371907443849dd100bd42187f3b70d52ca427105c682ae64e613fe6f7c4b9307",
+        "member_03_prediction": "ec907aa784b1de92431f8fe9b804b424cd4a8b14cb650e007bc5285eb1e190b4",
+        "member_03_probability": "016e94a6c1bd1233c0586664167c3d449b2e61f7d9b971879b5fcce54421b12a"
+      }
+    },
+    "036": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part1/036/label.mha",
+          "bytes": 366145,
+          "mtime_ns": 1776873936000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/036.mha",
+          "bytes": 51242347,
+          "mtime_ns": 1792509456183000862
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/036.mha",
+          "bytes": 51242347,
+          "mtime_ns": 1792509535443196979
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/036.mha",
+          "bytes": 29728161,
+          "mtime_ns": 1792509536555199730
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/036.mha",
+          "bytes": 51242347,
+          "mtime_ns": 1792509544379219090
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/036.mha",
+          "bytes": 30516324,
+          "mtime_ns": 1792509545659222257
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/036.mha",
+          "bytes": 51242347,
+          "mtime_ns": 1792542643655133649
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/036.mha",
+          "bytes": 33516617,
+          "mtime_ns": 1792542644747139046
+        }
+      },
+      "sha256": {
+        "gt": "5c3f87c374a6659cf9a92233616865098e1f8378be7c34d1d08365d8ab4b81b3",
+        "stage2": "dac533c1aac286bd541e253b5beae9d36ec70a96b1eba4e9653867c7a691cec7",
+        "member_01_prediction": "a6eea90467186603b2fc1af63f79c5aff03c2f5e6eb4d6f92b648aff24afd5a5",
+        "member_01_probability": "42aafeef762ade1fd95e479ab9b365069b0d6c7ea9d5d7fc85457b28ec8b49c8",
+        "member_02_prediction": "dd7477956006ab45be89a4a22a26917cb1c21bb627110545374f6db4a23972db",
+        "member_02_probability": "a81a1bfbc66af3beaba988a9567502ff1b66d7a509c8db28be3b86ad3c29c62e",
+        "member_03_prediction": "43251fb75fac3a27f44f594fc563c4f39588590a0dcf7255d639233474495f57",
+        "member_03_probability": "01b9e83cf70de701dc3ec13dbc8966a63f455c768b827a3465b7582080bc79e7"
+      }
+    },
+    "046": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part1/046/label.mha",
+          "bytes": 407389,
+          "mtime_ns": 1776873946000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/046.mha",
+          "bytes": 72089950,
+          "mtime_ns": 1792509592259337562
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/046.mha",
+          "bytes": 72089950,
+          "mtime_ns": 1792509675503543536
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/046.mha",
+          "bytes": 32111016,
+          "mtime_ns": 1792509676931547069
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/046.mha",
+          "bytes": 72089950,
+          "mtime_ns": 1792509694239589895
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/046.mha",
+          "bytes": 31587424,
+          "mtime_ns": 1792509695627593330
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/046.mha",
+          "bytes": 72089950,
+          "mtime_ns": 1792542756887693270
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/046.mha",
+          "bytes": 32128320,
+          "mtime_ns": 1792542757979698667
+        }
+      },
+      "sha256": {
+        "gt": "20ec967cc989e7f2cb7b383d9384feadd4cdbd9b75e62a542c5ece1cc53d8a7e",
+        "stage2": "44a0a637e252269376a1eb787100d8fe915995774c491c4ab25b07cdb0ea4ea9",
+        "member_01_prediction": "a656faa4b4c0a03ff98b360f3a4bb7638bf3d41482ae514f1bd10ffcc84df5e7",
+        "member_01_probability": "1d4e0d27c7e108cd1347316a8c1e30216af8e5ca09c2ad216f54e334930b787b",
+        "member_02_prediction": "a55b28dbd9ee56bf63849e59d3b619b937d9e4eb2857bcc95c904741c5d68397",
+        "member_02_probability": "1842e0a14deab0b688d2a598b3e8fa226f3e7190867d0c042447f3c8c4b23490",
+        "member_03_prediction": "d9cc9faed2ebcd6ada44fd24e0bd6bfd9aa566037052bb993c7da1d1af46946f",
+        "member_03_probability": "439d23307087d659173fedb92708dc6509fed553f4e90315daaaa84d9638daf9"
+      }
+    },
+    "047": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part1/047/label.mha",
+          "bytes": 297924,
+          "mtime_ns": 1776873946000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/047.mha",
+          "bytes": 50594184,
+          "mtime_ns": 1792509765527766287
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/047.mha",
+          "bytes": 50594184,
+          "mtime_ns": 1792509849091973053
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/047.mha",
+          "bytes": 48699603,
+          "mtime_ns": 1792509850687977002
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/047.mha",
+          "bytes": 50594184,
+          "mtime_ns": 1792509878464045730
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/047.mha",
+          "bytes": 47148816,
+          "mtime_ns": 1792509879968049451
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/047.mha",
+          "bytes": 50594184,
+          "mtime_ns": 1792542889152346953
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/047.mha",
+          "bytes": 53974975,
+          "mtime_ns": 1792542890532353774
+        }
+      },
+      "sha256": {
+        "gt": "59da313ad5d13cfd8b3743d63e1d14d18e2481a482fde97c69e7ae2cda9d502f",
+        "stage2": "3783400057ca8387636119e22c51933b381f622bbea9969fe97678e5f9929d61",
+        "member_01_prediction": "2d1712916ad1e6e1c61897b9b0936120f345d7140486629fa3fe866970621eff",
+        "member_01_probability": "d944729532acb7cdba0d7f266d0370315508e17456f61ef479a6e7e72fdbd3f1",
+        "member_02_prediction": "12952a2afe613bced23f2251c837bed3d550a32e9285d4e22dce88d44daa8509",
+        "member_02_probability": "0f9e6900f8f3c4f4e34d16865f992e27ccad0b9f06932b583d9fc7fda38ddb0d",
+        "member_03_prediction": "7ef900bbdc852ff33998fd49e0e7439316a0634fac0790b992df413e3ca16aa6",
+        "member_03_probability": "02f38c4ec334c691b8d4dfc605662c11ccddc145efb31ffc7b50ec66ab630a92"
+      }
+    },
+    "053": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part1/053/label.mha",
+          "bytes": 362252,
+          "mtime_ns": 1776873952000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/053.mha",
+          "bytes": 66847076,
+          "mtime_ns": 1792509875808039158
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/053.mha",
+          "bytes": 66847076,
+          "mtime_ns": 1792509962284253130
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/053.mha",
+          "bytes": 28557367,
+          "mtime_ns": 1792509963704256643
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/053.mha",
+          "bytes": 66847076,
+          "mtime_ns": 1792509991768326083
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/053.mha",
+          "bytes": 26455870,
+          "mtime_ns": 1792509993016329171
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/053.mha",
+          "bytes": 66847076,
+          "mtime_ns": 1792542979468793318
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/053.mha",
+          "bytes": 28033818,
+          "mtime_ns": 1792542980476798300
+        }
+      },
+      "sha256": {
+        "gt": "0a5fcc9b2901021ca30a87ab8206cd725de231f9d81effea03c170feaba9a77c",
+        "stage2": "887a3843742cfd8577ed2ad0bd1bd29e206216319795521f3340fefd8ae4182e",
+        "member_01_prediction": "b2963302c27bf840219c591be42e68883be25e12273b865cd885931eb43b2dd9",
+        "member_01_probability": "548d512c27728bc009d168e9cebb60748151d867388da6f33724725716bb107a",
+        "member_02_prediction": "95d91929d17165575d3bf574659743c5ece47a229bc61dbdf254f6d3271b17d4",
+        "member_02_probability": "9ffaf1fe7f0e97d52ee980ea0dad1d4f90503b2f03fb854f2a77d0aeede91da5",
+        "member_03_prediction": "1c406cd5a5d54819c2778456453ab63b6ce79a00406e607b8946be6f32cf14b0",
+        "member_03_probability": "55ec69d56e844600bc4da3e121ca943745cb04a0996cddba6bbb5caae49f1c80"
+      }
+    },
+    "056": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part1/056/label.mha",
+          "bytes": 309239,
+          "mtime_ns": 1776873956000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/056.mha",
+          "bytes": 44360049,
+          "mtime_ns": 1792510031848425255
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/056.mha",
+          "bytes": 44360049,
+          "mtime_ns": 1792510118160638820
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/056.mha",
+          "bytes": 52876083,
+          "mtime_ns": 1792510119636642472
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/056.mha",
+          "bytes": 44360049,
+          "mtime_ns": 1792510144608704262
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/056.mha",
+          "bytes": 53616215,
+          "mtime_ns": 1792510146080707904
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/056.mha",
+          "bytes": 44360049,
+          "mtime_ns": 1792543123741506332
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/056.mha",
+          "bytes": 58504272,
+          "mtime_ns": 1792543125161513351
+        }
+      },
+      "sha256": {
+        "gt": "817d53cbd429b2b86076ad66110d179737401b48b82d651858681be7caf2e100",
+        "stage2": "48103b132060956360e09c94b48c41dd5c65724eb86256ad16146eaabd43e6e8",
+        "member_01_prediction": "5b9faee39eb38ca66084332674c871a424389f48061b7766726db89f05870605",
+        "member_01_probability": "900f2521194d2ec59caf1429983ad9b5fcec154f8fbc9178b21a358eb2e0c2b2",
+        "member_02_prediction": "0de9265ab4cc179e5ebd97d45676b3dfd844fd2e0d4403fe9105526a9e599aee",
+        "member_02_probability": "41e497fa36dd7432f1368b568e0bd9bd1f892433b4bada696a52ce576afddbef",
+        "member_03_prediction": "e5707e937475652e4f8c4b67d41bf0a9c958845349e03c585ef6232e3e67545d",
+        "member_03_probability": "c07b6bf5c9a9224187f6858136a20937e32d80a0d38d0d9a14ea3990bb67e363"
+      }
+    },
+    "060": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part1/060/label.mha",
+          "bytes": 381161,
+          "mtime_ns": 1776873958000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/060.mha",
+          "bytes": 37026009,
+          "mtime_ns": 1792510187092809382
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/060.mha",
+          "bytes": 37026009,
+          "mtime_ns": 1792510278089034530
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/060.mha",
+          "bytes": 54879955,
+          "mtime_ns": 1792510279669038439
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/060.mha",
+          "bytes": 37026009,
+          "mtime_ns": 1792510305149101486
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/060.mha",
+          "bytes": 54617492,
+          "mtime_ns": 1792510306773105504
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/060.mha",
+          "bytes": 37026009,
+          "mtime_ns": 1792543250298131805
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/060.mha",
+          "bytes": 59323018,
+          "mtime_ns": 1792543251814139297
+        }
+      },
+      "sha256": {
+        "gt": "fd2298e1f1afe34a12c426728af3a508a6da2236094e22087e53a2ddfeda5752",
+        "stage2": "bd76932ee0aa54a8a1f5fd5ed56753d95eba8c5ddcc1524b6089ea73c4868fd7",
+        "member_01_prediction": "2631fadfdada9e48a0157c822f226850c48bfc1f054d9842144118abca76f8e7",
+        "member_01_probability": "d757d041f9e3f28f5f39fdc4ffbb4729a20d801c3ef3ba98415d00c68c38f2c3",
+        "member_02_prediction": "0d5d81ca6747f6969ff4c15b3ed2f888642d6b4fd073b2417a3d6cec165cccb5",
+        "member_02_probability": "fef46d34774b2d8f3a1dcf72c3211c769f6a57865989491e9e50e08f1b7ab383",
+        "member_03_prediction": "61fe6c22077c80f784826539eaaf7aa355252d0d73cd0b34ad2d02055ed805da",
+        "member_03_probability": "f995cfb101b22d7fd62585945ef012dc761e8ed0a753b29e1b1a1d66ce18151b"
+      }
+    },
+    "074": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part1/074/label.mha",
+          "bytes": 416800,
+          "mtime_ns": 1776873972000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/074.mha",
+          "bytes": 85459315,
+          "mtime_ns": 1792510436069425427
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/074.mha",
+          "bytes": 85459315,
+          "mtime_ns": 1792510536177673129
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/074.mha",
+          "bytes": 46277386,
+          "mtime_ns": 1792510537809677167
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/074.mha",
+          "bytes": 85459315,
+          "mtime_ns": 1792510572909764016
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/074.mha",
+          "bytes": 40680279,
+          "mtime_ns": 1792510574461767857
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/074.mha",
+          "bytes": 85459315,
+          "mtime_ns": 1792543480059267338
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/074.mha",
+          "bytes": 48406573,
+          "mtime_ns": 1792543481503274474
+        }
+      },
+      "sha256": {
+        "gt": "73b2d7c05c2192ad99ce44855e07dbf1c2b7b6eda0024610963cf0d50ed4bb5f",
+        "stage2": "db50ab05342e66a91e9a609710b583ed7116f76966daf5b06d811c04af5a0ade",
+        "member_01_prediction": "8902a687250d13262b298a54d307512f94ce92661da77137e05ca86cec746440",
+        "member_01_probability": "b8cbf0b3e275507fcf27d0693f76c10f4937dfaafb238fb46dea128bf5fd8ffb",
+        "member_02_prediction": "f8ad65ea8328774356d702bbc7ffbb14cbe9beca06f5e5aa0c5425f0a583711c",
+        "member_02_probability": "e26030388f240f4018c11de78c5da3b2ddec19e4fed10f26fa71e39ecf05ec27",
+        "member_03_prediction": "926ebb8d9b257bc4c03c9b2729e89d404ae91df4cd60114d1b3ef3451be701ed",
+        "member_03_probability": "050c41d5d68795462412b2d1bcf6883eedd86372a2651bb6ebeb2439f55bfd1c"
+      }
+    },
+    "076": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part1/076/label.mha",
+          "bytes": 456061,
+          "mtime_ns": 1776873974000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/076.mha",
+          "bytes": 91750787,
+          "mtime_ns": 1792510610081855993
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/076.mha",
+          "bytes": 91750787,
+          "mtime_ns": 1792510711410106713
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/076.mha",
+          "bytes": 24143119,
+          "mtime_ns": 1792510712734109990
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/076.mha",
+          "bytes": 91750787,
+          "mtime_ns": 1792510747782196710
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/076.mha",
+          "bytes": 23322289,
+          "mtime_ns": 1792510749146200086
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/076.mha",
+          "bytes": 91750787,
+          "mtime_ns": 1792543622503971332
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/076.mha",
+          "bytes": 24639364,
+          "mtime_ns": 1792543623559976551
+        }
+      },
+      "sha256": {
+        "gt": "32dd18e1c21c3bcb8039997c25a1cd91e682080e9aabaa9652ef37a448ed4665",
+        "stage2": "0badc6ea1027dc6dfb0e194a0c1b3308d3c35adf1cdeba73e1dd996456ea578b",
+        "member_01_prediction": "a166df3aa7ba20efd2fc2179917afe2e8dac728d32225332f59f7fdacf5b0c8b",
+        "member_01_probability": "7ec02c268bc5353edb0205a1409f86dc4a072efc89f9e1ee5eacdb72ab7521db",
+        "member_02_prediction": "62d152f839d86812d0733cbc9b6c7a4d31669f2e7834f69f3cf0a38aeb7350ce",
+        "member_02_probability": "91e3b51f475ae96005b842567265ac395dc05d01d4802b8989cd5ba4fd4aada9",
+        "member_03_prediction": "f243f71ae312a058aba7b6f5141ea9610917b013708008729aaef8a8277c12e7",
+        "member_03_probability": "922f3e9dbfc02db444618f4062766b09c8bd596460e38cea5ea484a2513da4ec"
+      }
+    },
+    "104": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part2/104/label.mha",
+          "bytes": 371449,
+          "mtime_ns": 1776874000000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/104.mha",
+          "bytes": 69478771,
+          "mtime_ns": 1792510786890293477
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/104.mha",
+          "bytes": 69478771,
+          "mtime_ns": 1792510893878558202
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/104.mha",
+          "bytes": 53940131,
+          "mtime_ns": 1792510895770562884
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/104.mha",
+          "bytes": 69478771,
+          "mtime_ns": 1792510934890659681
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/104.mha",
+          "bytes": 53325220,
+          "mtime_ns": 1792510936522663719
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/104.mha",
+          "bytes": 69478771,
+          "mtime_ns": 1792543771240706424
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/104.mha",
+          "bytes": 60114425,
+          "mtime_ns": 1792543772788714075
+        }
+      },
+      "sha256": {
+        "gt": "1d37ee2eda48a1a3597603f7504c68718c13764337c1f969b4a264786963ee8a",
+        "stage2": "0315335738b318a384723a4fed7c8e9f69e47b9891a2afce12139bc55d7546bf",
+        "member_01_prediction": "b232b89b83e322312416ee14d03f5d2162749ca3d82547e1940de89423ecd020",
+        "member_01_probability": "d5d897566ccb4ba3fca00edfd6d06655fb1499998b765ea62c0a9bf5b45640fa",
+        "member_02_prediction": "d7bfee19848ecf3d0e24fa6d6187ca7652d6fe0a24680fc0ab54e8bbd48e344b",
+        "member_02_probability": "db2f3bf5294d2cb4b9637b1eb09912865a190d2242c859a15fc638e1953ea09f",
+        "member_03_prediction": "4950f3ba439f52d6718cc67017dbba4625ca31b1cab14724b6dc388fbec1db63",
+        "member_03_probability": "718b8f43ca0d6c054ac0dabddf89725702041148f14ed2b89041e9c28af6157c"
+      }
+    },
+    "112": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part2/112/label.mha",
+          "bytes": 430933,
+          "mtime_ns": 1776874008000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/112.mha",
+          "bytes": 91750801,
+          "mtime_ns": 1792511029074892724
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/112.mha",
+          "bytes": 91750801,
+          "mtime_ns": 1792511141339170504
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/112.mha",
+          "bytes": 47116292,
+          "mtime_ns": 1792511143075174800
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/112.mha",
+          "bytes": 91750801,
+          "mtime_ns": 1792511192651297468
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/112.mha",
+          "bytes": 48414015,
+          "mtime_ns": 1792511194935303120
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/112.mha",
+          "bytes": 91750801,
+          "mtime_ns": 1792543971117694261
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/112.mha",
+          "bytes": 53141818,
+          "mtime_ns": 1792543972681701992
+        }
+      },
+      "sha256": {
+        "gt": "49ea0d41f39a3b49307ce8ee2433066b47fcdbdc2600af88b1274ca2d8ee2558",
+        "stage2": "012f0c1ed6e86243facd04f001619eadcad91ac0f87e2d433ca5ef51d56be115",
+        "member_01_prediction": "7a85d32b44f37fed6c08a0774ca3ebbb84adde35467a7baae60d9f545c569448",
+        "member_01_probability": "efe8e1709b62e9ab48bdcf1c3433e4b253f19191d2eaf82be842eb1674564719",
+        "member_02_prediction": "d8d92ad9cd1dc0b86eb4026ff7323ed20a969e2357e7dc2e1efc6446531fbb3b",
+        "member_02_probability": "e41637c50b126df63bdf18589cb517402d21d491139e1b16e43a6856c3fb199e",
+        "member_03_prediction": "5c64f7809fb7115e6b746a2f50add17ea72679e490a31fcb45aea1e216fd6d1e",
+        "member_03_probability": "3d5aa9e7cbadd03ffdaebcc177deee9b21f6b6967193d78d59979d5ee707be42"
+      }
+    },
+    "151": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part2/151/label.mha",
+          "bytes": 300968,
+          "mtime_ns": 1776875892000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/151.mha",
+          "bytes": 20761136,
+          "mtime_ns": 1792511082071023855
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/151.mha",
+          "bytes": 20761136,
+          "mtime_ns": 1792511198439311790
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/151.mha",
+          "bytes": 19270268,
+          "mtime_ns": 1792511199195313660
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/151.mha",
+          "bytes": 20761136,
+          "mtime_ns": 1792511249359437783
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/151.mha",
+          "bytes": 18693052,
+          "mtime_ns": 1792511250111439644
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/151.mha",
+          "bytes": 20761136,
+          "mtime_ns": 1792544017677924374
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/151.mha",
+          "bytes": 20868228,
+          "mtime_ns": 1792544018381927852
+        }
+      },
+      "sha256": {
+        "gt": "bf28b210a2b4bd72b91682db204395e1742b24b56a497d649c2259d79c777813",
+        "stage2": "0486efeb852ac8327f69d2ac9fc4acaa2bb9e8fd70c3f9f61ab7da70f6a8a371",
+        "member_01_prediction": "562f3f9363e57522b87b5982dcec143d268c5ed01e7cb16c02516a696d94b707",
+        "member_01_probability": "08486c04c7bd46e222418feddd90551e1bfa3ec985dfd9aecd5b3d45a440cf29",
+        "member_02_prediction": "5679a607b4425a218f0a564166b29c6e8af0cdfd4449c562298916c4a0bd8588",
+        "member_02_probability": "24dc11c4bf759fe7c03f7c2ad79da3b89bfa051fed50512ae1abdac2e5985968",
+        "member_03_prediction": "2426d197d2881b5c301d73404d6e6e92591f1d61606e93b7cd0271267ca945de",
+        "member_03_probability": "1b052f95d6ffb17b18c15356674b0bcc83e7c8167c1b9a68de1ba3494d7a7abe"
+      }
+    },
+    "154": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part2/154/label.mha",
+          "bytes": 376335,
+          "mtime_ns": 1776875894000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/154.mha",
+          "bytes": 23290936,
+          "mtime_ns": 1792511188047286077
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/154.mha",
+          "bytes": 23290936,
+          "mtime_ns": 1792511314255598358
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/154.mha",
+          "bytes": 45550889,
+          "mtime_ns": 1792511315595601674
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/154.mha",
+          "bytes": 23290936,
+          "mtime_ns": 1792511368299732082
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/154.mha",
+          "bytes": 46209386,
+          "mtime_ns": 1792511369623735358
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/154.mha",
+          "bytes": 23290936,
+          "mtime_ns": 1792544101766339958
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/154.mha",
+          "bytes": 51600596,
+          "mtime_ns": 1792544102978345948
+        }
+      },
+      "sha256": {
+        "gt": "b9939a159a4ab6fa7e6ed9450b94262767039c8498b95245cb77bd977937fb92",
+        "stage2": "56a8d881a48e69c1866c97737868689dad2ce64f5518805c09c22defb671166e",
+        "member_01_prediction": "79bcedc9e8df11e88603023c2e3fa51dda3f6a4b9327e2842d2409bd83f0ec07",
+        "member_01_probability": "0353d0a84bb381e09017fb593222e4f6764c8eba75a2007da39db1a61065bdbb",
+        "member_02_prediction": "1c92b5e40f55b9c1322664da0809e2e8ec7a20441f41ed9b7f1c226d04497112",
+        "member_02_probability": "23c1842e464ff7accdda7e8f17142b43d25aa0145c9998e2a754112344040c46",
+        "member_03_prediction": "cb29d0482189057aebf258b6f3d94d4c2e89fef9e16095f3e30870b7051c94dd",
+        "member_03_probability": "3726ef731b25a99d147f561e89f5825a966c7eb0ca29159058af63412b5a1f4a"
+      }
+    },
+    "167": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part2/167/label.mha",
+          "bytes": 347882,
+          "mtime_ns": 1776875904000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/167.mha",
+          "bytes": 24631759,
+          "mtime_ns": 1792511297259556304
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/167.mha",
+          "bytes": 24631759,
+          "mtime_ns": 1792511428391880770
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/167.mha",
+          "bytes": 48294384,
+          "mtime_ns": 1792511429767884175
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/167.mha",
+          "bytes": 24631759,
+          "mtime_ns": 1792511483660017523
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/167.mha",
+          "bytes": 45641751,
+          "mtime_ns": 1792511485032020917
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/167.mha",
+          "bytes": 24631759,
+          "mtime_ns": 1792544184626749473
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/167.mha",
+          "bytes": 49013275,
+          "mtime_ns": 1792544185886755700
+        }
+      },
+      "sha256": {
+        "gt": "0cca17080c3599131b756e116b18732226c48b733fb2b726e3b743cb2e2b6c67",
+        "stage2": "c5c7d939b1dbbbd76ada40e878ca2df7cc6b010bddb75a0b51085b82fc958a0e",
+        "member_01_prediction": "727774505bf5173c7398a96c8117369003fa5a13696fc279035788d440ad7b27",
+        "member_01_probability": "e7b2cc5b6ee0d8501c91cc9c5bbea34f49682da238cc7b405bc527bd57369401",
+        "member_02_prediction": "01c0d3586bee7f4d9188e7c1f0f1e8350c2f8a8160e6f3a52a4e46cbb86ee7b2",
+        "member_02_probability": "de8c84d35a7d4dcffbf057b5dd0bcd761e71d6f8ab9cf373da58d820ba9e1012",
+        "member_03_prediction": "a3a0abbebd2120e1e35b745e1c594dddfc10e5e32fcdbfbd48a060c0dc578cbc",
+        "member_03_probability": "cfde323dc886ef92dd05779bb26e4d2f7c57087640a090a281c48ce19a212d15"
+      }
+    },
+    "172": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part2/172/label.mha",
+          "bytes": 291588,
+          "mtime_ns": 1776875912000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/172.mha",
+          "bytes": 17959878,
+          "mtime_ns": 1792511385243774007
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/172.mha",
+          "bytes": 17959878,
+          "mtime_ns": 1792511519044105075
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/172.mha",
+          "bytes": 38252421,
+          "mtime_ns": 1792511520096107678
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/172.mha",
+          "bytes": 17959878,
+          "mtime_ns": 1792511575044243638
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/172.mha",
+          "bytes": 37639339,
+          "mtime_ns": 1792511576120246301
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/172.mha",
+          "bytes": 17959878,
+          "mtime_ns": 1792544252215083511
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/172.mha",
+          "bytes": 41464909,
+          "mtime_ns": 1792544253243088592
+        }
+      },
+      "sha256": {
+        "gt": "a3724046210f9ef7b6c1f53e750f15262ff03cf8d35832d2151a2685d0dfc58b",
+        "stage2": "72600ede37e7d6471c2c1a02b5debc0dd913199e06f4c46a135e21fd1549429b",
+        "member_01_prediction": "033cf03af7611bb9c37f590c4df74a33320150f8a47ddb0d313cb8d4ef70cccc",
+        "member_01_probability": "95c59677098af2694b5d6fe6f3519a819036ac3976acde24d414b64f095824b2",
+        "member_02_prediction": "434fd45fb3b65a2335c1227d8e91a975d86e0de62aa8340f8fd029dde174e256",
+        "member_02_probability": "a59cfe0613efdb129a3c87fbfef9a4e7bcdf00ab8c0f7c4bff9ee7876854bb1e",
+        "member_03_prediction": "882c856020532bd9b5ad9ac8afcc9578abda03e04766fbe37517c2a3fa255f40",
+        "member_03_probability": "73004a04a2e10f5fda57e4232452509d806f11806716476d705114145faed6b6"
+      }
+    },
+    "177": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part2/177/label.mha",
+          "bytes": 238980,
+          "mtime_ns": 1776875920000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/177.mha",
+          "bytes": 14424628,
+          "mtime_ns": 1792511464139969224
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/177.mha",
+          "bytes": 14424628,
+          "mtime_ns": 1792511599784304854
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/177.mha",
+          "bytes": 35493039,
+          "mtime_ns": 1792511600868307536
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/177.mha",
+          "bytes": 14424628,
+          "mtime_ns": 1792511655668443130
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/177.mha",
+          "bytes": 33002606,
+          "mtime_ns": 1792511656648445555
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/177.mha",
+          "bytes": 14424628,
+          "mtime_ns": 1792544314719392421
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/177.mha",
+          "bytes": 32547166,
+          "mtime_ns": 1792544315495396257
+        }
+      },
+      "sha256": {
+        "gt": "786e1ab64780ddf15c7940552d9450f1f0d88d0a384456486b716e6449e691c5",
+        "stage2": "a4d978b38664c3e184277ccd02fcb2b361f1cc9f7474de082c36bff039f2d4cb",
+        "member_01_prediction": "dab2d5f0bffe6f1ba0f21622fdfc118e14ca2221f966850f43bca8dfc7ad19b9",
+        "member_01_probability": "30fb865df9016c093d76b66904c4259676cd5f5ecef0b62fa7ba827df937948b",
+        "member_02_prediction": "e56893512a21c875a39922ba467c45c8d79c3d8434b65bc6ec45984057745647",
+        "member_02_probability": "f0e0fcbd5b1a40e18f2a66ba13866d4233cbe5b0879fa92cb3603421a38b5f7c",
+        "member_03_prediction": "b54a6356d198b60f1e1c3bca4903174c3c2a98b4f2ac08b6a3bb4b1b0374eb38",
+        "member_03_probability": "83522afa9ff346a2e1259279da243ab4a53a8eebd386de32ed0da8dac33e807d"
+      }
+    },
+    "193": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part2/193/label.mha",
+          "bytes": 197575,
+          "mtime_ns": 1776875938000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/193.mha",
+          "bytes": 11892008,
+          "mtime_ns": 1792511533516140883
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/193.mha",
+          "bytes": 11892008,
+          "mtime_ns": 1792511672192484016
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/193.mha",
+          "bytes": 28913336,
+          "mtime_ns": 1792511673092486243
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/193.mha",
+          "bytes": 11892008,
+          "mtime_ns": 1792511729176625015
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/193.mha",
+          "bytes": 27227572,
+          "mtime_ns": 1792511730012627083
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/193.mha",
+          "bytes": 11892008,
+          "mtime_ns": 1792544370575668476
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/193.mha",
+          "bytes": 30359914,
+          "mtime_ns": 1792544371411672608
+        }
+      },
+      "sha256": {
+        "gt": "2ffcc6aedf8d8163e6f743248e76a73cfa947cd206ff479f43ae8e04e6540540",
+        "stage2": "7f4ef0b79e33824694dd42ee7286f89babc892ba527fd99dbc5e1caf655d297e",
+        "member_01_prediction": "4ca3c1ba47a3c92545cd2f1b697da1be005b81f868af1d24dd9a9673a6e3cb28",
+        "member_01_probability": "ec2064fb88bdac05dbe6f036b0a70a3ff7f98376fa460a135c38acf6a401595c",
+        "member_02_prediction": "9411bedca5b5719ae4b40bd42bf4e09b9b5b2dbacc7acc620961ce8cba1b2f61",
+        "member_02_probability": "5281b1f617a59b3816add9784424bf5e97cdf17c0e40228432142895f9ae6fbd",
+        "member_03_prediction": "6f0d98156ec5fe5b330bf151b8b3bc44539d2975062fd864eed0a78eccbc9683",
+        "member_03_probability": "440be68495ef8bf2acfbf46a2b0aa4d3ef84c33364938fea89cb0bc11740427b"
+      }
+    },
+    "254": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part3/254/label.mha",
+          "bytes": 185511,
+          "mtime_ns": 1776875948000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/254.mha",
+          "bytes": 60817758,
+          "mtime_ns": 1792511650684430798
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/254.mha",
+          "bytes": 60817758,
+          "mtime_ns": 1792511795572789301
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/254.mha",
+          "bytes": 24890482,
+          "mtime_ns": 1792511796644791954
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/254.mha",
+          "bytes": 60817758,
+          "mtime_ns": 1792511850036924066
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/254.mha",
+          "bytes": 26131507,
+          "mtime_ns": 1792511851188926916
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/254.mha",
+          "bytes": 60817758,
+          "mtime_ns": 1792544462412122353
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/254.mha",
+          "bytes": 30237925,
+          "mtime_ns": 1792544463396127217
+        }
+      },
+      "sha256": {
+        "gt": "ec213102c4eee39661c83b37efabd548bf49448484af3ba3da9ca3101119e6aa",
+        "stage2": "406c44fb96dc81cc742a4801f30581a6a7466fcdb5e7ef1d8f70932b62e27cd0",
+        "member_01_prediction": "e242c5a6141e60d639f675fa06f1d2094f16026efabf8d7d19157508f9ffc468",
+        "member_01_probability": "61520854145226deb856af9b0366d68ba00279ec35eaa1655a42a49d2ddfba87",
+        "member_02_prediction": "4440260ed90883aa6f1df9b7b432c7397ded2ebcfec292122aa36a24116cfc58",
+        "member_02_probability": "3e5471000236eea61d6d77122a521f1cf9ccdbb1de676e1f25af1402cee543c9",
+        "member_03_prediction": "9553bc6f81a134be02f1019d62a4ffb40c0ac1f52b1ac2b5bc60c238ada6f390",
+        "member_03_probability": "6b3880df07a26f872d994a8b340bde0123c5ff62025866187dabc019a0c2e009"
+      }
+    },
+    "255": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part3/255/label.mha",
+          "bytes": 95137,
+          "mtime_ns": 1776875948000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/255.mha",
+          "bytes": 28442982,
+          "mtime_ns": 1792511738280647541
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/255.mha",
+          "bytes": 28442982,
+          "mtime_ns": 1792511887817017547
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/255.mha",
+          "bytes": 17823967,
+          "mtime_ns": 1792511888349018863
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/255.mha",
+          "bytes": 28442982,
+          "mtime_ns": 1792511942553152982
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/255.mha",
+          "bytes": 18790917,
+          "mtime_ns": 1792511943133154419
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/255.mha",
+          "bytes": 28442982,
+          "mtime_ns": 1792544530240457576
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/255.mha",
+          "bytes": 17616854,
+          "mtime_ns": 1792544530680459751
+        }
+      },
+      "sha256": {
+        "gt": "83028bec8d29569d7210f2d95d4eedd2ef811988fae2a48516bbab42267602a6",
+        "stage2": "cc88d5bf754b6ff8ed92c4718f629f0c71544baa100d6833c7f1c34eba505354",
+        "member_01_prediction": "ae408cf34d2046180ffe81b5669d6dfd0a756e2d80be26ea7f8ebda6efef1b21",
+        "member_01_probability": "4cbcb8874bd29560e8f3b09fc02fff4d39fde9365925e63d84d98320312f6afa",
+        "member_02_prediction": "f66914fddd3e64644a26b8c7c05f3447f4f08a7058d1d1669b0263a08eb30d43",
+        "member_02_probability": "72f51b704d50ac526d2d0df1dd612fbfade7c4fafa2144f432274704bdd0e44d",
+        "member_03_prediction": "9c8b359c69f58f9493967527fc0c531abb2cd986f74442707f5e87a979f483a1",
+        "member_03_probability": "bc19c4e7806152b4583d3241d4726596cc1bfa8795115a36904fbb87c68dbb66"
+      }
+    },
+    "259": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part3/259/label.mha",
+          "bytes": 115626,
+          "mtime_ns": 1776875954000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/259.mha",
+          "bytes": 40501587,
+          "mtime_ns": 1792511805224813183
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/259.mha",
+          "bytes": 40501587,
+          "mtime_ns": 1792511958621192740
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/259.mha",
+          "bytes": 22660080,
+          "mtime_ns": 1792511959585195126
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/259.mha",
+          "bytes": 40501587,
+          "mtime_ns": 1792512015233332818
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/259.mha",
+          "bytes": 21162584,
+          "mtime_ns": 1792512016105334975
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/259.mha",
+          "bytes": 40501587,
+          "mtime_ns": 1792544582512715918
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/259.mha",
+          "bytes": 25123726,
+          "mtime_ns": 1792544583264719634
+        }
+      },
+      "sha256": {
+        "gt": "ba407eac6100cb83e17764a0bf96ad255e98d53d6bb2480074ae34caca48802a",
+        "stage2": "c31d5447c4b5162c88c3070a016d0d10323dc5cb1d8a1d6e35f86112e437b35f",
+        "member_01_prediction": "b84d38130e1cff0c50d4ec4df080df6c074d43f658de4e692fd6726ba79141fe",
+        "member_01_probability": "e7e4718ff37f4f411580dc31dccf6220f1ebeeb66978296f05f09eca57f7e890",
+        "member_02_prediction": "f1f0be967c40e75b38ae04177eb0456817844058a513987d8f49c0ac272990aa",
+        "member_02_probability": "5a993ffe0fe29f7c525d08e3564dc4fcfa289c2948c573aa7bb112717f00bd8d",
+        "member_03_prediction": "d4aa1312c5318c08f8cff779e5168550b8fe10224be0f2f591622770b18f8ec1",
+        "member_03_probability": "caea99872539c8b1758277f2802150e95c40f85924d7c768956082d5ad563c71"
+      }
+    },
+    "262": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part3/262/label.mha",
+          "bytes": 105558,
+          "mtime_ns": 1776875958000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/262.mha",
+          "bytes": 32244067,
+          "mtime_ns": 1792511853608932904
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/262.mha",
+          "bytes": 32244067,
+          "mtime_ns": 1792512009137317735
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/262.mha",
+          "bytes": 13881821,
+          "mtime_ns": 1792512009749319250
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/262.mha",
+          "bytes": 32244067,
+          "mtime_ns": 1792512064449454596
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/262.mha",
+          "bytes": 14738348,
+          "mtime_ns": 1792512065169456377
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/262.mha",
+          "bytes": 32244067,
+          "mtime_ns": 1792544619580899117
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/262.mha",
+          "bytes": 15985291,
+          "mtime_ns": 1792544620092901648
+        }
+      },
+      "sha256": {
+        "gt": "4d21564891b0b678b0532003d280c500fbc7002ac10ef513252e501ead0e2a95",
+        "stage2": "a554bf93be2e7d5874b2adfada20cd434da4ac84a46d89660a7c4bbfd25a2777",
+        "member_01_prediction": "3e56203deb593152774a199fe185f793f9b227ccfddb584c48b2b75f9c8cabc1",
+        "member_01_probability": "412a848317d01a0767c15e1dd880682f54bca70896aa9d6d506747e553cff780",
+        "member_02_prediction": "60c1d25c4b9daf77e3110c13bef97feb39a1f59decccd35d2f07896b98d09077",
+        "member_02_probability": "875585ea924be55983235e6292986294646cde4884c25bd2c2c62005ce247e09",
+        "member_03_prediction": "b09d95f75db82cf459edd84b5b78526edc4781e0ad32a08d0b1934c8a3ebb0ea",
+        "member_03_probability": "f238ba019c86725aef5aa435c017ebb01c5fc3fe53c02e35eae3d39d58073a47"
+      }
+    },
+    "268": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part3/268/label.mha",
+          "bytes": 128344,
+          "mtime_ns": 1776873834000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/268.mha",
+          "bytes": 39190880,
+          "mtime_ns": 1792511966369211912
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/268.mha",
+          "bytes": 39190880,
+          "mtime_ns": 1792512122281597692
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/268.mha",
+          "bytes": 30209093,
+          "mtime_ns": 1792512123249600088
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/268.mha",
+          "bytes": 39190880,
+          "mtime_ns": 1792512177565734484
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/268.mha",
+          "bytes": 26689777,
+          "mtime_ns": 1792512178433736631
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/268.mha",
+          "bytes": 39190880,
+          "mtime_ns": 1792544703405313395
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/268.mha",
+          "bytes": 29921958,
+          "mtime_ns": 1792544704257317606
+        }
+      },
+      "sha256": {
+        "gt": "6f9b0a7606344cb084741c2002d473e191dc84aab3e17aadaa05fd79e534aa3b",
+        "stage2": "891be031e0e644e714af374a0f24d19b8af0b38d7c1a6e8c37e78d78c0a70c2d",
+        "member_01_prediction": "302f41d886422846dbf99310304d2fb690270ff2aabbe04b2c1245e5317caf9d",
+        "member_01_probability": "61023d17c21637bce8d8188e574b3290de9ba58f0dc94cdaeeff6dfc5a4a4612",
+        "member_02_prediction": "9f16d0fa08afa602978d75c731f4f3e5575e5c2396a338ee6e7c05818723853f",
+        "member_02_probability": "9d8530377b34e2e83be74b01c5897eeb64a328f75ee94f5f902821bb72dc1513",
+        "member_03_prediction": "fbc6500a80f0daa9dc460727bcfef425dc79b669017b0a9f75c7f6805498fde8",
+        "member_03_probability": "4e45600b9c644effd4eeb170a5b5d5af0a989c71f66a971b4908a5a7dcb86640"
+      }
+    },
+    "292": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part3/292/label.mha",
+          "bytes": 272329,
+          "mtime_ns": 1776873874000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/292.mha",
+          "bytes": 56496442,
+          "mtime_ns": 1792512092493523986
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/292.mha",
+          "bytes": 56496442,
+          "mtime_ns": 1792512246881905995
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/292.mha",
+          "bytes": 31103577,
+          "mtime_ns": 1792512247977908708
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/292.mha",
+          "bytes": 56496442,
+          "mtime_ns": 1792512301762041787
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/292.mha",
+          "bytes": 30799099,
+          "mtime_ns": 1792512302822044410
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/292.mha",
+          "bytes": 56496442,
+          "mtime_ns": 1792544793405758199
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/292.mha",
+          "bytes": 37546873,
+          "mtime_ns": 1792544794369762963
+        }
+      },
+      "sha256": {
+        "gt": "3251eb71fe4636ef0778c9b85a701735d6f894bb56737d749b2c5deda1e07873",
+        "stage2": "8e6386319ddc2b27509ef3a291db2838d136fc70fd1ca881482843cabeed9b5f",
+        "member_01_prediction": "8c350733dbae2ce5f88ba48e939eafbcc7bdc2e47e193628fb8c171c13172179",
+        "member_01_probability": "bffe98af852a075d21395aed21839b5e5214967629f2df99e7919387cd6610f5",
+        "member_02_prediction": "fed9d8d6dc79dbb6553a8338ff54525954ab9673ebfa071cc4d3cfd5fd68b7da",
+        "member_02_probability": "571321cd54b020ade31e751f36c9de4d8860d64288124c36316dcc38f4c6c6c8",
+        "member_03_prediction": "aa54f82a0567000fe38d1b4c2e1a794bac891acaf461cdbf8939221fe7185c32",
+        "member_03_probability": "c12a6e88e3591c481ed7497deef74371814248ea038a3062a7ef1367dd227d96"
+      }
+    },
+    "293": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part3/293/label.mha",
+          "bytes": 459145,
+          "mtime_ns": 1776873874000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/293.mha",
+          "bytes": 109718803,
+          "mtime_ns": 1792512277229981088
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/293.mha",
+          "bytes": 109718803,
+          "mtime_ns": 1792512444466394887
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/293.mha",
+          "bytes": 118133210,
+          "mtime_ns": 1792512447914403418
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/293.mha",
+          "bytes": 109718803,
+          "mtime_ns": 1792512501238535361
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/293.mha",
+          "bytes": 115863282,
+          "mtime_ns": 1792512504654543813
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/293.mha",
+          "bytes": 109718803,
+          "mtime_ns": 1792544943630500644
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/293.mha",
+          "bytes": 117632726,
+          "mtime_ns": 1792544946442514541
+        }
+      },
+      "sha256": {
+        "gt": "e8a10c942789926c1a8f64b13c74c3740c812502ba2efa8c828eb6ccb15d9f7d",
+        "stage2": "8c4c1cc5c53dbb12dc7e00eceef1acba59a6edb1226744a933b10bf8250f1560",
+        "member_01_prediction": "521bbde274d5cb7afd26efc59169c3b7067b0ba0274a6617042552c680a82ad8",
+        "member_01_probability": "a6b6ddf4bef1dedbc97dec9be372bee9b7a6655161c45d12416a56dadf002bfe",
+        "member_02_prediction": "650daf2055e5c7e89e55c691aa34d71d8042de84fa9c4cc5f4807574e0367a49",
+        "member_02_probability": "af3394443d720df93d6b6649116ea75607d26f4fde18f2c60c4339c0d5f42435",
+        "member_03_prediction": "9247b4f08babeae0efbcde68d3eab0a518c99cbc28a9dde04b1561ce1ef25971",
+        "member_03_probability": "3396f7f14cded8aca38c5a6a0dbb361bee6b57ae9f116c8c9e68368c6099ff3e"
+      }
+    },
+    "305": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part3/305/label.mha",
+          "bytes": 112485,
+          "mtime_ns": 1776873838000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/305.mha",
+          "bytes": 26214758,
+          "mtime_ns": 1792512338558132834
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/305.mha",
+          "bytes": 26214758,
+          "mtime_ns": 1792512511534560836
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/305.mha",
+          "bytes": 26431039,
+          "mtime_ns": 1792512512442563083
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/305.mha",
+          "bytes": 26214758,
+          "mtime_ns": 1792512569190703497
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/305.mha",
+          "bytes": 24953727,
+          "mtime_ns": 1792512570098705745
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/305.mha",
+          "bytes": 26214758,
+          "mtime_ns": 1792544996554762208
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/305.mha",
+          "bytes": 36142550,
+          "mtime_ns": 1792544997474766755
+        }
+      },
+      "sha256": {
+        "gt": "d99a164f8db173c9f08b59140af4963ad0db201a2377e0cb87933724923f1e7c",
+        "stage2": "191f28447eba3e9e55b8db4e381ab024438cff8aac5f82998199e1024dafeb89",
+        "member_01_prediction": "a4a38167331f64ab65cd9c7ca9fc1c73cd914871627744c0c2226f48a957252e",
+        "member_01_probability": "bc18b17e7bdc709c43969215d478ea10e574756dc1fb79c87b7877a912159ea8",
+        "member_02_prediction": "1aa77c135a57de2aec0a51300f37fadfdedd12f6e4122cc8d71fbf628b540c84",
+        "member_02_probability": "4bf519eb26934e7c32e8a43c8e776181326f7be802af2fc32da15bf8e2cf04b7",
+        "member_03_prediction": "759c1977b80d85c731a6d716c699371050c80635f26c796104234515c31c9be7",
+        "member_03_probability": "9ca750beeaacd60118cf1c9a699c1a33dc8e6ec7cc637a2b6fab6cad3a94ac16"
+      }
+    },
+    "317": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part3/317/label.mha",
+          "bytes": 113014,
+          "mtime_ns": 1776873840000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/317.mha",
+          "bytes": 29360472,
+          "mtime_ns": 1792512397502278682
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/317.mha",
+          "bytes": 29360472,
+          "mtime_ns": 1792512570830707555
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/317.mha",
+          "bytes": 18583564,
+          "mtime_ns": 1792512571518709258
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/317.mha",
+          "bytes": 29360472,
+          "mtime_ns": 1792512630730855768
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/317.mha",
+          "bytes": 17881568,
+          "mtime_ns": 1792512631354857313
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/317.mha",
+          "bytes": 29360472,
+          "mtime_ns": 1792545043258993031
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/317.mha",
+          "bytes": 20391828,
+          "mtime_ns": 1792545043854995977
+        }
+      },
+      "sha256": {
+        "gt": "77b656a3735f6be10f6d5462cf3040e4fc0c130f529e0f713e591c38fac5ed83",
+        "stage2": "6c700b82242159393bc3982876f30ba9c875f5d156d2c64d3ee5767f40925350",
+        "member_01_prediction": "fa8d920a191e5bd1e07fc83d7c2d71bc13cbbbf9a3abd808f4badab30fbbc874",
+        "member_01_probability": "978646886c6df6be9943e4ed9ded52bffce63c35387c3d24da32e18dc22c0922",
+        "member_02_prediction": "b61a6eadcfab51a6f1e42f165d5518c89ee24b10da6c7f2d2ccbaffb9994ac5b",
+        "member_02_probability": "419ae1bf9e56a306bc638f7a8c596e71e51302958ee9d8bdd10cf4b92fcfffe2",
+        "member_03_prediction": "fef06a1357375aeb112007fc7fcb89a290f9acfde2375a4f033c92cdde2a0135",
+        "member_03_probability": "ea9b586facb27f2cbb414238a08ba303b180dc3c264839327300df8c347b3962"
+      }
+    },
+    "327": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part3/327/label.mha",
+          "bytes": 98156,
+          "mtime_ns": 1776873842000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/327.mha",
+          "bytes": 31064417,
+          "mtime_ns": 1792512449866408248
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/327.mha",
+          "bytes": 31064417,
+          "mtime_ns": 1792512629518852770
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/327.mha",
+          "bytes": 17093685,
+          "mtime_ns": 1792512630186854422
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/327.mha",
+          "bytes": 31064417,
+          "mtime_ns": 1792512689095000181
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/327.mha",
+          "bytes": 17044781,
+          "mtime_ns": 1792512689795001913
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/327.mha",
+          "bytes": 31064417,
+          "mtime_ns": 1792545087927213792
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/327.mha",
+          "bytes": 20674404,
+          "mtime_ns": 1792545088579217014
+        }
+      },
+      "sha256": {
+        "gt": "761c49cf00397d2487b9f805ba9d8b5fc041fb4b1c69dcb498a888ce68533122",
+        "stage2": "4bf850cfdb462f218b6d4b09b95d85b2456a57799f1084deda7ed2bd47cc7eda",
+        "member_01_prediction": "f5badffafdc961c20f684791ffc928daa72785d77276f4e5b069cadfe8e67e74",
+        "member_01_probability": "b282c24a7e7bd126ccf81df0fc664cdaf30d59b0f692811b63bf1322c5d30567",
+        "member_02_prediction": "fd01ba24b443038a0ce91dd86c4ac6fc2984fc800b0e7f5994e87d90afb0d642",
+        "member_02_probability": "43a496b571c91447088fba9e8d1e38a117b9117cfab069037f75e3ed3a457c20",
+        "member_03_prediction": "a0fffe8b058e401bc18148d75d01da06e7616c0db25307d9d6e6c28a6700542a",
+        "member_03_probability": "097d585c316eaab347b7ff814f4229f32c89c15e76273f9ef2ee2dd3f3adb41e"
+      }
+    },
+    "336": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part4/336/label.mha",
+          "bytes": 207592,
+          "mtime_ns": 1776873842000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/336.mha",
+          "bytes": 81789298,
+          "mtime_ns": 1792512608518800808
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/336.mha",
+          "bytes": 81789298,
+          "mtime_ns": 1792512785907239727
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/336.mha",
+          "bytes": 15063223,
+          "mtime_ns": 1792512786943242292
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/336.mha",
+          "bytes": 81789298,
+          "mtime_ns": 1792512844139383814
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/336.mha",
+          "bytes": 17033191,
+          "mtime_ns": 1792512845103386199
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/336.mha",
+          "bytes": 81789298,
+          "mtime_ns": 1792545206999802276
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/336.mha",
+          "bytes": 18338978,
+          "mtime_ns": 1792545207867806567
+        }
+      },
+      "sha256": {
+        "gt": "22cd6fe7e03c9a03cc27bf606951321e21f10e34b4c688630e6a8d7d0047ced7",
+        "stage2": "5aa1114422f09e2c4aaaf48f1d7215629fee5dee27a150b8a5675bb2327e5f46",
+        "member_01_prediction": "a19afd8789d9850ea06c8bac96bfaf7106e2f9dc35c1fa0b198e70d31d9ee6e6",
+        "member_01_probability": "a0d3a5e4f3bfada158716c33c455107ddc939a3be0037c13554fa286ef0fef99",
+        "member_02_prediction": "099bd9de3cd1a624f713b5e6885c51f0ce62cfa4fc6e136d0440762456093113",
+        "member_02_probability": "f4916cebd31c8561ca63f55d5cbc3ab56ca199af304a17476eff90df479e62fd",
+        "member_03_prediction": "38aaf389b74fb1fb03e0066435fb0cf7fcad747bb775711596dd016e098d65b4",
+        "member_03_probability": "e7ba5d6305e5e3b10da08b0658e58b9bf5bb4f55d1d2b7b49e7eb025c364f4b7"
+      }
+    },
+    "339": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part4/339/label.mha",
+          "bytes": 140622,
+          "mtime_ns": 1776873842000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/339.mha",
+          "bytes": 42074456,
+          "mtime_ns": 1792512683850987206
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/339.mha",
+          "bytes": 42074456,
+          "mtime_ns": 1792512865855437547
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/339.mha",
+          "bytes": 23636732,
+          "mtime_ns": 1792512866711439665
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/339.mha",
+          "bytes": 42074456,
+          "mtime_ns": 1792512919583570489
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/339.mha",
+          "bytes": 18912302,
+          "mtime_ns": 1792512920375572448
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/339.mha",
+          "bytes": 42074456,
+          "mtime_ns": 1792545275004138370
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/339.mha",
+          "bytes": 24972933,
+          "mtime_ns": 1792545275720141908
+        }
+      },
+      "sha256": {
+        "gt": "8cc0bbc1a4aa42a564e2fd5a565a825e55b570f93d07a25fa22562193902dc78",
+        "stage2": "07c3620e4119cd14f6ba804d557ae0c4331d7b9bff39ed9323aeb89a0c97d7b1",
+        "member_01_prediction": "ac84a8025bc67c29c7628e30b788b860838aa4817cbb63432028c8a6a21d6157",
+        "member_01_probability": "03b79d7c89365c299e849f9d6de0ed2f17a4e0ffd2f30cc92c65287afc494961",
+        "member_02_prediction": "9033e99a4c9312e01f903c54a8a58f87291e7b647693a84c20a0811d4caf7db2",
+        "member_02_probability": "fa20b1abe77dadc364c4b364ef1ef0f26986fc57145bbe5e12796bd96fdcf97f",
+        "member_03_prediction": "a48c98d499b784f0795610b810cbd43c6c09008af5710eb0b872f976531ed520",
+        "member_03_probability": "ffd242774d1ac1fc4280a66b5dd896f4e832d2157e3e07bd47b390ba72d0c6b8"
+      }
+    },
+    "340": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part4/340/label.mha",
+          "bytes": 103497,
+          "mtime_ns": 1776873844000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/340.mha",
+          "bytes": 29884776,
+          "mtime_ns": 1792512780467226267
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/340.mha",
+          "bytes": 29884776,
+          "mtime_ns": 1792512961195673451
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/340.mha",
+          "bytes": 23741871,
+          "mtime_ns": 1792512961971675372
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/340.mha",
+          "bytes": 29884776,
+          "mtime_ns": 1792513019047816597
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/340.mha",
+          "bytes": 22940854,
+          "mtime_ns": 1792513019787818428
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/340.mha",
+          "bytes": 29884776,
+          "mtime_ns": 1792545348512501665
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/340.mha",
+          "bytes": 24653669,
+          "mtime_ns": 1792545349140504769
+        }
+      },
+      "sha256": {
+        "gt": "4d35571bcac7101d40735bb1651638367c3e4f859d4f7f80da09b121a2dbd635",
+        "stage2": "ffb48276a33fe5c20270cd72eba5b40d65694040578d97166dd5a6517ac057c0",
+        "member_01_prediction": "9af9233a1015f33344c011ec97e39053e2c13116747562d99f056b2eab21f51a",
+        "member_01_probability": "2d4745c07f21ea2c6e13e5dfa8b96d1dfd788920be581c4aafabc7568a6a7822",
+        "member_02_prediction": "46d2900bb68fd74a92385a29f7c6863f792a27ed01ac9d126f2c2de77e5d1ade",
+        "member_02_probability": "6715913f4f21f4b513a9ab9060822a797b036e20b55742e9cb28110c82e918a6",
+        "member_03_prediction": "c77c842eb8de91efdaf6c097b2d33d41bc12c541fd7849f16d9d8c5fee7dfaca",
+        "member_03_probability": "23a802b57bb772252f4dd5e5f4e870a316752fc1f0e1a486b3a3df4cd5257bd7"
+      }
+    },
+    "342": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part4/342/label.mha",
+          "bytes": 112764,
+          "mtime_ns": 1776873844000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/342.mha",
+          "bytes": 38273391,
+          "mtime_ns": 1792512897571516024
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/342.mha",
+          "bytes": 38273391,
+          "mtime_ns": 1792513078527963771
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/342.mha",
+          "bytes": 28353040,
+          "mtime_ns": 1792513079439966028
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/342.mha",
+          "bytes": 38273391,
+          "mtime_ns": 1792513133784100494
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/342.mha",
+          "bytes": 24102913,
+          "mtime_ns": 1792513134540102364
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/342.mha",
+          "bytes": 38273391,
+          "mtime_ns": 1792545441712962272
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/342.mha",
+          "bytes": 27783069,
+          "mtime_ns": 1792545442432965831
+        }
+      },
+      "sha256": {
+        "gt": "237747b924d222a28b992a1362b55e7f9856a55ed7ef137a479c3891e14ab77b",
+        "stage2": "c8ed25bf92c8d926636ffe635c9ccb17087446b21a981e6685a4b7db295ee2f0",
+        "member_01_prediction": "74dfcdad942d17f95b2f4d22a0e2fc2668842896cd3c456e2a24d4a4c7c14fae",
+        "member_01_probability": "f84cc01fac90f08b0ef6b88273824fc695c052b591d135938a31ebe2c5f94d8c",
+        "member_02_prediction": "c949d8e1d523f1c796b3ba765c3f314b01f45dbc67f3ae339ddf9e5963d1cd73",
+        "member_02_probability": "ef54e1f0254c999dc918690cf5971b8cf4a1ed97b4e08b2341bdaa8caeb09351",
+        "member_03_prediction": "dea0efe0f17727b427ba9b36f1c3b2152a2b402a12c6d3265994fe74965583a5",
+        "member_03_probability": "0ca14826dfb28a91ee30cd2bae03560fcb76bd03f62b4536df38c470eb6ba355"
+      }
+    },
+    "355": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part4/355/label.mha",
+          "bytes": 117985,
+          "mtime_ns": 1776873846000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/355.mha",
+          "bytes": 34734436,
+          "mtime_ns": 1792512957067663237
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/355.mha",
+          "bytes": 34734436,
+          "mtime_ns": 1792513143924125583
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/355.mha",
+          "bytes": 17928544,
+          "mtime_ns": 1792513144624127315
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/355.mha",
+          "bytes": 34734436,
+          "mtime_ns": 1792513196868256585
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/355.mha",
+          "bytes": 19872442,
+          "mtime_ns": 1792513197640258495
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/355.mha",
+          "bytes": 34734436,
+          "mtime_ns": 1792545491653209087
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/355.mha",
+          "bytes": 21087330,
+          "mtime_ns": 1792545492253212053
+        }
+      },
+      "sha256": {
+        "gt": "c9854f8b8ad2f6445a5e3b9a8104ee1e20e116bef2ca4f266a2d691751dcbc4e",
+        "stage2": "54324429e2dc0216bbb9d867e68182c0254bcaead60e364229b59779578305c5",
+        "member_01_prediction": "3790dd7b6fb339f9e6341de3d705807eafad96fba7f2bb033fd22b38f85323b9",
+        "member_01_probability": "abf1d94773860ac5d853385a2e76ecd7efa9bb8b8008c56b2f1a2008c76230ee",
+        "member_02_prediction": "92b5d5fb689ec8a75a84c9b856bbcb28e827c2f01b5c369d10f2bc0faf518933",
+        "member_02_probability": "d17009874d16d8f9684fc09e0e9018201cc5a952a968bb1d58c2220632181ff7",
+        "member_03_prediction": "da4e07cb96216ccc984de32ac62ee676dfc0329634bf587919cecd8277984b48",
+        "member_03_probability": "584934d2bb8cfd485c3008ff51f84b1e69e06ab3ec55d1d9a808fa26b68dd3b0"
+      }
+    },
+    "357": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part4/357/label.mha",
+          "bytes": 89971,
+          "mtime_ns": 1776873846000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/357.mha",
+          "bytes": 26345827,
+          "mtime_ns": 1792513018951816359
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/357.mha",
+          "bytes": 26345827,
+          "mtime_ns": 1792513206980281606
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/357.mha",
+          "bytes": 16334086,
+          "mtime_ns": 1792513208036284219
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/357.mha",
+          "bytes": 26345827,
+          "mtime_ns": 1792513258396408827
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/357.mha",
+          "bytes": 15840654,
+          "mtime_ns": 1792513259212410846
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/357.mha",
+          "bytes": 26345827,
+          "mtime_ns": 1792545539169443925
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/357.mha",
+          "bytes": 18658806,
+          "mtime_ns": 1792545539689446495
+        }
+      },
+      "sha256": {
+        "gt": "b31bb3085372ccf6563b28d0b026db3746dcd9d9a4142f51cd457f62d415c454",
+        "stage2": "467829755bea50b8dc17c1533fb48c80a949ed154b5aa3a62a214f7d705ef77a",
+        "member_01_prediction": "a119975ed2e5102dc3a1a077063256afb5d8117952c387b38dcb0785b26db89a",
+        "member_01_probability": "2b0eb975eeab066b0fae6bd99cf26b4f190f43c5c5295d86497854244f359490",
+        "member_02_prediction": "6dcc31f92145bda7bc11976780bdc178b27037963b0beb76d652ec0ebee8e8bd",
+        "member_02_probability": "74c66e9a0ebcb9ea4b19a17a0813396edac7a087d5709ed3d89853c6b5d5c5a2",
+        "member_03_prediction": "803553f130cce80ea06c086650c4b58776c0f77504165a6b555678287ab6524d",
+        "member_03_probability": "6b6908a6c22c9d8dc0f5965580c66aa11ce2078c1a1aa462fbc4dee8ac6d008f"
+      }
+    },
+    "365": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part4/365/label.mha",
+          "bytes": 131341,
+          "mtime_ns": 1776873846000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/365.mha",
+          "bytes": 38928746,
+          "mtime_ns": 1792513083483976034
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/365.mha",
+          "bytes": 38928746,
+          "mtime_ns": 1792513274180447882
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/365.mha",
+          "bytes": 22008949,
+          "mtime_ns": 1792513275056450049
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/365.mha",
+          "bytes": 38928746,
+          "mtime_ns": 1792513327128578894
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/365.mha",
+          "bytes": 21559158,
+          "mtime_ns": 1792513327928580873
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/365.mha",
+          "bytes": 38928746,
+          "mtime_ns": 1792545591453702327
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/365.mha",
+          "bytes": 23117844,
+          "mtime_ns": 1792545592197706003
+        }
+      },
+      "sha256": {
+        "gt": "9d6b54d5df46ba2dd3fe5ad5ecf4665d528785c604b27855a473d388a187d47a",
+        "stage2": "c75ddd1873e67677d7529c3475fe156c32857e984b3071295d01e60503af8094",
+        "member_01_prediction": "71bb08b56b3a5bc1810c7f98985d3466aff40bcb357788ffca154146599f25d7",
+        "member_01_probability": "e057d0bb1cfd1ea25f4828efb3b501de34c0bbad302f4eedde5013e4fb78c0e0",
+        "member_02_prediction": "78ac2dfc19f37b60013763834440007cdbcde60604607a96763f192526c5a1b9",
+        "member_02_probability": "a186cdaf934fc1c3ab59682e99cbd53dd5ff5774b53ad2df9bd3efc536e64e1f",
+        "member_03_prediction": "466d49e72d7cf1c0e59842a26986505af464021c3ae0f49f70b8bff30f837010",
+        "member_03_probability": "93ee4f346094f766fdb996fe7c1d46c8db8da0c94e98d96759534127bea91489"
+      }
+    },
+    "380": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part4/380/label.mha",
+          "bytes": 154726,
+          "mtime_ns": 1776873852000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/380.mha",
+          "bytes": 40601448,
+          "mtime_ns": 1792513178224210454
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/380.mha",
+          "bytes": 40601448,
+          "mtime_ns": 1792513370188685439
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/380.mha",
+          "bytes": 48821941,
+          "mtime_ns": 1792513371792689408
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/380.mha",
+          "bytes": 40601448,
+          "mtime_ns": 1792513420376809621
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/380.mha",
+          "bytes": 42808144,
+          "mtime_ns": 1792513421736812986
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/380.mha",
+          "bytes": 40601448,
+          "mtime_ns": 1792545677070125463
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/380.mha",
+          "bytes": 46875123,
+          "mtime_ns": 1792545678634133192
+        }
+      },
+      "sha256": {
+        "gt": "16bce2ecb735f413b0a796937757432536671e29a2e33cf2d0f34873293bf2b3",
+        "stage2": "2c122a9b1ee934951127496bb3613c9a93ce7e8e1b1648c39fcca6b926709e3d",
+        "member_01_prediction": "e208963d69701cc89a0ab86b77699d32f2bb5a030b574acc6685c6ec038075d6",
+        "member_01_probability": "bd226e009a29787c5aba530f52a494dfa0521a15626f911063fc71051b1c49dd",
+        "member_02_prediction": "cd3c67ccf931a5b64ed5194ad470e90539a0a6950333e44858ea93b3236cb3e4",
+        "member_02_probability": "fd7ab5dd61e6bc3b84f994299018929e50fe721dc097d608279d74f21ae86b97",
+        "member_03_prediction": "5b68fd74e8a93b714823c4170422d6501eead3f87c495d05931d2ca750aa46d8",
+        "member_03_probability": "1acffb12e6ba684a5d150b4878bd7ccfa7bc7823daa8b978864b30b90de44ee5"
+      }
+    },
+    "415": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part4/415/label.mha",
+          "bytes": 142570,
+          "mtime_ns": 1776873858000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/415.mha",
+          "bytes": 39444825,
+          "mtime_ns": 1792513257004405383
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/415.mha",
+          "bytes": 39444825,
+          "mtime_ns": 1792513450828884968
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/415.mha",
+          "bytes": 21091364,
+          "mtime_ns": 1792513451680887077
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/415.mha",
+          "bytes": 39444825,
+          "mtime_ns": 1792513503309014822
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/415.mha",
+          "bytes": 20510353,
+          "mtime_ns": 1792513504161016930
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/415.mha",
+          "bytes": 39444825,
+          "mtime_ns": 1792545749018481049
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/415.mha",
+          "bytes": 22691855,
+          "mtime_ns": 1792545749698484410
+        }
+      },
+      "sha256": {
+        "gt": "96e72d5d80bb6390106d0c88b8162a36985f84e2ac7fed764e414d99625f96bc",
+        "stage2": "fc577acdd66da5ba70b5e100fedaa82b4fc288291aeb542e114e9dca2110e13e",
+        "member_01_prediction": "7837e9c2f68fd87ea154f3a403ff9d285863563dde82b5ff7c294f606c45162a",
+        "member_01_probability": "f03168677e3aa5b5f24f892021a9bab2cff8488f4f66b1c434d6bd5df2fc84e4",
+        "member_02_prediction": "f06afac768eb86609d155aae513506908207d5a8d1c0141b60124dbf9c24071f",
+        "member_02_probability": "229757955d63696cac87df35100c64c5ec4e082d19538da189aa2cf93ce22c04",
+        "member_03_prediction": "21f7dbaf381fd074c314db5f1ec0d8e0d724405b545007574aac54c25c054a96",
+        "member_03_probability": "c80e8119355e98f97be0d29ea4746fab965434387aeb20d1044cf7cb73c74f61"
+      }
+    },
+    "417": {
+      "states": {
+        "gt": {
+          "path": "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part4/417/label.mha",
+          "bytes": 179085,
+          "mtime_ns": 1776873858000000000
+        },
+        "stage2": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage2_backend/validation_predictions/417.mha",
+          "bytes": 44436840,
+          "mtime_ns": 1792513366604676571
+        },
+        "member_01_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/417.mha",
+          "bytes": 44436840,
+          "mtime_ns": 1792513562397161026
+        },
+        "member_01_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_probabilities/417.mha",
+          "bytes": 52596866,
+          "mtime_ns": 1792513563985164955
+        },
+        "member_02_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/417.mha",
+          "bytes": 44436840,
+          "mtime_ns": 1792513620657305181
+        },
+        "member_02_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_probabilities/417.mha",
+          "bytes": 49308107,
+          "mtime_ns": 1792513622085308714
+        },
+        "member_03_prediction": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/417.mha",
+          "bytes": 44436840,
+          "mtime_ns": 1792545872035089026
+        },
+        "member_03_probability": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_probabilities/417.mha",
+          "bytes": 71793346,
+          "mtime_ns": 1792545873787097684
+        }
+      },
+      "sha256": {
+        "gt": "c2d2f63db3e1538b0520c502bd66556bb7305e12da25e1d730a927f22c7d9db0",
+        "stage2": "b787c10c8dc01ecbddba308380c47a9413c00c94e92c0300d4910eb10c0900f2",
+        "member_01_prediction": "10ac89e0eff69faceac344d2f9c85cdbb4e69512ba788aec0668e9f3db33943d",
+        "member_01_probability": "8c76a15b3824ce5c477c5b58a783d0525e0282e8bee6af728ddcf1530abee7ff",
+        "member_02_prediction": "e8d4e1b8e19d113b8a5f5ae5e24c1fabaaf731913032c39a5bbdc12ac966e9c7",
+        "member_02_probability": "2450f921a30a203c9f46d76db6bcbeee35641774c1815491c3212834a09abb22",
+        "member_03_prediction": "057d1cd211c9a47328188800cf3e2f3d33287cb2d2cb6afa67d400b67f3a25f6",
+        "member_03_probability": "d0dbaf585c43fc2f86a95aa864a8b61cb77fd292be319fc6440d64a31c59b05f"
+      }
+    }
+  },
+  "case_seconds": {
+    "004": 16.27909682202153,
+    "008": 36.154886096017435,
+    "030": 34.12158005707897,
+    "031": 29.558558081043884,
+    "036": 23.902583139017224,
+    "046": 28.768231065012515,
+    "047": 20.3654908828903,
+    "053": 23.50510154804215,
+    "056": 22.57876436295919,
+    "060": 27.888278587022796,
+    "074": 26.524230802897364,
+    "076": 29.572857599006966,
+    "104": 24.32520167902112,
+    "112": 27.375604518922046,
+    "151": 17.406443387968466,
+    "154": 24.964286021888256,
+    "167": 20.801536309998482,
+    "172": 15.470833774888888,
+    "177": 12.178149292012677,
+    "193": 10.37232130090706,
+    "254": 11.408101348904893,
+    "255": 5.025727048981935,
+    "259": 9.857169877039269,
+    "262": 5.374352261889726,
+    "268": 8.009149044984952,
+    "292": 12.640128922881559,
+    "293": 59.637649371055886,
+    "305": 7.843678466044366,
+    "317": 7.24944616202265,
+    "327": 6.40141060994938,
+    "336": 11.406123579945415,
+    "339": 12.148393064038828,
+    "340": 5.708684717072174,
+    "342": 6.903854795033112,
+    "355": 8.882949279155582,
+    "357": 18.477059849072248,
+    "365": 9.78534437995404,
+    "380": 12.106957010924816,
+    "415": 10.595433552050963,
+    "417": 43.52332314592786
+  },
+  "summary": {
+    "n_cases": 40,
+    "n_units": 80,
+    "pair_rows": 240,
+    "model_risk_rows": 320,
+    "raw_vi_zero_fraction_units": 0.3375,
+    "v2_partition_min": 0.0,
+    "v2_partition_max": 0.9885515166314267,
+    "results_role": "validation_diagnosis_exploratory_not_heldout_confirmation"
+  },
+  "completed_at_unix": 1794980931.0792665,
+  "output_sha256": {
+    "figures/e1_decomposition.pdf": "f1b6b5097c424b75896168165e2f540e6e5f9c463a26a4ff29da7bc481efb938",
+    "figures/e1_signal_vs_risk.pdf": "692fd1e1a75b0d5ea8c830ff6074ea63290b031246e2e6791cabb2eb85f37e85",
+    "figures/e1_risk_coverage.pdf": "7abb180856cc5a750a1d96ff82ca986f025e42172bc0a0807e24bcd9bc379b6c",
+    "figures/e1_signal_vs_risk.png": "1db0bed2e2051db6cbbbbe0e7ef1444063a09457253f9a06a6ee4483a55f7ad6",
+    "figures/e1_risk_coverage.png": "8abbb4fe127f09ab33b4633b2b8802ba4ee164def147e0591785f78e8a3fdc2f",
+    "figures/e1_decomposition.png": "e35bf93d65b6eb930eb3d02a85d622d3aaf2c6222f34d33a4ac9e1fb119e9fd7",
+    "validation/risks.csv": "ccbe15e8de196edb32f1e34755f9db81c79e485818363b7f7e1eb5f746176df5",
+    "validation/case_risks.csv": "efc2ca952bb273674dc84e4b2c09dc6386bafdfdb319b9d9a57fd70bf225e333",
+    "validation/model_risks.csv": "a0e8bd383a8ca5a7b1bf9d1a77f36ca45b50af304365d8924752e09f2d993a09",
+    "validation/case_model_risks.csv": "1d4a5dcddb2121d010ad36d3194ce7755dcf8897e473926e2b8dbf41fa2c227a",
+    "validation/case_scores.csv": "3f18590eaf6708722cbc4d6991ff5d6e9a7ba3f91d6144f7ac067f1b9668eab4",
+    "validation/pair_components.csv": "7f80ab8ac0ff7e63603c66ea411984ceb991e6af9d2fc54a6bf23c177238c307",
+    "validation/risk_coverage.csv": "6866c00b0fa3dfa6b5a3ad412378551948dd4729bbbfd4b5c5732809f7d4c1ce",
+    "validation/comparison.csv": "f0dd12873aefe4e992c9d4f18734f8c61a4804e5137fe05b9cdcd85e59ef71b8",
+    "validation/scores.csv": "8e5717fca87842a067dff9d590ee74d9250d5ba04d3ce408266e53aaead25c01",
+    "validation/paired_differences.csv": "95a38545d5c35e3f43648bed6c63e222c40f55e941967b4b0b2ed2bd9cc31dd0",
+    "tables/decomposition.csv": "536d813a541fcb7df4e80fa706549d9c472a01124ae9c8b956edea61911baeee",
+    "tables/precision_projection.csv": "d4aeb0d708aad2e7037fcf9441ec4a84b2a6c94f50247f246f0f0ed0382be226"
+  }
+}

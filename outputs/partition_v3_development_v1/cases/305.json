@@ -1,0 +1,110 @@
+{
+  "identity": "802733bca6c238a13b9a081440b91f8bd9a73fe3eec2976078753c77c8f360b5",
+  "payload_sha256": "a7fb0fe5c56821a51abd12082a6890c68be6f8755ed0bf44264f38e047167c8a",
+  "payload": {
+    "features": [
+      {
+        "case_id": "305",
+        "scan_type": "femur",
+        "bone": "femur",
+        "graph_degree": 0.0031235387660897653,
+        "graph_no_shared_fraction": 0.0,
+        "all_members_empty": false,
+        "presence": 0.018108465108431494,
+        "partition_v1": 0.0014272378092288034,
+        "partition_v2": 0.030344011350317834,
+        "component_vi": 0.019106126120278694,
+        "predicted_count_mean": 2.0,
+        "predicted_volume_mm3": 176335.94512939453
+      }
+    ],
+    "pairs": [
+      {
+        "case_id": "305",
+        "scan_type": "femur",
+        "bone": "femur",
+        "member_i": "member_01",
+        "member_j": "member_02",
+        "graph_degree": 0.0029290178908927267,
+        "graph_forward": 0.00398255483618104,
+        "graph_reverse": 0.001875480945604413,
+        "graph_shared_support": true,
+        "graph_shared_voxels": 511837,
+        "graph_union_voxels": 518959,
+        "graph_instances_first": 2,
+        "graph_instances_second": 2,
+        "graph_shared_instances_first": 2,
+        "graph_shared_instances_second": 2,
+        "graph_unmatched_instances_first": 0,
+        "graph_unmatched_instances_second": 0
+      },
+      {
+        "case_id": "305",
+        "scan_type": "femur",
+        "bone": "femur",
+        "member_i": "member_01",
+        "member_j": "member_03",
+        "graph_degree": 0.002928300028757602,
+        "graph_forward": 0.003161500420811092,
+        "graph_reverse": 0.0026950996367041125,
+        "graph_shared_support": true,
+        "graph_shared_voxels": 507019,
+        "graph_union_voxels": 515900,
+        "graph_instances_first": 2,
+        "graph_instances_second": 2,
+        "graph_shared_instances_first": 2,
+        "graph_shared_instances_second": 2,
+        "graph_unmatched_instances_first": 0,
+        "graph_unmatched_instances_second": 0
+      },
+      {
+        "case_id": "305",
+        "scan_type": "femur",
+        "bone": "femur",
+        "member_i": "member_02",
+        "member_j": "member_03",
+        "graph_degree": 0.0035132983786189675,
+        "graph_forward": 0.0027194275164269532,
+        "graph_reverse": 0.004307169240810982,
+        "graph_shared_support": true,
+        "graph_shared_voxels": 507908,
+        "graph_union_voxels": 520071,
+        "graph_instances_first": 2,
+        "graph_instances_second": 2,
+        "graph_shared_instances_first": 2,
+        "graph_shared_instances_second": 2,
+        "graph_unmatched_instances_first": 0,
+        "graph_unmatched_instances_second": 0
+      }
+    ],
+    "geometry": {
+      "size": [
+        256,
+        512,
+        200
+      ],
+      "spacing": [
+        0.5859375,
+        0.5859375,
+        1.0
+      ],
+      "origin": [
+        -6.4521942138671875,
+        -149.70703125,
+        -61.86181640625
+      ],
+      "direction": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    "feature_extraction_seconds": 2.6813885630108416
+  }
+}

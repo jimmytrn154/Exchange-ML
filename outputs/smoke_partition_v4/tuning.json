@@ -1,0 +1,1194 @@
+[
+  {
+    "scope": "outer_0",
+    "head": "pairwise_p1_g",
+    "alpha": 0.001,
+    "mean_inner_fold_aurc": 0.19460396412416614,
+    "inner_fold_results": [
+      {
+        "inner_fold": 0,
+        "aurc": 0.26375060125060124,
+        "n_cases": 6,
+        "n_units": 12,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 1,
+        "aurc": 0.15889770723104057,
+        "n_cases": 5,
+        "n_units": 9,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 2,
+        "aurc": 0.1611635838908566,
+        "n_cases": 5,
+        "n_units": 11,
+        "fit_status": "converged"
+      }
+    ],
+    "inner_case_folds": {
+      "synthetic_001": 1,
+      "synthetic_003": 0,
+      "synthetic_004": 2,
+      "synthetic_005": 0,
+      "synthetic_006": 1,
+      "synthetic_007": 2,
+      "synthetic_008": 0,
+      "synthetic_009": 2,
+      "synthetic_010": 2,
+      "synthetic_011": 0,
+      "synthetic_012": 2,
+      "synthetic_013": 1,
+      "synthetic_015": 1,
+      "synthetic_016": 0,
+      "synthetic_017": 1,
+      "synthetic_019": 0
+    },
+    "selection_target": "unweighted_mean_inner_fold_member_mean_merge_split_AURC",
+    "alpha_tie_break": "largest_alpha"
+  },
+  {
+    "scope": "outer_0",
+    "head": "pairwise_p1_g",
+    "alpha": 0.01,
+    "mean_inner_fold_aurc": 0.19524369476389677,
+    "inner_fold_results": [
+      {
+        "inner_fold": 0,
+        "aurc": 0.26375060125060124,
+        "n_cases": 6,
+        "n_units": 12,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 1,
+        "aurc": 0.15889770723104057,
+        "n_cases": 5,
+        "n_units": 9,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 2,
+        "aurc": 0.16308277581004854,
+        "n_cases": 5,
+        "n_units": 11,
+        "fit_status": "converged"
+      }
+    ],
+    "inner_case_folds": {
+      "synthetic_001": 1,
+      "synthetic_003": 0,
+      "synthetic_004": 2,
+      "synthetic_005": 0,
+      "synthetic_006": 1,
+      "synthetic_007": 2,
+      "synthetic_008": 0,
+      "synthetic_009": 2,
+      "synthetic_010": 2,
+      "synthetic_011": 0,
+      "synthetic_012": 2,
+      "synthetic_013": 1,
+      "synthetic_015": 1,
+      "synthetic_016": 0,
+      "synthetic_017": 1,
+      "synthetic_019": 0
+    },
+    "selection_target": "unweighted_mean_inner_fold_member_mean_merge_split_AURC",
+    "alpha_tie_break": "largest_alpha"
+  },
+  {
+    "scope": "outer_0",
+    "head": "pairwise_p1_g",
+    "alpha": 0.1,
+    "mean_inner_fold_aurc": 0.19524369476389677,
+    "inner_fold_results": [
+      {
+        "inner_fold": 0,
+        "aurc": 0.26375060125060124,
+        "n_cases": 6,
+        "n_units": 12,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 1,
+        "aurc": 0.15889770723104057,
+        "n_cases": 5,
+        "n_units": 9,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 2,
+        "aurc": 0.16308277581004854,
+        "n_cases": 5,
+        "n_units": 11,
+        "fit_status": "converged"
+      }
+    ],
+    "inner_case_folds": {
+      "synthetic_001": 1,
+      "synthetic_003": 0,
+      "synthetic_004": 2,
+      "synthetic_005": 0,
+      "synthetic_006": 1,
+      "synthetic_007": 2,
+      "synthetic_008": 0,
+      "synthetic_009": 2,
+      "synthetic_010": 2,
+      "synthetic_011": 0,
+      "synthetic_012": 2,
+      "synthetic_013": 1,
+      "synthetic_015": 1,
+      "synthetic_016": 0,
+      "synthetic_017": 1,
+      "synthetic_019": 0
+    },
+    "selection_target": "unweighted_mean_inner_fold_member_mean_merge_split_AURC",
+    "alpha_tie_break": "largest_alpha"
+  },
+  {
+    "scope": "outer_0",
+    "head": "pairwise_p1_g",
+    "alpha": 1.0,
+    "mean_inner_fold_aurc": 0.19647826266513135,
+    "inner_fold_results": [
+      {
+        "inner_fold": 0,
+        "aurc": 0.26375060125060124,
+        "n_cases": 6,
+        "n_units": 12,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 1,
+        "aurc": 0.16260141093474423,
+        "n_cases": 5,
+        "n_units": 9,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 2,
+        "aurc": 0.16308277581004854,
+        "n_cases": 5,
+        "n_units": 11,
+        "fit_status": "converged"
+      }
+    ],
+    "inner_case_folds": {
+      "synthetic_001": 1,
+      "synthetic_003": 0,
+      "synthetic_004": 2,
+      "synthetic_005": 0,
+      "synthetic_006": 1,
+      "synthetic_007": 2,
+      "synthetic_008": 0,
+      "synthetic_009": 2,
+      "synthetic_010": 2,
+      "synthetic_011": 0,
+      "synthetic_012": 2,
+      "synthetic_013": 1,
+      "synthetic_015": 1,
+      "synthetic_016": 0,
+      "synthetic_017": 1,
+      "synthetic_019": 0
+    },
+    "selection_target": "unweighted_mean_inner_fold_member_mean_merge_split_AURC",
+    "alpha_tie_break": "largest_alpha"
+  },
+  {
+    "scope": "outer_1",
+    "head": "pairwise_p1_g",
+    "alpha": 0.001,
+    "mean_inner_fold_aurc": 0.20240850970017635,
+    "inner_fold_results": [
+      {
+        "inner_fold": 0,
+        "aurc": 0.18881643819143817,
+        "n_cases": 6,
+        "n_units": 12,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 1,
+        "aurc": 0.22535714285714287,
+        "n_cases": 5,
+        "n_units": 9,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 2,
+        "aurc": 0.19305194805194809,
+        "n_cases": 5,
+        "n_units": 11,
+        "fit_status": "converged"
+      }
+    ],
+    "inner_case_folds": {
+      "synthetic_000": 0,
+      "synthetic_001": 1,
+      "synthetic_002": 2,
+      "synthetic_003": 0,
+      "synthetic_005": 1,
+      "synthetic_006": 2,
+      "synthetic_007": 2,
+      "synthetic_009": 0,
+      "synthetic_010": 2,
+      "synthetic_011": 0,
+      "synthetic_014": 1,
+      "synthetic_015": 2,
+      "synthetic_016": 1,
+      "synthetic_017": 1,
+      "synthetic_018": 0,
+      "synthetic_019": 0
+    },
+    "selection_target": "unweighted_mean_inner_fold_member_mean_merge_split_AURC",
+    "alpha_tie_break": "largest_alpha"
+  },
+  {
+    "scope": "outer_1",
+    "head": "pairwise_p1_g",
+    "alpha": 0.01,
+    "mean_inner_fold_aurc": 0.20240850970017635,
+    "inner_fold_results": [
+      {
+        "inner_fold": 0,
+        "aurc": 0.18881643819143817,
+        "n_cases": 6,
+        "n_units": 12,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 1,
+        "aurc": 0.22535714285714287,
+        "n_cases": 5,
+        "n_units": 9,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 2,
+        "aurc": 0.19305194805194809,
+        "n_cases": 5,
+        "n_units": 11,
+        "fit_status": "converged"
+      }
+    ],
+    "inner_case_folds": {
+      "synthetic_000": 0,
+      "synthetic_001": 1,
+      "synthetic_002": 2,
+      "synthetic_003": 0,
+      "synthetic_005": 1,
+      "synthetic_006": 2,
+      "synthetic_007": 2,
+      "synthetic_009": 0,
+      "synthetic_010": 2,
+      "synthetic_011": 0,
+      "synthetic_014": 1,
+      "synthetic_015": 2,
+      "synthetic_016": 1,
+      "synthetic_017": 1,
+      "synthetic_018": 0,
+      "synthetic_019": 0
+    },
+    "selection_target": "unweighted_mean_inner_fold_member_mean_merge_split_AURC",
+    "alpha_tie_break": "largest_alpha"
+  },
+  {
+    "scope": "outer_1",
+    "head": "pairwise_p1_g",
+    "alpha": 0.1,
+    "mean_inner_fold_aurc": 0.20291356020522688,
+    "inner_fold_results": [
+      {
+        "inner_fold": 0,
+        "aurc": 0.18881643819143817,
+        "n_cases": 6,
+        "n_units": 12,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 1,
+        "aurc": 0.22535714285714287,
+        "n_cases": 5,
+        "n_units": 9,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 2,
+        "aurc": 0.1945670995670996,
+        "n_cases": 5,
+        "n_units": 11,
+        "fit_status": "converged"
+      }
+    ],
+    "inner_case_folds": {
+      "synthetic_000": 0,
+      "synthetic_001": 1,
+      "synthetic_002": 2,
+      "synthetic_003": 0,
+      "synthetic_005": 1,
+      "synthetic_006": 2,
+      "synthetic_007": 2,
+      "synthetic_009": 0,
+      "synthetic_010": 2,
+      "synthetic_011": 0,
+      "synthetic_014": 1,
+      "synthetic_015": 2,
+      "synthetic_016": 1,
+      "synthetic_017": 1,
+      "synthetic_018": 0,
+      "synthetic_019": 0
+    },
+    "selection_target": "unweighted_mean_inner_fold_member_mean_merge_split_AURC",
+    "alpha_tie_break": "largest_alpha"
+  },
+  {
+    "scope": "outer_1",
+    "head": "pairwise_p1_g",
+    "alpha": 1.0,
+    "mean_inner_fold_aurc": 0.20240850970017635,
+    "inner_fold_results": [
+      {
+        "inner_fold": 0,
+        "aurc": 0.18881643819143817,
+        "n_cases": 6,
+        "n_units": 12,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 1,
+        "aurc": 0.22535714285714287,
+        "n_cases": 5,
+        "n_units": 9,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 2,
+        "aurc": 0.19305194805194809,
+        "n_cases": 5,
+        "n_units": 11,
+        "fit_status": "converged"
+      }
+    ],
+    "inner_case_folds": {
+      "synthetic_000": 0,
+      "synthetic_001": 1,
+      "synthetic_002": 2,
+      "synthetic_003": 0,
+      "synthetic_005": 1,
+      "synthetic_006": 2,
+      "synthetic_007": 2,
+      "synthetic_009": 0,
+      "synthetic_010": 2,
+      "synthetic_011": 0,
+      "synthetic_014": 1,
+      "synthetic_015": 2,
+      "synthetic_016": 1,
+      "synthetic_017": 1,
+      "synthetic_018": 0,
+      "synthetic_019": 0
+    },
+    "selection_target": "unweighted_mean_inner_fold_member_mean_merge_split_AURC",
+    "alpha_tie_break": "largest_alpha"
+  },
+  {
+    "scope": "outer_2",
+    "head": "pairwise_p1_g",
+    "alpha": 0.001,
+    "mean_inner_fold_aurc": 0.2031652352043766,
+    "inner_fold_results": [
+      {
+        "inner_fold": 0,
+        "aurc": 0.18700547138047138,
+        "n_cases": 6,
+        "n_units": 12,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 1,
+        "aurc": 0.1756966490299824,
+        "n_cases": 5,
+        "n_units": 9,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 2,
+        "aurc": 0.24679358520267608,
+        "n_cases": 5,
+        "n_units": 11,
+        "fit_status": "converged"
+      }
+    ],
+    "inner_case_folds": {
+      "synthetic_000": 1,
+      "synthetic_001": 2,
+      "synthetic_002": 2,
+      "synthetic_003": 0,
+      "synthetic_004": 2,
+      "synthetic_006": 0,
+      "synthetic_008": 0,
+      "synthetic_009": 1,
+      "synthetic_010": 0,
+      "synthetic_012": 0,
+      "synthetic_013": 2,
+      "synthetic_014": 1,
+      "synthetic_015": 0,
+      "synthetic_017": 1,
+      "synthetic_018": 2,
+      "synthetic_019": 1
+    },
+    "selection_target": "unweighted_mean_inner_fold_member_mean_merge_split_AURC",
+    "alpha_tie_break": "largest_alpha"
+  },
+  {
+    "scope": "outer_2",
+    "head": "pairwise_p1_g",
+    "alpha": 0.01,
+    "mean_inner_fold_aurc": 0.2031652352043766,
+    "inner_fold_results": [
+      {
+        "inner_fold": 0,
+        "aurc": 0.18700547138047138,
+        "n_cases": 6,
+        "n_units": 12,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 1,
+        "aurc": 0.1756966490299824,
+        "n_cases": 5,
+        "n_units": 9,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 2,
+        "aurc": 0.24679358520267608,
+        "n_cases": 5,
+        "n_units": 11,
+        "fit_status": "converged"
+      }
+    ],
+    "inner_case_folds": {
+      "synthetic_000": 1,
+      "synthetic_001": 2,
+      "synthetic_002": 2,
+      "synthetic_003": 0,
+      "synthetic_004": 2,
+      "synthetic_006": 0,
+      "synthetic_008": 0,
+      "synthetic_009": 1,
+      "synthetic_010": 0,
+      "synthetic_012": 0,
+      "synthetic_013": 2,
+      "synthetic_014": 1,
+      "synthetic_015": 0,
+      "synthetic_017": 1,
+      "synthetic_018": 2,
+      "synthetic_019": 1
+    },
+    "selection_target": "unweighted_mean_inner_fold_member_mean_merge_split_AURC",
+    "alpha_tie_break": "largest_alpha"
+  },
+  {
+    "scope": "outer_2",
+    "head": "pairwise_p1_g",
+    "alpha": 0.1,
+    "mean_inner_fold_aurc": 0.2031652352043766,
+    "inner_fold_results": [
+      {
+        "inner_fold": 0,
+        "aurc": 0.18700547138047138,
+        "n_cases": 6,
+        "n_units": 12,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 1,
+        "aurc": 0.1756966490299824,
+        "n_cases": 5,
+        "n_units": 9,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 2,
+        "aurc": 0.24679358520267608,
+        "n_cases": 5,
+        "n_units": 11,
+        "fit_status": "converged"
+      }
+    ],
+    "inner_case_folds": {
+      "synthetic_000": 1,
+      "synthetic_001": 2,
+      "synthetic_002": 2,
+      "synthetic_003": 0,
+      "synthetic_004": 2,
+      "synthetic_006": 0,
+      "synthetic_008": 0,
+      "synthetic_009": 1,
+      "synthetic_010": 0,
+      "synthetic_012": 0,
+      "synthetic_013": 2,
+      "synthetic_014": 1,
+      "synthetic_015": 0,
+      "synthetic_017": 1,
+      "synthetic_018": 2,
+      "synthetic_019": 1
+    },
+    "selection_target": "unweighted_mean_inner_fold_member_mean_merge_split_AURC",
+    "alpha_tie_break": "largest_alpha"
+  },
+  {
+    "scope": "outer_2",
+    "head": "pairwise_p1_g",
+    "alpha": 1.0,
+    "mean_inner_fold_aurc": 0.2031652352043766,
+    "inner_fold_results": [
+      {
+        "inner_fold": 0,
+        "aurc": 0.18700547138047138,
+        "n_cases": 6,
+        "n_units": 12,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 1,
+        "aurc": 0.1756966490299824,
+        "n_cases": 5,
+        "n_units": 9,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 2,
+        "aurc": 0.24679358520267608,
+        "n_cases": 5,
+        "n_units": 11,
+        "fit_status": "converged"
+      }
+    ],
+    "inner_case_folds": {
+      "synthetic_000": 1,
+      "synthetic_001": 2,
+      "synthetic_002": 2,
+      "synthetic_003": 0,
+      "synthetic_004": 2,
+      "synthetic_006": 0,
+      "synthetic_008": 0,
+      "synthetic_009": 1,
+      "synthetic_010": 0,
+      "synthetic_012": 0,
+      "synthetic_013": 2,
+      "synthetic_014": 1,
+      "synthetic_015": 0,
+      "synthetic_017": 1,
+      "synthetic_018": 2,
+      "synthetic_019": 1
+    },
+    "selection_target": "unweighted_mean_inner_fold_member_mean_merge_split_AURC",
+    "alpha_tie_break": "largest_alpha"
+  },
+  {
+    "scope": "outer_3",
+    "head": "pairwise_p1_g",
+    "alpha": 0.001,
+    "mean_inner_fold_aurc": 0.23759435383172758,
+    "inner_fold_results": [
+      {
+        "inner_fold": 0,
+        "aurc": 0.30944083694083696,
+        "n_cases": 6,
+        "n_units": 12,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 1,
+        "aurc": 0.17368165784832454,
+        "n_cases": 5,
+        "n_units": 9,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 2,
+        "aurc": 0.22966056670602128,
+        "n_cases": 5,
+        "n_units": 11,
+        "fit_status": "converged"
+      }
+    ],
+    "inner_case_folds": {
+      "synthetic_000": 2,
+      "synthetic_001": 1,
+      "synthetic_002": 2,
+      "synthetic_003": 2,
+      "synthetic_004": 0,
+      "synthetic_005": 0,
+      "synthetic_007": 0,
+      "synthetic_008": 1,
+      "synthetic_010": 1,
+      "synthetic_011": 1,
+      "synthetic_012": 0,
+      "synthetic_013": 2,
+      "synthetic_014": 0,
+      "synthetic_016": 1,
+      "synthetic_017": 2,
+      "synthetic_018": 0
+    },
+    "selection_target": "unweighted_mean_inner_fold_member_mean_merge_split_AURC",
+    "alpha_tie_break": "largest_alpha"
+  },
+  {
+    "scope": "outer_3",
+    "head": "pairwise_p1_g",
+    "alpha": 0.01,
+    "mean_inner_fold_aurc": 0.23759435383172758,
+    "inner_fold_results": [
+      {
+        "inner_fold": 0,
+        "aurc": 0.30944083694083696,
+        "n_cases": 6,
+        "n_units": 12,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 1,
+        "aurc": 0.17368165784832454,
+        "n_cases": 5,
+        "n_units": 9,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 2,
+        "aurc": 0.22966056670602128,
+        "n_cases": 5,
+        "n_units": 11,
+        "fit_status": "converged"
+      }
+    ],
+    "inner_case_folds": {
+      "synthetic_000": 2,
+      "synthetic_001": 1,
+      "synthetic_002": 2,
+      "synthetic_003": 2,
+      "synthetic_004": 0,
+      "synthetic_005": 0,
+      "synthetic_007": 0,
+      "synthetic_008": 1,
+      "synthetic_010": 1,
+      "synthetic_011": 1,
+      "synthetic_012": 0,
+      "synthetic_013": 2,
+      "synthetic_014": 0,
+      "synthetic_016": 1,
+      "synthetic_017": 2,
+      "synthetic_018": 0
+    },
+    "selection_target": "unweighted_mean_inner_fold_member_mean_merge_split_AURC",
+    "alpha_tie_break": "largest_alpha"
+  },
+  {
+    "scope": "outer_3",
+    "head": "pairwise_p1_g",
+    "alpha": 0.1,
+    "mean_inner_fold_aurc": 0.23967067257471297,
+    "inner_fold_results": [
+      {
+        "inner_fold": 0,
+        "aurc": 0.31036676286676285,
+        "n_cases": 6,
+        "n_units": 12,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 1,
+        "aurc": 0.17368165784832454,
+        "n_cases": 5,
+        "n_units": 9,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 2,
+        "aurc": 0.2349635970090516,
+        "n_cases": 5,
+        "n_units": 11,
+        "fit_status": "converged"
+      }
+    ],
+    "inner_case_folds": {
+      "synthetic_000": 2,
+      "synthetic_001": 1,
+      "synthetic_002": 2,
+      "synthetic_003": 2,
+      "synthetic_004": 0,
+      "synthetic_005": 0,
+      "synthetic_007": 0,
+      "synthetic_008": 1,
+      "synthetic_010": 1,
+      "synthetic_011": 1,
+      "synthetic_012": 0,
+      "synthetic_013": 2,
+      "synthetic_014": 0,
+      "synthetic_016": 1,
+      "synthetic_017": 2,
+      "synthetic_018": 0
+    },
+    "selection_target": "unweighted_mean_inner_fold_member_mean_merge_split_AURC",
+    "alpha_tie_break": "largest_alpha"
+  },
+  {
+    "scope": "outer_3",
+    "head": "pairwise_p1_g",
+    "alpha": 1.0,
+    "mean_inner_fold_aurc": 0.23967067257471297,
+    "inner_fold_results": [
+      {
+        "inner_fold": 0,
+        "aurc": 0.31036676286676285,
+        "n_cases": 6,
+        "n_units": 12,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 1,
+        "aurc": 0.17368165784832454,
+        "n_cases": 5,
+        "n_units": 9,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 2,
+        "aurc": 0.2349635970090516,
+        "n_cases": 5,
+        "n_units": 11,
+        "fit_status": "converged"
+      }
+    ],
+    "inner_case_folds": {
+      "synthetic_000": 2,
+      "synthetic_001": 1,
+      "synthetic_002": 2,
+      "synthetic_003": 2,
+      "synthetic_004": 0,
+      "synthetic_005": 0,
+      "synthetic_007": 0,
+      "synthetic_008": 1,
+      "synthetic_010": 1,
+      "synthetic_011": 1,
+      "synthetic_012": 0,
+      "synthetic_013": 2,
+      "synthetic_014": 0,
+      "synthetic_016": 1,
+      "synthetic_017": 2,
+      "synthetic_018": 0
+    },
+    "selection_target": "unweighted_mean_inner_fold_member_mean_merge_split_AURC",
+    "alpha_tie_break": "largest_alpha"
+  },
+  {
+    "scope": "outer_4",
+    "head": "pairwise_p1_g",
+    "alpha": 0.001,
+    "mean_inner_fold_aurc": 0.29368813495707435,
+    "inner_fold_results": [
+      {
+        "inner_fold": 0,
+        "aurc": 0.23010131072631076,
+        "n_cases": 6,
+        "n_units": 12,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 1,
+        "aurc": 0.47359788359788363,
+        "n_cases": 5,
+        "n_units": 9,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 2,
+        "aurc": 0.17736521054702872,
+        "n_cases": 5,
+        "n_units": 11,
+        "fit_status": "converged"
+      }
+    ],
+    "inner_case_folds": {
+      "synthetic_000": 1,
+      "synthetic_002": 2,
+      "synthetic_004": 2,
+      "synthetic_005": 1,
+      "synthetic_006": 0,
+      "synthetic_007": 2,
+      "synthetic_008": 0,
+      "synthetic_009": 0,
+      "synthetic_011": 0,
+      "synthetic_012": 2,
+      "synthetic_013": 1,
+      "synthetic_014": 0,
+      "synthetic_015": 1,
+      "synthetic_016": 0,
+      "synthetic_018": 1,
+      "synthetic_019": 2
+    },
+    "selection_target": "unweighted_mean_inner_fold_member_mean_merge_split_AURC",
+    "alpha_tie_break": "largest_alpha"
+  },
+  {
+    "scope": "outer_4",
+    "head": "pairwise_p1_g",
+    "alpha": 0.01,
+    "mean_inner_fold_aurc": 0.29368813495707435,
+    "inner_fold_results": [
+      {
+        "inner_fold": 0,
+        "aurc": 0.23010131072631076,
+        "n_cases": 6,
+        "n_units": 12,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 1,
+        "aurc": 0.47359788359788363,
+        "n_cases": 5,
+        "n_units": 9,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 2,
+        "aurc": 0.17736521054702872,
+        "n_cases": 5,
+        "n_units": 11,
+        "fit_status": "converged"
+      }
+    ],
+    "inner_case_folds": {
+      "synthetic_000": 1,
+      "synthetic_002": 2,
+      "synthetic_004": 2,
+      "synthetic_005": 1,
+      "synthetic_006": 0,
+      "synthetic_007": 2,
+      "synthetic_008": 0,
+      "synthetic_009": 0,
+      "synthetic_011": 0,
+      "synthetic_012": 2,
+      "synthetic_013": 1,
+      "synthetic_014": 0,
+      "synthetic_015": 1,
+      "synthetic_016": 0,
+      "synthetic_018": 1,
+      "synthetic_019": 2
+    },
+    "selection_target": "unweighted_mean_inner_fold_member_mean_merge_split_AURC",
+    "alpha_tie_break": "largest_alpha"
+  },
+  {
+    "scope": "outer_4",
+    "head": "pairwise_p1_g",
+    "alpha": 0.1,
+    "mean_inner_fold_aurc": 0.29368813495707435,
+    "inner_fold_results": [
+      {
+        "inner_fold": 0,
+        "aurc": 0.23010131072631076,
+        "n_cases": 6,
+        "n_units": 12,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 1,
+        "aurc": 0.47359788359788363,
+        "n_cases": 5,
+        "n_units": 9,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 2,
+        "aurc": 0.17736521054702872,
+        "n_cases": 5,
+        "n_units": 11,
+        "fit_status": "converged"
+      }
+    ],
+    "inner_case_folds": {
+      "synthetic_000": 1,
+      "synthetic_002": 2,
+      "synthetic_004": 2,
+      "synthetic_005": 1,
+      "synthetic_006": 0,
+      "synthetic_007": 2,
+      "synthetic_008": 0,
+      "synthetic_009": 0,
+      "synthetic_011": 0,
+      "synthetic_012": 2,
+      "synthetic_013": 1,
+      "synthetic_014": 0,
+      "synthetic_015": 1,
+      "synthetic_016": 0,
+      "synthetic_018": 1,
+      "synthetic_019": 2
+    },
+    "selection_target": "unweighted_mean_inner_fold_member_mean_merge_split_AURC",
+    "alpha_tie_break": "largest_alpha"
+  },
+  {
+    "scope": "outer_4",
+    "head": "pairwise_p1_g",
+    "alpha": 1.0,
+    "mean_inner_fold_aurc": 0.29368813495707435,
+    "inner_fold_results": [
+      {
+        "inner_fold": 0,
+        "aurc": 0.23010131072631076,
+        "n_cases": 6,
+        "n_units": 12,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 1,
+        "aurc": 0.47359788359788363,
+        "n_cases": 5,
+        "n_units": 9,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 2,
+        "aurc": 0.17736521054702872,
+        "n_cases": 5,
+        "n_units": 11,
+        "fit_status": "converged"
+      }
+    ],
+    "inner_case_folds": {
+      "synthetic_000": 1,
+      "synthetic_002": 2,
+      "synthetic_004": 2,
+      "synthetic_005": 1,
+      "synthetic_006": 0,
+      "synthetic_007": 2,
+      "synthetic_008": 0,
+      "synthetic_009": 0,
+      "synthetic_011": 0,
+      "synthetic_012": 2,
+      "synthetic_013": 1,
+      "synthetic_014": 0,
+      "synthetic_015": 1,
+      "synthetic_016": 0,
+      "synthetic_018": 1,
+      "synthetic_019": 2
+    },
+    "selection_target": "unweighted_mean_inner_fold_member_mean_merge_split_AURC",
+    "alpha_tie_break": "largest_alpha"
+  },
+  {
+    "scope": "final",
+    "head": "pairwise_p1_g",
+    "alpha": 0.001,
+    "mean_inner_fold_aurc": 0.21940777041097556,
+    "inner_fold_results": [
+      {
+        "inner_fold": 0,
+        "aurc": 0.2624271028117182,
+        "n_cases": 7,
+        "n_units": 13,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 1,
+        "aurc": 0.19867229067229064,
+        "n_cases": 7,
+        "n_units": 15,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 2,
+        "aurc": 0.19712391774891777,
+        "n_cases": 6,
+        "n_units": 12,
+        "fit_status": "converged"
+      }
+    ],
+    "inner_case_folds": {
+      "synthetic_000": 2,
+      "synthetic_001": 1,
+      "synthetic_002": 0,
+      "synthetic_003": 1,
+      "synthetic_004": 0,
+      "synthetic_005": 1,
+      "synthetic_006": 0,
+      "synthetic_007": 2,
+      "synthetic_008": 1,
+      "synthetic_009": 2,
+      "synthetic_010": 0,
+      "synthetic_011": 1,
+      "synthetic_012": 1,
+      "synthetic_013": 2,
+      "synthetic_014": 2,
+      "synthetic_015": 0,
+      "synthetic_016": 2,
+      "synthetic_017": 1,
+      "synthetic_018": 0,
+      "synthetic_019": 0
+    },
+    "selection_target": "unweighted_mean_inner_fold_member_mean_merge_split_AURC",
+    "alpha_tie_break": "largest_alpha"
+  },
+  {
+    "scope": "final",
+    "head": "pairwise_p1_g",
+    "alpha": 0.01,
+    "mean_inner_fold_aurc": 0.21964087064407578,
+    "inner_fold_results": [
+      {
+        "inner_fold": 0,
+        "aurc": 0.2631264035110189,
+        "n_cases": 7,
+        "n_units": 13,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 1,
+        "aurc": 0.19867229067229064,
+        "n_cases": 7,
+        "n_units": 15,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 2,
+        "aurc": 0.19712391774891777,
+        "n_cases": 6,
+        "n_units": 12,
+        "fit_status": "converged"
+      }
+    ],
+    "inner_case_folds": {
+      "synthetic_000": 2,
+      "synthetic_001": 1,
+      "synthetic_002": 0,
+      "synthetic_003": 1,
+      "synthetic_004": 0,
+      "synthetic_005": 1,
+      "synthetic_006": 0,
+      "synthetic_007": 2,
+      "synthetic_008": 1,
+      "synthetic_009": 2,
+      "synthetic_010": 0,
+      "synthetic_011": 1,
+      "synthetic_012": 1,
+      "synthetic_013": 2,
+      "synthetic_014": 2,
+      "synthetic_015": 0,
+      "synthetic_016": 2,
+      "synthetic_017": 1,
+      "synthetic_018": 0,
+      "synthetic_019": 0
+    },
+    "selection_target": "unweighted_mean_inner_fold_member_mean_merge_split_AURC",
+    "alpha_tie_break": "largest_alpha"
+  },
+  {
+    "scope": "final",
+    "head": "pairwise_p1_g",
+    "alpha": 0.1,
+    "mean_inner_fold_aurc": 0.2200682210714262,
+    "inner_fold_results": [
+      {
+        "inner_fold": 0,
+        "aurc": 0.2644084547930702,
+        "n_cases": 7,
+        "n_units": 13,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 1,
+        "aurc": 0.19867229067229064,
+        "n_cases": 7,
+        "n_units": 15,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 2,
+        "aurc": 0.19712391774891777,
+        "n_cases": 6,
+        "n_units": 12,
+        "fit_status": "converged"
+      }
+    ],
+    "inner_case_folds": {
+      "synthetic_000": 2,
+      "synthetic_001": 1,
+      "synthetic_002": 0,
+      "synthetic_003": 1,
+      "synthetic_004": 0,
+      "synthetic_005": 1,
+      "synthetic_006": 0,
+      "synthetic_007": 2,
+      "synthetic_008": 1,
+      "synthetic_009": 2,
+      "synthetic_010": 0,
+      "synthetic_011": 1,
+      "synthetic_012": 1,
+      "synthetic_013": 2,
+      "synthetic_014": 2,
+      "synthetic_015": 0,
+      "synthetic_016": 2,
+      "synthetic_017": 1,
+      "synthetic_018": 0,
+      "synthetic_019": 0
+    },
+    "selection_target": "unweighted_mean_inner_fold_member_mean_merge_split_AURC",
+    "alpha_tie_break": "largest_alpha"
+  },
+  {
+    "scope": "final",
+    "head": "pairwise_p1_g",
+    "alpha": 1.0,
+    "mean_inner_fold_aurc": 0.2210682210714262,
+    "inner_fold_results": [
+      {
+        "inner_fold": 0,
+        "aurc": 0.2644084547930702,
+        "n_cases": 7,
+        "n_units": 13,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 1,
+        "aurc": 0.20167229067229064,
+        "n_cases": 7,
+        "n_units": 15,
+        "fit_status": "converged"
+      },
+      {
+        "inner_fold": 2,
+        "aurc": 0.19712391774891777,
+        "n_cases": 6,
+        "n_units": 12,
+        "fit_status": "converged"
+      }
+    ],
+    "inner_case_folds": {
+      "synthetic_000": 2,
+      "synthetic_001": 1,
+      "synthetic_002": 0,
+      "synthetic_003": 1,
+      "synthetic_004": 0,
+      "synthetic_005": 1,
+      "synthetic_006": 0,
+      "synthetic_007": 2,
+      "synthetic_008": 1,
+      "synthetic_009": 2,
+      "synthetic_010": 0,
+      "synthetic_011": 1,
+      "synthetic_012": 1,
+      "synthetic_013": 2,
+      "synthetic_014": 2,
+      "synthetic_015": 0,
+      "synthetic_016": 2,
+      "synthetic_017": 1,
+      "synthetic_018": 0,
+      "synthetic_019": 0
+    },
+    "selection_target": "unweighted_mean_inner_fold_member_mean_merge_split_AURC",
+    "alpha_tie_break": "largest_alpha"
+  }
+]

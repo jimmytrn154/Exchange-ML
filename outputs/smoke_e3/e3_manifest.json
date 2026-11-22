@@ -1,0 +1,99 @@
+{
+  "status": "complete",
+  "signature": "a9d8a1c0a81ffeb84f6151156198e37ab18f3b9743a28236b066345bb6ed2e21",
+  "provenance": {
+    "protocol_sha256": "6b5aa210c2e9fb4d0efe9cd94ec80ffd0a8b5971b035312bcfc5eb35aab6fc3a",
+    "smoke": true,
+    "models": {
+      "member_01": "be1ed8b38cc96e4f9f21eb36563c47b3d7a38d8703f9719a6ecd58cc9b0458fc",
+      "member_02": "2707142a9e3aaf43cc9f43d4ee200ed347f00017ef0a1a78b6e4b5adcc0d9844",
+      "member_03": "19ee0bca2af61018afc3a2ce582f23e12e86bc72b92f169b8ac4cb67c61f3e0d",
+      "stage2": "801403d4473d388765571001b20b127e6f45b11fadda5485a49d2a96f4120897"
+    },
+    "code": {
+      "scripts/run_e3.py": "9062a860ea17cbc52cb32f73d3146f6773136e3851be82add9b1481ebef1fe4e",
+      "scripts/e3_reporting.py": "a2ab26a5438b3cbb722803007883da414e18d6d1fde5cd2fc15ec441bdbed3c5",
+      "src/exchange_ml/e1_scoring.py": "9077e0402171e88dc1a48ef6d0626d58248448043912a5aa61adda06b91fb36d",
+      "src/exchange_ml/e1_data.py": "7f563a14fc097b01409525d0ebceb0134e95243783dec464801d11ff51b90a86",
+      "src/exchange_ml/e1_statistics.py": "f9dcd986114251636fb116c3a23b2586846edc6439d4a54598ba50a657d11af1",
+      "src/exchange_ml/instances.py": "339018f8ae511a99e6342e403c6c854b2dc5f2523c54d452d3c275b30cadec85",
+      "src/exchange_ml/metrics.py": "903a12216e4405f3a66666cd79323d803c9b79c1cb017c604716b32ef7fca455"
+    },
+    "software": {
+      "numpy": "1.26.4",
+      "SimpleITK": "2.3.1",
+      "scipy": "1.15.3",
+      "matplotlib": "3.10.8"
+    }
+  },
+  "case_ids": [
+    "004",
+    "254"
+  ],
+  "summary": {
+    "n_cases": 2,
+    "n_units": 4,
+    "pair_rows": 12,
+    "model_risk_rows": 16,
+    "inference_records": 8,
+    "bootstrap_resamples": 32,
+    "smoke_only": true,
+    "primary_result": {
+      "member_mean": {
+        "meets_rule": null,
+        "baselines": {
+          "presence": {
+            "delta_aurc": -0.10416666666666674,
+            "ci_low": -0.10416666666666674,
+            "ci_high": -0.10416666666666674,
+            "meets_rule": null
+          },
+          "mean_entropy": {
+            "delta_aurc": -0.05208333333333326,
+            "ci_low": -0.05208333333333326,
+            "ci_high": -0.05208333333333326,
+            "meets_rule": null
+          }
+        }
+      },
+      "stage2": {
+        "meets_rule": null,
+        "baselines": {
+          "presence": {
+            "delta_aurc": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "meets_rule": null
+          },
+          "mean_entropy": {
+            "delta_aurc": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "meets_rule": null
+          }
+        }
+      },
+      "robust_across_risk_sources": null
+    }
+  },
+  "output_sha256": {
+    "risks.csv": "2a7e53e3e3bd220044fd2031481068b981302f6dc830e108b1195e7a4ccd7431",
+    "case_risks.csv": "c71c04697898622a821d08ec1d44f1c4e35ef4cf4551aab4978f91c75be230cd",
+    "model_risks.csv": "f38300f1bfa2c5a3d894d6ae90ea6a0a7515e78ec033d617448047e6e17ad4c8",
+    "cases.csv": "cb5abe12eb0bbc9962f20dc96063b845dc0df1f5a581e953c0d5d5a311b61ba1",
+    "case_model_risks.csv": "6f67921ce58d6c8bc66c9e1afd9268382b98f43e697a9c95be477c37eb98e155",
+    "case_scores.csv": "7ce9954825e604f5aa5c7a53fa312044174c997c206202650607a000e9476b01",
+    "inference_runtime.csv": "3b0a267c9f1dd0d30db468d5e18924d1cc9a2310f33cc1b9a99197b31360895a",
+    "risk_frequency.csv": "4fcd8aaf644846db3357b731f99c93a433784baa96d51e29326f93ff7429f8b2",
+    "evaluation_runtime.csv": "8e93f80d339e3eca81c4dfd9fa8b0b41bb625c0e0d0b3ac942e2f663b6bf8007",
+    "pair_components.csv": "8374c908ef143978e0ad2ab83697070b69f0598e0aa24eef589adc3c20356cf7",
+    "top_quartile_enrichment.csv": "ad9e3821a5c0fb64a55cca3801250421e9840787e2412f2cb0789b134b2c283a",
+    "risk_coverage.csv": "789aee59d1acd0b75c139b68a2ca458527882fa5ddb46df04b25ff62c8ec7c5d",
+    "comparison.csv": "34192fada96f8de3c988d403a8e7e3372ccf2102b28967b04c3c1e8efddc59f8",
+    "scores.csv": "a44693b74f165f55cc47eceb193471570cc4752af3e884a779b87d1a8f3169e3",
+    "paired_differences.csv": "b46ef8719f32cffdcaa65a45d7250016bf59957ad7353a464630271405505a16",
+    "risk_coverage.pdf": "e2b50288c78932fa460aa60b361317cb085f06fc639b3a3dce8ed7676e641310",
+    "risk_coverage.png": "c1bb1577bbd619e8834688b93aa7335b4ad2f7529c185ad91facc1ea33613ec3",
+    "summary.json": "2c95106b4c4c4c6608e1c061d4a76d159f02a096f2bc18efc76988a326af0b4a"
+  }
+}

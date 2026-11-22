@@ -1,0 +1,268 @@
+{
+  "experiment": "E3 PENGWIN held-out confirmation",
+  "split": "splits/pengwin_stage0_split.json",
+  "split_sha256": "3c2ef7e40a170dd10d3f50a683775a1346652f919d7ba0e6a635765d828648cd",
+  "trajectory_seed": 20260920,
+  "selection_seed": 20261117,
+  "candidate_counts": {
+    "pelvic": 105,
+    "femur": 105
+  },
+  "case_count": 100,
+  "case_list": "configs/e3_heldout_cases.csv",
+  "case_list_sha256": "05c8f942fdc1e8fa158cc0baafa381a6676414a23fc8bed1c15910dd2c575a27",
+  "case_ids": [
+    "001",
+    "009",
+    "010",
+    "015",
+    "018",
+    "021",
+    "025",
+    "027",
+    "035",
+    "040",
+    "049",
+    "051",
+    "054",
+    "058",
+    "061",
+    "065",
+    "069",
+    "071",
+    "072",
+    "077",
+    "078",
+    "080",
+    "081",
+    "083",
+    "084",
+    "085",
+    "086",
+    "087",
+    "089",
+    "091",
+    "092",
+    "093",
+    "095",
+    "099",
+    "115",
+    "155",
+    "158",
+    "160",
+    "161",
+    "162",
+    "164",
+    "169",
+    "175",
+    "176",
+    "179",
+    "181",
+    "187",
+    "194",
+    "199",
+    "200",
+    "263",
+    "270",
+    "277",
+    "278",
+    "279",
+    "280",
+    "286",
+    "299",
+    "301",
+    "302",
+    "308",
+    "309",
+    "313",
+    "314",
+    "316",
+    "318",
+    "322",
+    "325",
+    "330",
+    "331",
+    "335",
+    "337",
+    "341",
+    "343",
+    "344",
+    "345",
+    "349",
+    "350",
+    "352",
+    "359",
+    "360",
+    "363",
+    "364",
+    "367",
+    "368",
+    "369",
+    "379",
+    "381",
+    "392",
+    "397",
+    "401",
+    "406",
+    "407",
+    "408",
+    "409",
+    "410",
+    "413",
+    "414",
+    "416",
+    "418"
+  ],
+  "case_order": "50 sorted pelvic IDs followed by 50 sorted femur IDs",
+  "dataset_root": "dataset/PENGWIN26_task1_2",
+  "output_root": "outputs/stage3_h1_v2/heldout",
+  "stage2_config_sha256": "5038282637b3ac26d166180b59f12e1898c716534c5376be1d8dbf066ba6142e",
+  "stage3_config_sha256": "64501bae8a620fd0b9a0eeb3f3d0f8951cf766bac965135f0ff5d6fd09098106",
+  "training_split_sha256": {
+    "outputs/stage2_backend/stage2_preparation_manifest.json": "f94e9c109045d274cdd962ceb2d763fbd7c8aabc848438f747541dc41fd6700d",
+    "outputs/stage2_backend/nnUNet_preprocessed/Dataset701_PENGWINStage2Anatomy/splits_final.json": "f017c1997f659c309efadbc5a16c8b746eef5256a51ba3b8550de8844b7e667a",
+    "outputs/stage2_backend/nnUNet_preprocessed/Dataset702_PENGWINStage2Fragment/splits_final.json": "a3d8ad6dbdf6f39777f00430abdadea8c96e9cd9823eb1537d1b2df10f6e5ef5"
+  },
+  "models": {
+    "member_01": {
+      "checkpoints": {
+        "anatomy": {
+          "path": "outputs/stage3_h1/members/member_01/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_best.pth",
+          "sha256": "97ae624dca171dda314dc7b86c05a5bfe405fddab3878344912ac1845d8cc12d",
+          "model_metadata_sha256": {
+            "plans.json": "0b7c853f14e3737c0b43e92620e591e9f2e529a590dd54fe1b5f1f11903497cd",
+            "dataset.json": "47bc22935b690bc9eb96d227176ff9cfc2eb6464df48e89abc909b6498bb1bc6"
+          }
+        },
+        "fragment": {
+          "path": "outputs/stage3_h1/members/member_01/nnUNet_results/Dataset702_PENGWINStage2Fragment/PengwinTrainerSTUNetBaseAffinityV308__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_final.pth",
+          "sha256": "bdb5251c3400a58f135433480ef5f7c83d9021cac4e7ed8ecc7c4e4b78993877",
+          "model_metadata_sha256": {
+            "plans.json": "672a7f8f8badf67342d9985efefb949da715a81c049e853ba5a5c19ca615a7b5",
+            "dataset.json": "57979508eec512a40e9dc1cf0c73f99074478cb36e36142ac79402a1c9564dab"
+          }
+        }
+      },
+      "validation_manifest": "outputs/stage3_h1/members/member_01/validation_inference_manifest.json",
+      "validation_manifest_sha256": "8b2c249e5ec180430e5a2aacfe09b8f75ed91ec1adc6b767051660206521261f"
+    },
+    "member_02": {
+      "checkpoints": {
+        "anatomy": {
+          "path": "outputs/stage3_h1/members/member_02/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_best.pth",
+          "sha256": "cd0f1376a7a4758bbae54b8ee2084146ecf18ce9dbd8694ae8050bb0954a3fd4",
+          "model_metadata_sha256": {
+            "plans.json": "0b7c853f14e3737c0b43e92620e591e9f2e529a590dd54fe1b5f1f11903497cd",
+            "dataset.json": "47bc22935b690bc9eb96d227176ff9cfc2eb6464df48e89abc909b6498bb1bc6"
+          }
+        },
+        "fragment": {
+          "path": "outputs/stage3_h1/members/member_02/nnUNet_results/Dataset702_PENGWINStage2Fragment/PengwinTrainerSTUNetBaseAffinityV308__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_final.pth",
+          "sha256": "c72dba94b35ecbb36e708a87b78502bf9a1377f0bc6bed77ddccaa5cd541dd53",
+          "model_metadata_sha256": {
+            "plans.json": "672a7f8f8badf67342d9985efefb949da715a81c049e853ba5a5c19ca615a7b5",
+            "dataset.json": "57979508eec512a40e9dc1cf0c73f99074478cb36e36142ac79402a1c9564dab"
+          }
+        }
+      },
+      "validation_manifest": "outputs/stage3_h1/members/member_02/validation_inference_manifest.json",
+      "validation_manifest_sha256": "0272712816b90ab1c0058ce3c403af6fc38da4e3171c92292b6dd62eb6b20f25"
+    },
+    "member_03": {
+      "checkpoints": {
+        "anatomy": {
+          "path": "outputs/stage3_h1/members/member_03/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_best.pth",
+          "sha256": "becbca3b5f09b3d027732fbc6313b03c0f85449f6579460bbaba5cc6368a3675",
+          "model_metadata_sha256": {
+            "plans.json": "0b7c853f14e3737c0b43e92620e591e9f2e529a590dd54fe1b5f1f11903497cd",
+            "dataset.json": "47bc22935b690bc9eb96d227176ff9cfc2eb6464df48e89abc909b6498bb1bc6"
+          }
+        },
+        "fragment": {
+          "path": "outputs/stage3_h1/members/member_03/nnUNet_results/Dataset702_PENGWINStage2Fragment/PengwinTrainerSTUNetBaseAffinityV308__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_final.pth",
+          "sha256": "ecb63a1e92118a19c0613678f4dfea7eb26f922d0cdb56bcd9bca45703bc9232",
+          "model_metadata_sha256": {
+            "plans.json": "672a7f8f8badf67342d9985efefb949da715a81c049e853ba5a5c19ca615a7b5",
+            "dataset.json": "57979508eec512a40e9dc1cf0c73f99074478cb36e36142ac79402a1c9564dab"
+          }
+        }
+      },
+      "validation_manifest": "outputs/stage3_h1/members/member_03/validation_inference_manifest.json",
+      "validation_manifest_sha256": "14418ffae04bf3c67dd458fba894c9c6159d77470332fccc5c035f3bb71af193"
+    },
+    "stage2": {
+      "checkpoints": {
+        "anatomy": {
+          "path": "outputs/stage2_backend/nnUNet_results/Dataset701_PENGWINStage2Anatomy/PengwinTrainerSTUNetBaseAnatomyV301__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_best.pth",
+          "sha256": "169fffc685097d6e332013343ef951476bf172573567b8bc170dfabcdbc7e0de",
+          "model_metadata_sha256": {
+            "plans.json": "0b7c853f14e3737c0b43e92620e591e9f2e529a590dd54fe1b5f1f11903497cd",
+            "dataset.json": "47bc22935b690bc9eb96d227176ff9cfc2eb6464df48e89abc909b6498bb1bc6"
+          }
+        },
+        "fragment": {
+          "path": "outputs/stage2_backend/nnUNet_results/Dataset702_PENGWINStage2Fragment/PengwinTrainerSTUNetBaseAffinityV308__nnUNetResEncUNetLPlans__3d_fullres/fold_0/checkpoint_final.pth",
+          "sha256": "6d3068599fc48a99ae206b0f729ebca320b81354db429ed2be612fba3e7e9e2d",
+          "model_metadata_sha256": {
+            "plans.json": "672a7f8f8badf67342d9985efefb949da715a81c049e853ba5a5c19ca615a7b5",
+            "dataset.json": "57979508eec512a40e9dc1cf0c73f99074478cb36e36142ac79402a1c9564dab"
+          }
+        }
+      },
+      "validation_manifest": "outputs/stage2_backend/validation_inference_manifest.json",
+      "validation_manifest_sha256": "7d1613b4672516b8d5a5f0215a0163a73d84e1f999d9d3b9e0b4bcdc5136dc5b"
+    }
+  },
+  "backend": {
+    "path": "baselines/pengwin2026-task1-abbc",
+    "commit": "ccc625fd000ec2dfce622b4621bf2d0b4ee12796",
+    "source_sha256": {
+      "code_task1/core.py": "b7fe9b5d737856635e33d34c7164c8a210362fc23eba24d19c5967236c4e48a3",
+      "code_task1/eval.py": "b38d71dad65e564814a41987524842a8a30a46c6a51c5097336413cb132b63c3",
+      "code_task1/loss.py": "5bc982af8ca97d11663fc6227c4d1b9184668b9fd6907b094fc747c9c7873134",
+      "code_task1/model.py": "ed79fce233aa6d8fe16696693c6a6ee9e720c947cb51da4fa5f8ce56a8ec569d",
+      "code_task1/preprocessing.py": "451439783f1ba9cc0f499dd79b061541a9df4cc737a3cb39546d0d41c5feac8c",
+      "code_task1/train.py": "3547a279595de44b4d8f96300520103337247e16ed6fcfa5ddc45a86b2b03f6e",
+      "code_task1/utils.py": "8693facd6f0ce16c25d8947db2f524461c8a3c6b86c1b01871160185140eb4ba",
+      "inference/__init__.py": "b7ff3d3ac09f14d6dbc2ca3265b71e099730f07164b3581e6059241b6b1fb3a1",
+      "inference/agglo_decode.py": "30ae7bf15c0f10d07cd52b3ef97901eb5f0b30274948c79b548d9ba0ac99aa95",
+      "inference/inference.py": "7e64a66949eb306d373b6e3b62bd660d77b4998f28da8999dccd5f967d65705d",
+      "inference/lean_imports.py": "8eed3d81f9613afc61253b18e4e9c4910c511ec6542853b8a73ae12018a31a30",
+      "inference/lowmem_resample.py": "686816b4d3d1c822c5806a39ba3abfd28ffb75fb1bf6e68ed9fef074f5eddd12",
+      "inference/pengwin_trainers_shim.py": "2b00be1414cf8a869d2c5930ca3a868117c89bd6bebb8c73ef6fe516e7cbf676",
+      "inference/target_family_router.py": "0559a308e9887963495d4283538fd232c6b40446e28429b5c8e127e3beab5113"
+    }
+  },
+  "connectivity": 26,
+  "prune_mm3": 1000.0,
+  "iou_threshold": 0.1,
+  "bootstrap_seed": 20261119,
+  "bootstrap_resamples": 10000,
+  "primary": {
+    "score": "fa_v2",
+    "risk_source": "member_mean",
+    "risk": "merge_split",
+    "baselines": [
+      "presence",
+      "mean_entropy"
+    ],
+    "max_delta_aurc": -0.02,
+    "confidence_level": 0.95
+  },
+  "partition_normalization": "VI / joint entropy on shared foreground, chosen after E1 diagnosis and specified before E3",
+  "validation_precision": {
+    "table": "outputs/stage3_h1_v2/tables/precision_projection.csv",
+    "table_sha256": "d4aeb0d708aad2e7037fcf9441ec4a84b2a6c94f50247f246f0f0ed0382be226",
+    "projected_for_100": {
+      "mean_entropy": {
+        "validation_effect_baseline_minus_v2": 0.32520536831810093,
+        "projected_half_width": 0.057152827863490775
+      },
+      "presence": {
+        "validation_effect_baseline_minus_v2": 0.2123951324720032,
+        "projected_half_width": 0.05732368126198193
+      }
+    }
+  },
+  "e1_manifest_sha256": "e67323ae87ea257e2c494415e22ce460bd6b153ed95aca61cff30ac292d40fd1"
+}

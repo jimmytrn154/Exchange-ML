@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "role": "development_after_E3_inspection_not_fresh_confirmation",
+  "parent_root": "outputs/stage3_h1_v2",
+  "parent_config": "configs/e1.json",
+  "output_root": "outputs/partition_v3_development_v1",
+  "smoke_output_root": "outputs/smoke_partition_v3",
+  "connectivity": 26,
+  "prune_mm3": 1000.0,
+  "candidate": "ridge_p1_g_a",
+  "features": ["partition_v1", "graph_degree", "presence"],
+  "target": "log1p_member_mean_merge_split",
+  "cv": {
+    "seed": 20261122,
+    "outer_folds": 5,
+    "inner_folds": 3,
+    "ridge_alphas": [0.1, 1.0, 10.0, 100.0]
+  },
+  "reporting": {
+    "bootstrap_resamples": 10000,
+    "bootstrap_seed": 20261122,
+    "ct_review_fractions": [0.1, 0.2]
+  },
+  "confirmation": {
+    "split": "splits/pengwin_stage0_split.json",
+    "e3_protocol": "configs/stage3_h1_v2.json",
+    "trajectory_seed": 20260920,
+    "exposure_audit_completed": false,
+    "ready": false
+  }
+}

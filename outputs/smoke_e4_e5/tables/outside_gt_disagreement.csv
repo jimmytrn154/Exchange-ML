@@ -1,0 +1,13 @@
+split,case_id,scan_type,member_i,member_j,n_disagreement_voxels,n_disagreement_outside_gt_foreground,fraction_outside_gt_foreground,stratum
+validation,004,pelvic,member_01,member_02,17685,9342,0.5282442748091603,pelvic
+validation,004,pelvic,member_01,member_03,18644,9467,0.5077773010083673,pelvic
+validation,004,pelvic,member_02,member_03,21267,11713,0.5507593924860112,pelvic
+validation,254,femur,member_01,member_02,88835,87970,0.9902628468509034,femur
+validation,254,femur,member_01,member_03,94337,93350,0.9895375091427542,femur
+validation,254,femur,member_02,member_03,109566,108362,0.9890111896026139,femur
+heldout,001,pelvic,member_01,member_02,48786,33672,0.6901980076251384,pelvic
+heldout,001,pelvic,member_01,member_03,59898,40625,0.6782363351030084,pelvic
+heldout,001,pelvic,member_02,member_03,59182,33337,0.5632962725152918,pelvic
+heldout,263,femur,member_01,member_02,174108,172268,0.9894318468996255,femur
+heldout,263,femur,member_01,member_03,154703,153042,0.9892632980614467,femur
+heldout,263,femur,member_02,member_03,198367,197020,0.9932095560249437,femur

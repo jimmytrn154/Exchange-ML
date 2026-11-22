@@ -1,0 +1,2123 @@
+{
+  "identity": {
+    "protocol_sha256": "6b5aa210c2e9fb4d0efe9cd94ec80ffd0a8b5971b035312bcfc5eb35aab6fc3a",
+    "runner_sha256": "9062a860ea17cbc52cb32f73d3146f6773136e3851be82add9b1481ebef1fe4e",
+    "stage2_loader_sha256": "bbe0aa93e44de6691ba5137bfab81913bdf5435aca6f14712f3d183ef1cc7e1e",
+    "inference_wrapper_sha256": "1519bb5894ebac049d446e22d579f3402db9e9a78ddc9167f6792984322f379e",
+    "model": "stage2",
+    "smoke": false,
+    "case_ids": [
+      "001",
+      "009",
+      "010",
+      "015",
+      "018",
+      "021",
+      "025",
+      "027",
+      "035",
+      "040",
+      "049",
+      "051",
+      "054",
+      "058",
+      "061",
+      "065",
+      "069",
+      "071",
+      "072",
+      "077",
+      "078",
+      "080",
+      "081",
+      "083",
+      "084",
+      "085",
+      "086",
+      "087",
+      "089",
+      "091",
+      "092",
+      "093",
+      "095",
+      "099",
+      "115",
+      "155",
+      "158",
+      "160",
+      "161",
+      "162",
+      "164",
+      "169",
+      "175",
+      "176",
+      "179",
+      "181",
+      "187",
+      "194",
+      "199",
+      "200",
+      "263",
+      "270",
+      "277",
+      "278",
+      "279",
+      "280",
+      "286",
+      "299",
+      "301",
+      "302",
+      "308",
+      "309",
+      "313",
+      "314",
+      "316",
+      "318",
+      "322",
+      "325",
+      "330",
+      "331",
+      "335",
+      "337",
+      "341",
+      "343",
+      "344",
+      "345",
+      "349",
+      "350",
+      "352",
+      "359",
+      "360",
+      "363",
+      "364",
+      "367",
+      "368",
+      "369",
+      "379",
+      "381",
+      "392",
+      "397",
+      "401",
+      "406",
+      "407",
+      "408",
+      "409",
+      "410",
+      "413",
+      "414",
+      "416",
+      "418"
+    ],
+    "software": {
+      "torch": "2.1.2+cu118",
+      "nnunetv2": "2.5.1",
+      "numpy": "1.26.4",
+      "SimpleITK": "2.3.1",
+      "scipy": "1.15.3"
+    }
+  },
+  "records": {
+    "001": {
+      "image_state": {
+        "bytes": 420480266,
+        "mtime_ns": 1777028892000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 538189,
+          "mtime_ns": 1795107317716197978,
+          "sha256": "abc2fc99ad0117c211c0afc9fb69d36ed996e925ed3f99b802b2e00b78d6a02f"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 105119744,
+      "read_seconds": 0.2468212698586285,
+      "inference_seconds": 166.55490347300656,
+      "write_seconds": 0.2853953531011939,
+      "peak_vram_bytes": 5160881664,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "009": {
+      "image_state": {
+        "bytes": 123231396,
+        "mtime_ns": 1777028906000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 368863,
+          "mtime_ns": 1795107403188700145,
+          "sha256": "ec4df150824cf86d6b88878210c5a0b4afcfb9746626f09ffbfeaeb9472e7629"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 30807525,
+      "read_seconds": 0.030012077884748578,
+      "inference_seconds": 85.24193024705164,
+      "write_seconds": 0.10047027911059558,
+      "peak_vram_bytes": 4269154304,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "010": {
+      "image_state": {
+        "bytes": 183502071,
+        "mtime_ns": 1777028908000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 351795,
+          "mtime_ns": 1795107586589777662,
+          "sha256": "127e223cb115aecb76da6af1534c9f517a0041e3f667c7ca5bc1abedd4babe84"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 91750400,
+      "read_seconds": 0.04708450799807906,
+      "inference_seconds": 183.1284008959774,
+      "write_seconds": 0.28714711405336857,
+      "peak_vram_bytes": 5509052416,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "015": {
+      "image_state": {
+        "bytes": 69992759,
+        "mtime_ns": 1777028916000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 291377,
+          "mtime_ns": 1795107680330328406,
+          "sha256": "4e4ed5debdfccc54c8f6e16a9dc044253cd4e8766f9886fa5fe4868d30274d30"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 34995740,
+      "read_seconds": 0.01952325808815658,
+      "inference_seconds": 93.54401659988798,
+      "write_seconds": 0.12553025502711535,
+      "peak_vram_bytes": 4400750592,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "018": {
+      "image_state": {
+        "bytes": 393217288,
+        "mtime_ns": 1777028924000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 514973,
+          "mtime_ns": 1795107826615187857,
+          "sha256": "61d0557c5e0e9de8c740ed430ae9137425bdccba48f284e14f4cfffa2f71fa83"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 98304000,
+      "read_seconds": 0.15391279198229313,
+      "inference_seconds": 145.91647401405498,
+      "write_seconds": 0.3021513349376619,
+      "peak_vram_bytes": 5044772864,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "021": {
+      "image_state": {
+        "bytes": 183502081,
+        "mtime_ns": 1777028928000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 520200,
+          "mtime_ns": 1795107995636180888,
+          "sha256": "e93cd53c05482156490f7e66fa369ecd0000554a7b9ae723e78fe08285651ab3"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 91750400,
+      "read_seconds": 0.04908861196599901,
+      "inference_seconds": 168.6380502129905,
+      "write_seconds": 0.3267263821326196,
+      "peak_vram_bytes": 4960886784,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "025": {
+      "image_state": {
+        "bytes": 170428270,
+        "mtime_ns": 1777028936000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 292329,
+          "mtime_ns": 1795108104840822486,
+          "sha256": "214a74fbe1e107a1a6058aadff61aaee8d962d1e424ed98de17db32eb37a38d4"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 42606745,
+      "read_seconds": 0.08304737601429224,
+      "inference_seconds": 108.89300984796137,
+      "write_seconds": 0.14173357607796788,
+      "peak_vram_bytes": 4460086784,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "027": {
+      "image_state": {
+        "bytes": 328205596,
+        "mtime_ns": 1777028942000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 372930,
+          "mtime_ns": 1795108253417695409,
+          "sha256": "e9336008f0ac3e5b566ad9fa3e0cbd3983141e53a0737d3862548c2e3b196b60"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 82051072,
+      "read_seconds": 0.12132366490550339,
+      "inference_seconds": 148.27079780609347,
+      "write_seconds": 0.219261220889166,
+      "peak_vram_bytes": 4975370240,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "035": {
+      "image_state": {
+        "bytes": 106565925,
+        "mtime_ns": 1777028956000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 439699,
+          "mtime_ns": 1795108387218481513,
+          "sha256": "d54eff3a5fe0c4d36caa7fe0c2ebcfdc9ee7285041ebe0d9f876e7e2a58d526d"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 53282304,
+      "read_seconds": 0.047494702972471714,
+      "inference_seconds": 133.55611959798262,
+      "write_seconds": 0.17810545302927494,
+      "peak_vram_bytes": 4518191104,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "040": {
+      "image_state": {
+        "bytes": 183502070,
+        "mtime_ns": 1777028966000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 371718,
+          "mtime_ns": 1795108520403264000,
+          "sha256": "fd6f92d6333d7c9e3060289ec473009f9f1fc6718964293cc4c47485768c9410"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 91750400,
+      "read_seconds": 0.06962097389623523,
+      "inference_seconds": 132.85326514416374,
+      "write_seconds": 0.3328920758794993,
+      "peak_vram_bytes": 4960886784,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "049": {
+      "image_state": {
+        "bytes": 367002875,
+        "mtime_ns": 1777028982000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 474674,
+          "mtime_ns": 1795108688564251977,
+          "sha256": "f111f9435f93671cd3e681f074319f0bc6109e642e639aa83cc5f5d93bcb5d66"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 91750400,
+      "read_seconds": 0.21545913792215288,
+      "inference_seconds": 167.65699721104465,
+      "write_seconds": 0.27138047805055976,
+      "peak_vram_bytes": 4920844288,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "051": {
+      "image_state": {
+        "bytes": 183502081,
+        "mtime_ns": 1777028986000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 427395,
+          "mtime_ns": 1795108865985294360,
+          "sha256": "aaf10b13819abc0054a26d8d825f8cdca6b6c9687c55c99079578a26ddb7d3ae"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 91750400,
+      "read_seconds": 0.04824379808269441,
+      "inference_seconds": 177.06418697489426,
+      "write_seconds": 0.3046926420647651,
+      "peak_vram_bytes": 5202386944,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "054": {
+      "image_state": {
+        "bytes": 315622661,
+        "mtime_ns": 1777028994000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 325304,
+          "mtime_ns": 1795109020570202579,
+          "sha256": "626b4bac9150fb4cd271779a191799e2e046f1de62236a89846f2c7a9ce44515"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 78905344,
+      "read_seconds": 0.12008062307722867,
+      "inference_seconds": 154.19855955801904,
+      "write_seconds": 0.28222622792236507,
+      "peak_vram_bytes": 5227552768,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "058": {
+      "image_state": {
+        "bytes": 156022527,
+        "mtime_ns": 1777029000000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 255018,
+          "mtime_ns": 1795109138270894094,
+          "sha256": "64e94248442adbadfef1cba1478ecfe338690b977475aff3df8865a0c34d3fde"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 39005309,
+      "read_seconds": 0.07511945487931371,
+      "inference_seconds": 117.40090757911094,
+      "write_seconds": 0.16194235789589584,
+      "peak_vram_bytes": 4692727296,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "061": {
+      "image_state": {
+        "bytes": 183502079,
+        "mtime_ns": 1777029004000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 416261,
+          "mtime_ns": 1795109292595800782,
+          "sha256": "700260d2a26de127437f3dc57866d189ac94a50948561f0bd3541b3826a2f4cf"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 91750400,
+      "read_seconds": 0.08022626582533121,
+      "inference_seconds": 153.9870762450155,
+      "write_seconds": 0.299479769077152,
+      "peak_vram_bytes": 4971175936,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "065": {
+      "image_state": {
+        "bytes": 183502080,
+        "mtime_ns": 1777029010000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 440589,
+          "mtime_ns": 1795109456272762415,
+          "sha256": "9986d95ad3ab808037c146f87969482d0a498663058ec4e9d2bf7e77178b9fbd"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 91750400,
+      "read_seconds": 0.08640849986113608,
+      "inference_seconds": 163.2873279119376,
+      "write_seconds": 0.30332194617949426,
+      "peak_vram_bytes": 4960886784,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "069": {
+      "image_state": {
+        "bytes": 183502081,
+        "mtime_ns": 1777029016000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 369888,
+          "mtime_ns": 1795109634257808116,
+          "sha256": "1fd398d0f3849b477abd49973d20c815166d2fcfa3325a181a65189918f7e3e3"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 91750400,
+      "read_seconds": 0.08742624893784523,
+      "inference_seconds": 177.59990348201245,
+      "write_seconds": 0.29883565893396735,
+      "peak_vram_bytes": 5357576192,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "071": {
+      "image_state": {
+        "bytes": 93607398,
+        "mtime_ns": 1777029018000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 265199,
+          "mtime_ns": 1795109713374272939,
+          "sha256": "112a2a8baef4e0d7f2057c9b8a9caee2380ace33524ef9f03385dde760d10598"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 23401521,
+      "read_seconds": 0.04275553999468684,
+      "inference_seconds": 78.88918168703094,
+      "write_seconds": 0.09517152491025627,
+      "peak_vram_bytes": 4278121472,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "072": {
+      "image_state": {
+        "bytes": 129552853,
+        "mtime_ns": 1777029020000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 309748,
+          "mtime_ns": 1795109808454831556,
+          "sha256": "6ec63f1ccc1a0e9e5cc9fc921381518dd94097ab5f3a37460d043d70eaa561ce"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 32387901,
+      "read_seconds": 0.034568676026538014,
+      "inference_seconds": 94.9342448739335,
+      "write_seconds": 0.1548200510442257,
+      "peak_vram_bytes": 4357638144,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "077": {
+      "image_state": {
+        "bytes": 183502080,
+        "mtime_ns": 1777029030000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 449039,
+          "mtime_ns": 1795109961247729243,
+          "sha256": "ee516b5b3b18515d8581a6db8d23439af4a7a8715f33487b34efe9ee71de405e"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 91750400,
+      "read_seconds": 0.08483442384749651,
+      "inference_seconds": 152.44626243808307,
+      "write_seconds": 0.3035467320587486,
+      "peak_vram_bytes": 4793114624,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "078": {
+      "image_state": {
+        "bytes": 88497917,
+        "mtime_ns": 1777029030000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 365782,
+          "mtime_ns": 1795110068020356553,
+          "sha256": "2241d027e2d7952d090f1c72a534a5682ad7ab76e35433413a50943276305b0e"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 44248296,
+      "read_seconds": 0.02434620400890708,
+      "inference_seconds": 106.52952519082464,
+      "write_seconds": 0.17873946600593626,
+      "peak_vram_bytes": 4491908608,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "080": {
+      "image_state": {
+        "bytes": 370148609,
+        "mtime_ns": 1777029034000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 445817,
+          "mtime_ns": 1795110260949490049,
+          "sha256": "6fe710720d61b8594846525bc6b2fefa3d417f9c64f2e230971abd2dfd9278a1"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 92536832,
+      "read_seconds": 0.21583319106139243,
+      "inference_seconds": 192.46556841698475,
+      "write_seconds": 0.2892807531170547,
+      "peak_vram_bytes": 5244329984,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "081": {
+      "image_state": {
+        "bytes": 76259106,
+        "mtime_ns": 1777029036000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 376757,
+          "mtime_ns": 1795110353382033112,
+          "sha256": "97d24fd7b982e82a03e67c59d1cb1087205f1f9d24d6d5de62471e40c1bf8cfe"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 38128896,
+      "read_seconds": 0.02352171717211604,
+      "inference_seconds": 92.19828944094479,
+      "write_seconds": 0.1319622949231416,
+      "peak_vram_bytes": 4323352576,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "083": {
+      "image_state": {
+        "bytes": 367002873,
+        "mtime_ns": 1777029040000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 455589,
+          "mtime_ns": 1795110514370978953,
+          "sha256": "2724bd1afc938e30787e263a5e0722ecfe252c57fa405b7933728befe3fb0066"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 91750400,
+      "read_seconds": 0.21956486999988556,
+      "inference_seconds": 160.56597987399437,
+      "write_seconds": 0.293445052113384,
+      "peak_vram_bytes": 4862255104,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "084": {
+      "image_state": {
+        "bytes": 281019653,
+        "mtime_ns": 1777029042000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 323410,
+          "mtime_ns": 1795110673311912761,
+          "sha256": "6762d9407db292a64a45dd396884f1f389a335f3225acf248fcd7ee59c33f7bb"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 70254592,
+      "read_seconds": 0.16757620009593666,
+      "inference_seconds": 158.50002458994277,
+      "write_seconds": 0.23366183112375438,
+      "peak_vram_bytes": 5117399040,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "085": {
+      "image_state": {
+        "bytes": 138207634,
+        "mtime_ns": 1777029044000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 305403,
+          "mtime_ns": 1795110777524525030,
+          "sha256": "8290b3000813738da1d5c63f548ce4f57d5cccccc3a4d5b66410ee5f6ef05b0a"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 34551580,
+      "read_seconds": 0.03658386203460395,
+      "inference_seconds": 103.99322774587199,
+      "write_seconds": 0.11656443797983229,
+      "peak_vram_bytes": 4421722112,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "086": {
+      "image_state": {
+        "bytes": 153591014,
+        "mtime_ns": 1777029046000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 350448,
+          "mtime_ns": 1795110870025068488,
+          "sha256": "22c35079885a24cb48cd3e7439921af637a4aaf331bb4db393042d51a96fe43e"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 38397440,
+      "read_seconds": 0.042396107921376824,
+      "inference_seconds": 92.33059484697878,
+      "write_seconds": 0.12933822604827583,
+      "peak_vram_bytes": 4313194496,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "087": {
+      "image_state": {
+        "bytes": 170091231,
+        "mtime_ns": 1777029046000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 400234,
+          "mtime_ns": 1795110976461693821,
+          "sha256": "83d4582e06d0d786cbf43bc60ff1bb4e148b39a970cd848562177155b03ce1b0"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 42522480,
+      "read_seconds": 0.048333689104765654,
+      "inference_seconds": 106.2644468548242,
+      "write_seconds": 0.13540213904343545,
+      "peak_vram_bytes": 4371587072,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "089": {
+      "image_state": {
+        "bytes": 152569091,
+        "mtime_ns": 1777029050000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 383639,
+          "mtime_ns": 1795111129138590828,
+          "sha256": "e1cd20a1ae8d3558988eff37a863a20b285a9f6e4cbd771db31a7d057b5d6b28"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 76283904,
+      "read_seconds": 0.07146322797052562,
+      "inference_seconds": 152.38993958407082,
+      "write_seconds": 0.25389692606404424,
+      "peak_vram_bytes": 4988084224,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "091": {
+      "image_state": {
+        "bytes": 143656190,
+        "mtime_ns": 1777029054000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 328668,
+          "mtime_ns": 1795111258599351434,
+          "sha256": "89e9d50eee9c5eafef180385480f8803dea655b0f0e7959f66e0fc71bc8c2f86"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 71827456,
+      "read_seconds": 0.0695286609698087,
+      "inference_seconds": 129.16316356812604,
+      "write_seconds": 0.21190477279014885,
+      "peak_vram_bytes": 4699070464,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "092": {
+      "image_state": {
+        "bytes": 153617667,
+        "mtime_ns": 1777029054000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 379349,
+          "mtime_ns": 1795111433376378283,
+          "sha256": "8f47b051fa3044c390a0013cdbf23acce6ab1486a75ba1e09b10815c53a58903"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 76808192,
+      "read_seconds": 0.04148168605752289,
+      "inference_seconds": 174.50749904988334,
+      "write_seconds": 0.23197950306348503,
+      "peak_vram_bytes": 5347479552,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "093": {
+      "image_state": {
+        "bytes": 170394882,
+        "mtime_ns": 1777029056000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 432646,
+          "mtime_ns": 1795111611973427575,
+          "sha256": "99937c3cd4aa33cfde965b8a7fefe91aa66bc9ee539ee4584a6db5e1abd96ff4"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 85196800,
+      "read_seconds": 0.045446512987837195,
+      "inference_seconds": 178.31789501407184,
+      "write_seconds": 0.22980987303890288,
+      "peak_vram_bytes": 5085965824,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "095": {
+      "image_state": {
+        "bytes": 134743292,
+        "mtime_ns": 1777029060000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 383335,
+          "mtime_ns": 1795111741514188652,
+          "sha256": "17f1a92cf3f8d04a0d9f47d235e6f3ac5ee23f8d641f8d53f8b3ac33357b4122"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 67371008,
+      "read_seconds": 0.06440729880705476,
+      "inference_seconds": 129.24818823696114,
+      "write_seconds": 0.22843410400673747,
+      "peak_vram_bytes": 4602077184,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "099": {
+      "image_state": {
+        "bytes": 124974098,
+        "mtime_ns": 1777029068000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 252689,
+          "mtime_ns": 1795111823458670092,
+          "sha256": "dad5c9cc04a699ba55e29f2255b3424265565ae18dd33465720c1e4074f84c3d"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 31243212,
+      "read_seconds": 0.05717501789331436,
+      "inference_seconds": 81.73889646702446,
+      "write_seconds": 0.10243299207650125,
+      "peak_vram_bytes": 4388691968,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "115": {
+      "image_state": {
+        "bytes": 196347966,
+        "mtime_ns": 1777029096000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 300098,
+          "mtime_ns": 1795111950799418243,
+          "sha256": "0170632b9badf12d8a967346d16055f5be9c7cfe043a84534b76693d7449f8bd"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 49086678,
+      "read_seconds": 0.07497650408186018,
+      "inference_seconds": 127.11648231977597,
+      "write_seconds": 0.16388057405129075,
+      "peak_vram_bytes": 4793114624,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "155": {
+      "image_state": {
+        "bytes": 27265617,
+        "mtime_ns": 1777028360000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 243522,
+          "mtime_ns": 1795112003343726951,
+          "sha256": "c008d6ee69c1bebdcd44dca5f769c0514789a1a5d596220185fecd610a21489b"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 13632153,
+      "read_seconds": 0.009348349878564477,
+      "inference_seconds": 52.44429566105828,
+      "write_seconds": 0.049338747980073094,
+      "peak_vram_bytes": 4187365376,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "158": {
+      "image_state": {
+        "bytes": 88845703,
+        "mtime_ns": 1777028362000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 348712,
+          "mtime_ns": 1795112073700140308,
+          "sha256": "b443551c311b3be398812fb3d910a472d0f9c50954bcf0bd1b94183666d47bf2"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 22211100,
+      "read_seconds": 0.02416846388950944,
+      "inference_seconds": 70.25837545702234,
+      "write_seconds": 0.07936406717635691,
+      "peak_vram_bytes": 4207943680,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "160": {
+      "image_state": {
+        "bytes": 94240134,
+        "mtime_ns": 1777028364000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 339485,
+          "mtime_ns": 1795112167648692274,
+          "sha256": "40868c4a2a585fd2688dc7a09525a2122142c233330a63fbeda46d92d79159ba"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 23559705,
+      "read_seconds": 0.04359873104840517,
+      "inference_seconds": 93.82431667414494,
+      "write_seconds": 0.07938852696679533,
+      "peak_vram_bytes": 4229915136,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "161": {
+      "image_state": {
+        "bytes": 46863961,
+        "mtime_ns": 1777028364000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 390051,
+          "mtime_ns": 1795112243893140224,
+          "sha256": "6df33d3a99511088dd9f06504194475d0204c2fda419332c739074325aa49d08"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 23431320,
+      "read_seconds": 0.01361850998364389,
+      "inference_seconds": 76.14628667919897,
+      "write_seconds": 0.08429238689132035,
+      "peak_vram_bytes": 4194190336,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "162": {
+      "image_state": {
+        "bytes": 93461952,
+        "mtime_ns": 1777028366000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 380500,
+          "mtime_ns": 1795112309413525169,
+          "sha256": "9419bbd9d9ee60f718ff47362bb25e745b66bd507b1a060e43f5fab1e0b6a2d7"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 23365160,
+      "read_seconds": 0.025436270982027054,
+      "inference_seconds": 65.41268622898497,
+      "write_seconds": 0.08134141704067588,
+      "peak_vram_bytes": 4095090688,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "164": {
+      "image_state": {
+        "bytes": 39102601,
+        "mtime_ns": 1777028366000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 299822,
+          "mtime_ns": 1795112371945892571,
+          "sha256": "f98cf54758cff2a6cdff9e4cbfcbf067ec9ee956b152bdc99e9b73589e1f35bf"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 19550640,
+      "read_seconds": 0.011465329909697175,
+      "inference_seconds": 62.44988969503902,
+      "write_seconds": 0.06718771508894861,
+      "peak_vram_bytes": 4159409664,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "169": {
+      "image_state": {
+        "bytes": 41874354,
+        "mtime_ns": 1777028368000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 333505,
+          "mtime_ns": 1795112447546336738,
+          "sha256": "451a0205defd2ebfcae259ea2d0242f80f371d8bdc4d2908a256d72f483fce48"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 20936520,
+      "read_seconds": 0.02088215691037476,
+      "inference_seconds": 75.50536371720955,
+      "write_seconds": 0.07190919178538024,
+      "peak_vram_bytes": 4237697024,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "175": {
+      "image_state": {
+        "bytes": 35257198,
+        "mtime_ns": 1777028372000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 313088,
+          "mtime_ns": 1795112518010750730,
+          "sha256": "0b2716e6967609b1c4541b5a11e9295b89f5d7deb05b789cf40acddf758fff90"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 17627940,
+      "read_seconds": 0.010604718001559377,
+      "inference_seconds": 70.38513814494945,
+      "write_seconds": 0.06319216708652675,
+      "peak_vram_bytes": 4156335104,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "176": {
+      "image_state": {
+        "bytes": 37149817,
+        "mtime_ns": 1777028372000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 287089,
+          "mtime_ns": 1795112576219092715,
+          "sha256": "c8c5248db33656a1c2a4c7b74b554e3fd71e3cf51a5e3566e750a6e254bbff34"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 18574248,
+      "read_seconds": 0.011023815954104066,
+      "inference_seconds": 58.13257793011144,
+      "write_seconds": 0.06362640485167503,
+      "peak_vram_bytes": 4141614592,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "179": {
+      "image_state": {
+        "bytes": 75510680,
+        "mtime_ns": 1777028376000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 284280,
+          "mtime_ns": 1795112610987296985,
+          "sha256": "1bc1fd7f613a47e9efef7059b3ef3852f432b4f12b5e7b2adfaae33aa758d502"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 18877344,
+      "read_seconds": 0.020125820068642497,
+      "inference_seconds": 34.68183533404954,
+      "write_seconds": 0.06640834384597838,
+      "peak_vram_bytes": 4128645120,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "181": {
+      "image_state": {
+        "bytes": 87879967,
+        "mtime_ns": 1777028376000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 372595,
+          "mtime_ns": 1795112705915854708,
+          "sha256": "8e3fe9acfe647d964f27ea46fa90ebbafc99f29a28752b8752c315cf84930896"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 21969662,
+      "read_seconds": 0.02388868690468371,
+      "inference_seconds": 94.82672865712084,
+      "write_seconds": 0.07584682106971741,
+      "peak_vram_bytes": 4258589696,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "187": {
+      "image_state": {
+        "bytes": 35497503,
+        "mtime_ns": 1777028380000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 197232,
+          "mtime_ns": 1795112753604134886,
+          "sha256": "32a01a6376f895a8df5bbc98c0fe7491f8c59691cde0b2648ad22c9a59d23f08"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 17748090,
+      "read_seconds": 0.010387822985649109,
+      "inference_seconds": 47.61336615891196,
+      "write_seconds": 0.058684238931164145,
+      "peak_vram_bytes": 4172357632,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "194": {
+      "image_state": {
+        "bytes": 53862061,
+        "mtime_ns": 1777028384000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 384676,
+          "mtime_ns": 1795112828900577267,
+          "sha256": "9465bae8d5b489b2c6f9daa5a35f8889232e130550da12fbcdbf28dc14a296e5"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 26930400,
+      "read_seconds": 0.014938571956008673,
+      "inference_seconds": 75.19548061001115,
+      "write_seconds": 0.09215854993090034,
+      "peak_vram_bytes": 4203814912,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "199": {
+      "image_state": {
+        "bytes": 117975298,
+        "mtime_ns": 1777028832000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 318941,
+          "mtime_ns": 1795112919393108928,
+          "sha256": "7609b0a80a197aec69767b292eb362e101a50304ee1945dcf697d38fbfcfe605"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 29493504,
+      "read_seconds": 0.031165363965556026,
+      "inference_seconds": 90.36781215411611,
+      "write_seconds": 0.09498732700012624,
+      "peak_vram_bytes": 4288028672,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "200": {
+      "image_state": {
+        "bytes": 141891843,
+        "mtime_ns": 1777028832000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 332705,
+          "mtime_ns": 1795113026721739519,
+          "sha256": "ca153e25d5d9d28da38a0ec3cdecae2dfd1754a0604cb08b31526b3ee2f6dadf"
+        }
+      },
+      "scan_type": "pelvic",
+      "n_voxels": 35472640,
+      "read_seconds": 0.036658127093687654,
+      "inference_seconds": 107.18633451592177,
+      "write_seconds": 0.11244228412397206,
+      "peak_vram_bytes": 4551745536,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "263": {
+      "image_state": {
+        "bytes": 103286006,
+        "mtime_ns": 1777028402000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 152324,
+          "mtime_ns": 1795113057437919984,
+          "sha256": "d537d59f8f871f8305021a5215fbffcfcb105391490710f5aa230e48ecf7a1bd"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 25821184,
+      "read_seconds": 0.027816348941996694,
+      "inference_seconds": 30.594792905962095,
+      "write_seconds": 0.07644848618656397,
+      "peak_vram_bytes": 4199555072,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "270": {
+      "image_state": {
+        "bytes": 159384836,
+        "mtime_ns": 1777028412000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 194398,
+          "mtime_ns": 1795113135182376747,
+          "sha256": "4cd055175b8e5ff61e0dffc536c33dfefcbcc1d4ae7aebf011b2c96ba6f8b28c"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 39845888,
+      "read_seconds": 0.043107328936457634,
+      "inference_seconds": 77.59605078794993,
+      "write_seconds": 0.11947121191769838,
+      "peak_vram_bytes": 4569822208,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "277": {
+      "image_state": {
+        "bytes": 119014644,
+        "mtime_ns": 1777028420000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 157577,
+          "mtime_ns": 1795113170746585694,
+          "sha256": "2e4768718e4edbf14a0b457278acacee18c8790a2f981a32bab9648fda979803"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 29753344,
+      "read_seconds": 0.03181253606453538,
+      "inference_seconds": 35.431058316957206,
+      "write_seconds": 0.08831123192794621,
+      "peak_vram_bytes": 4262862848,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "278": {
+      "image_state": {
+        "bytes": 154141965,
+        "mtime_ns": 1777028420000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 190157,
+          "mtime_ns": 1795113255479083513,
+          "sha256": "84beee0b27d981f846839fc996f8a74035ad7a2bd5cc83fe5e3fb9d759395df4"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 38535168,
+      "read_seconds": 0.040620863903313875,
+      "inference_seconds": 84.58240974904038,
+      "write_seconds": 0.1155075691640377,
+      "peak_vram_bytes": 4609323008,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "279": {
+      "image_state": {
+        "bytes": 176679687,
+        "mtime_ns": 1777028454000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 203000,
+          "mtime_ns": 1795113325767496471,
+          "sha256": "ce668ed6509e691093fa02da2f91620b8301488d00fcf978847f9b7d7ca2c494"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 44169600,
+      "read_seconds": 0.045388015918433666,
+      "inference_seconds": 70.10731520899571,
+      "write_seconds": 0.14072823617607355,
+      "peak_vram_bytes": 4283310080,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "280": {
+      "image_state": {
+        "bytes": 158975226,
+        "mtime_ns": 1777028454000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 177660,
+          "mtime_ns": 1795113386091850888,
+          "sha256": "980c64af240d6c427850433faf6af1ab12f01062a5118f7ebeece717a4c683bc"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 39743484,
+      "read_seconds": 0.0415937309153378,
+      "inference_seconds": 60.15545435715467,
+      "write_seconds": 0.1181102548725903,
+      "peak_vram_bytes": 4324111360,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "286": {
+      "image_state": {
+        "bytes": 250630433,
+        "mtime_ns": 1777028470000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 287242,
+          "mtime_ns": 1795113472372357802,
+          "sha256": "5aa19fa03c0c1d315d6ece9ab275983e48e2e05814890b93ac51ea22a03d9113"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 62657280,
+      "read_seconds": 0.06478596106171608,
+      "inference_seconds": 86.05517668602988,
+      "write_seconds": 0.18562870100140572,
+      "peak_vram_bytes": 4336263168,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "299": {
+      "image_state": {
+        "bytes": 189982308,
+        "mtime_ns": 1777028498000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 244339,
+          "mtime_ns": 1795113537256739011,
+          "sha256": "5d08f79bcddbeb68ef5e69c1fde966403df4f80e718ad2fa8eee4f9bfc46bc13"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 47495250,
+      "read_seconds": 0.04911366291344166,
+      "inference_seconds": 64.67355013708584,
+      "write_seconds": 0.14143966208212078,
+      "peak_vram_bytes": 4249755648,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "301": {
+      "image_state": {
+        "bytes": 290535534,
+        "mtime_ns": 1777028504000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 351371,
+          "mtime_ns": 1795113668325509065,
+          "sha256": "b7e870cca555b5a18101fb7d8f348877901a9905fe5af002cc3f97266abefe25"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 72633561,
+      "read_seconds": 0.07404116401448846,
+      "inference_seconds": 130.78380261780694,
+      "write_seconds": 0.2322985811624676,
+      "peak_vram_bytes": 4407238656,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "302": {
+      "image_state": {
+        "bytes": 211001897,
+        "mtime_ns": 1777028506000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 214440,
+          "mtime_ns": 1795113749797987733,
+          "sha256": "897d0f04365ec6136d076debc6b97d0b8dc125f4a3ce6ff254f2557b6d1f81f4"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 52750152,
+      "read_seconds": 0.054134110920131207,
+      "inference_seconds": 81.2462947559543,
+      "write_seconds": 0.15258636511862278,
+      "peak_vram_bytes": 4496202752,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "308": {
+      "image_state": {
+        "bytes": 209716473,
+        "mtime_ns": 1777028526000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 119768,
+          "mtime_ns": 1795113782134177714,
+          "sha256": "bf45dd033ac8a963cd33b5d812a9971a437665c45ebebdd69bd367c2964ec248"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 26214400,
+      "read_seconds": 0.05380914895795286,
+      "inference_seconds": 32.17185034789145,
+      "write_seconds": 0.07791269104927778,
+      "peak_vram_bytes": 4205912064,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "309": {
+      "image_state": {
+        "bytes": 227542261,
+        "mtime_ns": 1777028528000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 147088,
+          "mtime_ns": 1795113812838358107,
+          "sha256": "dafa91aa8ae4b21a40ebdd85f7b5beb9fff5a53a82ea395893906bf28d7b88fb"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 28442624,
+      "read_seconds": 0.05926206591539085,
+      "inference_seconds": 30.560938039096072,
+      "write_seconds": 0.08541597588919103,
+      "peak_vram_bytes": 4241498112,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "313": {
+      "image_state": {
+        "bytes": 251659509,
+        "mtime_ns": 1777028534000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 181425,
+          "mtime_ns": 1795113850894581695,
+          "sha256": "4d2155ea3c8ebec416395fd6d26654abe373d3dbed4de5162cfa581f654a28d0"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 31457280,
+      "read_seconds": 0.06615834916010499,
+      "inference_seconds": 37.8949734440539,
+      "write_seconds": 0.09612562996335328,
+      "peak_vram_bytes": 4289798144,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "314": {
+      "image_state": {
+        "bytes": 269485344,
+        "mtime_ns": 1777028536000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 211154,
+          "mtime_ns": 1795113907906916653,
+          "sha256": "962a51113e0f5db7096c793afba45b82c68d874417e2f8e08116c61ec7216106"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 33685504,
+      "read_seconds": 0.07034661690704525,
+      "inference_seconds": 56.83894446096383,
+      "write_seconds": 0.10086289304308593,
+      "peak_vram_bytes": 4132315136,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "316": {
+      "image_state": {
+        "bytes": 235930863,
+        "mtime_ns": 1777028542000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 169877,
+          "mtime_ns": 1795113948651156033,
+          "sha256": "2d51ec5577c0aaa59af7bd503c34b387062a939f350181b971149d9cd705929a"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 29491200,
+      "read_seconds": 0.05821093404665589,
+      "inference_seconds": 40.59349511889741,
+      "write_seconds": 0.08875090000219643,
+      "peak_vram_bytes": 4258275328,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "318": {
+      "image_state": {
+        "bytes": 249562400,
+        "mtime_ns": 1777028544000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 175125,
+          "mtime_ns": 1795113993079417058,
+          "sha256": "89c3ea1aeda50b422b6e76b8a6cccc5b1ce3a34e23afc2b58caeac5e3c4ecf73"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 31195136,
+      "read_seconds": 0.062126632081344724,
+      "inference_seconds": 44.26354101393372,
+      "write_seconds": 0.1008949070237577,
+      "peak_vram_bytes": 4187037696,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "322": {
+      "image_state": {
+        "bytes": 291505405,
+        "mtime_ns": 1777028552000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 198962,
+          "mtime_ns": 1795114076411906652,
+          "sha256": "4a0cfb376141eab462f95946ac4455ad0be994fdc916c70cf3a8553d012863e9"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 36438016,
+      "read_seconds": 0.07481551496312022,
+      "inference_seconds": 83.13574203196913,
+      "write_seconds": 0.12224269704893231,
+      "peak_vram_bytes": 4491446272,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "325": {
+      "image_state": {
+        "bytes": 396363019,
+        "mtime_ns": 1777028558000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 238739,
+          "mtime_ns": 1795114178272505102,
+          "sha256": "4465d3f66ad542d9568eca3c6921fde94c916763aceee0c91a504cc584e60ff4"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 49545216,
+      "read_seconds": 0.2468605211470276,
+      "inference_seconds": 101.46726419404149,
+      "write_seconds": 0.17574561294168234,
+      "peak_vram_bytes": 4732231680,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "330": {
+      "image_state": {
+        "bytes": 238028020,
+        "mtime_ns": 1777028568000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 131673,
+          "mtime_ns": 1795114211176698421,
+          "sha256": "28ea3043e01a5e128d1b36c66ffa64a2e6382401d3442d738fd7f137115b95dd"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 29753344,
+      "read_seconds": 0.06784595386125147,
+      "inference_seconds": 32.70539112621918,
+      "write_seconds": 0.0869229098316282,
+      "peak_vram_bytes": 4262862848,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "331": {
+      "image_state": {
+        "bytes": 320865545,
+        "mtime_ns": 1777028570000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 242835,
+          "mtime_ns": 1795114272033055964,
+          "sha256": "1cd1a36f250d9b57cb7f3ca02e2844a5cc53777b7318565d17bebab13a552499"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 40108032,
+      "read_seconds": 0.1836231518536806,
+      "inference_seconds": 60.55828862194903,
+      "write_seconds": 0.14853827212937176,
+      "peak_vram_bytes": 4149092352,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "335": {
+      "image_state": {
+        "bytes": 393217278,
+        "mtime_ns": 1777028578000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 194289,
+          "mtime_ns": 1795114350113514701,
+          "sha256": "73f9f478cb3d3e07dbc4bb1f330eb46a6f987201b51346d2f679eb77ed294b53"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 49152000,
+      "read_seconds": 0.22614994901232421,
+      "inference_seconds": 77.69161124015227,
+      "write_seconds": 0.16988851595669985,
+      "peak_vram_bytes": 4470480896,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "337": {
+      "image_state": {
+        "bytes": 262145266,
+        "mtime_ns": 1777028584000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 181912,
+          "mtime_ns": 1795114386833730441,
+          "sha256": "6e50babc1d1f5f8f69d2d6ea9cc361609676443367d4742dbe8a88ed9ce1a7d2"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 32768000,
+      "read_seconds": 0.06536970403976738,
+      "inference_seconds": 36.51484857080504,
+      "write_seconds": 0.10208742413669825,
+      "peak_vram_bytes": 4311621632,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "341": {
+      "image_state": {
+        "bytes": 243270906,
+        "mtime_ns": 1777028592000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 156694,
+          "mtime_ns": 1795114424549952032,
+          "sha256": "9eb049052970edd62533accc6430fd829c312998190cb4be56760cba73ce6cd3"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 30408704,
+      "read_seconds": 0.06136353709734976,
+      "inference_seconds": 37.550736411940306,
+      "write_seconds": 0.09094519494101405,
+      "peak_vram_bytes": 4273020928,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "343": {
+      "image_state": {
+        "bytes": 300942583,
+        "mtime_ns": 1777028596000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 227093,
+          "mtime_ns": 1795114468142208145,
+          "sha256": "2dd18408251e2f9c9e992da5fb368816eb5d1db8e32b18626e96b3473e8121ff"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 37617664,
+      "read_seconds": 0.17629132489673793,
+      "inference_seconds": 43.30779133201577,
+      "write_seconds": 0.1352080600336194,
+      "peak_vram_bytes": 4388691968,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "344": {
+      "image_state": {
+        "bytes": 251659508,
+        "mtime_ns": 1777028598000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 140991,
+          "mtime_ns": 1795114503270414530,
+          "sha256": "2b0592bd1edafa1692d6dd5472c5e0c2980b9a41cdeda31d94fc2cb27a663802"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 31457280,
+      "read_seconds": 0.06285604485310614,
+      "inference_seconds": 34.94143866212107,
+      "write_seconds": 0.09446438308805227,
+      "peak_vram_bytes": 4289798144,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "345": {
+      "image_state": {
+        "bytes": 753927387,
+        "mtime_ns": 1777028602000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 257777,
+          "mtime_ns": 1795114668995388195,
+          "sha256": "55b66ed5523c809a34bc3a6f2860c87d411584c22861fb294c0907536479270f"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 94240768,
+      "read_seconds": 0.4234105709474534,
+      "inference_seconds": 165.08907981705852,
+      "write_seconds": 0.3219883081037551,
+      "peak_vram_bytes": 5178990592,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "349": {
+      "image_state": {
+        "bytes": 209716470,
+        "mtime_ns": 1777028610000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 123948,
+          "mtime_ns": 1795114703863593054,
+          "sha256": "c60c09d2043cf5ff8d847ff0ea886d67c8563eef65eb5181aaafc59d75e8a93a"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 26214400,
+      "read_seconds": 0.05414882395416498,
+      "inference_seconds": 34.612888500094414,
+      "write_seconds": 0.07718445686623454,
+      "peak_vram_bytes": 4205912064,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "350": {
+      "image_state": {
+        "bytes": 193987825,
+        "mtime_ns": 1777028612000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 116731,
+          "mtime_ns": 1795114730943752154,
+          "sha256": "2f805c4ef7e6ccc1dcb250359d175aa2568aa82ac64b6df1ba0d904127bdf7b0"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 24248320,
+      "read_seconds": 0.04822700493969023,
+      "inference_seconds": 26.95372923789546,
+      "write_seconds": 0.07293543010018766,
+      "peak_vram_bytes": 4174389248,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "352": {
+      "image_state": {
+        "bytes": 230687988,
+        "mtime_ns": 1777028616000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 160693,
+          "mtime_ns": 1795114770371983803,
+          "sha256": "d75b8567f3c9927a5db8404057ae2895b1f9e8433940e6f670e6e20523fda567"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 28835840,
+      "read_seconds": 0.057456985116004944,
+      "inference_seconds": 39.28939858591184,
+      "write_seconds": 0.08666337816976011,
+      "peak_vram_bytes": 4249952256,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "359": {
+      "image_state": {
+        "bytes": 531629272,
+        "mtime_ns": 1777028632000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 249156,
+          "mtime_ns": 1795114863048528295,
+          "sha256": "db10258deb294a1d75ca38dc318c6f8192b8d879f87e027b346496c9be81e849"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 66453504,
+      "read_seconds": 0.30406568688340485,
+      "inference_seconds": 92.21526671410538,
+      "write_seconds": 0.22763804206624627,
+      "peak_vram_bytes": 4424015872,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "360": {
+      "image_state": {
+        "bytes": 209716456,
+        "mtime_ns": 1777028634000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 157711,
+          "mtime_ns": 1795114897240729181,
+          "sha256": "52827d394ad59adf0650a4f69ef9388c708bd83049b1e9ac77e9bd9476090bea"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 26214400,
+      "read_seconds": 0.052446947898715734,
+      "inference_seconds": 33.97635162109509,
+      "write_seconds": 0.08013819088228047,
+      "peak_vram_bytes": 4205912064,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "363": {
+      "image_state": {
+        "bytes": 200279280,
+        "mtime_ns": 1777028638000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 121502,
+          "mtime_ns": 1795114926276899773,
+          "sha256": "48d2d924f7d2e8e05e01a985669393f12a2983f9ec5e4fe1c09310c25cb9a026"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 25034752,
+      "read_seconds": 0.0511694538872689,
+      "inference_seconds": 28.90749555104412,
+      "write_seconds": 0.07448882213793695,
+      "peak_vram_bytes": 4187365376,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "364": {
+      "image_state": {
+        "bytes": 336594183,
+        "mtime_ns": 1777028640000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 186651,
+          "mtime_ns": 1795114989997274143,
+          "sha256": "081c31ef9f0e7c7142492715c2f7ea8f68335a4dc55581174b871506c3954b88"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 42074112,
+      "read_seconds": 0.2018840389791876,
+      "inference_seconds": 63.41132199997082,
+      "write_seconds": 0.15238853613846004,
+      "peak_vram_bytes": 4325384192,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "367": {
+      "image_state": {
+        "bytes": 207619328,
+        "mtime_ns": 1777028646000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 120574,
+          "mtime_ns": 1795115038809560926,
+          "sha256": "6e0041812a8d5d9f8981aec42b95fd9d72d4837905472eb6f2d31242a182a7d0"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 25952256,
+      "read_seconds": 0.05256751412525773,
+      "inference_seconds": 48.62814987497404,
+      "write_seconds": 0.08430766290985048,
+      "peak_vram_bytes": 4246085632,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "368": {
+      "image_state": {
+        "bytes": 295699704,
+        "mtime_ns": 1777028648000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 239375,
+          "mtime_ns": 1795115087365846207,
+          "sha256": "f8755bf6affac1b1d1ca8092cfc2821224cabb2e0de8500c14587f438d18d4ef"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 36962304,
+      "read_seconds": 0.17033102991990745,
+      "inference_seconds": 48.28506561811082,
+      "write_seconds": 0.13089374196715653,
+      "peak_vram_bytes": 4378730496,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "369": {
+      "image_state": {
+        "bytes": 218105092,
+        "mtime_ns": 1777028650000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 138092,
+          "mtime_ns": 1795115142298168945,
+          "sha256": "d48f67cd3177bf863043ee5d14f258d49a052b824aa7a38df2cf747f9200fb9e"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 27262976,
+      "read_seconds": 0.05428588204085827,
+      "inference_seconds": 54.76162307104096,
+      "write_seconds": 0.08258728380315006,
+      "peak_vram_bytes": 4261358080,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "379": {
+      "image_state": {
+        "bytes": 130749681,
+        "mtime_ns": 1777028722000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 220455,
+          "mtime_ns": 1795115191694459158,
+          "sha256": "40782bd7c73d6f4797cea61e990391a4e1817f0913a13f8436f51cebf68de600"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 32687104,
+      "read_seconds": 0.033845114056020975,
+      "inference_seconds": 49.2631887239404,
+      "write_seconds": 0.1000981810502708,
+      "peak_vram_bytes": 4309362688,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "381": {
+      "image_state": {
+        "bytes": 128472319,
+        "mtime_ns": 1777028724000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 221820,
+          "mtime_ns": 1795115241102749441,
+          "sha256": "a787ac353ba3f197b6bb84be3528761936bf76e2f5807c23495c7404e18f33b3"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 32117760,
+      "read_seconds": 0.03308555390685797,
+      "inference_seconds": 49.27204902097583,
+      "write_seconds": 0.09928618022240698,
+      "peak_vram_bytes": 4077232128,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "392": {
+      "image_state": {
+        "bytes": 81788180,
+        "mtime_ns": 1777028740000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 236568,
+          "mtime_ns": 1795115322403227096,
+          "sha256": "e836fc787b9df0ce90b49d364ef0abdcfe8b0890c3172d52b28a93234cb59b97"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 40893440,
+      "read_seconds": 0.021856335923075676,
+      "inference_seconds": 81.16399292997085,
+      "write_seconds": 0.122260200092569,
+      "peak_vram_bytes": 4400750592,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "397": {
+      "image_state": {
+        "bytes": 119219457,
+        "mtime_ns": 1777028744000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 148303,
+          "mtime_ns": 1795115357323432259,
+          "sha256": "6dffc4521a6e3d568ec0620a8ee63cf930aa72af3ff8b10f935e8db9e8de2d38"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 29804544,
+      "read_seconds": 0.031142740976065397,
+      "inference_seconds": 34.78336229897104,
+      "write_seconds": 0.089230288984254,
+      "peak_vram_bytes": 4262469632,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "401": {
+      "image_state": {
+        "bytes": 119416049,
+        "mtime_ns": 1777028748000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 176835,
+          "mtime_ns": 1795115393899647151,
+          "sha256": "e4733c4fa097ed3acfd4a1fcd802361eeda1d509608761708cdb97e9a14e2f7a"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 29853696,
+      "read_seconds": 0.031140864128246903,
+      "inference_seconds": 36.45144668291323,
+      "write_seconds": 0.09012226201593876,
+      "peak_vram_bytes": 4263604224,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "406": {
+      "image_state": {
+        "bytes": 113650912,
+        "mtime_ns": 1777028754000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 236974,
+          "mtime_ns": 1795115483024170774,
+          "sha256": "07c34e7b4778546278e5c877f200b3369da22956da9d40217586778fb30e1584"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 56824832,
+      "read_seconds": 0.02912986185401678,
+      "inference_seconds": 88.95410417602398,
+      "write_seconds": 0.1647307330276817,
+      "peak_vram_bytes": 4514521088,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "407": {
+      "image_state": {
+        "bytes": 133154030,
+        "mtime_ns": 1777028756000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 231433,
+          "mtime_ns": 1795115536068482420,
+          "sha256": "d501fe0f4ef37076d26b9370b30fb7dee81ea65d7da32a17c76da54af673e013"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 33288192,
+      "read_seconds": 0.034266992937773466,
+      "inference_seconds": 52.880438623949885,
+      "write_seconds": 0.1202520311344415,
+      "peak_vram_bytes": 4321042432,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "408": {
+      "image_state": {
+        "bytes": 140690687,
+        "mtime_ns": 1777028758000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 253490,
+          "mtime_ns": 1795115598596849787,
+          "sha256": "9e9ff2f0ebae415eb2517f6085e5e344e4214baf5cca1b8483c72631d3a56c8c"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 35172352,
+      "read_seconds": 0.03675048612058163,
+      "inference_seconds": 62.3669113710057,
+      "write_seconds": 0.10689097293652594,
+      "peak_vram_bytes": 4112867328,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "409": {
+      "image_state": {
+        "bytes": 394728699,
+        "mtime_ns": 1777028760000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 400523,
+          "mtime_ns": 1795115812030103748,
+          "sha256": "06de7c0446b970df2d7d6fe5590cc37733cb1d16c05a0546ba5cbd397e031bdd"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 98681856,
+      "read_seconds": 0.22672473080456257,
+      "inference_seconds": 212.98985737515613,
+      "write_seconds": 0.3099979378748685,
+      "peak_vram_bytes": 5210447872,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "410": {
+      "image_state": {
+        "bytes": 141116659,
+        "mtime_ns": 1777028762000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 136568,
+          "mtime_ns": 1795115847034309405,
+          "sha256": "fcac19ffc4d4502a11a1a98b63bf9de7cbf54bca6aa89458beec8047563c36de"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 35278848,
+      "read_seconds": 0.036619890946894884,
+      "inference_seconds": 34.76645474694669,
+      "write_seconds": 0.10333690303377807,
+      "peak_vram_bytes": 4351410176,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "413": {
+      "image_state": {
+        "bytes": 143545587,
+        "mtime_ns": 1777028764000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 208130,
+          "mtime_ns": 1795115898602612379,
+          "sha256": "6b2ff227d54feecc001b2645f3db6c311b55e57653378f41a3b2051ee2eb9abb"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 35886080,
+      "read_seconds": 0.037169337971135974,
+      "inference_seconds": 51.41958511713892,
+      "write_seconds": 0.10863189888186753,
+      "peak_vram_bytes": 4359407616,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "414": {
+      "image_state": {
+        "bytes": 139111658,
+        "mtime_ns": 1777028764000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 227692,
+          "mtime_ns": 1795115947930902192,
+          "sha256": "92d86f7f226b02af09d0d3730fc2cfaf9c96bf32beaeabd5a54ba8ca8f2ffc83"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 34777600,
+      "read_seconds": 0.03822930110618472,
+      "inference_seconds": 49.18014808790758,
+      "write_seconds": 0.10494012804701924,
+      "peak_vram_bytes": 4342903808,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "416": {
+      "image_state": {
+        "bytes": 150400232,
+        "mtime_ns": 1777028766000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 228669,
+          "mtime_ns": 1795116006011243425,
+          "sha256": "ce11bd36e7180550c33166a5c2eb768eb9460b49e1e921824679d9422e96a795"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 37599744,
+      "read_seconds": 0.03820787905715406,
+      "inference_seconds": 57.92877030395903,
+      "write_seconds": 0.11218851804733276,
+      "peak_vram_bytes": 4388691968,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    },
+    "418": {
+      "image_state": {
+        "bytes": 192615678,
+        "mtime_ns": 1777028768000000000
+      },
+      "outputs": {
+        "prediction": {
+          "bytes": 256865,
+          "mtime_ns": 1795116143796052937,
+          "sha256": "c8d65efd5d9082daa9d36ad739db99b4ee989ddd38b425bfa083dbebe9768068"
+        }
+      },
+      "scan_type": "femur",
+      "n_voxels": 48153600,
+      "read_seconds": 0.04803021880798042,
+      "inference_seconds": 137.60119013814256,
+      "write_seconds": 0.1435879438649863,
+      "peak_vram_bytes": 4870512640,
+      "gpu": "NVIDIA GeForce RTX 3090"
+    }
+  },
+  "status": "complete",
+  "error": null
+}

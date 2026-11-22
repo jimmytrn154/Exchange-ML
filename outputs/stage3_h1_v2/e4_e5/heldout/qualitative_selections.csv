@@ -1,0 +1,4 @@
+category,status,n_eligible,case_id,bone
+partition_detects_structure,selected,10,176,right_hip
+presence_detects_missing,selected,6,160,sacrum
+shared_error_low_disagreement,selected,8,187,left_hip

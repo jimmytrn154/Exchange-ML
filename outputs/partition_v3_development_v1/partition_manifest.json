@@ -1,0 +1,883 @@
+{
+  "status": "complete",
+  "signature": "77db44402cf01726e1f29d8e99d634c917373f919482f347ede426dd6b6a68ae",
+  "provenance": {
+    "config": {
+      "version": 1,
+      "role": "development_after_E3_inspection_not_fresh_confirmation",
+      "parent_root": "outputs/stage3_h1_v2",
+      "parent_config": "configs/e1.json",
+      "output_root": "outputs/partition_v3_development_v1",
+      "smoke_output_root": "outputs/smoke_partition_v3",
+      "connectivity": 26,
+      "prune_mm3": 1000.0,
+      "candidate": "ridge_p1_g_a",
+      "features": [
+        "partition_v1",
+        "graph_degree",
+        "presence"
+      ],
+      "target": "log1p_member_mean_merge_split",
+      "cv": {
+        "seed": 20261122,
+        "outer_folds": 5,
+        "inner_folds": 3,
+        "ridge_alphas": [
+          0.1,
+          1.0,
+          10.0,
+          100.0
+        ]
+      },
+      "reporting": {
+        "bootstrap_resamples": 10000,
+        "bootstrap_seed": 20261122,
+        "ct_review_fractions": [
+          0.1,
+          0.2
+        ]
+      },
+      "confirmation": {
+        "split": "splits/pengwin_stage0_split.json",
+        "e3_protocol": "configs/stage3_h1_v2.json",
+        "trajectory_seed": 20260920,
+        "exposure_audit_completed": false,
+        "ready": false
+      }
+    },
+    "config_sha256": "51e85c561c7492dc01f7e83aed41ead9a5e55b7c6d86ccaae166a30b4489da6d",
+    "parent_manifest_sha256": "e67323ae87ea257e2c494415e22ce460bd6b153ed95aca61cff30ac292d40fd1",
+    "source_tables": {
+      "validation/scores.csv": "8e5717fca87842a067dff9d590ee74d9250d5ba04d3ce408266e53aaead25c01",
+      "validation/risks.csv": "ccbe15e8de196edb32f1e34755f9db81c79e485818363b7f7e1eb5f746176df5"
+    },
+    "confirmation_membership": {
+      "n_candidate_cases": 110,
+      "case_ids": [
+        "005",
+        "006",
+        "007",
+        "012",
+        "013",
+        "014",
+        "016",
+        "017",
+        "023",
+        "026",
+        "028",
+        "032",
+        "034",
+        "039",
+        "041",
+        "042",
+        "044",
+        "048",
+        "050",
+        "052",
+        "059",
+        "063",
+        "064",
+        "066",
+        "067",
+        "068",
+        "079",
+        "082",
+        "096",
+        "097",
+        "098",
+        "100",
+        "103",
+        "107",
+        "110",
+        "111",
+        "113",
+        "114",
+        "116",
+        "117",
+        "120",
+        "152",
+        "153",
+        "157",
+        "159",
+        "165",
+        "166",
+        "171",
+        "178",
+        "182",
+        "183",
+        "185",
+        "186",
+        "191",
+        "192",
+        "251",
+        "253",
+        "257",
+        "258",
+        "260",
+        "261",
+        "265",
+        "269",
+        "271",
+        "272",
+        "275",
+        "276",
+        "282",
+        "283",
+        "285",
+        "291",
+        "295",
+        "296",
+        "298",
+        "300",
+        "306",
+        "307",
+        "310",
+        "312",
+        "319",
+        "323",
+        "324",
+        "326",
+        "328",
+        "329",
+        "332",
+        "333",
+        "338",
+        "346",
+        "348",
+        "351",
+        "353",
+        "356",
+        "358",
+        "362",
+        "366",
+        "371",
+        "375",
+        "377",
+        "378",
+        "382",
+        "387",
+        "390",
+        "394",
+        "398",
+        "400",
+        "402",
+        "403",
+        "405",
+        "411"
+      ],
+      "split_sha256": "3c2ef7e40a170dd10d3f50a683775a1346652f919d7ba0e6a635765d828648cd",
+      "e3_protocol_sha256": "6b5aa210c2e9fb4d0efe9cd94ec80ffd0a8b5971b035312bcfc5eb35aab6fc3a",
+      "confirmation_ready": false,
+      "exposure_audit_completed": false,
+      "role": "membership_only_not_proof_of_unseen_outcomes"
+    },
+    "sources": {
+      "004": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/004.mha",
+          "sha256": "d7cba5d2da4d61ed651f18bdfaedba72f4a43df65f98b17317d36ab8b959e21e"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/004.mha",
+          "sha256": "b7400bbcd07e1071269460af08b1692376065915907a3abd92ce50b29c518425"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/004.mha",
+          "sha256": "44ce71c61c3a47247e7171ebcebc5125e94201dbb3c3d5ebae2141f4f3fc71cb"
+        }
+      },
+      "008": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/008.mha",
+          "sha256": "c0cc1a2d6408614a61f510f11a963750d9dd6ec0fadceae6f41edc6742ca61ee"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/008.mha",
+          "sha256": "edfe7cddc28e5ee9b92e4881bd927babf02851a6e438e69bd2fa229f07eb3c98"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/008.mha",
+          "sha256": "062e8c6d8c66716d8b16679ee9883ecf1c5aa2538b96ee0c795deae43416df90"
+        }
+      },
+      "030": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/030.mha",
+          "sha256": "c688f95ae6a5c46cdbb95a47b2f4b9937bac93cb46163c130d07a6f938837831"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/030.mha",
+          "sha256": "8e03f94258604352747e1cb2c7d31910a2bd5922f371167e1f7174635841ae26"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/030.mha",
+          "sha256": "f64e379024da9301f3b3c8efc4170cab41c9d998a366f2d842ae936838fb312b"
+        }
+      },
+      "031": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/031.mha",
+          "sha256": "dad29d2a142652c3897ed3edfdd81c7b1f820dffa6f6512472506548c452d879"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/031.mha",
+          "sha256": "2e3ca38489066ae8cd73865fcc378d5f9f12c8d1815fe47670f4943934035513"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/031.mha",
+          "sha256": "ec907aa784b1de92431f8fe9b804b424cd4a8b14cb650e007bc5285eb1e190b4"
+        }
+      },
+      "036": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/036.mha",
+          "sha256": "a6eea90467186603b2fc1af63f79c5aff03c2f5e6eb4d6f92b648aff24afd5a5"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/036.mha",
+          "sha256": "dd7477956006ab45be89a4a22a26917cb1c21bb627110545374f6db4a23972db"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/036.mha",
+          "sha256": "43251fb75fac3a27f44f594fc563c4f39588590a0dcf7255d639233474495f57"
+        }
+      },
+      "046": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/046.mha",
+          "sha256": "a656faa4b4c0a03ff98b360f3a4bb7638bf3d41482ae514f1bd10ffcc84df5e7"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/046.mha",
+          "sha256": "a55b28dbd9ee56bf63849e59d3b619b937d9e4eb2857bcc95c904741c5d68397"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/046.mha",
+          "sha256": "d9cc9faed2ebcd6ada44fd24e0bd6bfd9aa566037052bb993c7da1d1af46946f"
+        }
+      },
+      "047": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/047.mha",
+          "sha256": "2d1712916ad1e6e1c61897b9b0936120f345d7140486629fa3fe866970621eff"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/047.mha",
+          "sha256": "12952a2afe613bced23f2251c837bed3d550a32e9285d4e22dce88d44daa8509"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/047.mha",
+          "sha256": "7ef900bbdc852ff33998fd49e0e7439316a0634fac0790b992df413e3ca16aa6"
+        }
+      },
+      "053": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/053.mha",
+          "sha256": "b2963302c27bf840219c591be42e68883be25e12273b865cd885931eb43b2dd9"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/053.mha",
+          "sha256": "95d91929d17165575d3bf574659743c5ece47a229bc61dbdf254f6d3271b17d4"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/053.mha",
+          "sha256": "1c406cd5a5d54819c2778456453ab63b6ce79a00406e607b8946be6f32cf14b0"
+        }
+      },
+      "056": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/056.mha",
+          "sha256": "5b9faee39eb38ca66084332674c871a424389f48061b7766726db89f05870605"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/056.mha",
+          "sha256": "0de9265ab4cc179e5ebd97d45676b3dfd844fd2e0d4403fe9105526a9e599aee"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/056.mha",
+          "sha256": "e5707e937475652e4f8c4b67d41bf0a9c958845349e03c585ef6232e3e67545d"
+        }
+      },
+      "060": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/060.mha",
+          "sha256": "2631fadfdada9e48a0157c822f226850c48bfc1f054d9842144118abca76f8e7"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/060.mha",
+          "sha256": "0d5d81ca6747f6969ff4c15b3ed2f888642d6b4fd073b2417a3d6cec165cccb5"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/060.mha",
+          "sha256": "61fe6c22077c80f784826539eaaf7aa355252d0d73cd0b34ad2d02055ed805da"
+        }
+      },
+      "074": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/074.mha",
+          "sha256": "8902a687250d13262b298a54d307512f94ce92661da77137e05ca86cec746440"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/074.mha",
+          "sha256": "f8ad65ea8328774356d702bbc7ffbb14cbe9beca06f5e5aa0c5425f0a583711c"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/074.mha",
+          "sha256": "926ebb8d9b257bc4c03c9b2729e89d404ae91df4cd60114d1b3ef3451be701ed"
+        }
+      },
+      "076": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/076.mha",
+          "sha256": "a166df3aa7ba20efd2fc2179917afe2e8dac728d32225332f59f7fdacf5b0c8b"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/076.mha",
+          "sha256": "62d152f839d86812d0733cbc9b6c7a4d31669f2e7834f69f3cf0a38aeb7350ce"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/076.mha",
+          "sha256": "f243f71ae312a058aba7b6f5141ea9610917b013708008729aaef8a8277c12e7"
+        }
+      },
+      "104": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/104.mha",
+          "sha256": "b232b89b83e322312416ee14d03f5d2162749ca3d82547e1940de89423ecd020"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/104.mha",
+          "sha256": "d7bfee19848ecf3d0e24fa6d6187ca7652d6fe0a24680fc0ab54e8bbd48e344b"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/104.mha",
+          "sha256": "4950f3ba439f52d6718cc67017dbba4625ca31b1cab14724b6dc388fbec1db63"
+        }
+      },
+      "112": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/112.mha",
+          "sha256": "7a85d32b44f37fed6c08a0774ca3ebbb84adde35467a7baae60d9f545c569448"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/112.mha",
+          "sha256": "d8d92ad9cd1dc0b86eb4026ff7323ed20a969e2357e7dc2e1efc6446531fbb3b"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/112.mha",
+          "sha256": "5c64f7809fb7115e6b746a2f50add17ea72679e490a31fcb45aea1e216fd6d1e"
+        }
+      },
+      "151": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/151.mha",
+          "sha256": "562f3f9363e57522b87b5982dcec143d268c5ed01e7cb16c02516a696d94b707"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/151.mha",
+          "sha256": "5679a607b4425a218f0a564166b29c6e8af0cdfd4449c562298916c4a0bd8588"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/151.mha",
+          "sha256": "2426d197d2881b5c301d73404d6e6e92591f1d61606e93b7cd0271267ca945de"
+        }
+      },
+      "154": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/154.mha",
+          "sha256": "79bcedc9e8df11e88603023c2e3fa51dda3f6a4b9327e2842d2409bd83f0ec07"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/154.mha",
+          "sha256": "1c92b5e40f55b9c1322664da0809e2e8ec7a20441f41ed9b7f1c226d04497112"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/154.mha",
+          "sha256": "cb29d0482189057aebf258b6f3d94d4c2e89fef9e16095f3e30870b7051c94dd"
+        }
+      },
+      "167": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/167.mha",
+          "sha256": "727774505bf5173c7398a96c8117369003fa5a13696fc279035788d440ad7b27"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/167.mha",
+          "sha256": "01c0d3586bee7f4d9188e7c1f0f1e8350c2f8a8160e6f3a52a4e46cbb86ee7b2"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/167.mha",
+          "sha256": "a3a0abbebd2120e1e35b745e1c594dddfc10e5e32fcdbfbd48a060c0dc578cbc"
+        }
+      },
+      "172": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/172.mha",
+          "sha256": "033cf03af7611bb9c37f590c4df74a33320150f8a47ddb0d313cb8d4ef70cccc"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/172.mha",
+          "sha256": "434fd45fb3b65a2335c1227d8e91a975d86e0de62aa8340f8fd029dde174e256"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/172.mha",
+          "sha256": "882c856020532bd9b5ad9ac8afcc9578abda03e04766fbe37517c2a3fa255f40"
+        }
+      },
+      "177": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/177.mha",
+          "sha256": "dab2d5f0bffe6f1ba0f21622fdfc118e14ca2221f966850f43bca8dfc7ad19b9"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/177.mha",
+          "sha256": "e56893512a21c875a39922ba467c45c8d79c3d8434b65bc6ec45984057745647"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/177.mha",
+          "sha256": "b54a6356d198b60f1e1c3bca4903174c3c2a98b4f2ac08b6a3bb4b1b0374eb38"
+        }
+      },
+      "193": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/193.mha",
+          "sha256": "4ca3c1ba47a3c92545cd2f1b697da1be005b81f868af1d24dd9a9673a6e3cb28"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/193.mha",
+          "sha256": "9411bedca5b5719ae4b40bd42bf4e09b9b5b2dbacc7acc620961ce8cba1b2f61"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/193.mha",
+          "sha256": "6f0d98156ec5fe5b330bf151b8b3bc44539d2975062fd864eed0a78eccbc9683"
+        }
+      },
+      "254": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/254.mha",
+          "sha256": "e242c5a6141e60d639f675fa06f1d2094f16026efabf8d7d19157508f9ffc468"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/254.mha",
+          "sha256": "4440260ed90883aa6f1df9b7b432c7397ded2ebcfec292122aa36a24116cfc58"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/254.mha",
+          "sha256": "9553bc6f81a134be02f1019d62a4ffb40c0ac1f52b1ac2b5bc60c238ada6f390"
+        }
+      },
+      "255": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/255.mha",
+          "sha256": "ae408cf34d2046180ffe81b5669d6dfd0a756e2d80be26ea7f8ebda6efef1b21"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/255.mha",
+          "sha256": "f66914fddd3e64644a26b8c7c05f3447f4f08a7058d1d1669b0263a08eb30d43"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/255.mha",
+          "sha256": "9c8b359c69f58f9493967527fc0c531abb2cd986f74442707f5e87a979f483a1"
+        }
+      },
+      "259": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/259.mha",
+          "sha256": "b84d38130e1cff0c50d4ec4df080df6c074d43f658de4e692fd6726ba79141fe"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/259.mha",
+          "sha256": "f1f0be967c40e75b38ae04177eb0456817844058a513987d8f49c0ac272990aa"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/259.mha",
+          "sha256": "d4aa1312c5318c08f8cff779e5168550b8fe10224be0f2f591622770b18f8ec1"
+        }
+      },
+      "262": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/262.mha",
+          "sha256": "3e56203deb593152774a199fe185f793f9b227ccfddb584c48b2b75f9c8cabc1"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/262.mha",
+          "sha256": "60c1d25c4b9daf77e3110c13bef97feb39a1f59decccd35d2f07896b98d09077"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/262.mha",
+          "sha256": "b09d95f75db82cf459edd84b5b78526edc4781e0ad32a08d0b1934c8a3ebb0ea"
+        }
+      },
+      "268": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/268.mha",
+          "sha256": "302f41d886422846dbf99310304d2fb690270ff2aabbe04b2c1245e5317caf9d"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/268.mha",
+          "sha256": "9f16d0fa08afa602978d75c731f4f3e5575e5c2396a338ee6e7c05818723853f"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/268.mha",
+          "sha256": "fbc6500a80f0daa9dc460727bcfef425dc79b669017b0a9f75c7f6805498fde8"
+        }
+      },
+      "292": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/292.mha",
+          "sha256": "8c350733dbae2ce5f88ba48e939eafbcc7bdc2e47e193628fb8c171c13172179"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/292.mha",
+          "sha256": "fed9d8d6dc79dbb6553a8338ff54525954ab9673ebfa071cc4d3cfd5fd68b7da"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/292.mha",
+          "sha256": "aa54f82a0567000fe38d1b4c2e1a794bac891acaf461cdbf8939221fe7185c32"
+        }
+      },
+      "293": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/293.mha",
+          "sha256": "521bbde274d5cb7afd26efc59169c3b7067b0ba0274a6617042552c680a82ad8"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/293.mha",
+          "sha256": "650daf2055e5c7e89e55c691aa34d71d8042de84fa9c4cc5f4807574e0367a49"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/293.mha",
+          "sha256": "9247b4f08babeae0efbcde68d3eab0a518c99cbc28a9dde04b1561ce1ef25971"
+        }
+      },
+      "305": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/305.mha",
+          "sha256": "a4a38167331f64ab65cd9c7ca9fc1c73cd914871627744c0c2226f48a957252e"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/305.mha",
+          "sha256": "1aa77c135a57de2aec0a51300f37fadfdedd12f6e4122cc8d71fbf628b540c84"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/305.mha",
+          "sha256": "759c1977b80d85c731a6d716c699371050c80635f26c796104234515c31c9be7"
+        }
+      },
+      "317": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/317.mha",
+          "sha256": "fa8d920a191e5bd1e07fc83d7c2d71bc13cbbbf9a3abd808f4badab30fbbc874"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/317.mha",
+          "sha256": "b61a6eadcfab51a6f1e42f165d5518c89ee24b10da6c7f2d2ccbaffb9994ac5b"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/317.mha",
+          "sha256": "fef06a1357375aeb112007fc7fcb89a290f9acfde2375a4f033c92cdde2a0135"
+        }
+      },
+      "327": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/327.mha",
+          "sha256": "f5badffafdc961c20f684791ffc928daa72785d77276f4e5b069cadfe8e67e74"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/327.mha",
+          "sha256": "fd01ba24b443038a0ce91dd86c4ac6fc2984fc800b0e7f5994e87d90afb0d642"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/327.mha",
+          "sha256": "a0fffe8b058e401bc18148d75d01da06e7616c0db25307d9d6e6c28a6700542a"
+        }
+      },
+      "336": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/336.mha",
+          "sha256": "a19afd8789d9850ea06c8bac96bfaf7106e2f9dc35c1fa0b198e70d31d9ee6e6"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/336.mha",
+          "sha256": "099bd9de3cd1a624f713b5e6885c51f0ce62cfa4fc6e136d0440762456093113"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/336.mha",
+          "sha256": "38aaf389b74fb1fb03e0066435fb0cf7fcad747bb775711596dd016e098d65b4"
+        }
+      },
+      "339": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/339.mha",
+          "sha256": "ac84a8025bc67c29c7628e30b788b860838aa4817cbb63432028c8a6a21d6157"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/339.mha",
+          "sha256": "9033e99a4c9312e01f903c54a8a58f87291e7b647693a84c20a0811d4caf7db2"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/339.mha",
+          "sha256": "a48c98d499b784f0795610b810cbd43c6c09008af5710eb0b872f976531ed520"
+        }
+      },
+      "340": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/340.mha",
+          "sha256": "9af9233a1015f33344c011ec97e39053e2c13116747562d99f056b2eab21f51a"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/340.mha",
+          "sha256": "46d2900bb68fd74a92385a29f7c6863f792a27ed01ac9d126f2c2de77e5d1ade"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/340.mha",
+          "sha256": "c77c842eb8de91efdaf6c097b2d33d41bc12c541fd7849f16d9d8c5fee7dfaca"
+        }
+      },
+      "342": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/342.mha",
+          "sha256": "74dfcdad942d17f95b2f4d22a0e2fc2668842896cd3c456e2a24d4a4c7c14fae"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/342.mha",
+          "sha256": "c949d8e1d523f1c796b3ba765c3f314b01f45dbc67f3ae339ddf9e5963d1cd73"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/342.mha",
+          "sha256": "dea0efe0f17727b427ba9b36f1c3b2152a2b402a12c6d3265994fe74965583a5"
+        }
+      },
+      "355": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/355.mha",
+          "sha256": "3790dd7b6fb339f9e6341de3d705807eafad96fba7f2bb033fd22b38f85323b9"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/355.mha",
+          "sha256": "92b5d5fb689ec8a75a84c9b856bbcb28e827c2f01b5c369d10f2bc0faf518933"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/355.mha",
+          "sha256": "da4e07cb96216ccc984de32ac62ee676dfc0329634bf587919cecd8277984b48"
+        }
+      },
+      "357": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/357.mha",
+          "sha256": "a119975ed2e5102dc3a1a077063256afb5d8117952c387b38dcb0785b26db89a"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/357.mha",
+          "sha256": "6dcc31f92145bda7bc11976780bdc178b27037963b0beb76d652ec0ebee8e8bd"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/357.mha",
+          "sha256": "803553f130cce80ea06c086650c4b58776c0f77504165a6b555678287ab6524d"
+        }
+      },
+      "365": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/365.mha",
+          "sha256": "71bb08b56b3a5bc1810c7f98985d3466aff40bcb357788ffca154146599f25d7"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/365.mha",
+          "sha256": "78ac2dfc19f37b60013763834440007cdbcde60604607a96763f192526c5a1b9"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/365.mha",
+          "sha256": "466d49e72d7cf1c0e59842a26986505af464021c3ae0f49f70b8bff30f837010"
+        }
+      },
+      "380": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/380.mha",
+          "sha256": "e208963d69701cc89a0ab86b77699d32f2bb5a030b574acc6685c6ec038075d6"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/380.mha",
+          "sha256": "cd3c67ccf931a5b64ed5194ad470e90539a0a6950333e44858ea93b3236cb3e4"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/380.mha",
+          "sha256": "5b68fd74e8a93b714823c4170422d6501eead3f87c495d05931d2ca750aa46d8"
+        }
+      },
+      "415": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/415.mha",
+          "sha256": "7837e9c2f68fd87ea154f3a403ff9d285863563dde82b5ff7c294f606c45162a"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/415.mha",
+          "sha256": "f06afac768eb86609d155aae513506908207d5a8d1c0141b60124dbf9c24071f"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/415.mha",
+          "sha256": "21f7dbaf381fd074c314db5f1ec0d8e0d724405b545007574aac54c25c054a96"
+        }
+      },
+      "417": {
+        "member_01": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/417.mha",
+          "sha256": "10ac89e0eff69faceac344d2f9c85cdbb4e69512ba788aec0668e9f3db33943d"
+        },
+        "member_02": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/417.mha",
+          "sha256": "e8d4e1b8e19d113b8a5f5ae5e24c1fabaaf731913032c39a5bbdc12ac966e9c7"
+        },
+        "member_03": {
+          "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/417.mha",
+          "sha256": "057d1cd211c9a47328188800cf3e2f3d33287cb2d2cb6afa67d400b67f3a25f6"
+        }
+      }
+    },
+    "smoke_only": false,
+    "output_root": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/partition_v3_development_v1",
+    "code_sha256": {
+      "scripts/run_partition_v3.py": "517047af88df88ae5d8a00a4b5a5917139a8f5932db57adf96750a35cd6c0a2e",
+      "src/exchange_ml/partition_cv.py": "1a5cc5d4a9f25ebd1c5e2b6a928a8c3cc74cfd1f2685973a1a0498659e772b05",
+      "src/exchange_ml/partition_graph.py": "47434cd778ffbb6d40bb45d9bd1b412bd2d31b119e5f8e04285465e464cc342f",
+      "src/exchange_ml/partition_reporting.py": "c208f61a6d5dd64dacceac5cf74f461a47c8fb3bb7f6fa934714c4d30ad54af7",
+      "scripts/partition_v3.sbatch": "c3d390209e514f189e105f585f63450579d67c84bb86442418d50a3b189617fb",
+      "scripts/submit_partition_v3.sh": "da33bb6bb5968957a40c5ce59797304f841403938f147b635ee4e49d78f39b79"
+    },
+    "software": {
+      "numpy": "1.26.4",
+      "scipy": "1.15.3",
+      "SimpleITK": "2.3.1"
+    },
+    "python": "3.10.21 (main, Aug 27 2026, 14:42:07) [GCC 14.3.0]"
+  },
+  "started_at_unix": 1795317551.7804835,
+  "cache_sha256": {
+    "cases/004.json": "a7c7d5743c0f9060b094b67453d4ccfa0e696ad9e098e95bc54036950443ddcc",
+    "cases/008.json": "ad27fba5aa79305ab332a04c444101835f6b84ea633ade943918f11f6751a000",
+    "cases/030.json": "9723a26a21eda84ec4ae065be9e2c8f7f36a6c244aca5dacb5ab8549a4df1ba8",
+    "cases/031.json": "28c6bb5eaa0dfd337fd3621327f783ab6e0287b330b3f9e2d0225f2a620919fa",
+    "cases/036.json": "659d400477de647331b6c309490994c2740a5f86acdc35ba87a919acd481e947",
+    "cases/046.json": "fd3a62a8bd379c3bb4091a86706ecc0647be0643c2fb6dd6d2a59f56f29f127b",
+    "cases/047.json": "af4944d36990c7a0df7a001e08911dc15c67f85230f14991838846feb675589c",
+    "cases/053.json": "9c5f24b88bba0fd3a0d35fd3702b3cd5ebe0e0a8a5a09cae698ecf7fa212e05c",
+    "cases/056.json": "bd9988491ff2835bf7f91764e113d7a18e77b6c1709fe48bdb754e693542f5a4",
+    "cases/060.json": "0fdfc805245e21770e8882393095edf8c06c59b2806ea838f0f700e815332ace",
+    "cases/074.json": "e9aa1230496f3f94dfdd0cbccee56ca90bdd099f529e8aebffbee1c43e95ce8c",
+    "cases/076.json": "fcf21b0916c43dc9d98adfcd9982843edfb9f5b206e8f29a65cfe83cb80ccc6b",
+    "cases/104.json": "73865473afbd88b980c8a26657f00302106cf71b7c66bc74de4837499279e6aa",
+    "cases/112.json": "149b3e3dc39c1b6db4dbdbb2972206e5ca1dda9fc6748ef4d5fd15fbb1a6febf",
+    "cases/151.json": "56e63abfe63bd504c6e193bcfe085f24067c08c8ccadb874024514c3ca5e4ff0",
+    "cases/154.json": "75c97c8721afcae00b71564c4141e44d8656fb9eebd69973cebcfef48540985c",
+    "cases/167.json": "bcea7d22f127787cca08aa30fbbd895e575a5f1e3e6155db27a7e290fcdf1cef",
+    "cases/172.json": "d1af25269d2d457c652eb6a49ca6fd2f470189f62b7aa2c2cada044e156c184d",
+    "cases/177.json": "f97262f74d06c2bbd23f681f25523e951b30b2f4b3fd7a8f05c7158f7a3ac2b8",
+    "cases/193.json": "503de3f5f52dbb3bbcb763b6493c435bd9660b495d190ca07784468a55dc8e4e",
+    "cases/254.json": "6a564ffd0d5df0f179b7eb669c435eef0787b543f6f6397d092778c034da34cf",
+    "cases/255.json": "d334cd05677982ec432c2c67abc8da75394d03555663fcc9a9ca395de263fbb6",
+    "cases/259.json": "1b3b1503ee5dd89153222444ca49355d47f4de073a48f57efa463c8062524178",
+    "cases/262.json": "9dc64677b8a55cda6a8220b037c8ed2f72e1590fb8c6712147cc1cbc21476729",
+    "cases/268.json": "9ae3b748023371c1f5a49b78805b6f41dc52d2f7df2304c447baa946f1fd5bd6",
+    "cases/292.json": "54fbdca204dcbb974aba240615abfbb4e7de4fcbd4e38ede38aba68ae6458ab8",
+    "cases/293.json": "a70cebb54c40f060183de0ec9e30739cb6593dfd3d20fe43c2f17f4ae859c0c3",
+    "cases/305.json": "4b1235a3555097d30469fdc7d5ba9caed050a7486cab9e995a5d2dfa28017cf3",
+    "cases/317.json": "38b969360b23043741b14581e7bcf9033f6f2ffae1a8132a2179a1c2c7245240",
+    "cases/327.json": "92e117ced1a23e5cebe359fdfe0b8397cca92c5692465fdd6a86bcb0ca191779",
+    "cases/336.json": "6e04de80377e7216fa0774306b7eae6afa44001523fbfe6512e6af096d2e3621",
+    "cases/339.json": "44d764d19e1c61e28733f403abc9c2f0957ce7267a5eeb352c1c7d4a4fa11c5d",
+    "cases/340.json": "05059f79e039d19fc0f1310055073e0f3a70cff1eecaa4ec75cbfcc8c83343d5",
+    "cases/342.json": "d5999bbe01ddee0327bc4323187c615f12068f1239263537792df77e63a33600",
+    "cases/355.json": "9b282ded2767036fe14d9f12e22f7fafdab44767b076df175b5be238d2a5adeb",
+    "cases/357.json": "21ec0893d0208da18f6af77fc108230d3f76a615cb3848288f9e4b2e5501dd48",
+    "cases/365.json": "3a68934a2fb20c117cccc1ff7bb472627c091f54db486305f376059f9d0fa813",
+    "cases/380.json": "70fa07e91ec834f7eead17487cc7f80f4806509fbb98d1a0624d386a0a5a819d",
+    "cases/415.json": "849e1602065b2076df7b48ef9e2567f94d82cb782e4daeb9c8fe7538ae490c24",
+    "cases/417.json": "fd4106b6416f8b00e7843a70a1ded4f1c38f99c36ff6c9450b76b6cb36b298eb"
+  },
+  "completed_at_unix": 1795317968.2879598,
+  "summary": {
+    "role": "development_nested_OOF_not_confirmation",
+    "smoke_only": false,
+    "real_feature_cases": 40,
+    "real_feature_units": 80,
+    "cv": {
+      "n_cases": 40,
+      "n_units": 80,
+      "final_head": "ridge_p1_g_a",
+      "outer_folds": 5,
+      "inner_folds_requested": 3,
+      "cv_seed": 20261122,
+      "ridge_alphas": [
+        0.1,
+        1.0,
+        10.0,
+        100.0
+      ],
+      "target": "log1p_member_mean_merge_split",
+      "selection": "inner_grouped_MSE_per_family_final_family_fixed",
+      "evaluation_role": "development_nested_grouped_oof_not_fresh_confirmation"
+    },
+    "reporting": {
+      "n_cases": 40,
+      "n_units": 80,
+      "scores": [
+        "mean_entropy",
+        "p95_entropy",
+        "pairwise_dice",
+        "presence",
+        "union_nvi",
+        "count_variance",
+        "hungarian",
+        "fa_v1",
+        "partition_v1",
+        "partition_v2",
+        "fa_v2",
+        "q_joint_unweighted",
+        "graph_degree",
+        "ridge_p1",
+        "ridge_p1_a",
+        "ridge_p1_g_a"
+      ],
+      "final_head": "ridge_p1_g_a",
+      "analysis_role": "development_only_not_confirmation",
+      "ci_role": "descriptive_conditional_fixed_OOF_scores_not_refitted_training_uncertainty",
+      "primary_contrast": "ridge_p1_g_a-partition_v1/member_mean/merge_split/pooled",
+      "ct_review_fractions": [
+        0.1,
+        0.2
+      ],
+      "ct_score_aggregation": "max",
+      "omission_positive_definition": "CT_with_any_annotated_bone_missing_volume_equals_one_per_risk_source",
+      "omission_labels": "frozen_E1_evaluation_only_not_predictor_features",
+      "guard_scope": "PENGWIN_expected_anatomy_only_not_RibFrac_lesions",
+      "human_correction_assumed": false,
+      "measured_reading_time": false
+    },
+    "primary_candidate": "ridge_p1_g_a",
+    "primary_control": "partition_v1",
+    "fresh_confirmation_ready": false,
+    "scoring_gt_voxels_loaded": false,
+    "risk_labels": "frozen E1 CSV only",
+    "CI_scope": "conditional_on_fixed_OOF_predictions_not_training_procedure"
+  },
+  "output_sha256": {
+    "comparison.csv": "7368b823cee08b4df6de1625a2aca12ba75e8c3b48c43dc9745043ab7b29ba3b",
+    "confirmation_candidates.json": "77a13f7df3e9fd94ccb48a609a51189daacbd4da35b0ff9a07979b972d102c8d",
+    "ct_omission_differences.csv": "251ee4302e0e36797fbede25785c727ff6b13dbc1947b882a2d9e7b2502d0909",
+    "ct_omission_sensitivity.csv": "d3b586cf2f2f1b757435ff621fde955ddc06acf2fc907eb93b5207471242cc55",
+    "ct_review_budget.csv": "72f2584b7a2027a438529452a5a1efc0b139a322bf8e3620e6f5a8fb1e37516e",
+    "ct_review_differences.csv": "cecab0f4b77cb00b0b49f2f2d9b4d0d513ae80664a19f18ef1116f0ee7296270",
+    "final_model.json": "4223d998e52b6fe82061f9ffaf906de5a6a83312750d79646b68cad2e45a8dea",
+    "fold_models.json": "a72076f072291fddbdde1d144a1c2a863590889f6e42141d711e1a4a43e97a74",
+    "folds.csv": "ec0be76ae554b22c742dcb06b625e0484eeb52998732f36552d6fb49f1ef4c59",
+    "graph_features.csv": "5081a1af216d211957d0a6afd25934460fed399106de5de947d019c61bc7afb3",
+    "graph_pairs.csv": "9c19aa818d49d90136d38b07d71caa98f74a35da5952fb4201e3765e2404761a",
+    "models.json": "088add0a017867d33d753234b049fbeece07f4ec7e7325de8a3e8202003a917a",
+    "oof_scores.csv": "285b202ab7f95bdb5aae6d233d6377b638d584846e17eec77b3d2ea48ba19bbf",
+    "paired_differences.csv": "39435e49f1fef1736414d69d4742538147c10640cb6ac34981c441dbc5f1ce02",
+    "phantom_checks.csv": "bda19b75ee0500f33acf2ff01d1058d42c4e55205d6214eb7c9a12a1e3cb7e51",
+    "risk_coverage.csv": "c0be7bec8973bcc451643e9b0dd1ba0fc08d520f6c763ab584622fddbca73f2a",
+    "runtime.csv": "4d854f5c937f6ade592a9c81aa94d2d4d07638c8397766dfcc6e656af059f9c2",
+    "summary.json": "31a8f4768259b919acf59b24f0ee86dc525de116313d3783019b709cd838f9b8",
+    "tuning.json": "056bd54a67c73c5f6ec5370f81d9e472aa547df4e63199c6bd808db014eb1103"
+  }
+}

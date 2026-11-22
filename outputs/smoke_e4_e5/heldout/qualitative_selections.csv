@@ -1,0 +1,4 @@
+category,status,n_eligible,case_id,bone
+partition_detects_structure,no_eligible_case,0,,
+presence_detects_missing,no_eligible_case,0,,
+shared_error_low_disagreement,no_eligible_case,0,,

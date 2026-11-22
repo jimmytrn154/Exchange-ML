@@ -1,0 +1,65 @@
+{
+  "role": "development_nested_OOF_not_confirmation",
+  "smoke_only": false,
+  "real_feature_cases": 40,
+  "real_feature_units": 80,
+  "cv": {
+    "n_cases": 40,
+    "n_units": 80,
+    "final_head": "ridge_p1_g_a",
+    "outer_folds": 5,
+    "inner_folds_requested": 3,
+    "cv_seed": 20261122,
+    "ridge_alphas": [
+      0.1,
+      1.0,
+      10.0,
+      100.0
+    ],
+    "target": "log1p_member_mean_merge_split",
+    "selection": "inner_grouped_MSE_per_family_final_family_fixed",
+    "evaluation_role": "development_nested_grouped_oof_not_fresh_confirmation"
+  },
+  "reporting": {
+    "n_cases": 40,
+    "n_units": 80,
+    "scores": [
+      "mean_entropy",
+      "p95_entropy",
+      "pairwise_dice",
+      "presence",
+      "union_nvi",
+      "count_variance",
+      "hungarian",
+      "fa_v1",
+      "partition_v1",
+      "partition_v2",
+      "fa_v2",
+      "q_joint_unweighted",
+      "graph_degree",
+      "ridge_p1",
+      "ridge_p1_a",
+      "ridge_p1_g_a"
+    ],
+    "final_head": "ridge_p1_g_a",
+    "analysis_role": "development_only_not_confirmation",
+    "ci_role": "descriptive_conditional_fixed_OOF_scores_not_refitted_training_uncertainty",
+    "primary_contrast": "ridge_p1_g_a-partition_v1/member_mean/merge_split/pooled",
+    "ct_review_fractions": [
+      0.1,
+      0.2
+    ],
+    "ct_score_aggregation": "max",
+    "omission_positive_definition": "CT_with_any_annotated_bone_missing_volume_equals_one_per_risk_source",
+    "omission_labels": "frozen_E1_evaluation_only_not_predictor_features",
+    "guard_scope": "PENGWIN_expected_anatomy_only_not_RibFrac_lesions",
+    "human_correction_assumed": false,
+    "measured_reading_time": false
+  },
+  "primary_candidate": "ridge_p1_g_a",
+  "primary_control": "partition_v1",
+  "fresh_confirmation_ready": false,
+  "scoring_gt_voxels_loaded": false,
+  "risk_labels": "frozen E1 CSV only",
+  "CI_scope": "conditional_on_fixed_OOF_predictions_not_training_procedure"
+}

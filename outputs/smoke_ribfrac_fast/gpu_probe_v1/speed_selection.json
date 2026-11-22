@@ -1,0 +1,69 @@
+{
+  "status": "complete",
+  "results": [
+    {
+      "batch": 2,
+      "status": "ok",
+      "seconds_per_step": 0.5408203746192157,
+      "patches_per_second": 3.6980855268409085,
+      "peak_reserved_bytes": 6809452544,
+      "headroom_bytes": 16351363072,
+      "finite_loss": true,
+      "eligible": true
+    },
+    {
+      "batch": 5,
+      "status": "ok",
+      "seconds_per_step": 1.2990930640759568,
+      "patches_per_second": 3.8488389617848457,
+      "peak_reserved_bytes": 19541262336,
+      "headroom_bytes": 3535667200,
+      "finite_loss": true,
+      "eligible": true
+    },
+    {
+      "batch": 6,
+      "status": "ok",
+      "seconds_per_step": 1.5768651026301086,
+      "patches_per_second": 3.8050179371668444,
+      "peak_reserved_bytes": 17282629632,
+      "headroom_bytes": 5794299904,
+      "finite_loss": true,
+      "eligible": true
+    }
+  ],
+  "selected_batch": 5,
+  "gpu": "NVIDIA GeForce RTX 3090",
+  "role": "synthetic_compute_probe_not_epoch_ETA",
+  "budget": {
+    "batch_size": 5,
+    "iterations_per_epoch": 100,
+    "validation_iterations_per_epoch": 20,
+    "train_patches_per_epoch": 500,
+    "validation_patches_per_epoch": 100
+  },
+  "settings": {
+    "parent_root": "/mnt/disk1/backup_user/dang.cpm/Exchange-ML-E6",
+    "output_root": "/mnt/disk1/backup_user/dang.cpm/Exchange-ML-E6-fast-v1",
+    "batch_candidates": [
+      2,
+      5,
+      6
+    ],
+    "target_train_patches_per_epoch": 500,
+    "target_validation_patches_per_epoch": 100,
+    "cache_workers": 4,
+    "benchmark_warmup_steps": 2,
+    "benchmark_steps": 3,
+    "memory_headroom_gib": 2,
+    "old_jobs": [
+      2880,
+      2881,
+      2882
+    ],
+    "cudnn_benchmark": true,
+    "note": "Explicit batch/performance revision. Preserve parent checkpoints; resume their verified states into a separate campaign. Approximately preserve patch exposure, not optimizer-update count."
+  },
+  "backend_sha256": "5f8b85fa2efd8b1d04c9373cb7269fb48ea2839ba60b76fa043c01d1a295a021",
+  "parent_plans_sha256": "0db1c77bae20f229e7a01aef93b6ad93d3f5a8bab91c7b54af9bce031b659a9e"
+}

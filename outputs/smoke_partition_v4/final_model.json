@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "head": "pairwise_p1_g",
+  "features": [
+    "partition_v1",
+    "graph_degree"
+  ],
+  "target": "member_mean_merge_split",
+  "objective": "mean_pairwise_logistic_plus_half_alpha_l2",
+  "pair_weighting": "uniform_non_tied_unordered_bone_pairs",
+  "coefficient_constraints": "unconstrained",
+  "prediction_role": "ranking_not_probability",
+  "alpha": 0.001,
+  "mean": [
+    0.04143967870833442,
+    0.4022424861097016
+  ],
+  "scale": [
+    0.02461602116229141,
+    0.3476848198661511
+  ],
+  "coefficient": [
+    1.163147875832869,
+    7.032318047962896
+  ],
+  "intercept": 0.0,
+  "train_case_ids": [
+    "synthetic_000",
+    "synthetic_001",
+    "synthetic_002",
+    "synthetic_003",
+    "synthetic_004",
+    "synthetic_005",
+    "synthetic_006",
+    "synthetic_007",
+    "synthetic_008",
+    "synthetic_009",
+    "synthetic_010",
+    "synthetic_011",
+    "synthetic_012",
+    "synthetic_013",
+    "synthetic_014",
+    "synthetic_015",
+    "synthetic_016",
+    "synthetic_017",
+    "synthetic_018",
+    "synthetic_019"
+  ],
+  "n_train_units": 40,
+  "n_training_pairs": 687,
+  "optimizer": {
+    "status": "converged",
+    "iterations": 15,
+    "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+    "loss": 0.056966570201395006,
+    "gradient_infinity_norm": 3.2020762061844843e-10
+  },
+  "smoke_only": true,
+  "analysis_role": "synthetic_smoke",
+  "execution_signature": "f1c51649d896de3983acc2ecd70290565be5c33aca2ecf1dc38ffdf41b0b3705"
+}

@@ -1,0 +1,16 @@
+{
+  "experiment": "E5 supplementary fixed-budget uncertainty and omission endpoints",
+  "analysis_role": "exploratory_post_heldout",
+  "parent_config": "configs/e4_e5.json",
+  "parent_output": "outputs/stage3_h1_v2/e4_e5",
+  "output_root": "outputs/stage3_h1_v2/e5_supplement_v1",
+  "smoke_output_root": "outputs/smoke_e5_supplement_v1",
+  "bootstrap_seed": 20261119,
+  "bootstrap_resamples": 10000,
+  "retained_fractions": [0.8, 0.9],
+  "risks": ["merge_split", "one_minus_f1", "missing_volume"],
+  "risk_sources": ["member_mean", "stage2"],
+  "batch_size": 128,
+  "qualitative_selection": "copy_parent_without_reselection",
+  "smoke_render_limit": 1
+}

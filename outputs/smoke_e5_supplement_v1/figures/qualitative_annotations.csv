@@ -1,0 +1,3 @@
+category,case_id,bone,z_index,crop_y_index,crop_x_index,rule,role
+partition_detects_structure,176,right_hip,57,39,151,maximum_distance_inside_display_ID_discrepancy,display_only_not_clinical_adjudication
+partition_detects_structure,176,right_hip,188,20,24,maximum_distance_inside_display_ID_discrepancy,display_only_not_clinical_adjudication

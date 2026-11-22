@@ -1,0 +1,325 @@
+{
+  "status": "complete",
+  "signature": "9ef90860158dd921621b422137b84783baf6e75ebf34d0f67722655ec1dd8ae8",
+  "provenance": {
+    "config_sha256": "9f5af2e76397eacf12d40facde8535a0a622aca78d735145b23819b2b903a8c0",
+    "code_sha256": {
+      "scripts/run_e5_supplement.py": "a1da0b4f4db9b10c657912e6b104909e68aa2c25cd4042a22ad56c02e8ffd3b9",
+      "scripts/run_e4_e5.py": "a31d223c8a975eded806b308fad70c6ed6b6dc8d1d469d8a20e9434cd3b115e2",
+      "scripts/run_e1.py": "5d565a1385d6e791046ae4550a598d60d2b92b3fb393e5ad41f1b9b3c5f181a1",
+      "scripts/run_e3.py": "9062a860ea17cbc52cb32f73d3146f6773136e3851be82add9b1481ebef1fe4e",
+      "src/exchange_ml/e5_supplement_statistics.py": "b4f68d33f465a71e90892e566bb77ea99710b0ca4c7b1158ce98305a9ae1554b",
+      "src/exchange_ml/e5_supplement_figures.py": "925144209418706e9f9a81febbe3e97eed991e2c0e8ea1f7bfcaae2755601a68",
+      "src/exchange_ml/e5_visualization.py": "0afaa9376eea2caee74cc416f10caae44351cec0e12333984043a1d5e24a9ea0",
+      "src/exchange_ml/e4_e5_analysis.py": "a15f47b1bac9ddfa084f0e0a58345b0e21329402966c4fa1fd5ae8661a7d990e",
+      "src/exchange_ml/e4_e5_data.py": "8cfb53d2b71d3f1045cc21d001df7022c18b60460207dbdc8f57b0eaa29931e1",
+      "src/exchange_ml/e1_data.py": "7f563a14fc097b01409525d0ebceb0134e95243783dec464801d11ff51b90a86",
+      "src/exchange_ml/e1_statistics.py": "f9dcd986114251636fb116c3a23b2586846edc6439d4a54598ba50a657d11af1",
+      "src/exchange_ml/e1_scoring.py": "9077e0402171e88dc1a48ef6d0626d58248448043912a5aa61adda06b91fb36d",
+      "src/exchange_ml/instances.py": "339018f8ae511a99e6342e403c6c854b2dc5f2523c54d452d3c275b30cadec85",
+      "src/exchange_ml/metrics.py": "903a12216e4405f3a66666cd79323d803c9b79c1cb017c604716b32ef7fca455"
+    },
+    "parent_manifest_sha256": "d39b9dfc5a03b4988f63f3a44908b188a09f62984f3527d885c6b560677d5b98",
+    "parent_compute_signature": "61bcbe50b7822b36d21c7e6f3b5d085c635e2686af3f0a841c3113e06d2e6a21",
+    "upstream": {
+      "config_sha256": "91496822e4993eb90cb1588acf9167e09b5cf9942e18e7216083f814c23d8ae1",
+      "upstream_manifests": {
+        "validation": "e67323ae87ea257e2c494415e22ce460bd6b153ed95aca61cff30ac292d40fd1",
+        "heldout": "8c06e64d6f774349e13d2f33f5d6bfdbd412814de6b7d44886bec65231e24afb"
+      },
+      "upstream_tables": {
+        "validation/scores": "8e5717fca87842a067dff9d590ee74d9250d5ba04d3ce408266e53aaead25c01",
+        "validation/risks": "ccbe15e8de196edb32f1e34755f9db81c79e485818363b7f7e1eb5f746176df5",
+        "validation/model_risks": "a0e8bd383a8ca5a7b1bf9d1a77f36ca45b50af304365d8924752e09f2d993a09",
+        "validation/case_risks": "efc2ca952bb273674dc84e4b2c09dc6386bafdfdb319b9d9a57fd70bf225e333",
+        "validation/case_model_risks": "1d4a5dcddb2121d010ad36d3194ce7755dcf8897e473926e2b8dbf41fa2c227a",
+        "validation/comparison": "f0dd12873aefe4e992c9d4f18734f8c61a4804e5137fe05b9cdcd85e59ef71b8",
+        "validation/paired_differences": "95a38545d5c35e3f43648bed6c63e222c40f55e941967b4b0b2ed2bd9cc31dd0",
+        "heldout/scores": "c7f5ced97ac6a56096ab6e3556327dd09c8db53537104e4f75b49d799460edb8",
+        "heldout/risks": "52ff5484eb72e51d68ec0db9e5b1cac26762744bb4a17f27bfb4c6d11dfcceba",
+        "heldout/model_risks": "2c7828d956e77e9396d87ee8a94297df5b02e37bdd034a3d7d9db9ee6ea51f9b",
+        "heldout/case_risks": "52015c059a5dade6e8ca2e68fc4637e713ff27cafe308831db3df081dbe1092c",
+        "heldout/case_model_risks": "0aa4e07e6b5b25d73734149a261e070ec3dbe33ce8b6987d719ded95ece84fea",
+        "heldout/comparison": "ea0039c2341962e6216f5cc94144995590750668cbcea52497379ae8522fd815",
+        "heldout/paired_differences": "1922bba8403e4d94dda4db3041d0a8b0d6241691332dc6856289f384ff692453",
+        "heldout/inference_runtime": "c60fbf265cf44ec2ac5bf2d52f3208c36bd90707cf33a7b8f7e029bd59d3341d",
+        "heldout/evaluation_runtime": "7b2738a538ed2d9c4d665d102208a2a7f1e79fa3327b5c5f3b685aa504e68396"
+      },
+      "gt_caches": {
+        "001": "0f4dd8ab7a07d96d04fc0cd45fede2969f36ab222feda9db4b94a84559aa7616",
+        "009": "81f003fd8bbc8f6f4d3d09337065842f2c36fce3ebbd75514bf929cd10b47ae7",
+        "010": "7f2cdd646ed8a6f762cb9e6a38becbbbb4eb880290d2875cc85dab8e8876b27a",
+        "015": "65170efafa2dd10bea720fb8fc411af1a61cf415ab00e3dd1d91428894e12da8",
+        "018": "e58d558c97fc39d7372027212c4a6014b7368afa253d90d108850f0a1a3bdb80",
+        "021": "0aa650fa9ef1f6bd1a37f4a8f86adb8e834cc9d7b50963470a368d640bc52e0a",
+        "025": "f3564f097f7297b97dc79e441874ef208aebd5c59228b8989e565d2f140cc24c",
+        "027": "f08f40d32d183d0f8c482d3cc54c481b0b3bbac5dfc663c533e9545b0d4e7df5",
+        "035": "64c07103e06503cd9e313279f2ef9159074497e3b92345c240192e5d8ecbbc3c",
+        "040": "e58b8847bdd793bebcf0a091736108b0e288bdb68eb7fddf88a7a336822509ac",
+        "049": "3f6f847087887452756c21c6f4d1c2e6da3694264d363920882a32bda307937d",
+        "051": "bed961f080e51e70aef24a26968cf21bb47e654bed35a171af6252ad330e6f4b",
+        "054": "95471f8d77e9030ab9e3ea1bd30bf99847b06d9c9d234ba40eb3b41f3720327f",
+        "058": "5b28bd0940b7256bfbbf8ae7c63311d6dc9ec639bf316554a0462fcbae372671",
+        "061": "104f467000be0cfba04a13c7b9badb980958ad920ad4cbf015a58ee24085fef9",
+        "065": "7a092080c3924f72ae57799296a462eb2e491630cbbcb527e55626cd22dc755d",
+        "069": "f6806428aa28ed7927b05e874cc8ac91eaec53b1344136bd8a8600fb3bcf8d7a",
+        "071": "7fa31f7ffe8f765369ab8855ab157b839e2c7a1c313cb3d2a704311b0916de5e",
+        "072": "990507db443136ae6e2e2d96d3fd8f419ce4c693dbc36539cfe7a3b6fa681b42",
+        "077": "5938ed6eeb5a4b4169cc57d4b30f09e5c093d4cc6314840ae1b474ca4b2553cf",
+        "078": "18eb81bfae755ecc8edbbdad05c770eebcb2c6e87c89dae5f053b37704bf4ec5",
+        "080": "12ea2d78fd9ac47448f808d3325ac0f055d33a10f0b9479701cd67c64f998dd6",
+        "081": "e73be73741f0ac383026e3ae9392acf11ce05e3aff01139fc7d184eceb36091b",
+        "083": "9469f3b722ac8ed2608e6f216bb022a49616f81be448c6847e4674d06055f89b",
+        "084": "0a3c21a5539919b8a8250cc9c43846741ff1cd151a3bd39b89ac69c7c2fd05cf",
+        "085": "1661cda5a6839a4f3871fc3a18a4cb49b2d7b24f51251cec6c0df6f3c4829b2a",
+        "086": "20abbe15d42e80d69f45a2241c7881042219869dc84fbc75be4c58a7a5a47342",
+        "087": "78c34a210022b97ad667bf4ced4ce4703741f15646f8481d42fdf401eca81975",
+        "089": "e78f831a4009279d8023cd019dffe24a082a39ce63963a771aff5021bb5c7a6d",
+        "091": "09edd12872c1763c083cfe1ee86150c891e422ac76a03604f79fd9cec85b944e",
+        "092": "fe9dbea995162ddfc58e4bfb50e64eb9f7ba4c1b4fc782db82588975f5ceeb37",
+        "093": "d6a4cf78893cde9bc60c27dee1bbb39ff276f3338fadac5825bce5e93a2d0326",
+        "095": "a352c05af07212c41056aac017ef61f76e18ccbee901cca99e938ceefff97707",
+        "099": "cf4cc1f028dbe1c7bed7206024f098360a7d41341d5b749d33fea86876ae66a1",
+        "115": "0a878af471b1079a0d2e0e967151a59f6efef1f5ed0461c6480611786235f5a1",
+        "155": "76cc87dc9f262e581334707a567088a04fc1191bc2d1edc05b700be1f0ef7844",
+        "158": "5099123928facb522e142cc4a58c3b6eaabb83137b10c5e84e8e9dcba4e53172",
+        "160": "d0d3739b7e33f6fd6a3bb557ee6732311f680b457658eedfb66bb026a502a29f",
+        "161": "0c7d296c6caab5291545f92872a6c145e298cf49a07b96d55362e442c31804b4",
+        "162": "c3219ce3ab38a9ab5f38e3125edbc120fa0aed3da9e376d911d082d5b72d06f1",
+        "164": "968fd1b7e03deae514b68597709bbe5866852bc347d4ec6b91470a0aa7fcc362",
+        "169": "73e1c26b5c2ad3568a48bdd77a837af014a436eb3612188f0c6d49b5f95d4645",
+        "175": "3f0d691428bceb05930e408ab925537537edbca511f903bdd284369ac2a40221",
+        "176": "b8ac2d17a42886d83f4ac01768e8b99b3acf0f858cd2c1223bfdd55a9f80060a",
+        "179": "0b10b46e99727175a17c36c066f93338aa67839f216fb553a721f8c6b206c443",
+        "181": "57d019aea3aa1345cbbe18f161550db409c86dce7b99383c95c75735d285cf7b",
+        "187": "a1e34a6d57a48cab1cdc2fd060cdb658e986c7b2c83fc66439dbf3cc41c8a45e",
+        "194": "64b94587e7b7b7cedb78f2fbf0cb3eb9f4053f3dddff5d0e9c0f3271b5fbac52",
+        "199": "6a4f853db6063ad71ac0efaee792357fa58e3527522644453d5ee7547ebbcf85",
+        "200": "fd80ae31c2cdc82b566fc26a4563b6ad23e99d7bd3734fa3f7c69eff8932e6e6",
+        "263": "7e91daf470eea730bf4f6729f7960df85269ea40424019cba28f9eb9e1645765",
+        "270": "78673cf5d055bd11a083773afafdc180ef1f83c69d3cfc72494887981ef63987",
+        "277": "0b425e92ebda497029fc70eed1ae8d9e6572e1c194f9d814f995fd0ac7a35576",
+        "278": "f6053c68edde8f66bd3701f43185ba5a5da2b2aa0fdc5d9182e612cc6c2fe4cb",
+        "279": "40e8cc090c109be1ee4f2e4e2334745d90d73b23c70561e51629f678041af4bd",
+        "280": "7984992d6dca344de313254710bfe59c34f94f1c1a77302b2d8a12635dae6e03",
+        "286": "4edc75b1203c5c03d55d0bf4bd58d0c5c5120ab629564a910120a59936d0065d",
+        "299": "d3b1215e3382aa181c2fd38f3d8e516c50d461ffae1b9648a0e069e754f97d42",
+        "301": "f68de8d31aec8c6c38d16ec6681cf0f0e1d0696c069c6c4894f66ba2db849863",
+        "302": "76c22969d6e585c19f2640bbed1000fb6e73bb51029b0234bd5c6ef3f213b668",
+        "308": "f146455f2cb39fef48a8cb5d11d2d17d574f9a5513a5a7d0ee9e8c067d10a9c9",
+        "309": "b6d6063f83d9436d10efaad8b30c040248405c93ddeaf2544ffc1cd9d502f0ff",
+        "313": "33d04eaf9d30ff00916de1d50e59fc3dc3b54487147f616b58d50d131572f6d6",
+        "314": "5881c95d06064d636cdc5e43c9c833ad5df0445b319f46e435d99c5b2b295910",
+        "316": "8762bf5aec739ae71cd2fca63da294f3f46499f27f3449ffea89a0ce50e2d4d2",
+        "318": "4bef1eb64961cf2a9480f4c9a91c5fd428d61debd86679c95946bbafe86ed7fe",
+        "322": "63e31370fada2b3722efa5ed637fb5da3076eedc7289c9fca7bcff224dcfb3d0",
+        "325": "0f16e84c267855d921eb8ad608f954be5a9878ee767e782b771245ac3c9acad7",
+        "330": "ff6f64b15eff671d570bc6453ddafe69dcc75b9e23c919852197ed728c4dc120",
+        "331": "8e18f2d3ff5015de9480b9723ad3749d0e9c1a20f034cf638589778305d2f0fc",
+        "335": "74c012921dbe6928df0996d1b7d2cdbc0c4ccf810009682216fb6a7fbdcaeb4c",
+        "337": "bd5380d9722472379c068012d3bedd885cabb20f781abd641d1cd061a65c5a7e",
+        "341": "709fc46e2670ca297f9547e037415f3139b7431c46ea8247eca5b3070ed5bb7a",
+        "343": "c00158529009657c6e6d774fb258cd24a64907de1704a6036e7831b7853c42ba",
+        "344": "a82423d8fdda05c177d5f2b6cabe4a414fa9263fd5075e71c28d1983ec45ffd0",
+        "345": "4b5dfa710bd69c42c487f76bdb46628b02ca4dce55567d1632b1093a40bfa224",
+        "349": "2a4779035178f61811c901bbf8e979cb7ad0fa7a2f0a451a99fc7544bfd86504",
+        "350": "971b12c3d68aa443b36bd55f8657bdd2ac27c069c5b845755fbe3235f24b8e81",
+        "352": "fe766cd7f05a0e390e39649240e231215257864bfd93b87d77c86e81a76ead1f",
+        "359": "1668e98a1b917dbfc05dc3d767502860ba22f05ad322f85d08adbd8bf6e7de15",
+        "360": "510916e4805733ae8d92049396ebd993a3cd340324d292ed9d945d89142b635a",
+        "363": "c00de404c8c86e0b4239c2b832ec8016afc96ede012d409ce33e9c754087e1ef",
+        "364": "3274815dd780dd2fcc53ff7d44fa6b3a6abb5c0e06d4278180c8f7bab129a2d3",
+        "367": "eaf114f9274f27d6a00acaba84b61ef77bbae384c0caddf5e2b6c7ffcddb953b",
+        "368": "619db9009edd04540657cea8ae81a39055d82a484a0f66db2074097931786ac3",
+        "369": "e4ee9a85fb438489b679c366fdd48d9bf027f71a92ffb4025815257249a1b67b",
+        "379": "7c9c2660c3fb7e9a4cb84dd5dc41534601644d0a5a17c46274a68a5f81f9e76e",
+        "381": "2d0a97b742feae47ad36ae344a5f065128576ea09e60fae3a704fcab9c12ddae",
+        "392": "7398c2d4cc92d5c3bbf651de37a28d501fe4bc27a1fc794ae8d1203092dd5b71",
+        "397": "c6562226c1e5010497919d6c3791fb220a2f5064dc50d01a4d5a9a3a7a42235b",
+        "401": "91cc2cd59a586f5b1f9e047d88f52b934fbf3b8a5eb4f58674531473f019ceae",
+        "406": "e652dc908f0381a9a454f1e7b4b3402dc36a6b631a41cc459d351985905e2816",
+        "407": "f63248b05d2c711600667a9d2118df409012fd764466c381b607e846c52c80e2",
+        "408": "58ce87cdebacac5b866f5af8a18c8efadd5c9224fa457181698d0b513d086c1d",
+        "409": "a5e004571983e2614c2c7fe23988c3ab71f7887fbb0195573a794893d7e14519",
+        "410": "ddb6da2435ebb3eaf61124c5b25bf96434e42cde01d7a4687b3c3ebc18ecf680",
+        "413": "4855ce1fcb1252386700d96710fa40c7de35fafe1b4317f3a887f007f3c5a177",
+        "414": "8dc47239fc34db5372d65230f3d99923e310053dead3c8e2e784a81a09569c26",
+        "416": "5175568b06fcdeb9c072bb223544905aaf90b5b61ba34b4e7fd5b028ebb0421f",
+        "418": "1e6d4eb1caede117fb01f4bbbb5e84f3eb508700f521dee470ab1d274e7f6c21"
+      },
+      "software": {
+        "numpy": "1.26.4",
+        "scipy": "1.15.3",
+        "SimpleITK": "2.3.1",
+        "matplotlib": "3.10.8"
+      },
+      "code_sha256": {
+        "scripts/run_e4_e5.py": "a31d223c8a975eded806b308fad70c6ed6b6dc8d1d469d8a20e9434cd3b115e2",
+        "scripts/run_e1.py": "5d565a1385d6e791046ae4550a598d60d2b92b3fb393e5ad41f1b9b3c5f181a1",
+        "scripts/run_e3.py": "9062a860ea17cbc52cb32f73d3146f6773136e3851be82add9b1481ebef1fe4e",
+        "src/exchange_ml/e4_e5_analysis.py": "a15f47b1bac9ddfa084f0e0a58345b0e21329402966c4fa1fd5ae8661a7d990e",
+        "src/exchange_ml/e4_e5_data.py": "8cfb53d2b71d3f1045cc21d001df7022c18b60460207dbdc8f57b0eaa29931e1",
+        "src/exchange_ml/e5_visualization.py": "0afaa9376eea2caee74cc416f10caae44351cec0e12333984043a1d5e24a9ea0",
+        "src/exchange_ml/e1_data.py": "7f563a14fc097b01409525d0ebceb0134e95243783dec464801d11ff51b90a86",
+        "src/exchange_ml/e1_scoring.py": "9077e0402171e88dc1a48ef6d0626d58248448043912a5aa61adda06b91fb36d",
+        "src/exchange_ml/e1_statistics.py": "f9dcd986114251636fb116c3a23b2586846edc6439d4a54598ba50a657d11af1",
+        "src/exchange_ml/instances.py": "339018f8ae511a99e6342e403c6c854b2dc5f2523c54d452d3c275b30cadec85",
+        "src/exchange_ml/metrics.py": "903a12216e4405f3a66666cd79323d803c9b79c1cb017c604716b32ef7fca455"
+      }
+    },
+    "software": {
+      "numpy": "1.26.4",
+      "scipy": "1.15.3",
+      "SimpleITK": "2.3.1",
+      "matplotlib": "3.10.8"
+    },
+    "cases": {
+      "validation": [
+        {
+          "case_id": "004",
+          "scan_type": "pelvic"
+        },
+        {
+          "case_id": "254",
+          "scan_type": "femur"
+        }
+      ],
+      "heldout": [
+        {
+          "case_id": "001",
+          "scan_type": "pelvic"
+        },
+        {
+          "case_id": "263",
+          "scan_type": "femur"
+        }
+      ]
+    },
+    "smoke_only": true,
+    "analysis_role": "exploratory_post_heldout"
+  },
+  "started_at_unix": 1795183444.4737546,
+  "completed_splits": [
+    "validation",
+    "heldout"
+  ],
+  "cache_sha256": {
+    "cache/validation.json": "d3081947bc4ccce6a8bb953c48b900deb7b47361104473f8738ae0e522638310",
+    "cache/heldout.json": "81ffcd4016b959ac82825ca032496e7535038f435196ad78fc8b06604fff6879"
+  },
+  "summary": {
+    "analysis_role": "exploratory_post_heldout",
+    "smoke_only": true,
+    "bootstrap_resamples": 32,
+    "n_cases": {
+      "validation": 2,
+      "heldout": 2
+    },
+    "n_bone_units": 8,
+    "table_rows": {
+      "fixed_budget": 936,
+      "paired_differences": 1728,
+      "risk_coverage": 1248
+    },
+    "risks": [
+      "merge_split",
+      "one_minus_f1",
+      "missing_volume"
+    ],
+    "risk_sources": [
+      "member_mean",
+      "stage2"
+    ],
+    "original_qualitative_selections": [
+      {
+        "category": "partition_detects_structure",
+        "status": "selected",
+        "n_eligible": 10.0,
+        "case_id": "176",
+        "bone": "right_hip"
+      },
+      {
+        "category": "presence_detects_missing",
+        "status": "selected",
+        "n_eligible": 6.0,
+        "case_id": "160",
+        "bone": "sacrum"
+      },
+      {
+        "category": "shared_error_low_disagreement",
+        "status": "selected",
+        "n_eligible": 8.0,
+        "case_id": "187",
+        "bone": "left_hip"
+      }
+    ],
+    "rendered_examples": [
+      {
+        "category": "partition_detects_structure",
+        "status": "selected",
+        "n_eligible": 10.0,
+        "case_id": "176",
+        "bone": "right_hip"
+      }
+    ],
+    "visual_sources": {
+      "176": {
+        "image_sha256": "501054cd9962aada42e131c542cb99504ec0bbde137fe0bbd29310f73a63d909",
+        "volume_sha256": {
+          "gt": "945fd9c2c21a8032d272f471725a36f1091a7c3cd08b025c31ae1a3583477b74",
+          "member_01": "a56ab70f79ac3023c71d1a1da62e1bcac0fa09fdc664197896affb9ef768203c",
+          "member_02": "c6a2332a57f177817f31d51ee395617fc694bd6090eb391573bf631a29a80d0d",
+          "member_03": "b737f906b0d82f1bddd04c5a9f77d68059e34f4a7297ce6246713d056fa0136a",
+          "stage2": "c8c5248db33656a1c2a4c7b74b554e3fd71e3cf51a5e3566e750a6e254bbff34"
+        }
+      }
+    },
+    "limits": [
+      "Added after inspection of held-out results; exploratory, no E3 primary change.",
+      "Fixed budgets remain bone-based; expected reviewed CT costs are descriptive point estimates.",
+      "Random is the expected random-ranking risk, not a sampled random-order simulation.",
+      "CIs are marginal percentile intervals; no familywise confirmatory claims.",
+      "No new policy/QC gate or inference; no change to historical timing measurements."
+    ]
+  },
+  "completed_at_unix": 1795183472.340422,
+  "output_sha256": {
+    "figures/fixed_budget_heldout_merge_split.pdf": "6a447f431c7cd89d3f6a0d29ab92b78c50884c447835cfda5144c5a95b4b46d7",
+    "figures/fixed_budget_heldout_merge_split.png": "560fd8dd1a080f61fbe09e9b990f744d256d68df208f80b3647c0fe55e910bac",
+    "figures/fixed_budget_heldout_missing_volume.pdf": "c5d5e0041bd7359d22fd73080eee8907d994813d35759571c61af64264ed1888",
+    "figures/fixed_budget_heldout_missing_volume.png": "d230e00a85f088ed369b9ac6e5f4cc50965e50216595f5abe520e951066cba60",
+    "figures/fixed_budget_heldout_one_minus_f1.pdf": "103cfcf997fc14cb5e93ebca6f9203a3eba7f5700fb621ca5d97968dc30f628e",
+    "figures/fixed_budget_heldout_one_minus_f1.png": "b79c9e138db6892148b3d7d79f26ee4d83f58fc40d70ec812193beb88575bcb5",
+    "figures/fixed_budget_validation_merge_split.pdf": "eb18aa7eb21cab3b3d4b88027d4e550579e45077260813b71136f782cdf6adc4",
+    "figures/fixed_budget_validation_merge_split.png": "18d7e81bc943321029d10f2f1376db7d2c2875e983008bcb761cb4264679b101",
+    "figures/fixed_budget_validation_missing_volume.pdf": "f7ea3af4113e0d48a1c29cb56c7cbd3c45a60dfdf2e16bed1d6d938479802193",
+    "figures/fixed_budget_validation_missing_volume.png": "ca66a30e04191b45782e2f73e140e972d22b90b68942fe49ba7bd1c35beb9571",
+    "figures/fixed_budget_validation_one_minus_f1.pdf": "5f767a4d11f2c52d8d44a5dd4a03eaf23c93213c942008ab9c055068d844dff6",
+    "figures/fixed_budget_validation_one_minus_f1.png": "d53baa52261eb04e1343b1d47df8755345db5f7961beebfa6a2ca85a6aee2c8c",
+    "figures/qualitative.pdf": "d1ed9f95092d68bcfb56f6e1b21ec34b6542e8ec6279c542b02303aea3883139",
+    "figures/qualitative_annotations.csv": "972309a3aaec6607e8920600472a9669e42abfe11848771dff0eb431e6ae906e",
+    "figures/qualitative_partition_detects_structure.pdf": "b401427e23aefa764946cadfb7bde9050e192ad234e6b3ef516f1e53d42d9c5b",
+    "figures/qualitative_partition_detects_structure.png": "92b7f20a56a2a3ce205dbeff4511e9707b0bb1dcba9e8a00f61b399608d0b47a",
+    "figures/risk_coverage_heldout_merge_split.pdf": "10f9b16afdfc29b8f0273bac9b6fee0ad751cda6db943ada0637bb7585fc3e16",
+    "figures/risk_coverage_heldout_merge_split.png": "1f80216a7897f4293475c9e19de7415818572c82a662a4174be97eb3b74a36de",
+    "figures/risk_coverage_heldout_missing_volume.pdf": "6e4058119a3aab38f2a864b2b04a32d4a1c4664d87b530a94d787ce7f6e7739b",
+    "figures/risk_coverage_heldout_missing_volume.png": "6d08135c36ad1023c183090c8de74ca9181085b022b3617300f7b8848ce74ebc",
+    "figures/risk_coverage_heldout_one_minus_f1.pdf": "60182569080fb28c7535cfc8ff78c3a449a170d85ca323fe61e97eb171bdfae5",
+    "figures/risk_coverage_heldout_one_minus_f1.png": "5804902d5e740175c6adcdb26d7a081a754dc22211ad702d9345d829f6b3a511",
+    "figures/risk_coverage_validation_merge_split.pdf": "1b2b9084307a034ccba8133794b5a4656abd94164cb1f3cf170666ac133f647b",
+    "figures/risk_coverage_validation_merge_split.png": "63a4b0fe86b621d702576c7ecf229fac4dfd329ac82d98196958efe1648e98b7",
+    "figures/risk_coverage_validation_missing_volume.pdf": "a6afab3fb17a781631597bacc2af492010c9ab26e0ee799c00b1e95ce74b317d",
+    "figures/risk_coverage_validation_missing_volume.png": "8c1fdf0a776269c11fc2abf452f98ea2f2f9602a6620136305a57776b429f222",
+    "figures/risk_coverage_validation_one_minus_f1.pdf": "045b270189cc468a7665443013f4b2b3e4793f78e429f1f8f97983b91c48965a",
+    "figures/risk_coverage_validation_one_minus_f1.png": "20323e9ec2afe759c666081e6a45fed69a2b774bff535eb11f76119e4a9888a0",
+    "heldout/qualitative_candidates.csv": "fdbe6de94ce1e5e6415a72d810f99f9e83560499c5a58f4e870bd93ec7d7e338",
+    "heldout/qualitative_coordinates.csv": "023584c72f484044183b8fb5db54735afe6c0ab80a1e0dbe289d41416e5f29c6",
+    "heldout/qualitative_display_mapping.csv": "daffad2f62de719336a3c9c18537405e18eb648ba2dcd9e56940e57d3a3bc7ff",
+    "heldout/qualitative_selections.csv": "4e6adf2dda5a2ea7cc146008f358ba7f4d7ff3860a282956603c1f6c11dd37e1",
+    "source_parent_manifest.json": "d39b9dfc5a03b4988f63f3a44908b188a09f62984f3527d885c6b560677d5b98",
+    "summary.json": "990427ae703ac59fbc77589155424f3d726ca57d86472c232dc0eb6a89eec983",
+    "tables/fixed_budget.csv": "d1a7d5921968a67dab9c80241766621b55382802f770365fee2be5b555dc3120",
+    "tables/paired_differences.csv": "22f500a5f714a64065c273680d0075ebad6ede4cc804d85d006b04d3f61ef254",
+    "tables/risk_coverage.csv": "e06c870906d505993a1af4ffc93d1d4091752977a712edc5f6df9f2773831f39"
+  }
+}

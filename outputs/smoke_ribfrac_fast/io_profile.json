@@ -1,0 +1,19 @@
+{
+  "role": "one_training_case_IO_smoke_not_epoch_throughput",
+  "case_id": "RibFrac1",
+  "compressed_seconds": [
+    2.2369253081269562,
+    7.775988602079451,
+    1.9988103359937668
+  ],
+  "mmap_patch_seconds": 0.012922271015122532,
+  "shape": [
+    1,
+    333,
+    568,
+    568
+  ],
+  "dtype": "float32",
+  "source_sha256": "7098de494df1f4cdd52b566269c3056de70a11089dfdd55a5b1dd041ff7c796a",
+  "same_patch_values": true
+}

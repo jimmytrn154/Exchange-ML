@@ -1,0 +1,14 @@
+{
+  "scope": "E1 validation diagnosis only; not a frozen held-out protocol",
+  "split": "splits/pengwin_stage0_split.json",
+  "scan_metadata": "configs/e1_validation_cases.csv",
+  "dataset_root": "dataset/PENGWIN26_task1_2",
+  "member_root": "outputs/stage3_h1/members",
+  "stage2_root": "outputs/stage2_backend",
+  "output_root": "outputs/stage3_h1_v2",
+  "connectivity": 26,
+  "prune_mm3": 1000.0,
+  "iou_threshold": 0.1,
+  "bootstrap_seed": 20261119,
+  "bootstrap_resamples": 10000
+}

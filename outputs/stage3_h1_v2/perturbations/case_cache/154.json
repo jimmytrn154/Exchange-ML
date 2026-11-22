@@ -1,0 +1,1768 @@
+{
+  "signature": "9754569c86ede8310d669892b526b900f68088746805cd2deeb8cc66e5a3155d",
+  "input_states": {
+    "member_01_prediction": {
+      "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_01/validation_predictions/154.mha",
+      "bytes": 23290936,
+      "mtime_ns": 1792511314255598358
+    },
+    "member_02_prediction": {
+      "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_02/validation_predictions/154.mha",
+      "bytes": 23290936,
+      "mtime_ns": 1792511368299732082
+    },
+    "member_03_prediction": {
+      "path": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/stage3_h1/members/member_03/validation_predictions/154.mha",
+      "bytes": 23290936,
+      "mtime_ns": 1792544101766339958
+    }
+  },
+  "input_sha256": {
+    "member_01_prediction": "79bcedc9e8df11e88603023c2e3fa51dda3f6a4b9327e2842d2409bd83f0ec07",
+    "member_02_prediction": "1c92b5e40f55b9c1322664da0809e2e8ec7a20441f41ed9b7f1c226d04497112",
+    "member_03_prediction": "cb29d0482189057aebf258b6f3d94d4c2e89fef9e16095f3e30870b7051c94dd"
+  },
+  "result": {
+    "responses": [],
+    "replication": [
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "sacrum",
+        "member_i": "member_01",
+        "member_j": "member_02",
+        "r": 1,
+        "N": 455031,
+        "VI": 0.0,
+        "H": -0.0,
+        "Q1": 0.0,
+        "Q2": 0.0,
+        "A": 0.0788137549042234,
+        "w": 0.9211862450957766,
+        "Q1_expected": 0.0,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": false
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "sacrum",
+        "member_i": "member_01",
+        "member_j": "member_02",
+        "r": 2,
+        "N": 910062,
+        "VI": 0.0,
+        "H": -0.0,
+        "Q1": 0.0,
+        "Q2": 0.0,
+        "A": 0.0788137549042234,
+        "w": 0.9211862450957766,
+        "Q1_expected": 0.0,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": false
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "sacrum",
+        "member_i": "member_01",
+        "member_j": "member_02",
+        "r": 4,
+        "N": 1820124,
+        "VI": 0.0,
+        "H": -0.0,
+        "Q1": 0.0,
+        "Q2": 0.0,
+        "A": 0.0788137549042234,
+        "w": 0.9211862450957766,
+        "Q1_expected": 0.0,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": false
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "sacrum",
+        "member_i": "member_01",
+        "member_j": "member_02",
+        "r": 8,
+        "N": 3640248,
+        "VI": 0.0,
+        "H": -0.0,
+        "Q1": 0.0,
+        "Q2": 0.0,
+        "A": 0.0788137549042234,
+        "w": 0.9211862450957766,
+        "Q1_expected": 0.0,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": false
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "sacrum",
+        "member_i": "member_01",
+        "member_j": "member_02",
+        "r": 16,
+        "N": 7280496,
+        "VI": 0.0,
+        "H": -0.0,
+        "Q1": 0.0,
+        "Q2": 0.0,
+        "A": 0.0788137549042234,
+        "w": 0.9211862450957766,
+        "Q1_expected": 0.0,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": false
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "sacrum",
+        "member_i": "member_01",
+        "member_j": "member_03",
+        "r": 1,
+        "N": 386210,
+        "VI": 0.0,
+        "H": -0.0,
+        "Q1": 0.0,
+        "Q2": 0.0,
+        "A": 0.18520581353890425,
+        "w": 0.8147941864610957,
+        "Q1_expected": 0.0,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": false
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "sacrum",
+        "member_i": "member_01",
+        "member_j": "member_03",
+        "r": 2,
+        "N": 772420,
+        "VI": 0.0,
+        "H": -0.0,
+        "Q1": 0.0,
+        "Q2": 0.0,
+        "A": 0.18520581353890425,
+        "w": 0.8147941864610957,
+        "Q1_expected": 0.0,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": false
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "sacrum",
+        "member_i": "member_01",
+        "member_j": "member_03",
+        "r": 4,
+        "N": 1544840,
+        "VI": 0.0,
+        "H": -0.0,
+        "Q1": 0.0,
+        "Q2": 0.0,
+        "A": 0.18520581353890425,
+        "w": 0.8147941864610957,
+        "Q1_expected": 0.0,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": false
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "sacrum",
+        "member_i": "member_01",
+        "member_j": "member_03",
+        "r": 8,
+        "N": 3089680,
+        "VI": 0.0,
+        "H": -0.0,
+        "Q1": 0.0,
+        "Q2": 0.0,
+        "A": 0.18520581353890425,
+        "w": 0.8147941864610957,
+        "Q1_expected": 0.0,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": false
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "sacrum",
+        "member_i": "member_01",
+        "member_j": "member_03",
+        "r": 16,
+        "N": 6179360,
+        "VI": 0.0,
+        "H": -0.0,
+        "Q1": 0.0,
+        "Q2": 0.0,
+        "A": 0.18520581353890425,
+        "w": 0.8147941864610957,
+        "Q1_expected": 0.0,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": false
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "sacrum",
+        "member_i": "member_02",
+        "member_j": "member_03",
+        "r": 1,
+        "N": 389034,
+        "VI": 0.0,
+        "H": -0.0,
+        "Q1": 0.0,
+        "Q2": 0.0,
+        "A": 0.20190623115206768,
+        "w": 0.7980937688479324,
+        "Q1_expected": 0.0,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": false
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "sacrum",
+        "member_i": "member_02",
+        "member_j": "member_03",
+        "r": 2,
+        "N": 778068,
+        "VI": 0.0,
+        "H": -0.0,
+        "Q1": 0.0,
+        "Q2": 0.0,
+        "A": 0.20190623115206768,
+        "w": 0.7980937688479324,
+        "Q1_expected": 0.0,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": false
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "sacrum",
+        "member_i": "member_02",
+        "member_j": "member_03",
+        "r": 4,
+        "N": 1556136,
+        "VI": 0.0,
+        "H": -0.0,
+        "Q1": 0.0,
+        "Q2": 0.0,
+        "A": 0.20190623115206768,
+        "w": 0.7980937688479324,
+        "Q1_expected": 0.0,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": false
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "sacrum",
+        "member_i": "member_02",
+        "member_j": "member_03",
+        "r": 8,
+        "N": 3112272,
+        "VI": 0.0,
+        "H": -0.0,
+        "Q1": 0.0,
+        "Q2": 0.0,
+        "A": 0.20190623115206768,
+        "w": 0.7980937688479324,
+        "Q1_expected": 0.0,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": false
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "sacrum",
+        "member_i": "member_02",
+        "member_j": "member_03",
+        "r": 16,
+        "N": 6224544,
+        "VI": 0.0,
+        "H": -0.0,
+        "Q1": 0.0,
+        "Q2": 0.0,
+        "A": 0.20190623115206768,
+        "w": 0.7980937688479324,
+        "Q1_expected": 0.0,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": false
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "left_hip",
+        "member_i": "member_01",
+        "member_j": "member_02",
+        "r": 1,
+        "N": 620070,
+        "VI": 0.024314847628462616,
+        "H": 0.2096388768262223,
+        "Q1": 0.001823031889983509,
+        "Q2": 0.11598443951127503,
+        "A": 0.011777643196379053,
+        "w": 0.9882223568036209,
+        "Q1_expected": 0.001823031889983509,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": true
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "left_hip",
+        "member_i": "member_01",
+        "member_j": "member_02",
+        "r": 2,
+        "N": 1240140,
+        "VI": 0.024314847628462616,
+        "H": 0.2096388768262223,
+        "Q1": 0.0017329703622357415,
+        "Q2": 0.11598443951127503,
+        "A": 0.011777643196379053,
+        "w": 0.9882223568036209,
+        "Q1_expected": 0.0017329703622357415,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": true
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "left_hip",
+        "member_i": "member_01",
+        "member_j": "member_02",
+        "r": 4,
+        "N": 2480280,
+        "VI": 0.024314847628462616,
+        "H": 0.2096388768262223,
+        "Q1": 0.0016513883773112208,
+        "Q2": 0.11598443951127503,
+        "A": 0.011777643196379053,
+        "w": 0.9882223568036209,
+        "Q1_expected": 0.0016513883773112208,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": true
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "left_hip",
+        "member_i": "member_01",
+        "member_j": "member_02",
+        "r": 8,
+        "N": 4960560,
+        "VI": 0.024314847628462616,
+        "H": 0.2096388768262223,
+        "Q1": 0.001577142218519951,
+        "Q2": 0.11598443951127503,
+        "A": 0.011777643196379053,
+        "w": 0.9882223568036209,
+        "Q1_expected": 0.001577142218519951,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": true
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "left_hip",
+        "member_i": "member_01",
+        "member_j": "member_02",
+        "r": 16,
+        "N": 9921120,
+        "VI": 0.024314847628462616,
+        "H": 0.2096388768262223,
+        "Q1": 0.0015092850047572256,
+        "Q2": 0.11598443951127503,
+        "A": 0.011777643196379053,
+        "w": 0.9882223568036209,
+        "Q1_expected": 0.0015092850047572256,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": true
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "left_hip",
+        "member_i": "member_01",
+        "member_j": "member_03",
+        "r": 1,
+        "N": 621749,
+        "VI": 0.02447232139669514,
+        "H": 0.20839635015676694,
+        "Q1": 0.0018344667305075849,
+        "Q2": 0.11743162189877963,
+        "A": 0.01166923651623774,
+        "w": 0.9883307634837623,
+        "Q1_expected": 0.0018344667305075849,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": true
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "left_hip",
+        "member_i": "member_01",
+        "member_j": "member_03",
+        "r": 2,
+        "N": 1243498,
+        "VI": 0.02447232139669514,
+        "H": 0.20839635015676694,
+        "Q1": 0.001743857760883307,
+        "Q2": 0.11743162189877963,
+        "A": 0.01166923651623774,
+        "w": 0.9883307634837623,
+        "Q1_expected": 0.001743857760883307,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": true
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "left_hip",
+        "member_i": "member_01",
+        "member_j": "member_03",
+        "r": 4,
+        "N": 2486996,
+        "VI": 0.02447232139669514,
+        "H": 0.20839635015676694,
+        "Q1": 0.001661778310774351,
+        "Q2": 0.11743162189877963,
+        "A": 0.01166923651623774,
+        "w": 0.9883307634837623,
+        "Q1_expected": 0.001661778310774351,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": true
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "left_hip",
+        "member_i": "member_01",
+        "member_j": "member_03",
+        "r": 8,
+        "N": 4973992,
+        "VI": 0.02447232139669514,
+        "H": 0.20839635015676694,
+        "Q1": 0.0015870781244096586,
+        "Q2": 0.11743162189877963,
+        "A": 0.01166923651623774,
+        "w": 0.9883307634837623,
+        "Q1_expected": 0.0015870781244096586,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": true
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "left_hip",
+        "member_i": "member_01",
+        "member_j": "member_03",
+        "r": 16,
+        "N": 9947984,
+        "VI": 0.02447232139669514,
+        "H": 0.20839635015676694,
+        "Q1": 0.0015188048737681708,
+        "Q2": 0.11743162189877963,
+        "A": 0.01166923651623774,
+        "w": 0.9883307634837623,
+        "Q1_expected": 0.0015188048737681708,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": true
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "left_hip",
+        "member_i": "member_02",
+        "member_j": "member_03",
+        "r": 1,
+        "N": 619868,
+        "VI": 0.017576242478071186,
+        "H": 0.20777219858318302,
+        "Q1": 0.001317829903964943,
+        "Q2": 0.08459381282926752,
+        "A": 0.012938042303019301,
+        "w": 0.9870619576969807,
+        "Q1_expected": 0.001317829903964943,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": true
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "left_hip",
+        "member_i": "member_02",
+        "member_j": "member_03",
+        "r": 2,
+        "N": 1239736,
+        "VI": 0.017576242478071186,
+        "H": 0.20777219858318302,
+        "Q1": 0.0012527248823201772,
+        "Q2": 0.08459381282926752,
+        "A": 0.012938042303019301,
+        "w": 0.9870619576969807,
+        "Q1_expected": 0.0012527248823201772,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": true
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "left_hip",
+        "member_i": "member_02",
+        "member_j": "member_03",
+        "r": 4,
+        "N": 2479472,
+        "VI": 0.017576242478071186,
+        "H": 0.20777219858318302,
+        "Q1": 0.0011937498148256354,
+        "Q2": 0.08459381282926752,
+        "A": 0.012938042303019301,
+        "w": 0.9870619576969807,
+        "Q1_expected": 0.0011937498148256354,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": true
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "left_hip",
+        "member_i": "member_02",
+        "member_j": "member_03",
+        "r": 8,
+        "N": 4958944,
+        "VI": 0.017576242478071186,
+        "H": 0.20777219858318302,
+        "Q1": 0.0011400778787164032,
+        "Q2": 0.08459381282926752,
+        "A": 0.012938042303019301,
+        "w": 0.9870619576969807,
+        "Q1_expected": 0.0011400778787164032,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": true
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "left_hip",
+        "member_i": "member_02",
+        "member_j": "member_03",
+        "r": 16,
+        "N": 9917888,
+        "VI": 0.017576242478071186,
+        "H": 0.20777219858318302,
+        "Q1": 0.0010910245517079897,
+        "Q2": 0.08459381282926752,
+        "A": 0.012938042303019301,
+        "w": 0.9870619576969807,
+        "Q1_expected": 0.0010910245517079897,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": true
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "right_hip",
+        "member_i": "member_01",
+        "member_j": "member_02",
+        "r": 1,
+        "N": 593060,
+        "VI": 0.011208957983516621,
+        "H": 1.343992518643971,
+        "Q1": 0.0008432193713254372,
+        "Q2": 0.008340044924376486,
+        "A": 0.028729024798477568,
+        "w": 0.9712709752015224,
+        "Q1_expected": 0.0008432193713254372,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": true
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "right_hip",
+        "member_i": "member_01",
+        "member_j": "member_02",
+        "r": 2,
+        "N": 1186120,
+        "VI": 0.011208957983516621,
+        "H": 1.343992518643971,
+        "Q1": 0.0008014299494673474,
+        "Q2": 0.008340044924376486,
+        "A": 0.028729024798477568,
+        "w": 0.9712709752015224,
+        "Q1_expected": 0.0008014299494673474,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": true
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "right_hip",
+        "member_i": "member_01",
+        "member_j": "member_02",
+        "r": 4,
+        "N": 2372240,
+        "VI": 0.011208957983516621,
+        "H": 1.343992518643971,
+        "Q1": 0.0007635870551300778,
+        "Q2": 0.008340044924376486,
+        "A": 0.028729024798477568,
+        "w": 0.9712709752015224,
+        "Q1_expected": 0.0007635870551300778,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": true
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "right_hip",
+        "member_i": "member_01",
+        "member_j": "member_02",
+        "r": 8,
+        "N": 4744480,
+        "VI": 0.011208957983516621,
+        "H": 1.343992518643971,
+        "Q1": 0.0007291568403817958,
+        "Q2": 0.008340044924376486,
+        "A": 0.028729024798477568,
+        "w": 0.9712709752015224,
+        "Q1_expected": 0.0007291568403817958,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": true
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "right_hip",
+        "member_i": "member_01",
+        "member_j": "member_02",
+        "r": 16,
+        "N": 9488960,
+        "VI": 0.011208957983516621,
+        "H": 1.343992518643971,
+        "Q1": 0.0006976975881235701,
+        "Q2": 0.008340044924376486,
+        "A": 0.028729024798477568,
+        "w": 0.9712709752015224,
+        "Q1_expected": 0.0006976975881235701,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": true
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "right_hip",
+        "member_i": "member_01",
+        "member_j": "member_03",
+        "r": 1,
+        "N": 594278,
+        "VI": 0.40527292300141937,
+        "H": 1.3823641465902097,
+        "Q1": 0.030482873142981443,
+        "Q2": 0.2931737805852969,
+        "A": 0.027748556620241838,
+        "w": 0.9722514433797582,
+        "Q1_expected": 0.030482873142981443,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": true
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "right_hip",
+        "member_i": "member_01",
+        "member_j": "member_03",
+        "r": 2,
+        "N": 1188556,
+        "VI": 0.40527292300141937,
+        "H": 1.3823641465902097,
+        "Q1": 0.028972382691822948,
+        "Q2": 0.2931737805852969,
+        "A": 0.027748556620241838,
+        "w": 0.9722514433797582,
+        "Q1_expected": 0.028972382691822948,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": true
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "right_hip",
+        "member_i": "member_01",
+        "member_j": "member_03",
+        "r": 4,
+        "N": 2377112,
+        "VI": 0.40527292300141937,
+        "H": 1.3823641465902097,
+        "Q1": 0.027604520657731477,
+        "Q2": 0.2931737805852969,
+        "A": 0.027748556620241838,
+        "w": 0.9722514433797582,
+        "Q1_expected": 0.027604520657731477,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": true
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "right_hip",
+        "member_i": "member_01",
+        "member_j": "member_03",
+        "r": 8,
+        "N": 4754224,
+        "VI": 0.40527292300141937,
+        "H": 1.3823641465902097,
+        "Q1": 0.026359996227618577,
+        "Q2": 0.2931737805852969,
+        "A": 0.027748556620241838,
+        "w": 0.9722514433797582,
+        "Q1_expected": 0.026359996227618577,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": true
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "right_hip",
+        "member_i": "member_01",
+        "member_j": "member_03",
+        "r": 16,
+        "N": 9508448,
+        "VI": 0.40527292300141937,
+        "H": 1.3823641465902097,
+        "Q1": 0.02522284734858071,
+        "Q2": 0.2931737805852969,
+        "A": 0.027748556620241838,
+        "w": 0.9722514433797582,
+        "Q1_expected": 0.02522284734858071,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": true
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "right_hip",
+        "member_i": "member_02",
+        "member_j": "member_03",
+        "r": 1,
+        "N": 592544,
+        "VI": 0.4034044855677108,
+        "H": 1.3814244991598525,
+        "Q1": 0.03034900769468959,
+        "Q2": 0.2920206539069281,
+        "A": 0.03185887266090781,
+        "w": 0.9681411273390922,
+        "Q1_expected": 0.03034900769468959,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": true
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "right_hip",
+        "member_i": "member_02",
+        "member_j": "member_03",
+        "r": 2,
+        "N": 1185088,
+        "VI": 0.4034044855677108,
+        "H": 1.3814244991598525,
+        "Q1": 0.02884483634232843,
+        "Q2": 0.2920206539069281,
+        "A": 0.03185887266090781,
+        "w": 0.9681411273390922,
+        "Q1_expected": 0.02884483634232843,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": true
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "right_hip",
+        "member_i": "member_02",
+        "member_j": "member_03",
+        "r": 4,
+        "N": 2370176,
+        "VI": 0.4034044855677108,
+        "H": 1.3814244991598525,
+        "Q1": 0.027482724999357357,
+        "Q2": 0.2920206539069281,
+        "A": 0.03185887266090781,
+        "w": 0.9681411273390922,
+        "Q1_expected": 0.027482724999357357,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": true
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "right_hip",
+        "member_i": "member_02",
+        "member_j": "member_03",
+        "r": 8,
+        "N": 4740352,
+        "VI": 0.4034044855677108,
+        "H": 1.3814244991598525,
+        "Q1": 0.026243456078598532,
+        "Q2": 0.2920206539069281,
+        "A": 0.03185887266090781,
+        "w": 0.9681411273390922,
+        "Q1_expected": 0.026243456078598532,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": true
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "right_hip",
+        "member_i": "member_02",
+        "member_j": "member_03",
+        "r": 16,
+        "N": 9480704,
+        "VI": 0.4034044855677108,
+        "H": 1.3814244991598525,
+        "Q1": 0.025111128720617708,
+        "Q2": 0.2920206539069281,
+        "A": 0.03185887266090781,
+        "w": 0.9681411273390922,
+        "Q1_expected": 0.025111128720617708,
+        "Q1_residual": 0.0,
+        "VI_delta": 0.0,
+        "H_delta": 0.0,
+        "Q2_delta": 0.0,
+        "A_delta": 0.0,
+        "w_delta": 0.0,
+        "positive_vi": true
+      }
+    ],
+    "contingencies": [
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "sacrum",
+        "member_i": "member_01",
+        "member_j": "member_02",
+        "shape": [
+          51,
+          51
+        ],
+        "label_index": "0=background, 1..50=bone-local IDs",
+        "counts": [
+          [
+            0,
+            6,
+            27606
+          ],
+          [
+            2,
+            0,
+            11325
+          ],
+          [
+            2,
+            6,
+            455031
+          ]
+        ]
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "sacrum",
+        "member_i": "member_01",
+        "member_j": "member_03",
+        "shape": [
+          51,
+          51
+        ],
+        "label_index": "0=background, 1..50=bone-local IDs",
+        "counts": [
+          [
+            0,
+            2,
+            7641
+          ],
+          [
+            2,
+            0,
+            80146
+          ],
+          [
+            2,
+            2,
+            386210
+          ]
+        ]
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "sacrum",
+        "member_i": "member_02",
+        "member_j": "member_03",
+        "shape": [
+          51,
+          51
+        ],
+        "label_index": "0=background, 1..50=bone-local IDs",
+        "counts": [
+          [
+            0,
+            2,
+            4817
+          ],
+          [
+            6,
+            0,
+            93603
+          ],
+          [
+            6,
+            2,
+            389034
+          ]
+        ]
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "left_hip",
+        "member_i": "member_01",
+        "member_j": "member_02",
+        "shape": [
+          51,
+          51
+        ],
+        "label_index": "0=background, 1..50=bone-local IDs",
+        "counts": [
+          [
+            0,
+            1,
+            294
+          ],
+          [
+            0,
+            2,
+            1912
+          ],
+          [
+            1,
+            0,
+            309
+          ],
+          [
+            1,
+            1,
+            30160
+          ],
+          [
+            1,
+            2,
+            130
+          ],
+          [
+            3,
+            0,
+            4875
+          ],
+          [
+            3,
+            1,
+            1125
+          ],
+          [
+            3,
+            2,
+            588655
+          ]
+        ]
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "left_hip",
+        "member_i": "member_01",
+        "member_j": "member_03",
+        "shape": [
+          51,
+          51
+        ],
+        "label_index": "0=background, 1..50=bone-local IDs",
+        "counts": [
+          [
+            0,
+            1,
+            319
+          ],
+          [
+            0,
+            2,
+            3517
+          ],
+          [
+            1,
+            0,
+            277
+          ],
+          [
+            1,
+            1,
+            29988
+          ],
+          [
+            1,
+            2,
+            334
+          ],
+          [
+            3,
+            0,
+            3228
+          ],
+          [
+            3,
+            1,
+            874
+          ],
+          [
+            3,
+            2,
+            590553
+          ]
+        ]
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "left_hip",
+        "member_i": "member_02",
+        "member_j": "member_03",
+        "shape": [
+          51,
+          51
+        ],
+        "label_index": "0=background, 1..50=bone-local IDs",
+        "counts": [
+          [
+            0,
+            1,
+            333
+          ],
+          [
+            0,
+            2,
+            5384
+          ],
+          [
+            1,
+            0,
+            242
+          ],
+          [
+            1,
+            1,
+            30680
+          ],
+          [
+            1,
+            2,
+            657
+          ],
+          [
+            2,
+            0,
+            2166
+          ],
+          [
+            2,
+            1,
+            168
+          ],
+          [
+            2,
+            2,
+            588363
+          ]
+        ]
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "right_hip",
+        "member_i": "member_01",
+        "member_j": "member_02",
+        "shape": [
+          51,
+          51
+        ],
+        "label_index": "0=background, 1..50=bone-local IDs",
+        "counts": [
+          [
+            0,
+            2,
+            148
+          ],
+          [
+            0,
+            3,
+            1404
+          ],
+          [
+            0,
+            4,
+            692
+          ],
+          [
+            0,
+            8,
+            3271
+          ],
+          [
+            0,
+            9,
+            2791
+          ],
+          [
+            2,
+            0,
+            85
+          ],
+          [
+            2,
+            2,
+            6151
+          ],
+          [
+            2,
+            3,
+            24
+          ],
+          [
+            2,
+            4,
+            23
+          ],
+          [
+            3,
+            0,
+            2039
+          ],
+          [
+            3,
+            2,
+            148
+          ],
+          [
+            3,
+            3,
+            139603
+          ],
+          [
+            3,
+            4,
+            11
+          ],
+          [
+            3,
+            9,
+            24
+          ],
+          [
+            5,
+            0,
+            633
+          ],
+          [
+            5,
+            2,
+            20
+          ],
+          [
+            5,
+            4,
+            56554
+          ],
+          [
+            7,
+            0,
+            3501
+          ],
+          [
+            7,
+            8,
+            221337
+          ],
+          [
+            7,
+            9,
+            25
+          ],
+          [
+            9,
+            0,
+            2978
+          ],
+          [
+            9,
+            3,
+            2
+          ],
+          [
+            9,
+            8,
+            153
+          ],
+          [
+            9,
+            9,
+            168985
+          ]
+        ]
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "right_hip",
+        "member_i": "member_01",
+        "member_j": "member_03",
+        "shape": [
+          51,
+          51
+        ],
+        "label_index": "0=background, 1..50=bone-local IDs",
+        "counts": [
+          [
+            0,
+            3,
+            92
+          ],
+          [
+            0,
+            4,
+            324
+          ],
+          [
+            0,
+            5,
+            4829
+          ],
+          [
+            0,
+            6,
+            3032
+          ],
+          [
+            0,
+            7,
+            666
+          ],
+          [
+            2,
+            0,
+            133
+          ],
+          [
+            2,
+            3,
+            5963
+          ],
+          [
+            2,
+            5,
+            176
+          ],
+          [
+            2,
+            7,
+            11
+          ],
+          [
+            3,
+            0,
+            1958
+          ],
+          [
+            3,
+            3,
+            169
+          ],
+          [
+            3,
+            5,
+            139697
+          ],
+          [
+            3,
+            7,
+            1
+          ],
+          [
+            5,
+            0,
+            916
+          ],
+          [
+            5,
+            3,
+            26
+          ],
+          [
+            5,
+            5,
+            5
+          ],
+          [
+            5,
+            7,
+            56260
+          ],
+          [
+            7,
+            0,
+            2474
+          ],
+          [
+            7,
+            5,
+            17
+          ],
+          [
+            7,
+            6,
+            222372
+          ],
+          [
+            9,
+            0,
+            2537
+          ],
+          [
+            9,
+            4,
+            5215
+          ],
+          [
+            9,
+            5,
+            164216
+          ],
+          [
+            9,
+            6,
+            150
+          ]
+        ]
+      },
+      {
+        "source": "E1",
+        "case_id": "154",
+        "scan_type": "pelvic",
+        "bone": "right_hip",
+        "member_i": "member_02",
+        "member_j": "member_03",
+        "shape": [
+          51,
+          51
+        ],
+        "label_index": "0=background, 1..50=bone-local IDs",
+        "counts": [
+          [
+            0,
+            3,
+            46
+          ],
+          [
+            0,
+            4,
+            698
+          ],
+          [
+            0,
+            5,
+            5322
+          ],
+          [
+            0,
+            6,
+            4043
+          ],
+          [
+            0,
+            7,
+            568
+          ],
+          [
+            2,
+            0,
+            150
+          ],
+          [
+            2,
+            3,
+            6055
+          ],
+          [
+            2,
+            5,
+            244
+          ],
+          [
+            2,
+            7,
+            18
+          ],
+          [
+            3,
+            0,
+            2070
+          ],
+          [
+            3,
+            3,
+            107
+          ],
+          [
+            3,
+            5,
+            138856
+          ],
+          [
+            4,
+            0,
+            872
+          ],
+          [
+            4,
+            3,
+            42
+          ],
+          [
+            4,
+            5,
+            14
+          ],
+          [
+            4,
+            7,
+            56352
+          ],
+          [
+            8,
+            0,
+            3258
+          ],
+          [
+            8,
+            5,
+            59
+          ],
+          [
+            8,
+            6,
+            221444
+          ],
+          [
+            9,
+            0,
+            2472
+          ],
+          [
+            9,
+            4,
+            4841
+          ],
+          [
+            9,
+            5,
+            164445
+          ],
+          [
+            9,
+            6,
+            67
+          ]
+        ]
+      }
+    ]
+  },
+  "seconds": 5.184022917877883
+}
