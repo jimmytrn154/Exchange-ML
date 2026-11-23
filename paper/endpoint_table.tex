@@ -1,15 +1,15 @@
 \begin{table}[t]
-\caption{Supplementary endpoint sensitivity on the same 100 evaluation CTs: joint-entropy combined score minus voxel-normalized partition-only score ($D_{\rm joint}-wQ_{\rm vox}$). Negative AURC differences favor the combined score. Intervals are marginal 95\% paired CT-bootstrap intervals.}
+\caption{Dependence on the failure definition. Paired held-out AURC difference between the combined score and the grouping-only score, $D_{\rm joint}-wQ_{\rm vox}$, under alternative risk definitions computed from the same predictions (100 CTs, 200 bones). Positive values favor grouping only. Intervals: 95\% paired case-bootstrap.}
 \label{tab:sensitivity}
 \centering\footnotesize
 \begin{tabular}{lrr}
 \toprule
 Failure definition & $\Delta$AURC & 95\% CI \\
 \midrule
-Original M+S & +0.0591 & [+0.0393, +0.0801] \\
-One-to-one $1-F_1$ & -0.0016 & [-0.0268, +0.0280] \\
-Significant overlap, $\tau=.01$ & +0.0033 & [-0.0079, +0.0143] \\
-Significant overlap, $\tau=.10$ & -0.0009 & [-0.0055, +0.0035] \\
+Merge/split (primary) & +0.0591 & [+0.0393, +0.0801] \\
+One-to-one matched $1-F_1$ & -0.0016 & [-0.0268, +0.0280] \\
+Merge/split, overlap $\geq 1\%$ & +0.0033 & [-0.0079, +0.0143] \\
+Merge/split, overlap $\geq 10\%$ & -0.0009 & [-0.0055, +0.0035] \\
 Missing volume & +0.0078 & [-0.0138, +0.0357] \\
 \bottomrule
 \end{tabular}

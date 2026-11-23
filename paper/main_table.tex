@@ -1,24 +1,35 @@
 \begin{table}[t]
-\caption{Bone-level AURC for all 12 scores; lower is better. M+S denotes normalized merge-plus-split risk. Subscripts vox and joint denote normalization by voxel count and joint entropy, respectively. Dev.: 40 development CTs; Eval.: 100 separate evaluation CTs.}
+\caption{Structural-failure ranking by all 12 prediction-only scores (AURC, lower is better). M+S: merge-plus-split risk per reference fragment; $1-F_1$: instance detection error. Dev.: 80 bones from 40 development CTs; Held-out: 200 bones from 100 separate CTs. Random: expected AURC of a random ranking. Best value per column in bold.}
 \label{tab:main}
 \centering\footnotesize
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{lrrr}
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{lccc}
 \toprule
-Score & Dev. M+S & Eval. M+S & Eval. $1-F_1$ \\
+ & Dev. & \multicolumn{2}{c}{Held-out} \\
+\cmidrule(lr){2-2}\cmidrule(lr){3-4}
+Score & M+S & M+S & $1-F_1$ \\
 \midrule
-Mean entropy & 0.6570 & 0.6358 & 0.1757 \\
-95th-percentile entropy & 0.6767 & 0.6381 & 0.1784 \\
-Foreground Dice disagreement & 0.5442 & 0.4943 & 0.1611 \\
-Presence (Jaccard disagreement) & 0.5442 & 0.4942 & 0.1611 \\
-Union-normalized VI & 0.4342 & 0.3881 & 0.1534 \\
-Instance-count variance & 0.5181 & 0.4704 & 0.1523 \\
-Hungarian matching disagreement & 0.3933 & 0.3883 & 0.1331 \\
-$D_{\rm vox}$ (combined) & 0.4906 & 0.4472 & 0.1557 \\
-$wQ_{\rm vox}$ (partition only) & 0.2706 & 0.2720 & 0.1446 \\
-$wQ_{\rm joint}$ (partition only) & 0.2891 & 0.2978 & 0.1424 \\
-$D_{\rm joint}$ (combined) & 0.3318 & 0.3311 & 0.1453 \\
-$Q_{\rm joint}$ (unweighted VI/H) & 0.2890 & 0.2987 & 0.1414 \\
+Random ranking & 0.647 & 0.601 & 0.196 \\
+\midrule
+\multicolumn{4}{l}{\textit{Voxel uncertainty}} \\
+\quad Mean entropy & 0.657 & 0.636 & 0.176 \\
+\quad 95th-percentile entropy & 0.677 & 0.638 & 0.178 \\
+\midrule
+\multicolumn{4}{l}{\textit{Foreground overlap}} \\
+\quad Pairwise Dice disagreement & 0.544 & 0.494 & 0.161 \\
+\quad Coverage $A$ (Jaccard) & 0.544 & 0.494 & 0.161 \\
+\midrule
+\multicolumn{4}{l}{\textit{Instance level}} \\
+\quad Instance-count variance & 0.518 & 0.470 & 0.152 \\
+\quad Union-normalized VI & 0.434 & 0.388 & 0.153 \\
+\quad Hungarian matching & 0.393 & 0.388 & \textbf{0.133} \\
+\midrule
+\multicolumn{4}{l}{\textit{Coverage/grouping decomposition}} \\
+\quad Combined $D_{\rm vox}$ & 0.491 & 0.447 & 0.156 \\
+\quad Combined $D_{\rm joint}$ & 0.332 & 0.331 & 0.145 \\
+\quad Grouping $Q_{\rm joint}$ & 0.289 & 0.299 & 0.141 \\
+\quad Grouping $wQ_{\rm joint}$ & 0.289 & 0.298 & 0.142 \\
+\quad Grouping $wQ_{\rm vox}$ & \textbf{0.271} & \textbf{0.272} & 0.145 \\
 \bottomrule
 \end{tabular}
 \end{table}

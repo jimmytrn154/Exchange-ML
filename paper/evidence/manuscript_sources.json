@@ -3,12 +3,15 @@
   "source_sha256": {
     "outputs/stage3_h1_v2/heldout/e3_manifest.json": "8c06e64d6f774349e13d2f33f5d6bfdbd412814de6b7d44886bec65231e24afb",
     "outputs/stage3_h1_v2/heldout/main_table.csv": "6b37f9638e90a8f972c111742761cc5a76f3d5a4a4bfe4579e52a57bb40c2882",
-    "outputs/evaluator_sensitivity_v1/sensitivity_manifest.json": "0a795f7e857d0f123f2c70d08e22bd2add3960ffacf4d7ee6ef7664ece901da0",
+    "outputs/evaluator_sensitivity_v1/sensitivity_manifest.json": "2edc8366d0f541ab40dd0440cf1daaf9eb9625af5baf3f6f13fb3c18aa1231ab",
     "outputs/evaluator_sensitivity_v1/paired_differences.csv": "6949785cabb178e1d4c8e6f273c5ff5b7d5cf97f1a67583315fa74b6e2a3d57b",
+    "outputs\\stage3_h1_v2\\e1_manifest.json": "effb620889fc75dd6a8f424b70d8bed5662f840f50bcd6230c8f420f625d67f7",
+    "outputs\\stage3_h1_v2\\perturbations\\e2_manifest.json": "d0adf15931acc2599fd2dd8869e54333eb998d512d973d631c1381ae0dc0c2f8",
+    "outputs\\stage3_h1_v2\\heldout\\e3_manifest.json": "e7938bda58a8d3f80a4b07dc1b5b83370762ef67e9921d9b3ddc1e61b3a77947",
+    "outputs\\stage3_h1_v2\\e4_e5\\e4_e5_manifest.json": "f964e3c6a569b04c49bb5053faad48129736fcbe7f76812e1d9bf9d31e2709df",
+    "outputs\\stage3_h1_v2\\e5_supplement_v1\\e5_supplement_manifest.json": "05b4f61e6af8d26f30703e258d587a85e3a9ee45392618bc1bd04621c66ff659",
+    "outputs\\evaluator_sensitivity_v1\\sensitivity_manifest.json": "2edc8366d0f541ab40dd0440cf1daaf9eb9625af5baf3f6f13fb3c18aa1231ab",
     "outputs/stage3_h1_v2/e1_manifest.json": "e67323ae87ea257e2c494415e22ce460bd6b153ed95aca61cff30ac292d40fd1",
-    "outputs/stage3_h1_v2/perturbations/e2_manifest.json": "21b80e14035acc37fb6d93137261f178293b39b30d08000df748050ab737b86d",
-    "outputs/stage3_h1_v2/e4_e5/e4_e5_manifest.json": "d39b9dfc5a03b4988f63f3a44908b188a09f62984f3527d885c6b560677d5b98",
-    "outputs/stage3_h1_v2/e5_supplement_v1/e5_supplement_manifest.json": "70d3747b753c804908e6fe95c69a606c4acce4349326fd3f6e9a767bf0940581",
     "configs/e1.json": "e691f1b8333f5db7f27d823ae055d6a62df723031b95b5a10b919295e5d730ba",
     "outputs/stage3_h1_v2/validation/scores.csv": "8e5717fca87842a067dff9d590ee74d9250d5ba04d3ce408266e53aaead25c01",
     "outputs/stage3_h1_v2/validation/pair_components.csv": "7f80ab8ac0ff7e63603c66ea411984ceb991e6af9d2fc54a6bf23c177238c307",
@@ -22,56 +25,72 @@
     "outputs/stage3_h1/members/member_01/validation_predictions/004.mha": "d7cba5d2da4d61ed651f18bdfaedba72f4a43df65f98b17317d36ab8b959e21e",
     "outputs/stage3_h1/members/member_02/validation_predictions/004.mha": "b7400bbcd07e1071269460af08b1692376065915907a3abd92ce50b29c518425",
     "outputs/stage3_h1/members/member_03/validation_predictions/004.mha": "44ce71c61c3a47247e7171ebcebc5125e94201dbb3c3d5ebae2141f4f3fc71cb",
-    "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part1/004/image.mha": "1e04da410d0796dbb3462fd6eea2865ef78fee8adabde1c8edb22cede7e96c86"
+    "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part1/004/image.mha": "1e04da410d0796dbb3462fd6eea2865ef78fee8adabde1c8edb22cede7e96c86",
+    "paper\\figures\\overview.png": "3d3b7d8ad6f9e93504b23bf87f0198e3e2535d461b32c3f0cf1c5bac1c0f49b8",
+    "outputs\\stage3_h1_v2\\perturbations\\responses.csv": "d786270afae172e23a03fabde7b1181ed5e0e769f27e5a9665bad3928e224a41",
+    "outputs\\stage3_h1_v2\\validation\\scores.csv": "8e5717fca87842a067dff9d590ee74d9250d5ba04d3ce408266e53aaead25c01",
+    "outputs\\stage3_h1_v2\\heldout\\risk_coverage.csv": "66f2a42bf3a359616e4093fe9ef3cbad773f76719fe5ac9a33310e74e4a26d76",
+    "outputs\\stage3_h1_v2\\heldout\\comparison.csv": "ea0039c2341962e6216f5cc94144995590750668cbcea52497379ae8522fd815",
+    "outputs\\stage3_h1_v2\\heldout\\scores.csv": "c7f5ced97ac6a56096ab6e3556327dd09c8db53537104e4f75b49d799460edb8",
+    "outputs\\stage3_h1_v2\\perturbations\\replication.csv": "1b03020641cdbf1159da6656f946d779a2b303a5ce4bc8b224ae30be16da7f14",
+    "outputs\\stage3_h1_v2\\heldout\\risks.csv": "52ff5484eb72e51d68ec0db9e5b1cac26762744bb4a17f27bfb4c6d11dfcceba"
   },
   "producer": {
     "script": "paper/build_paper.py",
-    "sha256": "c7c0e79fb60518c1e221be62261aeed593db895e6fa7a20c25b0e1af09578685"
+    "sha256": "7fa5955c266dcc6d4a0507e383438e48a1f4be38fd0513a418e64dfd6c1ba2a7"
   },
   "manuscript_input_sha256": {
-    "manuscript.tex": "4d9b33c15c4f7929ec46cee9bfe40b3c9dcb24a3827cab41f08cc2651432b174",
-    "references.bib": "0caf18fef73428d9de59129e7e6cfacb7533132f4359f032b19be50ef47287d3",
+    "manuscript.tex": "6891ca9108f30ee7c380b479318d3de91ef012c149855c6aa6797534479d7ab3",
+    "references.bib": "9c0817d5bdfac7f698591c1002031f23989603378c5e2c69f6cafd38afa2855b",
     "IEEEtran.cls": "c972aca108fda004c3514d63658e02816da2e54d9a1451e870b9bd970e003f55"
   },
   "generated_sha256": {
-    "main_table.tex": "9d0c3f112b26e0ecd3b719d7e863cae5f0ba79d6f7f28499be115b4af6f881b9",
-    "endpoint_table.tex": "083852ed060cc1ff5e147e50f3f00713f9c8c7561f660e1485631f7b597b53fe",
-    "manuscript.md": "711bc500aba74b70edaba2320ff28e449c88375f6d27bd6ce9382f30f5a56e5a",
-    "figures/overview.pdf": "8462289f430ba9ba5a91eef683a45cdf490b7f0d1010e384df6a1eab04cc4248",
-    "figures/overview.png": "c7e66b9601a985db42151eee5fd47886c363d8434deb279145282db6edb6b99e",
-    "evidence/overview.json": "3d1d2ed409fcd24f768bf8dd6ff20869064c5c45f8e6dd1bbf1d5b8ee14bc172"
+    "main_table.tex": "6f8700dec214b0b7cff0535ed87a6e5e518ca33167f6d03c48e0003abae7335d",
+    "endpoint_table.tex": "850512ef16ff213c0e1cd134721367fe30055e640dafc74cbdc49a0c8db6b9cf",
+    "manuscript.md": "938ff66b82cb2f4ecbb138ad07c07c642cabaf73970039ecbc771af3c6202338",
+    "figures/fig1_concept.pdf": "c916d0fd52b1b4f0e796ae24befa43f4c5b45350629177c2c9c8ea57331e3872",
+    "figures/fig1_concept.png": "2a940705c002dcb67e51e9e51a69ae0317947d0405c9c040b66e78be339328a0",
+    "figures/fig2_evidence.pdf": "90101645fda7d66e172683cb981e6c6fc9bb9fcb11d82b1f6916ad2617a7de0b",
+    "figures/fig2_evidence.png": "b1b61aca2a31a80153a3bd9feb4484dd95b89777170a6a9408c49b0c0b6e5013",
+    "figures/overview.png": "3d3b7d8ad6f9e93504b23bf87f0198e3e2535d461b32c3f0cf1c5bac1c0f49b8",
+    "evidence/overview.json": "29a54992fd98f6dda3b732aa8d6cfd560db5156c61a4166224778c334457b246",
+    "evidence/figures.json": "01aeb31bfc8f5a769e498b557417a3cecae469d6659d1e20c468c83cdb15e7e2"
   },
   "figure_table_trace": [
     {
-      "artifact_id": "fig:overview",
+      "artifact_id": "fig:concept",
       "source_data": [
-        "outputs/stage3_h1_v2/e1_manifest.json",
-        "outputs/stage3_h1_v2/heldout/e3_manifest.json",
-        "configs/e1.json",
-        "outputs/stage3_h1_v2/validation/scores.csv",
-        "outputs/stage3_h1_v2/validation/pair_components.csv",
-        "outputs/stage3_h1_v2/heldout/risk_coverage.csv",
-        "outputs/stage3_h1_v2/heldout/scores.csv",
-        "outputs/stage3_h1_v2/heldout/risks.csv",
-        "src/exchange_ml/e1_data.py",
-        "src/exchange_ml/e1_scoring.py",
-        "src/exchange_ml/e1_statistics.py",
-        "src/exchange_ml/instances.py",
-        "outputs/stage3_h1/members/member_01/validation_predictions/004.mha",
-        "outputs/stage3_h1/members/member_02/validation_predictions/004.mha",
-        "outputs/stage3_h1/members/member_03/validation_predictions/004.mha",
-        "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part1/004/image.mha"
+        "paper/figures/overview.png"
       ],
       "transformation": {
-        "script": "paper/make_overview.py",
-        "sha256": "63e5f7658e06e1626963dea90b64fc3ad228a078fd9f784b07ec11184caa5a14"
+        "script": "paper/make_figures.py",
+        "sha256": "fc413af1b4973ef86b479543d90221d38a08566985074fac7714ddd567f9c72e"
       },
-      "caption_claim": "Prediction-only failure ranking with real CT data. Case 004 (left hip, development cohort) is shown on the same prediction-selected axial slice and crop for all three models; colors identify instances within each model only. Whole-3D-bone pair-mean coverage (0.0146) and weighted grouping (0.0491) sum to 0.0637. Scores developed on 40 CTs are evaluated on 100 separate CTs (200 bones). Saved curves include the stronger voxel-normalized partition-only control. Ground truth is used only to measure evaluation risk.",
-      "supported_manuscript_claims": [
-        "Prediction-only disagreement separates coverage from fragment grouping; ground truth is used to evaluate ranking"
-      ],
+      "caption_claim": "Real ensemble output (case 004, left hip, development) and schematic score construction.",
       "limitations": [
-        "Illustrative slice and whole-3D-bone scores are distinct"
+        "Panels b and c are schematic",
+        "Instance colours carry no cross-model correspondence"
+      ]
+    },
+    {
+      "artifact_id": "fig:evidence",
+      "source_data": [
+        "outputs\\stage3_h1_v2\\heldout\\comparison.csv",
+        "outputs\\stage3_h1_v2\\heldout\\risk_coverage.csv",
+        "outputs\\stage3_h1_v2\\heldout\\risks.csv",
+        "outputs\\stage3_h1_v2\\heldout\\scores.csv",
+        "outputs\\stage3_h1_v2\\perturbations\\replication.csv",
+        "outputs\\stage3_h1_v2\\perturbations\\responses.csv",
+        "outputs\\stage3_h1_v2\\validation\\scores.csv",
+        "paper\\figures\\overview.png"
+      ],
+      "transformation": {
+        "script": "paper/make_figures.py",
+        "sha256": "fc413af1b4973ef86b479543d90221d38a08566985074fac7714ddd567f9c72e"
+      },
+      "caption_claim": "Controlled dissociation, development grouping share, held-out risk-coverage and score-risk correlations.",
+      "limitations": [
+        "Risk-coverage curves recomputed from saved scores and verified against saved AURCs"
       ]
     },
     {
@@ -81,7 +100,7 @@
       ],
       "transformation": {
         "script": "paper/build_paper.py",
-        "sha256": "c7c0e79fb60518c1e221be62261aeed593db895e6fa7a20c25b0e1af09578685"
+        "sha256": "7fa5955c266dcc6d4a0507e383438e48a1f4be38fd0513a418e64dfd6c1ba2a7"
       },
       "caption_claim": "All 12 fixed scores under the same bone-level AURC convention.",
       "limitations": [
@@ -96,7 +115,7 @@
       ],
       "transformation": {
         "script": "paper/build_paper.py",
-        "sha256": "c7c0e79fb60518c1e221be62261aeed593db895e6fa7a20c25b0e1af09578685",
+        "sha256": "7fa5955c266dcc6d4a0507e383438e48a1f4be38fd0513a418e64dfd6c1ba2a7",
         "filter": "heldout/pooled/member_mean/fa_v2-partition_v1"
       },
       "caption_claim": "Paired AURC contrasts depend on the failure definition.",

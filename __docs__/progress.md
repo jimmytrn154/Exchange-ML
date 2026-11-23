@@ -340,3 +340,35 @@ Next step: giữ count result là mixed/negative, dừng tuning fusion không gi
 Đã triển khai dual-channel CT triage prediction-only, calibration fold-local, candidate và baseline cùng omission guard; chi tiết và command Slurm trong `exps.md`. **8 tests mới PASS; toàn suite271 tests PASS (28,671giây)**. Real metadata preflight40validation/100heldout pass, synthetic smoke và Slurm `--test-only` pass; E1–E5 audit111/142 tiếp tụcPASS. Chưa chạy full policy mới hoặc thay E6.
 
 Manuscript được chuẩn bị bằng template IEEE trong `paper/`, tách completed evidence khỏi pending policy/E6; các integrity/review receipts và trạng thái pipeline lưu dưới cùng thư mục. Bản review ẩn danh dùng khi chưa có author metadata, không tự bịa authors/funding/ethics approval.
+
+## Đại tu manuscript EMBC — 23/11/2026 (tối)
+
+Viết lại toàn bộ `paper/manuscript.tex` theo khung **coverage vs grouping**, theo quyết định của tác giả tại checkpoint Stage 2.5 (Mode 7 frame-lock được xác nhận).
+
+**Giữ nguyên các nội dung khoa học quan trọng.**
+- Primary criterion D_joint so với coverage/entropy vẫn giữ nguyên.
+- Grouping-only thắng D_joint được báo là kết quả secondary.
+- Vẫn báo đủ: femur CI cắt 0, kết quả phụ thuộc định nghĩa failure, và ca bỏ sót mà cả ba model cùng mắc.
+
+**Bằng chứng sẵn có trước đây chưa dùng, nay đưa vào bài.**
+- Phân ly kép E2: 452/452 can thiệp.
+- Entropy kém hơn random: AURC 0,636 so với 0,601.
+- Hiệu ứng chuẩn hóa D_joint−D_vox: −0,116 [−0,157; −0,077].
+- Phân ly ρ trên held-out: coverage 0,10/0,61, grouping 0,70/0,22 (theo cột merge/split và missing volume).
+
+**Hình mới.**
+- Hình 1 (khái niệm): panel CT thật lấy từ overview.png đã có provenance.
+- Hình 2 (bằng chứng): dựng từ CSV; curve và AURC tái tạo khớp dữ liệu đã lưu với sai số dưới 1e−9.
+
+**Reference:** thêm 8, tổng cộng 18.
+
+**Kiểm tra.**
+- `paper/review/check_manuscript_numbers.py`: 58/58 PASS.
+- PDF dựng bằng pdflatex cục bộ: 5 trang.
+- Tectonic chạy trên server cần build lại để xác nhận giới hạn trang.
+
+**Còn mở.**
+- Xác nhận DOI Zenodo PENGWIN 2026.
+- Thông tin tác giả.
+
+Không chạy experiment mới.

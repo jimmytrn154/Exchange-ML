@@ -22,12 +22,12 @@
     "research": "complete_six_published_identities_full_versions_with_one_version_gap",
     "implementation": "complete_tests_and_smoke_full_unrun",
     "writing": "complete_first_reader_revision_anonymous_draft",
-    "pre_review_integrity": "prior_gate_interrupted_targeted_revision_fact_check_only",
-    "simulated_review": "queued",
-    "revision": "queued",
-    "focused_re_review": "queued",
-    "final_integrity": "queued",
-    "local_finalization": "queued"
+    "pre_review_integrity": "complete_2026-11-23_overhaul_mode7_flag_confirmed_by_author",
+    "simulated_review": "complete_reviewer_audit_inline",
+    "revision": "complete_overhaul_reframe_coverage_vs_grouping",
+    "focused_re_review": "complete_inline",
+    "final_integrity": "pass_58_of_58_numbers_18_refs_one_author_check_pengwin_doi",
+    "local_finalization": "pdflatex_5_pages_tectonic_unavailable_locally"
   },
   "user_authorization_note": "The user explicitly requested all three deliverables together. Work continues within that authorization; final author approval/publication is not inferred.",
   "scientific_boundaries": [
@@ -49,7 +49,9 @@
     ],
     "acknowledgments_references_page": 5,
     "author_metadata": "pending_anonymous_draft",
-    "template_class_sha256": "c972aca108fda004c3514d63658e02816da2e54d9a1451e870b9bd970e003f55"
+    "template_class_sha256": "c972aca108fda004c3514d63658e02816da2e54d9a1451e870b9bd970e003f55",
+    "references": 18,
+    "compiler_local": "pdflatex_TinyTeX"
   },
   "last_user_steering": "continue: proceed with authorized combined deliverables",
   "workflow_mode": "user_directed_first_reader_revision_and_experiment_handoff",
@@ -59,5 +61,26 @@
     "select_claim_relevant_results_omit_development_failure_history",
     "handoff_new_experiments"
   ],
-  "manuscript_sha256": "f0cd51d984e8d9947d9fbcfe152788443f370bce6a9ffd1d8e139cfc36350b4e"
+  "manuscript_sha256": "6891ca9108f30ee7c380b479318d3de91ef012c149855c6aa6797534479d7ab3",
+  "overhaul_2026_11_23": {
+    "author_decisions": [
+      "reframe_coverage_vs_grouping_keep_primary_criterion",
+      "reuse_real_ct_panels_from_overview_png",
+      "add_8_verified_refs",
+      "disclose_codex_and_claude"
+    ],
+    "new_files": [
+      "paper/make_figures.py",
+      "paper/figures/fig1_concept.*",
+      "paper/figures/fig2_evidence.*",
+      "paper/evidence/figures.json",
+      "paper/review/check_manuscript_numbers.py",
+      "paper/review/integrity_stage2_5_overhaul.md"
+    ],
+    "open_author_actions": [
+      "confirm_pengwin2026_zenodo_doi",
+      "author_metadata",
+      "rebuild_with_tectonic_on_server_and_check_page_limit"
+    ]
+  }
 }

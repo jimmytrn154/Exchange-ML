@@ -1,0 +1,173 @@
+{
+  "role": "reporting_only_saved_evidence_no_new_experiment",
+  "fig1_real_panels": "cropped from figures/overview.png (case 004, left hip, development); provenance in evidence/overview.json",
+  "fig1_schematic": "panels b and c are schematic illustrations, not data",
+  "source_sha256": {
+    "paper\\figures\\overview.png": "3d3b7d8ad6f9e93504b23bf87f0198e3e2535d461b32c3f0cf1c5bac1c0f49b8",
+    "outputs\\stage3_h1_v2\\perturbations\\responses.csv": "d786270afae172e23a03fabde7b1181ed5e0e769f27e5a9665bad3928e224a41",
+    "outputs\\stage3_h1_v2\\validation\\scores.csv": "8e5717fca87842a067dff9d590ee74d9250d5ba04d3ce408266e53aaead25c01",
+    "outputs\\stage3_h1_v2\\heldout\\risk_coverage.csv": "66f2a42bf3a359616e4093fe9ef3cbad773f76719fe5ac9a33310e74e4a26d76",
+    "outputs\\stage3_h1_v2\\heldout\\comparison.csv": "ea0039c2341962e6216f5cc94144995590750668cbcea52497379ae8522fd815",
+    "outputs\\stage3_h1_v2\\heldout\\scores.csv": "c7f5ced97ac6a56096ab6e3556327dd09c8db53537104e4f75b49d799460edb8",
+    "outputs\\stage3_h1_v2\\perturbations\\replication.csv": "1b03020641cdbf1159da6656f946d779a2b303a5ce4bc8b224ae30be16da7f14",
+    "outputs\\stage3_h1_v2\\heldout\\risks.csv": "52ff5484eb72e51d68ec0db9e5b1cac26762744bb4a17f27bfb4c6d11dfcceba"
+  },
+  "producer": {
+    "script": "paper/make_figures.py",
+    "sha256": "fc413af1b4973ef86b479543d90221d38a08566985074fac7714ddd567f9c72e"
+  },
+  "fig2a_nonzero_fraction": {
+    "identity": {
+      "coverage": 0.0,
+      "grouping": 0.0
+    },
+    "permutation": {
+      "coverage": 0.0,
+      "grouping": 0.0
+    },
+    "merge": {
+      "coverage": 0.0,
+      "grouping": 1.0
+    },
+    "split": {
+      "coverage": 0.0,
+      "grouping": 1.0
+    },
+    "missing": {
+      "coverage": 1.0,
+      "grouping": 0.0
+    },
+    "boundary": {
+      "coverage": 1.0,
+      "grouping": 0.0
+    }
+  },
+  "fig2a_counts": {
+    "identity": 40,
+    "permutation": 40,
+    "merge": 45,
+    "split": 120,
+    "missing": 87,
+    "boundary": 120
+  },
+  "text_merge_median_grouping": {
+    "weighted_q_log_n": 0.0017653895868278305,
+    "weighted_q_joint": 0.04721420016536069
+  },
+  "text_replication": {
+    "positive_vi_tables": 154,
+    "q_vox_ratio_r16_median": 0.822683048130121,
+    "max_abs_change_q_joint": 0.0,
+    "shared_voxels_median": 386062.5,
+    "log_shared_voxels_median": 12.863754552438255
+  },
+  "fig2b_median_share": {
+    "vox": 0.06958126306363414,
+    "joint": 0.5887106999338434,
+    "n_bones": 80
+  },
+  "fig2c_reconstruction": "curves and AURCs reproduce saved values within 1e-9",
+  "text_numbers": {
+    "heldout_bones_with_nonzero_merge_split": 138,
+    "retained_risk_at_coverage_0.30": {
+      "mean_entropy": 0.6150897867564535,
+      "presence": 0.5093518518518519,
+      "fa_v1": 0.45092592592592595,
+      "fa_v2": 0.1097685185185185,
+      "partition_v1": 0.013440860215053753
+    },
+    "largest_missing_volume_bones": [
+      {
+        "bone": "187/left_hip",
+        "missing_volume": 1.0,
+        "coverage_score_rank_desc_of_200": 200
+      },
+      {
+        "bone": "345/femur",
+        "missing_volume": 1.0,
+        "coverage_score_rank_desc_of_200": 2
+      },
+      {
+        "bone": "409/femur",
+        "missing_volume": 0.6921139342461742,
+        "coverage_score_rank_desc_of_200": 1
+      },
+      {
+        "bone": "302/femur",
+        "missing_volume": 0.45891021539571186,
+        "coverage_score_rank_desc_of_200": 4
+      },
+      {
+        "bone": "280/femur",
+        "missing_volume": 0.36393188093707335,
+        "coverage_score_rank_desc_of_200": 48
+      },
+      {
+        "bone": "160/sacrum",
+        "missing_volume": 0.3462796779979039,
+        "coverage_score_rank_desc_of_200": 3
+      }
+    ]
+  },
+  "fig2c_aurc": {
+    "random": 0.6008630156186406,
+    "mean_entropy": 0.6358104521114561,
+    "presence": 0.49423284445276205,
+    "fa_v1": 0.4471610248193132,
+    "fa_v2": 0.3311071889986332,
+    "partition_v1": 0.27196549882394705
+  },
+  "fig2d_rho": {
+    "mean_entropy": {
+      "merge_split": -0.10209502671840506,
+      "one_minus_f1": 0.23343934066986913,
+      "missing_volume": 0.5161885982857178
+    },
+    "p95_entropy": {
+      "merge_split": -0.10070413416791194,
+      "one_minus_f1": 0.2147520639923092,
+      "missing_volume": 0.5172146243211285
+    },
+    "presence": {
+      "merge_split": 0.09824085658672556,
+      "one_minus_f1": 0.3139514552589529,
+      "missing_volume": 0.6127760491922913
+    },
+    "count_variance": {
+      "merge_split": 0.39379566334535704,
+      "one_minus_f1": 0.41804480309716097,
+      "missing_volume": 0.33484207477841643
+    },
+    "hungarian": {
+      "merge_split": 0.36218200416959667,
+      "one_minus_f1": 0.521480232867906,
+      "missing_volume": 0.47755661799921534
+    },
+    "fa_v1": {
+      "merge_split": 0.2032032147903317,
+      "one_minus_f1": 0.3486818860781108,
+      "missing_volume": 0.6204937450288238
+    },
+    "fa_v2": {
+      "merge_split": 0.48867684556428026,
+      "one_minus_f1": 0.42806682187398987,
+      "missing_volume": 0.36985163498526374
+    },
+    "partition_v2": {
+      "merge_split": 0.592965897863914,
+      "one_minus_f1": 0.39276523117007506,
+      "missing_volume": 0.19164750265077335
+    },
+    "partition_v1": {
+      "merge_split": 0.6993441572067816,
+      "one_minus_f1": 0.35794887147482857,
+      "missing_volume": 0.21891177263388184
+    }
+  },
+  "output_sha256": {
+    "figures/fig1_concept.pdf": "c916d0fd52b1b4f0e796ae24befa43f4c5b45350629177c2c9c8ea57331e3872",
+    "figures/fig1_concept.png": "2a940705c002dcb67e51e9e51a69ae0317947d0405c9c040b66e78be339328a0",
+    "figures/fig2_evidence.pdf": "90101645fda7d66e172683cb981e6c6fc9bb9fcb11d82b1f6916ad2617a7de0b",
+    "figures/fig2_evidence.png": "b1b61aca2a31a80153a3bd9feb4484dd95b89777170a6a9408c49b0c0b6e5013"
+  }
+}
