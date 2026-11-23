@@ -1,48 +1,77 @@
 {
+  "role": "reporting_only_completed_evidence_and_one_real_saved_case_no_new_experiment",
   "source_sha256": {
     "outputs/stage3_h1_v2/heldout/e3_manifest.json": "8c06e64d6f774349e13d2f33f5d6bfdbd412814de6b7d44886bec65231e24afb",
-    "outputs/count_ablation_development_v1/rank_manifest.json": "681922b24c2dd6a2ae84b96dc164a8bcfcd11ae3d896545a10f7c8c2a34e6a2a",
-    "outputs/evaluator_sensitivity_v1/sensitivity_manifest.json": "0a795f7e857d0f123f2c70d08e22bd2add3960ffacf4d7ee6ef7664ece901da0",
     "outputs/stage3_h1_v2/heldout/main_table.csv": "6b37f9638e90a8f972c111742761cc5a76f3d5a4a4bfe4579e52a57bb40c2882",
+    "outputs/evaluator_sensitivity_v1/sensitivity_manifest.json": "0a795f7e857d0f123f2c70d08e22bd2add3960ffacf4d7ee6ef7664ece901da0",
+    "outputs/evaluator_sensitivity_v1/paired_differences.csv": "6949785cabb178e1d4c8e6f273c5ff5b7d5cf97f1a67583315fa74b6e2a3d57b",
+    "outputs/stage3_h1_v2/e1_manifest.json": "e67323ae87ea257e2c494415e22ce460bd6b153ed95aca61cff30ac292d40fd1",
+    "outputs/stage3_h1_v2/perturbations/e2_manifest.json": "21b80e14035acc37fb6d93137261f178293b39b30d08000df748050ab737b86d",
+    "outputs/stage3_h1_v2/e4_e5/e4_e5_manifest.json": "d39b9dfc5a03b4988f63f3a44908b188a09f62984f3527d885c6b560677d5b98",
+    "outputs/stage3_h1_v2/e5_supplement_v1/e5_supplement_manifest.json": "70d3747b753c804908e6fe95c69a606c4acce4349326fd3f6e9a767bf0940581",
+    "configs/e1.json": "e691f1b8333f5db7f27d823ae055d6a62df723031b95b5a10b919295e5d730ba",
+    "outputs/stage3_h1_v2/validation/scores.csv": "8e5717fca87842a067dff9d590ee74d9250d5ba04d3ce408266e53aaead25c01",
+    "outputs/stage3_h1_v2/validation/pair_components.csv": "7f80ab8ac0ff7e63603c66ea411984ceb991e6af9d2fc54a6bf23c177238c307",
     "outputs/stage3_h1_v2/heldout/risk_coverage.csv": "66f2a42bf3a359616e4093fe9ef3cbad773f76719fe5ac9a33310e74e4a26d76",
     "outputs/stage3_h1_v2/heldout/scores.csv": "c7f5ced97ac6a56096ab6e3556327dd09c8db53537104e4f75b49d799460edb8",
     "outputs/stage3_h1_v2/heldout/risks.csv": "52ff5484eb72e51d68ec0db9e5b1cac26762744bb4a17f27bfb4c6d11dfcceba",
-    "outputs/stage3_h1_v2/perturbations/replication.csv": "1b03020641cdbf1159da6656f946d779a2b303a5ce4bc8b224ae30be16da7f14",
-    "outputs/evaluator_sensitivity_v1/paired_differences.csv": "6949785cabb178e1d4c8e6f273c5ff5b7d5cf97f1a67583315fa74b6e2a3d57b",
-    "outputs/count_ablation_development_v1/paired_differences.csv": "adf9f553ec6d4d81835449a0709736c601cc878f213b495d901a4aa5052d3a37"
+    "src/exchange_ml/e1_data.py": "7f563a14fc097b01409525d0ebceb0134e95243783dec464801d11ff51b90a86",
+    "src/exchange_ml/e1_scoring.py": "9077e0402171e88dc1a48ef6d0626d58248448043912a5aa61adda06b91fb36d",
+    "src/exchange_ml/e1_statistics.py": "f9dcd986114251636fb116c3a23b2586846edc6439d4a54598ba50a657d11af1",
+    "src/exchange_ml/instances.py": "339018f8ae511a99e6342e403c6c854b2dc5f2523c54d452d3c275b30cadec85",
+    "outputs/stage3_h1/members/member_01/validation_predictions/004.mha": "d7cba5d2da4d61ed651f18bdfaedba72f4a43df65f98b17317d36ab8b959e21e",
+    "outputs/stage3_h1/members/member_02/validation_predictions/004.mha": "b7400bbcd07e1071269460af08b1692376065915907a3abd92ce50b29c518425",
+    "outputs/stage3_h1/members/member_03/validation_predictions/004.mha": "44ce71c61c3a47247e7171ebcebc5125e94201dbb3c3d5ebae2141f4f3fc71cb",
+    "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part1/004/image.mha": "1e04da410d0796dbb3462fd6eea2865ef78fee8adabde1c8edb22cede7e96c86"
+  },
+  "producer": {
+    "script": "paper/build_paper.py",
+    "sha256": "c7c0e79fb60518c1e221be62261aeed593db895e6fa7a20c25b0e1af09578685"
+  },
+  "manuscript_input_sha256": {
+    "manuscript.tex": "4d9b33c15c4f7929ec46cee9bfe40b3c9dcb24a3827cab41f08cc2651432b174",
+    "references.bib": "0caf18fef73428d9de59129e7e6cfacb7533132f4359f032b19be50ef47287d3",
+    "IEEEtran.cls": "c972aca108fda004c3514d63658e02816da2e54d9a1451e870b9bd970e003f55"
   },
   "generated_sha256": {
     "main_table.tex": "9d0c3f112b26e0ecd3b719d7e863cae5f0ba79d6f7f28499be115b4af6f881b9",
     "endpoint_table.tex": "083852ed060cc1ff5e147e50f3f00713f9c8c7561f660e1485631f7b597b53fe",
-    "figures/mechanism_ranking.pdf": "ee9f4650b2c92172a2c1bb9136b879b1bb5274199bdd6d2179160532223e33ea"
+    "manuscript.md": "711bc500aba74b70edaba2320ff28e449c88375f6d27bd6ce9382f30f5a56e5a",
+    "figures/overview.pdf": "8462289f430ba9ba5a91eef683a45cdf490b7f0d1010e384df6a1eab04cc4248",
+    "figures/overview.png": "c7e66b9601a985db42151eee5fd47886c363d8434deb279145282db6edb6b99e",
+    "evidence/overview.json": "3d1d2ed409fcd24f768bf8dd6ff20869064c5c45f8e6dd1bbf1d5b8ee14bc172"
   },
-  "role": "reporting_only_saved_completed_artifacts_no_new_experiments",
-  "pending_results_excluded": [
-    "E6_external_RibFrac",
-    "new_triage_policy"
-  ],
-  "all_current_numbers_descriptive_or_frozen_contrasts_not_acceptance_probability": true,
   "figure_table_trace": [
     {
-      "artifact_id": "fig:results",
+      "artifact_id": "fig:overview",
       "source_data": [
-        "outputs/stage3_h1_v2/perturbations/replication.csv",
+        "outputs/stage3_h1_v2/e1_manifest.json",
+        "outputs/stage3_h1_v2/heldout/e3_manifest.json",
+        "configs/e1.json",
+        "outputs/stage3_h1_v2/validation/scores.csv",
+        "outputs/stage3_h1_v2/validation/pair_components.csv",
+        "outputs/stage3_h1_v2/heldout/risk_coverage.csv",
         "outputs/stage3_h1_v2/heldout/scores.csv",
-        "outputs/stage3_h1_v2/heldout/risks.csv"
+        "outputs/stage3_h1_v2/heldout/risks.csv",
+        "src/exchange_ml/e1_data.py",
+        "src/exchange_ml/e1_scoring.py",
+        "src/exchange_ml/e1_statistics.py",
+        "src/exchange_ml/instances.py",
+        "outputs/stage3_h1/members/member_01/validation_predictions/004.mha",
+        "outputs/stage3_h1/members/member_02/validation_predictions/004.mha",
+        "outputs/stage3_h1/members/member_03/validation_predictions/004.mha",
+        "/mnt/sdb/shared/dang.cpm/dataset/PENGWIN26_task1_2/PENGWIN26_task1_2_train_part1/004/image.mha"
       ],
       "transformation": {
-        "script": "paper/build_paper.py",
-        "sha256": "0cccfc5325ad0924bafb9578494ec0f5666329e3735c10c71c162d4077c22b47"
+        "script": "paper/make_overview.py",
+        "sha256": "63e5f7658e06e1626963dea90b64fc3ad228a078fd9f784b07ec11184caa5a14"
       },
-      "caption_claim": "Fixed-count replication changes voxel-count normalization but not joint-entropy normalization; actual held-out risk curves compare fixed scores.",
+      "caption_claim": "Prediction-only failure ranking with real CT data. Case 004 (left hip, development cohort) is shown on the same prediction-selected axial slice and crop for all three models; colors identify instances within each model only. Whole-3D-bone pair-mean coverage (0.0146) and weighted grouping (0.0491) sum to 0.0637. Scores developed on 40 CTs are evaluated on 100 separate CTs (200 bones). Saved curves include the stronger voxel-normalized partition-only control. Ground truth is used only to measure evaluation risk.",
       "supported_manuscript_claims": [
-        "count-denominator mechanism in Results/Component Contributions and Controlled Responses",
-        "joint-entropy combined score improves over presence/entropy but voxel-normalized partition-only score is stronger for original M+S in Results/Held-Out Ranking and Stronger Component Controls"
+        "Prediction-only disagreement separates coverage from fragment grouping; ground truth is used to evaluate ranking"
       ],
       "limitations": [
-        "count replication is not CT resampling",
-        "different scores use same risk and case selection",
-        "no clinical correction assumed"
+        "Illustrative slice and whole-3D-bone scores are distinct"
       ]
     },
     {
@@ -52,15 +81,12 @@
       ],
       "transformation": {
         "script": "paper/build_paper.py",
-        "sha256": "0cccfc5325ad0924bafb9578494ec0f5666329e3735c10c71c162d4077c22b47"
+        "sha256": "c7c0e79fb60518c1e221be62261aeed593db895e6fa7a20c25b0e1af09578685"
       },
-      "caption_claim": "All12 fixed scores on validation and held-out under same bone AURC convention.",
-      "supported_manuscript_claims": [
-        "stronger voxel-normalized partition-only and Hungarian controls in Results/Held-Out Ranking and Stronger Component Controls"
-      ],
+      "caption_claim": "All 12 fixed scores under the same bone-level AURC convention.",
       "limitations": [
-        "per-bone pooling weights pelvic CT three times femur",
-        "one backend family"
+        "Pelvic CTs contribute three bones; femur CTs contribute one",
+        "One backend family"
       ]
     },
     {
@@ -70,19 +96,20 @@
       ],
       "transformation": {
         "script": "paper/build_paper.py",
-        "sha256": "0cccfc5325ad0924bafb9578494ec0f5666329e3735c10c71c162d4077c22b47",
+        "sha256": "c7c0e79fb60518c1e221be62261aeed593db895e6fa7a20c25b0e1af09578685",
         "filter": "heldout/pooled/member_mean/fa_v2-partition_v1"
       },
-      "caption_claim": "AURC contrasts depend on internal failure endpoint.",
-      "supported_manuscript_claims": [
-        "original voxel-normalized partition-only advantage not clear under supplementary definitions in Results/Dependence on the Failure Definition"
-      ],
+      "caption_claim": "Paired AURC contrasts depend on the failure definition.",
       "limitations": [
-        "post-held-out analysis not fresh confirmation",
-        "marginal intervals",
-        "fixed thresholds not clinically validated",
-        "absolute AURCs not comparable across risk definitions"
+        "Supplementary analysis of already inspected cases",
+        "Marginal intervals",
+        "No clinical threshold validation",
+        "Absolute AURCs across endpoints are not directly comparable"
       ]
     }
+  ],
+  "results_not_used_in_manuscript": [
+    "incomplete_external_RibFrac",
+    "development_triage_policy"
   ]
 }

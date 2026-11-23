@@ -176,20 +176,26 @@
       "experiment_id": "NewPolicy",
       "title": "New triage policy",
       "repro_lock": {
-        "status": "not_a_completed_result"
+        "manifest": "outputs/triage_policy_development_v1/triage_manifest.json",
+        "sha256": "04dff28f9ca1dfd5f4fa3eef4e3ad15246921ce929da903dd30ae2f0a78d4c71"
       },
       "planned_vs_executed": [
         {
-          "step": "evaluation of proposed extension",
-          "executed": false,
-          "skip_reason": "Implementation only; new full user-run Slurm experiment not yet executed."
+          "step": "saved full CPU policy analysis",
+          "executed": true,
+          "status": "complete",
+          "manuscript_role": "excluded_development_followup"
         }
       ],
-      "negative_results": [],
+      "negative_results": [
+        "20pct heldout missing-volume candidate-minus-guard_p1=0.0010915896781929849;95%CI[-0.023210342158365063,0.012806408067182546]; no established benefit."
+      ],
       "known_limitations": [
-        "No numerical outcome can be claimed."
+        "Posthoc rules on previously inspected cohorts; not independent confirmation.",
+        "Not used as a manuscript contribution."
       ]
     }
   ],
-  "verification_scope": "Saved completed manifests/source/table hashes; not independent pixel-level rerun."
+  "verification_scope": "Saved completed manifests/source/table hashes; not independent pixel-level rerun.",
+  "status_refreshed_at": "2026-11-23"
 }

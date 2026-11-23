@@ -1,25 +1,31 @@
 # Manuscript
 
-`manuscript.pdf` is the complete anonymous English scientific draft in the supplied IEEE conference template. Technical content occupies pages1–4; acknowledgment and references are on page5. Author/affiliation metadata remain anonymous pending author input. No institutional approval, funding or clinical benefit is invented.
+Read `manuscript.pdf`; edit `manuscript.tex`. The English draft uses the supplied IEEE conference template and anonymous author metadata. The contributions concern component separation, a 12-score comparison on 100 CTs, and sensitivity to the definition of failure. They do not claim a new mathematical distance or universal superiority of the combined score.
 
-The paper reports completed PENGWIN experiments using terms defined for readers without project history. It focuses on component separation, normalization, held-out ranking, strong controls, and endpoint dependence. Exploratory fusion-development history is omitted; the stronger partition-only control, shared-omission limit, and uncertain review utility remain explicit. External RibFrac training and the new triage-policy experiment supply no completed outcomes. The source-versus-final-version gap in one EMBC literature comparator is documented in `review/embc_recent_fulltext.md`.
+`figures/overview.pdf` is the vector overview embedded in the paper; `overview.png` is its preview. It shows a real development CT and the three saved predictions on the same slice/crop, whole-3D-bone disagreement values, and actual risk–coverage curves on the separate 100-CT cohort. Instance colors carry no correspondence between models. Selection uses predictions alone. The receipt in `evidence/overview.json` records source hashes, geometry, slice/crop, cleanup, palettes and reconciled scores.
 
-Build from saved completed experiment tables, then compile LaTeX:
+Build the tables, readable Markdown, source receipt and PDF:
 
 ```bash
 cd /mnt/sdb/shared/dang.cpm/Exchange-ML
-PYTHONDONTWRITEBYTECODE=1 OPENBLAS_NUM_THREADS=1 MPLCONFIGDIR=/tmp/exchange-paper-mpl \
-  /home/dang.cpm/miniconda3/envs/exchange-stage2/bin/python -B paper/build_paper.py --compile
+PYTHONDONTWRITEBYTECODE=1 OPENBLAS_NUM_THREADS=1 \
+  /home/dang.cpm/miniconda3/envs/exchange-stage2/bin/python -B \
+  paper/build_paper.py --compile
 ```
 
-This performs source-manifest/output hash checks and regenerates the tables, figure, Markdown view and evidence receipt. It does not train, infer or rerun experimental bootstraps. Tectonic uses the locally populated cache (`--only-cached`); a new environment may first require an online Tectonic run to obtain TeX packages/fonts. The unmodified supplied class is retained in `template/IEEEtran.cls` and copied as `IEEEtran.cls`.
+The default build verifies saved experiment manifests and overview provenance. Add `--refresh-overview` to reread the single CT and its three predictions and redraw the figure. Neither command trains models, performs inference, fits scores, or reruns experimental bootstrap analyses. A changed input or plotting script requires an explicit overview refresh; a changed experiment hash fails validation. The CT source must remain accessible for hash verification.
 
-- `manuscript.tex`: canonical text.
-- `manuscript.md`: regenerated readable view of the same text, tables and bibliography.
-- `references.bib`:11 cited records; primary source verification is retained in `review/`.
-- `evidence/manuscript_sources.json`: source/output hashes and figure/table provenance.
-- `review/`: literature sampling, integrity and review artifacts; these do not alter the manuscript's experiment claims.
+Compiler intermediates stay in ignored `build/`; only a successful compilation replaces `manuscript.pdf`. Tectonic uses its populated local cache with `--only-cached`; `--tectonic /path/to/tectonic` overrides executable discovery. A fresh machine needs the project Python environment, the saved inputs, and a populated Tectonic package/font cache.
 
-The local draft is prepared for author review, not automatic submission. Review reports and remaining metadata decisions must accompany the final handoff.
+- `manuscript.tex`, `references.bib`: canonical text and 10 cited records.
+- `manuscript.md`, `main_table.tex`, `endpoint_table.tex`: generated views/tables; edit their sources instead.
+- `build_paper.py`, `make_overview.py`: evidence checks and reproducible reporting.
+- `conference-latex-template.zip`, `IEEEtran.cls`: supplied template archive and its unmodified class.
+- `evidence/`: machine-readable figure/table provenance.
+- `review/`: published-paper source ledgers and current manuscript checks.
 
-The first-reader revision and targeted factual/layout checks are recorded in `review/first_reader_revision.md` and `.json`; the previous draft is preserved under `review/archive/before_first_reader_revision_20261123T124414Z/`. This check is not a completed formal integrity or peer-review gate.
+Technical content must occupy pages 1–4, with acknowledgment and references on page 5; no margins or font sizes are reduced to obtain this layout. External RibFrac results remain unavailable. The completed exploratory triage-policy follow-up did not establish added benefit and is retained in experiment outputs/documentation, rather than presented as a contribution. The stronger partition-only control and shared-omission limit remain explicit in the paper.
+
+Retired drafts, unused review setup, the redundant extracted template and old figure are preserved under `outputs/archive/paper_maintenance_20261123T131726Z/`. `review/archive` preserves the historical draft path through a relative symlink. A full before-state backup and cleanup inventory live in the sibling `.cleanup_backups/Exchange-ML-paper-20261123T131726Z/` directory. No model, dataset, checkpoint, experiment configuration or active E6 job is changed by this maintenance.
+
+This is an author-review draft. Author affiliations and final author approval remain to be supplied; no submission or publication is performed.

@@ -65,5 +65,9 @@ Nguồn: [rà soát và số liệu chẩn đoán](progress.md#rà-soát-toàn-d
 ## Phạm vi pipeline EMBC được tác giả yêu cầu ngày23/11
 
 1. Đọc ít nhất6bàiEMBC được xuất bản, fulltext và evidence matrix dưới `paper/review/`, suy luận bar có giới hạn accepted-only.
-2. Thực hiện thêm một policy structural/foreground fixed-rule sau failed fusions: `configs/triage_policy.json`, CPU Slurm command ở `exps.md`; không ghi thành kết quả khi full chưa chạy.
+2. Thực hiện thêm một policy structural/foreground fixed-rule sau failed fusions: `configs/triage_policy.json`, CPU Slurm command ở `exps.md`; full2987 đã complete và chưa xác nhận benefit, giữ ở development evidence, không đưa thành contribution.
 3. Viết complete English IEEE manuscript trong `paper/`, dùng completed PENGWIN evidence; kiểm tra integrity, simulated review/revision và local PDF. Không tự nộp/publish. E6 đang chạy chỉ vào limitations/future extension, không có external result để báo.
+
+## Sau lần refine manuscript/cleanup ngày23/11
+
+Contributions đã chốt theo completed evidence: phân rã coverage/grouping và kiểm tra normalization; benchmark12scores/100CT; sensitivity theo failure definition. Overview dùng CT/predictions thật và real risk curves, có provenance để tái tạo. Giữ E6 chạy theo campaign hiện tại; chỉ bổ sung external findings sau complete evaluation và hash/count audit. Điền author/affiliation và xử lý các vấn đề còn lại từ review trước khi chốt bản nộp.

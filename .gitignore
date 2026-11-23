@@ -80,3 +80,11 @@ lightning_logs/
 # Temporary files
 *.tmp
 *.temp
+
+# Paper compiler intermediates; retain manuscript PDF and figure evidence.
+/paper/build/
+/paper/*.aux
+/paper/*.bbl
+/paper/*.blg
+/paper/*.out
+/paper/*.synctex.gz

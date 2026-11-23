@@ -1,0 +1,50 @@
+{
+  "role": "academic-paper-reviewer/first-reader material critique",
+  "date": "2026-11-23",
+  "manuscript_sha256": "46259bb8c607b59555140fd6db138dce165fa40d7cd26f35faa3e235c170b9fd",
+  "scope": "Current10-reference explanatory rewrite,read-only; overview figure still in preparation; no new experiments demanded.",
+  "decision": "minor targeted content revision",
+  "strengths": [
+    "Three explicit contribution statements, no internal run labels.",
+    "All12 strong controls remain visible; unsupported superiority and external-transfer claims avoided.",
+    "Equations now explain foreground/grouping and normalization intuition.",
+    "Negative component comparison and endpoint-dependence remain explicit."
+  ],
+  "findings": [
+    {
+      "id": "R1",
+      "priority": "P1",
+      "location": "Abstract final sentences; Methods Statistics and Review Policies; Discussion paragraph2",
+      "issue": "The draft retains an empirical fixed-budget-review conclusion but Results no longer exposes a corresponding numerical estimate/interval. A reader cannot assess how uncertain the asserted lack of reliable benefit is.",
+      "action": "Add one concise saved CT-budget estimate and CI (e.g. guard+partition,20%CT,missing-volume delta -0.00429,CI[-0.01213,0.00810]) with direction explained, or remove this empirical claim from the abstract/main framing. Do not add new experiments.",
+      "blocking_for_reader_revision": true
+    },
+    {
+      "id": "R2",
+      "priority": "P1",
+      "location": "Methods Mechanism Tests and Failure Endpoints; Results controlled responses",
+      "issue": "The first contribution depends on controlled interventions, yet the current Methods omits their severity levels and the result says boundary targets met a declared tolerance without stating it. This leaves the mechanism experiment harder to reproduce than necessary.",
+      "action": "Use one compact sentence specifying1\u20133 disjoint nearest-fragment merges,largest-fragment2\u20134-way splits and boundaryDice targets.99/.95/.90 with tolerance.005, as actually implemented; otherwise remove the tolerance result. Keep that this is controlledGT-copy algebra rather than realistic fracture generation.",
+      "blocking_for_reader_revision": true
+    },
+    {
+      "id": "R3",
+      "priority": "P2",
+      "location": "Methods Data, Models, and Evaluation Units",
+      "issue": "Calling a fourth segmentation network the additional reference model risks confusing it with the reference annotation/GT, especially because both occur throughout the Methods. Its role is to supply a different model-error target, not an independent reference standard.",
+      "action": "Name it a fourth segmentation model or separate segmentation model and say scores stay fixed while risks are recomputed from that model. Keep same-backend limitation.",
+      "blocking_for_reader_revision": false
+    },
+    {
+      "id": "R4",
+      "priority": "P2",
+      "location": "Introduction contribution list; Discussion/Conclusion",
+      "issue": "The component formulas and normalization properties are established quantities, so the contribution is empiricaldiagnosis and endpoint-controlled evidence. The draft mostly communicates this correctly; an occasional practical recommendation could still sound universal beyond the onebackend/casecollection.",
+      "action": "Retain the explicit no-new-mathematical-distance statement and use in-this-setting wording for the strongest recommendations. Explain that aCI crossing0 under a newendpoint shows no clear advantage, not equivalence or validated superiority.",
+      "blocking_for_reader_revision": false
+    }
+  ],
+  "new_experiments_required": false,
+  "acceptance_probability_estimated": false,
+  "figure_review_status": "pending final real-dataoverview artifact from overviewagent"
+}

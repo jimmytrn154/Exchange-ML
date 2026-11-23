@@ -408,7 +408,7 @@ Nếu chain E6 đã thay, dùng evaluation job ID mới. Reporter fail-closed n�
 
 ## Dual-channel CT triage sau các ablations âm tính
 
-**23/11/2026: implementation/synthetic smoke complete; full chưa chạy.** Một policy cố định tách P1 (structural) và presence (foreground), không fit thêm weight theo GT. Đây là thử nghiệm follow-up hậu nghiệm trên cohorts đã xem, không phải fresh confirmation hoặc primary E3 mới.
+**23/11/2026: synthetic smoke và full đã complete (Slurm2986/2987).** Một policy cố định tách P1 (structural) và presence (foreground), không fit thêm weight theo GT. Đây là thử nghiệm follow-up hậu nghiệm trên cohorts đã xem, không phải fresh confirmation hoặc primary E3 mới.
 
 - Config `configs/triage_policy.json`; runner `scripts/run_triage_policy.py`; module `src/exchange_ml/triage_policy.py`.
 - Mỗi channel đổi sang midrank ECDF theo từng anatomy, tham chiếu prediction scores của validation. Validation dùng 5 CT-grouped folds seed20261122; mỗi CT chỉ được hiệu chỉnh bằng các CT ngoài fold. Held-out dùng toàn bộ40 validation làm reference. Không có outcome/GT count trong calibration.
@@ -426,4 +426,15 @@ bash scripts/submit_triage_policy.sh full
 
 Launcher submit CPU synthetic smoke rồi full `afterok`; **4 CPUs,8GiB,2giờ time limit**, không request GPU. `check` chỉ submit metadata preflight; `smoke` không submit full. Output `outputs/triage_policy_development_v1/`, receipt `triage_manifest.json`; logs `outputs/logs/dual-triage-<job_id>.log`. Time limit không phải ETA. Full command chưa được agent chạy.
 
-Bản paper hiện tại chỉ dùng completed experiments. Kết quả policy này và E6 chưa được viết như observations trong manuscript.
+Full policy đã complete: target missing-volume tại20%CT trên100heldout có candidate−guardP1 **+0,00109 [−0,02321; +0,01281]**, chưa xác nhận lợi ích. Giữ output và negative finding; không đưa policy thành contribution. E6 chưa có external evaluation hoàn chỉnh.
+
+## Tái tạo manuscript và overview thật (CPU)
+
+```bash
+cd /mnt/sdb/shared/dang.cpm/Exchange-ML
+PYTHONDONTWRITEBYTECODE=1 OPENBLAS_NUM_THREADS=1 \
+  /home/dang.cpm/miniconda3/envs/exchange-stage2/bin/python -B \
+  paper/build_paper.py --compile
+```
+
+Thêm `--refresh-overview` để đọc lại một CT development và ba predictions đã lưu, rồi vẽ lại overview. Default kiểm tra hashes/manifests và tái tạo hai bảng, Markdown, PDF; không train/infer hoặc chạy lại bootstrap. File build ở `paper/build/` được ignore; provenance ở `paper/evidence/`. Chi tiết trong `paper/README.md`.

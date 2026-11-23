@@ -28,6 +28,7 @@ ROOT = PAPER.parent
 sys.path.insert(0, str(ROOT / "src"))
 from exchange_ml.e1_data import MEMBERS, clean_prediction, geometry, mask_bone, read_volume
 from exchange_ml.e1_scoring import pair_components
+from exchange_ml.e1_statistics import expected_curve
 
 CASE = "004"
 BONE = "left_hip"
@@ -75,13 +76,16 @@ def main() -> None:
     config_path = ROOT / "configs/e1.json"
     assert sha(config_path) == e1["provenance"]["config_sha256"]
     config = json.loads(config_path.read_text())
-    for rel in ["src/exchange_ml/e1_data.py", "src/exchange_ml/e1_scoring.py",
-                "src/exchange_ml/instances.py"]:
+    code_sources = ["src/exchange_ml/e1_data.py", "src/exchange_ml/e1_scoring.py",
+                    "src/exchange_ml/e1_statistics.py", "src/exchange_ml/instances.py"]
+    for rel in code_sources:
         assert sha(ROOT / rel) == e3["provenance"]["code"][rel]
 
     scores_path = verified_table(e1root, e1, "validation/scores.csv")
     pairs_path = verified_table(e1root, e1, "validation/pair_components.csv")
     curve_path = verified_table(e3root, e3, "risk_coverage.csv")
+    evaluation_scores_path = verified_table(e3root, e3, "scores.csv")
+    evaluation_risks_path = verified_table(e3root, e3, "risks.csv")
     score = next(r for r in rows(scores_path) if r["case_id"] == CASE and r["bone"] == BONE)
     saved_pairs = [r for r in rows(pairs_path) if r["case_id"] == CASE and r["bone"] == BONE]
     curves = rows(curve_path)
@@ -89,7 +93,9 @@ def main() -> None:
     # Only this one case is loaded. GT, probability maps and other CTs are not read.
     sources = e1["sources"][CASE]
     source_hashes = {str(p.relative_to(ROOT)): sha(p) for p in
-                     [e1path, e3path, config_path, scores_path, pairs_path, curve_path]}
+                     [e1path, e3path, config_path, scores_path, pairs_path, curve_path,
+                      evaluation_scores_path, evaluation_risks_path]}
+    source_hashes.update({rel: sha(ROOT / rel) for rel in code_sources})
     predictions, prediction_paths, expected = [], [], None
     original_ids, retained_ids = {}, {}
     for member in MEMBERS:
@@ -150,6 +156,7 @@ def main() -> None:
     xs, width = [.015, .132, .249, .366], .101
     title_labels = ["CT", "Model 1", "Model 2", "Model 3"]
     color_map = {}
+    image_axes = []
     for k, (left, title) in enumerate(zip(xs, title_labels)):
         ax = fig.add_axes([left, .31, width, .52])
         ax.imshow(image_slice, cmap="gray", vmin=-300, vmax=1500,
@@ -168,34 +175,44 @@ def main() -> None:
             ax.imshow(rgba, interpolation="nearest")
         ax.set_title(title, fontsize=8, pad=4)
         ax.set_xticks([]); ax.set_yticks([])
+        image_axes.append(ax)
         for spine in ax.spines.values():
             spine.set_color("#D4DCE2"); spine.set_linewidth(.6)
         if k == 0:
             length = 20 / expected["spacing"][0]
             ax.plot([5, 5 + length], [image_slice.shape[0] - 8] * 2, color="white", lw=1.4)
-            ax.text(5, image_slice.shape[0] - 12, "20 mm", color="white", fontsize=6.5)
-    fig.text(.015, .22, "Case 004 · left hip · same slice and crop", fontsize=8, color=INK)
-    fig.text(.015, .135, "Colors distinguish IDs within each model;", fontsize=7.7, color="#536471")
-    fig.text(.015, .055, "they do not match fragments between models.", fontsize=7.7, color="#536471")
+            ax.text(5, image_slice.shape[0] - 12, "20 mm", color="white", fontsize=8)
+    fig.text(.015, .22, "Development CT · left hip · same slice and crop", fontsize=8, color=INK)
+    fig.text(.015, .135, "Colors distinguish IDs within each model;", fontsize=8, color="#536471")
+    fig.text(.015, .055, "they do not match fragments between models.", fontsize=8, color="#536471")
 
     # Real whole-bone measurements split into the two prediction-only components.
-    cards = [("Bone coverage disagreement", "Foreground masks differ", a, BLUE, .66),
-             ("Fragment grouping disagreement", "Within shared foreground", partition, TEAL, .36)]
+    cards = [("Bone coverage\ndisagreement", "Foreground masks differ", a, BLUE, .66),
+             ("Fragment grouping\ndisagreement", "Within shared foreground", partition, TEAL, .36)]
     for title, subtitle, value, color, bottom in cards:
         box = FancyBboxPatch((.48, bottom), .25, .23,
                              boxstyle="round,pad=.008,rounding_size=.012",
                              transform=fig.transFigure, facecolor=to_rgba(color, .055),
                              edgecolor=to_rgba(color, .55), linewidth=.7)
         fig.add_artist(box)
-        fig.text(.49, bottom + .164, title, fontsize=7.3, weight="bold", color=color)
-        fig.text(.49, bottom + .093, subtitle, fontsize=7.4, color=INK)
-        fig.text(.49, bottom + .022, f"3D pair average = {value:.4f}", fontsize=7.5, color=INK)
-    arrow(fig, (.463, .69), (.477, .77), BLUE)
-    arrow(fig, (.463, .45), (.477, .47), TEAL)
+        fig.text(.49, bottom + .137, title, fontsize=8, weight="bold", color=color,
+                 linespacing=1.0)
+        fig.text(.49, bottom + .064, subtitle, fontsize=8, color=INK)
+        fig.text(.49, bottom + .005, f"3D pair mean = {value:.4f}", fontsize=8, color=INK)
+    # All three predictions feed the pairwise comparisons (not just model 3).
+    group = fig.add_axes([0, 0, 1, 1], frameon=False)
+    group.set_axis_off()
+    for image_ax in image_axes[1:]:
+        position = image_ax.get_position()
+        x = (position.x0 + position.x1) / 2
+        group.plot([x, x], [position.y0, .365], transform=fig.transFigure, color="#A1AFBA", lw=.7)
+    group.plot([.1825, .47, .47], [.365, .365, .77],
+               transform=fig.transFigure, color="#A1AFBA", lw=.7)
+    arrow(fig, (.47, .77), (.48, .77), BLUE)
+    arrow(fig, (.47, .47), (.48, .47), TEAL)
     fig.text(.48, .225, f"Combined = {combined:.4f}", color=INK, weight="bold", fontsize=8)
-    fig.text(.48, .135, "Rank bones by disagreement", color=INK, fontsize=7.7)
-    fig.text(.48, .055, "40 development CTs → fixed scores", color="#536471", fontsize=7.3)
-    arrow(fig, (.728, .51), (.775, .51))
+    fig.text(.48, .135, "Rank bones by disagreement", color=INK, fontsize=8)
+    fig.text(.48, .055, "40 development CTs", color="#536471", fontsize=8)
 
     # Saved held-out curves: identical bone risk and case selection for both scores.
     ax = fig.add_axes([.805, .405, .18, .41])
@@ -210,16 +227,27 @@ def main() -> None:
         y = [float(r["prefix_mean_risk"]) for r in series]
         ax.plot(x, y, color=color, linestyle=linestyle, linewidth=1.2, label=label)
         series_values[key] = {"coverage": x, "prefix_mean_risk": y}
-    ax.set(xlim=(0, 1), ylim=(0, None), xticks=[0, 1], xlabel="Bones retained")
+    # The stronger voxel-normalized partition-only control uses saved table rows
+    # and the original tie-aware curve function; it requires no model execution.
+    evaluation_scores, evaluation_risks = rows(evaluation_scores_path), rows(evaluation_risks_path)
+    risk_index = {(r["case_id"], r["bone"]): r for r in evaluation_risks}
+    y_risk = np.array([float(risk_index[r["case_id"], r["bone"]]["member_mean_merge_split"])
+                       for r in evaluation_scores])
+    control = expected_curve(np.array([float(r["partition_v1"]) for r in evaluation_scores]), y_risk)
+    x_control = np.arange(1, len(control) + 1) / len(control)
+    ax.plot(x_control, control, color=ORANGE, linestyle=":", linewidth=1.2, label="Partition only")
+    series_values["partition_v1"] = {"coverage": x_control.tolist(), "prefix_mean_risk": control.tolist()}
+    ax.set(xlim=(0, 1), ylim=(0, None), xticks=[0, 1], xlabel="Fraction retained")
     ax.set_ylabel("Merge/split risk", labelpad=1)
     ax.tick_params(length=2, pad=1)
     ax.spines[["top", "right"]].set_visible(False)
-    ax.legend(loc="upper left", fontsize=6.6, frameon=False, borderpad=0, handlelength=1.3)
-    fig.text(.78, .855, "100 separate CTs · 200 bones", fontsize=7.1, color=INK)
-    fig.text(.785, .21, "Ground-truth fragments", fontsize=7.5, color="#536471")
-    arrow(fig, (.873, .255), (.873, .365), "#7B8790", dashed=True)
-    fig.text(.785, .135, "used only to measure risk", fontsize=7.3, color="#536471")
-    fig.text(.785, .055, "Lower retained risk is better", fontsize=7.3, color="#536471")
+    ax.legend(loc="upper left", fontsize=8, frameon=True, borderpad=.15, handlelength=1.1,
+              labelspacing=.12, facecolor="white", edgecolor="none", framealpha=.95,
+              handletextpad=.4)
+    fig.text(.78, .855, "100 CTs · 200 bones", fontsize=8, color=INK)
+    fig.text(.785, .21, "Ground truth → risk", fontsize=8, color="#536471")
+    fig.text(.785, .135, "evaluation only", fontsize=8, color="#536471")
+    fig.text(.785, .055, "Lower risk is better", fontsize=8, color="#536471")
 
     figure_dir = PAPER / "figures"
     figure_dir.mkdir(exist_ok=True)
@@ -228,14 +256,14 @@ def main() -> None:
     fig.savefig(png, dpi=350)
     plt.close(fig)
 
-    caption = ("Overview using a real development CT and saved ensemble predictions. "
-               "All four images show the same left-hip crop from case 004; colors identify "
-               "instances within each model and imply no cross-model correspondence. "
-               "Coverage disagreement and fragment-grouping disagreement are computed "
-               "from predictions alone; the displayed values average the three model "
-               "pairs over the whole 3D bone. Scores are developed on 40 CTs and evaluated "
-               "on 100 separate CTs (200 bones). The right panel shows saved risk–coverage "
-               "curves; ground truth enters only the evaluation of risk.")
+    caption = ("Prediction-only failure ranking with real CT data. Case 004 (left hip, "
+               "development cohort) is shown on the same prediction-selected axial "
+               "slice and crop for all three models; colors identify instances within "
+               "each model only. Whole-3D-bone pair-mean coverage (0.0146) and weighted "
+               "grouping (0.0491) sum to 0.0637. Scores developed on 40 CTs are evaluated "
+               "on 100 separate CTs (200 bones). Saved curves include the stronger "
+               "voxel-normalized partition-only control. Ground truth is used only to "
+               "measure evaluation risk.")
     receipt = {
         "role": "reporting_only_real_saved_data_no_inference_no_new_experiment",
         "case_id": CASE, "bone": BONE, "scan_type": "pelvic",
@@ -257,7 +285,8 @@ def main() -> None:
         "plotted_components": {"presence": a, "weighted_vi_over_joint_entropy": partition, "combined": combined},
         "component_recomputation_matches_saved": True,
         "plotted_curve_source": str(curve_path.relative_to(ROOT)),
-        "curve_filter": {"stratum": "pooled", "risk_source": "member_mean", "scores": ["fa_v2", "presence"]},
+        "curve_filter": {"stratum": "pooled", "risk_source": "member_mean", "scores": ["fa_v2", "presence", "partition_v1"]},
+        "partition_control_curve_transformation": "tie-aware expected_curve of saved partition_v1 scores and saved member_mean_merge_split risk, on the same 200 evaluation bones",
         "plotted_curve_values": series_values,
         "cohort": {"development_cts": 40, "evaluation_cts": 100, "evaluation_bones": 200,
                    "disjoint_case_ids_verified": True},
@@ -266,10 +295,14 @@ def main() -> None:
         "transformation": {"script": "paper/make_overview.py", "sha256": sha(Path(__file__))},
         "output_sha256": {str(p.relative_to(PAPER)): sha(p) for p in [pdf, png]},
         "figure_size_inches": [6.9, 2.6], "png_dpi": 350,
+        "visual_verification": {"method": "view_image inspection of rendered PNG at native size",
+                                "text_min_font_size_pt": 8,
+                                "checks": ["identical image geometry and crop", "visible real fracture and two predicted IDs per model",
+                                           "branch labels and right-edge notes fit", "GT arrow terminates at evaluation risk only"]},
         "caption_draft": caption,
         "limitations": ["One illustrative development case; no case-selection claim of representative accuracy",
                         "2D images are inputs, whereas displayed components use the complete 3D bone",
-                        "Combined versus coverage curves do not compare every baseline; stronger partition-only controls are reported separately"],
+                        "Curves show three of the 12 evaluated scores; complete comparisons are reported in the main table"],
         "figure_table_trace": [{"artifact_id": "fig:overview", "source_data": list(source_hashes),
                                 "transformation": {"script": "paper/make_overview.py", "sha256": sha(Path(__file__))},
                                 "caption_claim": caption,
