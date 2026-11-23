@@ -1,0 +1,12 @@
+{
+  "manuscript.tex": "e9afde3785080ddbb0a4c0311b178fee1cab76b6b571470c56753f45cce766e6",
+  "manuscript.md": "b0a78cffb7d6520e9a4abcb8b199b76066bb3b98083f8871758d00b48332e861",
+  "manuscript.pdf": "43b3ea498816f23e277725d9f5823d4d8cb61428f03005d30fd115713f199449",
+  "references.bib": "6ccf26edb8a34a808776cfed26b9dd81ef4c4a70128eb0f09f4caba58cb79c3f",
+  "build_paper.py": "141e402256d89f17334c8e0d9783d6b9e56cbde6e856848e4fbf5f34ad6e7a49",
+  "main_table.tex": "fa0e554ef29b7b8ba05020d8dc7e2eb44f9d3001955d249484f850ef2bcc3580",
+  "endpoint_table.tex": "9d154aa01eb4cc109776465cbd0a6ca7baf0a205d20643bfc79b8ac593d3f58e",
+  "evidence/manuscript_sources.json": "5b5ae5a45c184f73fa9f4c3bf75a1c1013f74dd2020e1f4422fc8cf4b649fbea",
+  "figures/mechanism_ranking.pdf": "044e8275e6dace45298cfb8361d7ff2e2b812ddf2bdaf3f018b5d570a1c13a1b",
+  "figures/mechanism_ranking.png": "a5e9b2b9ee4703601aca05336f0c9d2677572b1f39cb2aac3aa7da0fdde5ffca"
+}

@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-23",
+  "n_main_published_papers": 6,
+  "years": [
+    2023,
+    2023,
+    2023,
+    2024,
+    2024,
+    2025
+  ],
+  "fulltext_access": "five_conference_or_accepted_full_manuscripts_plus_one_complete_author_preprint_with_explicit_final_version_gap",
+  "extra_negative_result_context_year": 2022,
+  "acceptance_probability_estimated": false,
+  "sources": {
+    "paper/review/embc_recent_fulltext.json": "b11ce5e83703ab1479b2da6300ccb17dba9851c508fc9c3c6f966595c83cf9bc",
+    "paper/review/embc_comparison_fulltext.json": "ece4ef0ba881091cdfc4c61b0d0d1aafb7f122ec29213a809a224411c6ca30e9",
+    "paper/review/embc_acceptance_synthesis.md": "9fd313c4d9923a5dae18807da5edbd4d2b7f7b57307801881f84cffee32c5785"
+  }
+}

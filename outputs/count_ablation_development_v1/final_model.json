@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "head": "pairwise_p1_count",
+  "features": [
+    "partition_v1",
+    "predicted_count_mean"
+  ],
+  "target": "member_mean_merge_split",
+  "objective": "mean_pairwise_logistic_plus_half_alpha_l2",
+  "pair_weighting": "uniform_non_tied_unordered_bone_pairs",
+  "coefficient_constraints": "unconstrained",
+  "prediction_role": "ranking_not_probability",
+  "alpha": 0.1,
+  "mean": [
+    0.0044265691497435726,
+    2.245833333333333
+  ],
+  "scale": [
+    0.008346071103334395,
+    1.3537435236328106
+  ],
+  "coefficient": [
+    0.292507985387593,
+    0.8433743593187082
+  ],
+  "intercept": 0.0,
+  "train_case_ids": [
+    "004",
+    "008",
+    "030",
+    "031",
+    "036",
+    "046",
+    "047",
+    "053",
+    "056",
+    "060",
+    "074",
+    "076",
+    "104",
+    "112",
+    "151",
+    "154",
+    "167",
+    "172",
+    "177",
+    "193",
+    "254",
+    "255",
+    "259",
+    "262",
+    "268",
+    "292",
+    "293",
+    "305",
+    "317",
+    "327",
+    "336",
+    "339",
+    "340",
+    "342",
+    "355",
+    "357",
+    "365",
+    "380",
+    "415",
+    "417"
+  ],
+  "n_train_units": 80,
+  "n_training_pairs": 2714,
+  "optimizer": {
+    "status": "converged",
+    "iterations": 9,
+    "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+    "loss": 0.49235793712245235,
+    "gradient_infinity_norm": 2.7530057469804525e-09,
+    "stationarity_acceptance_limit": 1e-07,
+    "native_solver_success": true
+  },
+  "smoke_only": false,
+  "analysis_role": "development_not_confirmed",
+  "execution_signature": "2c27f479b0c6e076112e0bc97d6152401732b152e0ca6fe42b4452773c123af4"
+}

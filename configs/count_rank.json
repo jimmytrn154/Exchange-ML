@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "role": "development_after_count_diagnosis_not_confirmation",
+  "parent_root": "outputs/partition_v3_development_v1",
+  "output_root": "outputs/count_ablation_development_v1",
+  "smoke_output_root": "outputs/smoke_count_ablation",
+  "candidate": "pairwise_p1_count",
+  "features": [
+    "partition_v1",
+    "predicted_count_mean"
+  ],
+  "target": "member_mean_merge_split",
+  "cv": {
+    "seed": 20261122,
+    "outer_folds": 5,
+    "inner_folds": 3,
+    "alphas": [
+      0.001,
+      0.01,
+      0.1,
+      1.0
+    ],
+    "max_iter": 1000,
+    "tolerance": 1e-09
+  },
+  "reporting": {
+    "bootstrap_resamples": 10000,
+    "bootstrap_seed": 20261122,
+    "primary_estimand": "mean_outer_fold_aurc"
+  },
+  "confirmation_ready": false,
+  "v4_root": "outputs/partition_v4_development_v1"
+}

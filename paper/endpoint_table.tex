@@ -1,0 +1,16 @@
+\begin{table}[t]
+\caption{Supplementary endpoint sensitivity on the same 100 evaluation CTs: joint-entropy combined score minus voxel-normalized partition-only score ($D_{\rm joint}-wQ_{\rm vox}$). Negative AURC differences favor the combined score. Intervals are marginal 95\% paired CT-bootstrap intervals.}
+\label{tab:sensitivity}
+\centering\footnotesize
+\begin{tabular}{lrr}
+\toprule
+Failure definition & $\Delta$AURC & 95\% CI \\
+\midrule
+Original M+S & +0.0591 & [+0.0393, +0.0801] \\
+One-to-one $1-F_1$ & -0.0016 & [-0.0268, +0.0280] \\
+Significant overlap, $\tau=.01$ & +0.0033 & [-0.0079, +0.0143] \\
+Significant overlap, $\tau=.10$ & -0.0009 & [-0.0055, +0.0035] \\
+Missing volume & +0.0078 & [-0.0138, +0.0357] \\
+\bottomrule
+\end{tabular}
+\end{table}

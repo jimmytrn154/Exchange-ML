@@ -21252,7 +21252,7 @@
     }
   },
   "provenance_limit": {
-    "e3_config_tracked_in_current_git_index": false,
+    "e3_config_tracked_in_current_git_index": true,
     "formal_preregistration_or_timestamped_preheldout_commit_verified": false,
     "interpretation": "Run-bound hashes verified; chronology is not an independent registration proof."
   },

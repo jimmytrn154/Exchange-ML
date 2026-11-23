@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "role": "posthoc_dual_channel_policy_not_confirmation",
+  "parent_root": "outputs/evaluator_sensitivity_v1",
+  "output_root": "outputs/triage_policy_development_v1",
+  "smoke_output_root": "outputs/smoke_triage_policy",
+  "candidate": "guard_dual_channel",
+  "baseline": "guard_p1",
+  "channels": ["partition_v1", "presence"],
+  "calibration": "per_anatomy_prediction_only_midrank_ECDF",
+  "combination": "maximum_no_fitted_weight",
+  "outer_folds": 5,
+  "fold_seed": 20261122,
+  "review_fractions": [0.1, 0.2],
+  "bootstrap_resamples": 10000,
+  "bootstrap_seed": 20261123,
+  "followup_target": "pooled/member_mean/missing_volume/20pct_CT/candidate-minus-guard_p1",
+  "original_E3_primary_modified": false,
+  "confirmation_ready": false
+}

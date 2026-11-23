@@ -1,0 +1,24 @@
+\begin{table}[t]
+\caption{Bone-level AURC for all 12 scores; lower is better. M+S denotes normalized merge-plus-split risk. Subscripts vox and joint denote normalization by voxel count and joint entropy, respectively. Dev.: 40 development CTs; Eval.: 100 separate evaluation CTs.}
+\label{tab:main}
+\centering\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrr}
+\toprule
+Score & Dev. M+S & Eval. M+S & Eval. $1-F_1$ \\
+\midrule
+Mean entropy & 0.6570 & 0.6358 & 0.1757 \\
+95th-percentile entropy & 0.6767 & 0.6381 & 0.1784 \\
+Foreground Dice disagreement & 0.5442 & 0.4943 & 0.1611 \\
+Presence (Jaccard disagreement) & 0.5442 & 0.4942 & 0.1611 \\
+Union-normalized VI & 0.4342 & 0.3881 & 0.1534 \\
+Instance-count variance & 0.5181 & 0.4704 & 0.1523 \\
+Hungarian matching disagreement & 0.3933 & 0.3883 & 0.1331 \\
+$D_{\rm vox}$ (combined) & 0.4906 & 0.4472 & 0.1557 \\
+$wQ_{\rm vox}$ (partition only) & 0.2706 & 0.2720 & 0.1446 \\
+$wQ_{\rm joint}$ (partition only) & 0.2891 & 0.2978 & 0.1424 \\
+$D_{\rm joint}$ (combined) & 0.3318 & 0.3311 & 0.1453 \\
+$Q_{\rm joint}$ (unweighted VI/H) & 0.2890 & 0.2987 & 0.1414 \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,506 @@
+=== PDF PAGE 1 ===
+An Instance Segmentation Dataset of Yeast Cells in Microstructures
+Christoph Reich1,*, Tim Prangemeier1,*, Andr´e O. Franc¸ani2, Heinz Koeppl1,‡
+Abstract— Extracting
+single-cell
+information
+from
+mi-
+croscopy data requires accurate instance-wise segmentations.
+Obtaining pixel-wise segmentations from microscopy imagery
+remains a challenging task, especially with the added complexity
+of microstructured environments. This paper presents a novel
+dataset for segmenting yeast cells in microstructures. We offer
+pixel-wise instance segmentation labels for both cells and trap
+microstructures. In total, we release 493 densely annotated
+microscopy images. To facilitate a unified comparison between
+novel segmentation algorithms, we propose a standardized
+evaluation strategy for our dataset. The aim of the dataset
+and evaluation strategy is to facilitate the development of new
+cell segmentation approaches. The dataset is publicly available
+at https://christophreich1996.github.io/yeast_
+in_microstructures_dataset/.
+I. INTRODUCTION
+Many biomedical applications require the detection and
+segmentation of individual cells in microscopy imagery [1].
+For example, analyzing the cellular processes of living cells
+in time-lapse fluorescence microscopy (TFLM) experiments,
+requires accurate pixel-level segmentations of individual
+cells [2]–[5]. Most applications require each cell to be
+segmented and identified as an unique entity or instance [6].
+Instance segmentation is the task of detecting, segmenting,
+and classifying each object instance in an image [7]. While
+powerful cell segmentation algorithms have been proposed
+recently (e.g. [8], [9]), segmenting cells in microstructured
+environments remains challenging, due to the perceptual sim-
+ilarity of microstructurs and cells (cf. Fig. 1) [3], [10], [11].
+The vast majority of current state-of-the-art segmentation
+algorithms utilize deep neural networks [9], [12]–[14]. A
+key factor driving the development of deep learning-based
+segmentation algorithms is the widespread availability of
+pixel-wise annotated datasets. Examples include Microsoft
+COCO [15], Cityscapes [7], ADE20K [16], and the 2018
+Data Science Bowl dataset [17]. While general cell seg-
+mentation datasets are available (e.g. [17], [18]), we are
+not aware of any instance segmentation dataset of cells in
+microstructures with dense annotations.
+In
+this
+paper,
+we
+present
+and
+publicly
+release
+a
+dataset
+of
+yeast
+(Saccharomyces
+cerevisiae)
+cells
+in
+microstructures with instance segmentation annotations. The
+dataset is comprised of 493 densely annotated brightfield
+microscopy images of different TLFM experiments (cf.
+Fig. 1). To facilitate a fair comparison between novel
+* Christoph Reich & Tim Prangemeier - both authors contributed equally
+‡ Correspondence: heinz.koeppl@tu-darmstadt.de
+1 Centre for Synthetic Biology, Department of Electrical Engineering and
+Information Technology, Technische Universit¨at Darmstadt
+2 Aeronautics Institute of Technology, work done while at TU Darmstadt
+segmentation approaches we also propose a standardized
+performance evaluation strategy. The PyTorch [19] code
+for performance evaluation will be made publicly available
+at
+https://github.com/ChristophReich1996/
+Yeast-in-Microstructures-Dataset.
+Fig. 1.
+Samples of our yest cells in microstructures dataset. The top row
+show unlabelled brightfield imagery to demonstrate the visual similarity
+between the cells and similarly sized microsctuctures. In the following
+rows, the instance segmentation labels are overlayed onto the the brightfield
+microscopy imagery (grayscale). A bounding box and object class label
+denotes each object for clarity. Shades of pink (■) indicate individual cell
+instances and shades of (dark) gray (■) indicate microstructures (traps).
+II. DATASET
+When developing a segmentation dataset, numerous design
+choices have to be made. This section will give a detailed
+overview of these design decisions. First, we describe the
+data acquisition and annotation process. Second, we will
+introduce the core features and statistics of our dataset.
+Finally, we describe how our dataset is split for training,
+validation, and testing.
+A. Data Acquisition
+We chose two common yeast trap microstructure ge-
+ometries and drew data from a wide range of experiments
+performed in our lab to generate our dataset (cf. Fig. 1) [20],
+[21]. An overview of the experimental setup atop the micro-
+scope table is given in Fig. 2. We designed and fabricated trap
+microchips for long-term cultures of yeast cells (cf. Fig. 2).
+We recorded brightfield microscopy images of the living
+yeast cells confined to the microfluidic chip over many hours.
+A constant flow of yeast growth media hydrodynamically
+traps the cells in the microstructure pairs [4], [22].
+
+
+=== PDF PAGE 2 ===
+We extracted 493 specimen images, each centered on a
+single trap microstructure pair with a resolution of 256×256,
+from the higher resolution raw data, as is common practice
+(cf. Fig. 2) [3], [21]. We differentiate between two subsets,
+one for each of the trap geometries employed (roughly oval
+shaped regular traps, and the L traps). In order to increase
+the robustness and range of applicability of the models
+trained on this data, we include variations in trap type, debris,
+focal shift illumination levels, and yeast morphology. Our
+dataset captures the most common yeast-trap configurations:
+(i) empty traps (ii) single cells (with daughter) and (iii) mul-
+tiple cells [6]. Our dataset also includes edge cases such as
+broken traps (cf. Fig. 1 bottom left).
+Fig. 2.
+TLFM experiment setup for single-cell fluorescence measurement.
+A microfluidic chip sits atop the microscope table (top left). The trap
+chamber (pink ■on the top right) contains approximately one thousand
+traps. We extract cropped specimen images from the fluorescence and
+brightfield channels (bottom left), that include a pair of trap microstructures
+and cells. The brightfield channel is used for segmentation (and in this
+dataset). The black scale bar is 1mm, the white scale bar is 10µm.
+B. Data Annotation
+We present 493 pixel-level annotated images, with pixel-
+wise instance-level annotations of both cells and microstruc-
+tures (traps). Each pixel, not labeled as a cell or tap,
+is considered as background. Note, since our labels only
+include a single background class, our instance segmentation
+labels can also be seen as panoptic labels [23]. This property
+is later used for performance evaluation (cf. Section III).
+All annotations were acquired manually. For every object
+instance (cells and traps), we annotate the object class and
+the pixels belonging to the object. Note that we assume no
+overlapping cell and trap instances (seeing as the chips are
+designed to prevent any overlap). This annotation process
+results in a binary segmentation map and classification
+for each object instance. Fig. 3 showcases both brightfield
+images and our manual instance-wise annotations.
+In most cases, cell instances can easily be distinguished
+during labeling. In the case of budding, in which a daughter
+cell pinches off a mother cell, labeling the growing daughter
+cell is non-trivial [24]. We decided to annotate the daughter
+cell as a separate instance if it is clearly separated from the
+mother cell. An example of this is given in Fig. 3 (bottom
+right). The detection of daughter cells, can, for example, aid
+in determining the cell fitness.
+Fig. 3.
+Brightfield microscopy imagery of yeast cells and microstructures
+with the corresponding labels. Brightfield images on the left, instance
+segmentation label in the middle, and an overlay of the brightfield images
+and labels on the right. Shades of gray (■) indicate different instances of
+microstructures (trap). Cell instances are visualized in shades of pink (■).
+The background is white.
+While most applications, such as analyzing the cellular
+process of living cells, mainly require the segmentation
+of cells, we decided to also include annotations of mi-
+crostructures in our dataset. The reason for this decision is
+twofold. First, when knowing both the position cells and
+traps it can be determined which cells are hydrodynamically
+trapped and which cells are outside of the trap, likely to be
+hydrodynamically washed out of the chip. Second, learning
+the difference between cells and traps might be enforced by
+explicitly learning to also segment each trap instance.
+C. Dataset Statistics
+Our full dataset is comprised of two distinct subsets,
+one for each of the trap geometries (regular and L traps).
+Details on the core features of both subsets are depicted
+in Table I. The first subset includes regular trap types, and
+slight variations of this geometry, also referred to as type 1,
+whereas the second subset includes L-shaped traps (type 2).
+In general, the first subset includes approximately four times
+the number of images and object instances (cells and traps)
+as the second subset.
+TABLE I
+CORE PROPERTIES OF OUR CELLS IN MICROSTRUCTURES DATASET.
+Trap type
+# images
+# cells
+# traps
+Subset 1
+Type 1 (regular)
+398
+702
+781
+Subset 2
+Type 2 (L)
+95
+212
+190
+Full dataset
+Type 1 & 2
+493
+914
+971
+We analyze the number of instances per class in each
+specimen image. Fig. 4 shows the histogram of instances
+per image for both subsets and both semantic classes. The
+majority of images include two traps and at least a single cell.
+However, our dataset also includes specific edge cases, such
+as the case where only a single intact trap microstructure
+instance is present due to fabrication errors. In the most
+common setting, two cells and two trap instances are present.
+This corresponds to the setting of a trapped mother cell with
+a budding daughter cell that pinches off from the mother
+cell [24]. Images without any cells are also included. The
+maximum number of cells in a single image is six.
+
+
+=== PDF PAGE 3 ===
+# instances
+0
+150
+300
+# images
+Cell
+Subset 1
+Trap
+Subset 1
+0
+1
+2
+3
+4
+5
+6
+0
+40
+80
+# images
+Subset 2
+0
+1
+2
+3
+4
+5
+6
+Subset 2
+Fig. 4.
+Histogram showing the frequency of number of object instances
+in an image of our dataset. Left column visualizes the cell class (pink ■)
+and right column the trap class (grey ■).
+Our dataset includes yeast cells of vastly different sizes.
+This is showcased in Fig. 5, where the cell size distribution
+approximately follows a normal distribution. The first subset,
+however, includes some outliers in the form of very large
+cells. The trap size histogram (cf. Fig. 5) exhibits less vari-
+ance than that of the cells (as is expected for microfabricated
+structures). The variation in trap appearance is included for
+increased model robustness and is due to a range of factors,
+ranging from fabrication tolerances, the position of the focal
+plane, to mechanical chip deformations (bending, warping,
+inclined mounting), amongst others.
+# pixel
+50
+100
+150
+# instances
+Cell
+Subset 1
+Trap
+Subset 1
+2k
+4k
+6k
+8k
+20
+40
+60
+# instances
+Subset 2
+2k
+4k
+6k
+8k
+Subset 2
+Fig. 5. Histogram of object instance sizes in number of pixels. Left column
+visualizes the class cell (pink ■) and right column the class trap (grey ■).
+The distribution of cell positions is depicted as a density
+map in Fig. 6. Yeast cells are mainly located inside a trap pair
+(cf. Fig. 6). Additional cells are typically located above the
+trap pair. When budding, the daughter cell typically grows
+near the top of the microstructures. In some cases, daughter
+cells grow out of the bottom of the trap.
+D. Dataset Splits
+Our densely annotated microscopy images are split into
+three separate sets for training, validation, and testing. We
+initially split the dataset randomly. However, we subse-
+quently manually curated the sets to ensure that all splits
+include a similar amount of variability in cell and trap
+configurations. Following the split fraction of the Cityscapes
+L
+H
+Fig. 6. Density map of cell locations in our dataset. Pink (■) areas indicate
+regions where many cells are located (H). White areas showcase regions
+where only a few or even no cells are located (L).
+dataset (∼60% training, ∼10% validation, and ∼30% test),
+we arrive at a split consisting of 296 training, 49 validation,
+148 test images with dense annotations. Table II presents
+details of the dataset split.
+TABLE II
+TRAINING, VALIDATION, AND TEST SPLIT OF OUR DATASET.
+Split
+# images
+# cells
+# traps
+Trap type images 1 vs. 2
+Training
+296
+536
+582
+244/52
+Validation
+49
+108
+98
+33/16
+Test
+148
+270
+291
+121/27
+III. PERFORMANCE EVALUATION
+We propose to utilize both the cell class intersection-over-
+union (IoU) and the panoptic quality (PQ) metrics [23] to
+evaluate instance segmentation algorithms on our dataset.
+The cell class IoU (Jaccard index) is defined as:
+IoU (pc, gc) = |pc ∩gc|
+|pc ∪gc|,
+(1)
+where pc is the segment for the cell class and gc indicates
+the cell class ground truth. This metric evaluates the semantic
+performance of the cell segmentation. While we are present-
+ing an instance segmentation dataset, we propose to validate
+the performance of instance segmentation approaches on
+our dataset with the cell class IoU to ensure a comparison
+between previous work which utilizes this metric [3], [6],
+[11], [25]. The cell class IoU is biased towards large objects
+and does not capture the recognition and segmentation of
+individual object instances. However, when an application
+does not require single-cell segmentations but the semantic
+segmentation of all cells, this metric is an insightful measure
+of the semantic segmentation performance.
+To measure the instance segmentation performance on
+our yeast cells in microstructures dataset, we propose to
+utilize the PQ metric. In panoptic segmentation, object
+classes are categorized into two different class types. First,
+“stuff classes” include uncountable objects/regions such as
+sidewalks or grass. Second, “things classes” include count-
+able objects classes, such as cars, people, or bicycles. For
+stuff classes, semantic segmentation is performed, whereas
+instance segmentation is performed for things classes. Our
+
+
+=== PDF PAGE 4 ===
+instance segmentation dataset can be seen as an edge-case of
+panoptic segmentation. Cell and trap classes can be viewed
+as things classes, whereas the background builds the only
+stuff class. Thus, we can evaluate an instance segmentation
+prediction for our dataset with the PQ.
+The PQ is computed individually for each semantic class
+(background, cell, & trap) and averaged over all classes.
+Before computing the PQ for a class, the predicted and
+labeled instances are matched. This matching results in
+three sets: true positive (TP), false positive (FP), and false
+negative (FN) matches. Please refer to Kirillov et al. [23]
+for details on the matching approach. Based on these sets
+the PQ is computed for each semantic class as:
+PQ =
+P
+(p,g)∈TP IoU(p, g)
+|TP|
+|
+{z
+}
+SQ
+|TP|
+|TP| + 1
+2 |FP| + 1
+2 |FN|
+|
+{z
+}
+RQ
+, (2)
+here
+1
+|TP|
+P
+(p,g)∈TP IoU(p, g) computes the mean IoU of
+all matched predicted p and ground truth g segments. The
+PQ is a measure of both the (instance-wise) segmentation
+quality (SQ) and the recognition quality (RQ) of a panoptic
+segmentation prediction. Additionally, the PQ weights each
+object instance importance independent of their size.
+By measuring both the cell class IoU and the PQ, we
+can evaluate the performance of segmentation algorithms
+on our instance segmentation dataset. For applications re-
+quiring single-cell segmentations and the positioning and
+segmentation of microstructures, the PQ is the superior
+metric. The cell class IoU is to be preferred for applications
+requiring only semantic information of cells. We offer code
+for computing both the cell class IoU and the panoptic
+quality for a standardized comparison of new approaches.
+IV. CONCLUSION AND OUTLOOK
+In this paper, we presented a new dataset for segmenting
+yeast cells in microstructures, a widespread scenario for a key
+model organism in biological research and development. We
+provide both pixel-wise instance segmentation labels and a
+standardized performance evaluation strategy. The aim of this
+joint approach is to facilitate progress in the field of trapped
+yeast analysis and to provide a basis for a fair comparison
+between instance segmentation methods.
+Beyond the scenario presented here, some biomedical
+applications require temporal cell segmentations. To aid
+the development of unified cell segmentation and tracking
+algorithms, future work may consider extending our dataset
+with video instance segmentation labels [26].
+ACKNOWLEDGMENT
+We thank Christoph Hoog Antink for insightful discus-
+sions, Klaus-Dieter Voss for aid with the microfluidics fab-
+rication, and Jan Basrawi for contributing to data labelling.
+This work was supported by the Landesoffensive f¨ur
+wissenschaftliche Exzellenz as part of the LOEWE Schw-
+erpunkt CompuGene. H.K. acknowledges the support from
+the European Research Council (ERC) with the consolidator
+grant CONSYN (nr. 773196). C.R. acknowledges the support
+of NEC Laboratories America, Inc.
+REFERENCES
+[1] E. Meijering, “Cell Segmentation: 50 Years Down the Road,” IEEE
+Signal Process. Mag., vol. 29, no. 5, pp. 140–145, 2012.
+[2] R. Pepperkok and J. Ellenberg, “High-throughput fluorescence mi-
+croscopy for systems biology,” Nat. Rev. Mol. Cell Biol., vol. 7, no. 9,
+pp. 690–696, 2006.
+[3] E. Bakker, P. S. Swain, and M. M. Crane, “Morphologically con-
+strained and data informed cell segmentation of budding yeast,”
+Bioinformatics, vol. 34, no. 1, pp. 88–96, 2018.
+[4] T. Prangemeier, F.-X. Lehr, R. M. Schoeman, and H. Koeppl, “Mi-
+crofluidic platforms for the dynamic characterisation of synthetic
+circuitry,” Curr. Opin. Biotechnol., vol. 63, pp. 167–176, 2020.
+[5] T. Aspert, D. Hentsch, and G. Charvin, “DetecDiv, a generalist deep-
+learning platform for automated cell division tracking and survival
+analysis,” eLife, vol. 11, p. e79519, 2022.
+[6] T. Prangemeier, C. Reich, and H. Koeppl, “Attention-Based Trans-
+formers for Instance Segmentation of Cells in Microstructures,” in
+IEEE BIBM, 2020, pp. 700–707.
+[7] M. Cordts, M. Omran, S. Ramos, T. Rehfeld, M. Enzweiler, R. Be-
+nenson, U. Franke et al., “The Cityscapes Dataset for Semantic Urban
+Scene Understanding,” in CVPR, 2016, pp. 3213–3223.
+[8] U. Schmidt, M. Weigert, C. Broaddus, and G. Myers, “Cell Detection
+with Star-Convex Polygons,” in MICCAI, 2018, pp. 265–273.
+[9] C. Stringer, T. Wang, M. Michaelos, and M. Pachitariu, “Cellpose: a
+generalist algorithm for cellular segmentation,” Nat. Methods, vol. 18,
+no. 1, pp. 100–106, 2021.
+[10] A. O. Franc¸ani, “Analysis of the performance of U-Net neural net-
+works for the segmentation of living cells,” arXiv:2210.01538, 2022.
+[11] T. Prangemeier, C. Wildner, A. O. Franc¸ani, C. Reich, and H. Koeppl,
+“Yeast cell segmentation in microstructured environments with deep
+learning,” Biosystems, vol. 211, p. 104557, 2022.
+[12] K. He, G. Gkioxari, P. Doll´ar, and R. Girshick, “Mask R-CNN,” in
+CVPR, 2017, pp. 2961–2969.
+[13] C. H. Antink, J. C. M. Ferreira, M. Paul, S. Lyra, K. Heimann,
+S. Karthik, J. Joseph, K. Jayaraman, T. Orlikowsky et al., “Fast body
+part segmentation and tracking of neonatal video data using deep
+learning,” Med. Biol. Eng. Comput., vol. 58, pp. 3049–3061, 2020.
+[14] C. Reich, T. Prangemeier,
+¨O. Cetin, and H. Koeppl, “OSS-Net:
+Memory Efficient High Resolution Semantic Segmentation of 3D
+Medical Data,” in BMVC, 2021.
+[15] T.-Y. Lin, M. Maire, S. Belongie, J. Hays, P. Perona, D. Ramanan,
+P. Doll´ar, and C. L. Zitnick, “Microsoft COCO: Common Objects in
+Context,” in ECCV, 2014, pp. 740–755.
+[16] B. Zhou, H. Zhao, X. Puig, S. Fidler et al., “Scene Parsing Through
+ADE20K Dataset,” in CVPR, 2017, pp. 633–641.
+[17] J. C. Caicedo, A. Goodman, K. W. Karhohs, B. A. Cimini et al.,
+“Nucleus segmentation across imaging experiments: the 2018 Data
+Science Bowl,” Nat. Methods, vol. 16, no. 12, pp. 1247–1253, 2019.
+[18] S. Parekh and S. Mischa, “EVICAN Dataset,” 2019.
+[19] A. Paszke, S. Gross, F. Massa, A. Lerer, J. Bradbury, G. Chanan,
+T. Killeen, Z. Lin et al., “PyTorch: An Imperative Style, High-
+Performance Deep Learning Library,” in NeurIPS, vol. 32, 2019.
+[20] M. M. Crane, I. B. Clark, E. Bakker et al., “A Microfluidic System
+for Studying Ageing and Dynamic Single-Cell Responses in Budding
+Yeast,” PLOS ONE, vol. 9, no. 6, pp. 1–10, 2014.
+[21] C. Reich, T. Prangemeier, C. Wildner, and H. Koeppl, “Multi-
+StyleGAN: Towards Image-Based Simulation of Time-Lapse Live-Cell
+Microscopy,” in MICCAI, 2021.
+[22] T. Prangemeier, C. Wildner, M. Hanst, and H. Koeppl, “Maximizing
+Information Gain for the Characterization of Biomolecular Circuits,”
+in ACM NanoCom, 2018, pp. 1–6.
+[23] A. Kirillov, K. He, R. Girshick, C. Rother, and P. Doll´ar, “Panoptic
+Segmentation,” in CVPR, 2019, pp. 9404–9413.
+[24] A. A. Duina, M. E. Miller, and J. B. Keeney, “Budding Yeast
+for Budding Geneticists: A Primer on the Saccharomyces cerevisiae
+Model System,” Genetics, vol. 197, no. 1, pp. 33–48, 2014.
+[25] T. Prangemeier, C. Wildner, A. O. Franc¸ani, C. Reich, and H. Koeppl,
+“Multiclass Yeast Segmentation in Microstructured Environments with
+Deep Learning,” in IEEE CIBCB, 2020, pp. 1–8.
+[26] L. Yang, Y. Fan, and N. Xu, “Video instance segmentation,” in ICCV,
+2019, pp. 5188–5197.

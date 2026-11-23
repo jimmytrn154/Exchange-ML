@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "role": "post_E3_supplementary_not_fresh_confirmation",
+  "dataset": "PENGWIN",
+  "e4_config": "configs/e4_e5.json",
+  "output_root": "outputs/evaluator_sensitivity_v1",
+  "smoke_output_root": "outputs/smoke_evaluator_sensitivity",
+  "iou_threshold": 0.1,
+  "significant_overlap_thresholds": [0.01, 0.1],
+  "overlap_denominator": "maximum_object_volume",
+  "bootstrap_resamples": 10000,
+  "bootstrap_seed": 20261122,
+  "review_fractions": [0.1, 0.2],
+  "scorer_modified": false,
+  "original_endpoints_modified": false,
+  "note": "Both overlap thresholds are supplementary diagnostic choices, not clinically validated severity cutoffs. No tuning or replacement of original E3 endpoint."
+}

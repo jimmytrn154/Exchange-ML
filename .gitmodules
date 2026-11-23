@@ -1,0 +1,3 @@
+[submodule "baselines/pengwin2026-task1-abbc"]
+	path = baselines/pengwin2026-task1-abbc
+	url = https://github.com/RURUGURU/pengwin2026-task1-abbc

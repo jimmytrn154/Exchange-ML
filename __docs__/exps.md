@@ -338,3 +338,92 @@ sbatch scripts/e5_supplement.sbatch full
 ```
 
 Các transcripts/lệnh chuẩn bị backend lịch sử ở archive, không phải runbook hiện tại. Không chạy chúng vào roots frozen hoặc roots đang có writer.
+
+## Follow-up sau rà soát: Slurm CPU
+
+**Cập nhật23/11/2026 — count/evaluator full đã complete và hash-audited; xem progress.md để đọc kết quả.** Tác giả đã đồng ý triển khai sau rà soát. Toàn bộ follow-up dưới dùng CPU, không train/infer thêm, không đổi source/config/checkpoints của E6 đang chạy. Tên partition Slurm là `gpu` nhưng scripts không request GPU.
+
+| Nhánh | Config / entry | Output | Slurm resources |
+|---|---|---|---|
+| Reproducibility + exposure preflight | `scripts/audit_reproducibility.py` | `outputs/research_followup_v1/preflight/` | 2 CPUs, 4 GiB, 20 phút |
+| P1+count ablation | `configs/count_rank.json`; `scripts/run_count_rank.py` | `outputs/count_ablation_development_v1/` | 4 CPUs, 8 GiB, 2 giờ |
+| Evaluator sensitivity | `configs/evaluator_sensitivity.json`; `scripts/run_evaluator_sensitivity.py` | `outputs/evaluator_sensitivity_v1/` | 4 CPUs, 32 GiB, 12 giờ |
+| E6 positive/negative report | `scripts/report_ribfrac_cohorts.py` | `outputs/research_followup_v1/ribfrac_cohorts/` | 2 CPUs, 4 GiB, 15 phút; sau E6 |
+
+Time limits là giới hạn tài nguyên, không phải ETA. Scheduler quyết định lúc bắt đầu.
+
+### P1+count: đúng một ablation đã chọn
+
+Candidate `pairwise_p1_count` dùng **P1 và absolute predicted instance count mean**. Giữ v4 grouped 5 outer/3 inner folds, seed `20261122`, mean pairwise-logistic objective, alpha grid `[.001,.01,.1,1]` chọn bằng inner-fold AURC, và primary mean outer-fold AURC. Predictors không có GT count, GT volume, anatomy labels hoặc held-out outcomes. Tái sử dụng frozen validation CSVs; không đọc volumes.
+
+Controls gồm đủ 12 scores gốc, G, count-only, frozen v4 OOF candidate, tổng 16 scores cùng candidate mới. Runner xác minh E1/v3/v4 manifests, code/config/source hashes và identical outer folds trước khi fit. Báo paired CT-bootstrap 10.000 draws, pelvic/femur/per-anatomy; pooled OOF chỉ là scale diagnostic. GT-count bins `1`, `2–5`, `≥6` chỉ vào descriptive complexity table, không vào fitting hoặc chọn alpha.
+
+Model lưu native solver status. Nếu L-BFGS-B báo line-search failure ở nghiệm gần dừng, count implementation tự tính lại analytic gradient và chỉ chấp nhận stationarity ≤`1e-7`; nonfinite/nonstationary nghiệm vẫn bị từ chối. Đây là kiểm tra số học của code mới, không sửa thuật toán/control v4 cũ.
+
+### Evaluator sensitivity: giữ đầy đủ endpoint cũ
+
+Đọc predictions đã lưu cho **40 validation +100 held-out CTs**, từng ca/từng model, GT chỉ vào evaluator. Không đọc probability maps để tạo score mới: tái dùng đủ 12 scores frozen. Reconcile per-model original risks trước khi tính supplementary endpoints; geometry, prediction cleanup, model receipts và case membership phải khớp.
+
+- One-to-one matching: maximum-cardinality admissible IoU≥0,1, tie-break utility theo IoU; báo `1−F1` riêng.
+- Significant-overlap merge/split: cạnh phải có `intersection/max(GT volume,pred volume)≥tau`, báo **cả tau=0,01 và 0,1**. Denominator max đòi hỏi coverage ở cả hai phía; dùng min sẽ không lọc được satellite một voxel nằm trong GT lớn. Rule có thể lọc cả split thật của mảnh rất nhỏ; không coi thresholds là clinical severity đã được xác nhận.
+- Original M+S, original `1−F1` và missing-volume giữ cùng bảng. Báo cả member-mean và Stage 2, paired CT-cluster bootstrap 10.000 draws.
+- Equal-CT budgets 10%/20%: P1, guard+P1, FA-v2, presence. Guard dùng expected anatomy và all-member-empty flags prediction-only, không dùng GT để chọn CT. Ties lấy kỳ vọng; nếu flagged CTs vượt ngân sách, báo infeasible. Omission positives/undefined bootstrap draws và CI availability được ghi rõ; không tự bỏ các draws bất lợi.
+
+Cache từng ca có source hashes, root/run identity, payload digest và incremental manifest receipt. Resume kiểm tra toàn bộ trước khi reuse; source/cache drift bị từ chối. Đây là sensitivity hậu E3 trên cases đã xem, **không phải fresh confirmation** và không thay primary E3.
+
+### Command full do tác giả chạy
+
+Một command submit **CPU preflight → hai synthetic smokes → hai full jobs**, mỗi full chỉ chạy sau smoke tương ứng thành công:
+
+```bash
+cd /mnt/sdb/shared/dang.cpm/Exchange-ML
+bash scripts/submit_research_followup.sh full
+```
+
+Không thêm E6 cancellation/restart vào chain này. `check` chỉ submit preflight; `smoke` submit preflight và hai synthetic jobs, không submit full.
+
+Có thể submit từng nhánh độc lập, mỗi launcher tự tạo synthetic smoke → full:
+
+```bash
+bash scripts/submit_count_rank.sh full
+bash scripts/submit_evaluator_sensitivity.sh full
+```
+
+Chọn master launcher **hoặc** launchers riêng để tránh duplicate submissions. Locks ngăn concurrent writers cùng root. Rerun cùng identity verify complete hashes rồi thoát; nếu lỗi, xem log/cause trước khi resubmit. Không đổi code/config rồi resume cùng output identity.
+
+Logs: `outputs/logs/research-preflight-*.log`, `count-ablation-*.log`, `evaluator-sensitivity-*.log`. Full receipts: `outputs/count_ablation_development_v1/rank_manifest.json` và `outputs/evaluator_sensitivity_v1/sensitivity_manifest.json`; cần `status=complete` và hash checks, không kết luận từ job submission thành công.
+
+### Báo cáo RibFrac sau E6 evaluation
+
+Đọc `e6_manifest.json` complete, verified `risks.csv`, `model_risks.csv`, `summary.json`; yêu cầu đủ 80 official external cases/ba model rows mỗi ca và 60 positive/20 negative subjects. Báo FP instances/CT, tỷ lệ CT có FP, F1/Dice và structural eligibility theo cohort/model. Member-mean là trung bình ba model, không phải consensus hoặc 240 patients. Negative structural risks giữ undefined. Không tính official FROC, không tạo CI mới hay thay matching/threshold.
+
+Snapshot đã kiểm tra ngày 22/11: E6 evaluation job **2925** vẫn pending dependency. Để queue report sau đúng evaluation job hiện tại:
+
+```bash
+cd /mnt/sdb/shared/dang.cpm/Exchange-ML
+sbatch --dependency=afterok:2925 scripts/ribfrac_cohorts.sbatch
+```
+
+Nếu chain E6 đã thay, dùng evaluation job ID mới. Reporter fail-closed nếu source chưa complete hoặc hashes/counts sai; không ghi vào external E6 root.
+
+## Dual-channel CT triage sau các ablations âm tính
+
+**23/11/2026: implementation/synthetic smoke complete; full chưa chạy.** Một policy cố định tách P1 (structural) và presence (foreground), không fit thêm weight theo GT. Đây là thử nghiệm follow-up hậu nghiệm trên cohorts đã xem, không phải fresh confirmation hoặc primary E3 mới.
+
+- Config `configs/triage_policy.json`; runner `scripts/run_triage_policy.py`; module `src/exchange_ml/triage_policy.py`.
+- Mỗi channel đổi sang midrank ECDF theo từng anatomy, tham chiếu prediction scores của validation. Validation dùng 5 CT-grouped folds seed20261122; mỗi CT chỉ được hiệu chỉnh bằng các CT ngoài fold. Held-out dùng toàn bộ40 validation làm reference. Không có outcome/GT count trong calibration.
+- Candidate `guard_dual_channel`: lấy max hai channel percentiles rồi max theo bone trong CT, giữ expected-anatomy all-members-empty guard. Baseline chính `guard_p1` giữ **cùng guard**. Ten policies có raw/cali/single-channel/non-guarded controls để tách hiệu ứng calibration, combination và guard.
+- Follow-up target được ghi trong config: pooled member-mean missing-volume retained risk ở20%CT review, candidate−guardP1. Cùng bảng báo10%budget, original/significant M+S, one-to-one F1, Stage2 và pelvic/femur. Không dùng target mới để thay primary cũ; không chọn endpoint/threshold thắng sau run.
+- Equal-cost1CT/1review, exact cutoff ties, 10.000 paired CT bootstrap draws seed20261123. CI conditional trên fixed calibration/policy; không refit trong bootstrap. Undefined omission draws/guard-infeasible budgets được báo, không bỏ draws để tạo CI thuận lợi. Không giả định review sửa lỗi hoàn hảo.
+- Source là verified `outputs/evaluator_sensitivity_v1/risks.csv` cùng parent manifest/output/cache/source hashes; không đọc volumes, train hoặc infer mới, không dùng110candidates. Không áp anatomical guard vào RibFrac.
+
+**User-typed Slurm command:**
+
+```bash
+cd /mnt/sdb/shared/dang.cpm/Exchange-ML
+bash scripts/submit_triage_policy.sh full
+```
+
+Launcher submit CPU synthetic smoke rồi full `afterok`; **4 CPUs,8GiB,2giờ time limit**, không request GPU. `check` chỉ submit metadata preflight; `smoke` không submit full. Output `outputs/triage_policy_development_v1/`, receipt `triage_manifest.json`; logs `outputs/logs/dual-triage-<job_id>.log`. Time limit không phải ETA. Full command chưa được agent chạy.
+
+Bản paper hiện tại chỉ dùng completed experiments. Kết quả policy này và E6 chưa được viết như observations trong manuscript.

@@ -227,3 +227,116 @@ Bằng chứng hiện tại hỗ trợ một nghiên cứu phân rã và đánh 
 - Dataset: `dataset -> ../dataset`; bulk E6 roots nằm ngoài repo. [Manifest copy v1](../outputs/local_copy_v1/manifest.json) giữ nguồn/đích và SHA-256. Bốn checkpoint smoke backend cũ giữ symlink tới bản lưu cleanup trước; không xóa đích khi còn cần symlink.
 
 Toàn bộ **51 file tài liệu trước khi gộp**, gồm reports, literature, rules, storage map và hình gốc, được giữ nguyên byte tại [archive](../outputs/archive/documentation_20261122T123244Z/__docs__/). Archive dùng để tra cứu bằng chứng; không dùng các status/command cũ làm hướng dẫn hiện hành.
+
+## Rà soát toàn dự án trước khi cân nhắc chạy lại — 22/11/2026
+
+### Material Passport
+
+- Origin Skill / Mode: `academic-research-suite` → experiment-agent, plan; đối chiếu artifacts và code bằng kiểm tra chỉ đọc.
+- Verification: số liệu dưới đây đã kiểm tra từ CSV/code/log hiện có hoặc phantom nhỏ; các cải tiến đề xuất **chưa được xác nhận**. Không chạy lại training, inference, dataset-wide processing hay bootstrap.
+- Version: `project_review_20261122_v1`. Giữ ba file docs; protocol E1–E6/v3/v4 không đổi.
+
+### Phương pháp: thêm thông tin có ích trước khi đổi trọng số
+
+P1 và G có Spearman **0,94452** trên 80 validation bones. Cả hai cùng bằng 0 ở 27/80 units; trong nhóm này missing-volume vẫn có thể tới **0,43315**. V3 chọn ridge theo MSE/log-risk, khác ranking objective; v4 đã xử lý phần objective/aggregation nhưng ΔAURC so P1 vẫn **−0,000643 [−0,018265; 0,008681]**. Chưa thấy lỗi công thức graph/CV đủ để giải thích thất bại. Dữ liệu ủng hộ cách giải thích rằng G bổ sung ít thông tin độc lập.
+
+Một baseline còn thiếu trong các heads là **absolute predicted instance count** (`predicted_count_mean`), khác `count_variance` đang có. Phân tích hậu nghiệm chỉ dùng `outputs/partition_v3_development_v1/oof_scores.csv`, gọi `aurc_batch`, không fit/bootstrap:
+
+| Validation, member-mean M+S | P1 | G | Predicted count mean |
+|---|---:|---:|---:|
+| Pooled, 80 bones | 0,27059 | 0,26895 | 0,26328 |
+| Sacrum, 20 | 0,05749 | 0,05989 | 0,05892 |
+| Left hip, 20 | 0,18506 | 0,18654 | 0,18056 |
+| Right hip, 20 | 0,45009 | 0,40918 | 0,40613 |
+| Femur, 20 | 0,65197 | 0,65369 | 0,71357 |
+
+Đây là point estimates **không có CI**, không phải ưu thế đã xác nhận. Count có thể chỉ phản ánh độ phức tạp/anatomy; femur kém hơn rõ về point estimate. Có cơ sở cho đúng một ablation nhỏ **P1+count**, giữ nguyên P1/G/count-only/count-variance/v4 làm controls và báo strata. Không gọi count là uncertainty metric mới.
+
+Nếu phát triển graph tiếp, significant overlap edges và unmatched-object fractions khác với effective-degree hiện tại. Tuy nhiên unmatched events rất thưa (first-direction 6/240 pairs, reverse 7/240), nên chưa có cơ sở cho head nhiều tham số. Hướng này ưu tiên sau ablation count, không mở một cuộc tìm feature tự do. [WACV 2024](https://openaccess.thecvf.com/content/WACV2024/papers/Siddiqui_Uncertainty_Estimation_in_Instance_Segmentation_With_Star-Convex_Shapes_WACV_2024_paper.pdf) cung cấp cách tách detection/shape certainty theo object correspondence; chuyển sang fracture CT vẫn là giả thuyết của dự án.
+
+### Endpoint: không đồng nhất số split với mức độ lỗi
+
+`instances.py` và `e6_evaluation.py` dùng many-to-one best-IoU matching, threshold 0,1, và split tính mọi positive-overlap prediction ID. Tiny CPU phantoms trên evaluator E6, chưa áp component pruning PENGWIN:
+
+| Tình huống | F1 | M+S risk | Dice |
+|---|---:|---:|---:|
+| Hai GT bằng nhau bị gộp thành một prediction | 1 | 0,5 | 1 |
+| Một GT 64 voxels tách thành 63+1 | 0,6667 | 1 | 1 |
+| Cùng GT tách thành 32+32 | 0,6667 | 1 | 1 |
+| GT có foreground, prediction rỗng | 0 | 0 | 0 |
+
+Đây là tính chất của endpoint đã công bố, không phải bằng chứng toàn bộ evaluator sai. Cần supplementary sensitivity với one-to-one matching, significant overlap và missing-volume; giữ nguyên primary cũ. Threshold/định nghĩa severity phải chọn có lý do trước khi xem kết quả mới. [Metrics Reloaded](https://www.nature.com/articles/s41592-023-02151-z) khuyến nghị chọn localization, assignment và detection/segmentation metrics theo domain interest; bài không xác nhận một threshold mới cụ thể cho project.
+
+### Omission và review policy
+
+E3 `187/left_hip` có n_GT=5, cả ba members **và Stage 2** cùng rỗng: 12 scores bằng 0, M+S=0, missing-volume=1. Một foreground-disagreement normalization khác hoặc thêm đúng Stage 2 vào ensemble không giải quyết được ca này. Expected-anatomy flag/image evidence/reference evidence là một kênh khác; [RCA](https://arxiv.org/abs/1702.03407) là ví dụ dùng reference có nhãn để ước tính chất lượng mà không cần GT của ca mới, không phải giải pháp đã chứng minh cho fracture.
+
+**Equal-CT policy và omission guard đã có ở v3**, không cần tái triển khai như tính năng mới. Nhưng validation có 0 flagged CTs và 0 complete-omission-positive CTs theo member-mean endpoint nên chưa kiểm chứng sensitivity của guard. Ridge−P1 tại budget 20% CT có Δ retained risk **−0,003727 [−0,034040; 0,037393]**: chưa có lợi ích chắc chắn. V4 không đánh giá CT policy. Bước hữu ích là kiểm chứng policy P1+guard đã đóng băng trên cohort độc lập, với cùng ngân sách CT và endpoint omission riêng. Không chuyển expected-positive-anatomy rule sang RibFrac có ca âm tính thật.
+
+### E6: chất lượng training và khả năng tăng tốc
+
+Không thấy lỗi training chí mạng trong phạm vi rà soát; 9 source hashes/member của hai manifests hiện có khớp. Cache/budget revision đã rút ngắn epochs theo logs; last-ten-epoch medians tại snapshot rà soát khoảng **223,7 / 256,8 giây**, không phải ETA hoặc speedup riêng do batch.
+
+Điểm cần thận trọng khi chạy lại: batch2→6 giữ gần số patches nhưng đổi **250→83 optimizer updates/epoch**. Với nnU-Net oversampling nominal 0,33 và deterministic rounding thực tế, batch2 có **1/2** samples được ép foreground, batch6 có **2/6** (batch5: **2/5**). Đây là tỷ lệ guaranteed-foreground slots, không phải tỷ lệ patches thực tế chứa foreground. Batch Dice, momentum/weight-decay per update cũng thay đổi. Vì vậy không mặc định cùng patch exposure sẽ giữ nguyên chất lượng.
+
+Nếu cần revision training mới, làm một-seed internal-validation pilot từ cùng warmstart ở root riêng, giữ NPY cho mọi arm: batch2 baseline, batch6 hiện tại và batch6 có guaranteed-foreground exposure khớp baseline. Đo full-volume lesion outcomes trên tập internal-validation cố định, không chỉ patch pseudo-Dice, trước khi trả chi phí ba seeds/1.000 epochs. Không đổi current mixed-batch campaign giữa chừng.
+
+Backend hiện collapse instance IDs thành binary target rồi threshold0,5 + 26-connectivity; không được supervision để phân biệt hai lesion chạm nhau. Trước khi thay kiến trúc, kiểm tra tần suất GT lesions chạm nhau và lỗi internal validation; watershed/boundary/distance chỉ là backend ablation riêng nếu có bằng chứng cần thiết.
+
+CSV inventory xác nhận **336 train / 84 internal-val đều không có negative CT**, còn external có **20/80 negatives**, median lesion count 9/9/5. Structural endpoints chỉ xác định trên **60 external positives**; F1/Dice/FP cần báo cả 80. Thêm bảng FP instances/negative CT và burden theo positive/negative; không lấy external negatives để tune. [Official RibFrac protocol](https://ribfrac.grand-challenge.org/evaluation/) dùng detection FROC và IoU>0,2, khác evaluator nội bộ IoU≥0,1; không gắn nhãn official performance cho bảng nội bộ.
+
+Về runtime, single-process augmentation và compile-off là lựa chọn phục hồi RNG hiện hành. Profile data/augmentation wait, H2D, train, validation, checkpoint trước khi bật workers/compile. Có thể đưa full cache-hash audit sang CPU predecessor job thay vì giữ GPU trong lúc đọc cache, nhưng cần ràng buộc verified receipt và bảo đảm không có writer sửa cache giữa audit và train; không bỏ hash check để tăng tốc. Heartbeat theo epoch có thể giúp monitoring; mọi thay đổi trainer/prefetch phải ở revision riêng.
+
+### Confirmation và tái lập
+
+- Có **110 candidate CTs** còn lại theo phép trừ split; `confirmation_candidates.json` vẫn ghi `exposure_audit_completed=false`, `confirmation_ready=false`. Membership không chứng minh chưa xem model-error outcomes. Cần exposure audit trước khi dùng làm fresh confirmation. Local 50-case `test` là phần hold-back từ public labeled set, không tự đồng nhất với official challenge hidden test và vẫn ngoài scope hiện hành.
+- Source/config/tests hiện đều được Git track ở snapshot commit `f7c8c62`; không còn dùng ghi chú cũ rằng tất cả code chưa track. Nhưng ABBC gitlink thiếu `.gitmodules` và checkout không có remote `origin`; `git submodule status` thất bại. Cần khôi phục mapping/URL upstream đã xác minh và kiểm tra clean-clone bootstrap, giữ đúng pin+patch.
+- Evidence auditor ban đầu FAIL vì duy nhất cờ `e3_config_tracked_in_current_git_index` đổi false→true sau Git update. Đã lưu bản trước rồi tái tạo reporting sidecar; **111 output hashes + 142 cache hashes vẫn PASS**, số liệu khoa học không đổi. Cờ Git hiện tại không chứng minh chronology/preregistration trước held-out.
+- Không sửa training/scoring/evaluator code, configs hoặc jobs trong lần review. Thay đổi chỉ ở bản tổng hợp, kế hoạch đề xuất và cờ metadata reporting vừa mô tả. Các hướng cần code/full compute đều chưa triển khai.
+
+## Implementation follow-up sau rà soát — 22/11/2026
+
+**Status: implementation/smoke complete; full follow-up chưa chạy.** Sau khi tác giả đồng ý, đã thêm các nhánh riêng dưới đây. Original E1–E6/v3/v4 code/configs và các kết quả cũ giữ nguyên. Không submit full jobs trong phiên implementation.
+
+| Thành phần | Đã triển khai | Kiểm tra |
+|---|---|---|
+| P1+count | Hai prediction-only features, v4 grouped 5×3 CV/objective/grid, frozen controls, 10.000 paired CT bootstraps, anatomy và diagnostic GT-complexity tables | Real preflight 40 CT/80 bones; synthetic 20 CT/40 bones, 32 draws COMPLETE |
+| Evaluator sensitivity | One-to-one matching, cả hai significant-overlap thresholds, missing-volume/original endpoints, equal-CT P1/guard/FA-v2/presence và omission diagnostics | Real metadata preflight 40 validation +100 held-out; synthetic 10 CT/20 bones, 32 draws COMPLETE; không đọc real volumes |
+| Reproducibility preflight | Khôi phục `.gitmodules`, verify ABBC pin+exact patch, scan bounded metadata cho 110 candidate IDs | 132 metadata files, 0 recorded candidate outcomes; unknown exposure và `confirmation_ready=false` giữ nguyên |
+| E6 cohort report | Hash-verified completed CSVs, positive/negative FP burden, F1/Dice và structural eligibility; output riêng | Synthetic complete-source/round-trip/idempotency/corruption tests PASS; chờ E6 thật complete |
+| Master Slurm launcher | CPU preflight → hai synthetic smokes → hai full jobs với `afterok` | Fake-scheduler failure/dependency tests, shell syntax và Slurm `--test-only` PASS; không submit full |
+
+**Validation:** toàn bộ **263 unit tests PASS (29,132 giây)** trong `exchange-stage2`; E1–E5 evidence audit tiếp tục **PASS 111 output hashes +142 cache hashes**. Hai default synthetic smoke receipts được kiểm tra độc lập **22 output/cache hashes** cùng code hashes. Hai active E6 training manifests có **9/9 source hashes mỗi member** vẫn khớp. Không đổi số optimizer updates, sampling, threshold hoặc checkpoint policy của E6.
+
+Count smoke ban đầu gặp scipy line-search `ABNORMAL` ở analytic gradient khoảng `6e−9`. Code mới tự xác minh stationarity và ghi native solver status, chỉ chấp nhận dưới `1e−7`; regression tests từ chối nghiệm không stationary hoặc Jacobian giả. Failed smoke được giữ ở `/tmp/exchange-count-smoke-v1`; successful final smoke ở `outputs/smoke_count_ablation/`. Việc này không sửa optimizer/control v4 đã frozen.
+
+Trong review chéo, cache/resume evaluator được bổ sung payload digest và incremental manifest hashes; output overrides chỉ dùng namespace riêng; omission CI có explicit status khi bootstrap thiếu positive CT hoặc guard infeasible. Không bỏ các draws đó để tạo CI thuận lợi.
+
+**Agent-typed checks:** project-environment `unittest discover -s tests -q`, metadata `check` của hai runners, reproducibility preflight, synthetic `smoke` của hai runners, shell `bash -n`, `sbatch --test-only` và audit E1–E5. Logs tests: `/tmp/exchange-followup-tests.log`. Slurm test-only là kiểm tra admission, không phải jobs đã chạy hay ETA.
+
+**User-typed full command:** [runbook và resources](exps.md#follow-up-sau-rà-soát-slurm-cpu). Master: `bash scripts/submit_research_followup.sh full`. Optional E6 cohort report chỉ sau successful evaluation, ví dụ dependency job2925 của chain hiện tại. Không chạy đồng thời master và launchers từng nhánh vào cùng roots.
+
+**Next step:** tác giả chạy master command; kiểm tra complete manifests và paired differences, giữ cả negative/undefined findings. Count ablation là development và evaluator dùng lại E3 đã xem; các jobs này không xác nhận độc lập hay chứng minh cải thiện trước khi có kết quả. Training pilot/instance-backend revision vẫn là bước có điều kiện sau diagnostics, chưa được thêm vào current E6 campaign.
+
+
+## Kiểm tra full follow-up — 23/11/2026
+
+Slurm preflight2937, smokes2938/2939 và full2940/2941 đều COMPLETED, exit0:0. Count full34 giây; evaluator full44 phút39 giây. Manifests full complete; kiểm tra độc lập15 count output hashes +148 evaluator output/cache hashes và producer source hashes PASS.
+
+Count ablation primary mean-fold AURC: P1=0,28938; count-only=0,27860; P1+count=0,28114. Candidate−P1 **−0,00824 [−0,03813;0,01151]**: point tốt hơn nhưng CI cắt0, chưa xác nhận cải thiện; không thắng count-only về point estimate. Đây vẫn là validation development.
+
+Held-out supplementary FA-v2−P1: original M+S **+0,05914 [0,03931;0,08012]**; one-to-one1−F1 **−0,00164 [−0,02684;0,02799]**; significant-overlap tau0,01 **+0,00326 [−0,00792;0,01428]**, tau0,1 **−0,00087 [−0,00548;0,00349]**. Lợi thế P1 trên original endpoint không còn rõ ở supplementary endpoints; điều này không chứng minh FA-v2 thắng hoặc cho phép thay primary. Không so absolute AURC giữa risk definitions để tuyên bố cải thiện model.
+
+Guard+P1 soP1, equalCT20% budget, missing-volume delta **−0,00429 [−0,01213;0,00810]**, chưa có lợi ích chắc chắn. Heldout omission endpoint có2 positiveCTs; guard sensitivity0,5/1,0 tại10%/20% review nhưng CIs undefined vì bootstrap códraw không positives; mẫu quá nhỏ để khẳng định utility.
+
+E6 snapshot log10:45 ngày23/11: member01 bắt đầu epoch320/1000, member02 epoch298/1000; Slurm2923_0/1 RUNNING, member03 chờ JobArrayTaskLimit; infer2924/eval2925 chờ dependency. Chưa có external result hoặc cohort report. Không submit/restart jobs trong lần check.
+
+Next step: giữ count result là mixed/negative, dừng tuning fusion không giới hạn; dùng sensitivity làm bằng chứng endpoint-dependence; hoàn tất E6 và exposure audit trước bất kỳ fresh confirmation nào.
+
+## Pipeline EMBC: literature, policy và manuscript — 23/11/2026
+
+Đã đọc6 full scientific manuscripts có publication EMBC được xác minh (3năm2023,2năm2024,1năm2025), cùng một study âm tính2022 để tham khảo. Một2024paper dùng full preprint10trang của tác giả vì chưa truy cập final5trang; giới hạn phiên bản được ghi rõ. Review không ước lượng acceptance probability hoặc suy từ accepted-only rằng yêu cầu khoa học có thể bỏ qua. Matrix và source ledgers ở `paper/review/embc_acceptance_synthesis.md`, `embc_recent_fulltext.*`, `embc_comparison_fulltext.*`.
+
+Đã triển khai dual-channel CT triage prediction-only, calibration fold-local, candidate và baseline cùng omission guard; chi tiết và command Slurm trong `exps.md`. **8 tests mới PASS; toàn suite271 tests PASS (28,671giây)**. Real metadata preflight40validation/100heldout pass, synthetic smoke và Slurm `--test-only` pass; E1–E5 audit111/142 tiếp tụcPASS. Chưa chạy full policy mới hoặc thay E6.
+
+Manuscript được chuẩn bị bằng template IEEE trong `paper/`, tách completed evidence khỏi pending policy/E6; các integrity/review receipts và trạng thái pipeline lưu dưới cùng thư mục. Bản review ẩn danh dùng khi chưa có author metadata, không tự bịa authors/funding/ethics approval.

@@ -1,0 +1,18 @@
+{
+  "smoke_only": true,
+  "case_counts": {
+    "synthetic": 10
+  },
+  "unit_counts": {
+    "synthetic": 20
+  },
+  "thresholds": [
+    0.01,
+    0.1
+  ],
+  "threshold_selection": "both_fixed_reported_no_winner",
+  "clinical_severity_threshold_validated": false,
+  "input_scores_refit": false,
+  "CT_cost": "equal_one_CT_one_review",
+  "review_implies_perfect_correction": false
+}

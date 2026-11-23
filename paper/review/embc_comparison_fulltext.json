@@ -1,0 +1,179 @@
+{
+  "checked_date": "2026-11-23",
+  "mode": "deep-research/lit-review delegated by academic-pipeline",
+  "sampling": "purposive_published_only_not_acceptance_probability",
+  "entries": [
+    {
+      "key": "jurgas2023artifact",
+      "year": 2023,
+      "title": "Artifact Augmentation for Learning-based Quality Control of Whole Slide Images",
+      "authors": [
+        "Artur Jurgas",
+        "Marek Wodzinski",
+        "Weronika Celniak",
+        "Manfredo Atzori",
+        "Henning Müller"
+      ],
+      "doi": "10.1109/EMBC40787.2023.10340997",
+      "publication_url": "https://pubmed.ncbi.nlm.nih.gov/38082977/",
+      "fulltext_url": "https://arodes.hes-so.ch/record/13383/files/Jurgas_2023_Artifact_augmentation.pdf",
+      "local": "jurgas2023.pdf",
+      "pages": 4,
+      "extraction": {
+        "donor_images": 200,
+        "augmented_samples": {
+          "A1_train": 2000,
+          "A2_artifact_validation": 400,
+          "B1_image_validation": 1800,
+          "B2_test": 900
+        },
+        "unaugmented_train_validation_images": [
+          30,
+          7
+        ],
+        "B2_AP50": 0.65,
+        "B2_recall_at_confidence_05": 0.61,
+        "C2_AP50": 0.16,
+        "C2_recall": 0.45,
+        "CI_reported": false,
+        "same_test_control_effect_identified": false
+      },
+      "locators": [
+        "pp2–3 §II-E",
+        "p4 TableII",
+        "pp3–4 discussion"
+      ],
+      "venue": "2023 45th Annual International Conference of the IEEE Engineering in Medicine & Biology Society (EMBC)",
+      "publication_confirmed": true,
+      "fulltext_read": true,
+      "fulltext_sha256": "79df997d6ebccf34109aeaed187fc16faf4b1acf298fa7a08973aee4d73cb892",
+      "local_fulltext": "paper/review/sources/jurgas2023.pdf",
+      "bibtex": "@inproceedings{jurgas2023artifact,\n  author = {Artur Jurgas and Marek Wodzinski and Weronika Celniak and Manfredo Atzori and Henning Müller},\n  title = {Artifact Augmentation for Learning-based Quality Control of Whole Slide Images},\n  booktitle = {2023 45th Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC)},\n  year = {2023},\n  doi = {10.1109/EMBC40787.2023.10340997}\n}"
+    },
+    {
+      "key": "reich2023instance",
+      "year": 2023,
+      "title": "An Instance Segmentation Dataset of Yeast Cells in Microstructures",
+      "authors": [
+        "Christoph Reich",
+        "Tim Prangemeier",
+        "André O. Françani",
+        "Heinz Koeppl"
+      ],
+      "doi": "10.1109/EMBC40787.2023.10340268",
+      "publication_url": "https://ieeexplore.ieee.org/abstract/document/10340268",
+      "fulltext_url": "https://microsites.arinex.com.au/EMBC/pdf/full-paper_437.pdf",
+      "local": "reich2023.pdf",
+      "pages": 4,
+      "extraction": {
+        "images": 493,
+        "cells": 914,
+        "traps": 971,
+        "train_validation_test_images": [
+          296,
+          49,
+          148
+        ],
+        "image_shape": [
+          256,
+          256
+        ],
+        "metrics": [
+          "semantic IoU",
+          "panoptic quality"
+        ],
+        "trained_model_result_reported": false,
+        "CI_reported": false
+      },
+      "locators": [
+        "pp1–2 §II,TableI",
+        "p3 TableII",
+        "pp3–4 §III–IV"
+      ],
+      "venue": "2023 45th Annual International Conference of the IEEE Engineering in Medicine & Biology Society (EMBC)",
+      "publication_confirmed": true,
+      "fulltext_read": true,
+      "fulltext_sha256": "794f6cacdd24b2e31857293414ef6cb6f58ce1aa206b84a9dd4beddef4116c68",
+      "local_fulltext": "paper/review/sources/reich2023.pdf",
+      "bibtex": "@inproceedings{reich2023instance,\n  author = {Christoph Reich and Tim Prangemeier and André O. Françani and Heinz Koeppl},\n  title = {An Instance Segmentation Dataset of Yeast Cells in Microstructures},\n  booktitle = {2023 45th Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC)},\n  year = {2023},\n  doi = {10.1109/EMBC40787.2023.10340268}\n}"
+    },
+    {
+      "key": "schilling2023ai2seg",
+      "year": 2023,
+      "title": "AI2Seg: A Method and Tool for AI-based Annotation Inspection of Biomedical Instance Segmentation Datasets",
+      "authors": [
+        "Marcel P. Schilling",
+        "Lukas Klinger",
+        "Ulrike Schumacher",
+        "Svenja Schmelzer",
+        "Miguel Bordallo López",
+        "Britta Nestler",
+        "Markus Reischl"
+      ],
+      "doi": "10.1109/EMBC40787.2023.10341074",
+      "publication_url": "https://pubmed.ncbi.nlm.nih.gov/38083322/",
+      "fulltext_url": "https://microsites.arinex.com.au/EMBC/pdf/full-paper_43.pdf",
+      "local": "schilling2023.pdf",
+      "pages": 6,
+      "extraction": {
+        "MoNuSeg_crops": 592,
+        "LIVECell_SkBr3_crops": 2640,
+        "crop_shape": [
+          256,
+          256
+        ],
+        "train_validation_fraction": [
+          0.8,
+          0.2
+        ],
+        "seeds": 5,
+        "noise_types": 9,
+        "noise_fractions": [
+          0.1,
+          0.25,
+          0.5
+        ],
+        "settings": 54,
+        "AUC_over_055_settings": 48,
+        "MoNuSeg_merge_beta01_AUC_AUCstar": [
+          0.835,
+          0.836
+        ],
+        "MoNuSeg_split_beta01_AUC_AUCstar": [
+          0.854,
+          0.871
+        ],
+        "AUCstar_parameter_selection": "grid_search_maximum_not_independent_confirmation",
+        "CI_reported": false
+      },
+      "locators": [
+        "p3 §III",
+        "p4 §IV-A/B/C",
+        "p5 TableI",
+        "pp5–6 limitations"
+      ],
+      "venue": "2023 45th Annual International Conference of the IEEE Engineering in Medicine & Biology Society (EMBC)",
+      "publication_confirmed": true,
+      "fulltext_read": true,
+      "fulltext_sha256": "b8b00d81be86834807317aea85f2f26798a3b3a31d58ac815ce29118136cf438",
+      "local_fulltext": "paper/review/sources/schilling2023.pdf",
+      "bibtex": "@inproceedings{schilling2023ai2seg,\n  author = {Marcel P. Schilling and Lukas Klinger and Ulrike Schumacher and Svenja Schmelzer and Miguel Bordallo López and Britta Nestler and Markus Reischl},\n  title = {AI2Seg: A Method and Tool for AI-based Annotation Inspection of Biomedical Instance Segmentation Datasets},\n  booktitle = {2023 45th Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC)},\n  year = {2023},\n  doi = {10.1109/EMBC40787.2023.10341074}\n}"
+    }
+  ],
+  "supplementary_older_example": {
+    "title": "Image-Level Uncertainty in Pseudo-Label Selection for Semi-Supervised Segmentation",
+    "year": 2022,
+    "doi": "10.1109/EMBC48229.2022.9871359",
+    "fulltext_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10445335/",
+    "local_fulltext": "paper/review/sources/mcbee2022.html",
+    "sha256": "895e93ed6d65a340f83c75a26fb1e8afffbb009417f8ff9b5b0aaa585c94fc8f",
+    "fulltext_read": true,
+    "counts_toward_recent_three": false
+  },
+  "limitations": [
+    "No rejected submissions or reviewer scores observed",
+    "No acceptance rate estimated",
+    "Reported unit image/crop is not patient",
+    "Published design limitations are not permission to weaken current evidence"
+  ]
+}

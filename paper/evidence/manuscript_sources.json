@@ -1,0 +1,88 @@
+{
+  "source_sha256": {
+    "outputs/stage3_h1_v2/heldout/e3_manifest.json": "8c06e64d6f774349e13d2f33f5d6bfdbd412814de6b7d44886bec65231e24afb",
+    "outputs/count_ablation_development_v1/rank_manifest.json": "681922b24c2dd6a2ae84b96dc164a8bcfcd11ae3d896545a10f7c8c2a34e6a2a",
+    "outputs/evaluator_sensitivity_v1/sensitivity_manifest.json": "0a795f7e857d0f123f2c70d08e22bd2add3960ffacf4d7ee6ef7664ece901da0",
+    "outputs/stage3_h1_v2/heldout/main_table.csv": "6b37f9638e90a8f972c111742761cc5a76f3d5a4a4bfe4579e52a57bb40c2882",
+    "outputs/stage3_h1_v2/heldout/risk_coverage.csv": "66f2a42bf3a359616e4093fe9ef3cbad773f76719fe5ac9a33310e74e4a26d76",
+    "outputs/stage3_h1_v2/heldout/scores.csv": "c7f5ced97ac6a56096ab6e3556327dd09c8db53537104e4f75b49d799460edb8",
+    "outputs/stage3_h1_v2/heldout/risks.csv": "52ff5484eb72e51d68ec0db9e5b1cac26762744bb4a17f27bfb4c6d11dfcceba",
+    "outputs/stage3_h1_v2/perturbations/replication.csv": "1b03020641cdbf1159da6656f946d779a2b303a5ce4bc8b224ae30be16da7f14",
+    "outputs/evaluator_sensitivity_v1/paired_differences.csv": "6949785cabb178e1d4c8e6f273c5ff5b7d5cf97f1a67583315fa74b6e2a3d57b",
+    "outputs/count_ablation_development_v1/paired_differences.csv": "adf9f553ec6d4d81835449a0709736c601cc878f213b495d901a4aa5052d3a37"
+  },
+  "generated_sha256": {
+    "main_table.tex": "9d0c3f112b26e0ecd3b719d7e863cae5f0ba79d6f7f28499be115b4af6f881b9",
+    "endpoint_table.tex": "083852ed060cc1ff5e147e50f3f00713f9c8c7561f660e1485631f7b597b53fe",
+    "figures/mechanism_ranking.pdf": "ee9f4650b2c92172a2c1bb9136b879b1bb5274199bdd6d2179160532223e33ea"
+  },
+  "role": "reporting_only_saved_completed_artifacts_no_new_experiments",
+  "pending_results_excluded": [
+    "E6_external_RibFrac",
+    "new_triage_policy"
+  ],
+  "all_current_numbers_descriptive_or_frozen_contrasts_not_acceptance_probability": true,
+  "figure_table_trace": [
+    {
+      "artifact_id": "fig:results",
+      "source_data": [
+        "outputs/stage3_h1_v2/perturbations/replication.csv",
+        "outputs/stage3_h1_v2/heldout/scores.csv",
+        "outputs/stage3_h1_v2/heldout/risks.csv"
+      ],
+      "transformation": {
+        "script": "paper/build_paper.py",
+        "sha256": "0cccfc5325ad0924bafb9578494ec0f5666329e3735c10c71c162d4077c22b47"
+      },
+      "caption_claim": "Fixed-count replication changes voxel-count normalization but not joint-entropy normalization; actual held-out risk curves compare fixed scores.",
+      "supported_manuscript_claims": [
+        "count-denominator mechanism in Results/Component Contributions and Controlled Responses",
+        "joint-entropy combined score improves over presence/entropy but voxel-normalized partition-only score is stronger for original M+S in Results/Held-Out Ranking and Stronger Component Controls"
+      ],
+      "limitations": [
+        "count replication is not CT resampling",
+        "different scores use same risk and case selection",
+        "no clinical correction assumed"
+      ]
+    },
+    {
+      "artifact_id": "tab:main",
+      "source_data": [
+        "outputs/stage3_h1_v2/heldout/main_table.csv"
+      ],
+      "transformation": {
+        "script": "paper/build_paper.py",
+        "sha256": "0cccfc5325ad0924bafb9578494ec0f5666329e3735c10c71c162d4077c22b47"
+      },
+      "caption_claim": "All12 fixed scores on validation and held-out under same bone AURC convention.",
+      "supported_manuscript_claims": [
+        "stronger voxel-normalized partition-only and Hungarian controls in Results/Held-Out Ranking and Stronger Component Controls"
+      ],
+      "limitations": [
+        "per-bone pooling weights pelvic CT three times femur",
+        "one backend family"
+      ]
+    },
+    {
+      "artifact_id": "tab:sensitivity",
+      "source_data": [
+        "outputs/evaluator_sensitivity_v1/paired_differences.csv"
+      ],
+      "transformation": {
+        "script": "paper/build_paper.py",
+        "sha256": "0cccfc5325ad0924bafb9578494ec0f5666329e3735c10c71c162d4077c22b47",
+        "filter": "heldout/pooled/member_mean/fa_v2-partition_v1"
+      },
+      "caption_claim": "AURC contrasts depend on internal failure endpoint.",
+      "supported_manuscript_claims": [
+        "original voxel-normalized partition-only advantage not clear under supplementary definitions in Results/Dependence on the Failure Definition"
+      ],
+      "limitations": [
+        "post-held-out analysis not fresh confirmation",
+        "marginal intervals",
+        "fixed thresholds not clinically validated",
+        "absolute AURCs not comparable across risk definitions"
+      ]
+    }
+  ]
+}

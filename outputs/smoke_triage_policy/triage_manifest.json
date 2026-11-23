@@ -1,0 +1,93 @@
+{
+  "status": "complete",
+  "signature": "1c18cd13fd958495fbd33d7c3a8118d9f9ff949cbaf250520177ff0dd72acdd2",
+  "provenance": {
+    "config": {
+      "version": 1,
+      "role": "posthoc_dual_channel_policy_not_confirmation",
+      "parent_root": "outputs/evaluator_sensitivity_v1",
+      "output_root": "outputs/triage_policy_development_v1",
+      "smoke_output_root": "outputs/smoke_triage_policy",
+      "candidate": "guard_dual_channel",
+      "baseline": "guard_p1",
+      "channels": [
+        "partition_v1",
+        "presence"
+      ],
+      "calibration": "per_anatomy_prediction_only_midrank_ECDF",
+      "combination": "maximum_no_fitted_weight",
+      "outer_folds": 5,
+      "fold_seed": 20261122,
+      "review_fractions": [
+        0.1,
+        0.2
+      ],
+      "bootstrap_resamples": 10000,
+      "bootstrap_seed": 20261123,
+      "followup_target": "pooled/member_mean/missing_volume/20pct_CT/candidate-minus-guard_p1",
+      "original_E3_primary_modified": false,
+      "confirmation_ready": false
+    },
+    "config_sha256": "449bdf46f41cce7ce4e6acc75237c13453b1e90dc89ac1c3e94a461590800142",
+    "inputs": {
+      "parent_manifest_sha256": "0a795f7e857d0f123f2c70d08e22bd2add3960ffacf4d7ee6ef7664ece901da0",
+      "source_sha256": "b985e904900945198e7b823b66769e7692608ac57fb746b2e8702fbe9091043c",
+      "parent_output_and_cache_hashes_verified": 148
+    },
+    "smoke_only": true,
+    "output_root": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/smoke_triage_policy",
+    "code_sha256": {
+      "scripts/run_triage_policy.py": "72de3a480366a2ed43ca860a6d64b72e656c7f3dfa6fee1051e700899908f870",
+      "scripts/triage_policy.sbatch": "dd6f63e4d84ef2fa74d15d69772ca4e7aa18d7b4d6a14a0711411a041729eb2b",
+      "scripts/submit_triage_policy.sh": "d19fb667c5610120ac2da3619711bb2f7251f57793cf5eca0095da37a3995039",
+      "src/exchange_ml/triage_policy.py": "41b5558d48140dbf274d2718e8cee61a576d0c1c91ffbbbeb8e1909636df80cb",
+      "scripts/run_count_rank.py": "8b10b664049ffb149ca2338958196d2ef5fbd1d924d21ded15af14b2c5396d21",
+      "src/exchange_ml/evaluator_sensitivity.py": "0f63cdabe99d3bc6db6eef2af53042b111b29638181b2febff482f8c423ba01c",
+      "src/exchange_ml/e1_statistics.py": "f9dcd986114251636fb116c3a23b2586846edc6439d4a54598ba50a657d11af1",
+      "src/exchange_ml/e5_supplement_statistics.py": "b4f68d33f465a71e90892e566bb77ea99710b0ca4c7b1158ce98305a9ae1554b",
+      "src/exchange_ml/partition_cv.py": "1a5cc5d4a9f25ebd1c5e2b6a928a8c3cc74cfd1f2685973a1a0498659e772b05",
+      "src/exchange_ml/e1_scoring.py": "9077e0402171e88dc1a48ef6d0626d58248448043912a5aa61adda06b91fb36d",
+      "src/exchange_ml/metrics.py": "903a12216e4405f3a66666cd79323d803c9b79c1cb017c604716b32ef7fca455",
+      "src/exchange_ml/__init__.py": "97309b300260e6f19e68b6df11658b177e0e664cfd04711c3280b3c29ad0f630"
+    },
+    "software": {
+      "numpy": "1.26.4",
+      "scipy": "1.15.3"
+    },
+    "python": "3.10.21 (main, Aug 27 2026, 14:42:07) [GCC 14.3.0]"
+  },
+  "started_at_unix": 1795406725.4339738,
+  "summary": {
+    "smoke_only": true,
+    "role": "posthoc_dual_channel_policy_not_confirmation",
+    "counts": {
+      "validation": 20,
+      "heldout": 10
+    },
+    "prediction_only_calibration": true,
+    "validation_calibration": "5-fold_CT_OOF",
+    "heldout_calibration": "all40_validation_reference",
+    "fresh_confirmation": false,
+    "original_E3_primary_modified": false,
+    "new_success_threshold": null,
+    "candidate": "guard_dual_channel",
+    "baseline": "guard_p1",
+    "followup_target": "pooled/member_mean/missing_volume/20pct_CT/candidate-minus-guard_p1",
+    "limitations": [
+      "posthoc_rules_on_previously_inspected_cohorts",
+      "CI_conditional_on_fixed_calibration_and_rules",
+      "empty_guard_assumes_expected_PENGWIN_anatomy_not_RibFrac",
+      "no_measured_reading_time_or_perfect_correction",
+      "midrank_calibration_changes_ordering_between_anatomies"
+    ]
+  },
+  "completed_at_unix": 1795406725.8161626,
+  "output_sha256": {
+    "calibration.json": "4570ab3030e2298cbfafdadbe6096834731a1186fa3878291c461494aeee5ec9",
+    "ct_review.csv": "cf0da55a6d2a53704c02e67dfb17329edf11103e69833fb26593b3ee1f93ec40",
+    "ct_omission.csv": "511770160dc3db0ca3ae5eb296a5e2687561ab597f385cea2f788e9a33a39172",
+    "case_scores.csv": "a5b138fe21649891e37cf8d759588c48d71e7074d75fcaeaf92aef5ca5a6cf6a",
+    "paired_differences.csv": "c308502458410eeb5a705859429c34e3545b5abdf94caf6bf99ca73a9a4de2cb",
+    "summary.json": "017b0a024dd0c02b03a4d3f885d742a5fee8d0b991a5b0762f3cd69e34b1223d"
+  }
+}

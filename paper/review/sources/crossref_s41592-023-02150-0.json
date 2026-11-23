@@ -1,0 +1,1473 @@
+{
+  "indexed": {
+    "date-parts": [
+      [
+        2026,
+        11,
+        23
+      ]
+    ],
+    "date-time": "2026-11-23T00:35:14Z",
+    "timestamp": 1795394114705,
+    "version": "4.10.3"
+  },
+  "reference-count": 38,
+  "publisher": "Springer Science and Business Media LLC",
+  "issue": "2",
+  "license": [
+    {
+      "start": {
+        "date-parts": [
+          [
+            2024,
+            2,
+            1
+          ]
+        ],
+        "date-time": "2024-02-01T00:00:00Z",
+        "timestamp": 1706745600000
+      },
+      "content-version": "tdm",
+      "delay-in-days": 0,
+      "URL": "https://www.springernature.com/gp/researchers/text-and-data-mining"
+    },
+    {
+      "start": {
+        "date-parts": [
+          [
+            2024,
+            2,
+            1
+          ]
+        ],
+        "date-time": "2024-02-01T00:00:00Z",
+        "timestamp": 1706745600000
+      },
+      "content-version": "vor",
+      "delay-in-days": 0,
+      "URL": "https://www.springernature.com/gp/researchers/text-and-data-mining"
+    }
+  ],
+  "content-domain": {
+    "domain": [
+      "link.springer.com"
+    ],
+    "crossmark-restriction": false
+  },
+  "short-container-title": [
+    "Nat Methods"
+  ],
+  "published-print": {
+    "date-parts": [
+      [
+        2024,
+        2
+      ]
+    ]
+  },
+  "DOI": "10.1038/s41592-023-02150-0",
+  "type": "journal-article",
+  "created": {
+    "date-parts": [
+      [
+        2024,
+        2,
+        12
+      ]
+    ],
+    "date-time": "2024-02-12T12:02:35Z",
+    "timestamp": 1707739355000
+  },
+  "page": "182-194",
+  "update-policy": "https://doi.org/10.1007/springer_crossmark_policy",
+  "source": "Crossref",
+  "is-referenced-by-count": 270,
+  "title": [
+    "Understanding metric-related pitfalls in image analysis validation"
+  ],
+  "prefix": "10.1038",
+  "volume": "21",
+  "author": [
+    {
+      "ORCID": "https://orcid.org/0000-0003-4363-1876",
+      "authenticated-orcid": false,
+      "given": "Annika",
+      "family": "Reinke",
+      "sequence": "first",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0003-3687-6381",
+      "authenticated-orcid": false,
+      "given": "Minu D.",
+      "family": "Tizabi",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0003-4455-9917",
+      "authenticated-orcid": false,
+      "given": "Michael",
+      "family": "Baumgartner",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Matthias",
+      "family": "Eisenmann",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Doreen",
+      "family": "Heckmann-N\u00f6tzel",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0002-9328-8140",
+      "authenticated-orcid": false,
+      "given": "A. Emre",
+      "family": "Kavur",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0003-3518-0315",
+      "authenticated-orcid": false,
+      "given": "Tim",
+      "family": "R\u00e4dsch",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Carole H.",
+      "family": "Sudre",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0001-5213-6012",
+      "authenticated-orcid": false,
+      "given": "Laura",
+      "family": "Acion",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0002-3005-4523",
+      "authenticated-orcid": false,
+      "given": "Michela",
+      "family": "Antonelli",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0001-8870-3007",
+      "authenticated-orcid": false,
+      "given": "Tal",
+      "family": "Arbel",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0001-8734-6482",
+      "authenticated-orcid": false,
+      "given": "Spyridon",
+      "family": "Bakas",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0002-9125-8300",
+      "authenticated-orcid": false,
+      "given": "Arriel",
+      "family": "Benis",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Florian",
+      "family": "Buettner",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0003-1284-2558",
+      "authenticated-orcid": false,
+      "given": "M. Jorge",
+      "family": "Cardoso",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0003-0176-9324",
+      "authenticated-orcid": false,
+      "given": "Veronika",
+      "family": "Cheplygina",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0002-8500-1357",
+      "authenticated-orcid": false,
+      "given": "Jianxu",
+      "family": "Chen",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Evangelia",
+      "family": "Christodoulou",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0001-9640-9318",
+      "authenticated-orcid": false,
+      "given": "Beth A.",
+      "family": "Cimini",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Keyvan",
+      "family": "Farahani",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Luciana",
+      "family": "Ferrer",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Adrian",
+      "family": "Galdran",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Bram",
+      "family": "van Ginneken",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0002-4897-9356",
+      "authenticated-orcid": false,
+      "given": "Ben",
+      "family": "Glocker",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0002-0365-7265",
+      "authenticated-orcid": false,
+      "given": "Patrick",
+      "family": "Godau",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0003-4725-3104",
+      "authenticated-orcid": false,
+      "given": "Daniel A.",
+      "family": "Hashimoto",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0002-4517-1562",
+      "authenticated-orcid": false,
+      "given": "Michael M.",
+      "family": "Hoffman",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Merel",
+      "family": "Huisman",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Fabian",
+      "family": "Isensee",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0002-7415-071X",
+      "authenticated-orcid": false,
+      "given": "Pierre",
+      "family": "Jannin",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0002-6654-7434",
+      "authenticated-orcid": false,
+      "given": "Charles E.",
+      "family": "Kahn",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Dagmar",
+      "family": "Kainmueller",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Bernhard",
+      "family": "Kainz",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0002-1930-3410",
+      "authenticated-orcid": false,
+      "given": "Alexandros",
+      "family": "Karargyris",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0001-8686-0682",
+      "authenticated-orcid": false,
+      "given": "Jens",
+      "family": "Kleesiek",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Florian",
+      "family": "Kofler",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Thijs",
+      "family": "Kooi",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0002-1810-0267",
+      "authenticated-orcid": false,
+      "given": "Annette",
+      "family": "Kopp-Schneider",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0001-7902-589X",
+      "authenticated-orcid": false,
+      "given": "Michal",
+      "family": "Kozubek",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0003-1334-6388",
+      "authenticated-orcid": false,
+      "given": "Anna",
+      "family": "Kreshuk",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Tahsin",
+      "family": "Kurc",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0001-5733-2127",
+      "authenticated-orcid": false,
+      "given": "Bennett A.",
+      "family": "Landman",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0003-1554-1291",
+      "authenticated-orcid": false,
+      "given": "Geert",
+      "family": "Litjens",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Amin",
+      "family": "Madani",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Klaus",
+      "family": "Maier-Hein",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0003-1375-5501",
+      "authenticated-orcid": false,
+      "given": "Anne L.",
+      "family": "Martel",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0001-8015-8358",
+      "authenticated-orcid": false,
+      "given": "Erik",
+      "family": "Meijering",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0003-4136-5690",
+      "authenticated-orcid": false,
+      "given": "Bjoern",
+      "family": "Menze",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Karel G. M.",
+      "family": "Moons",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0001-6800-9878",
+      "authenticated-orcid": false,
+      "given": "Henning",
+      "family": "M\u00fcller",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0009-0006-8087-6089",
+      "authenticated-orcid": false,
+      "given": "Brennan",
+      "family": "Nichyporuk",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Felix",
+      "family": "Nickel",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Jens",
+      "family": "Petersen",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0002-1399-5970",
+      "authenticated-orcid": false,
+      "given": "Susanne M.",
+      "family": "Rafelski",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0001-6760-1271",
+      "authenticated-orcid": false,
+      "given": "Nasir",
+      "family": "Rajpoot",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Mauricio",
+      "family": "Reyes",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0002-3153-2064",
+      "authenticated-orcid": false,
+      "given": "Michael A.",
+      "family": "Riegler",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0003-0241-9334",
+      "authenticated-orcid": false,
+      "given": "Nicola",
+      "family": "Rieke",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0002-8552-8976",
+      "authenticated-orcid": false,
+      "given": "Julio",
+      "family": "Saez-Rodriguez",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Clara I.",
+      "family": "S\u00e1nchez",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Shravya",
+      "family": "Shetty",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0001-8081-7376",
+      "authenticated-orcid": false,
+      "given": "Ronald M.",
+      "family": "Summers",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Abdel A.",
+      "family": "Taha",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0002-7852-4141",
+      "authenticated-orcid": false,
+      "given": "Aleksei",
+      "family": "Tiulpin",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Sotirios A.",
+      "family": "Tsaftaris",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Ben",
+      "family": "Van Calster",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0003-1076-5122",
+      "authenticated-orcid": false,
+      "given": "Ga\u00ebl",
+      "family": "Varoquaux",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0003-0315-7727",
+      "authenticated-orcid": false,
+      "given": "Ziv R.",
+      "family": "Yaniv",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0002-6243-2568",
+      "authenticated-orcid": false,
+      "given": "Paul F.",
+      "family": "J\u00e4ger",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0003-4910-9368",
+      "authenticated-orcid": false,
+      "given": "Lena",
+      "family": "Maier-Hein",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    }
+  ],
+  "member": "297",
+  "published-online": {
+    "date-parts": [
+      [
+        2024,
+        2,
+        12
+      ]
+    ]
+  },
+  "reference": [
+    {
+      "key": "2150_CR1",
+      "doi-asserted-by": "publisher",
+      "first-page": "1",
+      "DOI": "10.1038/s41467-018-07619-7",
+      "volume": "9",
+      "author": "L Maier-Hein",
+      "year": "2018",
+      "unstructured": "Maier-Hein, L. et al. Why rankings of biomedical image analysis competitions should be interpreted with care. Nat. Commun. 9, 1\u201313 (2018). With this comprehensive analysis of biomedical image analysis competitions (challenges), the authors initiated a shift in how such challenges are designed, performed and reported in the biomedical domain. Its concepts and guidelines have been adopted by reputed organizations such as the Medical Image Computing and Computer Assisted Interventions.",
+      "journal-title": "Nat. Commun."
+    },
+    {
+      "key": "2150_CR2",
+      "doi-asserted-by": "publisher",
+      "first-page": "5105",
+      "DOI": "10.1002/mp.13200",
+      "volume": "45",
+      "author": "MJ Gooding",
+      "year": "2018",
+      "unstructured": "Gooding, M. J. et al. Comparative evaluation of autocontouring in clinical practice: a practical method using the Turing test. Med. Phys. 45, 5105\u20135115 (2018).",
+      "journal-title": "Med. Phys."
+    },
+    {
+      "key": "2150_CR3",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Kofler F. et al. Are we using appropriate segmentation metrics? Identifying correlates of human expert perception for CNN training beyond rolling the Dice coefficient. Preprint at arXiv https://doi.org/10.48550/arXiv.2103.06205 (2021).",
+      "DOI": "10.48550/arXiv.2103.06205"
+    },
+    {
+      "key": "2150_CR4",
+      "doi-asserted-by": "publisher",
+      "first-page": "1",
+      "DOI": "10.1016/j.phro.2019.12.001",
+      "volume": "13",
+      "author": "F Vaassen",
+      "year": "2020",
+      "unstructured": "Vaassen, F. et al. Evaluation of measures for assessing time-saving of automatic organ-at-risk segmentation in radiotherapy. Phys. Imaging Radiat. Oncol. 13, 1\u20136 (2020).",
+      "journal-title": "Phys. Imaging Radiat. Oncol."
+    },
+    {
+      "key": "2150_CR5",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Maier-Hein L. et al. Metrics reloaded: recommendations for image analysis validation. Nat. Methods https://doi.org/10.1038/s41592-023-02151-z (2024).",
+      "DOI": "10.1038/s41592-023-02151-z"
+    },
+    {
+      "key": "2150_CR6",
+      "doi-asserted-by": "crossref",
+      "first-page": "1",
+      "DOI": "10.1186/s12864-019-6419-1",
+      "volume": "21",
+      "author": "C Davide",
+      "year": "2020",
+      "unstructured": "Davide, C. & Giuseppe, J. The advantages of the Matthews correlation coefficient (MCC) over F1 score and accuracy in binary classification evaluation. BMC Genomics 21, 1\u201313 (2020).",
+      "journal-title": "BMC Genomics"
+    },
+    {
+      "key": "2150_CR7",
+      "doi-asserted-by": "crossref",
+      "first-page": "1",
+      "DOI": "10.1186/s13040-020-00232-9",
+      "volume": "14",
+      "author": "C Davide",
+      "year": "2021",
+      "unstructured": "Davide, C., Niklas, T. & Giuseppe, J. The Matthews correlation coefficient (MCC) is more reliable than balanced accuracy, bookmaker informedness, and markedness in two-class confusion matrix evaluation. BioData Min. 14, 1\u201322 (2021). The manuscript addresses the challenge of evaluating binary classifications. It compares MCC with other metrics, explaining their mathematical relationships and providing use cases where MCC offers more informative results.",
+      "journal-title": "BioData Min."
+    },
+    {
+      "key": "2150_CR8",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Grandini M., Bagli E. & Visani G. Metrics for multi-class classification: an overview. Preprint at arXiv https://doi.org/10.48550/arXiv.2008.05756 (2020).",
+      "DOI": "10.48550/arXiv.2008.05756"
+    },
+    {
+      "key": "2150_CR9",
+      "doi-asserted-by": "publisher",
+      "first-page": "1",
+      "DOI": "10.1186/s12880-015-0068-x",
+      "volume": "15",
+      "author": "AA Taha",
+      "year": "2015",
+      "unstructured": "Taha, A. A. & Hanbury, A. Metrics for evaluating 3D medical image segmentation: analysis, selection, and tool. BMC Med. imaging 15, 1\u201328 (2015). The paper discusses the importance of effective metrics for evaluating the accuracy of 3D medical image segmentation algorithms. The authors analyze existing metrics, propose a selection methodology, and develop a tool to aid researchers in choosing appropriate evaluation metrics based on the specific characteristics of the segmentation task.",
+      "journal-title": "BMC Med. imaging"
+    },
+    {
+      "key": "2150_CR10",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Taha A. A., Hanbury A. & del Toro O. A J. A formal method for selecting evaluation metrics for image segmentation. In 2014 IEEE International Conference on Image Processing 932\u2013936 (IEEE, 2014).",
+      "DOI": "10.1109/ICIP.2014.7025187"
+    },
+    {
+      "key": "2150_CR11",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Lin T.-Y. et al. Microsoft COCO: common objects in context. In European Conference on Computer Vision 740\u2013755 (Springer, 2014).",
+      "DOI": "10.1007/978-3-319-10602-1_48"
+    },
+    {
+      "key": "2150_CR12",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Reinke A., et al. Common limitations of image processing metrics: a picture story. Preprint at arXiv https://doi.org/10.48550/arXiv.2104.05642 (2021).",
+      "DOI": "10.48550/arXiv.2104.05642"
+    },
+    {
+      "key": "2150_CR13",
+      "doi-asserted-by": "publisher",
+      "first-page": "303",
+      "DOI": "10.1007/s11263-009-0275-4",
+      "volume": "88",
+      "author": "M Everingham",
+      "year": "2010",
+      "unstructured": "Everingham, M., Van Gool, L., Williams, C. K. I., Winn, J. & Zisserman, A. The Pascal Visual Object Classes (VOC) challenge. Int. J. Comput. Vis. 88, 303\u2013338 (2010).",
+      "journal-title": "Int. J. Comput. Vis."
+    },
+    {
+      "key": "2150_CR14",
+      "unstructured": "Howard, A. et al. Sartorius\u2014cell instance segmentation. Kaggle https://www.kaggle.com/c/sartorius-cell-instance-segmentation (2021)."
+    },
+    {
+      "key": "2150_CR15",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Schmidt U., Weigert M., Broaddus C. & Myers G. Cell detection with star-convex polygons. In International Conference on Medical Image Computing and Computer-Assisted Intervention 265\u2013273 (Springer, 2018).",
+      "DOI": "10.1007/978-3-030-00934-2_30"
+    },
+    {
+      "key": "2150_CR16",
+      "doi-asserted-by": "publisher",
+      "first-page": "100",
+      "DOI": "10.1038/s41592-020-01018-x",
+      "volume": "18",
+      "author": "C Stringer",
+      "year": "2021",
+      "unstructured": "Stringer, C., Wang, T., Michaelos, M. & Pachitariu, M. Cellpose: a generalist algorithm for cellular segmentation. Nat. methods 18, 100\u2013106 (2021).",
+      "journal-title": "Nat. methods"
+    },
+    {
+      "key": "2150_CR17",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Hirling D. et al. Segmentation metric misinterpretations in bioimage analysis. Nat. Methods https://doi.org/10.1038/s41592-023-01942-8 (2023).",
+      "DOI": "10.1038/s41592-023-01942-8"
+    },
+    {
+      "key": "2150_CR18",
+      "unstructured": "Brown, B. B. Delphi Process: A Methodology Used for the Elicitation of Opinions of Experts (RAND Corporation, 1968)."
+    },
+    {
+      "key": "2150_CR19",
+      "doi-asserted-by": "publisher",
+      "first-page": "116",
+      "DOI": "10.5662/wjm.v11.i4.116",
+      "volume": "11",
+      "author": "RJ Prashant Nasa",
+      "year": "2021",
+      "unstructured": "Prashant Nasa, R. J. & Juneja, D. Delphi methodology in healthcare research: how to decide its appropriateness. World J. Methodol. 11, 116 (2021).",
+      "journal-title": "World J. Methodol."
+    },
+    {
+      "key": "2150_CR20",
+      "doi-asserted-by": "publisher",
+      "first-page": "015006",
+      "DOI": "10.1117/1.JMI.5.1.015006",
+      "volume": "5",
+      "author": "V Yeghiazaryan",
+      "year": "2018",
+      "unstructured": "Yeghiazaryan, V. & Voiculescu, I. D. Family of boundary overlap metrics for the evaluation of medical image segmentation. J. Med. Imaging 5, 015006 (2018).",
+      "journal-title": "J. Med. Imaging"
+    },
+    {
+      "key": "2150_CR21",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Gruber, S. & Buettner, F. Better uncertainty calibration via proper scores for classification and beyond. Preprint at arXiv https://doi.org/10.48550/arXiv.2203.07835 (2022).",
+      "DOI": "10.48550/arXiv.2203.07835"
+    },
+    {
+      "key": "2150_CR22",
+      "doi-asserted-by": "publisher",
+      "first-page": "152",
+      "DOI": "10.1016/j.phro.2022.11.009",
+      "volume": "24",
+      "author": "MJ Gooding",
+      "year": "2022",
+      "unstructured": "Gooding, M. J., Boukerroui, D., Osorio, E. V., Monshouwer, R. & Brunenberg, E. Multicenter comparison of measures for quantitative evaluation of contouring in radiotherapy. Phys. Imaging Radiat. Oncol. 24, 152\u2013158 (2022).",
+      "journal-title": "Phys. Imaging Radiat. Oncol."
+    },
+    {
+      "key": "2150_CR23",
+      "unstructured": "Cordts, M. et al. The cityscapes dataset. In CVPR Workshop on The Future of Datasets in Vision (2015)."
+    },
+    {
+      "key": "2150_CR24",
+      "doi-asserted-by": "publisher",
+      "first-page": "696",
+      "DOI": "10.1007/s00357-019-09345-1",
+      "volume": "37",
+      "author": "J Muschelli",
+      "year": "2020",
+      "unstructured": "Muschelli, J. ROC and AUC with a binary predictor: a potentially misleading metric. J. Classif. 37, 696\u2013708 (2020).",
+      "journal-title": "J. Classif."
+    },
+    {
+      "key": "2150_CR25",
+      "doi-asserted-by": "publisher",
+      "first-page": "102680",
+      "DOI": "10.1016/j.media.2022.102680",
+      "volume": "84",
+      "author": "PC Patrick Bilic",
+      "year": "2023",
+      "unstructured": "Patrick Bilic, P. C. et al. The liver tumor segmentation benchmark (LITS). Med. Image Anal. 84, 102680 (2023).",
+      "journal-title": "Med. Image Anal."
+    },
+    {
+      "key": "2150_CR26",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Tran, T. N. et al. Sources of performance variability in deep learning-based polyp detection. Preprint at arXiv https://doi.org/10.48550/arXiv.2211.09708 (2022).",
+      "DOI": "10.48550/arXiv.2211.09708"
+    },
+    {
+      "key": "2150_CR27",
+      "doi-asserted-by": "crossref",
+      "first-page": "1",
+      "DOI": "10.1038/s41598-020-79139-8",
+      "volume": "11",
+      "author": "M Wiesenfarth",
+      "year": "2021",
+      "unstructured": "Wiesenfarth, M. et al. Methods and open-source toolkit for analyzing and visualizing challenge results. Sci. Rep. 11, 1\u201315 (2021).",
+      "journal-title": "Sci. Rep."
+    },
+    {
+      "key": "2150_CR28",
+      "first-page": "172",
+      "volume": "5",
+      "author": "JK Lennerz",
+      "year": "2022",
+      "unstructured": "Lennerz, J. K., Green, U., Williamson, D. F. K. & Mahmood, F. A unifying force for the realization of medical ai. NPJ Digit. Med. 5, 172 (2022).",
+      "journal-title": "Med."
+    },
+    {
+      "key": "2150_CR29",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Correia, P. & Pereira, F. Video object relevance metrics for overall segmentation quality evaluation. EURASIP J. Adv. Signal Process. 2006, 1\u201311 (2006).",
+      "DOI": "10.1155/ASP/2006/82195"
+    },
+    {
+      "key": "2150_CR30",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Honauer, K., Maier-Hein, L. & Kondermann, D. The HCI stereo metrics: geometry-aware performance analysis of stereo algorithms. In Proceedings of the IEEE International Conference on Computer Vision 2120\u20132128 (IEEE, 2015).",
+      "DOI": "10.1109/ICCV.2015.245"
+    },
+    {
+      "key": "2150_CR31",
+      "doi-asserted-by": "publisher",
+      "first-page": "2278",
+      "DOI": "10.1109/TMI.2012.2216281",
+      "volume": "31",
+      "author": "E Konukoglu",
+      "year": "2012",
+      "unstructured": "Konukoglu, E., Glocker, B., Ye, D. H., Criminisi, A. & Pohl, K. M. Discriminative segmentation-based evaluation through shape dissimilarity. IEEE Trans. Med. Imaging 31, 2278\u20132289 (2012).",
+      "journal-title": "IEEE Trans. Med. Imaging"
+    },
+    {
+      "key": "2150_CR32",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Margolin, R., Zelnik-Manor, L. & Tal, A. How to evaluate foreground maps? In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition 248\u2013255 (2014).",
+      "DOI": "10.1109/CVPR.2014.39"
+    },
+    {
+      "key": "2150_CR33",
+      "doi-asserted-by": "publisher",
+      "first-page": "5613",
+      "DOI": "10.1093/nar/gkl717",
+      "volume": "34",
+      "author": "A Carbonell",
+      "year": "2006",
+      "unstructured": "Carbonell, A., De la Pena, M., Flores, R. & Gago, S. Effects of the trinucleotide preceding the self-cleavage site on eggplant latent viroid hammerheads: differences in co- and post-transcriptional self-cleavage may explain the lack of trinucleotide AUC in most natural hammerheads. Nucleic Acids Res. 34, 5613\u20135622 (2006).",
+      "journal-title": "Nucleic Acids Res."
+    },
+    {
+      "key": "2150_CR34",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Di Sabatino, A. & Corazza, G. R. Nonceliac gluten sensitivity: sense or sensibility? Ann. Intern. Med. 156, 309\u2013311 (2012).",
+      "DOI": "10.7326/0003-4819-156-4-201202210-00010"
+    },
+    {
+      "key": "2150_CR35",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Roberts B. et al. Systematic gene tagging using CRISPR/Cas9 in human stem cells to illuminate cell organization. Mol. Biol. Cell 28, 2854\u20132874 (2017).",
+      "DOI": "10.1091/mbc.e17-03-0209"
+    },
+    {
+      "key": "2150_CR36",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Chen, J. et al. The Allen Cell and Structure Segmenter: a new open source toolkit for segmenting 3D intracellular structures in fluorescence microscopy images. Preprint at bioRxiv https://doi.org/10.1101/491035 (2020).",
+      "DOI": "10.1101/491035"
+    },
+    {
+      "key": "2150_CR37",
+      "doi-asserted-by": "publisher",
+      "first-page": "917",
+      "DOI": "10.1038/s41592-018-0111-2",
+      "volume": "15",
+      "author": "C Ounkomol",
+      "year": "2018",
+      "unstructured": "Ounkomol, C., Seshamani, S., Maleckar, M. M., Collman, F. & Johnson, G. R. Label-free prediction of three-dimensional fluorescence images from transmitted-light microscopy. Nat. Methods 15, 917\u2013920 (2018).",
+      "journal-title": "Nat. Methods"
+    },
+    {
+      "key": "2150_CR38",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Viana, M. P. et al. Integrated intracellular organization and its variations in human IPS cells. Nature 613, 345\u2013354 (2023).",
+      "DOI": "10.1038/s41586-022-05563-7"
+    }
+  ],
+  "container-title": [
+    "Nature Methods"
+  ],
+  "original-title": [],
+  "language": "en",
+  "link": [
+    {
+      "URL": "https://www.nature.com/articles/s41592-023-02150-0.pdf",
+      "content-type": "application/pdf",
+      "content-version": "vor",
+      "intended-application": "text-mining"
+    },
+    {
+      "URL": "https://www.nature.com/articles/s41592-023-02150-0",
+      "content-type": "text/html",
+      "content-version": "vor",
+      "intended-application": "text-mining"
+    },
+    {
+      "URL": "https://www.nature.com/articles/s41592-023-02150-0.pdf",
+      "content-type": "application/pdf",
+      "content-version": "vor",
+      "intended-application": "similarity-checking"
+    }
+  ],
+  "deposited": {
+    "date-parts": [
+      [
+        2024,
+        2,
+        17
+      ]
+    ],
+    "date-time": "2024-02-17T11:08:00Z",
+    "timestamp": 1708168080000
+  },
+  "score": 1,
+  "resource": {
+    "primary": {
+      "URL": "https://www.nature.com/articles/s41592-023-02150-0"
+    }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+    "date-parts": [
+      [
+        2024,
+        2
+      ]
+    ]
+  },
+  "references-count": 38,
+  "journal-issue": {
+    "issue": "2",
+    "published-print": {
+      "date-parts": [
+        [
+          2024,
+          2
+        ]
+      ]
+    }
+  },
+  "alternative-id": [
+    "2150"
+  ],
+  "URL": "https://doi.org/10.1038/s41592-023-02150-0",
+  "relation": {},
+  "ISSN": [
+    "1548-7091",
+    "1548-7105"
+  ],
+  "issn-type": [
+    {
+      "value": "1548-7091",
+      "type": "print"
+    },
+    {
+      "value": "1548-7105",
+      "type": "electronic"
+    }
+  ],
+  "subject": [],
+  "published": {
+    "date-parts": [
+      [
+        2024,
+        2
+      ]
+    ]
+  },
+  "assertion": [
+    {
+      "value": "9 February 2023",
+      "order": 1,
+      "name": "received",
+      "label": "Received",
+      "group": {
+        "name": "ArticleHistory",
+        "label": "Article History"
+      }
+    },
+    {
+      "value": "12 December 2023",
+      "order": 2,
+      "name": "accepted",
+      "label": "Accepted",
+      "group": {
+        "name": "ArticleHistory",
+        "label": "Article History"
+      }
+    },
+    {
+      "value": "12 February 2024",
+      "order": 3,
+      "name": "first_online",
+      "label": "First Online",
+      "group": {
+        "name": "ArticleHistory",
+        "label": "Article History"
+      }
+    },
+    {
+      "value": "F.B. is an employee of Siemens (Munich, Germany). B.V.G. is a shareholder of Thirona (Nijmegen, the Netherlands). B.G. is an employee of HeartFlow (California, USA) and Kheiron Medical Technologies (London, UK). M.M.H. received an Nvidia GPU Grant. T. Kooi is an employee of Lunit (Seoul, South Korea). G.L. is on the advisory board of Canon Healthcare IT (Minnesota, USA) and is a shareholder of Aiosyn (Nijmegen, the Netherlands). N. Rajpoot is the founder and CSO of Histofy (New York, USA). N. Rieke is an employee of Nvidia (Munich, Germany). J.S.-R. reports funding from GSK (Heidelberg, Germany), Pfizer (New York, USA) and Sanofi (Paris, France) and fees from Travere Therapeutics (California, USA), Stadapharm (Bad Vilbel, Germany), Astex Therapeutics (Cambridge, UK), Pfizer (New York, USA) and Grunenthal (Aachen, Germany). R.M.S. receives patent royalties from iCAD (New Hampshire, USA), ScanMed (Nebraska, USA), Philips (Amsterdam, the Netherlands), Translation Holdings (Alabama, USA) and PingAn (Shenzhen, China); his lab received research support from PingAn through a Cooperative Research and Development Agreement. S.A.T. receives financial support from Canon Medical Research Europe (Edinburgh, Scotland). The remaining authors declare no competing interests.",
+      "order": 1,
+      "name": "Ethics",
+      "group": {
+        "name": "EthicsHeading",
+        "label": "Competing interests"
+      }
+    }
+  ]
+}

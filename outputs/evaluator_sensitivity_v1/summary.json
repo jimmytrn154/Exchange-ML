@@ -1,0 +1,20 @@
+{
+  "smoke_only": false,
+  "case_counts": {
+    "validation": 40,
+    "heldout": 100
+  },
+  "unit_counts": {
+    "validation": 80,
+    "heldout": 200
+  },
+  "thresholds": [
+    0.01,
+    0.1
+  ],
+  "threshold_selection": "both_fixed_reported_no_winner",
+  "clinical_severity_threshold_validated": false,
+  "input_scores_refit": false,
+  "CT_cost": "equal_one_CT_one_review",
+  "review_implies_perfect_correction": false
+}

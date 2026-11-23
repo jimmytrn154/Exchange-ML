@@ -1,0 +1,470 @@
+=== PDF PAGE 1 ===
+Artifact Augmentation for Learning-based Quality Control of Whole
+Slide Images
+Artur Jurgas1,2, Marek Wodzinski1,2, Weronika Celniak1,2, Manfredo Atzori1,3 and Henning M¨uller1,4
+Abstract— The acquisition of whole slide images is prone to
+artifacts that can require human control and re-scanning, both
+in clinical workflows and in research-oriented settings. Quality
+control algorithms are a first step to overcome this challenge,
+as they limit the use of low quality images. Developing quality
+control systems in histopathology is not straightforward, also
+due to the limited availability of data related to this topic.
+We address the problem by proposing a tool to augment data
+with artifacts. The proposed method seamlessly generates
+and blends artifacts from an external library to a given
+histopathology
+dataset.
+The
+datasets
+augmented
+by
+the
+blended artifacts are then used to train an artifact detection
+network in a supervised way. We use the YOLOv5 model for
+the artifact detection with a slightly modified training pipeline.
+The proposed tool can be extended into a complete framework
+for the quality assessment of whole slide images.
+Clinical relevance— The proposed method may be useful
+for the initial quality screening of whole slide images. Each
+year, millions of whole slide images are acquired and digitized
+worldwide. Numerous of them contain artifacts affecting the
+following AI-oriented analysis. Therefore, a tool operating at the
+acquisition phase and improving the initial quality assessment
+is crucial to increase the performance of digital pathology
+algorithms, e.g., early cancer diagnosis.
+I. INTRODUCTION
+Quality control (QC) of histopathology whole slide images
+(WSIs) is crucial for further processing and analysis of the
+images. The WSI acquisition is a complex process and prone
+to artifacts. Artifacts are a side effect of many stages of
+the sample preparation like fixation, microtomy, staining, or
+mounting procedures [1]. They also include scratches of the
+coverslip, tissue tearing, residual wax impacting staining, and
+others.
+The artifacts impact a wide range of WSI processing and
+analysis techniques. They influence the field of view and can
+hide crucial tissue structures for diagnosis. QC systems can
+help mitigate this by catching low quality images just after
+their acquisition and improve the overall performance.
+Related work: Recent works such as [2], [3] present the
+semi-automatic HistoQC software that allows for automatic
+*This work was done as a part of the IMI BigPicture project (IMI945358).
+This research was supported in part by PLGrid Infrastructure.
+1Artur Jurgas, Marek Wodzi´nski, Weronika Celniak, Manfredo Atzori,
+Henning M¨uller are with University of Applied Sciences Western Switzer-
+land (HES-SO Valais), Information Systems Institute, Sierre, Switzerland
+2Artur Jurgas, Marek Wodzi´nski, Weronika Celniak are with Faculty
+of Electrical Engineering, Automatics, Computer Science and Biomedical
+Engineering, AGH University of Science and Technology, Krakow, Poland
+3Manfredo Atzori is with Department of Neuroscience, University of
+Padova, Padova, Italy
+4Henning M¨uller is with Medical Faculty, University of Geneva, Geneva,
+Switzerland
+rating of the quality of WSIs for further analysis. Never-
+theless, the high heterogeneity of clinical datasets is still a
+challenge in the domain. Each artifact needs to have its own
+detection algorithm, which takes time both for development
+and inference.
+A number of authors also present learning-based QC
+systems, like [4], [5]. While providing good results, they are
+limited to blur and out-of-focus artifact types, which were
+synthetically generated.
+The authors of [6] proposed a supervised, learning-based
+method. They used a private, labeled dataset for training.
+Although the approach is successful, it is costly and with
+limited generalizability since it requires numerous manual
+annotations. Similar work by [7] uses a deep residual net-
+work that also uses a limited, manually annotated dataset.
+The process of manually annotating WSI artifacts is costly
+and time-consuming. It is often hard to find the resources and
+time to spend on artifact annotation, as it is often preferred
+to use the resources to annotate the WSIs with respect to the
+diagnosis.
+There are a few that, instead of using an annotated
+dataset, synthetically generate artifacts. [8] uses fully syn-
+thetic artifacts to test the degradation of previously trained
+classification and segmentation models. Our work differs
+from it by using a real, nonsynthesized artifacts. Additionally,
+the previous work did not propose a method to detect those
+artifacts.
+The authors in [9] stress the importance of QC in learning-
+based histopathology methods. They use mostly synthetic ar-
+tifacts, with a limited number of nonsynthetic ones. Similarly
+to [8] their quality control applies to the trained models rather
+than images.
+Contribution:
+Our contribution is two-fold. First, we
+propose a framework to cut out and modify artifacts with
+known ground-truth and use them to augment real-world
+histopathology datasets. Second, we modify a common cost
+function to allow a semi-supervised training process with
+datasets generated by our method. This work can also be
+used to further expand model stress testing proposed by [8]
+and [9]. Unlike other methods, we do not generate purely
+synthetic artifacts but rather propose a method to seamlessly
+augment the existing ones and blend them into various
+datasets to improve the generalizability of quality assessment
+models. Moreover, we treat the task as an object detection
+problem at a given resolution level rather than a patch-based
+classification, which makes it faster during inference and
+more useful in clinical practice.
+Published in "Proceedings of the 45th Annual International Conference of the IEEE 
+Engineering in Medicine and Biology Society", Sydney, Australia, 2023-07-24, 
+2023-07-27, which should be cited to refer to this work.
+DOI: 10.1109/EMBC40787.2023.10340997
+
+
+=== PDF PAGE 2 ===
+II. METHODS
+A. Overview
+The proposed method consists of the following steps: (i)
+artifact acquisition: labeling data from the donor dataset, (ii)
+artifact cloning: blending acquired artifacts with the destina-
+tion dataset with morphological augmentations, (iii) model
+training: using the YOLOv5 object detection model with
+modified loss function to fine-tune it using the augmented
+dataset. The overview of the pipeline is shown in Figure 1.
+B. Artifact types and acquisition
+The process starts with annotating a few artifacts in
+a source dataset. The extracted artifacts are stored in a
+dedicated library with adjustable metadata. The metadata
+consists of parameters like artifact size, spatial orientation,
+or reasonable limits for geometrical transformations. We
+acquire the following types of artifacts: (i) markers, (ii)
+scratches, (iii) smudges, (iv) staining anomalies, (v) corner
+markings, (vi) foreign bodies, (vii) border glass horizontal,
+(viii) border glass vertical, (ix) low blur, (x) high blur. Note
+that during the rest of the paper we use only real, augmented
+artifacts acquired in this step and not synthetic ones, except
+for the blur.
+C. Artifact processing and cloning
+The labeled artifacts are algorithmically inserted into the
+target dataset. The process is repeated several times, and
+each time the artifacts are inserted at different locations after
+random geometrical transformations using affine warping.
+The blending of the artifacts is customized by their position
+(e.g., inside, outside, or at the edges of a tissue) and the size
+with respect to the image resolution.
+Each artifact type requires a different approach to blend
+it into the target image, i.e. glass scratches are blended
+differently than marker or ink staining. Additionally, some
+artifacts such as staining can only be transferred inside their
+respective class, i.e. staining artifacts from H&E images
+should only be applied to other H&E stained images. Arti-
+facts other than staining work independently of the staining
+dye.
+For markers, corner markings, border glasses and foreign
+bodies, we use cloning with bilateral filtering adjusted for
+each type. For scratches and smudges, we apply seamless
+cloning. For staining artifacts, Reinhard color normalization
+is used. Both low and high blur is done by a Gaussian kernel
+of different intensities and sizes. Blurring is the only case for
+which we generate a fully synthetic artifact.
+As a final step for each method, we also apply a gradual,
+linear transition between the artifact to the image so that the
+pixels on the edges will be a combination of the artifact’s
+pixels and the original image.
+D. Model training
+For the model we used the pre-trained, state-of-the-art
+YOLOv5 [10]. We modified the loss function by weighting
+it according to:
+L(P, ˆT, L) = θ(L) · Lreg(P, ˆT)
++ θ(L) · Lobj(P, ˆT)
++ θ(L) · Lclass(P, ˆT)
+(1)
+θ(L) =
+(
+1,
+if L > 0
+λL,
+if L = 0 ,
+(2)
+where P stands for predicted objects, ˆT for ground-truth,
+and L for the label, Lreg, Lobj, Lclass are standard regression,
+objectness, and classification losses from YOLOv5.
+Equations (1) and (2) mean that all cases of true positives
+and false negatives are weighted by 1, and false positives
+and true negatives are weighted by the parameter λL.
+We introduce this modification because only the blended
+artifacts are annotated, but the WSIs also contain real ones,
+which do not have the associated annotations. Therefore,
+ignoring the real predictions would overfit the model to the
+blended artifacts generated by the system. The introduced
+formula limits the negative influence of the unavailable
+annotations.
+E. Dataset and experimental setup
+We evaluated the proposed approach using the ACROBAT
+and ANHIR datasets [11], [12], preprocessed and curated by
+the dataset owners.
+The ACROBAT dataset consists of WSIs captured by
+Hamamatsu Nanozoomer XR at 0.23 µm per pixel (40X).
+Each slide has its distinctive staining, either Hematoxilin
+and Eozine (H&E) or immunohistochemistry (IHC) with ER,
+PGR, HER2, and KI67 dyes. The images are 44404 ± 10525
+by 24975 ± 3147. The ACROBAT dataset is used mainly as
+a training set.
+The ANHIR dataset is more diverse with images from
+multiple scanners, tissue types, dyes, and magnifications. The
+images are 9430 ± 2905 by 11206 ± 3203. The ANHIR
+dataset is more heterogeneous and is used as a testing set to
+show the generalizability of the method.
+All applied artifacts come from 100 H&E images and
+100 IHC images from the ACROBAT dataset. We divide
+them into two artifact libraries, namely train and validation
+libraries. The summary of the extracted artifacts is presented
+in Table I. The artifact libraries were used to augment the
+ACROBAT and ANHIR datasets.
+This approach resulted in the following datasets: (A1) AC-
+ROBAT images augmented with artifacts from the training
+library, (A2) ACROBAT images augmented with the artifacts
+from the validation library, (B1) ANHIR images augmented
+with artifacts from the training library, (B2) ANHIR images
+augmented with artifacts from the validation library.
+A1 is the training set, A2 is the validation set with respect
+to the artifacts, B1 is the validation set with respect to the
+images, B2 is the test set since neither images nor artifacts
+from this dataset were used during training. The A1 dataset
+consists of 2000 samples, A2 has 400, B1 1800, and B2 900.
+Additionally, as in an ablation study, we trained the model
+on the original, non-augmented data that were used for
+
+
+=== PDF PAGE 3 ===
+Fig. 1.
+Diagram of the whole pipeline.
+artifact extraction. The dataset consists in this case of 30
+images for training and 7 images for validation. We present
+results on this dataset as C1 (training) and C2 (validation).
+The source code and the artifacts library will be released
+openly after the article acceptance.
+III. RESULTS
+We evaluate the proposed method using the accuracy of the
+individual artifact detection, the AP:0.5 (Average Precision
+with intersection over union of 0.5), and recall. Accuracy
+in this context means the percentage of true positives of a
+given class. We count detections as true positives when the
+intersection over union (IoU) between their bounding boxes
+and the ground-truth is above a threshold of 0.45 and their
+labels match [13].
+Recall is the preferred indicator of model performance in
+our case. It does not take into account false positives and true
+negatives, for which we cannot fully reason about. We still
+include the AP indicator as it is the standard for reporting
+the performance of detection models.
+We show the detection accuracy in Table I, the AP
+and Recall in Table II, and the recall-confidence curves in
+Figure 2. Accuracy in Table I is presented for the test dataset
+B2.
+The confidence in Figure 2 in this context means the
+threshold at which we make the classification decision with
+respect to the model output. This means that even if we
+take into consideration weak predictions, artifacts such as
+foreign bodies are poorly detected. Similarly, even if we only
+consider strong predictions, corner markings, border glasses,
+markers, and staining artifacts are still properly detected
+which means good model fitness.
+An example visualization of the system performance on a
+real case is shown in Figure 3.
+IV. DISCUSSION
+The results confirm that the proposed concept can result
+in a QC system being able to generalize into real-world
+histology data. The model generalizes well for the validation
+and test sets, even though the training data are limited. The
+notable exceptions are: low blur and foreign objects.
+The performance for scratches and markers also decreases,
+albeit less. The seamless cloning of those artifacts highly
+depends on blending the sharp edges of those structures.
+This step still experiences high deviations in quality between
+different resolutions.
+Confidence
+0.0
+0.5
+1.0
+Recall
+0.0
+0.5
+1.0
+Scratches
+Markers
+Staining
+Smudges
+Corner Markings
+Border Glass Horizontal
+Border Glass Vertical
+Foreign Bodies
+Blur Low
+Blur High
+all classes 0.61 at 0.5
+Fig. 2.
+Recall-Confidence curve of the dataset B2.
+TABLE I
+SUMMARY OF EXTRACTED AND USED ARTIFACTS, THEIR QUANTITY,
+AND MODEL’S PERFORMANCE ON THEM.
+Artifact
+#Train
+#Validation
+Acc (%)
+Markers
+20
+5
+85
+Scratches
+36
+9
+38
+Smudges
+24
+5
+39
+Staining
+12
+3
+85
+Corner Markings
+15
+3
+89
+Foreign Bodies
+26
+6
+11
+Border Glass Horizontal
+10
+2
+99
+Border Glass Vertical
+6
+1
+98
+Low Blur
+Generated
+43
+High Blur
+Generated
+57
+Moreover, the performance of the blur detection depends
+strongly on the quality of tissue segmentation. In case the
+background segmentation fails, the blur is generated outside
+the tissue and is usually undetectable for H&E staining.
+Table II shows better performance in terms of AP than
+recall. This is expected since the AP indicator takes into
+account false positives and true negatives for which we do
+not have labels. If the model detects an artifact which was
+already in the target dataset before blending in the new ones,
+
+
+=== PDF PAGE 4 ===
+Fig. 3.
+Example visualization of the system performance. This is a previously unseen WSI with real artifacts.
+TABLE II
+PERFORMANCE ON SEVERAL DATASETS. RECALL IS PRESENTED AT THE
+0.5 CONFIDENCE THRESHOLD. THE C1 AND C2 COLUMNS USE A
+SEPARATE MODEL TRAINED ON DATASET C1.
+Indicator
+A1
+A2
+B1
+B2
+C1
+C2
+AP:0.5
+0.97
+0.84
+0.77
+0.65
+0.12
+0.16
+Recall
+0.93
+0.79
+0.72
+0.61
+0.27
+0.45
+we count this as a false positive, but in reality it should be
+a true positive.
+Comparison with other approaches is limited as authors
+like [8], [9] do not try to detect the artifacts but rather test
+their influence on model performance. The authors of [4],
+[5] present a QC system that is limited only to blur and out-
+of-focus regions. We achieve lower accuracy than them on
+this particular type of artifact; however, it cannot be directly
+compared because our method blends the artifacts also in
+the background. We achieve similar performance in other
+types of artifacts like border glasses and corner markings.
+The most similar work to our approach is [7]. The authors,
+however, do not specify what data they are using. They
+use only three slides for validation and one for testing.
+We use a completely different dataset including different
+scanners, staining methods and tissues. The importance of
+the proposed method is confirmed by the ablation study
+reporting results on the C1 and C2 datasets. It shows that our
+augmentation and blending pipeline significantly improves
+the detection performance compared to the baseline, which
+uses the annotated artifacts directly.
+Future work will include further optimization of our meth-
+ods for blending the artifacts into images. We will replace the
+current graph-based segmentation algorithm with a learning-
+based one, like in [14]. Changing the YOLOv5 model to
+an architecture with a known better performance on small
+objects could further improve the results. Moreover, we will
+extend the artifacts library and use artifacts from additional
+histology datasets.
+V. CONCLUSIONS
+We propose a novel method to improve QC by augmenting
+and blending real WSI artifacts into other datasets. We
+evaluate the proposed approach using a modified YOLOv5
+method with additional objective function weighting. We
+show an important improvement compared to the baseline.
+REFERENCES
+[1] Syed Ahmed Taqi et al., “A review of artifacts in histopathology,” J
+Oral Maxillofac Pathol, vol. 22, no. 2, pp. 279, May 2018.
+[2] Andrew Janowczyk et al., “HistoQC: An Open-Source quality control
+tool for digital pathology slides,” JCO Clin Cancer Inform, vol. 3, pp.
+1–7, Apr. 2019.
+[3] Yijiang Chen et al., “Assessment of a computerized quantitative quality
+control tool for whole slide images of kidney biopsies,” J Pathol, vol.
+253, no. 3, pp. 268–278, Jan. 2021.
+[4] Gabriele Campanella et al., “Towards machine learned quality con-
+trol: A benchmark for sharpness quantification in digital pathology,”
+Computerized medical imaging and graphics, vol. 65, pp. 142–151,
+2017.
+[5] C¸ aglar Senaras et al., “Deepfocus: Detection of out-of-focus regions
+in whole slide digital images using deep learning,” PLoS ONE, vol.
+13, 2018.
+[6] Gijs Smit and Maria Cig´ehn, “Quality control of whole-slide images
+through multi-class semantic segmentation of artifacts,” 2021.
+[7] Adrien Foucart et al.,
+“Artifact identification in digital pathology
+from weak and noisy supervision with deep residual networks,”
+4th International Conference on Cloud Computing Technologies and
+Applications, pp. 1–6, 2018.
+[8] Nicholas C. Wang et al.,
+“Stress testing pathology models with
+generated artifacts,” Journal of Pathology Informatics, vol. 12, 2021.
+[9] Birgid Sch¨omig-Markiefka et al.,
+“Quality control stress test for
+deep learning-based diagnostic model in digital pathology,” Modern
+Pathology, vol. 34, pp. 2098 – 2108, 2021.
+[10] Glenn Jocher et al., “ultralytics/yolov5: v6.2 - YOLOv5 Classification
+Models,” Aug. 2022.
+[11] Philippe Weitz et al., “Acrobat - a multi-stain breast cancer histological
+whole-slide-image data set from routine diagnostics for computational
+pathology,” ArXiv, vol. abs/2211.13621, 2022.
+[12] Jiˇr´ı Borovec et al.,
+“Anhir: automatic non-rigid histological image
+registration challenge,” IEEE transactions on medical imaging, vol.
+39, no. 10, pp. 3042–3052, 2020.
+[13] Kaan
+Akan
+and
+Berkay
+Ugur
+Senocak,
+“kaanakan/object detection confusion matrix:
+Confusion
+Matrix
+for Object Detection,” Dec. 2021.
+[14] P´eter B´andi et al., “Resolution-agnostic tissue segmentation in whole-
+slide histopathology images with convolutional neural networks,”
+PeerJ, vol. 7, pp. e8242, Dec. 2019.

@@ -1,0 +1,24 @@
+{
+  "smoke_only": true,
+  "role": "posthoc_dual_channel_policy_not_confirmation",
+  "counts": {
+    "validation": 20,
+    "heldout": 10
+  },
+  "prediction_only_calibration": true,
+  "validation_calibration": "5-fold_CT_OOF",
+  "heldout_calibration": "all40_validation_reference",
+  "fresh_confirmation": false,
+  "original_E3_primary_modified": false,
+  "new_success_threshold": null,
+  "candidate": "guard_dual_channel",
+  "baseline": "guard_p1",
+  "followup_target": "pooled/member_mean/missing_volume/20pct_CT/candidate-minus-guard_p1",
+  "limitations": [
+    "posthoc_rules_on_previously_inspected_cohorts",
+    "CI_conditional_on_fixed_calibration_and_rules",
+    "empty_guard_assumes_expected_PENGWIN_anatomy_not_RibFrac",
+    "no_measured_reading_time_or_perfect_correction",
+    "midrank_calibration_changes_ordering_between_anatomies"
+  ]
+}
