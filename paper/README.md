@@ -18,7 +18,9 @@ Read `manuscript.pdf`; edit `manuscript.tex`. The English draft uses the supplie
   - Panel a: controlled interventions.
   - Panel b: development grouping share.
   - Panel c: held-out risk–coverage curves. These are recomputed from saved scores and must reproduce the saved curves and AURCs within 1e-9.
-  - Panel d: Spearman ρ between each score and each risk.
+  - Panel d: Spearman ρ for the same five scores shown in panel c; all 12 controls remain in Table I.
+
+Both figures use vector text, paths and schematics, with the real CT overlays retained as raster data. PNG previews are exported at 450 dpi. Panel headings, score colors and typography are consistent across figures; the original full-width dimensions are preserved for the IEEE layout. The figure refinement and evidence checks are recorded in `review/figure_refinement.json`.
 
 `make_figures.py` draws both figures. It also writes every derived number quoted in the text to `evidence/figures.json`.
 

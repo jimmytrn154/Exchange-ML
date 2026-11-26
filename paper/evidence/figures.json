@@ -2,19 +2,30 @@
   "role": "reporting_only_saved_evidence_no_new_experiment",
   "fig1_real_panels": "cropped from figures/overview.png (case 004, left hip, development); provenance in evidence/overview.json",
   "fig1_schematic": "panels b and c are schematic illustrations, not data",
+  "visual_design": {
+    "width_inches": 7.16,
+    "height_inches": [
+      1.9,
+      2.0
+    ],
+    "preview_dpi": 450,
+    "minimum_new_text_pt": 6.5,
+    "schematics": "vector paths; real CT overlays unchanged",
+    "heatmap_selection": "same five scores as risk-coverage panel; all 12 in Table I"
+  },
   "source_sha256": {
-    "paper\\figures\\overview.png": "3d3b7d8ad6f9e93504b23bf87f0198e3e2535d461b32c3f0cf1c5bac1c0f49b8",
-    "outputs\\stage3_h1_v2\\perturbations\\responses.csv": "d786270afae172e23a03fabde7b1181ed5e0e769f27e5a9665bad3928e224a41",
-    "outputs\\stage3_h1_v2\\validation\\scores.csv": "8e5717fca87842a067dff9d590ee74d9250d5ba04d3ce408266e53aaead25c01",
-    "outputs\\stage3_h1_v2\\heldout\\risk_coverage.csv": "66f2a42bf3a359616e4093fe9ef3cbad773f76719fe5ac9a33310e74e4a26d76",
-    "outputs\\stage3_h1_v2\\heldout\\comparison.csv": "ea0039c2341962e6216f5cc94144995590750668cbcea52497379ae8522fd815",
-    "outputs\\stage3_h1_v2\\heldout\\scores.csv": "c7f5ced97ac6a56096ab6e3556327dd09c8db53537104e4f75b49d799460edb8",
-    "outputs\\stage3_h1_v2\\perturbations\\replication.csv": "1b03020641cdbf1159da6656f946d779a2b303a5ce4bc8b224ae30be16da7f14",
-    "outputs\\stage3_h1_v2\\heldout\\risks.csv": "52ff5484eb72e51d68ec0db9e5b1cac26762744bb4a17f27bfb4c6d11dfcceba"
+    "paper/figures/overview.png": "3d3b7d8ad6f9e93504b23bf87f0198e3e2535d461b32c3f0cf1c5bac1c0f49b8",
+    "outputs/stage3_h1_v2/perturbations/responses.csv": "d786270afae172e23a03fabde7b1181ed5e0e769f27e5a9665bad3928e224a41",
+    "outputs/stage3_h1_v2/validation/scores.csv": "8e5717fca87842a067dff9d590ee74d9250d5ba04d3ce408266e53aaead25c01",
+    "outputs/stage3_h1_v2/heldout/risk_coverage.csv": "66f2a42bf3a359616e4093fe9ef3cbad773f76719fe5ac9a33310e74e4a26d76",
+    "outputs/stage3_h1_v2/heldout/comparison.csv": "ea0039c2341962e6216f5cc94144995590750668cbcea52497379ae8522fd815",
+    "outputs/stage3_h1_v2/heldout/scores.csv": "c7f5ced97ac6a56096ab6e3556327dd09c8db53537104e4f75b49d799460edb8",
+    "outputs/stage3_h1_v2/perturbations/replication.csv": "1b03020641cdbf1159da6656f946d779a2b303a5ce4bc8b224ae30be16da7f14",
+    "outputs/stage3_h1_v2/heldout/risks.csv": "52ff5484eb72e51d68ec0db9e5b1cac26762744bb4a17f27bfb4c6d11dfcceba"
   },
   "producer": {
     "script": "paper/make_figures.py",
-    "sha256": "fc413af1b4973ef86b479543d90221d38a08566985074fac7714ddd567f9c72e"
+    "sha256": "39a9278bc06b771f3d23e7251a1624946e438cf2b32a2b13ceb6bcea43cd484d"
   },
   "fig2a_nonzero_fraction": {
     "identity": {
@@ -123,25 +134,10 @@
       "one_minus_f1": 0.23343934066986913,
       "missing_volume": 0.5161885982857178
     },
-    "p95_entropy": {
-      "merge_split": -0.10070413416791194,
-      "one_minus_f1": 0.2147520639923092,
-      "missing_volume": 0.5172146243211285
-    },
     "presence": {
       "merge_split": 0.09824085658672556,
       "one_minus_f1": 0.3139514552589529,
       "missing_volume": 0.6127760491922913
-    },
-    "count_variance": {
-      "merge_split": 0.39379566334535704,
-      "one_minus_f1": 0.41804480309716097,
-      "missing_volume": 0.33484207477841643
-    },
-    "hungarian": {
-      "merge_split": 0.36218200416959667,
-      "one_minus_f1": 0.521480232867906,
-      "missing_volume": 0.47755661799921534
     },
     "fa_v1": {
       "merge_split": 0.2032032147903317,
@@ -153,11 +149,6 @@
       "one_minus_f1": 0.42806682187398987,
       "missing_volume": 0.36985163498526374
     },
-    "partition_v2": {
-      "merge_split": 0.592965897863914,
-      "one_minus_f1": 0.39276523117007506,
-      "missing_volume": 0.19164750265077335
-    },
     "partition_v1": {
       "merge_split": 0.6993441572067816,
       "one_minus_f1": 0.35794887147482857,
@@ -165,9 +156,9 @@
     }
   },
   "output_sha256": {
-    "figures/fig1_concept.pdf": "c916d0fd52b1b4f0e796ae24befa43f4c5b45350629177c2c9c8ea57331e3872",
-    "figures/fig1_concept.png": "2a940705c002dcb67e51e9e51a69ae0317947d0405c9c040b66e78be339328a0",
-    "figures/fig2_evidence.pdf": "90101645fda7d66e172683cb981e6c6fc9bb9fcb11d82b1f6916ad2617a7de0b",
-    "figures/fig2_evidence.png": "b1b61aca2a31a80153a3bd9feb4484dd95b89777170a6a9408c49b0c0b6e5013"
+    "figures/fig1_concept.pdf": "afb6dbf170f0d347166899cea204653c9a3bc570ae1a86c6719675ccdaf210c0",
+    "figures/fig1_concept.png": "7e9ed22dd445a736767b31ad629c52cca187a76270eab964945413869a708633",
+    "figures/fig2_evidence.pdf": "efadad19b6db73ce1ed40d767699979440b07c89a3be1feae019bd4b979fd087",
+    "figures/fig2_evidence.png": "22a37ba14716c60dcbaa0cc1f9eda27cf3c88dda1667d5eb015b430fe3f179c6"
   }
 }

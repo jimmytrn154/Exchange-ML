@@ -107,7 +107,7 @@ On 20 development CTs (10 per scan type; 40 bones), reference instance maps were
 
 ![Figure 2](figures/fig2_evidence.png)
 
-**Figure 2.** Evidence for the decomposition. (a) Controlled interventions on reference instance maps (number of eligible interventions in parentheses): fraction producing a nonzero coverage ($A$) or grouping ($wQ$) response. (b) Share of the grouping term in the combined score on 80 development bones (median marked); 27 bones on which all models group identically have share zero under both normalizations. (c) Held-out risk--coverage curves for merge/split risk; bones with the lowest score are retained first, so a lower curve retains fewer failures. (d) Spearman correlation between each score and each held-out risk; coverage and grouping terms align with different failure types.
+**Figure 2.** Evidence for the decomposition. (a) Controlled interventions on reference instance maps (number of eligible interventions in parentheses): fraction producing a nonzero coverage ($A$) or grouping ($wQ$) response. (b) Share of the grouping term in the combined score on 80 development bones (median marked); 27 bones on which all models group identically have share zero under both normalizations. (c) Held-out risk--coverage curves for merge/split risk; bones with the lowest score are retained first, so a lower curve retains fewer failures. (d) Spearman correlation between the five displayed scores and each held-out risk; coverage and grouping terms align with different failure types.
 
 
 
