@@ -1,0 +1,362 @@
+{
+  "case_id": "RibFrac444",
+  "scores": {
+    "mean_entropy": 0.20955157327962462,
+    "p95_entropy": 0.6748182847526469,
+    "pairwise_dice": 0.10975188935269764,
+    "presence": 0.19539403247877643,
+    "union_nvi": 0.04160842127495215,
+    "hungarian": 0.23601267151764957,
+    "fa_v1": 0.19539403247877643,
+    "fa_v2": 0.19539403247877643,
+    "count_variance": 0.888888888888889,
+    "partition_v1": 0.0,
+    "partition_v2": 0.0,
+    "q_joint_unweighted": 0.0
+  },
+  "pair_components": [
+    {
+      "member_i": "member_01",
+      "member_j": "member_02",
+      "n_union_voxels": 30447,
+      "n_shared_voxels": 27343,
+      "k_i": 8,
+      "k_j": 10,
+      "vi": 0.0,
+      "joint_entropy": 2.0718283409307334,
+      "q_log_n": 0.0,
+      "q_joint": 0.0,
+      "presence": 0.10194764673038395,
+      "overlap_weight": 0.8980523532696161,
+      "weighted_q_log_n": 0.0,
+      "weighted_q_joint": 0.0,
+      "fa_v1": 0.10194764673038395,
+      "fa_v2": 0.10194764673038395,
+      "pairwise_dice": 0.05371171482955528,
+      "union_nvi": 0.03836268156467841,
+      "hungarian": 0.25518189210853603
+    },
+    {
+      "member_i": "member_01",
+      "member_j": "member_03",
+      "n_union_voxels": 36816,
+      "n_shared_voxels": 27520,
+      "k_i": 8,
+      "k_j": 10,
+      "vi": 0.0,
+      "joint_entropy": 2.0722736182676993,
+      "q_log_n": 0.0,
+      "q_joint": 0.0,
+      "presence": 0.2524989135158627,
+      "overlap_weight": 0.7475010864841374,
+      "weighted_q_log_n": 0.0,
+      "weighted_q_joint": 0.0,
+      "fa_v1": 0.2524989135158627,
+      "fa_v2": 0.2524989135158627,
+      "pairwise_dice": 0.144491420044765,
+      "union_nvi": 0.041644799443856316,
+      "hungarian": 0.2469888565706604
+    },
+    {
+      "member_i": "member_02",
+      "member_j": "member_03",
+      "n_union_voxels": 36300,
+      "n_shared_voxels": 27888,
+      "k_i": 10,
+      "k_j": 10,
+      "vi": 0.0,
+      "joint_entropy": 2.148778559026727,
+      "q_log_n": 0.0,
+      "q_joint": 0.0,
+      "presence": 0.23173553719008264,
+      "overlap_weight": 0.7682644628099173,
+      "weighted_q_log_n": 0.0,
+      "weighted_q_joint": 0.0,
+      "fa_v1": 0.23173553719008264,
+      "fa_v2": 0.23173553719008264,
+      "pairwise_dice": 0.13105253318377263,
+      "union_nvi": 0.04481778281632173,
+      "hungarian": 0.20586726587375226
+    }
+  ],
+  "source_hashes": {
+    "models/member_01/predictions/RibFrac444.mha": "7e22ee6af52079da6be9f044b8535294e42c8cc6374e6026874f0cb380469931",
+    "models/member_01/probabilities/RibFrac444.mha": "0ff7dbe410c423e1f4b05ee51950fa5065f4c160fcea52b137390ce8be08479b",
+    "models/member_02/predictions/RibFrac444.mha": "eaa4ae4b4651315a27ef5eb91cf9f5fe1d0f900aa1592850518b1a4056e4e548",
+    "models/member_02/probabilities/RibFrac444.mha": "6673334d33b6045ae7a53b01b8e2cdec5ad1da1bbc58b96b3db9fcf9febd7623",
+    "models/member_03/predictions/RibFrac444.mha": "eb021197fdce97736649bb3d2882d8796a2be6ff6a1e27fb342118dcbc326768",
+    "models/member_03/probabilities/RibFrac444.mha": "c192ac1cff5ee99d204b7aecbbb8e8aefb7a31d7adfe52e701099e8dde3d829d"
+  },
+  "model_risks": [
+    {
+      "case_id": "RibFrac444",
+      "model_id": "member_01",
+      "n_GT": 8,
+      "n_pred": 8,
+      "n_ignored_voxels": 0,
+      "gt_volume_mm3": 11712.879432593269,
+      "min_gt_fragment_volume_mm3": 223.57960612521623,
+      "structural_eligible": true,
+      "instance_precision": 0.875,
+      "instance_recall": 0.875,
+      "instance_f1": 0.875,
+      "merge_errors": 0,
+      "split_errors": 0,
+      "missed_gt_instances": 1,
+      "gt_instance_count": 8,
+      "pred_instance_count": 8,
+      "binary_dice": 0.6951358860036296,
+      "merge_split": 0.0,
+      "merge": 0.0,
+      "split": 0.0,
+      "missing": 0.125,
+      "missing_volume": 0.009639938712972418,
+      "one_minus_f1": 0.125,
+      "one_minus_dice": 0.30486411399637037,
+      "false_positive_instances": 1
+    },
+    {
+      "case_id": "RibFrac444",
+      "model_id": "member_02",
+      "n_GT": 8,
+      "n_pred": 10,
+      "n_ignored_voxels": 0,
+      "gt_volume_mm3": 11712.879432593269,
+      "min_gt_fragment_volume_mm3": 223.57960612521623,
+      "structural_eligible": true,
+      "instance_precision": 0.8,
+      "instance_recall": 1.0,
+      "instance_f1": 0.888888888888889,
+      "merge_errors": 0,
+      "split_errors": 0,
+      "missed_gt_instances": 0,
+      "gt_instance_count": 8,
+      "pred_instance_count": 10,
+      "binary_dice": 0.6963695627739688,
+      "merge_split": 0.0,
+      "merge": 0.0,
+      "split": 0.0,
+      "missing": 0.0,
+      "missing_volume": 0.011172114402451472,
+      "one_minus_f1": 0.11111111111111105,
+      "one_minus_dice": 0.3036304372260312,
+      "false_positive_instances": 2
+    },
+    {
+      "case_id": "RibFrac444",
+      "model_id": "member_03",
+      "n_GT": 8,
+      "n_pred": 10,
+      "n_ignored_voxels": 0,
+      "gt_volume_mm3": 11712.879432593269,
+      "min_gt_fragment_volume_mm3": 223.57960612521623,
+      "structural_eligible": true,
+      "instance_precision": 0.7,
+      "instance_recall": 0.875,
+      "instance_f1": 0.7777777777777777,
+      "merge_errors": 0,
+      "split_errors": 0,
+      "missed_gt_instances": 1,
+      "gt_instance_count": 8,
+      "pred_instance_count": 10,
+      "binary_dice": 0.6069643941917658,
+      "merge_split": 0.0,
+      "merge": 0.0,
+      "split": 0.0,
+      "missing": 0.125,
+      "missing_volume": 0.011299795709908023,
+      "one_minus_f1": 0.22222222222222232,
+      "one_minus_dice": 0.39303560580823416,
+      "false_positive_instances": 3
+    }
+  ],
+  "risks": [
+    {
+      "case_id": "RibFrac444",
+      "n_GT": 8,
+      "gt_volume_mm3": 11712.879432593269,
+      "min_gt_fragment_volume_mm3": 223.57960612521623,
+      "structural_eligible": true,
+      "n_ignored_voxels": 0,
+      "n_pred_mean": 9.333333333333334,
+      "member_mean_merge_split": 0.0,
+      "member_mean_merge": 0.0,
+      "member_mean_split": 0.0,
+      "member_mean_missing": 0.08333333333333333,
+      "member_mean_one_minus_f1": 0.1527777777777778,
+      "member_mean_missing_volume": 0.010703949608443971,
+      "member_mean_one_minus_dice": 0.3338433856768786,
+      "member_mean_false_positive_instances": 2.0
+    }
+  ],
+  "matches": [
+    {
+      "case_id": "RibFrac444",
+      "model_id": "member_01",
+      "gt_id": 1,
+      "pred_id": 1,
+      "iou": 0.5865139949109415
+    },
+    {
+      "case_id": "RibFrac444",
+      "model_id": "member_01",
+      "gt_id": 2,
+      "pred_id": 2,
+      "iou": 0.496360204906983
+    },
+    {
+      "case_id": "RibFrac444",
+      "model_id": "member_01",
+      "gt_id": 3,
+      "pred_id": 3,
+      "iou": 0.5787562414888788
+    },
+    {
+      "case_id": "RibFrac444",
+      "model_id": "member_01",
+      "gt_id": 4,
+      "pred_id": 4,
+      "iou": 0.5156841535965386
+    },
+    {
+      "case_id": "RibFrac444",
+      "model_id": "member_01",
+      "gt_id": 5,
+      "pred_id": 5,
+      "iou": 0.6326969615488034
+    },
+    {
+      "case_id": "RibFrac444",
+      "model_id": "member_01",
+      "gt_id": 6,
+      "pred_id": 6,
+      "iou": 0.6125916055962691
+    },
+    {
+      "case_id": "RibFrac444",
+      "model_id": "member_01",
+      "gt_id": 7,
+      "pred_id": 7,
+      "iou": 0.7366017052375152
+    },
+    {
+      "case_id": "RibFrac444",
+      "model_id": "member_01",
+      "gt_id": 8,
+      "pred_id": null,
+      "iou": 0.08867141162514829
+    },
+    {
+      "case_id": "RibFrac444",
+      "model_id": "member_02",
+      "gt_id": 1,
+      "pred_id": 1,
+      "iou": 0.6175682913765399
+    },
+    {
+      "case_id": "RibFrac444",
+      "model_id": "member_02",
+      "gt_id": 2,
+      "pred_id": 2,
+      "iou": 0.49106428380901573
+    },
+    {
+      "case_id": "RibFrac444",
+      "model_id": "member_02",
+      "gt_id": 3,
+      "pred_id": 3,
+      "iou": 0.609450337512054
+    },
+    {
+      "case_id": "RibFrac444",
+      "model_id": "member_02",
+      "gt_id": 4,
+      "pred_id": 5,
+      "iou": 0.5350140056022409
+    },
+    {
+      "case_id": "RibFrac444",
+      "model_id": "member_02",
+      "gt_id": 5,
+      "pred_id": 6,
+      "iou": 0.6638346077598414
+    },
+    {
+      "case_id": "RibFrac444",
+      "model_id": "member_02",
+      "gt_id": 6,
+      "pred_id": 7,
+      "iou": 0.6258526603001364
+    },
+    {
+      "case_id": "RibFrac444",
+      "model_id": "member_02",
+      "gt_id": 7,
+      "pred_id": 8,
+      "iou": 0.6997404095760023
+    },
+    {
+      "case_id": "RibFrac444",
+      "model_id": "member_02",
+      "gt_id": 8,
+      "pred_id": 9,
+      "iou": 0.1080592699674738
+    },
+    {
+      "case_id": "RibFrac444",
+      "model_id": "member_03",
+      "gt_id": 1,
+      "pred_id": 1,
+      "iou": 0.6196236559139785
+    },
+    {
+      "case_id": "RibFrac444",
+      "model_id": "member_03",
+      "gt_id": 2,
+      "pred_id": 2,
+      "iou": 0.513671875
+    },
+    {
+      "case_id": "RibFrac444",
+      "model_id": "member_03",
+      "gt_id": 3,
+      "pred_id": 3,
+      "iou": 0.595869514198545
+    },
+    {
+      "case_id": "RibFrac444",
+      "model_id": "member_03",
+      "gt_id": 4,
+      "pred_id": 4,
+      "iou": 0.5173253925284245
+    },
+    {
+      "case_id": "RibFrac444",
+      "model_id": "member_03",
+      "gt_id": 5,
+      "pred_id": 6,
+      "iou": 0.6554129464285714
+    },
+    {
+      "case_id": "RibFrac444",
+      "model_id": "member_03",
+      "gt_id": 6,
+      "pred_id": 7,
+      "iou": 0.6264445955132563
+    },
+    {
+      "case_id": "RibFrac444",
+      "model_id": "member_03",
+      "gt_id": 7,
+      "pred_id": 8,
+      "iou": 0.768
+    },
+    {
+      "case_id": "RibFrac444",
+      "model_id": "member_03",
+      "gt_id": 8,
+      "pred_id": null,
+      "iou": 0.09845242015146526
+    }
+  ]
+}

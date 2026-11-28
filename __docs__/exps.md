@@ -1,6 +1,6 @@
 # Protocol và lệnh chạy
 
-Cập nhật **28/11/2026**. Kết quả và trạng thái ở [progress.md](progress.md); ưu tiên còn lại ở [plan.md](plan.md). E1–E5, v3 và v4 đã hoàn tất. E6 fast đã train xong cả ba members; dùng launcher chạy tiếp bên dưới cho external inference/evaluation.
+Cập nhật **28/11/2026**. Kết quả và trạng thái ở [progress.md](progress.md); ưu tiên còn lại ở [plan.md](plan.md). E1–E5, v3 và v4 đã hoàn tất. E6 fast đã hoàn tất training/inference/evaluation và audit/cohort; [kết quả đã lưu trong repo](../outputs/ribfrac_fast_v1/README.md). Các commands bên dưới dành cho tái lập có chủ đích, không phải yêu cầu submit lại.
 
 ## Bản đồ experiments
 
@@ -292,11 +292,13 @@ PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:. MPLCONFIGDIR=/tmp/exchange-ml-mpl \
 
 ## Hoàn tất E6 từ ba final checkpoints — 28/11/2026
 
+**Complete:** chain preflight `3530` → inference `3531_0/1/2` → evaluation `3532` → audit/cohort `3533` đã thành công. [Results + hashes](../outputs/ribfrac_fast_v1/README.md). Không submit lại chỉ để đọc kết quả.
+
 Ba training manifests complete ở epoch 1000; checkpoint hashes đã kiểm tra PASS.
 Job resume member03 `3318_2` COMPLETED lúc 13:26 ngày 28/11. Inference 2924 và
 evaluation 2925 cũ đã CANCELLED; không dùng lại dependencies này.
 
-**Tác giả chạy** command sau; agent đã kiểm tra nhưng chưa submit:
+**Lệnh tái lập lịch sử** từ ba final checkpoints (chain đã complete):
 
 ```bash
 cd /mnt/sdb/shared/dang.cpm/Exchange-ML
@@ -464,7 +466,7 @@ bash scripts/submit_triage_policy.sh full
 
 Launcher submit CPU synthetic smoke rồi full `afterok`; **4 CPUs,8GiB,2giờ time limit**, không request GPU. `check` chỉ submit metadata preflight; `smoke` không submit full. Output `outputs/triage_policy_development_v1/`, receipt `triage_manifest.json`; logs `outputs/logs/dual-triage-<job_id>.log`. Time limit không phải ETA. Full command chưa được agent chạy.
 
-Full policy đã complete: target missing-volume tại20%CT trên100heldout có candidate−guardP1 **+0,00109 [−0,02321; +0,01281]**, chưa xác nhận lợi ích. Giữ output và negative finding; không đưa policy thành contribution. E6 chưa có external evaluation hoàn chỉnh.
+Full policy đã complete: target missing-volume tại20%CT trên100heldout có candidate−guardP1 **+0,00109 [−0,02321; +0,01281]**, chưa xác nhận lợi ích. Giữ output và negative finding; không đưa policy thành contribution. E6 hiện đã complete/audit; xem bảng external trong progress.md và outputs/ribfrac_fast_v1/.
 
 ## Compile manuscript và audit completed evidence (CPU)
 

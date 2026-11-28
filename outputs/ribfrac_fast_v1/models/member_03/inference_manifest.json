@@ -1,0 +1,1798 @@
+{
+  "status": "complete",
+  "signature": "9d1a00388f574a65f484784a29ac4877d4cbb0e537dff29cb717763e4300e40e",
+  "provenance": {
+    "config": {
+      "schema_version": 1,
+      "experiment": "E6_external_ribfrac",
+      "dataset_root": "/mnt/sdb/shared/dang.cpm/dataset/RibFrac",
+      "output_root": "/mnt/disk1/backup_user/dang.cpm/Exchange-ML-E6-fast-v1",
+      "dataset_id": 706,
+      "dataset_name": "Dataset706_RibFracE6",
+      "train_ids": [
+        1,
+        420
+      ],
+      "external_ids": [
+        421,
+        500
+      ],
+      "internal_split_seed": 20261121,
+      "internal_validation_fraction": 0.2,
+      "members": {
+        "member_01": 32001,
+        "member_02": 32002,
+        "member_03": 32003
+      },
+      "backend": {
+        "name": "binary_nnunet_3d_fullres_connected_components",
+        "nnunet_version": "2.5.1",
+        "configuration": "3d_fullres",
+        "plans_name": "nnUNetPlans",
+        "gpu_memory_target_gb": 8,
+        "epochs": 1000,
+        "iterations_per_epoch": 83,
+        "validation_iterations_per_epoch": 17,
+        "checkpoint": "checkpoint_final.pth",
+        "threshold": 0.5,
+        "connectivity": 26,
+        "minimum_component_mm3": 0,
+        "mirroring": true,
+        "augmentation_workers": 0,
+        "unpack_dataset": false,
+        "batch_size": 6
+      },
+      "evaluation": {
+        "iou_threshold": 0.1,
+        "bootstrap_resamples": 10000,
+        "bootstrap_seed": 20261121
+      },
+      "storage": {
+        "estimated_bytes_per_training_voxel": 8,
+        "estimated_bytes_per_external_voxel": 15,
+        "reserve_gib": 30
+      },
+      "scope": "Transfer of fixed disagreement scores to rib-fracture lesion instances, not PENGWIN checkpoint transfer or whole-rib fragmentation. Performance revision: larger batch, NPY cache, recorded mixed-batch warmstart prefixes.",
+      "target": "All nonzero instance IDs, including label_code=-1, are positive for segmentation/detection. No voxel ignore mask.",
+      "selection": "All 80 official validation cases excluded from planning/training/model selection; fixed final epoch, no tuning on external data.",
+      "speed_revision": {
+        "parent_root": "/mnt/disk1/backup_user/dang.cpm/Exchange-ML-E6",
+        "output_root": "/mnt/disk1/backup_user/dang.cpm/Exchange-ML-E6-fast-v1",
+        "batch_candidates": [
+          2,
+          5,
+          6
+        ],
+        "target_train_patches_per_epoch": 500,
+        "target_validation_patches_per_epoch": 100,
+        "cache_workers": 4,
+        "benchmark_warmup_steps": 2,
+        "benchmark_steps": 3,
+        "memory_headroom_gib": 2,
+        "old_jobs": [
+          2880,
+          2881,
+          2882
+        ],
+        "cudnn_benchmark": true,
+        "note": "Explicit batch/performance revision. Preserve parent checkpoints; resume their verified states into a separate campaign. Approximately preserve patch exposure, not optimizer-update count."
+      },
+      "speed_selection_sha256": "38f2c376a58c6495240562df03820a99e68649be181e8c13bae9e75c52dcb6c6"
+    },
+    "output_root": "/mnt/disk1/backup_user/dang.cpm/Exchange-ML-E6-fast-v1",
+    "software": {
+      "python": "3.10.21",
+      "nnunetv2": "2.5.1",
+      "torch": "2.1.2+cu118",
+      "numpy": "1.26.4",
+      "scipy": "1.15.3",
+      "SimpleITK": "2.3.1",
+      "dynamic_network_architectures": "0.3.1",
+      "batchgenerators": "0.25.3",
+      "batchgeneratorsv2": "0.3.5",
+      "acvl_utils": "0.2.6"
+    },
+    "code_sha256": {
+      "scripts/run_ribfrac_fast.py": "7a7ec4ce6477a6308d9b93041b4d707bd06483417e050e7aa01ee59ec70a7c26",
+      "src/exchange_ml/e6_backend.py": "07d34f0415fdfb030af395bdefc806a3e96518dd951d1cfd9376cd923118afea",
+      "src/exchange_ml/e6_data.py": "4e06f548878bf0f1a24e2b195fe930f6cf1b883406b69dac48d4f7ba9d29aa2f",
+      "src/exchange_ml/e6_evaluation.py": "064477cefd575a40a4aee177579d9f68ca174ffd51e1d8eff9e7c96e4df39c67",
+      "src/exchange_ml/e1_statistics.py": "f9dcd986114251636fb116c3a23b2586846edc6439d4a54598ba50a657d11af1",
+      "src/exchange_ml/e1_scoring.py": "9077e0402171e88dc1a48ef6d0626d58248448043912a5aa61adda06b91fb36d",
+      "src/exchange_ml/ribfrac_fast_backend.py": "8f550d34afd3bacee1c2867c0d61a9182ab24d56f6283f7f6996c85ff69a0807",
+      "scripts/ribfrac_fast.sbatch": "75e62050b408471a7f41f181976355c3e7ff9f2dbb9751e0189a8d67a2bcfd84",
+      "scripts/submit_ribfrac_fast.sh": "2dda978f139e05420a7090ce202d22972d681befafcf6c5242a36287c18dad99"
+    },
+    "smoke_only": false,
+    "role": "external_ribfrac_performance_revision",
+    "member": "member_03",
+    "training_manifest_sha256": "b7010dc88041885be62ada511d90d05d519ee05ed075c02037d36722bbab7274",
+    "checkpoint_sha256": "c38a9b9ace68ff89decaca01099680dfdac614dadb625fe7bc3f4df94daeb7c5",
+    "case_ids": [
+      "RibFrac421",
+      "RibFrac422",
+      "RibFrac423",
+      "RibFrac424",
+      "RibFrac425",
+      "RibFrac426",
+      "RibFrac427",
+      "RibFrac428",
+      "RibFrac429",
+      "RibFrac430",
+      "RibFrac431",
+      "RibFrac432",
+      "RibFrac433",
+      "RibFrac434",
+      "RibFrac435",
+      "RibFrac436",
+      "RibFrac437",
+      "RibFrac438",
+      "RibFrac439",
+      "RibFrac440",
+      "RibFrac441",
+      "RibFrac442",
+      "RibFrac443",
+      "RibFrac444",
+      "RibFrac445",
+      "RibFrac446",
+      "RibFrac447",
+      "RibFrac448",
+      "RibFrac449",
+      "RibFrac450",
+      "RibFrac451",
+      "RibFrac452",
+      "RibFrac453",
+      "RibFrac454",
+      "RibFrac455",
+      "RibFrac456",
+      "RibFrac457",
+      "RibFrac458",
+      "RibFrac459",
+      "RibFrac460",
+      "RibFrac461",
+      "RibFrac462",
+      "RibFrac463",
+      "RibFrac464",
+      "RibFrac465",
+      "RibFrac466",
+      "RibFrac467",
+      "RibFrac468",
+      "RibFrac469",
+      "RibFrac470",
+      "RibFrac471",
+      "RibFrac472",
+      "RibFrac473",
+      "RibFrac474",
+      "RibFrac475",
+      "RibFrac476",
+      "RibFrac477",
+      "RibFrac478",
+      "RibFrac479",
+      "RibFrac480",
+      "RibFrac481",
+      "RibFrac482",
+      "RibFrac483",
+      "RibFrac484",
+      "RibFrac485",
+      "RibFrac486",
+      "RibFrac487",
+      "RibFrac488",
+      "RibFrac489",
+      "RibFrac490",
+      "RibFrac491",
+      "RibFrac492",
+      "RibFrac493",
+      "RibFrac494",
+      "RibFrac495",
+      "RibFrac496",
+      "RibFrac497",
+      "RibFrac498",
+      "RibFrac499",
+      "RibFrac500"
+    ]
+  },
+  "started_at_unix": 1795860871.2398987,
+  "records": {
+    "RibFrac421": {
+      "source_image": {
+        "bytes": 108458582,
+        "mtime_ns": 1592060789000000000,
+        "sha256": "e531cda52cc27d42698b887ad309d0011bf8ae1df0f7f6bdcc689ca15b2c4b7c"
+      },
+      "prediction": {
+        "bytes": 345022,
+        "mtime_ns": 1795861062848026200,
+        "sha256": "45177402c82a614767954aaa054a25b037291ddfc573ff08e644a4cf38778295"
+      },
+      "probability": {
+        "bytes": 155241139,
+        "mtime_ns": 1795861067688050205,
+        "sha256": "6ec9043078fdce77c404f6f76b16b318ed3926db140714815c41dd8fca7b9fe1"
+      },
+      "seconds_including_first_model_load": 198.9295525479829,
+      "n_pred_instances": 11,
+      "all_empty": false
+    },
+    "RibFrac422": {
+      "source_image": {
+        "bytes": 106134731,
+        "mtime_ns": 1592060796000000000,
+        "sha256": "7d96fc7ed01b8ab52b3f36ca1c396c3bdb04173bcfb3991f8ea0e501c470e5f5"
+      },
+      "prediction": {
+        "bytes": 339090,
+        "mtime_ns": 1795861249784953365,
+        "sha256": "05f9ae4939dfceeb4f5616e1266eee78a70b3239f181101a42cf7bf9ce65987c"
+      },
+      "probability": {
+        "bytes": 154621145,
+        "mtime_ns": 1795861254316975843,
+        "sha256": "fd12b7aa779e43b018d37f4d2ca96e6147590603fd5f0d64953c8292b433ca38"
+      },
+      "seconds_including_first_model_load": 186.37789626800804,
+      "n_pred_instances": 8,
+      "all_empty": false
+    },
+    "RibFrac423": {
+      "source_image": {
+        "bytes": 123554125,
+        "mtime_ns": 1592060803000000000,
+        "sha256": "0907e81707ed9f75719796df75bed4419e490cbd720054183c60108f4eb61887"
+      },
+      "prediction": {
+        "bytes": 372672,
+        "mtime_ns": 1795861371409556596,
+        "sha256": "868c49cec022f45b7f5321f89e1b56b4d1c6354f16161569e340352af47a2771"
+      },
+      "probability": {
+        "bytes": 172026814,
+        "mtime_ns": 1795861376685582764,
+        "sha256": "0923264ab486becb819ec09a1a1a283c7719d22e24bda10accc3f09b022b0ae5"
+      },
+      "seconds_including_first_model_load": 122.7849536910071,
+      "n_pred_instances": 4,
+      "all_empty": false
+    },
+    "RibFrac424": {
+      "source_image": {
+        "bytes": 129422111,
+        "mtime_ns": 1592060810000000000,
+        "sha256": "5ee3e783df1dbdfeeff9c124a9b1cd3ccff9f172f86cd6cab06848791d295961"
+      },
+      "prediction": {
+        "bytes": 427142,
+        "mtime_ns": 1795861569790540522,
+        "sha256": "61335d4e2272494bde31e7da63b5f999e6c6499bd4adcdd7d379633d6292cedb"
+      },
+      "probability": {
+        "bytes": 194203196,
+        "mtime_ns": 1795861575554569110,
+        "sha256": "bab3583a35e2518e02ca92511aa7be93fd98fe9dc2bcef05105cb954b9580f70"
+      },
+      "seconds_including_first_model_load": 199.05046918502194,
+      "n_pred_instances": 11,
+      "all_empty": false
+    },
+    "RibFrac425": {
+      "source_image": {
+        "bytes": 119164375,
+        "mtime_ns": 1592060818000000000,
+        "sha256": "87bdd49f1adc0f4647001cea4ac59efb8d032980fc324cdbd253d20b82d1da0b"
+      },
+      "prediction": {
+        "bytes": 368612,
+        "mtime_ns": 1795861789759631521,
+        "sha256": "4f1640f8842a481aeeaba1d9119aef0958f0deb03a43d3e552ab37ed72ae33ca"
+      },
+      "probability": {
+        "bytes": 171640239,
+        "mtime_ns": 1795861794975657390,
+        "sha256": "089f710eed34e16735e6153b44f8b816d162b853ceb5f6b3d25bfca12acf71bc"
+      },
+      "seconds_including_first_model_load": 218.97916523599997,
+      "n_pred_instances": 1,
+      "all_empty": false
+    },
+    "RibFrac426": {
+      "source_image": {
+        "bytes": 157531824,
+        "mtime_ns": 1592060825000000000,
+        "sha256": "aa5321a871702a7d84cb900ee0bf7a586b3a77c83620eb691b0bec4963295568"
+      },
+      "prediction": {
+        "bytes": 481343,
+        "mtime_ns": 1795861939208372754,
+        "sha256": "021147a3e8b983eb8540ee6f379833fe067c5ecce8fc4811ffd420782d41bb9c"
+      },
+      "probability": {
+        "bytes": 223017744,
+        "mtime_ns": 1795861946100406937,
+        "sha256": "8e2c5d71d773166e53e3dd54035213b4b2e1d6115114e1c8ad2e904440066b46"
+      },
+      "seconds_including_first_model_load": 151.8870835530106,
+      "n_pred_instances": 5,
+      "all_empty": false
+    },
+    "RibFrac427": {
+      "source_image": {
+        "bytes": 128977910,
+        "mtime_ns": 1592060831000000000,
+        "sha256": "c1d775de1cbc49690fd2521e97ee99695a95ecf8d7e040eb9b8ce102ec96f2ee"
+      },
+      "prediction": {
+        "bytes": 409453,
+        "mtime_ns": 1795862066229002748,
+        "sha256": "424752fcd798baef2b4fb91585ed1619f6472d4c8e8cf2133acdb2a9c455a2fa"
+      },
+      "probability": {
+        "bytes": 181121849,
+        "mtime_ns": 1795862071605029412,
+        "sha256": "f21215a0814be9b5fc641f95a52f9d18a7728f011e38c1716001dfe02ed7b3c9"
+      },
+      "seconds_including_first_model_load": 124.63982006901642,
+      "n_pred_instances": 16,
+      "all_empty": false
+    },
+    "RibFrac428": {
+      "source_image": {
+        "bytes": 129880378,
+        "mtime_ns": 1592060839000000000,
+        "sha256": "36ff393849ca666c8fd9ba0b7f1e656b3748c6f280e3a34e115e2272e50f9aaf"
+      },
+      "prediction": {
+        "bytes": 398406,
+        "mtime_ns": 1795862191969626394,
+        "sha256": "5689ad89d63176e0dc831494a35e63989263a168d457c70c5288b71f9bbf6804"
+      },
+      "probability": {
+        "bytes": 183125795,
+        "mtime_ns": 1795862197605654347,
+        "sha256": "026eac69132392f5d3da760f133970f801babdde7de0d220d09eff328587c313"
+      },
+      "seconds_including_first_model_load": 126.08325266302563,
+      "n_pred_instances": 6,
+      "all_empty": false
+    },
+    "RibFrac429": {
+      "source_image": {
+        "bytes": 108356361,
+        "mtime_ns": 1592060847000000000,
+        "sha256": "1117a8f859d6afe30ab02687610912dd9e578b31785011e138c03a5458d3fb9b"
+      },
+      "prediction": {
+        "bytes": 331598,
+        "mtime_ns": 1795862348522402861,
+        "sha256": "585d7f51c8fee7e40f9dc5d0715a5bb645def5ba16a68955e92e37d09d0fe8b1"
+      },
+      "probability": {
+        "bytes": 151433192,
+        "mtime_ns": 1795862353066425399,
+        "sha256": "912494a865b2cc813e0c019e3389e7e2f20ce825058b1c644e27c4ba37d9c2a0"
+      },
+      "seconds_including_first_model_load": 154.67807906499365,
+      "n_pred_instances": 9,
+      "all_empty": false
+    },
+    "RibFrac430": {
+      "source_image": {
+        "bytes": 117735012,
+        "mtime_ns": 1592060855000000000,
+        "sha256": "abf813619a94203632c44291de34d35f7f21c00cad6ea2349f0874c1e34b95a4"
+      },
+      "prediction": {
+        "bytes": 364319,
+        "mtime_ns": 1795862525123278763,
+        "sha256": "7a5e0a858a8c3f1a84607cd2d4bcfd13f6209d677314e77d2ba2036dc6b69e07"
+      },
+      "probability": {
+        "bytes": 167826417,
+        "mtime_ns": 1795862530303304454,
+        "sha256": "87f070c3173e35dae09926f8ab525d9db8edb04549898af318c6e3bc7184acfb"
+      },
+      "seconds_including_first_model_load": 177.49380521499552,
+      "n_pred_instances": 1,
+      "all_empty": false
+    },
+    "RibFrac431": {
+      "source_image": {
+        "bytes": 124195077,
+        "mtime_ns": 1592060862000000000,
+        "sha256": "f773549cf4ad4a12082040f22f9b0d3c4240d8a72f323b7949944191edcecd66"
+      },
+      "prediction": {
+        "bytes": 382370,
+        "mtime_ns": 1795862664807971567,
+        "sha256": "781e16e2faf73798fc1ab7dc2bd5989120811eda6765d8b7f0cb007e0f6c6ea8"
+      },
+      "probability": {
+        "bytes": 173862278,
+        "mtime_ns": 1795862670095997795,
+        "sha256": "2d7a2718767dc1c939ec1ea06f180f32901892da4626cc3d910c16825bc14a3a"
+      },
+      "seconds_including_first_model_load": 139.75192808598513,
+      "n_pred_instances": 5,
+      "all_empty": false
+    },
+    "RibFrac432": {
+      "source_image": {
+        "bytes": 100263542,
+        "mtime_ns": 1592060868000000000,
+        "sha256": "0afb2f67e9ce1df56d324e71a73c101769e777c41be0c47b38a80fd231d4add8"
+      },
+      "prediction": {
+        "bytes": 305050,
+        "mtime_ns": 1795862809832690858,
+        "sha256": "29524969dbcae9ac5d8c28c45833df26402209ff33102129a95f3e6553537324"
+      },
+      "probability": {
+        "bytes": 139436623,
+        "mtime_ns": 1795862813988711473,
+        "sha256": "9578fb738362c5c8aa4e7d0ff430d6eeacf6890a95b7447c29a24b90e7b5c680"
+      },
+      "seconds_including_first_model_load": 143.21918255399214,
+      "n_pred_instances": 6,
+      "all_empty": false
+    },
+    "RibFrac433": {
+      "source_image": {
+        "bytes": 125083560,
+        "mtime_ns": 1592060873000000000,
+        "sha256": "f0393b797d00717757e4667daa57d3aa14df3188cc3d8791b03fce0d2e29aecc"
+      },
+      "prediction": {
+        "bytes": 441982,
+        "mtime_ns": 1795862966045465640,
+        "sha256": "383e61db28c70f315165a2ea73450eb9819f0fe50c5216fa55a16edba5edfa63"
+      },
+      "probability": {
+        "bytes": 184078740,
+        "mtime_ns": 1795862971673493554,
+        "sha256": "e728b809139eeacf625485439638165c090c0372f52aeeb6d6c40b19dbbab6b8"
+      },
+      "seconds_including_first_model_load": 158.38182174100075,
+      "n_pred_instances": 17,
+      "all_empty": false
+    },
+    "RibFrac434": {
+      "source_image": {
+        "bytes": 110479783,
+        "mtime_ns": 1592060880000000000,
+        "sha256": "34af4e3023b84e2bccc20ff22e2b9c58b219b8bd574a8b24ff4b520d72cf9a97"
+      },
+      "prediction": {
+        "bytes": 333833,
+        "mtime_ns": 1795863118466221613,
+        "sha256": "9ff9471ba45d59064376e3aa75e3e9062e5ecb48433b18997c39b095d330ee16"
+      },
+      "probability": {
+        "bytes": 156221150,
+        "mtime_ns": 1795863123230245242,
+        "sha256": "5ff5aeff8c9442c811ae9415e66ab42b70d3f15c0a70a5baa221d7eb9bc09993"
+      },
+      "seconds_including_first_model_load": 151.0012419790146,
+      "n_pred_instances": 4,
+      "all_empty": false
+    },
+    "RibFrac435": {
+      "source_image": {
+        "bytes": 60549262,
+        "mtime_ns": 1592060884000000000,
+        "sha256": "7767e38b50441c49517529689535a950fa9e0449bb7ecf0a94c097118c57178a"
+      },
+      "prediction": {
+        "bytes": 216360,
+        "mtime_ns": 1795863236282805958,
+        "sha256": "be6565edfbeb0931e627b27f5a1f018eae4687d160d389174cc19e4b8b3cc608"
+      },
+      "probability": {
+        "bytes": 97641156,
+        "mtime_ns": 1795863239354821195,
+        "sha256": "e6b6cc58d180fd42907fc0e7200bb7b47947c2be3299b3c1753e3ccb65165ce1"
+      },
+      "seconds_including_first_model_load": 115.08197486499557,
+      "n_pred_instances": 3,
+      "all_empty": false
+    },
+    "RibFrac436": {
+      "source_image": {
+        "bytes": 98516874,
+        "mtime_ns": 1592060890000000000,
+        "sha256": "4c5f398074c1c536f9a1e5b0b7bfc49a469cd5719ea260389e0cd839903bf653"
+      },
+      "prediction": {
+        "bytes": 331658,
+        "mtime_ns": 1795863380939523423,
+        "sha256": "6517af5c91cb360119c3073be667ad43f9f623cd502c8058b13771449254ee7e"
+      },
+      "probability": {
+        "bytes": 147220310,
+        "mtime_ns": 1795863385495546020,
+        "sha256": "efebff9c7873f07be85948353b44715cde44950e5417067c00559b558661246f"
+      },
+      "seconds_including_first_model_load": 146.89091991999885,
+      "n_pred_instances": 17,
+      "all_empty": false
+    },
+    "RibFrac437": {
+      "source_image": {
+        "bytes": 134620942,
+        "mtime_ns": 1592060897000000000,
+        "sha256": "dc8793d471ca7cb76437e1b282f4ab5223fec9089c9eb0f525d46f23aaed14cc"
+      },
+      "prediction": {
+        "bytes": 420910,
+        "mtime_ns": 1795863501104119413,
+        "sha256": "724da77e8324455049f23ca1ef81519eec585eaff827d483d79650a6873e62b8"
+      },
+      "probability": {
+        "bytes": 187515169,
+        "mtime_ns": 1795863506828147804,
+        "sha256": "cea25802a5df650c56474d082aed05ac373c0dab83719123cc6e4b009f795d33"
+      },
+      "seconds_including_first_model_load": 121.81724963901797,
+      "n_pred_instances": 10,
+      "all_empty": false
+    },
+    "RibFrac438": {
+      "source_image": {
+        "bytes": 135640083,
+        "mtime_ns": 1592060905000000000,
+        "sha256": "09cbaacd018bfec077e7aa144d8191125aab78eca801875eead1b714646b6098"
+      },
+      "prediction": {
+        "bytes": 418272,
+        "mtime_ns": 1795863744561326908,
+        "sha256": "a0aa47985fe10300b742bbbbe92aaec330ffd1b60c828748ad6fea3ed717d1d6"
+      },
+      "probability": {
+        "bytes": 190825963,
+        "mtime_ns": 1795863750329355516,
+        "sha256": "b2dc49c988fa7b59f07c2b34a6e907e41aa75cfcc802e9c683fa19a0a06ddf15"
+      },
+      "seconds_including_first_model_load": 243.57964147499297,
+      "n_pred_instances": 14,
+      "all_empty": false
+    },
+    "RibFrac439": {
+      "source_image": {
+        "bytes": 53688921,
+        "mtime_ns": 1592060907000000000,
+        "sha256": "b75faf6d58f5b8258ec0cb8ff41a46dd69b1c9b14892946914e697279188c520"
+      },
+      "prediction": {
+        "bytes": 210797,
+        "mtime_ns": 1795863822317712562,
+        "sha256": "d54b60a8465abc2dafca21ab0348b554e1ff69b5226de2cad00ad498db7bf10e"
+      },
+      "probability": {
+        "bytes": 97205586,
+        "mtime_ns": 1795863825181726768,
+        "sha256": "76721da698ff5145a69445a7de94ae56836eae1f7365b2b8b8aab51b381c5df6"
+      },
+      "seconds_including_first_model_load": 73.08468193400768,
+      "n_pred_instances": 3,
+      "all_empty": false
+    },
+    "RibFrac440": {
+      "source_image": {
+        "bytes": 128265375,
+        "mtime_ns": 1592060915000000000,
+        "sha256": "99c557370de5f68104a917c25e39f3f6e0417178a7b083181cbc4820be38d894"
+      },
+      "prediction": {
+        "bytes": 403398,
+        "mtime_ns": 1795863943302312620,
+        "sha256": "99dd937dd77c6543035f4e6d6d8055d67b9b0155dfb963a5a9e6cbff726f65ad"
+      },
+      "probability": {
+        "bytes": 182429498,
+        "mtime_ns": 1795863948910340434,
+        "sha256": "6be01fff518ad3272ec712ce1e9a722ca5ab5f3de0fb765868627bc73e39a5c7"
+      },
+      "seconds_including_first_model_load": 125.1803990410117,
+      "n_pred_instances": 6,
+      "all_empty": false
+    },
+    "RibFrac441": {
+      "source_image": {
+        "bytes": 106834097,
+        "mtime_ns": 1592060920000000000,
+        "sha256": "1d4671660d56dd76167711a12f513e319c5fe7067453d06631bc4bbaf8efae44"
+      },
+      "prediction": {
+        "bytes": 382446,
+        "mtime_ns": 1795864120547191715,
+        "sha256": "e7c57b451da8567f5b55bbe76553409bc798d3e70b85047d5afc5cdfb3a38dd5"
+      },
+      "probability": {
+        "bytes": 171033144,
+        "mtime_ns": 1795864125787217704,
+        "sha256": "373bb255ab05ed116d82438b60bacbcedda9db7f4dde29315970e8d5ed89572e"
+      },
+      "seconds_including_first_model_load": 176.53561322001042,
+      "n_pred_instances": 12,
+      "all_empty": false
+    },
+    "RibFrac442": {
+      "source_image": {
+        "bytes": 62002725,
+        "mtime_ns": 1592060924000000000,
+        "sha256": "00ba92b5d2f53105f4b9865d713b3bf9754c9c8debf95be50203fe970f734ee2"
+      },
+      "prediction": {
+        "bytes": 238045,
+        "mtime_ns": 1795864207107621035,
+        "sha256": "a5364cd6a8fbec45a29e35661bcab1a688af12aa87c00671f3a8655b032d69b3"
+      },
+      "probability": {
+        "bytes": 109261112,
+        "mtime_ns": 1795864210415637443,
+        "sha256": "078df6efe692fc56a6ef5640a43984314799e0330b9f82b3f17625baf83b941f"
+      },
+      "seconds_including_first_model_load": 83.49982488100068,
+      "n_pred_instances": 1,
+      "all_empty": false
+    },
+    "RibFrac443": {
+      "source_image": {
+        "bytes": 144856071,
+        "mtime_ns": 1592060931000000000,
+        "sha256": "4a5e840e170ea4f4f84e95107116029712ffebdfa8a51905ab11f840b419b8da"
+      },
+      "prediction": {
+        "bytes": 436919,
+        "mtime_ns": 1795864364376401054,
+        "sha256": "9dab2bdde8023fa8616fb2c8cf0f6af31cd9e223dd29be38ac364d416fbe5af8"
+      },
+      "probability": {
+        "bytes": 200863699,
+        "mtime_ns": 1795864370544431647,
+        "sha256": "3e3601df12efcdc13eb8336b2607dc76c113137e8ffc0b372c549ebd886ad14d"
+      },
+      "seconds_including_first_model_load": 161.6108023530105,
+      "n_pred_instances": 5,
+      "all_empty": false
+    },
+    "RibFrac444": {
+      "source_image": {
+        "bytes": 118803938,
+        "mtime_ns": 1592060937000000000,
+        "sha256": "364818415307f74db364363683e4aac8ca49200aa1759d4cf5e6cba5c42c747a"
+      },
+      "prediction": {
+        "bytes": 366716,
+        "mtime_ns": 1795864536909256779,
+        "sha256": "eb021197fdce97736649bb3d2882d8796a2be6ff6a1e27fb342118dcbc326768"
+      },
+      "probability": {
+        "bytes": 165622163,
+        "mtime_ns": 1795864541957281816,
+        "sha256": "c192ac1cff5ee99d204b7aecbbb8e8aefb7a31d7adfe52e701099e8dde3d829d"
+      },
+      "seconds_including_first_model_load": 170.78585100200144,
+      "n_pred_instances": 10,
+      "all_empty": false
+    },
+    "RibFrac445": {
+      "source_image": {
+        "bytes": 122302680,
+        "mtime_ns": 1592060944000000000,
+        "sha256": "5cd8ed9a11d369d7052d5da3ac557137f96cb66c83aba80ac00f93d773358a6b"
+      },
+      "prediction": {
+        "bytes": 421405,
+        "mtime_ns": 1795864647025802933,
+        "sha256": "5f582fe971fe3fb1829a7a4113bbfca6d93d34887f1fbc03c109b4414b873b80"
+      },
+      "probability": {
+        "bytes": 172846758,
+        "mtime_ns": 1795864652089828050,
+        "sha256": "dcf6546dbced0421b613ba70798f94661bb440ebb3bc9a07163ef80655a836ff"
+      },
+      "seconds_including_first_model_load": 110.00738237699261,
+      "n_pred_instances": 19,
+      "all_empty": false
+    },
+    "RibFrac446": {
+      "source_image": {
+        "bytes": 67101030,
+        "mtime_ns": 1592060950000000000,
+        "sha256": "8362ac31e4f8ea2294c7e8152ea00b97e1b5ccfa698cf65f951e8dd0b7b50d01"
+      },
+      "prediction": {
+        "bytes": 269200,
+        "mtime_ns": 1795864768998407891,
+        "sha256": "3018b410cbcb395bcc91607fec1754de46f0827fee36e07cc13d283d61931920"
+      },
+      "probability": {
+        "bytes": 123376678,
+        "mtime_ns": 1795864772818426838,
+        "sha256": "4866b5b74a62159ef503875cadd42de903e4ed8099580183db61a324555ced04"
+      },
+      "seconds_including_first_model_load": 119.89663646797999,
+      "n_pred_instances": 5,
+      "all_empty": false
+    },
+    "RibFrac447": {
+      "source_image": {
+        "bytes": 140960137,
+        "mtime_ns": 1592060958000000000,
+        "sha256": "9cdbd71c371971099cc00ce1c0fba0316bd3229a9c20086f0393100f5a617e8f"
+      },
+      "prediction": {
+        "bytes": 468339,
+        "mtime_ns": 1795864927391193484,
+        "sha256": "9e1622b5fc75d2d31b854a6b7fd7b94872da0bcd485a04af5538ee84f8b9fd62"
+      },
+      "probability": {
+        "bytes": 200143394,
+        "mtime_ns": 1795864933443223501,
+        "sha256": "2f8714c2825677dc6ad3e3f52dfa7dbe1be65cca49f628338599ae906dfb1dfd"
+      },
+      "seconds_including_first_model_load": 161.83719360802206,
+      "n_pred_instances": 22,
+      "all_empty": false
+    },
+    "RibFrac448": {
+      "source_image": {
+        "bytes": 52162436,
+        "mtime_ns": 1592060961000000000,
+        "sha256": "96af3ed4e909e4dc6e4e4edc88af248afcaf50e779ca406f60a0f55a26b3c065"
+      },
+      "prediction": {
+        "bytes": 159937,
+        "mtime_ns": 1795864978195445462,
+        "sha256": "cb77194f20886c20287906be0341902aed53160a1de69b7fa5c549ee2d45adea"
+      },
+      "probability": {
+        "bytes": 73985499,
+        "mtime_ns": 1795864980479456790,
+        "sha256": "9f862334b9c580631aae8ab059ab56a2df84908562c2c9d94944ec6268208aaa"
+      },
+      "seconds_including_first_model_load": 44.91746270697331,
+      "n_pred_instances": 1,
+      "all_empty": false
+    },
+    "RibFrac449": {
+      "source_image": {
+        "bytes": 148416092,
+        "mtime_ns": 1592060968000000000,
+        "sha256": "1086583db680149d440540a2a272cdb46ea0531f1ca30612770887311f8880d7"
+      },
+      "prediction": {
+        "bytes": 457058,
+        "mtime_ns": 1795865112348110830,
+        "sha256": "61853efd8064dc0b00f68d5e7320010adca730b3605356de7c61f3485da415bb"
+      },
+      "probability": {
+        "bytes": 208291785,
+        "mtime_ns": 1795865118792142792,
+        "sha256": "7b280f27910a08cad3933d7335b23675b8d04f226b742928d87dd109aef70d66"
+      },
+      "seconds_including_first_model_load": 140.43855527898995,
+      "n_pred_instances": 5,
+      "all_empty": false
+    },
+    "RibFrac450": {
+      "source_image": {
+        "bytes": 121622063,
+        "mtime_ns": 1592060973000000000,
+        "sha256": "cebee01f35c6c4867f54d771328493a55979d0389e2792af2b9a7d85633c9c91"
+      },
+      "prediction": {
+        "bytes": 368692,
+        "mtime_ns": 1795865248168784470,
+        "sha256": "d31cf7ff52583e672c4509679309e27797e4e9481a229a149cd0f005e81d022a"
+      },
+      "probability": {
+        "bytes": 172440686,
+        "mtime_ns": 1795865253264809745,
+        "sha256": "e662a0469dc26c23b58c1e591923fa0cce8b96148edbef26f002b5196515b4b5"
+      },
+      "seconds_including_first_model_load": 133.56904135100194,
+      "n_pred_instances": 3,
+      "all_empty": false
+    },
+    "RibFrac451": {
+      "source_image": {
+        "bytes": 118106551,
+        "mtime_ns": 1592060979000000000,
+        "sha256": "d1c88c6aa4cff822a6e78393cc364cab916cbd7f2131430e11715c5280fbcb0c"
+      },
+      "prediction": {
+        "bytes": 362699,
+        "mtime_ns": 1795865381297444759,
+        "sha256": "7a05fddeac05616abf5c10ca609b7ebb4758cd965613579053c8d0e68e1f545f"
+      },
+      "probability": {
+        "bytes": 164214917,
+        "mtime_ns": 1795865386169468924,
+        "sha256": "9a8de434d8fb8b47348d799487fe4c29ded53f12117acda2eac48603b15173bc"
+      },
+      "seconds_including_first_model_load": 132.83117454999592,
+      "n_pred_instances": 7,
+      "all_empty": false
+    },
+    "RibFrac452": {
+      "source_image": {
+        "bytes": 40789912,
+        "mtime_ns": 1592060981000000000,
+        "sha256": "02f85219dcaf8e7f16eb60091f4703016bed5afef0cf01126f4dd08672078670"
+      },
+      "prediction": {
+        "bytes": 128011,
+        "mtime_ns": 1795865426109667019,
+        "sha256": "961b060d099e1cb9fe6707050a4cae706137781bfcf0e32c6834ae90bd58fab6"
+      },
+      "probability": {
+        "bytes": 58272066,
+        "mtime_ns": 1795865427813675469,
+        "sha256": "1b6f5a8b794a0504b733f1cb818a507ecdbe338ffd4d000b2bb30a3701fadbfd"
+      },
+      "seconds_including_first_model_load": 39.87109053399763,
+      "n_pred_instances": 5,
+      "all_empty": false
+    },
+    "RibFrac453": {
+      "source_image": {
+        "bytes": 91752976,
+        "mtime_ns": 1592060986000000000,
+        "sha256": "4c263d33591c99c6705cc2b496eff91a86403ef00c0d0c3c9401dd0a02cdc76c"
+      },
+      "prediction": {
+        "bytes": 277661,
+        "mtime_ns": 1795865508062073484,
+        "sha256": "e135c7289786a8c32e002934e42488269c795df803c27fcddf07e407f7ec7ecb"
+      },
+      "probability": {
+        "bytes": 131037400,
+        "mtime_ns": 1795865511882092431,
+        "sha256": "044ff6e0c2ab41e56f27644d94897f0e6ee216d21f4cc0b493c88dff42c9c2b4"
+      },
+      "seconds_including_first_model_load": 85.14030656800605,
+      "n_pred_instances": 2,
+      "all_empty": false
+    },
+    "RibFrac454": {
+      "source_image": {
+        "bytes": 65090412,
+        "mtime_ns": 1592060990000000000,
+        "sha256": "51543b5476688e952ba44c7d2dd356aac63efce556686cf6648d15abc8ab124b"
+      },
+      "prediction": {
+        "bytes": 240243,
+        "mtime_ns": 1795865608910573671,
+        "sha256": "0ea376dabbacd09802d9665d1449e6147f2b8092dea592b9bf2e4875974db23d"
+      },
+      "probability": {
+        "bytes": 110427164,
+        "mtime_ns": 1795865612174589859,
+        "sha256": "c2f71d8f23c259695063791260906d58acce1a9a37b2736f0cf52fc6f0313561"
+      },
+      "seconds_including_first_model_load": 99.87239153700648,
+      "n_pred_instances": 5,
+      "all_empty": false
+    },
+    "RibFrac455": {
+      "source_image": {
+        "bytes": 143589855,
+        "mtime_ns": 1592060996000000000,
+        "sha256": "0d7cdd44763fe93ee106e8813e8d87a16627a4645fdea40b7e586ae101353c98"
+      },
+      "prediction": {
+        "bytes": 445637,
+        "mtime_ns": 1795865744131244335,
+        "sha256": "310dac0823a5f81c0f14dc1be3044b942dfde9236f03ac429d1985c1c41f2808"
+      },
+      "probability": {
+        "bytes": 201208296,
+        "mtime_ns": 1795865750063273757,
+        "sha256": "d9f42fd477db61d2831e5a70df78d4104828ec18cde0574e887a17343d8295d9"
+      },
+      "seconds_including_first_model_load": 139.16684536400135,
+      "n_pred_instances": 9,
+      "all_empty": false
+    },
+    "RibFrac456": {
+      "source_image": {
+        "bytes": 109394965,
+        "mtime_ns": 1592061001000000000,
+        "sha256": "a643509170a0057d5503d55ee4f17521e9e450cbc0d99dc66152243120e28b1e"
+      },
+      "prediction": {
+        "bytes": 359448,
+        "mtime_ns": 1795865848739763170,
+        "sha256": "947713f289437e16ecccd1ff096efb62baf1ba0fe2ec60385cfd53211c6984b4"
+      },
+      "probability": {
+        "bytes": 166877174,
+        "mtime_ns": 1795865853675787653,
+        "sha256": "9e27412076eb647aba713dbb67e3a9ae35b4f5e18a746ff74052dad93033e235"
+      },
+      "seconds_including_first_model_load": 103.01830977099598,
+      "n_pred_instances": 1,
+      "all_empty": false
+    },
+    "RibFrac457": {
+      "source_image": {
+        "bytes": 136693369,
+        "mtime_ns": 1592061007000000000,
+        "sha256": "6f3d31907bb42c428ae5a64615b7ced6467e8d43adb9ced66327e5037617adb0"
+      },
+      "prediction": {
+        "bytes": 413270,
+        "mtime_ns": 1795865969256360907,
+        "sha256": "2efea4fe8be78d0aba34a82339e8c885e2b7385ba2321ebe9e56a0ed9beda312"
+      },
+      "probability": {
+        "bytes": 189575485,
+        "mtime_ns": 1795865974824388523,
+        "sha256": "75e1a999aed3fe8d84c510ca05a455a96405d5de4a9831b2805d94ccfc9fe4b6"
+      },
+      "seconds_including_first_model_load": 121.4294994789816,
+      "n_pred_instances": 9,
+      "all_empty": false
+    },
+    "RibFrac458": {
+      "source_image": {
+        "bytes": 124228460,
+        "mtime_ns": 1592061013000000000,
+        "sha256": "771deaecd6c24ad699a61c4805678b3d5c3c296f890fca7d192648c6ffd09c13"
+      },
+      "prediction": {
+        "bytes": 398915,
+        "mtime_ns": 1795866085920939537,
+        "sha256": "bf0d875b931dc00c374dd717b666b38845def7a4a1488c257013ef2152c5cd95"
+      },
+      "probability": {
+        "bytes": 176406249,
+        "mtime_ns": 1795866091096965209,
+        "sha256": "6816d948a7135e33b7aa970299943cd0b735adf45eddc3c2d2eaf880b0c04c02"
+      },
+      "seconds_including_first_model_load": 116.00965541100595,
+      "n_pred_instances": 16,
+      "all_empty": false
+    },
+    "RibFrac459": {
+      "source_image": {
+        "bytes": 113057137,
+        "mtime_ns": 1592061021000000000,
+        "sha256": "728a354fdf3b4747ba42a60a874e39672e05557e39606879fd840ef8e3ee4021"
+      },
+      "prediction": {
+        "bytes": 359593,
+        "mtime_ns": 1795866233557671783,
+        "sha256": "bacbb419ec152d7475a2da172ec443ac0cf56d5d5bc5157f0b9ad554b8340df8"
+      },
+      "probability": {
+        "bytes": 158402320,
+        "mtime_ns": 1795866238249695054,
+        "sha256": "f38bffe643d27386c1e39bdfd3465b00204abbd50f39f9e95ae5d4604e80d52a"
+      },
+      "seconds_including_first_model_load": 146.84514818899333,
+      "n_pred_instances": 4,
+      "all_empty": false
+    },
+    "RibFrac460": {
+      "source_image": {
+        "bytes": 142548122,
+        "mtime_ns": 1592061027000000000,
+        "sha256": "0fc2e978eb26828865e5ca221ebd05510221600541c7cede47e1a4ec0dd5f0a2"
+      },
+      "prediction": {
+        "bytes": 449736,
+        "mtime_ns": 1795866351514256822,
+        "sha256": "626cda9b7ce32ebd311505caccf0e8e5c19b8e9913388394792a26659e5a9ed2"
+      },
+      "probability": {
+        "bytes": 198852832,
+        "mtime_ns": 1795866357310285569,
+        "sha256": "5bc953f9b4b356d519c6d1a9235f9758cb30efe5f6f42307fea58f4caea75f15"
+      },
+      "seconds_including_first_model_load": 119.57042416499462,
+      "n_pred_instances": 8,
+      "all_empty": false
+    },
+    "RibFrac461": {
+      "source_image": {
+        "bytes": 46750705,
+        "mtime_ns": 1592061030000000000,
+        "sha256": "2d812ceff32964d4f933c6e5e60806bc7a644d23a938c8f1297813cfe1035fd2"
+      },
+      "prediction": {
+        "bytes": 141639,
+        "mtime_ns": 1795866398390489317,
+        "sha256": "b2e2e699eca3fd6cd4ed0dd03614b39b7f27c6c5c36f83a8ea31821eeb344a01"
+      },
+      "probability": {
+        "bytes": 65464584,
+        "mtime_ns": 1795866400330498939,
+        "sha256": "00f491119e250795ab730400a317fd5191f07b6a94790265d18c84f50817eba6"
+      },
+      "seconds_including_first_model_load": 40.996200683002826,
+      "n_pred_instances": 2,
+      "all_empty": false
+    },
+    "RibFrac462": {
+      "source_image": {
+        "bytes": 24480526,
+        "mtime_ns": 1592061031000000000,
+        "sha256": "b66e83498b9c78d42a5fadad3daaefa49619e4c547ace1cd18dc708fe3e307cb"
+      },
+      "prediction": {
+        "bytes": 75867,
+        "mtime_ns": 1795866421202602460,
+        "sha256": "0443886431839ab0b7a91c8654482bb4a34c4cc33143a4ff760aaffec7b5e2b9"
+      },
+      "probability": {
+        "bytes": 35403973,
+        "mtime_ns": 1795866422250607659,
+        "sha256": "a04580f6d07da0db4512e8df895f0e35fcf7c50902765c8463e409e007c3b7c9"
+      },
+      "seconds_including_first_model_load": 21.434790900006192,
+      "n_pred_instances": 1,
+      "all_empty": false
+    },
+    "RibFrac463": {
+      "source_image": {
+        "bytes": 90806783,
+        "mtime_ns": 1592061037000000000,
+        "sha256": "887b0a84a1c749661a40e518a71c76b9a93d86b06e8099890eca7ff572a00387"
+      },
+      "prediction": {
+        "bytes": 344365,
+        "mtime_ns": 1795866551735249874,
+        "sha256": "90b125a7e253bf51e21b9c1f913268300727767d938d8ee734324ef377a691f7"
+      },
+      "probability": {
+        "bytes": 140380407,
+        "mtime_ns": 1795866555863270348,
+        "sha256": "05915ff1fd77ca0a95654f2f7154519aea5d48c202aa868b8f20851f3ca57112"
+      },
+      "seconds_including_first_model_load": 135.11881472199457,
+      "n_pred_instances": 15,
+      "all_empty": false
+    },
+    "RibFrac464": {
+      "source_image": {
+        "bytes": 134079472,
+        "mtime_ns": 1592061042000000000,
+        "sha256": "770daae75a88d30970d0e20ea04b7a97c68a894dcfebcdb567eac8be39c64890"
+      },
+      "prediction": {
+        "bytes": 413223,
+        "mtime_ns": 1795866699527982893,
+        "sha256": "c0e8dea700e6f5a5f0d2c4e77ad8de25d72e9566a4f71f23f3e3645955be66d4"
+      },
+      "probability": {
+        "bytes": 191218314,
+        "mtime_ns": 1795866705144010747,
+        "sha256": "372d4440fc34162c9198a561f3d73bd01d3932ba1e53cc3c4f12781da7353a16"
+      },
+      "seconds_including_first_model_load": 150.03075870400062,
+      "n_pred_instances": 5,
+      "all_empty": false
+    },
+    "RibFrac465": {
+      "source_image": {
+        "bytes": 93043052,
+        "mtime_ns": 1592061048000000000,
+        "sha256": "f2d631a709b6374e0e7d803ccd9a09595487b3306d451296f8ad3fd1f1dc77ac"
+      },
+      "prediction": {
+        "bytes": 298911,
+        "mtime_ns": 1795866855844758191,
+        "sha256": "02016491fe5be65e63c1ecb68cef22d988c6e29766e508370928fca9ed971d54"
+      },
+      "probability": {
+        "bytes": 133730662,
+        "mtime_ns": 1795866859784777733,
+        "sha256": "4d271467ec37a41da586840f9d353e0f9749436c375baf972bed21312b6a3bc8"
+      },
+      "seconds_including_first_model_load": 153.71163211698877,
+      "n_pred_instances": 7,
+      "all_empty": false
+    },
+    "RibFrac466": {
+      "source_image": {
+        "bytes": 124402005,
+        "mtime_ns": 1592061055000000000,
+        "sha256": "a39d62c83a1a1cf13236db8b863e281494b17752f68f1bcde6efdd89ee039dee"
+      },
+      "prediction": {
+        "bytes": 385964,
+        "mtime_ns": 1795867065045795781,
+        "sha256": "fd8710517042115f87c9a47b7a7c1b20c15aea53de8bf366133889644698ff93"
+      },
+      "probability": {
+        "bytes": 174920367,
+        "mtime_ns": 1795867070157821136,
+        "sha256": "ce974f36db296e1e69259812225934834b5101f2acfa144b8f0c1e1ffbba8fbe"
+      },
+      "seconds_including_first_model_load": 210.97154509698157,
+      "n_pred_instances": 11,
+      "all_empty": false
+    },
+    "RibFrac467": {
+      "source_image": {
+        "bytes": 157836712,
+        "mtime_ns": 1592061062000000000,
+        "sha256": "e4e15e9eb423c86c2338968f1e80589a73648dcbb2f55c3be3194c4f970019f5"
+      },
+      "prediction": {
+        "bytes": 484849,
+        "mtime_ns": 1795867204778488825,
+        "sha256": "d58bb6671352840812d20fab73222027d6a7c9987dfd78dabb7966cf2bbe21d3"
+      },
+      "probability": {
+        "bytes": 218176391,
+        "mtime_ns": 1795867211282521084,
+        "sha256": "959fcd89676f185eda69e618b83d4707cb23a825d9e803625905b2397a0360b4"
+      },
+      "seconds_including_first_model_load": 141.693641165999,
+      "n_pred_instances": 9,
+      "all_empty": false
+    },
+    "RibFrac468": {
+      "source_image": {
+        "bytes": 102270439,
+        "mtime_ns": 1592061068000000000,
+        "sha256": "0602accb565c36276d7aaaebe096c411899491118367a5fff5a800ac7ece61b1"
+      },
+      "prediction": {
+        "bytes": 313296,
+        "mtime_ns": 1795867352791222936,
+        "sha256": "716e39c4b41dc7cbfa518cb528dc965cf62b904df2e825f1d7cbe99f29843697"
+      },
+      "probability": {
+        "bytes": 145643623,
+        "mtime_ns": 1795867357059244104,
+        "sha256": "decc3a8a7214ab49831afecb50de3746bae7a5bef7e2a906d329f5b5711464b5"
+      },
+      "seconds_including_first_model_load": 144.58002699000644,
+      "n_pred_instances": 2,
+      "all_empty": false
+    },
+    "RibFrac469": {
+      "source_image": {
+        "bytes": 145312848,
+        "mtime_ns": 1592061074000000000,
+        "sha256": "ad4491824972459c48c55dcd649f207730da49e964ee6569b3e84cb0d6aacef6"
+      },
+      "prediction": {
+        "bytes": 442417,
+        "mtime_ns": 1795867483071869098,
+        "sha256": "5786c940553dfb90322a5c529d12b57f9ed938bab5f336249954fe9d487e6f07"
+      },
+      "probability": {
+        "bytes": 201183334,
+        "mtime_ns": 1795867489003898520,
+        "sha256": "4181bd18272802cd12c287c6872f07a57d498732e7f8aad9858ddbbc0858ef38"
+      },
+      "seconds_including_first_model_load": 132.71908651202102,
+      "n_pred_instances": 6,
+      "all_empty": false
+    },
+    "RibFrac470": {
+      "source_image": {
+        "bytes": 100062235,
+        "mtime_ns": 1592061080000000000,
+        "sha256": "d818a0415a313341754bf6846e284a5a626ee298600ec06edbd60927965179df"
+      },
+      "prediction": {
+        "bytes": 313116,
+        "mtime_ns": 1795867604060469176,
+        "sha256": "23fe6663cfc32ad9605de3c49ea3f254f1f245c6c7e9eb09611f673a944d19a7"
+      },
+      "probability": {
+        "bytes": 145301103,
+        "mtime_ns": 1795867608344490423,
+        "sha256": "89b573e3b84ea8768ef758d42bfdf980304a1d4ed40ad3a96501e3e4cc34bda6"
+      },
+      "seconds_including_first_model_load": 118.44633692901698,
+      "n_pred_instances": 2,
+      "all_empty": false
+    },
+    "RibFrac471": {
+      "source_image": {
+        "bytes": 43604552,
+        "mtime_ns": 1592061083000000000,
+        "sha256": "452b83f83658e5f6161c4908d55547130eafac02bb190b2d324c59b807cd5118"
+      },
+      "prediction": {
+        "bytes": 128802,
+        "mtime_ns": 1795867646920681752,
+        "sha256": "e5066ec2c4f3a88fa6a4eee9aa342c067509683196fefdcda9a7bcd0e45ea629"
+      },
+      "probability": {
+        "bytes": 60912791,
+        "mtime_ns": 1795867648688690522,
+        "sha256": "2c7019ee36d1179eccadc0285bc23c4cab7d963ad408715555596c1a9b848c2b"
+      },
+      "seconds_including_first_model_load": 39.01537447699229,
+      "n_pred_instances": 0,
+      "all_empty": true
+    },
+    "RibFrac472": {
+      "source_image": {
+        "bytes": 82692521,
+        "mtime_ns": 1592061090000000000,
+        "sha256": "322fe4714ccb5a2f85c5b83689b16dc36ce5a6791f92c52ad84284a0fb614b63"
+      },
+      "prediction": {
+        "bytes": 250935,
+        "mtime_ns": 1795867736617126628,
+        "sha256": "faa0499a742872641901874aeb979cdeda5b77055f57ac941bace8be5ccdaaec"
+      },
+      "probability": {
+        "bytes": 116317254,
+        "mtime_ns": 1795867740037143590,
+        "sha256": "a5a308876280b171f8d3f7f492aacfda0ef1374d57e43d6ad5d25bcb28a38b9d"
+      },
+      "seconds_including_first_model_load": 92.19351940200431,
+      "n_pred_instances": 3,
+      "all_empty": false
+    },
+    "RibFrac473": {
+      "source_image": {
+        "bytes": 115821588,
+        "mtime_ns": 1592061101000000000,
+        "sha256": "61f787303c926f3d8f89f160ece1cf6e641cbc554ad5e99733a7d2ae76253dc5"
+      },
+      "prediction": {
+        "bytes": 370253,
+        "mtime_ns": 1795867902649950114,
+        "sha256": "d148720a285a4f0a457c6df4401b4f364f813f5cb26a9dcbadbbddc139e34527"
+      },
+      "probability": {
+        "bytes": 167007859,
+        "mtime_ns": 1795867907561974477,
+        "sha256": "402e4c09e95b1aef8b00079721ec2d07d17d4f4ad1998c3b117c2dd799179078"
+      },
+      "seconds_including_first_model_load": 168.22843249500147,
+      "n_pred_instances": 15,
+      "all_empty": false
+    },
+    "RibFrac474": {
+      "source_image": {
+        "bytes": 38502975,
+        "mtime_ns": 1592061103000000000,
+        "sha256": "9c827f1e40929744063a11220bd863bfee505e2601a1bf83018b943ff53b150f"
+      },
+      "prediction": {
+        "bytes": 113945,
+        "mtime_ns": 1795867935578113431,
+        "sha256": "8b630af3fa39b46b54af9754e4e1edcf12b20e5a50f58626a38f013283f2cbbb"
+      },
+      "probability": {
+        "bytes": 53029555,
+        "mtime_ns": 1795867937130121128,
+        "sha256": "ad1aba0948b14591102ae3bd83802835af0ffac97ac450738075eedd2ec5397e"
+      },
+      "seconds_including_first_model_load": 27.75726357899839,
+      "n_pred_instances": 1,
+      "all_empty": false
+    },
+    "RibFrac475": {
+      "source_image": {
+        "bytes": 62392621,
+        "mtime_ns": 1592061107000000000,
+        "sha256": "1c0b3a14731a15561fed3cc398ec165723e09d9f69280b1cc2970ae60ebc46b7"
+      },
+      "prediction": {
+        "bytes": 221762,
+        "mtime_ns": 1795868007134468335,
+        "sha256": "2aeb4880f453f0c268e601e4a28db3b8f03f1a9a84d09f451437cfe48fc8e4bf"
+      },
+      "probability": {
+        "bytes": 105123859,
+        "mtime_ns": 1795868010202483551,
+        "sha256": "e0c06641b67de0a9ad1e6d563c902a779168bff45d36c8b11852e3adea5dedbc"
+      },
+      "seconds_including_first_model_load": 73.81377407201217,
+      "n_pred_instances": 1,
+      "all_empty": false
+    },
+    "RibFrac476": {
+      "source_image": {
+        "bytes": 132516445,
+        "mtime_ns": 1592061114000000000,
+        "sha256": "cbee5d1ebd738e6f6c9cbb8d30448502f6e85c46f5fe644b82e1116ac59fcdc8"
+      },
+      "prediction": {
+        "bytes": 401075,
+        "mtime_ns": 1795868119171024011,
+        "sha256": "2fd7ed2488d4bf37b5a123660f1f98184da0bd3d2d23b2299ea1d3a4a1fd9a98"
+      },
+      "probability": {
+        "bytes": 184235978,
+        "mtime_ns": 1795868124575050814,
+        "sha256": "6aca853709e784a364cd1037d6215f793709ca63abb89c6d151ebee2b915d549"
+      },
+      "seconds_including_first_model_load": 115.54434145099367,
+      "n_pred_instances": 5,
+      "all_empty": false
+    },
+    "RibFrac477": {
+      "source_image": {
+        "bytes": 105258832,
+        "mtime_ns": 1592061120000000000,
+        "sha256": "06d1a2a895da634e17496ea497c8806b9679e622118feba4168b491fd5c2e148"
+      },
+      "prediction": {
+        "bytes": 340774,
+        "mtime_ns": 1795868262603735406,
+        "sha256": "1f2920ba265c11260fe2bbc0a42ab0b8be67147131f262d810dd8a73e60b9716"
+      },
+      "probability": {
+        "bytes": 156650212,
+        "mtime_ns": 1795868267215758280,
+        "sha256": "9b83abc377d4270d17f929221cea9e9d0e1b442bbb6c90ddaa6c1e7c8715e1bc"
+      },
+      "seconds_including_first_model_load": 142.2072342580068,
+      "n_pred_instances": 9,
+      "all_empty": false
+    },
+    "RibFrac478": {
+      "source_image": {
+        "bytes": 209734215,
+        "mtime_ns": 1592061135000000000,
+        "sha256": "68c9e96f33127750e123e30c1a751d35f9306e891d1f12bd10025161f81ccaf3"
+      },
+      "prediction": {
+        "bytes": 673972,
+        "mtime_ns": 1795868403872436067,
+        "sha256": "1fde19250bdcbb59ac1516e7f0159ac91820d6de63e37c04f5cd980c9d15b5d5"
+      },
+      "probability": {
+        "bytes": 308196880,
+        "mtime_ns": 1795868412952481103,
+        "sha256": "05eda21cfa16a6f195a73d057304aab2892d4c276bea4d8b6402dd9f8538f99d"
+      },
+      "seconds_including_first_model_load": 147.90528903197264,
+      "n_pred_instances": 7,
+      "all_empty": false
+    },
+    "RibFrac479": {
+      "source_image": {
+        "bytes": 116484788,
+        "mtime_ns": 1592061142000000000,
+        "sha256": "9cd3afc3234c37fe6dfa5e0ff4df631cb4b369782699a11546b3d541a4ff4639"
+      },
+      "prediction": {
+        "bytes": 347585,
+        "mtime_ns": 1795868537173097209,
+        "sha256": "5f8480ea5917d588efeec2985feb169f85f6108d60beb81222ea1953387432b5"
+      },
+      "probability": {
+        "bytes": 160635044,
+        "mtime_ns": 1795868541885120580,
+        "sha256": "68874f195944fbdbf80dc28ae4f5e04fa96208e7cbf9b703745cbcd5a67f1757"
+      },
+      "seconds_including_first_model_load": 126.64413201398565,
+      "n_pred_instances": 5,
+      "all_empty": false
+    },
+    "RibFrac480": {
+      "source_image": {
+        "bytes": 129307255,
+        "mtime_ns": 1592061153000000000,
+        "sha256": "cb31c11dc6aee90af62b6432c187998fecdf5c3367ec20903e210ae9d93b4cdb"
+      },
+      "prediction": {
+        "bytes": 441121,
+        "mtime_ns": 1795868779286298038,
+        "sha256": "419739bc5ce1e6d347b893f89385e0bb5f30a612e7aaca121849adfc6484400c"
+      },
+      "probability": {
+        "bytes": 187929127,
+        "mtime_ns": 1795868784822325495,
+        "sha256": "3eef12c6e406bcf91ed94169f673503b37ac0e1bb75a20340afae1eb47993400"
+      },
+      "seconds_including_first_model_load": 243.28974965700763,
+      "n_pred_instances": 28,
+      "all_empty": false
+    },
+    "RibFrac481": {
+      "source_image": {
+        "bytes": 139190767,
+        "mtime_ns": 1592061161000000000,
+        "sha256": "61b47a9304f8cd88cd93a2ec783926bd7471dba7556a47f5d9c492c79aab6f59"
+      },
+      "prediction": {
+        "bytes": 425072,
+        "mtime_ns": 1795868928027035759,
+        "sha256": "a7d67be1a21fac38fa8cba8e4c95db0b10bdead71c7600d84c2d35378599eefb"
+      },
+      "probability": {
+        "bytes": 194461506,
+        "mtime_ns": 1795868933695063872,
+        "sha256": "65a8d1246377abfb814dfe61bf20cae1d80b0e9855f618fbc59c5f5cfe9f46d1"
+      },
+      "seconds_including_first_model_load": 148.8517643469968,
+      "n_pred_instances": 7,
+      "all_empty": false
+    },
+    "RibFrac482": {
+      "source_image": {
+        "bytes": 127457262,
+        "mtime_ns": 1592061172000000000,
+        "sha256": "bdfa99641f6db1480365f66cafe8001dd9d22aac7b9d1e1b0c100c509baecf08"
+      },
+      "prediction": {
+        "bytes": 406575,
+        "mtime_ns": 1795869115643966297,
+        "sha256": "aa0e2f3b68d80d1771e003aaa983b9f62e7d6076fac7d08f0549d0470703b864"
+      },
+      "probability": {
+        "bytes": 184632894,
+        "mtime_ns": 1795869121103993378,
+        "sha256": "07f2b9ca9abd80d3f6021be80c119117dfea2c5a7e538fbfe95b82b82b2f0d2b"
+      },
+      "seconds_including_first_model_load": 187.2847782400204,
+      "n_pred_instances": 13,
+      "all_empty": false
+    },
+    "RibFrac483": {
+      "source_image": {
+        "bytes": 121600387,
+        "mtime_ns": 1592061178000000000,
+        "sha256": "cff1b6403a9398ca371f5170309d4d94f4b3178960933b7ac21c190a2d65aacc"
+      },
+      "prediction": {
+        "bytes": 394242,
+        "mtime_ns": 1795869336613062255,
+        "sha256": "b17dbf3d8ceeec9671588f067bb261aaab740fe6236412971038aae41252d8bb"
+      },
+      "probability": {
+        "bytes": 176149360,
+        "mtime_ns": 1795869341785087908,
+        "sha256": "1f7834977bdc846be37b6cf64be3d434f2f0412554a4abdfc53870f54f7c0adf"
+      },
+      "seconds_including_first_model_load": 220.42535033501917,
+      "n_pred_instances": 8,
+      "all_empty": false
+    },
+    "RibFrac484": {
+      "source_image": {
+        "bytes": 128516106,
+        "mtime_ns": 1592061187000000000,
+        "sha256": "a8e58c36ad665b13897351c0c21ec3e9a13ba3fd9ec1d1a331c85f0777e4c258"
+      },
+      "prediction": {
+        "bytes": 409808,
+        "mtime_ns": 1795869487093808608,
+        "sha256": "6715c65015f087175c9fc8066afe2cb2d3cad382da06903f2a011fde108bbfcc"
+      },
+      "probability": {
+        "bytes": 182992565,
+        "mtime_ns": 1795869492449835172,
+        "sha256": "a6b7d44c8083e1231784f3f2539543168c4e3b7979e5a75a9ae55aa4534e206d"
+      },
+      "seconds_including_first_model_load": 150.6599086530041,
+      "n_pred_instances": 13,
+      "all_empty": false
+    },
+    "RibFrac485": {
+      "source_image": {
+        "bytes": 48292198,
+        "mtime_ns": 1592061191000000000,
+        "sha256": "579bf8a2e184af00d24cfa0b2bc8c1a8838c8dd48038593549e4a8bbb14506ea"
+      },
+      "prediction": {
+        "bytes": 148156,
+        "mtime_ns": 1795869544714094392,
+        "sha256": "dcd2714625a794c5b1c1d37ee8cc518caf9568f16e8edb56bc46d3441d5b3c98"
+      },
+      "probability": {
+        "bytes": 69915753,
+        "mtime_ns": 1795869546758104529,
+        "sha256": "db2e39a92f8a0725a06e9b0d70f986fd4af06242be79f192ed391ae64fc0c95c"
+      },
+      "seconds_including_first_model_load": 52.576391265989514,
+      "n_pred_instances": 0,
+      "all_empty": true
+    },
+    "RibFrac486": {
+      "source_image": {
+        "bytes": 144146355,
+        "mtime_ns": 1592061196000000000,
+        "sha256": "864138ed6091ec7ef358987cb18c734a7f96fc6bbd88e398da09869eb2d4fd24"
+      },
+      "prediction": {
+        "bytes": 483156,
+        "mtime_ns": 1795869668270707205,
+        "sha256": "273fc32f3384e45766ffdfe1712d8baf29f007846546da412f364198384d4c48"
+      },
+      "probability": {
+        "bytes": 202472686,
+        "mtime_ns": 1795869674202736627,
+        "sha256": "d27e0bcb97c57f8496ecc8c851e4c997f39dd6a762bba557dde5688ffcc28729"
+      },
+      "seconds_including_first_model_load": 129.35940825598664,
+      "n_pred_instances": 12,
+      "all_empty": false
+    },
+    "RibFrac487": {
+      "source_image": {
+        "bytes": 31954915,
+        "mtime_ns": 1592061198000000000,
+        "sha256": "28a569d421c6b4aa7bd4794ea0e3b359137f315959b26dc989925f8d138fef0e"
+      },
+      "prediction": {
+        "bytes": 95176,
+        "mtime_ns": 1795869698978859511,
+        "sha256": "ae0d818d5126772f385612de47c1158d73f7edd5a30f2bcfc898cc5c04f21413"
+      },
+      "probability": {
+        "bytes": 45307220,
+        "mtime_ns": 1795869700298866058,
+        "sha256": "00c2eda30e6aafcf3e18b16a8cd45dde592492856f8616c1e9def24e3615a1d3"
+      },
+      "seconds_including_first_model_load": 23.695274975994835,
+      "n_pred_instances": 0,
+      "all_empty": true
+    },
+    "RibFrac488": {
+      "source_image": {
+        "bytes": 101313125,
+        "mtime_ns": 1592061205000000000,
+        "sha256": "49033b0e758526e6cdf81402c826f61ce72bf6b86baec6a5b2e01099eef276b0"
+      },
+      "prediction": {
+        "bytes": 336179,
+        "mtime_ns": 1795869925467982847,
+        "sha256": "054c1087dc6ea411bb507b98f3be740023b022076dd924277248fec7f7aa02c3"
+      },
+      "probability": {
+        "bytes": 154877367,
+        "mtime_ns": 1795869930116005900,
+        "sha256": "72cc1a81e11e9a13f7a92811a54d9adc2c1f783f8eecafc8c5f22da2c367ba21"
+      },
+      "seconds_including_first_model_load": 231.45137663302012,
+      "n_pred_instances": 3,
+      "all_empty": false
+    },
+    "RibFrac489": {
+      "source_image": {
+        "bytes": 144037818,
+        "mtime_ns": 1592061213000000000,
+        "sha256": "5133259d8cff36e2e1eea29cd723653fa719d459ee67dd36e2b5365c9305c6d9"
+      },
+      "prediction": {
+        "bytes": 464011,
+        "mtime_ns": 1795870096240829842,
+        "sha256": "cd08155daac9ed054cc404375019bcf552e33bffed3305cecf24edbb0d44160d"
+      },
+      "probability": {
+        "bytes": 209579906,
+        "mtime_ns": 1795870102484860811,
+        "sha256": "309e280c08d4e266f8a543082534cdf1eb7813098151a8bb42808585354329e4"
+      },
+      "seconds_including_first_model_load": 173.07697231299244,
+      "n_pred_instances": 11,
+      "all_empty": false
+    },
+    "RibFrac490": {
+      "source_image": {
+        "bytes": 45211321,
+        "mtime_ns": 1592061216000000000,
+        "sha256": "e302a718a5f51356601ffbd324f347846083132c970967cb51baae80f5c04b30"
+      },
+      "prediction": {
+        "bytes": 135932,
+        "mtime_ns": 1795870141953056565,
+        "sha256": "7e17e701431613ad2cf50eb1aada10bddb804763218fd9bab41143c0f3e029e0"
+      },
+      "probability": {
+        "bytes": 63717561,
+        "mtime_ns": 1795870143825065851,
+        "sha256": "3ffc73b5f2c104ba9781a09039d7368c912129476281723a5b262aee511c4c64"
+      },
+      "seconds_including_first_model_load": 39.14711739998893,
+      "n_pred_instances": 0,
+      "all_empty": true
+    },
+    "RibFrac491": {
+      "source_image": {
+        "bytes": 62067476,
+        "mtime_ns": 1592061219000000000,
+        "sha256": "8a700a790d4bd5084a32e00aa7b8915bb0ae2388a07ace577b0256b37cd364b1"
+      },
+      "prediction": {
+        "bytes": 234078,
+        "mtime_ns": 1795870236213524076,
+        "sha256": "e67599fa0e30ceaa6837d2fb8713b4f6ebcd1e36d13d67c3a17a7b2a0c93da83"
+      },
+      "probability": {
+        "bytes": 107481082,
+        "mtime_ns": 1795870239401539889,
+        "sha256": "481bf18e78b761d9f67e159c7d5db48c9015dfc52994152c4b17eeb44d17641d"
+      },
+      "seconds_including_first_model_load": 96.16772742799367,
+      "n_pred_instances": 1,
+      "all_empty": false
+    },
+    "RibFrac492": {
+      "source_image": {
+        "bytes": 156725286,
+        "mtime_ns": 1592061229000000000,
+        "sha256": "ac1c5fb4644f9383347a115fb5063d673046ab5383e211622dd5633bd8670601"
+      },
+      "prediction": {
+        "bytes": 479472,
+        "mtime_ns": 1795870403538353971,
+        "sha256": "39f71ab3ed82988fd5436082f03466252a82a9fad735c4ed49c6ab54b39fd974"
+      },
+      "probability": {
+        "bytes": 217361078,
+        "mtime_ns": 1795870409914385595,
+        "sha256": "f48d2c833de61811cc47023731c4f52c9348cf3b6b456222fca8762911aab024"
+      },
+      "seconds_including_first_model_load": 172.1362215979898,
+      "n_pred_instances": 12,
+      "all_empty": false
+    },
+    "RibFrac493": {
+      "source_image": {
+        "bytes": 122715682,
+        "mtime_ns": 1592061235000000000,
+        "sha256": "899df9ac7d309f20a6d6b3d40a68652cd6683b28fdc85dc596fcb273914112e8"
+      },
+      "prediction": {
+        "bytes": 410472,
+        "mtime_ns": 1795870518214922742,
+        "sha256": "00d5074a88794dcd599076286a5ca0abdc1593361761e4613264e7a4eea29ef7"
+      },
+      "probability": {
+        "bytes": 174466126,
+        "mtime_ns": 1795870523314948037,
+        "sha256": "16bdc7b28e3763af6fb70a9ea7dc12c507a68a28fa1235153201c968545c6af2"
+      },
+      "seconds_including_first_model_load": 112.65404526298516,
+      "n_pred_instances": 22,
+      "all_empty": false
+    },
+    "RibFrac494": {
+      "source_image": {
+        "bytes": 100320862,
+        "mtime_ns": 1592061240000000000,
+        "sha256": "b6ca570eb350f72b1923c4918fd76b3c5fe4afc79680a8acc16cf21e1e9aade3"
+      },
+      "prediction": {
+        "bytes": 308204,
+        "mtime_ns": 1795870585155254751,
+        "sha256": "3f79675e918d6a78588f260f1fdbee898916bc096e2c3d5e01ce0f7a646a480c"
+      },
+      "probability": {
+        "bytes": 140011376,
+        "mtime_ns": 1795870589259275106,
+        "sha256": "88efbfe4be47f93c4b4850e56ef4be61cb1cb233c939450bcd33c95c24ae889f"
+      },
+      "seconds_including_first_model_load": 65.36295143002644,
+      "n_pred_instances": 12,
+      "all_empty": false
+    },
+    "RibFrac495": {
+      "source_image": {
+        "bytes": 112540582,
+        "mtime_ns": 1592061248000000000,
+        "sha256": "64240af950ae063130e394a9ad93b676b20fb186a6c906b29a356b85557714d5"
+      },
+      "prediction": {
+        "bytes": 355221,
+        "mtime_ns": 1795870736612005944,
+        "sha256": "8dab0e8a9bed801927aed154e5e2d8b9f311b0d377fbf4945ebf48e870bfcf90"
+      },
+      "probability": {
+        "bytes": 158849799,
+        "mtime_ns": 1795870741328029334,
+        "sha256": "043d559939ae5b92011689519ada8a939f4cfd6adf65022705fffd262f24d680"
+      },
+      "seconds_including_first_model_load": 152.32032585400157,
+      "n_pred_instances": 11,
+      "all_empty": false
+    },
+    "RibFrac496": {
+      "source_image": {
+        "bytes": 120850919,
+        "mtime_ns": 1592061255000000000,
+        "sha256": "cae63bbebe7a7472e148c98522e6fe80616f1384f2642660083ecaa8e0e7db22"
+      },
+      "prediction": {
+        "bytes": 368483,
+        "mtime_ns": 1795870944053034805,
+        "sha256": "13b0a6b83d26831402624f98d7ed7f3dfc1fc93e23b66d12446ad2b3ffd87440"
+      },
+      "probability": {
+        "bytes": 170265440,
+        "mtime_ns": 1795870949061059644,
+        "sha256": "cbf07b111728d86e23203da603d51571131566902b50d44eeb98e3c0ef35072f"
+      },
+      "seconds_including_first_model_load": 207.87186581100104,
+      "n_pred_instances": 8,
+      "all_empty": false
+    },
+    "RibFrac497": {
+      "source_image": {
+        "bytes": 82691344,
+        "mtime_ns": 1592061259000000000,
+        "sha256": "5e3aff308db24612e12da927da70d4f320c6b653c76fc175235a0701ee4963db"
+      },
+      "prediction": {
+        "bytes": 254368,
+        "mtime_ns": 1795871027881450575,
+        "sha256": "b93583644a4fe9bfe79e309d63b455461785b03d90ba3931e57fcc4611972e43"
+      },
+      "probability": {
+        "bytes": 113303674,
+        "mtime_ns": 1795871031217467122,
+        "sha256": "1a7a2f9a24702c5bb22f5368f99101b7c4dc3c5f8c32353b390f75e117b89bbf"
+      },
+      "seconds_including_first_model_load": 81.23014172000694,
+      "n_pred_instances": 11,
+      "all_empty": false
+    },
+    "RibFrac498": {
+      "source_image": {
+        "bytes": 151483704,
+        "mtime_ns": 1592061266000000000,
+        "sha256": "bae0af3bfdae45aa16e648668c2f62fbf2150af34529a84f7f424fa07c074b7b"
+      },
+      "prediction": {
+        "bytes": 466219,
+        "mtime_ns": 1795871192642267753,
+        "sha256": "15622d2dfa486c774c78f9b988383fe38433176f053022947cfd8716d2b1da55"
+      },
+      "probability": {
+        "bytes": 214202160,
+        "mtime_ns": 1795871198910298841,
+        "sha256": "c688dff3978391183b0f1e79ffcea43e3d4dbe3dd8d756a55109b559bb64dbd7"
+      },
+      "seconds_including_first_model_load": 169.12037071300438,
+      "n_pred_instances": 8,
+      "all_empty": false
+    },
+    "RibFrac499": {
+      "source_image": {
+        "bytes": 136390092,
+        "mtime_ns": 1592061271000000000,
+        "sha256": "d349b8d5da6ed3908a5c25ebd200f205cf875cffc88bb05bfc817f1c77292c8d"
+      },
+      "prediction": {
+        "bytes": 424131,
+        "mtime_ns": 1795871315706878126,
+        "sha256": "9b4f89eebf4768738fe344278dea8fc274620af43c62753ed11ba6e3d18a9e52"
+      },
+      "probability": {
+        "bytes": 192916944,
+        "mtime_ns": 1795871321418906457,
+        "sha256": "ee8ef40b3e35dc87021e0f0ae42bcc74cae654630a3ef8b8d01a979f05b6ac78"
+      },
+      "seconds_including_first_model_load": 122.17373112100177,
+      "n_pred_instances": 4,
+      "all_empty": false
+    },
+    "RibFrac500": {
+      "source_image": {
+        "bytes": 161356186,
+        "mtime_ns": 1592061280000000000,
+        "sha256": "3e1cc4b413a9c48ce400bea8bdf3a997fe861eb1765c4963fd0e588c9470b336"
+      },
+      "prediction": {
+        "bytes": 493061,
+        "mtime_ns": 1795871491939752203,
+        "sha256": "9dbf43ef3762a0373042ff66a8a5c75df88da68442be1e7a5121e035e4b47b01"
+      },
+      "probability": {
+        "bytes": 227348380,
+        "mtime_ns": 1795871498663785553,
+        "sha256": "399064d4f43353dd85c127c14f2c970768b556b3ffbd6cee886ab4ce305b848f"
+      },
+      "seconds_including_first_model_load": 177.67568983099773,
+      "n_pred_instances": 7,
+      "all_empty": false
+    }
+  },
+  "completed_at_unix": 1795871502.1539621
+}

@@ -14,7 +14,7 @@ Cập nhật ngày **28/11/2026** từ artifacts và Slurm. Đây là báo cáo 
 | E4–E5 và E5 supplementary | Hoàn tất | Có sensitivity, blindspots, qualitative, runtime; chưa chứng minh review utility |
 | Partition v3 | Hoàn tất development: 40 CT / 80 bones | Ridge fusion kém P1; G đơn lẻ gần ngang P1 |
 | Partition v4 | Hoàn tất development: 40 CT / 80 bones | P1+G chưa cải thiện có ý nghĩa; không phải fresh confirmation |
-| E6 RibFrac fast | Training hoàn tất 3/3; external chưa hoàn tất | Ba members epoch 1000, final checkpoint hashes PASS; chưa có inference/evaluation manifests |
+| E6 RibFrac fast | Hoàn tất và audit PASS | 3 members × 80 CT; 60 positive / 20 negative; [kết quả và CIs](../outputs/ribfrac_fast_v1/README.md) |
 | Manuscript | Có bản thảo/PDF 5 trang | Số liệu 58/58 PASS; còn author metadata, DOI PENGWIN và final author approval |
 
 ## Stage 0–3 và H1 lịch sử
@@ -188,7 +188,7 @@ Runtime E3 ghi median inference **bao gồm model load** khoảng 80,03–83,18 
 | C3c | Internal F1 có thể che volume/structural errors | Corrected blindspot CSV, fragment coverage | Supported cho evaluator nội bộ; không gọi là lỗi của evaluator official |
 | C3d | AURC tốt không bảo đảm review utility ở budget cụ thể | E5 original + supplementary CIs, CT costs | Supported; chưa chứng minh annotation savings hoặc clinical benefit |
 | C4-support | Artifact chain hỗ trợ reproducibility của nghiên cứu backend này | Manifests, code/config hashes, correction receipt | Supported trong phạm vi files đã kiểm tra; không tái đánh giá backend fixes/gateway lịch sử hoặc độc lập tái lập pixel-level |
-| External | Chuyển giao sang dataset/backend khác | E6 chưa có kết quả được audit ở đây | **Chưa có bằng chứng** |
+| External | Chuyển giao sang dataset/backend khác | E6 complete và audit PASS; xem bảng external bên dưới | Không suy rộng superiority ngoài endpoint/CI đã báo |
 
 
 ## Partition v3 và v4
@@ -208,17 +208,44 @@ Nguồn: [v3 comparison](../outputs/partition_v3_development_v1/comparison.csv),
 
 ## E6: RibFrac và revision tăng tốc
 
-**Live check 28/11/2026:** member01 complete lúc 05:10 ngày 25/11, member02 lúc 09:25
-ngày 25/11, member03 lúc 13:26 ngày 28/11 (giờ Việt Nam). Cả ba training manifests
-ghi epoch 1000 và SHA-256 của final checkpoints khớp. Slurm resume `3318_2` COMPLETED,
-exit 0:0; job member03 cũ `2923_2` từng FAILED do CUDA launch failure. Inference 2924
-và evaluation 2925 đã CANCELLED ngày 26/11; queue hiện không còn jobs của tác giả.
-Chưa có inference records hoặc external evaluation trong fast root.
+**Completed and audited — 28/11/2026.** Three independently seeded members reached fixed final epoch 1000; inference completed for 3 × 80 CTs. Evaluation job `3532` and audit/cohort job `3533` completed. The full audit verified checkpoint, source image/GT, prediction/probability, cache, and output hashes. All 80 cases (RibFrac421–500) are present: 60 positive and 20 negative CTs. Structural/missing endpoints use only positive cases; F1, Dice and FP burden retain negatives.
 
-Đã thêm launcher `scripts/finish_ribfrac_fast.sh`: CPU preflight → inference trên
-tối đa 2 GPU tasks đồng thời → CPU evaluation → count/hash audit và cohort report.
-Preflight thực tế PASS trên 3 checkpoints/80 external cases, đủ dung lượng.
-Command dành cho tác giả chạy; agent chưa submit inference/evaluation jobs.
+| Score | Merge/split (60 positive CTs) | Missing volume (60 positive CTs) | 1−F1 (80 CTs) |
+|---|---:|---:|---:|
+| FA-v2 / joint entropy | 0.1079 | 0.2129 | 0.2927 |
+| FA-v1 / log voxel count | 0.1101 | 0.2123 | 0.2914 |
+| Coverage | 0.1110 | 0.2118 | 0.2919 |
+| Mean entropy | 0.1110 | 0.2120 | 0.2905 |
+| Hungarian | 0.1006 | 0.2042 | 0.2926 |
+| Partition-only v2 | 0.0598 | 0.2949 | 0.4749 |
+
+| Endpoint | Baseline | ΔAURC FA-v2−baseline [95% CI] |
+|---|---|---:|
+| merge_split | presence | -0.0031 [-0.0109; 0.0005] |
+| merge_split | mean_entropy | -0.0031 [-0.0259; 0.0124] |
+| missing_volume | presence | 0.0011 [-0.0008; 0.0044] |
+| missing_volume | mean_entropy | 0.0009 [-0.0099; 0.0111] |
+| one_minus_f1 | presence | 0.0007 [-0.0007; 0.0035] |
+| one_minus_f1 | mean_entropy | 0.0021 [-0.0039; 0.0094] |
+| one_minus_dice | presence | 0.00297 [-0.000019; 0.00857] |
+| one_minus_dice | mean_entropy | 0.0068 [0.0012; 0.0148] |
+
+Lower AURC is better. CIs use 10,000 paired case-bootstrap draws (seed 20261121); these are marginal 95% intervals without familywise multiplicity adjustment. Results are secondary external transfer evidence, with no new primary success threshold. Changing normalization alone gives structural ΔAURC FA-v2−FA-v1 = **-0.0022 [-0.0081; 0.0004]**.
+
+| Cohort | CTs | Mean instance F1 | Mean binary Dice | FP instances/CT |
+|---|---:|---:|---:|---:|
+| all | 80 | 0.5250 | 0.5129 | 3.3125 |
+| positive | 60 | 0.6389 | 0.6228 | 3.7333 |
+| negative | 20 | 0.1833 | 0.1833 | 2.0500 |
+
+Cohort values average the three individual models, not a consensus segmentation. Partition-v2 is nonzero in only **9/80** CTs; FA-v2 equals coverage (tolerance 1e-12) in **71/80** CTs. Connected components of binary lesion predictions are the instances in this backend, which limits how often shared-foreground grouping differs.
+
+**Full-result assessment:** FA-v2 does not establish a structural-ranking advantage over coverage or mean entropy: both paired confidence intervals include zero. The normalization-only contrast also includes zero. For Dice error, FA-v2 is worse than mean entropy (ΔAURC +0.0068, marginal 95% CI [0.0012; 0.0148]). Structural AURC for FA-v2 (0.1079) is worse than the expected random ordering (0.0588, computed as mean risk × (n−1)/n under the frozen integration convention). Partition-only AURC (0.0598) is close to that random reference, so its lower AURC than FA-v2 does not establish useful structural discrimination. Only 17/60 positive CTs have nonzero member-mean structural risk. These external results do **not** validate a general transfer benefit for FA-v2; the completed PENGWIN evidence remains a separate result.
+
+**Interpretation boundary:** this experiment tests fracture-lesion instances, not whole-bone fragments, and does not transfer PENGWIN checkpoints. A benefit on a specific endpoint does not establish general superiority, clinical review savings, or universal cross-dataset transfer. Preserve unfavorable and uncertain contrasts in `paired_differences.csv`; do not pool PENGWIN and RibFrac AURCs. Internal best-IoU matching uses IoU ≥ 0.1 and is **not official RibFrac FROC**.
+
+[Kết quả đầy đủ và provenance](../outputs/ribfrac_fast_v1/README.md); [cohort report](../outputs/research_followup_v1/ribfrac_cohorts/cohorts.csv).
+
 Các snapshot training dưới đây được giữ như lịch sử, không phải trạng thái hiện tại.
 
 Đã có inventory **420 development + 80 external pairs**, preprocessing/cache và `handoff.json` tại `/mnt/disk1/backup_user/dang.cpm/Exchange-ML-E6-fast-v1`. Handoff ghi chuyển member01/02 từ epoch 30, member03 bắt đầu từ đầu; giữ nguyên checkpoints nguồn. Đây là chuyển giao fixed scores sang rib-fracture lesion instances với backend mới, không chuyển PENGWIN checkpoints.

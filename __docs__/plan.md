@@ -18,14 +18,14 @@ Phạm vi gồm E1–E5 trên PENGWIN, E6 RibFrac theo protocol riêng đã tri�
 | C2: kiểm chứng failure detection trên held-out | E3, 100 CT; FA-v2 đạt criterion pooled so với presence/entropy | Báo đầy đủ partition-only/Hungarian; không claim FA-v2 tốt nhất hoặc thắng riêng ở femur |
 | C3: điều kiện đánh giá và blindspots | E4/E5, supplementary fixed-budget và omission | Tách annotation scope, risk source, binary prevalence, severity, matching và chi phí CT; chưa claim review savings |
 | Hạ tầng hỗ trợ tái lập | ABBC patch, splits, manifests, hashes, unit checks | Supporting contribution, không thay kết quả khoa học |
-| External extension | E6 training 3/3 complete; external inference/evaluation chưa chạy | Chỉ thêm kết luận sau complete count/hash audit; giữ cả kết quả âm tính |
+| External extension | E6 complete: 240 inference records / 80 CT; audit PASS | Báo paired CIs và 60 positive/20 negative; xem [kết quả](../outputs/ribfrac_fast_v1/README.md), giữ mọi kết quả âm tính |
 
 V3/v4 chưa cải thiện đáng tin cậy so với P1. Không hạ chất lượng P1, đổi baseline hoặc chuyển primary sang hàng thuận lợi sau khi xem kết quả. Không coi các nhánh dùng lại validation hay E3 đã xem là fresh confirmation.
 
 ## Việc tiếp theo theo thứ tự
 
-1. **Hoàn tất external E6.** Ba final checkpoints đã complete và hash-verified; dùng `bash scripts/finish_ribfrac_fast.sh` để chạy inference trên tối đa 2 GPU đồng thời, nối CPU evaluation và audit/cohort report. Giữ code/config/root/software identity; không chạy lại full training chain. Agent đã preflight nhưng chưa submit các jobs này.
-2. **Audit và đọc E6.** Cần đủ ba trained final checkpoints, 80 external cases, 240 inference records, complete manifests và hashes; sau đó báo 12 scores, paired CIs, negative-case denominators và reconstruction limitations. Không gộp AURC hai datasets thành một benchmark.
+1. **External E6 đã hoàn tất.** Inference 240/240, evaluation 80/80 và audit/cohort PASS; [bằng chứng đã lưu trong repo](../outputs/ribfrac_fast_v1/README.md). Không submit lại training/inference/evaluation.
+2. **Diễn giải E6 đã audit.** Dùng đủ 12 scores, paired CIs, negative-case denominators và reconstruction limitations từ bảng complete. Giữ kết quả hỗn hợp, không gộp AURC hai datasets thành một benchmark.
 3. **Chốt scientific framing.** Đối chiếu E6 với kết quả E1–E5; giữ primary E3 và giới hạn partition-only. Tác giả đã đồng ý triển khai count ablation và evaluator sensitivity sau rà soát; chạy ở roots riêng theo `exps.md`. Phương pháp hoặc training revision rộng hơn vẫn cần protocol/controls riêng.
 4. **Chốt manuscript hiện có.** Bản thảo tiếng Anh/PDF 5 trang đã có trong `paper/`; bổ sung E6 chỉ sau audit, điền author metadata và xác nhận DOI PENGWIN. Giữ mixed/negative findings, backend provenance, mixed-batch E6 amendment và chronology limits. Support files đã gỡ khỏi `paper/` có bản sao ngoài repo theo `paper/README.md`.
 5. **Kiểm tra trước submission.** Xác minh venue/format/nguồn tham khảo, claim–evidence, data/model provenance, disclosure, integrity và review; tác giả duyệt bản cuối trước nộp.
@@ -50,7 +50,7 @@ Nguồn: [rà soát và số liệu chẩn đoán](progress.md#rà-soát-toàn-d
 | 1 | Khôi phục ABBC submodule mapping/URL và kiểm tra bootstrap; exposure audit 110 candidate CTs | Đúng pin+patch, source/config hashes; ghi rõ case nào từng được xem outcomes | Metadata/CPU, không train |
 | 2 | Một ablation P1+absolute predicted count thay G, giữ v4 grouped 5×3 CV/objective/alpha grid | P1 nguyên bản, G, count-only, count-variance, v4; paired CT CIs, anatomy strata; GT complexity chỉ vào hậu kiểm, không predictor | CSV/CPU, không inference mới |
 | 3 | Supplementary evaluator sensitivity và kiểm chứng CT policy/omission guard đã có | One-to-one/significant-overlap/missing-volume, giữ primary gốc; cùng CT budgets, guard/no-guard; không gọi validation không có positives là đã xác nhận guard | CPU trên predictions; confirmation có thể cần GPU inference |
-| 4 | Hoàn tất và audit E6 hiện tại, tách 60 positive/20 negative external subjects | Giữ 12 controls, fixed scores/checkpoint policy và mọi kết quả âm tính; thêm FP burden/negative CT | Campaign hiện có |
+| 4 | E6 đã complete/audit; cập nhật diễn giải 60 positive/20 negative external subjects | Giữ 12 controls, fixed scores/checkpoint policy và mọi kết quả âm tính; thêm FP burden/negative CT | Campaign hiện có |
 | 5 | Chỉ khi cần training revision: một-seed pilot batch/sampling và stage-time profiling | Cùng warmstart, NPY, patch budget, LR schedule, internal validation; tách batch-size effect và guaranteed-foreground rounding | GPU pilot riêng, tác giả chạy |
 
 **Phương án nhỏ ưu tiên:** ablation P1+count, không mở rộng search sang nhiều heads/features. Điểm pooled count-only validation 0,26328 so P1 0,27059 chỉ là hậu nghiệm không CI, còn femur kém hơn. Chỉ cân nhắc xác nhận sau khi có báo cáo paired differences/strata, kiểm tra có phải complexity proxy, và định trước mức cải thiện có ý nghĩa; không lấy một point estimate làm bằng chứng thắng. Nếu không thêm giá trị, dừng nhánh fusion này và giữ framing phân rã/đánh giá theo bằng chứng hiện có.
@@ -66,8 +66,8 @@ Nguồn: [rà soát và số liệu chẩn đoán](progress.md#rà-soát-toàn-d
 
 1. Đọc ít nhất6bàiEMBC được xuất bản, fulltext và evidence matrix trước đây ở `paper/review/` (đã gỡ khỏi paper ngày28/11; bản sao theo `paper/README.md`), suy luận bar có giới hạn accepted-only.
 2. Thực hiện thêm một policy structural/foreground fixed-rule sau failed fusions: `configs/triage_policy.json`, CPU Slurm command ở `exps.md`; full2987 đã complete và chưa xác nhận benefit, giữ ở development evidence, không đưa thành contribution.
-3. Viết complete English IEEE manuscript trong `paper/`, dùng completed PENGWIN evidence; kiểm tra integrity, simulated review/revision và local PDF. Không tự nộp/publish. E6 đang chạy chỉ vào limitations/future extension, không có external result để báo.
+3. Viết complete English IEEE manuscript trong `paper/`, dùng completed PENGWIN evidence; kiểm tra integrity, simulated review/revision và local PDF. Không tự nộp/publish. E6 đã hoàn tất và audit; bản thảo hiện tại chưa được cập nhật các external results mới.
 
 ## Sau lần refine manuscript/cleanup ngày23/11
 
-Contributions đã chốt theo completed evidence: phân rã coverage/grouping và kiểm tra normalization; benchmark12scores/100CT; sensitivity theo failure definition. Overview dùng CT/predictions thật và real risk curves, có provenance để tái tạo. Giữ E6 chạy theo campaign hiện tại; chỉ bổ sung external findings sau complete evaluation và hash/count audit. Điền author/affiliation và xử lý các vấn đề còn lại từ review trước khi chốt bản nộp.
+Contributions đã chốt theo completed evidence: phân rã coverage/grouping và kiểm tra normalization; benchmark12scores/100CT; sensitivity theo failure definition. Overview dùng CT/predictions thật và real risk curves, có provenance để tái tạo. E6 đã complete evaluation và hash/count audit; cập nhật external findings vào bản thảo là bước tiếp theo, giữ mọi kết quả bất lợi. Điền author/affiliation và xử lý các vấn đề còn lại từ review trước khi chốt bản nộp.

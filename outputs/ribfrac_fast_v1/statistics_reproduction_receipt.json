@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "scope": "Recomputed frozen 10,000-draw statistical tables from all 80 exported scalar caches; compared every cell with the original export. No model or volume processing.",
+  "cases": 80,
+  "bootstrap_resamples": 10000,
+  "bootstrap_seed": 20261121,
+  "verified_export_hashes": 178,
+  "verified_table_rows": {
+    "comparison": 96,
+    "paired_differences": 88,
+    "risk_coverage": 6480
+  },
+  "producer": "exchange_ml.e6_evaluation.report_tables"
+}

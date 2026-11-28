@@ -8,14 +8,9 @@ Tài liệu hiện hành chỉ gồm ba file:
 - [plan.md](__docs__/plan.md): contributions, công việc còn lại và quy tắc thực thi.
 - [exps.md](__docs__/exps.md): protocol, configs, output paths và lệnh chạy/kiểm tra.
 
-E1–E5 đã hoàn tất. FA-v2 đạt criterion pooled held-out so với presence/entropy; partition-only vẫn mạnh hơn, và v3/v4 chưa cho thấy cải thiện đáng tin cậy so với P1. E6 RibFrac fast chưa hoàn tất external evaluation; đọc progress và artifacts trước khi kết luận transfer hoặc submit thêm jobs.
+E1–E5 đã hoàn tất. FA-v2 đạt criterion pooled held-out so với presence/entropy; partition-only vẫn mạnh hơn, và v3/v4 chưa cho thấy cải thiện đáng tin cậy so với P1.
 
-E6 đã train xong cả ba members ở epoch 1000. Để chạy tiếp external inference trên
-tối đa 2 GPU đồng thời, nối CPU evaluation và audit/cohort report:
-
-```bash
-bash scripts/finish_ribfrac_fast.sh
-```
+**E6 RibFrac đã hoàn tất và audit PASS:** 3 members × 80 CT, gồm 60 positive và 20 negative. [Kết quả, paired CIs và provenance](outputs/ribfrac_fast_v1/README.md) cùng [báo cáo positive/negative](outputs/research_followup_v1/ribfrac_cohorts/cohorts.csv) đã lưu trong repo. Không cần submit lại campaign hiện có. Đây là external evaluation của fracture-lesion instances với internal matching, không phải official RibFrac FROC.
 
 | Vị trí | Nội dung |
 |---|---|
@@ -23,6 +18,7 @@ bash scripts/finish_ribfrac_fast.sh
 | `configs/`, `splits/` | Protocol, seeds, splits và audit metadata |
 | `outputs/stage3_h1/`, `outputs/stage2_backend/` | Checkpoints và kết quả backend/v1 |
 | `outputs/stage3_h1_v2/` | E1–E5, held-out, perturbations và reporting evidence |
+| `outputs/ribfrac_fast_v1/` | E6 external tables, paired CIs, scalar caches và audited provenance |
 | `outputs/partition_v{3,4}_development_v1/` | Development artifacts; không phải fresh confirmation |
 | `outputs/archive/` | Bằng chứng và tài liệu lịch sử |
 | `outputs/local_copy_v1/` | Source/destination copy manifests và SHA-256 |

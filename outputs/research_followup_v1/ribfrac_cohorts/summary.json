@@ -1,0 +1,9 @@
+{
+  "n_cases": 80,
+  "n_positive_cases": 60,
+  "n_negative_cases": 20,
+  "role": "descriptive_fixed_threshold_internal_matching_not_official_FROC",
+  "new_case_GT_used_for_prediction": false,
+  "new_inference_or_training": false,
+  "CI_computed": false
+}

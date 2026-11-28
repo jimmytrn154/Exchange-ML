@@ -1,0 +1,28 @@
+{
+  "status": "complete",
+  "provenance": {
+    "source_root": "/mnt/disk1/backup_user/dang.cpm/Exchange-ML-E6-fast-v1",
+    "source_hashes": {
+      "e6_manifest.json": "4e774941ebd963bd0096ecb1e200edfb36c5ecc218292fd51a791535fb63732f",
+      "risks.csv": "1d35e3e42b11fb8f65bbce38118d38218920f034f88b522ba9a0b019366a6f28",
+      "model_risks.csv": "436c921d25c6cc3add6a4271cde8845b0f013fdddd1fe276d509d3c6134d0c55",
+      "summary.json": "828f576247c1f5c1bd0a2773171b92c4d13859808e9214473ad0973c03211ff4"
+    },
+    "output_root": "/mnt/sdb/shared/dang.cpm/Exchange-ML/outputs/research_followup_v1/ribfrac_cohorts",
+    "producer_sha256": "f866da1b33d75d357860497959a3f9334274ec81a55b1e50cf62143039d5d47d"
+  },
+  "signature": "ad0a6babe4c39670312c92931fe26dcc2bd38ddfa6d1d58eec1cf8fe510bdcf2",
+  "summary": {
+    "n_cases": 80,
+    "n_positive_cases": 60,
+    "n_negative_cases": 20,
+    "role": "descriptive_fixed_threshold_internal_matching_not_official_FROC",
+    "new_case_GT_used_for_prediction": false,
+    "new_inference_or_training": false,
+    "CI_computed": false
+  },
+  "output_sha256": {
+    "cohorts.csv": "dc3cc94f520fe5e98eaab90f0421ef22ad0065d34e0d12b35f30dc208a310d23",
+    "summary.json": "e6072a4964f6fefa73a03a8de66c3ba2d919778bdaad67617134675daa132b28"
+  }
+}

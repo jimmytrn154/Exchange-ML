@@ -1,0 +1,97 @@
+{
+  "analysis_role": "external_transfer_secondary_no_new_primary_gate",
+  "unit": "case",
+  "n_cases": 80,
+  "n_positive_gt_cases": 60,
+  "n_negative_gt_cases": 20,
+  "bootstrap_resamples": 10000,
+  "bootstrap_seed": 20261121,
+  "confidence_level": 0.95,
+  "multiplicity": "marginal_CIs_no_familywise_adjustment",
+  "endpoints": {
+    "merge_split": {
+      "n_cases": 60,
+      "excluded_undefined_cases": 20,
+      "n_positive_risk": 17,
+      "risk_min": 0.0,
+      "risk_max": 1.5,
+      "risk_mean": 0.05979150154588751,
+      "status": "estimated"
+    },
+    "merge": {
+      "n_cases": 60,
+      "excluded_undefined_cases": 20,
+      "n_positive_risk": 4,
+      "risk_min": 0.0,
+      "risk_max": 0.25,
+      "risk_mean": 0.006561609686609687,
+      "status": "estimated"
+    },
+    "split": {
+      "n_cases": 60,
+      "excluded_undefined_cases": 20,
+      "n_positive_risk": 15,
+      "risk_min": 0.0,
+      "risk_max": 1.5,
+      "risk_mean": 0.053229891859277824,
+      "status": "estimated"
+    },
+    "missing": {
+      "n_cases": 60,
+      "excluded_undefined_cases": 20,
+      "n_positive_risk": 45,
+      "risk_min": 0.0,
+      "risk_max": 1.0,
+      "risk_mean": 0.2433664723028758,
+      "status": "estimated"
+    },
+    "one_minus_f1": {
+      "n_cases": 80,
+      "excluded_undefined_cases": 0,
+      "n_positive_risk": 78,
+      "risk_min": 0.0,
+      "risk_max": 1.0,
+      "risk_mean": 0.4750077099921672,
+      "status": "estimated"
+    },
+    "missing_volume": {
+      "n_cases": 60,
+      "excluded_undefined_cases": 20,
+      "n_positive_risk": 59,
+      "risk_min": 0.0,
+      "risk_max": 1.0,
+      "risk_mean": 0.3032342619283473,
+      "status": "estimated"
+    },
+    "one_minus_dice": {
+      "n_cases": 80,
+      "excluded_undefined_cases": 0,
+      "n_positive_risk": 78,
+      "risk_min": 0.0,
+      "risk_max": 1.0,
+      "risk_mean": 0.4870832504281262,
+      "status": "estimated"
+    },
+    "false_positive_instances": {
+      "n_cases": 80,
+      "excluded_undefined_cases": 0,
+      "n_positive_risk": 78,
+      "risk_min": 0.0,
+      "risk_max": 12.333333333333334,
+      "risk_mean": 3.3125,
+      "status": "estimated"
+    }
+  },
+  "limitations": [
+    "fracture_lesion_instances_are_not_whole_bone_fragments",
+    "internal_matching_not_official_RibFrac_evaluator",
+    "constant_structural_risk_cannot_establish_failure_detection",
+    "no_PENGWIN_RibFrac_AURC_pooling"
+  ],
+  "smoke_only": false,
+  "n_external_cases": 80,
+  "scope": "Transfer of fixed disagreement scores to rib-fracture lesion instances, not PENGWIN checkpoint transfer or whole-rib fragmentation. Performance revision: larger batch, NPY cache, recorded mixed-batch warmstart prefixes.",
+  "target": "All nonzero instance IDs, including label_code=-1, are positive for segmentation/detection. No voxel ignore mask.",
+  "checkpoint_selection": "fixed final epoch; official validation excluded",
+  "peak_rss_kib": 13663708
+}

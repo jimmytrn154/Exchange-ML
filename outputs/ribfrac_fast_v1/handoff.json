@@ -1,0 +1,33 @@
+{
+  "signature": "9c722568c7bce28093506f9d5fa5aa059f7bffe8db65cb04bf5789bf03a82072",
+  "old_jobs_cancelled": [
+    2880,
+    2881,
+    2882
+  ],
+  "warmstarts": {
+    "member_01": {
+      "path": "/mnt/disk1/backup_user/dang.cpm/Exchange-ML-E6-fast-v1/warmstarts/member_01/checkpoint.pth",
+      "source": "/mnt/disk1/backup_user/dang.cpm/Exchange-ML-E6/backend/results/member_01/Dataset706_RibFracE6/E6Trainer__nnUNetPlans__3d_fullres/fold_0/checkpoint_latest.pth",
+      "sha256": "16be8a649b7249cbaae90c940c05f7b3fac912dc500070306a5b9ba089dc9dae",
+      "parent_training_signature": "f5fe01dce318706af5b74ecc3891a637639a16d0ff5de17f3dfea8252f0f7a2f",
+      "parent_training_manifest_sha256": "22a4b82166ba30013efbd295bc73bef36e9efde9065627234277a51a44674f36",
+      "starting_epoch": 30,
+      "phase_change": "batch2_compressed_to_larger_batch_NPY_same_architecture"
+    },
+    "member_02": {
+      "path": "/mnt/disk1/backup_user/dang.cpm/Exchange-ML-E6-fast-v1/warmstarts/member_02/checkpoint.pth",
+      "source": "/mnt/disk1/backup_user/dang.cpm/Exchange-ML-E6/backend/results/member_02/Dataset706_RibFracE6/E6Trainer__nnUNetPlans__3d_fullres/fold_0/checkpoint_latest.pth",
+      "sha256": "a0a576fbad96f78eaa9e4497f66fc23caa5e9fda77d05e18f6142540d4a704c5",
+      "parent_training_signature": "183ac54bf5b73b1763c032c0dfafbaad47c7c6caca89506a910edf233fa845a9",
+      "parent_training_manifest_sha256": "098dde1e034927f8eae7bf0a9f512254d7549002e6521991bed35762ae16801f",
+      "starting_epoch": 30,
+      "phase_change": "batch2_compressed_to_larger_batch_NPY_same_architecture"
+    },
+    "member_03": {
+      "source": null,
+      "starting_epoch": 0
+    }
+  },
+  "completed_at_unix": 1795338109.2088435
+}

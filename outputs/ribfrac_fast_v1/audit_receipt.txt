@@ -1,0 +1,12 @@
+member_01: final epoch 1000; checkpoint hash PASS; inference 80/80
+member_02: final epoch 1000; checkpoint hash PASS; inference 80/80
+member_03: final epoch 1000; checkpoint hash PASS; inference 80/80
+{
+  "status": "E6_audit_pass",
+  "trained_members": 3,
+  "external_cases": 80,
+  "inference_records": 240,
+  "scores": 12,
+  "verified_output_hashes": 8
+}
+RIBFRAC COHORT REPORT COMPLETE (descriptive, no FROC or new experiment)
