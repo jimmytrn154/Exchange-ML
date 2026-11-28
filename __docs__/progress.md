@@ -1,6 +1,6 @@
 # Tiến độ và kết quả
 
-Cập nhật ngày **22/11/2026** từ artifacts hiện có. Đây là báo cáo tổng hợp duy nhất cho các stage đã hoàn tất; protocol ở [exps.md](exps.md), công việc còn lại ở [plan.md](plan.md).
+Cập nhật ngày **28/11/2026** từ artifacts và Slurm. Đây là báo cáo tổng hợp duy nhất cho các stage đã hoàn tất; protocol ở [exps.md](exps.md), công việc còn lại ở [plan.md](plan.md).
 
 ## Trạng thái tổng thể
 
@@ -14,8 +14,8 @@ Cập nhật ngày **22/11/2026** từ artifacts hiện có. Đây là báo cáo
 | E4–E5 và E5 supplementary | Hoàn tất | Có sensitivity, blindspots, qualitative, runtime; chưa chứng minh review utility |
 | Partition v3 | Hoàn tất development: 40 CT / 80 bones | Ridge fusion kém P1; G đơn lẻ gần ngang P1 |
 | Partition v4 | Hoàn tất development: 40 CT / 80 bones | P1+G chưa cải thiện có ý nghĩa; không phải fresh confirmation |
-| E6 RibFrac fast | Chưa hoàn tất | Handoff/cache đã có artifacts; training đang cập nhật log; chưa có external evaluation được audit |
-| Manuscript | Chưa hoàn tất | Có bản nháp Results/Discussion trong archive; chưa submission-ready |
+| E6 RibFrac fast | Training hoàn tất 3/3; external chưa hoàn tất | Ba members epoch 1000, final checkpoint hashes PASS; chưa có inference/evaluation manifests |
+| Manuscript | Có bản thảo/PDF 5 trang | Số liệu 58/58 PASS; còn author metadata, DOI PENGWIN và final author approval |
 
 ## Stage 0–3 và H1 lịch sử
 
@@ -208,6 +208,19 @@ Nguồn: [v3 comparison](../outputs/partition_v3_development_v1/comparison.csv),
 
 ## E6: RibFrac và revision tăng tốc
 
+**Live check 28/11/2026:** member01 complete lúc 05:10 ngày 25/11, member02 lúc 09:25
+ngày 25/11, member03 lúc 13:26 ngày 28/11 (giờ Việt Nam). Cả ba training manifests
+ghi epoch 1000 và SHA-256 của final checkpoints khớp. Slurm resume `3318_2` COMPLETED,
+exit 0:0; job member03 cũ `2923_2` từng FAILED do CUDA launch failure. Inference 2924
+và evaluation 2925 đã CANCELLED ngày 26/11; queue hiện không còn jobs của tác giả.
+Chưa có inference records hoặc external evaluation trong fast root.
+
+Đã thêm launcher `scripts/finish_ribfrac_fast.sh`: CPU preflight → inference trên
+tối đa 2 GPU tasks đồng thời → CPU evaluation → count/hash audit và cohort report.
+Preflight thực tế PASS trên 3 checkpoints/80 external cases, đủ dung lượng.
+Command dành cho tác giả chạy; agent chưa submit inference/evaluation jobs.
+Các snapshot training dưới đây được giữ như lịch sử, không phải trạng thái hiện tại.
+
 Đã có inventory **420 development + 80 external pairs**, preprocessing/cache và `handoff.json` tại `/mnt/disk1/backup_user/dang.cpm/Exchange-ML-E6-fast-v1`. Handoff ghi chuyển member01/02 từ epoch 30, member03 bắt đầu từ đầu; giữ nguyên checkpoints nguồn. Đây là chuyển giao fixed scores sang rib-fracture lesion instances với backend mới, không chuyển PENGWIN checkpoints.
 
 Snapshot đọc log lúc khoảng **19:31 ngày 22/11/2026, giờ Việt Nam**: member01 bắt đầu epoch 81, member02 bắt đầu epoch 75; epoch vừa hoàn tất mất khoảng 219,71 / 260,77 giây. Hai training manifests ghi `running`. Đây là snapshot từ log/manifests; không thay kiểm tra scheduler hiện thời và không phải ETA cam kết. Chưa có external result để kết luận transfer.
@@ -335,7 +348,7 @@ Next step: giữ count result là mixed/negative, dừng tuning fusion không gi
 
 ## Pipeline EMBC: literature, policy và manuscript — 23/11/2026
 
-Đã đọc6 full scientific manuscripts có publication EMBC được xác minh (3năm2023,2năm2024,1năm2025), cùng một study âm tính2022 để tham khảo. Một2024paper dùng full preprint10trang của tác giả vì chưa truy cập final5trang; giới hạn phiên bản được ghi rõ. Review không ước lượng acceptance probability hoặc suy từ accepted-only rằng yêu cầu khoa học có thể bỏ qua. Matrix và source ledgers ở `paper/review/embc_acceptance_synthesis.md`, `embc_recent_fulltext.*`, `embc_comparison_fulltext.*`.
+Đã đọc6 full scientific manuscripts có publication EMBC được xác minh (3năm2023,2năm2024,1năm2025), cùng một study âm tính2022 để tham khảo. Một2024paper dùng full preprint10trang của tác giả vì chưa truy cập final5trang; giới hạn phiên bản được ghi rõ. Review không ước lượng acceptance probability hoặc suy từ accepted-only rằng yêu cầu khoa học có thể bỏ qua. Matrix và source ledgers trước đây ở `paper/review/`; đã gỡ khỏi paper ngày28/11, bản sao theo `paper/README.md`.
 
 Đã triển khai dual-channel CT triage prediction-only, calibration fold-local, candidate và baseline cùng omission guard; chi tiết và command Slurm trong `exps.md`. **8 tests mới PASS; toàn suite271 tests PASS (28,671giây)**. Real metadata preflight40validation/100heldout pass, synthetic smoke và Slurm `--test-only` pass; E1–E5 audit111/142 tiếp tụcPASS. Chưa chạy full policy mới hoặc thay E6.
 
@@ -363,7 +376,7 @@ Viết lại toàn bộ `paper/manuscript.tex` theo khung **coverage vs grouping
 **Reference:** thêm 8, tổng cộng 18.
 
 **Kiểm tra.**
-- `paper/review/check_manuscript_numbers.py`: 58/58 PASS.
+- Number audit trước cleanup: 58/58 PASS; script cũ được giữ trong bản sao ngoài repo theo `paper/README.md`.
 - PDF dựng bằng pdflatex cục bộ: 5 trang.
 - Tectonic chạy trên server cần build lại để xác nhận giới hạn trang.
 

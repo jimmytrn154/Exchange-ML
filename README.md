@@ -10,6 +10,13 @@ Tài liệu hiện hành chỉ gồm ba file:
 
 E1–E5 đã hoàn tất. FA-v2 đạt criterion pooled held-out so với presence/entropy; partition-only vẫn mạnh hơn, và v3/v4 chưa cho thấy cải thiện đáng tin cậy so với P1. E6 RibFrac fast chưa hoàn tất external evaluation; đọc progress và artifacts trước khi kết luận transfer hoặc submit thêm jobs.
 
+E6 đã train xong cả ba members ở epoch 1000. Để chạy tiếp external inference trên
+tối đa 2 GPU đồng thời, nối CPU evaluation và audit/cohort report:
+
+```bash
+bash scripts/finish_ribfrac_fast.sh
+```
+
 | Vị trí | Nội dung |
 |---|---|
 | `src/exchange_ml/`, `scripts/` | Metrics, data/backend, training, inference và evaluation |
@@ -19,7 +26,7 @@ E1–E5 đã hoàn tất. FA-v2 đạt criterion pooled held-out so với presen
 | `outputs/partition_v{3,4}_development_v1/` | Development artifacts; không phải fresh confirmation |
 | `outputs/archive/` | Bằng chứng và tài liệu lịch sử |
 | `outputs/local_copy_v1/` | Source/destination copy manifests và SHA-256 |
-| `paper/` | Template và tài liệu manuscript |
+| `paper/` | Manuscript/PDF, tài liệu tham khảo, hai bảng, hai hình và `build.sh` |
 
 Dataset được nối qua `dataset -> ../dataset`; bulk E6 roots ở `/mnt/disk1/backup_user/dang.cpm/Exchange-ML-E6-fast-v1`. Giữ dữ liệu/checkpoints/manifests và không thay đổi code/config/root của campaign đang chạy.
 

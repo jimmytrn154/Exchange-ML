@@ -1,6 +1,6 @@
 # Protocol và lệnh chạy
 
-Cập nhật **22/11/2026**. Kết quả và trạng thái ở [progress.md](progress.md); ưu tiên còn lại ở [plan.md](plan.md). E1–E5, v3 và v4 đã hoàn tất: các lệnh tái lập không phải yêu cầu chạy lại. E6 fast đang triển khai production; không submit thêm writers vào root đang chạy.
+Cập nhật **28/11/2026**. Kết quả và trạng thái ở [progress.md](progress.md); ưu tiên còn lại ở [plan.md](plan.md). E1–E5, v3 và v4 đã hoàn tất. E6 fast đã train xong cả ba members; dùng launcher chạy tiếp bên dưới cho external inference/evaluation.
 
 ## Bản đồ experiments
 
@@ -290,13 +290,50 @@ PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:. MPLCONFIGDIR=/tmp/exchange-ml-mpl \
 
 `audit_e1_e5_evidence.py --write` chỉ tái tạo reporting sidecar từ các sources đã hash-verify khi chủ ý cập nhật báo cáo; không chạy inference, scoring hay bootstrap experiments. Sidecar/hình reporting ở `outputs/stage3_h1_v2/reporting/`; không ghi thêm files trong `__docs__`.
 
-## Lệnh theo dõi E6 đang chạy
+## Hoàn tất E6 từ ba final checkpoints — 28/11/2026
+
+Ba training manifests complete ở epoch 1000; checkpoint hashes đã kiểm tra PASS.
+Job resume member03 `3318_2` COMPLETED lúc 13:26 ngày 28/11. Inference 2924 và
+evaluation 2925 cũ đã CANCELLED; không dùng lại dependencies này.
+
+**Tác giả chạy** command sau; agent đã kiểm tra nhưng chưa submit:
+
+```bash
+cd /mnt/sdb/shared/dang.cpm/Exchange-ML
+bash scripts/finish_ribfrac_fast.sh
+```
+
+Chain: CPU preflight → GPU inference array `0-2%2`, **1 GPU/task, tối đa 2 GPU đồng thời**
+→ CPU evaluation → CPU audit và positive/negative cohort report. Member thứ ba
+chạy khi một GPU được giải phóng. Evaluation chỉ chạy khi cả ba inference tasks
+thành công; audit/report chỉ chạy sau evaluation thành công. Dependencies dùng
+`afterok` và hủy dependent jobs nếu dependency thất bại.
+
+Preflight kiểm tra frozen identity, ba final checkpoints, đúng 80 external cases và
+dung lượng còn lại. Audit kiểm tra đủ 240 inference records, 80 case caches, 12 scores,
+source/output hashes và summary; cohort report kiểm tra 60 positive/20 negative CTs.
+Logs ở `outputs/logs/ribfrac-fast-*`; full results ở root E6 fast hiện có,
+cohort report ở `outputs/research_followup_v1/ribfrac_cohorts/`.
+
+Launcher từ chối submit nếu còn jobs tên `ribfrac-fast*`. Các inference records
+đã lưu được runner gốc kiểm tra hash rồi bỏ qua khi chạy tiếp. Các launcher,
+runner và backend cũ giữ nguyên vì hashes của chúng nằm trong training/handoff identity.
+Không dùng `submit_ribfrac_fast.sh full` để hoàn tất campaign này.
+
+Kiểm tra mà không submit:
+
+```bash
+bash scripts/finish_ribfrac_fast.sh --dry-run
+OPENBLAS_NUM_THREADS=1 /home/dang.cpm/miniconda3/envs/exchange-stage2/bin/python -B \
+  scripts/check_ribfrac_fast.py preflight
+```
+
+## Lệnh theo dõi E6
 
 ```bash
 cd /mnt/sdb/shared/dang.cpm/Exchange-ML
 squeue -u "$USER"
-tail -n 20 outputs/logs/ribfrac-fast-train-2923_0.log
-tail -n 20 outputs/logs/ribfrac-fast-train-2923_1.log
+ls -lt outputs/logs/ribfrac-fast-*.log | head
 ```
 
 Job IDs là snapshot chain ngày 22/11/2026, không phải IDs cố định cho các lần resume. Xem scheduler, log và manifests cùng nhau trước khi kết luận trạng thái hoặc ETA. Timeout/failure có thể chặn downstream `afterok`.
@@ -397,11 +434,12 @@ Logs: `outputs/logs/research-preflight-*.log`, `count-ablation-*.log`, `evaluato
 
 Đọc `e6_manifest.json` complete, verified `risks.csv`, `model_risks.csv`, `summary.json`; yêu cầu đủ 80 official external cases/ba model rows mỗi ca và 60 positive/20 negative subjects. Báo FP instances/CT, tỷ lệ CT có FP, F1/Dice và structural eligibility theo cohort/model. Member-mean là trung bình ba model, không phải consensus hoặc 240 patients. Negative structural risks giữ undefined. Không tính official FROC, không tạo CI mới hay thay matching/threshold.
 
-Snapshot đã kiểm tra ngày 22/11: E6 evaluation job **2925** vẫn pending dependency. Để queue report sau đúng evaluation job hiện tại:
+Launcher `finish_ribfrac_fast.sh` tự queue audit và cohort report sau evaluation mới.
+Nếu chạy riêng reporter, thay `EVALUATION_JOB_ID` bằng job ID mới vừa submit:
 
 ```bash
 cd /mnt/sdb/shared/dang.cpm/Exchange-ML
-sbatch --dependency=afterok:2925 scripts/ribfrac_cohorts.sbatch
+sbatch --dependency=afterok:EVALUATION_JOB_ID scripts/ribfrac_cohorts.sbatch
 ```
 
 Nếu chain E6 đã thay, dùng evaluation job ID mới. Reporter fail-closed nếu source chưa complete hoặc hashes/counts sai; không ghi vào external E6 root.
@@ -428,13 +466,17 @@ Launcher submit CPU synthetic smoke rồi full `afterok`; **4 CPUs,8GiB,2giờ t
 
 Full policy đã complete: target missing-volume tại20%CT trên100heldout có candidate−guardP1 **+0,00109 [−0,02321; +0,01281]**, chưa xác nhận lợi ích. Giữ output và negative finding; không đưa policy thành contribution. E6 chưa có external evaluation hoàn chỉnh.
 
-## Tái tạo manuscript và overview thật (CPU)
+## Compile manuscript và audit completed evidence (CPU)
 
 ```bash
 cd /mnt/sdb/shared/dang.cpm/Exchange-ML
 PYTHONDONTWRITEBYTECODE=1 OPENBLAS_NUM_THREADS=1 \
   /home/dang.cpm/miniconda3/envs/exchange-stage2/bin/python -B \
-  paper/build_paper.py --compile
+  scripts/audit_e1_e5_evidence.py
+bash paper/build.sh
 ```
 
-Thêm `--refresh-overview` để đọc lại một CT development và ba predictions đã lưu, rồi vẽ lại overview. Default kiểm tra hashes/manifests và tái tạo hai bảng, Markdown, PDF; không train/infer hoặc chạy lại bootstrap. File build ở `paper/build/` được ignore; provenance ở `paper/evidence/`. Chi tiết trong `paper/README.md`.
+Audit command kiểm tra completed E1–E5 evidence. Build command chỉ compile bản thảo,
+bảng và hai figure PDFs đã lưu; không chạy experiments hay tái tạo figures/tables.
+File build ở `paper/build/` được ignore. Evidence/review và generation scripts cũ
+đã gỡ khỏi `paper/`; bản sao trước dọn được ghi trong `paper/README.md`.

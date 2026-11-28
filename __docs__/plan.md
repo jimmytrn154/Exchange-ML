@@ -1,6 +1,6 @@
 # Kế hoạch hiện hành
 
-Cập nhật **22/11/2026**. [progress.md](progress.md) là nguồn tổng hợp kết quả; [exps.md](exps.md) giữ protocol và lệnh chạy. Các roadmap cũ đã được thay bằng kế hoạch này; kết quả và protocol của experiments đã hoàn tất vẫn giữ nguyên.
+Cập nhật **28/11/2026**. [progress.md](progress.md) là nguồn tổng hợp kết quả; [exps.md](exps.md) giữ protocol và lệnh chạy. Các roadmap cũ đã được thay bằng kế hoạch này; kết quả và protocol của experiments đã hoàn tất vẫn giữ nguyên.
 
 ## Câu hỏi và phạm vi
 
@@ -18,16 +18,16 @@ Phạm vi gồm E1–E5 trên PENGWIN, E6 RibFrac theo protocol riêng đã tri�
 | C2: kiểm chứng failure detection trên held-out | E3, 100 CT; FA-v2 đạt criterion pooled so với presence/entropy | Báo đầy đủ partition-only/Hungarian; không claim FA-v2 tốt nhất hoặc thắng riêng ở femur |
 | C3: điều kiện đánh giá và blindspots | E4/E5, supplementary fixed-budget và omission | Tách annotation scope, risk source, binary prevalence, severity, matching và chi phí CT; chưa claim review savings |
 | Hạ tầng hỗ trợ tái lập | ABBC patch, splits, manifests, hashes, unit checks | Supporting contribution, không thay kết quả khoa học |
-| External extension | E6 đang training, chưa có external effect | Chỉ thêm kết luận sau complete count/hash audit; giữ cả kết quả âm tính |
+| External extension | E6 training 3/3 complete; external inference/evaluation chưa chạy | Chỉ thêm kết luận sau complete count/hash audit; giữ cả kết quả âm tính |
 
 V3/v4 chưa cải thiện đáng tin cậy so với P1. Không hạ chất lượng P1, đổi baseline hoặc chuyển primary sang hàng thuận lợi sau khi xem kết quả. Không coi các nhánh dùng lại validation hay E3 đã xem là fresh confirmation.
 
 ## Việc tiếp theo theo thứ tự
 
-1. **Hoàn tất E6 đang chạy.** Theo dõi tiến độ/checkpoint/dung lượng, giữ code/config/root/software identity và một writer/member. Chỉ xử lý resume/dependencies sau khi xác định writer cũ đã dừng; không submit lại full chain để kiểm tra trạng thái.
+1. **Hoàn tất external E6.** Ba final checkpoints đã complete và hash-verified; dùng `bash scripts/finish_ribfrac_fast.sh` để chạy inference trên tối đa 2 GPU đồng thời, nối CPU evaluation và audit/cohort report. Giữ code/config/root/software identity; không chạy lại full training chain. Agent đã preflight nhưng chưa submit các jobs này.
 2. **Audit và đọc E6.** Cần đủ ba trained final checkpoints, 80 external cases, 240 inference records, complete manifests và hashes; sau đó báo 12 scores, paired CIs, negative-case denominators và reconstruction limitations. Không gộp AURC hai datasets thành một benchmark.
 3. **Chốt scientific framing.** Đối chiếu E6 với kết quả E1–E5; giữ primary E3 và giới hạn partition-only. Tác giả đã đồng ý triển khai count ablation và evaluator sensitivity sau rà soát; chạy ở roots riêng theo `exps.md`. Phương pháp hoặc training revision rộng hơn vẫn cần protocol/controls riêng.
-4. **Hoàn thiện manuscript.** Viết Method/Introduction, tích hợp bảng kết quả và hình hiện có, báo mixed/negative findings, backend provenance, mixed-batch E6 amendment và chronology limits. Bản nháp cũ ở archive chỉ là nguồn tham khảo.
+4. **Chốt manuscript hiện có.** Bản thảo tiếng Anh/PDF 5 trang đã có trong `paper/`; bổ sung E6 chỉ sau audit, điền author metadata và xác nhận DOI PENGWIN. Giữ mixed/negative findings, backend provenance, mixed-batch E6 amendment và chronology limits. Support files đã gỡ khỏi `paper/` có bản sao ngoài repo theo `paper/README.md`.
 5. **Kiểm tra trước submission.** Xác minh venue/format/nguồn tham khảo, claim–evidence, data/model provenance, disclosure, integrity và review; tác giả duyệt bản cuối trước nộp.
 
 Không đặt lịch hoàn thành E6 từ GPU probe. ETA phải dựa trên nhiều epochs thật và lịch chạy member03; inference/evaluation có thể thêm thời gian.
@@ -64,7 +64,7 @@ Nguồn: [rà soát và số liệu chẩn đoán](progress.md#rà-soát-toàn-d
 
 ## Phạm vi pipeline EMBC được tác giả yêu cầu ngày23/11
 
-1. Đọc ít nhất6bàiEMBC được xuất bản, fulltext và evidence matrix dưới `paper/review/`, suy luận bar có giới hạn accepted-only.
+1. Đọc ít nhất6bàiEMBC được xuất bản, fulltext và evidence matrix trước đây ở `paper/review/` (đã gỡ khỏi paper ngày28/11; bản sao theo `paper/README.md`), suy luận bar có giới hạn accepted-only.
 2. Thực hiện thêm một policy structural/foreground fixed-rule sau failed fusions: `configs/triage_policy.json`, CPU Slurm command ở `exps.md`; full2987 đã complete và chưa xác nhận benefit, giữ ở development evidence, không đưa thành contribution.
 3. Viết complete English IEEE manuscript trong `paper/`, dùng completed PENGWIN evidence; kiểm tra integrity, simulated review/revision và local PDF. Không tự nộp/publish. E6 đang chạy chỉ vào limitations/future extension, không có external result để báo.
 
