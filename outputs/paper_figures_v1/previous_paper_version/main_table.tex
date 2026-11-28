@@ -1,0 +1,35 @@
+\begin{table}[t]
+\caption{Structural-failure ranking by all 12 prediction-only scores (AURC, lower is better). M+S: merge-plus-split risk per reference fragment; $1-F_1$: detection error under the original best-IoU assignment (multiple references per prediction allowed). Dev.: 80 bones from 40 development CTs; Held-out: 200 bones from 100 separate CTs. Random: expected AURC of a random ranking. Best value per column in bold.}
+\label{tab:main}
+\centering\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{lccc}
+\toprule
+ & Dev. & \multicolumn{2}{c}{Held-out} \\
+\cmidrule(lr){2-2}\cmidrule(lr){3-4}
+Score & M+S & M+S & $1-F_1$ \\
+\midrule
+Random ranking & 0.647 & 0.601 & 0.196 \\
+\midrule
+\multicolumn{4}{l}{\textit{Voxel uncertainty}} \\
+\quad Mean entropy & 0.657 & 0.636 & 0.176 \\
+\quad 95th-percentile entropy & 0.677 & 0.638 & 0.178 \\
+\midrule
+\multicolumn{4}{l}{\textit{Foreground overlap}} \\
+\quad Pairwise Dice disagreement & 0.544 & 0.494 & 0.161 \\
+\quad Coverage $A$ (Jaccard) & 0.544 & 0.494 & 0.161 \\
+\midrule
+\multicolumn{4}{l}{\textit{Instance level}} \\
+\quad Instance-count variance & 0.518 & 0.470 & 0.152 \\
+\quad Union-normalized VI & 0.434 & 0.388 & 0.153 \\
+\quad Hungarian matching & 0.393 & 0.388 & \textbf{0.133} \\
+\midrule
+\multicolumn{4}{l}{\textit{Coverage/grouping decomposition}} \\
+\quad Combined $D_{\rm vox}$ & 0.491 & 0.447 & 0.156 \\
+\quad Combined $D_{\rm joint}$ & 0.332 & 0.331 & 0.145 \\
+\quad Grouping $Q_{\rm joint}$ & 0.289 & 0.299 & 0.141 \\
+\quad Grouping $wQ_{\rm joint}$ & 0.289 & 0.298 & 0.142 \\
+\quad Grouping $wQ_{\rm vox}$ & \textbf{0.271} & \textbf{0.272} & 0.145 \\
+\bottomrule
+\end{tabular}
+\end{table}

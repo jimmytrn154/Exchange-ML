@@ -1,0 +1,134 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\title{Presence or Partition? Decomposing Ensemble Disagreement to Detect Structural Failures in 3D Fracture Segmentation}
+\author{\IEEEauthorblockN{Anonymous authors}}
+\begin{document}
+\maketitle
+\begin{abstract}
+Fracture segmentation for reduction planning must identify individual bone fragments, yet merging or splitting fragments can preserve their foreground surface. Quality control therefore needs to measure both where bone is predicted and how it is grouped. We construct a correspondence-free ensemble disagreement score with a coverage term and a grouping term based on variation of information over shared foreground. Across 452 controlled interventions in fracture computed tomography (CT), merges and splits changed only grouping, while fragment removal and boundary shifts changed only coverage. Normalization determined the grouping contribution: its median share of the combined score increased from 7\% with log-voxel-count normalization to 59\% with joint entropy. On 200 bones from 100 held-out CTs, grouping alone achieved a structural-risk area under the risk--coverage curve (AURC) of 0.272, compared with 0.494 for coverage, 0.636 for voxel entropy, and 0.601 for random ranking (lower is better). Changing normalization reduced the combined score's AURC by 0.116 and met the recorded primary criterion against coverage and entropy. Grouping alone ranked the primary structural endpoint best; its advantage over the combined score was not clearly established under alternative failure definitions. The results establish grouping as a distinct, useful signal for instance-level quality control.
+\end{abstract}
+\begin{IEEEkeywords}
+instance segmentation, uncertainty, quality control, failure detection, fracture CT
+\end{IEEEkeywords}
+
+\section{Introduction}
+Computer-assisted reduction planning for pelvic and femoral fractures requires computed tomography (CT) segmentations that identify each bone fragment as a separate object~\cite{sang2026,pengwin2026}. A structural error merges separate fragments or splits one fragment into several. Binary foreground overlap can remain unchanged while this grouping is wrong. Automated quality control (QC) must therefore assess fragment organization as well as bone coverage, using predictions alone.
+
+Ensemble disagreement offers a practical QC signal~\cite{lakshminarayanan2017,mehrtash2020}, with its value depending on aggregation and evaluation~\cite{zenk2025,jaeger2023}. Voxel entropy describes uncertainty about foreground probabilities; Dice and Jaccard disagreement compare foreground masks~\cite{roy2019}. Pure regrouping with fixed masks leaves the overlap scores unchanged. Instance comparison can capture this information, but fragment IDs are arbitrary and predictions may differ in both coverage and grouping.
+
+We address these two mechanisms explicitly. Foreground Jaccard disagreement measures coverage; variation of information (VI) on shared foreground measures grouping without matching fragment labels. Their combination exposes a consequential choice: the normalization of VI determines how much grouping contributes. Our contributions are:
+\begin{enumerate}
+\item \textbf{A coverage/grouping construction} with controlled verification of mechanism-specific responses and a fixed-proportion analysis of normalization.
+\item \textbf{A held-out benchmark of 12 prediction-only scores} on 200 bones from 100 CTs, demonstrating strong structural ranking by grouping and a 0.116 AURC reduction when changing the combined score's normalization.
+\item \textbf{An endpoint-aware interpretation} showing how the comparison changes with the failure definition and how the two components capture complementary errors.
+\end{enumerate}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig1_concept.pdf}
+\caption{Coverage and grouping disagreement. (a)~Three members' real predictions for one development CT (left hip, axial slice). Fragment colors have no correspondence across models; scores use the whole 3D bone. (b)~Schematic coverage and grouping differences. (c)~Pairwise score construction: compute coverage and VI without matching labels, normalize and weight grouping within each pair, then average scores over the three pairs. References enter evaluation only.}
+\label{fig:concept}
+\end{figure*}
+
+\section{Related Work}
+\textit{Segmentation QC.} Ensembles and Monte Carlo sampling provide voxelwise uncertainty~\cite{lakshminarayanan2017,mehrtash2020}; structure-wise aggregation supports segmentation QC~\cite{roy2019}. Failure-detection benchmarks study confidence aggregation and risk--coverage evaluation~\cite{zenk2025,jaeger2023,geifman2017}, with pairwise Dice a strong foreground baseline~\cite{zenk2025}. Our benchmark tests which signals prioritize fragment-level structural errors. Reference-library-based quality estimation predicts target-case quality without a target-case reference~\cite{valindria2017}, while annotation inspection checks labeled datasets~\cite{schilling2023}.
+
+\textit{Instance comparison.} Object-level evaluation commonly matches instances by intersection over union (IoU), as in panoptic quality~\cite{kirillov2019}; instance uncertainty can also use matched samples~\cite{siddiqui2024}. We compare a matching-based control with a grouping measure that requires no fragment correspondence.
+
+\textit{Partition comparison.} VI compares partitions independently of their label values~\cite{meila2007}, and its normalizations have different properties~\cite{vinh2010}. Our contribution applies these established measures separately to coverage and shared-foreground grouping, then tests their normalization and ranking consequences for fracture QC. Alternative failure definitions follow the problem-alignment principle of validation guidelines~\cite{reinke2024,maier2024}.
+
+\section{Methods}
+\subsection{Decomposing Pairwise Instance Disagreement}
+For one whole 3D bone and two models $(i,j)$, let $F_i,F_j$ be their hard foreground masks, $U=F_i\cup F_j$ the union, and $C=F_i\cap F_j$ the shared foreground. For nonempty $U$, coverage disagreement and shared fraction are
+\begin{equation}
+A=\frac{|F_i\,\triangle\,F_j|}{|U|},\qquad w=\frac{|C|}{|U|}=1-A .
+\end{equation}
+Here $\triangle$ denotes symmetric difference. Restricting fragment labels to $C$ defines partitions $P,Q$. Their VI is $H(P\mid Q)+H(Q\mid P)$~\cite{meila2007}: each conditional entropy measures the uncertainty in one fragment label given the other. Entropies use natural logarithms and fragment-label proportions among shared voxels. Thus $A$ responds to foreground differences, while VI responds to regrouping within shared foreground.
+
+We compare log-voxel-count and joint-entropy normalization~\cite{vinh2010}:
+\begin{equation}
+Q_{\rm vox}=\frac{\mathrm{VI}}{\log|C|},\qquad Q_{\rm joint}=\frac{\mathrm{VI}}{H(P,Q)}\in[0,1],
+\end{equation}
+where $H(P,Q)$ is the entropy of joint fragment-label pairs on $C$. Multiplying all voxel counts by the same factor preserves these proportions and $Q_{\rm joint}$ but changes $Q_{\rm vox}$ through its denominator. Weighting grouping by $w$ and adding coverage gives
+\begin{equation}
+D_{\rm vox}=A+wQ_{\rm vox},\qquad D_{\rm joint}=A+wQ_{\rm joint}.
+\end{equation}
+Grouping terms are zero if $|C|\leq1$ or $H(P,Q)=0$; two empty predictions give $A=w=0$, one empty prediction gives $A=1$. Normalization and weighting occur within each pair before averaging the resulting scores over three pairs (Fig.~\ref{fig:concept}).
+
+\subsection{Compared Scores}
+All 12 controls use the same predictions (Table~\ref{tab:main}): mean and 95th-percentile entropy of the ensemble-mean soft foreground probability within the union of hard foreground masks; pairwise Dice and Jaccard ($A$) disagreement; instance-count variance; VI over the union including background; anatomy-constrained Hungarian IoU disagreement; and the five coverage/grouping scores. Soft foreground entropy and fragment-label entropy describe different distributions. Larger scores give higher review priority.
+
+\subsection{Data and Models}
+We used the labeled PENGWIN 2026 Task~1 dataset~\cite{pengwin2026}. Development comprised 40 CTs and held-out evaluation 100 CTs, both balanced between pelvic and femoral scans and disjoint from training. Held-out cases were sampled with a fixed seed from 210 eligible CTs. Pelvic scans contribute sacrum and left/right hip units, femoral scans one femur: 80 development and 200 held-out bones. A unit is a whole expected 3D bone specified by scan type, retained even when predictions are empty. Pooled analysis weights bones equally.
+
+Three differently seeded members of the pinned, patched two-stage STU-Net implementation~\cite{abbc} (nnU-Net~\cite{isensee2021}; anatomy localization and affinity-based fragment reconstruction) used the same 40 training cases. Predicted components below 1{,}000~mm$^3$ were removed with 26-connectivity. Scan metadata and predicted anatomy determine scoring units; reference labels enter evaluation only. A fourth, separately trained model of the same family provides an alternative risk source.
+
+\subsection{Failure Endpoints and Statistical Analysis}
+Primary structural risk is $(M+S)/\max(N_{\rm ref},1)$, where $N_{\rm ref}$ is the number of reference fragments; this error count per fragment can exceed one. Each reference fragment is assigned to its best-IoU prediction if IoU\,$\geq0.1$. $M$ counts assigned references beyond the first per prediction; $S$ counts predictions beyond the first overlapping each reference, with any positive overlap qualifying. Risks are computed per model then averaged over three members.
+
+Table~\ref{tab:main}'s original $F_1$ uses that best-IoU assignment: precision is the fraction of predictions selected by a reference, recall the fraction of references assigned, and $F_1$ their harmonic mean. Assignment permits multiple references per prediction. Table~\ref{tab:sensitivity}'s one-to-one $F_1$ instead uses maximum-cardinality matching at IoU\,$\geq0.1$. Missing volume is $1-|F_{\rm ref}\cap F_{\rm pred}|/|F_{\rm ref}|$.
+
+For retention coverage $c$, the lowest-scoring fraction $c$ of bones is retained and its mean risk recorded~\cite{geifman2017,jaeger2023}. Area under the risk--coverage curve (AURC) integrates these risks at $c=1/n,\ldots,1$, where $n$ is the number of bone units, using trapezoids and expected order within exact ties; lower is better. Paired 10{,}000-resample case-cluster bootstraps are stratified by scan type, carrying every bone from each sampled CT; intervals are marginal 95\% CIs. Normalization was chosen on development data. The recorded primary criterion required $D_{\rm joint}$ to improve AURC over both coverage and mean entropy by at least 0.02, with both CIs below zero. Other comparisons are secondary.
+
+\subsection{Controlled Mechanism Tests}
+On 20 development CTs (10 per scan type; 40 bones), reference instance maps were compared with controlled copies: unchanged or relabeled; merging one to three nearest fragment pairs; splitting the largest fragment into two to four parts; fragment removal; and boundary shifts to Dice 0.99, 0.95, and 0.90 (tolerance 0.005). Ineligible merges were recorded. Separately, all counts of 240 development contingency tables were multiplied by $r\in\{1,2,4,8,16\}$ to test normalization at fixed proportions.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig2_evidence.pdf}
+\caption{Mechanism and ranking evidence. (a)~Controlled interventions: fraction producing nonzero coverage ($A$) or grouping ($wQ$), with eligible counts. (b)~Grouping share of the combined score on 80 development bones; medians marked. (c)~Held-out structural risk versus retained-bone coverage; lower curves retain fewer errors per reference fragment. (d)~Spearman correlations for the same five scores, showing alignment with different endpoints. All 12 controls appear in Table~\ref{tab:main}.}
+\label{fig:evidence}
+\end{figure*}
+
+\section{Results}
+\subsection{Controlled Responses Separate the Two Mechanisms}
+All 452 eligible interventions produced the expected separation (Fig.~\ref{fig:evidence}a). Every merge (45) and split (120) changed grouping with zero coverage response; every fragment removal (87) and boundary shift (120) changed coverage with zero grouping response. Unchanged and relabeled maps gave zero for both terms. In the four bones eligible at all three merge levels, median $Q_{\rm joint}$ increased from 0.006 to 0.018 to 0.032. These controls establish the construction's mechanism-specific responses.
+
+\subsection{Normalization Determines the Grouping Contribution}
+Grouping's median share of the combined score increased from 7.0\% under $D_{\rm vox}$ to 58.9\% under $D_{\rm joint}$ (Fig.~\ref{fig:evidence}b). Controlled merges had median weighted grouping terms of 0.0018 and 0.047, respectively. Across all 240 count-replicated tables, VI, $H(P,Q)$, $A$, $w$, and $Q_{\rm joint}$ were unchanged. At $r=16$, $Q_{\rm vox}$ decreased by a median 18\% among 154 positive-VI tables; 86 retained zero VI. On 27 of 80 development bones, all models grouped shared foreground identically. The observed contribution change therefore reflects normalization of existing disagreement.
+
+\input{main_table}
+
+\subsection{Grouping Prioritizes Held-Out Structural Errors}
+Of 200 held-out bones, 138 had nonzero merge/split risk. Grouping-only scores ranked this endpoint best among the 12 controls: AURC 0.272 for $wQ_{\rm vox}$ and 0.298 for $wQ_{\rm joint}$ (Table~\ref{tab:main}). Coverage improved on random ranking (0.494 vs.\ 0.601), while mean entropy had a higher AURC (0.636). At 30\% retained-bone coverage (leaving 70\% of bones for review), mean normalized merge/split counts were 0.013 with $wQ_{\rm vox}$, 0.509 with coverage, and 0.615 with entropy (Fig.~\ref{fig:evidence}c).
+
+$D_{\rm joint}$ met the primary criterion: AURC differences were $-0.163$ against coverage (95\% CI $[-0.212,-0.117]$) and $-0.305$ against entropy ($[-0.372,-0.237]$). Changing only normalization from $D_{\rm vox}$ reduced AURC by 0.116 ($[-0.157,-0.077]$). It also improved on Hungarian ($-0.057$, $[-0.087,-0.030]$) and count-variance disagreement ($-0.139$, $[-0.182,-0.096]$). The primary contrasts persisted with fourth-model risks ($-0.128$ and $-0.281$; both CIs below zero).
+
+The grouping-only advantage over the combined score was $D_{\rm joint}-wQ_{\rm vox}=+0.059$ ($[0.039,0.080]$). Complementary correlations help interpret this ordering: coverage correlated weakly with structural risk ($\rho=0.10$) and more strongly with missing volume ($0.61$), while grouping gave $0.70$ and $0.22$, respectively (Fig.~\ref{fig:evidence}d). Entropy's structural correlation was $-0.10$. Pelvic bones supported the primary coverage contrast ($-0.146$, $[-0.194,-0.102]$).
+
+\input{endpoint_table}
+
+\subsection{Score Comparisons Depend on the Failure Definition}
+With predictions and scores fixed, supplementary evaluation used one-to-one $1-F_1$, significant-overlap merge/split counts, and missing volume (Table~\ref{tab:sensitivity}). Significant edges require intersection of at least $\tau\in\{0.01,0.1\}$ times the larger object's volume. Compared with the primary endpoint's positive $0.0591$ difference, alternative point differences were smaller and their CIs included zero: no clear grouping-only advantage was detected under those definitions. Hungarian disagreement had the lowest original-assignment $1-F_1$ AURC (0.133; Table~\ref{tab:main}). These comparisons identify the failure criterion as part of the QC objective.
+
+\subsection{Coverage Captures Differing Omissions}
+Among the six bones with greatest missing volume, four had the four highest coverage scores. One held-out left hip had five reference fragments but no prediction from any of the three members or the fourth model. All 12 scores were zero under the empty-foreground convention, although missing volume was complete. Together, these observations distinguish differing omissions, which coverage can expose, from shared omissions.
+
+% E6: external evaluation results intentionally withheld.
+\subsection{External Validation}
+\label{sec:e6}
+\textit{Results pending.}
+
+\section{Discussion}
+Fragment-level QC benefits from measuring coverage and grouping separately. The controlled tests establish distinct responses, while held-out results show that grouping prioritizes structural errors substantially better than the evaluated foreground and entropy signals. This information is available directly from existing instance maps, without fragment correspondence or an additional learned QC model.
+
+Normalization changes how much grouping influences a combined score. Joint entropy avoids the fixed-proportion voxel-count dependence and improved the recorded combined-score comparisons; grouping alone remained strongest for the primary endpoint. The operational recommendation is therefore to retain both components: grouping for structural review, coverage for differing omissions, with their interpretation tied to the intended failure definition. Expected-anatomy checks or reference-library quality estimation~\cite{valindria2017} are potential complements for shared omissions.
+
+\subsection{Limitations}
+The evidence concerns one dataset and one model family; pooled bone weighting reflects the pelvic/femoral unit mixture, and femur-only primary CIs included zero (48 of 50 femoral bones had nonzero structural risk). Joint-normalized grouping saturated for splits of 11 single-fragment bones, so its magnitude need not grade error extent. Alternative-endpoint comparisons remain secondary, and disagreement alone cannot identify unanimous omissions. Reading-time and correction-effort benefits require reader evaluation.
+
+\section{Conclusion}
+Separating coverage from shared-foreground grouping makes ensemble disagreement informative about different fragment-segmentation failures. Controlled tests establish the two responses, and held-out evaluation demonstrates strong structural ranking by grouping and an empirical benefit from changing the combined score's normalization. Reporting both components and their target failure definition provides a clear basis for instance-level QC.
+
+\section*{Acknowledgment}
+Generative AI tools were used: OpenAI Codex for drafting and manuscript revision. The authors verified all content and take full responsibility for it. The study used public anonymized data; no patients were recruited.
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+\end{document}
